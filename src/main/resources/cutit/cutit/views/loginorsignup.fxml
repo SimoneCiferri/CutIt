@@ -12,9 +12,9 @@
             <Font size="79.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
          <children>
-            <Label alignment="CENTER" text="Username:" textAlignment="CENTER">
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="Username:" textAlignment="CENTER">
                <font>
                   <Font size="21.0" />
                </font>
@@ -32,12 +32,12 @@
             </TextArea>
          </children>
          <VBox.margin>
-            <Insets top="15.0" />
+            <Insets top="20.0" />
          </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
          <children>
-            <Label alignment="CENTER" text="Password:" textAlignment="CENTER">
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="Password:" textAlignment="CENTER">
                <font>
                   <Font size="21.0" />
                </font>
@@ -49,18 +49,21 @@
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </PasswordField>
          </children>
       </HBox>
       <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" style="-fx-border-radius: 4;" text="Log In">
          <VBox.margin>
-            <Insets top="20.0" />
+            <Insets top="30.0" />
          </VBox.margin>
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Label text="or">
+      <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="15.0" text="or">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
