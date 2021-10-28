@@ -5,4 +5,6 @@ module cutit.cutit {
 
     opens cutit.cutit to javafx.fxml;
     exports cutit.cutit;
+    exports cutit.cutit.logic.view.controllerg;
+    opens cutit.cutit.logic.view.controllerg to javafx.fxml;
 }
