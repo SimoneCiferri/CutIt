@@ -22,14 +22,14 @@
                   <Insets right="30.0" />
                </HBox.margin>
             </Label>
-            <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="Username" style="-fx-border-radius: 4;">
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="Username">
                <font>
                   <Font size="14.0" />
                </font>
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
-            </TextArea>
+            </TextField>
          </children>
          <VBox.margin>
             <Insets top="20.0" />
