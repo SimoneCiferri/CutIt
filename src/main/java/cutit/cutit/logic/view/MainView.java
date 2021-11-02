@@ -12,7 +12,7 @@ public class MainView extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainView.class.getResource("/cutit/cutit/views/start.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1024, 768);
-        stage.setTitle("Cut-It!");
+        stage.setTitle("Cut-It!!!");
         stage.setScene(scene);
         stage.show();
     }
