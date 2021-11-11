@@ -4,7 +4,6 @@ import cutit.cutit.logic.view.MainView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -44,7 +43,7 @@ public class StartControllerG {
     public boolean goProm() throws IOException {
         System.out.println("Promotion Button pressed");
         VBox promLayout = null;
-        promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/promotionsnotlogged.fxml"));
+        promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/unloggedpromotions.fxml"));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(promLayout);
         btnHome.setStyle(transparentStyle);

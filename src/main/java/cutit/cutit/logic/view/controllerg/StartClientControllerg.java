@@ -49,12 +49,11 @@ public class StartClientControllerg {
     @FXML
     public boolean goFav() throws IOException {
         System.out.println("Favourites Button pressed (client)");
-        /*
-        VBox promLayout = null;
-        promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/ ... .fxml"));
+
+        VBox favLayout = null;
+        favLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/favouritescs.fxml"));
         pLayout= MainView.getPrLayout();
-        pLayout.setCenter(promLayout);
-        */
+        pLayout.setCenter(favLayout);
         btnClHome.setStyle(transparentStyle);
         btnClFav.setStyle(pageFlagStyle);
         btnClApp.setStyle(transparentStyle);
@@ -66,12 +65,11 @@ public class StartClientControllerg {
     @FXML
     public boolean goApp() throws IOException {
         System.out.println("Appointment Button pressed (client)");
-        /*
-        VBox promLayout = null;
-        promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/ ... .fxml"));
+
+        VBox appLayout = null;
+        appLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientappointments.fxml"));
         pLayout= MainView.getPrLayout();
-        pLayout.setCenter(promLayout);
-        */
+        pLayout.setCenter(appLayout);
         btnClHome.setStyle(transparentStyle);
         btnClFav.setStyle(transparentStyle);
         btnClApp.setStyle(pageFlagStyle);
@@ -83,12 +81,10 @@ public class StartClientControllerg {
     @FXML
     public boolean goProm() throws IOException {
         System.out.println("Promotion Button pressed (client)");
-        /*
         VBox promLayout = null;
-        promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/ ... .fxml"));
+        promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientpromotions.fxml"));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(promLayout);
-        */
         btnClHome.setStyle(transparentStyle);
         btnClFav.setStyle(transparentStyle);
         btnClApp.setStyle(transparentStyle);

@@ -45,11 +45,10 @@ public class LoginControllerg {
         BorderPane startHairdresser = null;
         startHairdresser = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/starthairdresser.fxml"));
         MainView.setPrLayout(startHairdresser);
-        /*
         VBox appHairLayout = null;
-        appHairLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/ ... .fxml"));
+        appHairLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdresserappointments.fxml"));
         startHairdresser.setCenter(appHairLayout);
-         */
+        startHairdresser.setCenter(appHairLayout);
         Scene scene = new Scene(startHairdresser);
         prStage.setScene(scene);
         return true;

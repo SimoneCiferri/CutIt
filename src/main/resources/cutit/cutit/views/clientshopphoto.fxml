@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="920.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="140.0" prefWidth="920.0">
+         <children>
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="220.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Photo">
+               <HBox.margin>
+                  <Insets right="13.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="220.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Photo">
+               <HBox.margin>
+                  <Insets right="13.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="220.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Photo">
+               <HBox.margin>
+                  <Insets right="13.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="220.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Photo">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="140.0" prefWidth="920.0">
+         <children>
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="220.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Photo">
+               <HBox.margin>
+                  <Insets right="13.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="220.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Photo">
+               <HBox.margin>
+                  <Insets right="13.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="220.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Photo">
+               <HBox.margin>
+                  <Insets right="13.0" />
+               </HBox.margin>
+            </Label>
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="220.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Photo" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

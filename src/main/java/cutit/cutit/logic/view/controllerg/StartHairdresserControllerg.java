@@ -33,12 +33,10 @@ public class StartHairdresserControllerg {
     @FXML
     public boolean goApp() throws IOException {
         System.out.println("Appointment Button pressed (Hairdresser)");
-        /*
-        VBox promLayout = null;
-        promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/ ... .fxml"));
+        VBox appLayout = null;
+        appLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdresserappointments.fxml"));
         pLayout= MainView.getPrLayout();
-        pLayout.setCenter(promLayout);
-        */
+        pLayout.setCenter(appLayout);
         btnHApp.setStyle(pageFlagStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
@@ -49,12 +47,10 @@ public class StartHairdresserControllerg {
     @FXML
     public boolean goProm() throws IOException {
         System.out.println("Promotion Button pressed (Hairdresser)");
-        /*
         VBox promLayout = null;
-        promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/ ... .fxml"));
+        promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdresserpromotions.fxml"));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(promLayout);
-        */
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(pageFlagStyle);
         btnHShop.setStyle(transparentStyle);
@@ -65,12 +61,10 @@ public class StartHairdresserControllerg {
     @FXML
     public boolean goShop() throws IOException {
         System.out.println("Shop Button pressed (Hairdresser)");
-        /*
-        VBox promLayout = null;
-        promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/ ... .fxml"));
+        VBox shopLayout = null;
+        shopLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdressershop.fxml"));
         pLayout= MainView.getPrLayout();
-        pLayout.setCenter(promLayout);
-        */
+        pLayout.setCenter(shopLayout);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHShop.setStyle(pageFlagStyle);
@@ -91,4 +85,5 @@ public class StartHairdresserControllerg {
         prStage.setScene(scene);
         return true;
     }
+
 }

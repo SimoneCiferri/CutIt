@@ -13,6 +13,7 @@ public class MainView extends Application {
 
     private static Stage prStage;
     private static BorderPane prLayout;
+    private static BorderPane ndLayout;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -57,6 +58,13 @@ public class MainView extends Application {
         prStage.setScene(scene);
     }
 
+    public static void setNdLayout(BorderPane ndL){
+        ndLayout = ndL;
+    }
+
+    public static BorderPane getNdLayout(){
+        return ndLayout;
+    }
 
     public static void main(String[] args) {
         launch();
