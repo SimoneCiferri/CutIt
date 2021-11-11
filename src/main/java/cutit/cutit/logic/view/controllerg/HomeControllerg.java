@@ -26,7 +26,6 @@ public class HomeControllerg {
         photoLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientshopphoto.fxml"));
         nLayout = MainView.getNdLayout();
         nLayout.setCenter(photoLayout);
-        //da fare -> set del border pane secondario presente nel vertical box
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(shopLayout);
         return true;
