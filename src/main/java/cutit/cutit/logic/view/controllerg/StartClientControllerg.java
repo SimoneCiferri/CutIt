@@ -51,7 +51,7 @@ public class StartClientControllerg {
         System.out.println("Favourites Button pressed (client)");
 
         VBox favLayout = null;
-        favLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/favouritescs.fxml"));
+        favLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientfavouritescs.fxml"));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(favLayout);
         btnClHome.setStyle(transparentStyle);

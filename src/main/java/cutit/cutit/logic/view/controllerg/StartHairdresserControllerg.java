@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -61,7 +62,7 @@ public class StartHairdresserControllerg {
     @FXML
     public boolean goShop() throws IOException {
         System.out.println("Shop Button pressed (Hairdresser)");
-        VBox shopLayout = null;
+        ScrollPane shopLayout = null;
         shopLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdressershop.fxml"));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(shopLayout);

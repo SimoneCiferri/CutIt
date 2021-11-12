@@ -8,7 +8,7 @@
    <children>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="920.0">
          <children>
-            <Label alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="895.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Opening time...">
+            <Label alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="918.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Opening time...">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>

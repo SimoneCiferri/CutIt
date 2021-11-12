@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -9,7 +10,7 @@
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="920.0">
          <children>
-            <Label text="ShopName">
+            <Label fx:id="lShopName" text="ShopName">
                <font>
                   <Font size="30.0" />
                </font>
@@ -17,24 +18,48 @@
                   <Insets top="25.0" />
                </VBox.margin>
             </Label>
-            <HBox prefHeight="200.0" prefWidth="920.0">
-               <children>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="450.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Shop photo and info">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Label alignment="CENTER" prefHeight="200.0" prefWidth="450.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Buttons">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Label>
-               </children>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="210.0" prefWidth="920.0">
                <VBox.margin>
-                  <Insets top="15.0" />
+                  <Insets top="5.0" />
                </VBox.margin>
+               <children>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="720.0">
+                     <children>
+                        <ImageView fx:id="ivShopPhoto" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="lShopDescription" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="720.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Description">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Book Appointment">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Maps">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Add to Favourites">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Rate Shop">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
             </HBox>
-            <BorderPane fx:id="bpInShopInfo" prefHeight="410.0" prefWidth="920.0">
+            <BorderPane fx:id="bpInShopInfo" prefHeight="30.0" prefWidth="160.0">
                <top>
                   <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="520.0" style="-fx-border-color: grey; -fx-border-radius: 5;" BorderPane.alignment="TOP_LEFT">
                      <children>

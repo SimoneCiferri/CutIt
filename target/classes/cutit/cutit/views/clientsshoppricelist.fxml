@@ -8,10 +8,13 @@
    <children>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="920.0">
          <children>
-            <Label alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="895.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Price List..." />
+            <Label alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="918.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Price List...">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin></Label>
          </children>
          <VBox.margin>
-            <Insets top="15.0" />
+            <Insets />
          </VBox.margin>
       </VBox>
    </children>
