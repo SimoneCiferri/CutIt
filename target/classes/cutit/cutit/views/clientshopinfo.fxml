@@ -35,7 +35,7 @@
                   </VBox>
                   <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Book Appointment">
+                        <Button fx:id="btnBookApp" mnemonicParsing="false" onMouseClicked="#bookAppointment" prefHeight="35.0" prefWidth="160.0" text="Book Appointment">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>

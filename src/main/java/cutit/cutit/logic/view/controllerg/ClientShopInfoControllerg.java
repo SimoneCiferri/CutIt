@@ -86,5 +86,15 @@ public class ClientShopInfoControllerg {
         return true;
     }
 
+    @FXML
+    public boolean bookAppointment() throws IOException{
+        System.out.println("Book appointment Button pressed");
+        BorderPane bookAppLayout = null;
+        bookAppLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientbookappointment.fxml"));
+        pLayout= MainView.getPrLayout();
+        pLayout.setCenter(bookAppLayout);
+        return true;
+    }
+
 
 }
