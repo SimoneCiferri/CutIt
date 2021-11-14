@@ -5,10 +5,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class StartControllerG {
@@ -56,6 +57,9 @@ public class StartControllerG {
         System.out.println("Login page");
         BorderPane loginPage = null;
         loginPage = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/login.fxml"));
+        Image image = new Image(MainView.getBackgr(), 1024, 768, false, false);
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        loginPage.setBackground(new Background(back));
         MainView.setPrLayout(loginPage);
         Scene scene = new Scene(loginPage);
         prStage.setScene(scene);

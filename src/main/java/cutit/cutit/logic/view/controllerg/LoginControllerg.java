@@ -4,8 +4,8 @@ import cutit.cutit.logic.view.MainView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,6 +13,7 @@ import java.io.IOException;
 public class LoginControllerg {
 
     private final Stage prStage = MainView.getPrStage();
+    
 
     @FXML
     public boolean tryLogin() throws IOException {
@@ -33,6 +34,9 @@ public class LoginControllerg {
         System.out.println("SignUp");
         BorderPane signUpLayout = null;
         signUpLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/signup.fxml"));
+        Image image = new Image(MainView.getBackgr(), 1024, 768, false, false);
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        signUpLayout.setBackground(new Background(back));
         MainView.setPrLayout(signUpLayout);
         Scene scene = new Scene(signUpLayout);
         prStage.setScene(scene);
