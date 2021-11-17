@@ -14,7 +14,7 @@ public class MainView extends Application {
     private static Stage prStage;
     private static BorderPane prLayout;
     private static BorderPane ndLayout;
-    private static String backgr = "https://images.squarespace-cdn.com/content/v1/5665e893bfe8736bcec8194a/1618843188760-Z0BDWJ7WI50IQ5KHXUAK/Columbia+Classic+Barbershop.jpg?format=2500w";
+    private static String backgr = "/cutit/cutit/files/backgr.jpg";
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -42,6 +42,9 @@ public class MainView extends Application {
         setPrLayout(FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/start.fxml")));
         VBox homeLayout = null;
         homeLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/home.fxml"));
+        Image image = new Image(MainView.class.getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        homeLayout.setBackground(new Background(back));
         prLayout.setCenter(homeLayout);
         return true;
     }

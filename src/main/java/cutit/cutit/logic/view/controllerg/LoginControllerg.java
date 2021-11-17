@@ -24,6 +24,9 @@ public class LoginControllerg {
         MainView.setPrLayout(startClient);
         VBox homeLayout = null;
         homeLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/home.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        homeLayout.setBackground(new Background(back));
         startClient.setCenter(homeLayout);
         Scene scene = new Scene(startClient);
         prStage.setScene(scene);
@@ -35,7 +38,7 @@ public class LoginControllerg {
         System.out.println("SignUp");
         BorderPane signUpLayout = null;
         signUpLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/signup.fxml"));
-        Image image = new Image(MainView.getBackgr(), 1024, 768, false, false);
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         signUpLayout.setBackground(new Background(back));
         MainView.setPrLayout(signUpLayout);
@@ -52,6 +55,9 @@ public class LoginControllerg {
         MainView.setPrLayout(startHairdresser);
         VBox appHairLayout = null;
         appHairLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdresserappointments.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        appHairLayout.setBackground(new Background(back));
         startHairdresser.setCenter(appHairLayout);
         startHairdresser.setCenter(appHairLayout);
         Scene scene = new Scene(startHairdresser);

@@ -5,8 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,6 +36,9 @@ public class StartClientControllerg {
         System.out.println("Home Button pressed (client)");
         VBox homeLayout = null;
         homeLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/home.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        homeLayout.setBackground(new Background(back));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(homeLayout);
         btnClHome.setStyle(pageFlagStyle);
@@ -52,6 +55,9 @@ public class StartClientControllerg {
 
         VBox favLayout = null;
         favLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientfavouritescs.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        favLayout.setBackground(new Background(back));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(favLayout);
         btnClHome.setStyle(transparentStyle);
@@ -68,6 +74,9 @@ public class StartClientControllerg {
 
         VBox appLayout = null;
         appLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientappointments.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        appLayout.setBackground(new Background(back));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(appLayout);
         btnClHome.setStyle(transparentStyle);
@@ -83,6 +92,9 @@ public class StartClientControllerg {
         System.out.println("Promotion Button pressed (client)");
         VBox promLayout = null;
         promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientpromotions.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        promLayout.setBackground(new Background(back));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(promLayout);
         btnClHome.setStyle(transparentStyle);
@@ -101,6 +113,9 @@ public class StartClientControllerg {
         MainView.setPrLayout(start);
         VBox homeLayout = null;
         homeLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/home.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        homeLayout.setBackground(new Background(back));
         start.setCenter(homeLayout);
         Scene scene = new Scene(start);
         prStage.setScene(scene);

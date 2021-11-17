@@ -5,9 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -91,6 +90,9 @@ public class ClientShopInfoControllerg {
         System.out.println("Book appointment Button pressed");
         BorderPane bookAppLayout = null;
         bookAppLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientbookappointment.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        bookAppLayout.setBackground(new Background(back));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(bookAppLayout);
         return true;

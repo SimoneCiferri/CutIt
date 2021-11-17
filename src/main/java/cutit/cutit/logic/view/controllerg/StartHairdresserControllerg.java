@@ -6,8 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,6 +36,9 @@ public class StartHairdresserControllerg {
         System.out.println("Appointment Button pressed (Hairdresser)");
         VBox appLayout = null;
         appLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdresserappointments.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        appLayout.setBackground(new Background(back));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(appLayout);
         btnHApp.setStyle(pageFlagStyle);
@@ -50,6 +53,9 @@ public class StartHairdresserControllerg {
         System.out.println("Promotion Button pressed (Hairdresser)");
         VBox promLayout = null;
         promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdresserpromotions.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        promLayout.setBackground(new Background(back));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(promLayout);
         btnHApp.setStyle(transparentStyle);
@@ -62,8 +68,11 @@ public class StartHairdresserControllerg {
     @FXML
     public boolean goShop() throws IOException {
         System.out.println("Shop Button pressed (Hairdresser)");
-        ScrollPane shopLayout = null;
+        VBox shopLayout = null;
         shopLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdressershop.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        shopLayout.setBackground(new Background(back));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(shopLayout);
         btnHApp.setStyle(transparentStyle);
@@ -81,6 +90,9 @@ public class StartHairdresserControllerg {
         MainView.setPrLayout(start);
         VBox homeLayout = null;
         homeLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/home.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        homeLayout.setBackground(new Background(back));
         start.setCenter(homeLayout);
         Scene scene = new Scene(start);
         prStage.setScene(scene);
