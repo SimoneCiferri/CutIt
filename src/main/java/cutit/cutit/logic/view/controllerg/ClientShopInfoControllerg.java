@@ -3,10 +3,13 @@ package cutit.cutit.logic.view.controllerg;
 import cutit.cutit.logic.view.MainView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -95,6 +98,21 @@ public class ClientShopInfoControllerg {
         bookAppLayout.setBackground(new Background(back));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(bookAppLayout);
+        return true;
+    }
+
+    @FXML
+    public boolean rateShop() throws IOException{
+        System.out.println("Rate Shop Button pressed");
+        VBox rateLayoutPopup = null;
+        rateLayoutPopup = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientrateshop.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        rateLayoutPopup.setBackground(new Background(back));
+        Scene scene = new Scene(rateLayoutPopup);
+        Stage pStage = new Stage();
+        pStage.setScene(scene);
+        pStage.show();
         return true;
     }
 

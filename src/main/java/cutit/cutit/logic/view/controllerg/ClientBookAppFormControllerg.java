@@ -34,6 +34,9 @@ public class ClientBookAppFormControllerg {
         System.out.println("Back Button pressed (Book App Form)");
         BorderPane bookAppLayout = null;
         bookAppLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientbookappointment.fxml"));
+        Image image = new Image(MainView.class.getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        bookAppLayout.setBackground(new Background(back));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(bookAppLayout);
         return true;

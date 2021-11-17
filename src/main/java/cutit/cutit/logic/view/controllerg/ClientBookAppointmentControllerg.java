@@ -3,9 +3,8 @@ package cutit.cutit.logic.view.controllerg;
 import cutit.cutit.logic.view.MainView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -44,6 +43,9 @@ public class ClientBookAppointmentControllerg {
         shopLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientshopinfo.fxml"));
         VBox photoLayout = null;
         photoLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientshopphoto.fxml"));
+        Image image = new Image(MainView.class.getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        shopLayout.setBackground(new Background(back));
         nLayout = MainView.getNdLayout();
         nLayout.setCenter(photoLayout);
         pLayout= MainView.getPrLayout();
