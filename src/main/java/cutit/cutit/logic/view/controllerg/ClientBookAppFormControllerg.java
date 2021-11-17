@@ -25,7 +25,6 @@ public class ClientBookAppFormControllerg {
         bookAppFormLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientbookappform.fxml"));
         nLayout= MainView.getNdLayout();
         nLayout.setCenter(bookAppFormLayout);
-
          */
         return true;
     }
