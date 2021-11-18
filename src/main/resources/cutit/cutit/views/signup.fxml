@@ -11,7 +11,7 @@
          <children>
             <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="512.0" style="-fx-border-color: grey;">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="290.0" text="Customer" textFill="WHITE">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="290.0" text="Customer">
                      <font>
                         <Font size="63.0" />
                      </font>
@@ -59,7 +59,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Button>
-                  <Label text="or" textFill="WHITE">
+                  <Label text="or">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -91,7 +91,7 @@
             </VBox>
             <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="512.0" style="-fx-border-color: grey;">
                <children>
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="315.0" text="Hairdresser" textFill="WHITE">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="315.0" text="Hairdresser">
                      <font>
                         <Font size="63.0" />
                      </font>

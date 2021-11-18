@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="300.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Prom1" textFill="WHITE" underline="true">
-         <VBox.margin>
-            <Insets left="25.0" top="25.0" />
-         </VBox.margin>
-         <padding>
-            <Insets left="25.0" />
-         </padding>
-      </Label>
-   </children>
+<VBox fx:id="vbUnloggedPromotion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.view.controllerg.UnloggedPromotionControllerg">
+   <padding>
+      <Insets left="50.0" top="50.0" />
+   </padding>
 </VBox>

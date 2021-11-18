@@ -22,9 +22,9 @@
       </AnchorPane>
       <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: transparent; -fx-background: transparent;">
          <content>
-            <VBox fx:id="vbInScroll" alignment="TOP_CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1024.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+            <VBox fx:id="vbInScroll" alignment="TOP_CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000.0" style="-fx-background-color: transparent; -fx-background: transparent;">
                <padding>
-                  <Insets top="25.0" />
+                  <Insets left="12.0" top="25.0" />
                </padding>
             </VBox>
          </content>
