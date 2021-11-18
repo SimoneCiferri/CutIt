@@ -39,7 +39,7 @@ public class HomeControllerg {
             l.setMinSize(895,130);
             l.setMaxSize(895,130);
             l.setStyle("-fx-border-color: grey; -fx-border-radius: 5;");
-            l.setPadding(new Insets(0,0,0,20));
+            l.setPadding(new Insets(0,0,10,20));
             l.setOnMouseClicked((MouseEvent) -> {
                 try {
                     goShopInfo();
