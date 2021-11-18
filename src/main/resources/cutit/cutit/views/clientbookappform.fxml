@@ -7,7 +7,7 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.view.controllerg.ClientBookAppFormControllerg">
    <children>
-      <Label text="dd/mm/yyyy hh/mm">
+      <Label text="dd/mm/yyyy hh/mm" textFill="WHITE">
          <font>
             <Font size="30.0" />
          </font>
@@ -19,7 +19,7 @@
          <children>
             <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="350.0">
                <children>
-                  <Label text="Hairdresser:">
+                  <Label text="Hairdresser:" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -27,7 +27,7 @@
                         <Insets />
                      </VBox.margin>
                   </Label>
-                  <Label text="Service:">
+                  <Label text="Service:" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -35,7 +35,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label text="Promotion:">
+                  <Label text="Promotion:" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
@@ -43,7 +43,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label text="Notes:">
+                  <Label text="Notes:" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
