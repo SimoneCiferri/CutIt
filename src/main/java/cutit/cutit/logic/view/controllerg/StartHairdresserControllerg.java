@@ -20,12 +20,13 @@ public class StartHairdresserControllerg {
     private final String pageFlagStyle = "-fx-background-color: #707070; -fx-text-fill: #FFFFFF; ";
 
     @FXML
-    private Label  btnHApp, btnHPromotions, btnHShop,  btnHLogout;
+    private Label  btnHApp, btnHPromotions, btnHServices, btnHShop,  btnHLogout;
 
     public boolean initialize() throws IOException {
         System.out.println("App page (Hairdresser)");
         btnHApp.setStyle(pageFlagStyle);
         btnHPromotions.setStyle(transparentStyle);
+        btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
         return true;
@@ -43,6 +44,7 @@ public class StartHairdresserControllerg {
         pLayout.setCenter(appLayout);
         btnHApp.setStyle(pageFlagStyle);
         btnHPromotions.setStyle(transparentStyle);
+        btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
         return true;
@@ -60,10 +62,32 @@ public class StartHairdresserControllerg {
         pLayout.setCenter(promLayout);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(pageFlagStyle);
+        btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
         return true;
     }
+
+    @FXML
+    public boolean goServices() throws IOException {
+        System.out.println("Services Button pressed (Hairdresser)");
+        /*
+        VBox promLayout = null;
+        promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdresserservices.fxml"));
+        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        promLayout.setBackground(new Background(back));
+        pLayout= MainView.getPrLayout();
+        pLayout.setCenter(promLayout);
+         */
+        btnHApp.setStyle(transparentStyle);
+        btnHPromotions.setStyle(transparentStyle);
+        btnHServices.setStyle(pageFlagStyle);
+        btnHShop.setStyle(transparentStyle);
+        btnHLogout.setStyle(transparentStyle);
+        return true;
+    }
+
 
     @FXML
     public boolean goShop() throws IOException {
@@ -77,6 +101,7 @@ public class StartHairdresserControllerg {
         pLayout.setCenter(shopLayout);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(transparentStyle);
+        btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(pageFlagStyle);
         btnHLogout.setStyle(transparentStyle);
         return true;
