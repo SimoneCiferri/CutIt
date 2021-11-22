@@ -2,13 +2,15 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="710.0" prefWidth="1024.0" style="-fx-background-color: transparent; -fx-background: transparent;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
          <content>
@@ -34,16 +36,54 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="720.0" promptText="Price List">
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="325.0">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
-                  </TextArea>
-                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="720.0" promptText="Opening Time">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </TextArea>
+                     <children>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="75.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" text="Mon">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Tue">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Wed">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Thu">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Fri">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Sat">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Sun">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="125.0" />
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="125.0" />
+                     </children>
+                  </HBox>
                   <Button mnemonicParsing="false" text="Save">
                      <VBox.margin>
                         <Insets top="15.0" />
