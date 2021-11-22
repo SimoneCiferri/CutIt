@@ -71,7 +71,6 @@ public class StartHairdresserControllerg {
     @FXML
     public boolean goServices() throws IOException {
         System.out.println("Services Button pressed (Hairdresser)");
-        /*
         VBox promLayout = null;
         promLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdresserservices.fxml"));
         Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
@@ -79,7 +78,6 @@ public class StartHairdresserControllerg {
         promLayout.setBackground(new Background(back));
         pLayout= MainView.getPrLayout();
         pLayout.setCenter(promLayout);
-         */
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHServices.setStyle(pageFlagStyle);
