@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.io.IOException;
+import com.jfoenix.controls.JFXButton;
 
 public class HomeControllerg {
 
@@ -22,6 +23,9 @@ public class HomeControllerg {
 
     @FXML
     private VBox vbInScroll;
+
+    @FXML
+    private JFXButton btnSearch;
 
     public boolean initialize() throws IOException {
         Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());

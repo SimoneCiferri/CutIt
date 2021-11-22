@@ -2,6 +2,7 @@ module cutit.cutit {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
+    requires com.jfoenix;
 
 
     exports cutit.cutit.logic.view.controllerg;
