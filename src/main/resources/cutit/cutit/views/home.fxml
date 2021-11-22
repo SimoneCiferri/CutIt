@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -15,9 +16,9 @@
          </VBox.margin>
          <children>
             <TextField layoutX="14.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="200.0" promptText="Shop Name..." AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0" />
-            <Button alignment="CENTER" layoutX="846.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="60.0" text="Cerca" textAlignment="CENTER" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="10.0" />
             <ChoiceBox layoutX="260.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="10.0" />
             <ChoiceBox layoutX="492.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="490.0" AnchorPane.topAnchor="10.0" />
+            <JFXButton layoutX="767.0" layoutY="15.0" prefHeight="35.0" prefWidth="60.0" style="-fx-border-color: grey; -fx-border-radius: 5; -fx-background-color: grey;" text="Button" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="10.0" />
          </children>
       </AnchorPane>
       <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-color: transparent; -fx-background: transparent;">
