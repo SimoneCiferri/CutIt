@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="512.0" style="-fx-border-color: white; -fx-border-width: 5; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.view.controllerg.ClientRateShopControllerg">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="512.0" style="-fx-border-color: white; -fx-border-width: 3; -fx-border-radius: 5;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.view.controllerg.ClientRateShopControllerg">
    <children>
       <Label text="ShopName" textFill="WHITE">
          <font>
@@ -25,7 +25,7 @@
             <ImageView fx:id="ivStar2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="ivStar3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="ivStar4" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="ivStar5" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ivStar5" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#rate5" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
    </children>

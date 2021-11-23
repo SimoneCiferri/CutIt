@@ -110,13 +110,21 @@ public class ClientShopInfoControllerg {
         Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         rateLayoutPopup.setBackground(new Background(back));
-        pop = new Popup();
+        setPop(new Popup());
         pop.setAutoHide(true);
         pop.getContent().add(rateLayoutPopup);
         if (!pop.isShowing()){
             pop.show(prStage);
         }
         return true;
+    }
+
+    public static Popup getPop(){
+        return pop;
+    }
+
+    private void setPop(Popup popup){
+        this.pop = popup;
     }
 
 
