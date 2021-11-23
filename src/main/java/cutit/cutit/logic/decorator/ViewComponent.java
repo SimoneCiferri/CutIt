@@ -7,14 +7,14 @@ import java.io.IOException;
 
 public interface ViewComponent {
 
-    public BorderPane getPrLayout();
+    public Pane getPrLayout();
 
-    public void setPrLayout(BorderPane prLayout);
+    public void setPrLayout(Pane prLayout);
 
-    public void loadXML() throws IOException;
+    public void loadXML(ViewLayout layout) throws IOException;
 
-    public Pane getLoadedView();
+    public Pane getLoadedView(ViewLayout layout);
 
-    public Object getLoadedViewController();
+    public Object getLoadedViewController(ViewLayout layout);
 
 }

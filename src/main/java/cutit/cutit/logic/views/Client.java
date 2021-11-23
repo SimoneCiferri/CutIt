@@ -1,7 +1,10 @@
 package cutit.cutit.logic.views;
 
+import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.facade.Facade;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -17,10 +20,20 @@ public class Client extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        Facade facade = Facade.getInstance();
+        Group root = new Group();
+        root.getChildren().add(facade.getSTartView().getPrLayout());
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        facade.decorateView(ViewLayout.HOME);
+        stage.show();
+        /*
         startPrStage(stage);
         startPrLayout();
         startPrScene();
         stage.show();
+
+         */
     }
 
     private static void startPrStage(Stage stage){
