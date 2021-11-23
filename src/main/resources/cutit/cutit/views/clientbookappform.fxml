@@ -19,14 +19,6 @@
          <children>
             <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="350.0">
                <children>
-                  <Label text="Hairdresser:" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
                   <Label text="Service:" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -61,11 +53,6 @@
             </VBox>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="350.0">
                <children>
-                  <ChoiceBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </ChoiceBox>
                   <ChoiceBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0">
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -103,7 +90,7 @@
          </VBox.margin></HBox>
       <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="700.0">
          <children>
-            <Label text="Tot:">
+            <Label text="Tot:" textFill="WHITE">
                <HBox.margin>
                   <Insets right="25.0" />
                </HBox.margin>
@@ -111,7 +98,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label text="xx,yy £">
+            <Label text="xx,yy £" textFill="WHITE">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

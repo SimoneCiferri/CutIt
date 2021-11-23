@@ -34,7 +34,7 @@
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin></DatePicker>
-            <Label fx:id="labelDate" text="Date not selected">
+            <Label fx:id="labelDate" text="Date and Time not selected">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>
