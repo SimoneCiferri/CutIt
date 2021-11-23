@@ -50,7 +50,7 @@
                               <Insets top="15.0" />
                            </VBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" onMouseClicked="#rateShop" prefHeight="35.0" prefWidth="160.0" text="Rate Shop">
+                        <Button mnemonicParsing="false" onMousePressed="#rateShop" prefHeight="35.0" prefWidth="160.0" text="Rate Shop">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>

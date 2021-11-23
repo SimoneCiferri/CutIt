@@ -21,6 +21,7 @@ public class ClientShopInfoControllerg {
     private HBox ndLayout = null;
     private final String transparentStyle = "-fx-background-color: transparent; ";
     private final String pageFlagStyle = "-fx-background-color: #707070; -fx-text-fill: #FFFFFF; ";
+    private static Popup pop = null;
 
     @FXML
     private BorderPane bpInShopInfo;
@@ -109,10 +110,12 @@ public class ClientShopInfoControllerg {
         Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         rateLayoutPopup.setBackground(new Background(back));
-        Scene scene = new Scene(rateLayoutPopup);
-        Stage pStage = new Stage();
-        pStage.setScene(scene);
-        pStage.show();
+        pop = new Popup();
+        pop.setAutoHide(true);
+        pop.getContent().add(rateLayoutPopup);
+        if (!pop.isShowing()){
+            pop.show(prStage);
+        }
         return true;
     }
 

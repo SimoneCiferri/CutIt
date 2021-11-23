@@ -1,6 +1,7 @@
 package cutit.cutit.logic.model.entity;
 
 import javax.crypto.spec.OAEPParameterSpec;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,8 +10,8 @@ public class Shop {
     private String shopName = "";
     private String address = "";
     private String description = "";
-    private String openTime = "08:00";
-    private String closeTime = "20:00";
+    private LocalTime openTime;
+    private LocalTime closeTime;
     private Map<String, Boolean> openDays = new HashMap<String, Boolean>();
 
     private void setOpenDays(){

@@ -14,7 +14,6 @@ public class MainView extends Application {
     private static Stage prStage;
     private static BorderPane prLayout;
     private static BorderPane ndLayout;
-    private static String backgr = "/cutit/cutit/files/backgr.jpg";
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -71,7 +70,7 @@ public class MainView extends Application {
     }
 
     public static String getBackgr(){
-        return backgr;
+        return "/cutit/cutit/files/backgr.jpg";
     }
 
     public static void main(String[] args) {
