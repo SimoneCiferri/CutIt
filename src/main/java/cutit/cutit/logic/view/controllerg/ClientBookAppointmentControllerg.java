@@ -27,7 +27,7 @@ public class ClientBookAppointmentControllerg{
     private BorderPane nLayout = null;
     private final String transparentStyle = "-fx-background-color: transparent; ";
     private final String pageFlagStyle = "-fx-background-color: #707070; -fx-text-fill: #FFFFFF; ";
-    private static String appointment = "";
+    private static String startAppointment = "";
 
     @FXML
     private BorderPane bpInBookApp;
@@ -68,8 +68,8 @@ public class ClientBookAppointmentControllerg{
 
     @FXML
     private void set830(){
-        labelDate.setText(dtPicker.getValue().toString() + " " + "08:30 - 09:00");
-        appointment = dtPicker.getValue().toString() + " " + "08:30 - 09:00";
+        labelDate.setText(dtPicker.getValue().toString() + "T" + "08:30:00");
+        startAppointment = dtPicker.getValue().toString() + "T" + "08:30:00";
         label830.setBorder(new Border(new BorderStroke(Color.GREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
     }
 
@@ -81,7 +81,7 @@ public class ClientBookAppointmentControllerg{
     }
 
     public static String getAppDate(){
-        return appointment;
+        return startAppointment;
     }
 
 }
