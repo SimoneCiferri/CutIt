@@ -1,4 +1,4 @@
-package cutit.cutit.logic.controllers;
+package cutit.cutit.logic.control;
 
 import cutit.cutit.logic.views.Client;
 import javafx.fxml.FXML;

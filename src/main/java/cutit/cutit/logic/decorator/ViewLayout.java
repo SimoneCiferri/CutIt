@@ -4,7 +4,7 @@ import java.net.URL;
 
 public enum ViewLayout {
     START("/cutit/cutit/views/start.fxml"), SARTCLIENT("/cutit/cutit/views/startclient.fxml"), STARTHAIRDRESSER("/cutit/cutit/views/starthairdresser.fxml"),
-    HOME("/cutit/cutit/views/home.fxml"), UNLOGGEDPROMOTIONS("/cutit/cutit/views/unloggedpromotions.fxml");
+    HOME("/cutit/cutit/views/home.fxml"), UNLOGGEDPROMOTIONS("/cutit/cutit/views/unloggedpromotions.fxml"), LOGIN("/cutit/cutit/views/login.fxml");
 
     private String res;
 

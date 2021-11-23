@@ -1,5 +1,7 @@
-package cutit.cutit.logic.controllers;
+package cutit.cutit.logic.control;
 
+import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.facade.Facade;
 import cutit.cutit.logic.views.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,12 @@ public class StartControllerG {
     @FXML
     private Label btnHome, btnPromotions;
 
+    @FXML
+    private BorderPane bpStart;
+
+    @FXML
+    private AnchorPane apTopBar;
+
     public boolean initialize() throws IOException {
         System.out.println("Home page ");
         btnHome.setStyle(pageFlagStyle);
@@ -27,8 +35,11 @@ public class StartControllerG {
         return true;
     }
 
+
+
     @FXML
     public boolean goHome() throws IOException {
+        /*
         System.out.println("Home Button pressed");
         VBox homeLayout = null;
         homeLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/home.fxml"));
@@ -39,11 +50,16 @@ public class StartControllerG {
         pLayout.setCenter(homeLayout);
         btnHome.setStyle(pageFlagStyle);
         btnPromotions.setStyle(transparentStyle);
+         */
+        Facade.getInstance().decorateView(ViewLayout.HOME);
+        btnHome.setStyle(pageFlagStyle);
+        btnPromotions.setStyle(transparentStyle);
         return true;
     }
 
     @FXML
     public boolean goProm() throws IOException {
+        /*
         System.out.println("Promotion Button pressed");
         VBox promLayout = null;
         promLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/unloggedpromotions.fxml"));
@@ -54,11 +70,16 @@ public class StartControllerG {
         pLayout.setCenter(promLayout);
         btnHome.setStyle(transparentStyle);
         btnPromotions.setStyle(pageFlagStyle);
+         */
+        Facade.getInstance().decorateView(ViewLayout.UNLOGGEDPROMOTIONS);
+        btnHome.setStyle(transparentStyle);
+        btnPromotions.setStyle(pageFlagStyle);
         return true;
     }
 
     @FXML
     public boolean goToLogin() throws IOException{
+        /*
         System.out.println("Login page");
         BorderPane loginPage = null;
         loginPage = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/login.fxml"));
@@ -68,6 +89,9 @@ public class StartControllerG {
         Client.setPrLayout(loginPage);
         Scene scene = new Scene(loginPage);
         prStage.setScene(scene);
+         */
+        bpStart.getChildren().remove(apTopBar);
+        Facade.getInstance().decorateView(ViewLayout.LOGIN);
         return true;
     }
 

@@ -3,6 +3,7 @@ package cutit.cutit.logic.facade;
 import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.views.HomeView;
+import cutit.cutit.logic.views.LoginView;
 import cutit.cutit.logic.views.Start;
 import cutit.cutit.logic.views.UnloggedPromotionView;
 
@@ -49,6 +50,10 @@ public class Facade {
             case UNLOGGEDPROMOTIONS:
                 UnloggedPromotionView promotionView = new UnloggedPromotionView(startView);
                 viewMap.put(layout, promotionView);
+                break;
+            case LOGIN:
+                LoginView loginview = new LoginView(startView);
+                viewMap.put(layout,loginview);
                 break;
         }
     }

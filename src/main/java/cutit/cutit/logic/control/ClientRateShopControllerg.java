@@ -1,4 +1,4 @@
-package cutit.cutit.logic.controllers;
+package cutit.cutit.logic.control;
 
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;

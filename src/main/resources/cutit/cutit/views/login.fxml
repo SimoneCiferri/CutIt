@@ -5,83 +5,80 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="bpLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controllers.LoginControllerg">
-   <center>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.control.LoginControllerg">
+   <children>
+      <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="245.0" text="Cut-It!" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="63.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
          <children>
-            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="245.0" text="Cut-It!" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="Password" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="63.0" />
+                  <Font size="20.0" />
                </font>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
             </Label>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
-               <children>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="Username" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="15.0" />
-                     </HBox.margin>
-                  </Label>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="Username">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
-               <children>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="Password" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="15.0" />
-                     </HBox.margin>
-                  </Label>
-                  <PasswordField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="Password" style="-fx-border-radius: 4;">
-                     <HBox.margin>
-                        <Insets left="15.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </PasswordField>
-               </children>
-            </HBox>
-            <Button fx:id="btnLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#tryLogin" prefHeight="40.0" prefWidth="100.0" style="-fx-border-radius: 4;" text="Log In">
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
+            <PasswordField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="Password" style="-fx-border-radius: 4;">
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
                <font>
                   <Font size="14.0" />
                </font>
-            </Button>
-            <Label fx:id="orLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#hairLogin" prefHeight="15.0" prefWidth="15.0" text="or" textFill="WHITE">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnSignUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goSignUp" prefHeight="40.0" prefWidth="100.0" style="-fx-border-radius: 4;" text="Sign Up">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="15.0" />
-               </VBox.margin>
-            </Button>
+            </PasswordField>
          </children>
-      </VBox>
-   </center>
-</BorderPane>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="Username" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="Username">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </HBox>
+      <Button fx:id="btnLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#tryLogin" prefHeight="40.0" prefWidth="100.0" style="-fx-border-radius: 4;" text="Log In">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Label fx:id="orLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#hairLogin" prefHeight="15.0" prefWidth="15.0" text="or" textFill="WHITE">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnSignUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#goSignUp" prefHeight="40.0" prefWidth="100.0" style="-fx-border-radius: 4;" text="Sign Up">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>
