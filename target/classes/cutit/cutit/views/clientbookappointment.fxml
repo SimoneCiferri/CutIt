@@ -28,13 +28,13 @@
       </VBox>
    </top>
    <center>
-      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1024.0" style="-fx-background-color: transparent; -fx-background: transparent;" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
          <children>
             <DatePicker fx:id="dtPicker" editable="false" promptText="Date">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin></DatePicker>
-            <Label fx:id="labelDate" text="Date and Time not selected">
+            <Label fx:id="labelDate" text="Date and Time not selected" textFill="WHITE">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>

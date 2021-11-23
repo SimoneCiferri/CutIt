@@ -34,37 +34,37 @@
                   <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="80.0">
                      <children>
                         <Label text="Open Days" />
-                        <CheckBox mnemonicParsing="false" text="Mon">
+                        <CheckBox fx:id="cbMon" mnemonicParsing="false" text="Mon">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox mnemonicParsing="false" text="Tue">
+                        <CheckBox fx:id="cbTue" mnemonicParsing="false" text="Tue">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox mnemonicParsing="false" text="Wed">
+                        <CheckBox fx:id="cbWed" mnemonicParsing="false" text="Wed">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox mnemonicParsing="false" text="Thu">
+                        <CheckBox fx:id="cbThu" mnemonicParsing="false" text="Thu">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox mnemonicParsing="false" text="Fri">
+                        <CheckBox fx:id="cbFri" mnemonicParsing="false" text="Fri">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox mnemonicParsing="false" text="Sat">
+                        <CheckBox fx:id="cbSat" mnemonicParsing="false" text="Sat">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox mnemonicParsing="false" text="Sun">
+                        <CheckBox fx:id="cbSun" mnemonicParsing="false" text="Sun">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>

@@ -6,6 +6,9 @@ import java.util.Map;
 
 public class Shop {
 
+    private String shopName = "";
+    private String address = "";
+    private String description = "";
     private String openTime = "08:00";
     private String closeTime = "20:00";
     private Map<String, Boolean> openDays = new HashMap<String, Boolean>();
