@@ -1,6 +1,5 @@
 package cutit.cutit.logic.view.controllerg;
 
-import cutit.cutit.logic.view.MainView;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

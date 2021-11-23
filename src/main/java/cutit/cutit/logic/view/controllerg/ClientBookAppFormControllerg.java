@@ -1,6 +1,6 @@
 package cutit.cutit.logic.view.controllerg;
 
-import cutit.cutit.logic.view.MainView;
+import cutit.cutit.logic.view.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -9,11 +9,10 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class ClientBookAppFormControllerg {
 
-    private final Stage prStage = MainView.getPrStage();
+    private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;
     private BorderPane nLayout = null;
     private final String transparentStyle = "-fx-background-color: transparent; ";
@@ -38,11 +37,11 @@ public class ClientBookAppFormControllerg {
     public boolean backToBookApp() throws IOException {
         System.out.println("Back Button pressed (Book App Form)");
         BorderPane bookAppLayout = null;
-        bookAppLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientbookappointment.fxml"));
-        Image image = new Image(MainView.class.getResource(MainView.getBackgr()).toString());
+        bookAppLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientbookappointment.fxml"));
+        Image image = new Image(Client.class.getResource(Client.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         bookAppLayout.setBackground(new Background(back));
-        pLayout= MainView.getPrLayout();
+        pLayout= Client.getPrLayout();
         pLayout.setCenter(bookAppLayout);
         return true;
     }

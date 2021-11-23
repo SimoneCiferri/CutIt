@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MainView extends Application {
+public class Client extends Application {
 
     private static Stage prStage;
     private static BorderPane prLayout;
@@ -38,10 +38,10 @@ public class MainView extends Application {
     }
 
     private static boolean startPrLayout() throws IOException{
-        setPrLayout(FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/start.fxml")));
+        setPrLayout(FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/start.fxml")));
         VBox homeLayout = null;
-        homeLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/home.fxml"));
-        Image image = new Image(MainView.class.getResource(MainView.getBackgr()).toString());
+        homeLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/home.fxml"));
+        Image image = new Image(Client.class.getResource(Client.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         homeLayout.setBackground(new Background(back));
         prLayout.setCenter(homeLayout);

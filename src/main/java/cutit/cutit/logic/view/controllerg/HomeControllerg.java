@@ -1,6 +1,6 @@
 package cutit.cutit.logic.view.controllerg;
 
-import cutit.cutit.logic.view.MainView;
+import cutit.cutit.logic.view.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -13,7 +13,7 @@ import com.jfoenix.controls.JFXButton;
 
 public class HomeControllerg {
 
-    private final Stage prStage = MainView.getPrStage();
+    private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;
     private BorderPane nLayout = null;
     private Integer currPage = 1;
@@ -28,7 +28,7 @@ public class HomeControllerg {
     private JFXButton btnSearch;
 
     public boolean initialize() throws IOException {
-        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         vbInScroll.setBackground(new Background(back));
         vbInScroll.setSpacing(15);
@@ -84,15 +84,15 @@ public class HomeControllerg {
     public boolean goShopInfo() throws IOException {
         System.out.println("Shop page (client)");
         VBox shopLayout = null;
-        shopLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientshopinfo.fxml"));
+        shopLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientshopinfo.fxml"));
         VBox photoLayout = null;
-        photoLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientshopphoto.fxml"));
-        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        photoLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientshopphoto.fxml"));
+        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         shopLayout.setBackground(new Background(back));
-        nLayout = MainView.getNdLayout();
+        nLayout = Client.getNdLayout();
         nLayout.setCenter(photoLayout);
-        pLayout= MainView.getPrLayout();
+        pLayout= Client.getPrLayout();
         pLayout.setCenter(shopLayout);
         return true;
     }

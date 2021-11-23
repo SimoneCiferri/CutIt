@@ -1,10 +1,9 @@
 package cutit.cutit.logic.view.controllerg;
 
-import cutit.cutit.logic.view.MainView;
+import cutit.cutit.logic.view.Client;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -12,7 +11,7 @@ import java.io.IOException;
 
 public class UnloggedPromotionControllerg {
 
-    private final Stage prStage = MainView.getPrStage();
+    private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;
     private BorderPane nLayout = null;
     private final String transparentStyle = "-fx-background-color: transparent; ";

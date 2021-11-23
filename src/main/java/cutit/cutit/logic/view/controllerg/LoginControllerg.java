@@ -1,6 +1,6 @@
 package cutit.cutit.logic.view.controllerg;
 
-import cutit.cutit.logic.view.MainView;
+import cutit.cutit.logic.view.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,22 +9,21 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class LoginControllerg {
 
-    private final Stage prStage = MainView.getPrStage();
+    private final Stage prStage = Client.getPrStage();
     
 
     @FXML
     public boolean tryLogin() throws IOException {
         System.out.println("Client logged");
         BorderPane startClient = null;
-        startClient = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/startclient.fxml"));
-        MainView.setPrLayout(startClient);
+        startClient = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/startclient.fxml"));
+        Client.setPrLayout(startClient);
         VBox homeLayout = null;
-        homeLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/home.fxml"));
-        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        homeLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/home.fxml"));
+        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         homeLayout.setBackground(new Background(back));
         startClient.setCenter(homeLayout);
@@ -37,11 +36,11 @@ public class LoginControllerg {
     public boolean goSignUp() throws IOException {
         System.out.println("SignUp");
         BorderPane signUpLayout = null;
-        signUpLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/signup.fxml"));
-        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        signUpLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/signup.fxml"));
+        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         signUpLayout.setBackground(new Background(back));
-        MainView.setPrLayout(signUpLayout);
+        Client.setPrLayout(signUpLayout);
         Scene scene = new Scene(signUpLayout);
         prStage.setScene(scene);
         return true;
@@ -51,11 +50,11 @@ public class LoginControllerg {
     public boolean hairLogin() throws IOException {
         System.out.println("hairdresser logged");
         BorderPane startHairdresser = null;
-        startHairdresser = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/starthairdresser.fxml"));
-        MainView.setPrLayout(startHairdresser);
+        startHairdresser = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/starthairdresser.fxml"));
+        Client.setPrLayout(startHairdresser);
         VBox appHairLayout = null;
-        appHairLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/hairdresserappointments.fxml"));
-        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        appHairLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/hairdresserappointments.fxml"));
+        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         appHairLayout.setBackground(new Background(back));
         startHairdresser.setCenter(appHairLayout);

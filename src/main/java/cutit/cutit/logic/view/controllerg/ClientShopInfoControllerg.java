@@ -1,13 +1,10 @@
 package cutit.cutit.logic.view.controllerg;
 
-import cutit.cutit.logic.view.MainView;
+import cutit.cutit.logic.view.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -16,7 +13,7 @@ import java.io.IOException;
 
 public class ClientShopInfoControllerg {
 
-    private final Stage prStage = MainView.getPrStage();
+    private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;
     private HBox ndLayout = null;
     private final String transparentStyle = "-fx-background-color: transparent; ";
@@ -30,7 +27,7 @@ public class ClientShopInfoControllerg {
     private Label btnPhoto, btnPriceList, btnTime, btnHairdresser;
 
     public boolean initialize() throws IOException {
-        MainView.setNdLayout(bpInShopInfo);
+        Client.setNdLayout(bpInShopInfo);
         System.out.println("Shop page (client)");
         btnPhoto.setStyle(pageFlagStyle);
         btnPriceList.setStyle(transparentStyle);
@@ -43,7 +40,7 @@ public class ClientShopInfoControllerg {
     public boolean goPhoto() throws IOException {
         System.out.println("Photo Button pressed (client)");
         VBox photoLayout = null;
-        photoLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientshopphoto.fxml"));
+        photoLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientshopphoto.fxml"));
         bpInShopInfo.setCenter(photoLayout);
         btnPhoto.setStyle(pageFlagStyle);
         btnPriceList.setStyle(transparentStyle);
@@ -56,7 +53,7 @@ public class ClientShopInfoControllerg {
     public boolean goPriceList() throws IOException {
         System.out.println("Price List Button pressed (client)");
         VBox photoLayout = null;
-        photoLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientsshoppricelist.fxml"));
+        photoLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientsshoppricelist.fxml"));
         bpInShopInfo.setCenter(photoLayout);
         btnPhoto.setStyle(transparentStyle);
         btnPriceList.setStyle(pageFlagStyle);
@@ -68,7 +65,7 @@ public class ClientShopInfoControllerg {
     public boolean goTine() throws IOException {
         System.out.println("Opening Time Button pressed (client)");
         VBox photoLayout = null;
-        photoLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientsshopopeningtime.fxml"));
+        photoLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientsshopopeningtime.fxml"));
         bpInShopInfo.setCenter(photoLayout);
         btnPhoto.setStyle(transparentStyle);
         btnPriceList.setStyle(transparentStyle);
@@ -80,7 +77,7 @@ public class ClientShopInfoControllerg {
     public boolean goHairdressers() throws IOException {
         System.out.println("Hairdressers Button pressed (client)");
         VBox photoLayout = null;
-        photoLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientsshophairdressers.fxml"));
+        photoLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientsshophairdressers.fxml"));
         bpInShopInfo.setCenter(photoLayout);
         btnPhoto.setStyle(transparentStyle);
         btnPriceList.setStyle(transparentStyle);
@@ -93,11 +90,11 @@ public class ClientShopInfoControllerg {
     public boolean bookAppointment() throws IOException{
         System.out.println("Book appointment Button pressed");
         BorderPane bookAppLayout = null;
-        bookAppLayout = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientbookappointment.fxml"));
-        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        bookAppLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientbookappointment.fxml"));
+        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         bookAppLayout.setBackground(new Background(back));
-        pLayout= MainView.getPrLayout();
+        pLayout= Client.getPrLayout();
         pLayout.setCenter(bookAppLayout);
         return true;
     }
@@ -106,8 +103,8 @@ public class ClientShopInfoControllerg {
     public boolean rateShop() throws IOException{
         System.out.println("Rate Shop Button pressed");
         VBox rateLayoutPopup = null;
-        rateLayoutPopup = FXMLLoader.load(MainView.class.getResource("/cutit/cutit/views/clientrateshop.fxml"));
-        Image image = new Image(getClass().getResource(MainView.getBackgr()).toString());
+        rateLayoutPopup = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientrateshop.fxml"));
+        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
         BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         rateLayoutPopup.setBackground(new Background(back));
         setPop(new Popup());
