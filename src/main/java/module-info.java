@@ -5,8 +5,8 @@ module cutit.cutit {
     requires com.jfoenix;
 
 
-    exports cutit.cutit.logic.view.controllerg;
-    opens cutit.cutit.logic.view.controllerg to javafx.fxml;
-    exports cutit.cutit.logic.view;
-    opens cutit.cutit.logic.view to javafx.fxml;
+    exports cutit.cutit.logic.controllers;
+    opens cutit.cutit.logic.controllers to javafx.fxml;
+    exports cutit.cutit.logic.views;
+    opens cutit.cutit.logic.views to javafx.fxml;
 }
