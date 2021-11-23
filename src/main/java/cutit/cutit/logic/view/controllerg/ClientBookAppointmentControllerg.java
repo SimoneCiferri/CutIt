@@ -10,6 +10,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class ClientBookAppointmentControllerg implements Initializable{
+public class ClientBookAppointmentControllerg{
 
     private final Stage prStage = MainView.getPrStage();
     private BorderPane pLayout = null;
@@ -31,10 +32,7 @@ public class ClientBookAppointmentControllerg implements Initializable{
     private BorderPane bpInBookApp;
 
     @FXML
-    private Button btnTest;
-
-    @FXML
-    private Label labelDate;
+    private Label labelDate, label830;
 
     @FXML
     private DatePicker dtPicker;
@@ -67,15 +65,15 @@ public class ClientBookAppointmentControllerg implements Initializable{
     }
 
     @FXML
-    private void onDate(){
-        LocalDate lDate = dtPicker.getValue();
-        labelDate.setText(lDate.toString());
+    private void set830(){
+        labelDate.setText(dtPicker.getValue().toString() + " " + "08:30 - 09:00");
+        label830.setBorder(new Border(new BorderStroke(Color.GREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public boolean initialize(){
         MainView.setNdLayout(bpInBookApp);
         System.out.println("Book App page");
+        dtPicker.setValue(LocalDate.now());
+        return true;
     }
 }
