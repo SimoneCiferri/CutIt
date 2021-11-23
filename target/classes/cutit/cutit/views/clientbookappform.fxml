@@ -90,7 +90,7 @@
          </VBox.margin></HBox>
       <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="700.0">
          <children>
-            <Label text="Tot:">
+            <Label text="Tot:" textFill="WHITE">
                <HBox.margin>
                   <Insets right="25.0" />
                </HBox.margin>
@@ -98,7 +98,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label text="xx,yy £">
+            <Label text="xx,yy £" textFill="WHITE">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
