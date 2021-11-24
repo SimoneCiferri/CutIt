@@ -11,7 +11,6 @@ public class ClientPromotionView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.PROMOTIONCLIENT);
-            System.out.println("prommm");
         } catch (Exception e){
             e.printStackTrace();
         }

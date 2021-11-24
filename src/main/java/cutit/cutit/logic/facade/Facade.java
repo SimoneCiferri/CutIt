@@ -104,7 +104,7 @@ public class Facade {
 
     public void logout(){
         startView.getLoaded().clear();
-        decorateView(ViewLayout.HOME);
         decorateView(ViewLayout.TOPBAR);
+        decorateView(ViewLayout.HOME);
     }
 }

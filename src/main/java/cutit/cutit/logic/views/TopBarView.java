@@ -12,7 +12,6 @@ public class TopBarView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.TOPBAR);
-            System.out.println("tb");
         } catch (Exception e){
             e.printStackTrace();
         }

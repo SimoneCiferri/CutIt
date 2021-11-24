@@ -11,7 +11,6 @@ public class HomeView  extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.HOME);
-            System.out.println("hommm");
         } catch (Exception e){
             e.printStackTrace();
         }

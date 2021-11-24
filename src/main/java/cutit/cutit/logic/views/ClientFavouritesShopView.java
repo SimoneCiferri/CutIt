@@ -11,7 +11,6 @@ public class ClientFavouritesShopView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.FAVSHOP);
-            System.out.println("favvv");
         } catch (Exception e){
             e.printStackTrace();
         }

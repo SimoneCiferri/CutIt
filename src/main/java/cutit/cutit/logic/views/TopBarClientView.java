@@ -11,7 +11,6 @@ public class TopBarClientView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.TOPBARCLIENT);
-            System.out.println("tbclient");
         } catch (Exception e){
             e.printStackTrace();
         }

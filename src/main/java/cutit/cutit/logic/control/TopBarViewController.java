@@ -84,7 +84,8 @@ public class TopBarViewController {
         Scene scene = new Scene(loginPage);
         prStage.setScene(scene);
          */
-        apStart.setVisible(false);
+        Facade.getInstance().getSTartView().getLoaded().clear();
+        Facade.getInstance().getSTartView().getPrLayout().getChildren().remove(apStart);
         Facade.getInstance().decorateView(ViewLayout.LOGIN);
         return true;
     }

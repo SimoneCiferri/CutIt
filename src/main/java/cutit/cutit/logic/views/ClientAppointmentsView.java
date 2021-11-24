@@ -11,7 +11,6 @@ public class ClientAppointmentsView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.APPCL);
-            System.out.println("appcl");
         } catch (Exception e){
             e.printStackTrace();
         }
