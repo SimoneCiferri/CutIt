@@ -6,8 +6,7 @@ import cutit.cutit.logic.facade.Facade;
 public class SignUpViewController {
 
     public boolean trySignUp(){
-        Facade.getInstance().decorateView(ViewLayout.HOME);
-        Facade.getInstance().decorateView(ViewLayout.TOPBAR);
+        Facade.getInstance().decorateView(ViewLayout.LOGIN);
         return true;
     }
 
