@@ -35,21 +35,7 @@ public class TopBarHairdresserViewController {
 
     @FXML
     public boolean goApp() {
-        /*
-        System.out.println("Appointment Button pressed (Hairdresser)");
-        VBox appLayout = null;
-        appLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/hairdresserappointments.fxml"));
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        appLayout.setBackground(new Background(back));
-        pLayout= Client.getPrLayout();
-        pLayout.setCenter(appLayout);
-        btnHApp.setStyle(pageFlagStyle);
-        btnHPromotions.setStyle(transparentStyle);
-        btnHServices.setStyle(transparentStyle);
-        btnHShop.setStyle(transparentStyle);
-        btnHLogout.setStyle(transparentStyle);
-         */
+        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERAPPOINTMENTS);
         btnHApp.setStyle(pageFlagStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHServices.setStyle(transparentStyle);
@@ -60,21 +46,7 @@ public class TopBarHairdresserViewController {
 
     @FXML
     public boolean goProm() {
-        /*
-        System.out.println("Promotion Button pressed (Hairdresser)");
-        VBox promLayout = null;
-        promLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/hairdresserpromotions.fxml"));
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        promLayout.setBackground(new Background(back));
-        pLayout= Client.getPrLayout();
-        pLayout.setCenter(promLayout);
-        btnHApp.setStyle(transparentStyle);
-        btnHPromotions.setStyle(pageFlagStyle);
-        btnHServices.setStyle(transparentStyle);
-        btnHShop.setStyle(transparentStyle);
-        btnHLogout.setStyle(transparentStyle);
-         */
+        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERPROMOTIONS);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(pageFlagStyle);
         btnHServices.setStyle(transparentStyle);
@@ -85,21 +57,7 @@ public class TopBarHairdresserViewController {
 
     @FXML
     public boolean goServices() {
-        /*
-        System.out.println("Services Button pressed (Hairdresser)");
-        VBox promLayout = null;
-        promLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/hairdresserservices.fxml"));
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        promLayout.setBackground(new Background(back));
-        pLayout= Client.getPrLayout();
-        pLayout.setCenter(promLayout);
-        btnHApp.setStyle(transparentStyle);
-        btnHPromotions.setStyle(transparentStyle);
-        btnHServices.setStyle(pageFlagStyle);
-        btnHShop.setStyle(transparentStyle);
-        btnHLogout.setStyle(transparentStyle);
-         */
+        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERSERVICES);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHServices.setStyle(pageFlagStyle);
@@ -111,21 +69,7 @@ public class TopBarHairdresserViewController {
 
     @FXML
     public boolean goShop() {
-        /*
-        System.out.println("Shop Button pressed (Hairdresser)");
-        VBox shopLayout = null;
-        shopLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/hairdressershop.fxml"));
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        shopLayout.setBackground(new Background(back));
-        pLayout= Client.getPrLayout();
-        pLayout.setCenter(shopLayout);
-        btnHApp.setStyle(transparentStyle);
-        btnHPromotions.setStyle(transparentStyle);
-        btnHServices.setStyle(transparentStyle);
-        btnHShop.setStyle(pageFlagStyle);
-        btnHLogout.setStyle(transparentStyle);
-         */
+        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERSHOP);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHServices.setStyle(transparentStyle);
@@ -136,21 +80,7 @@ public class TopBarHairdresserViewController {
 
     @FXML
     public boolean tryLogout() {
-        /*
-        System.out.println("Start page (logout from Hairdresser)");
-        BorderPane start = null;
-        start = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/start.fxml"));
-        Client.setPrLayout(start);
-        VBox homeLayout = null;
-        homeLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/home.fxml"));
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        homeLayout.setBackground(new Background(back));
-        start.setCenter(homeLayout);
-        Scene scene = new Scene(start);
-        prStage.setScene(scene);
-         */
-        Facade.getInstance().decorateView(ViewLayout.HOME);
+        Facade.getInstance().logout();
         return true;
     }
 
