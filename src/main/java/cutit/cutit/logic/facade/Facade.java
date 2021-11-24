@@ -29,7 +29,6 @@ public class Facade {
         this.startView = new StartView();
         try{
             this.startView.loadXML(ViewLayout.START);
-            decorateView(ViewLayout.TOPBAR);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -69,9 +68,6 @@ public class Facade {
                 SignUpView signupview = new SignUpView(startView);
                 viewMap.put(layout, signupview);
                 break;
-            case TOPBAR:
-                TopBarView topbar = new TopBarView(startView);
-                viewMap.put(layout, topbar);
             case FAVSHOP:
                 ClientFavouritesShopView clientfavshopview = new ClientFavouritesShopView(startView);
                 viewMap.put(layout, clientfavshopview);

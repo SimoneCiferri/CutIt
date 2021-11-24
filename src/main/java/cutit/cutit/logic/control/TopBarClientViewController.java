@@ -153,7 +153,6 @@ public class TopBarClientViewController {
         Scene scene = new Scene(start);
         prStage.setScene(scene);
          */
-        Facade.getInstance().decorateView(ViewLayout.TOPBAR);
         Facade.getInstance().decorateView(ViewLayout.HOME);
         return true;
     }

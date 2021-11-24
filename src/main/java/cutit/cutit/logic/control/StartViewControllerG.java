@@ -21,12 +21,45 @@ public class StartViewControllerG {
 
 
     @FXML
+    private Label btnHomeUn, btnPromUn, btnLoginOrSignup;
+
+    @FXML
+    private AnchorPane apStartUn;
+
+    @FXML
     private BorderPane bpStart;
 
 
     public boolean initialize() throws IOException {
         System.out.println("Start page ");
+        btnHomeUn.setStyle(pageFlagStyle);
+        btnPromUn.setStyle(transparentStyle);
         return true;
     }
+
+    @FXML
+    public boolean goHome(){
+        Facade.getInstance().decorateView(ViewLayout.HOME);
+        btnHomeUn.setStyle(pageFlagStyle);
+        btnPromUn.setStyle(transparentStyle);
+        return true;
+    }
+
+    @FXML
+    public boolean goProm(){
+        Facade.getInstance().decorateView(ViewLayout.UNLOGGEDPROMOTIONS);
+        btnHomeUn.setStyle(transparentStyle);
+        btnPromUn.setStyle(pageFlagStyle);
+        return true;
+    }
+
+    @FXML
+    public boolean goLoginOrSign(){
+        Facade.getInstance().decorateView(ViewLayout.LOGIN);
+        bpStart.getChildren().remove(apStartUn);
+        return true;
+    }
+
+
 
 }
