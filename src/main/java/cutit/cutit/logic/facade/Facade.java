@@ -2,10 +2,7 @@ package cutit.cutit.logic.facade;
 
 import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
-import cutit.cutit.logic.views.HomeView;
-import cutit.cutit.logic.views.LoginView;
-import cutit.cutit.logic.views.Start;
-import cutit.cutit.logic.views.UnloggedPromotionView;
+import cutit.cutit.logic.views.*;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -13,7 +10,7 @@ import java.util.Map;
 public class Facade {
 
     private static Facade instance;
-    private Start startView;
+    private StartView startView;
     private static Map<ViewLayout, ViewComponent> viewMap = new EnumMap<>(ViewLayout.class);
 
     public static synchronized Facade getInstance(){
@@ -29,15 +26,16 @@ public class Facade {
 
     private void initStartView() {
         System.out.println("Singleton Facade created!");
-        this.startView = new Start();
+        this.startView = new StartView();
         try{
             this.startView.loadXML(ViewLayout.START);
+            decorateView(ViewLayout.TOPBAR);
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public Start getSTartView(){
+    public StartView getSTartView(){
         return startView;
     }
 
@@ -55,6 +53,33 @@ public class Facade {
                 LoginView loginview = new LoginView(startView);
                 viewMap.put(layout,loginview);
                 break;
+            case TOPBARCLIENT:
+                TopBarClientView topbarclientview = new TopBarClientView(startView);
+                viewMap.put(layout, topbarclientview);
+                break;
+            case TOPBARHAIRDRESSER:
+                TopBarHairdresserView topbarhairdresserview = new TopBarHairdresserView(startView);
+                viewMap.put(layout, topbarhairdresserview);
+                break;
+            case HAIRDRESSERAPPOINTMENTS:
+                HairdresserAppointmentsView hairdresserappointmentview = new HairdresserAppointmentsView(startView);
+                viewMap.put(layout, hairdresserappointmentview);
+                break;
+            case SIGNUP:
+                SignUpView signupview = new SignUpView(startView);
+                viewMap.put(layout, signupview);
+                break;
+            case TOPBAR:
+                TopBarView topbar = new TopBarView(startView);
+                viewMap.put(layout, topbar);
+            case FAVSHOP:
+                ClientFavouritesShopView clientfavshopview = new ClientFavouritesShopView(startView);
+                viewMap.put(layout, clientfavshopview);
+            case PROMOTIONCLIENT:
+                ClientPromotionView clientpromview = new ClientPromotionView(startView);
+                viewMap.put(layout, clientpromview);
+            default:
+                throw new IllegalStateException("Illegal state type" + layout);
         }
     }
 }

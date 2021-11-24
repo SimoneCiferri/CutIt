@@ -1,5 +1,7 @@
 package cutit.cutit.logic.control;
 
+import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.facade.Facade;
 import cutit.cutit.logic.views.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,16 +12,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class LoginControllerg {
+public class LoginViewControllerg {
 
     private final Stage prStage = Client.getPrStage();
     
 
     @FXML
-    public boolean tryLogin() throws IOException {
+    public boolean tryLogin() {
+        /*
         System.out.println("Client logged");
         BorderPane startClient = null;
-        startClient = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/startclient.fxml"));
+        startClient = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/topbarclient.fxml"));
         Client.setPrLayout(startClient);
         VBox homeLayout = null;
         homeLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/home.fxml"));
@@ -29,11 +32,15 @@ public class LoginControllerg {
         startClient.setCenter(homeLayout);
         Scene scene = new Scene(startClient);
         prStage.setScene(scene);
+         */
+        Facade.getInstance().decorateView(ViewLayout.TOPBARCLIENT);
+        Facade.getInstance().decorateView(ViewLayout.HOME);
         return true;
     }
 
     @FXML
-    public boolean goSignUp() throws IOException {
+    public boolean goSignUp() {
+        /*
         System.out.println("SignUp");
         BorderPane signUpLayout = null;
         signUpLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/signup.fxml"));
@@ -43,14 +50,17 @@ public class LoginControllerg {
         Client.setPrLayout(signUpLayout);
         Scene scene = new Scene(signUpLayout);
         prStage.setScene(scene);
+         */
+        Facade.getInstance().decorateView(ViewLayout.SIGNUP);
         return true;
     }
 
     @FXML
-    public boolean hairLogin() throws IOException {
+    public boolean hairLogin() {
+        /*
         System.out.println("hairdresser logged");
         BorderPane startHairdresser = null;
-        startHairdresser = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/starthairdresser.fxml"));
+        startHairdresser = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/topbarhairdresser.fxml"));
         Client.setPrLayout(startHairdresser);
         VBox appHairLayout = null;
         appHairLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/hairdresserappointments.fxml"));
@@ -61,6 +71,9 @@ public class LoginControllerg {
         startHairdresser.setCenter(appHairLayout);
         Scene scene = new Scene(startHairdresser);
         prStage.setScene(scene);
+         */
+        Facade.getInstance().decorateView(ViewLayout.TOPBARHAIRDRESSER);
+        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERAPPOINTMENTS);
         return true;
     }
 

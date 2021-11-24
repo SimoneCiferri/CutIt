@@ -4,14 +4,13 @@ import cutit.cutit.logic.decorator.Decorator;
 import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
 
-public class HomeView  extends Decorator {
+public class TopBarView extends Decorator {
 
-    public HomeView(ViewComponent view){
+    public TopBarView(ViewComponent view){
 
         super(view);
         try {
-            super.loadXML(ViewLayout.HOME);
-            System.out.println("hommm");
+            super.loadXML(ViewLayout.TOPBAR);
         } catch (Exception e){
             e.printStackTrace();
         }

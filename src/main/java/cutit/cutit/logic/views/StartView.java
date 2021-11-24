@@ -2,6 +2,7 @@ package cutit.cutit.logic.views;
 
 import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -10,7 +11,7 @@ import java.io.IOException;
 import java.util.EnumMap;
 import java.util.Map;
 
-public class Start implements ViewComponent {
+public class StartView implements ViewComponent {
 
     private Pane prLayout;
     private Map<ViewLayout, Pane> loadedView = new EnumMap<>(ViewLayout.class);
@@ -34,7 +35,7 @@ public class Start implements ViewComponent {
             Object controller = loader.getController();
             loadedViewContorllerHM.put(layout, controller);
 
-            if(layout == ViewLayout.START || layout == ViewLayout.SARTCLIENT || layout == ViewLayout.STARTHAIRDRESSER){
+            if(layout == ViewLayout.START){
                 Image image = new Image(Client.class.getResource("/cutit/cutit/files/backgr.jpg").toString());
                 BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
                 prLayout.setBackground(new Background(back));

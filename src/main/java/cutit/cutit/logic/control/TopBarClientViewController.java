@@ -1,17 +1,16 @@
 package cutit.cutit.logic.control;
 
+import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.facade.Facade;
 import cutit.cutit.logic.views.Client;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StartClientControllerg {
+public class TopBarClientViewController {
 
     private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;
@@ -20,6 +19,9 @@ public class StartClientControllerg {
 
     @FXML
     private Label btnClHome, btnClFav, btnClApp, btnClPromotion, btnClLogout;
+
+    @FXML
+    private AnchorPane apTopBarClient;
 
     public boolean initialize() throws IOException {
         System.out.println("Home page (client)");
@@ -32,7 +34,8 @@ public class StartClientControllerg {
     }
 
     @FXML
-    public boolean goHome() throws IOException {
+    public boolean goHome() {
+        /*
         System.out.println("Home Button pressed (client)");
         VBox homeLayout = null;
         homeLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/home.fxml"));
@@ -46,13 +49,20 @@ public class StartClientControllerg {
         btnClApp.setStyle(transparentStyle);
         btnClFav.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
+         */
+        Facade.getInstance().decorateView(ViewLayout.HOME);
+        btnClHome.setStyle(pageFlagStyle);
+        btnClPromotion.setStyle(transparentStyle);
+        btnClApp.setStyle(transparentStyle);
+        btnClFav.setStyle(transparentStyle);
+        btnClLogout.setStyle(transparentStyle);
         return true;
     }
 
     @FXML
-    public boolean goFav() throws IOException {
+    public boolean goFav() {
+        /*
         System.out.println("Favourites Button pressed (client)");
-
         VBox favLayout = null;
         favLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientfavouritescs.fxml"));
         Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
@@ -65,13 +75,20 @@ public class StartClientControllerg {
         btnClApp.setStyle(transparentStyle);
         btnClPromotion.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
+         */
+        Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
+        btnClHome.setStyle(transparentStyle);
+        btnClFav.setStyle(pageFlagStyle);
+        btnClApp.setStyle(transparentStyle);
+        btnClPromotion.setStyle(transparentStyle);
+        btnClLogout.setStyle(transparentStyle);
         return true;
     }
 
     @FXML
-    public boolean goApp() throws IOException {
+    public boolean goApp() {
+        /*
         System.out.println("Appointment Button pressed (client)");
-
         VBox appLayout = null;
         appLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientappointments.fxml"));
         Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
@@ -84,11 +101,19 @@ public class StartClientControllerg {
         btnClApp.setStyle(pageFlagStyle);
         btnClPromotion.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
+         */
+        btnClHome.setStyle(transparentStyle);
+        btnClFav.setStyle(transparentStyle);
+        btnClApp.setStyle(pageFlagStyle);
+        btnClPromotion.setStyle(transparentStyle);
+        btnClLogout.setStyle(transparentStyle);
+        //Facade.getInstance().decorateView(ViewLayout.APPCLIENT);
         return true;
     }
 
     @FXML
-    public boolean goProm() throws IOException {
+    public boolean goProm() {
+        /*
         System.out.println("Promotion Button pressed (client)");
         VBox promLayout = null;
         promLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientpromotions.fxml"));
@@ -102,11 +127,19 @@ public class StartClientControllerg {
         btnClApp.setStyle(transparentStyle);
         btnClPromotion.setStyle(pageFlagStyle);
         btnClLogout.setStyle(transparentStyle);
+         */
+        Facade.getInstance().decorateView(ViewLayout.PROMOTIONCLIENT);
+        btnClHome.setStyle(transparentStyle);
+        btnClFav.setStyle(transparentStyle);
+        btnClApp.setStyle(transparentStyle);
+        btnClPromotion.setStyle(pageFlagStyle);
+        btnClLogout.setStyle(transparentStyle);
         return true;
     }
 
     @FXML
-    public boolean tryLogout() throws IOException{
+    public boolean tryLogout() {
+        /*
         System.out.println("Start page (logout from Client)");
         BorderPane start = null;
         start = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/start.fxml"));
@@ -119,6 +152,9 @@ public class StartClientControllerg {
         start.setCenter(homeLayout);
         Scene scene = new Scene(start);
         prStage.setScene(scene);
+         */
+        Facade.getInstance().decorateView(ViewLayout.TOPBAR);
+        Facade.getInstance().decorateView(ViewLayout.HOME);
         return true;
     }
 

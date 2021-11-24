@@ -4,16 +4,15 @@ import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import cutit.cutit.logic.views.Client;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StartControllerG {
+public class TopBarViewController {
+
     private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;
     private final String transparentStyle = "-fx-background-color: transparent; ";
@@ -23,10 +22,7 @@ public class StartControllerG {
     private Label btnHome, btnPromotions;
 
     @FXML
-    private BorderPane bpStart;
-
-    @FXML
-    private AnchorPane apTopBar;
+    private AnchorPane apStart;
 
     public boolean initialize() throws IOException {
         System.out.println("Home page ");
@@ -34,8 +30,6 @@ public class StartControllerG {
         btnPromotions.setStyle(transparentStyle);
         return true;
     }
-
-
 
     @FXML
     public boolean goHome() throws IOException {
@@ -58,7 +52,7 @@ public class StartControllerG {
     }
 
     @FXML
-    public boolean goProm() throws IOException {
+    public boolean goProm() {
         /*
         System.out.println("Promotion Button pressed");
         VBox promLayout = null;
@@ -78,7 +72,7 @@ public class StartControllerG {
     }
 
     @FXML
-    public boolean goToLogin() throws IOException{
+    public boolean goToLogin() {
         /*
         System.out.println("Login page");
         BorderPane loginPage = null;
@@ -90,7 +84,7 @@ public class StartControllerG {
         Scene scene = new Scene(loginPage);
         prStage.setScene(scene);
          */
-        bpStart.getChildren().remove(apTopBar);
+        apStart.setVisible(false);
         Facade.getInstance().decorateView(ViewLayout.LOGIN);
         return true;
     }

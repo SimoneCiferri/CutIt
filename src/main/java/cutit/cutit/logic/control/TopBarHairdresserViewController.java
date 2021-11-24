@@ -1,5 +1,7 @@
 package cutit.cutit.logic.control;
 
+import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.facade.Facade;
 import cutit.cutit.logic.views.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StartHairdresserControllerg {
+public class TopBarHairdresserViewController {
 
     private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;
@@ -32,7 +34,8 @@ public class StartHairdresserControllerg {
     }
 
     @FXML
-    public boolean goApp() throws IOException {
+    public boolean goApp() {
+        /*
         System.out.println("Appointment Button pressed (Hairdresser)");
         VBox appLayout = null;
         appLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/hairdresserappointments.fxml"));
@@ -46,11 +49,18 @@ public class StartHairdresserControllerg {
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
+         */
+        btnHApp.setStyle(pageFlagStyle);
+        btnHPromotions.setStyle(transparentStyle);
+        btnHServices.setStyle(transparentStyle);
+        btnHShop.setStyle(transparentStyle);
+        btnHLogout.setStyle(transparentStyle);
         return true;
     }
 
     @FXML
-    public boolean goProm() throws IOException {
+    public boolean goProm() {
+        /*
         System.out.println("Promotion Button pressed (Hairdresser)");
         VBox promLayout = null;
         promLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/hairdresserpromotions.fxml"));
@@ -64,11 +74,18 @@ public class StartHairdresserControllerg {
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
+         */
+        btnHApp.setStyle(transparentStyle);
+        btnHPromotions.setStyle(pageFlagStyle);
+        btnHServices.setStyle(transparentStyle);
+        btnHShop.setStyle(transparentStyle);
+        btnHLogout.setStyle(transparentStyle);
         return true;
     }
 
     @FXML
-    public boolean goServices() throws IOException {
+    public boolean goServices() {
+        /*
         System.out.println("Services Button pressed (Hairdresser)");
         VBox promLayout = null;
         promLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/hairdresserservices.fxml"));
@@ -82,12 +99,19 @@ public class StartHairdresserControllerg {
         btnHServices.setStyle(pageFlagStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
+         */
+        btnHApp.setStyle(transparentStyle);
+        btnHPromotions.setStyle(transparentStyle);
+        btnHServices.setStyle(pageFlagStyle);
+        btnHShop.setStyle(transparentStyle);
+        btnHLogout.setStyle(transparentStyle);
         return true;
     }
 
 
     @FXML
-    public boolean goShop() throws IOException {
+    public boolean goShop() {
+        /*
         System.out.println("Shop Button pressed (Hairdresser)");
         VBox shopLayout = null;
         shopLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/hairdressershop.fxml"));
@@ -101,11 +125,18 @@ public class StartHairdresserControllerg {
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(pageFlagStyle);
         btnHLogout.setStyle(transparentStyle);
+         */
+        btnHApp.setStyle(transparentStyle);
+        btnHPromotions.setStyle(transparentStyle);
+        btnHServices.setStyle(transparentStyle);
+        btnHShop.setStyle(pageFlagStyle);
+        btnHLogout.setStyle(transparentStyle);
         return true;
     }
 
     @FXML
-    public boolean tryLogout() throws IOException {
+    public boolean tryLogout() {
+        /*
         System.out.println("Start page (logout from Hairdresser)");
         BorderPane start = null;
         start = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/start.fxml"));
@@ -118,6 +149,9 @@ public class StartHairdresserControllerg {
         start.setCenter(homeLayout);
         Scene scene = new Scene(start);
         prStage.setScene(scene);
+         */
+        Facade.getInstance().decorateView(ViewLayout.TOPBAR);
+        Facade.getInstance().decorateView(ViewLayout.HOME);
         return true;
     }
 
