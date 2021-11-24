@@ -4,7 +4,7 @@ import cutit.cutit.logic.views.Client;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class ClientFavouritescs {
+public class ClientFavouritesShopViewController {
 
     private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;

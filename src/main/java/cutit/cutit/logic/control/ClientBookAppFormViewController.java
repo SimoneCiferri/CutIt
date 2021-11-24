@@ -1,5 +1,7 @@
 package cutit.cutit.logic.control;
 
+import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.facade.Facade;
 import cutit.cutit.logic.views.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ClientBookAppFormControllerg {
+public class ClientBookAppFormViewController {
 
     private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;
@@ -35,6 +37,7 @@ public class ClientBookAppFormControllerg {
 
     @FXML
     public boolean backToBookApp() throws IOException {
+        /*
         System.out.println("Back Button pressed (Book App Form)");
         BorderPane bookAppLayout = null;
         bookAppLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientbookappointment.fxml"));
@@ -43,6 +46,8 @@ public class ClientBookAppFormControllerg {
         bookAppLayout.setBackground(new Background(back));
         pLayout= Client.getPrLayout();
         pLayout.setCenter(bookAppLayout);
+         */
+        Facade.getInstance().decorateView(ViewLayout.CLIENTBOOKAPPOINTMENT);
         return true;
     }
 

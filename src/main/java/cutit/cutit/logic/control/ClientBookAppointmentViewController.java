@@ -35,6 +35,7 @@ public class ClientBookAppointmentViewController {
 
     @FXML
     public boolean bookAppNext() {
+        Facade.getInstance().decorateView(ViewLayout.CLIENTBOOKAPPFORM);
         return true;
     }
 
