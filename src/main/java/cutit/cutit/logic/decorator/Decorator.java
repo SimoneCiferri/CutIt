@@ -28,7 +28,7 @@ public class Decorator implements ViewComponent{
     public void loadXML(ViewLayout layout) throws IOException {
         this.view.loadXML(layout);
         setPrLayout(getPrLayout());
-        if(layout == ViewLayout.TOPBARCLIENT || layout == ViewLayout.TOPBARHAIRDRESSER){
+        if(layout == ViewLayout.TOPBAR || layout == ViewLayout.TOPBARCLIENT || layout == ViewLayout.TOPBARHAIRDRESSER){
             this.prLayout.setTop(getLoadedView(layout));
         } else {
             this.prLayout.setCenter(getLoadedView(layout));

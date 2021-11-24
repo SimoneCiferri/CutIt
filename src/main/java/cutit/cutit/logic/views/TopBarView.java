@@ -4,18 +4,18 @@ import cutit.cutit.logic.decorator.Decorator;
 import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
 
-public class TopBarClientView extends Decorator {
+public class TopBarView extends Decorator {
 
-    public TopBarClientView(ViewComponent view){
+
+    public TopBarView(ViewComponent view){
 
         super(view);
         try {
-            super.loadXML(ViewLayout.TOPBARCLIENT);
-            System.out.println("tbclient");
+            super.loadXML(ViewLayout.TOPBAR);
+            System.out.println("tb");
         } catch (Exception e){
             e.printStackTrace();
         }
 
     }
-
 }

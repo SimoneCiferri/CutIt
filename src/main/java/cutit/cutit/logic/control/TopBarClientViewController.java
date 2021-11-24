@@ -35,21 +35,6 @@ public class TopBarClientViewController {
 
     @FXML
     public boolean goHome() {
-        /*
-        System.out.println("Home Button pressed (client)");
-        VBox homeLayout = null;
-        homeLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/home.fxml"));
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        homeLayout.setBackground(new Background(back));
-        pLayout= Client.getPrLayout();
-        pLayout.setCenter(homeLayout);
-        btnClHome.setStyle(pageFlagStyle);
-        btnClPromotion.setStyle(transparentStyle);
-        btnClApp.setStyle(transparentStyle);
-        btnClFav.setStyle(transparentStyle);
-        btnClLogout.setStyle(transparentStyle);
-         */
         Facade.getInstance().decorateView(ViewLayout.HOME);
         btnClHome.setStyle(pageFlagStyle);
         btnClPromotion.setStyle(transparentStyle);
@@ -61,21 +46,6 @@ public class TopBarClientViewController {
 
     @FXML
     public boolean goFav() {
-        /*
-        System.out.println("Favourites Button pressed (client)");
-        VBox favLayout = null;
-        favLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientfavouritescs.fxml"));
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        favLayout.setBackground(new Background(back));
-        pLayout= Client.getPrLayout();
-        pLayout.setCenter(favLayout);
-        btnClHome.setStyle(transparentStyle);
-        btnClFav.setStyle(pageFlagStyle);
-        btnClApp.setStyle(transparentStyle);
-        btnClPromotion.setStyle(transparentStyle);
-        btnClLogout.setStyle(transparentStyle);
-         */
         Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
         btnClHome.setStyle(transparentStyle);
         btnClFav.setStyle(pageFlagStyle);
@@ -87,47 +57,17 @@ public class TopBarClientViewController {
 
     @FXML
     public boolean goApp() {
-        /*
-        System.out.println("Appointment Button pressed (client)");
-        VBox appLayout = null;
-        appLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientappointments.fxml"));
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        appLayout.setBackground(new Background(back));
-        pLayout= Client.getPrLayout();
-        pLayout.setCenter(appLayout);
         btnClHome.setStyle(transparentStyle);
         btnClFav.setStyle(transparentStyle);
         btnClApp.setStyle(pageFlagStyle);
         btnClPromotion.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
-         */
-        btnClHome.setStyle(transparentStyle);
-        btnClFav.setStyle(transparentStyle);
-        btnClApp.setStyle(pageFlagStyle);
-        btnClPromotion.setStyle(transparentStyle);
-        btnClLogout.setStyle(transparentStyle);
-        //Facade.getInstance().decorateView(ViewLayout.APPCLIENT);
+        Facade.getInstance().decorateView(ViewLayout.APPCL);
         return true;
     }
 
     @FXML
     public boolean goProm() {
-        /*
-        System.out.println("Promotion Button pressed (client)");
-        VBox promLayout = null;
-        promLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientpromotions.fxml"));
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        promLayout.setBackground(new Background(back));
-        pLayout= Client.getPrLayout();
-        pLayout.setCenter(promLayout);
-        btnClHome.setStyle(transparentStyle);
-        btnClFav.setStyle(transparentStyle);
-        btnClApp.setStyle(transparentStyle);
-        btnClPromotion.setStyle(pageFlagStyle);
-        btnClLogout.setStyle(transparentStyle);
-         */
         Facade.getInstance().decorateView(ViewLayout.PROMOTIONCLIENT);
         btnClHome.setStyle(transparentStyle);
         btnClFav.setStyle(transparentStyle);
@@ -139,20 +79,7 @@ public class TopBarClientViewController {
 
     @FXML
     public boolean tryLogout() {
-        /*
-        System.out.println("Start page (logout from Client)");
-        BorderPane start = null;
-        start = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/start.fxml"));
-        Client.setPrLayout(start);
-        VBox homeLayout = null;
-        homeLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/home.fxml"));
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        homeLayout.setBackground(new Background(back));
-        start.setCenter(homeLayout);
-        Scene scene = new Scene(start);
-        prStage.setScene(scene);
-         */
+        Facade.getInstance().decorateView(ViewLayout.TOPBAR);
         Facade.getInstance().decorateView(ViewLayout.HOME);
         return true;
     }

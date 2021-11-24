@@ -29,6 +29,7 @@ public class Facade {
         this.startView = new StartView();
         try{
             this.startView.loadXML(ViewLayout.START);
+            decorateView(ViewLayout.TOPBAR);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -60,6 +61,10 @@ public class Facade {
                 TopBarHairdresserView topbarhairdresserview = new TopBarHairdresserView(startView);
                 viewMap.put(layout, topbarhairdresserview);
                 break;
+            case TOPBAR:
+                TopBarView topbarview = new TopBarView(startView);
+                viewMap.put(layout, topbarview);
+                break;
             case HAIRDRESSERAPPOINTMENTS:
                 HairdresserAppointmentsView hairdresserappointmentview = new HairdresserAppointmentsView(startView);
                 viewMap.put(layout, hairdresserappointmentview);
@@ -71,9 +76,15 @@ public class Facade {
             case FAVSHOP:
                 ClientFavouritesShopView clientfavshopview = new ClientFavouritesShopView(startView);
                 viewMap.put(layout, clientfavshopview);
+                break;
             case PROMOTIONCLIENT:
                 ClientPromotionView clientpromview = new ClientPromotionView(startView);
                 viewMap.put(layout, clientpromview);
+                break;
+            case APPCL:
+                ClientAppointmentsView clientappview = new ClientAppointmentsView(startView);
+                viewMap.put(layout, clientappview);
+                break;
             default:
                 throw new IllegalStateException("Illegal state type" + layout);
         }

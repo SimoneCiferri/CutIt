@@ -19,20 +19,20 @@ public class TopBarViewController {
     private final String pageFlagStyle = "-fx-background-color: #707070; -fx-text-fill: #FFFFFF; ";
 
     @FXML
-    private Label btnHome, btnPromotions;
+    private Label btnHomeUn, btnPromotionsUn;
 
     @FXML
     private AnchorPane apStart;
 
     public boolean initialize() throws IOException {
         System.out.println("Home page ");
-        btnHome.setStyle(pageFlagStyle);
-        btnPromotions.setStyle(transparentStyle);
+        btnHomeUn.setStyle(pageFlagStyle);
+        btnPromotionsUn.setStyle(transparentStyle);
         return true;
     }
 
     @FXML
-    public boolean goHome() throws IOException {
+    public boolean goHome() {
         /*
         System.out.println("Home Button pressed");
         VBox homeLayout = null;
@@ -46,8 +46,8 @@ public class TopBarViewController {
         btnPromotions.setStyle(transparentStyle);
          */
         Facade.getInstance().decorateView(ViewLayout.HOME);
-        btnHome.setStyle(pageFlagStyle);
-        btnPromotions.setStyle(transparentStyle);
+        btnHomeUn.setStyle(pageFlagStyle);
+        btnPromotionsUn.setStyle(transparentStyle);
         return true;
     }
 
@@ -66,8 +66,8 @@ public class TopBarViewController {
         btnPromotions.setStyle(pageFlagStyle);
          */
         Facade.getInstance().decorateView(ViewLayout.UNLOGGEDPROMOTIONS);
-        btnHome.setStyle(transparentStyle);
-        btnPromotions.setStyle(pageFlagStyle);
+        btnHomeUn.setStyle(transparentStyle);
+        btnPromotionsUn.setStyle(pageFlagStyle);
         return true;
     }
 
