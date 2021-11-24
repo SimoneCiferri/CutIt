@@ -79,8 +79,7 @@ public class TopBarClientViewController {
 
     @FXML
     public boolean tryLogout() {
-        Facade.getInstance().decorateView(ViewLayout.TOPBAR);
-        Facade.getInstance().decorateView(ViewLayout.HOME);
+        Facade.getInstance().logout();
         return true;
     }
 

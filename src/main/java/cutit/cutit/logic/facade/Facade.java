@@ -89,4 +89,10 @@ public class Facade {
                 throw new IllegalStateException("Illegal state type" + layout);
         }
     }
+
+    public void logout(){
+        startView.getLoaded().clear();
+        decorateView(ViewLayout.HOME);
+        decorateView(ViewLayout.TOPBAR);
+    }
 }

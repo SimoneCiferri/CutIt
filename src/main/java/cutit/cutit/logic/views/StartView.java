@@ -58,4 +58,8 @@ public class StartView implements ViewComponent {
     public Object getLoadedViewController(ViewLayout layout) {
         return loadedViewContorllerHM.get(layout);
     }
+
+    public Map<ViewLayout, Pane> getLoaded(){
+        return loadedView;
+    }
 }
