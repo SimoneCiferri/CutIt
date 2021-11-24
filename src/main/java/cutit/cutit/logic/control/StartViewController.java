@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class StartViewControllerG {
+public class StartViewController {
     private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;
     private final String transparentStyle = "-fx-background-color: transparent; ";

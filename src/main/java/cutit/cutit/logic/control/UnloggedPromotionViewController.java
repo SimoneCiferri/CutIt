@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class UnloggedPromotionControllerg {
+public class UnloggedPromotionViewController {
 
     private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;

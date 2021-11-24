@@ -1,5 +1,7 @@
 package cutit.cutit.logic.control;
 
+import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.facade.Facade;
 import cutit.cutit.logic.views.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import com.jfoenix.controls.JFXButton;
 
-public class HomeControllerg {
+public class HomeViewController {
 
     private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;
@@ -28,9 +30,6 @@ public class HomeControllerg {
     private JFXButton btnSearch;
 
     public boolean initialize() throws IOException {
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        vbInScroll.setBackground(new Background(back));
         vbInScroll.setSpacing(15);
         showShops();
         return true;
@@ -82,18 +81,7 @@ public class HomeControllerg {
     }
 
     public boolean goShopInfo() throws IOException {
-        System.out.println("Shop page (client)");
-        VBox shopLayout = null;
-        shopLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientshopinfo.fxml"));
-        VBox photoLayout = null;
-        photoLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientshopphoto.fxml"));
-        Image image = new Image(getClass().getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        shopLayout.setBackground(new Background(back));
-        nLayout = Client.getNdLayout();
-        nLayout.setCenter(photoLayout);
-        pLayout= Client.getPrLayout();
-        pLayout.setCenter(shopLayout);
+        Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
         return true;
     }
 

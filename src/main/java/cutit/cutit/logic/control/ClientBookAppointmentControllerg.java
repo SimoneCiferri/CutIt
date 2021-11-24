@@ -46,7 +46,7 @@ public class ClientBookAppointmentControllerg{
     public boolean backToShopInfo() throws IOException {
         System.out.println("Back Button pressed (Book App)");
         VBox shopLayout = null;
-        shopLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientshopinfo.fxml"));
+        shopLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/shopinfo.fxml"));
         VBox photoLayout = null;
         photoLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientshopphoto.fxml"));
         Image image = new Image(Client.class.getResource(Client.getBackgr()).toString());

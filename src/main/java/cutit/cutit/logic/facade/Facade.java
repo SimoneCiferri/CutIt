@@ -97,6 +97,14 @@ public class Facade {
                 HairdresserShopView hairshopview = new HairdresserShopView(startView);
                 viewMap.put(layout, hairshopview);
                 break;
+            case SHOPINFO:
+                ShopInfoView shopinfoview = new ShopInfoView(startView);
+                viewMap.put(layout, shopinfoview);
+                break;
+            case CLIENTRATESHOP:
+                ClientRateShopView clientrateview = new ClientRateShopView(startView);
+                viewMap.put(layout, clientrateview);
+                break;
             default:
                 throw new IllegalStateException("Illegal state type" + layout);
         }
