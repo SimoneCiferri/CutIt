@@ -48,7 +48,7 @@ public class ClientBookAppFormControllerg {
 
 
     public boolean initialize(){
-        labelDateTime.setText(ClientBookAppointmentControllerg.getAppDate());
+        labelDateTime.setText(ClientBookAppointmentViewController.getAppDate());
         return true;
     }
 

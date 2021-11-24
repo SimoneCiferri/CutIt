@@ -105,6 +105,7 @@ public class ShopInfoViewController {
         pLayout= Client.getPrLayout();
         pLayout.setCenter(bookAppLayout);
          */
+        Facade.getInstance().decorateView(ViewLayout.CLIENTBOOKAPPOINTMENT);
         return true;
     }
 

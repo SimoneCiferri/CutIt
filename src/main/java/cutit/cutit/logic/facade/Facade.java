@@ -105,6 +105,10 @@ public class Facade {
                 ClientRateShopView clientrateview = new ClientRateShopView(startView);
                 viewMap.put(layout, clientrateview);
                 break;
+            case CLIENTBOOKAPPOINTMENT:
+                ClientBookAppointmentView clientbookappview = new ClientBookAppointmentView(startView);
+                viewMap.put(layout, clientbookappview);
+                break;
             default:
                 throw new IllegalStateException("Illegal state type" + layout);
         }

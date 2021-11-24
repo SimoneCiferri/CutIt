@@ -1,5 +1,7 @@
 package cutit.cutit.logic.control;
 
+import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.facade.Facade;
 import cutit.cutit.logic.views.Client;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class ClientBookAppointmentControllerg{
+public class ClientBookAppointmentViewController {
 
     private final Stage prStage = Client.getPrStage();
     private BorderPane pLayout = null;
@@ -32,30 +34,13 @@ public class ClientBookAppointmentControllerg{
     private DatePicker dtPicker;
 
     @FXML
-    public boolean bookAppNext() throws IOException {
-        System.out.println("Next Button pressed (Book App)");
-        VBox bookAppFormLayout = null;
-        FXMLLoader loader = new FXMLLoader(Client.class.getResource("/cutit/cutit/views/clientbookappform.fxml"));
-        bookAppFormLayout = loader.load();
-        nLayout= Client.getNdLayout();
-        nLayout.setCenter(bookAppFormLayout);
+    public boolean bookAppNext() {
         return true;
     }
 
     @FXML
-    public boolean backToShopInfo() throws IOException {
-        System.out.println("Back Button pressed (Book App)");
-        VBox shopLayout = null;
-        shopLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/shopinfo.fxml"));
-        VBox photoLayout = null;
-        photoLayout = FXMLLoader.load(Client.class.getResource("/cutit/cutit/views/clientshopphoto.fxml"));
-        Image image = new Image(Client.class.getResource(Client.getBackgr()).toString());
-        BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        shopLayout.setBackground(new Background(back));
-        nLayout = Client.getNdLayout();
-        nLayout.setCenter(photoLayout);
-        pLayout= Client.getPrLayout();
-        pLayout.setCenter(shopLayout);
+    public boolean backToShopInfo() {
+        Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
         return true;
     }
 
