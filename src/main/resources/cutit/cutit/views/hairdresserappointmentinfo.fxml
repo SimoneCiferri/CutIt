@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.control.HairdresserAppointmentInfoViewController">
+   <children>
+      <Label text="dd/mm/yyyy hh/mm" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label text="Client" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </Label>
+      <Label text="Service" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </Label>
+      <Label text="Notes...." textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </Label>
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="600.0">
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+         <children>
+            <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="300.0">
+               <children>
+                  <Button alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#goBackToAppH" prefHeight="55.0" text="Back" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="300.0">
+               <children>
+                  <Button alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="55.0" text="Delete" textFill="RED" />
+               </children></VBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets top="25.0" />
+   </padding>
+</VBox>

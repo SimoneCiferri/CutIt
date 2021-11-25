@@ -113,8 +113,11 @@ public class Facade {
                 ClientBookAppointmentFormView clientbookformview = new ClientBookAppointmentFormView(startView);
                 viewMap.put(layout, clientbookformview);
                 break;
-            default:
-                throw new IllegalStateException("Illegal state type" + layout);
+            case HAIRDRESSERAPPINFO:
+                HairdresserAppointmentInfoView hairdresserappinfoview = new HairdresserAppointmentInfoView(startView);
+                viewMap.put(layout, hairdresserappinfoview);
+                break;
+            default: throw new IllegalStateException("Illegal state type" + layout);
         }
     }
 
