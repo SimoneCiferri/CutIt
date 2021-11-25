@@ -38,7 +38,7 @@
       </Label>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="600.0">
          <VBox.margin>
-            <Insets top="25.0" />
+            <Insets bottom="50.0" top="25.0" />
          </VBox.margin>
          <children>
             <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="300.0">
