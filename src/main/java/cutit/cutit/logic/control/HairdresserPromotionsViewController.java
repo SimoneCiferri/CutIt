@@ -1,5 +1,7 @@
 package cutit.cutit.logic.control;
 
+import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -31,8 +33,16 @@ public class HairdresserPromotionsViewController {
             l.setMaxSize(895, 130);
             l.setStyle(labelStyle);
             l.setPadding(new Insets(0, 0, 10, 20));
+            l.setOnMouseClicked((MouseEvent) -> {
+                goPromInfo();
+            });
             vbInScrollHProm.getChildren().add(l);
         }
+    }
+
+    public boolean goPromInfo(){
+        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERPROMINFO);
+        return true;
     }
 
 
