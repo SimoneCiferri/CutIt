@@ -1,8 +1,6 @@
 package cutit.cutit.logic.decorator;
 
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-
 import java.io.IOException;
 
 public interface ViewComponent {

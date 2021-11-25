@@ -3,7 +3,6 @@ package cutit.cutit.logic.facade;
 import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.views.*;
-
 import java.util.EnumMap;
 import java.util.Map;
 

@@ -6,9 +6,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-
 import java.io.IOException;
-import java.net.PortUnreachableException;
 
 public class HairdresserAppointmentsViewController {
 

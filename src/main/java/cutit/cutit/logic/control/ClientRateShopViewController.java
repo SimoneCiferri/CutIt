@@ -5,14 +5,11 @@ import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Popup;
-
 import java.io.IOException;
 
 public class ClientRateShopViewController {
 
     private final String star = "/cutit/cutit/files/star.png";
-    private Popup popup = ShopInfoViewController.getPop();
 
     @FXML
     private ImageView ivStar1, ivStar2, ivStar3, ivStar4, ivStar5;
