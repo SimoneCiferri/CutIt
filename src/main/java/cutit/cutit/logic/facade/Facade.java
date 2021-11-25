@@ -121,6 +121,10 @@ public class Facade {
                 HairdresserPromotionInfoView hairproinfoview = new HairdresserPromotionInfoView(startView);
                 viewMap.put(layout, hairproinfoview);
             }
+            case CLIENTAPPINFO -> {
+                ClientAppointmentInfoView clientappinfoview = new ClientAppointmentInfoView(startView);
+                viewMap.put(layout, clientappinfoview);
+            }
             default -> throw new IllegalStateException("Illegal state type" + layout);
         }
     }
