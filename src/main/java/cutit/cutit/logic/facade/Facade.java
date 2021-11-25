@@ -41,83 +41,83 @@ public class Facade {
 
     public void decorateView(ViewLayout layout){
         switch (layout) {
-            case HOME:
+            case HOME -> {
                 HomeView homeview = new HomeView(startView);
                 viewMap.put(layout, homeview);
-                break;
-            case UNLOGGEDPROMOTIONS:
+            }
+            case UNLOGGEDPROMOTIONS -> {
                 UnloggedPromotionView promotionView = new UnloggedPromotionView(startView);
                 viewMap.put(layout, promotionView);
-                break;
-            case LOGIN:
+            }
+            case LOGIN -> {
                 LoginView loginview = new LoginView(startView);
-                viewMap.put(layout,loginview);
-                break;
-            case TOPBARCLIENT:
+                viewMap.put(layout, loginview);
+            }
+            case TOPBARCLIENT -> {
                 TopBarClientView topbarclientview = new TopBarClientView(startView);
                 viewMap.put(layout, topbarclientview);
-                break;
-            case TOPBARHAIRDRESSER:
+            }
+            case TOPBARHAIRDRESSER -> {
                 TopBarHairdresserView topbarhairdresserview = new TopBarHairdresserView(startView);
                 viewMap.put(layout, topbarhairdresserview);
-                break;
-            case TOPBAR:
+            }
+            case TOPBAR -> {
                 TopBarView topbarview = new TopBarView(startView);
                 viewMap.put(layout, topbarview);
-                break;
-            case HAIRDRESSERAPPOINTMENTS:
+            }
+            case HAIRDRESSERAPPOINTMENTS -> {
                 HairdresserAppointmentsView hairdresserappointmentview = new HairdresserAppointmentsView(startView);
                 viewMap.put(layout, hairdresserappointmentview);
-                break;
-            case SIGNUP:
+            }
+            case SIGNUP -> {
                 SignUpView signupview = new SignUpView(startView);
                 viewMap.put(layout, signupview);
-                break;
-            case FAVSHOP:
+            }
+            case FAVSHOP -> {
                 ClientFavouritesShopView clientfavshopview = new ClientFavouritesShopView(startView);
                 viewMap.put(layout, clientfavshopview);
-                break;
-            case PROMOTIONCLIENT:
+            }
+            case PROMOTIONCLIENT -> {
                 ClientPromotionView clientpromview = new ClientPromotionView(startView);
                 viewMap.put(layout, clientpromview);
-                break;
-            case APPCL:
+            }
+            case APPCL -> {
                 ClientAppointmentsView clientappview = new ClientAppointmentsView(startView);
                 viewMap.put(layout, clientappview);
-                break;
-            case HAIRDRESSERPROMOTIONS:
+            }
+            case HAIRDRESSERPROMOTIONS -> {
                 HairdresserPromotionsView hairpromview = new HairdresserPromotionsView(startView);
                 viewMap.put(layout, hairpromview);
-                break;
-            case HAIRDRESSERSERVICES:
+            }
+            case HAIRDRESSERSERVICES -> {
                 HairdresserServicesView hairservicesview = new HairdresserServicesView(startView);
                 viewMap.put(layout, hairservicesview);
-                break;
-            case HAIRDRESSERSHOP:
+            }
+            case HAIRDRESSERSHOP -> {
                 HairdresserShopView hairshopview = new HairdresserShopView(startView);
                 viewMap.put(layout, hairshopview);
-                break;
-            case SHOPINFO:
+            }
+            case SHOPINFO -> {
                 ShopInfoView shopinfoview = new ShopInfoView(startView);
                 viewMap.put(layout, shopinfoview);
-                break;
-            case CLIENTRATESHOP:
+            }
+            case CLIENTRATESHOP -> {
                 ClientRateShopView clientrateview = new ClientRateShopView(startView);
                 viewMap.put(layout, clientrateview);
-                break;
-            case CLIENTBOOKAPPOINTMENT:
+            }
+            case CLIENTBOOKAPPOINTMENT -> {
                 ClientBookAppointmentView clientbookappview = new ClientBookAppointmentView(startView);
                 viewMap.put(layout, clientbookappview);
-                break;
-            case CLIENTBOOKAPPFORM:
+            }
+            case CLIENTBOOKAPPFORM -> {
                 ClientBookAppointmentFormView clientbookformview = new ClientBookAppointmentFormView(startView);
                 viewMap.put(layout, clientbookformview);
-                break;
-            case HAIRDRESSERAPPINFO:
+            }
+            case HAIRDRESSERAPPINFO -> {
                 HairdresserAppointmentInfoView hairdresserappinfoview = new HairdresserAppointmentInfoView(startView);
                 viewMap.put(layout, hairdresserappinfoview);
-                break;
-            default: throw new IllegalStateException("Illegal state type" + layout);
+            }
+            default -> throw new IllegalStateException("Illegal state type" + layout);
         }
     }
 

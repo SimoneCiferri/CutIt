@@ -1,5 +1,7 @@
 package cutit.cutit.logic.control;
 
+import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.facade.Facade;
 import cutit.cutit.logic.views.Client;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -22,25 +24,9 @@ public class UnloggedPromotionViewController {
     private VBox vbUnloggedPromotion;
 
     public boolean initialize() throws IOException {
-        vbUnloggedPromotion.setSpacing(15);
-        showPromotions();
         return true;
     }
 
-    private void showPromotions() {
-        for(Integer i=0; i<5; i++){
-            Label l = new Label("Promotion"+i.toString());
-            l.setPrefSize(300,100);
-            l.setMinSize(300,100);
-            l.setMaxSize(300,100);
-            l.setStyle(labelStyle);
-            l.setPadding(new Insets(0,0,10,20));
-            l.setOnMouseClicked((MouseEvent) -> {
-                goPromotionInfo();
-            });
-            vbUnloggedPromotion.getChildren().add(l);
-        }
-    }
 
     private void goPromotionInfo() {
         System.out.println("Promotion info");
