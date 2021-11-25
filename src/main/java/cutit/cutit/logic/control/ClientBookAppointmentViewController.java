@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 public class ClientBookAppointmentViewController {
 
-    private static String startAppointment = "";
+    static String startAppointment = "";
 
     @FXML
     private BorderPane bpInBookApp;
