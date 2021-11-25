@@ -11,7 +11,8 @@ public enum ViewLayout {
     HAIRDRESSERSHOP("/cutit/cutit/views/hairdressershop.fxml"), SHOPINFO("/cutit/cutit/views/shopinfo.fxml"), CLIENTRATESHOP("/cutit/cutit/views/clientrateshop.fxml"),
     CLIENTBOOKAPPOINTMENT("/cutit/cutit/views/clientbookappointment.fxml"), CLIENTBOOKAPPFORM("/cutit/cutit/views/clientbookappform.fxml"),
     HAIRDRESSERAPPINFO("/cutit/cutit/views/hairdresserappointmentinfo.fxml"), HAIRDRESSERPROMINFO("/cutit/cutit/views/hairdresserpromotioninfo.fxml"),
-    CLIENTAPPINFO("/cutit/cutit/views/clientappointmentinfo.fxml");
+    CLIENTAPPINFO("/cutit/cutit/views/clientappointmentinfo.fxml"), HAIRDRESSERSERVICEINFO("/cutit/cutit/views/hairdresserserviceinfo.fxml"),
+    CLIENTPROMOTIONINFO("/cutit/cutit/views/clientpromotioninfo.fxml");
 
     private String res;
 

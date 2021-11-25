@@ -12,14 +12,14 @@
             <Font size="30.0" />
          </font>
       </Label>
-      <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" promptText="Promotion">
+      <Label text="5% off" textFill="#f2f2f2">
          <VBox.margin>
             <Insets top="15.0" />
-         </VBox.margin></TextField>
-      <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" promptText="5%off">
-         <VBox.margin>
-            <Insets top="15.0" />
-         </VBox.margin></TextField>
+         </VBox.margin>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0">
          <VBox.margin>
             <Insets top="15.0" />
@@ -27,22 +27,38 @@
          <children>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="50.0">
                <children>
-                  <Label text="To:" textFill="WHITE" />
+                  <Label text="To:" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
                   <Label text="From:" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="25.0" />
                      </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
                   </Label>
                </children>
             </VBox>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="150.0">
                <children>
-                  <TextField />
-                  <TextField>
+                  <Label text="yyyy-MM-dd" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="15.0" />
+                        <Insets />
                      </VBox.margin>
-                  </TextField>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label text="yyyy-MM-dd" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children></HBox>
@@ -55,7 +71,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="300.0">
                <children>
-                  <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="55.0" text="Update" />
+                  <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="55.0" text="Delete" textFill="RED" />
                </children>
             </HBox>
          </children>

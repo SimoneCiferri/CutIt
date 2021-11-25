@@ -4,13 +4,13 @@ import cutit.cutit.logic.decorator.Decorator;
 import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
 
-public class ClientPromotionView extends Decorator {
+public class HairdresserServiceInfoView extends Decorator {
 
-    public ClientPromotionView(ViewComponent view){
+    public HairdresserServiceInfoView(ViewComponent view){
 
         super(view);
         try {
-            super.loadXML(ViewLayout.PROMOTIONCLIENT);
+            super.loadXML(ViewLayout.HAIRDRESSERSERVICEINFO);
         } catch (Exception e){
             e.printStackTrace();
         }

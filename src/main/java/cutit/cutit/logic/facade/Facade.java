@@ -78,7 +78,7 @@ public class Facade {
                 viewMap.put(layout, clientfavshopview);
             }
             case PROMOTIONCLIENT -> {
-                ClientPromotionView clientpromview = new ClientPromotionView(startView);
+                ClientPromotionsView clientpromview = new ClientPromotionsView(startView);
                 viewMap.put(layout, clientpromview);
             }
             case APPCL -> {
@@ -124,6 +124,14 @@ public class Facade {
             case CLIENTAPPINFO -> {
                 ClientAppointmentInfoView clientappinfoview = new ClientAppointmentInfoView(startView);
                 viewMap.put(layout, clientappinfoview);
+            }
+            case HAIRDRESSERSERVICEINFO -> {
+                HairdresserServiceInfoView hairserviceinfoview = new HairdresserServiceInfoView(startView);
+                viewMap.put(layout, hairserviceinfoview);
+            }
+            case CLIENTPROMOTIONINFO -> {
+                ClientPromotionInfoView clientprominfoview = new ClientPromotionInfoView(startView);
+                viewMap.put(layout, clientprominfoview);
             }
             default -> throw new IllegalStateException("Illegal state type" + layout);
         }
