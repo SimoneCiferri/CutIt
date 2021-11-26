@@ -5,6 +5,7 @@ import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -46,6 +47,8 @@ public class TopBarViewController {
     public boolean goToLogin() {
         Facade.getInstance().getSTartView().getLoaded().clear();
         Facade.getInstance().getSTartView().getPrLayout().getChildren().remove(apStart);
+        btnHomeUn.setStyle(transparentStyle);
+        btnPromotionsUn.setStyle(transparentStyle);
         Facade.getInstance().decorateView(ViewLayout.LOGIN);
         return true;
     }

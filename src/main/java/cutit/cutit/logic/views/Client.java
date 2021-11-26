@@ -5,8 +5,8 @@ import cutit.cutit.logic.facade.Facade;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Client extends Application {
 
@@ -20,6 +20,7 @@ public class Client extends Application {
         facade.decorateView(ViewLayout.HOME);
         stage.setResizable(false);
         stage.setTitle("Cut-It!");
+        stage.initStyle(StageStyle.UNIFIED);
         stage.show();
     }
 

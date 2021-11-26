@@ -42,6 +42,6 @@ public class Decorator implements ViewComponent{
 
     @Override
     public Object getLoadedViewController(ViewLayout layout) {
-        return getLoadedViewController(layout);
+        return this.view.getLoadedViewController(layout);
     }
 }

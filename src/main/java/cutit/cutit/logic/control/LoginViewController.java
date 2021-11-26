@@ -27,4 +27,12 @@ public class LoginViewController {
         return true;
     }
 
+    @FXML
+    public boolean backUnlogged(){
+        Facade.getInstance().decorateView(ViewLayout.TOPBAR);
+        Facade.getInstance().decorateView(ViewLayout.HOME);
+        return true;
+
+    }
+
 }
