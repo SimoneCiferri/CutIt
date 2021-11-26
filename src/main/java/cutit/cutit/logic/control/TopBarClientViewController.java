@@ -10,7 +10,7 @@ import java.io.IOException;
 public class TopBarClientViewController {
 
     private final String transparentStyle = "-fx-background-color: transparent; ";
-    private final String pageFlagStyle = "-fx-background-color: #707070; -fx-text-fill: #FFFFFF; ";
+    private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
 
     @FXML
     private Label btnClHome, btnClFav, btnClApp, btnClPromotion, btnClLogout;
