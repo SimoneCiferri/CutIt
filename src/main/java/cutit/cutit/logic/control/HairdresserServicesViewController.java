@@ -24,6 +24,9 @@ public class HairdresserServicesViewController {
 
     private void showHairServ() {
         Button add = new Button("Add Service");
+        add.setOnMouseClicked((MouseEvent) -> {
+            goAddService();
+        });
         vbInScrollHS.getChildren().add(add);
         for(Integer i=0; i<4; i++) {
             Label l = new Label("Service"+i.toString());
@@ -37,6 +40,10 @@ public class HairdresserServicesViewController {
             });
             vbInScrollHS.getChildren().add(l);
         }
+    }
+
+    private void goAddService() {
+        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERADDSERVICE);
     }
 
 }

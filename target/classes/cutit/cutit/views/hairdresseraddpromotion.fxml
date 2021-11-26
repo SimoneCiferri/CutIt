@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.control.HairdresserAddPromotionViewController">
+   <children>
+      <Label text="Add Appointment" textFill="WHITE">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="400.0">
+         <children>
+            <VBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="200.0">
+               <children>
+                  <Label text="Name:" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets right="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                  <Label text="Service:" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets right="15.0" top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label text="\% off" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets right="15.0" top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="200.0">
+               <children>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" promptText="Promotion's Name">
+                     <VBox.margin>
+                        <Insets left="15.0" top="5.0" />
+                     </VBox.margin></TextField>
+                  <ChoiceBox prefHeight="25.0" prefWidth="180.0">
+                     <VBox.margin>
+                        <Insets left="15.0" top="20.0" />
+                     </VBox.margin>
+                  </ChoiceBox>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="60.0" promptText="5">
+                     <VBox.margin>
+                        <Insets left="15.0" top="20.0" />
+                     </VBox.margin></TextField>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="600.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="300.0">
+               <children>
+                  <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#goPromH" prefHeight="55.0" text="Back" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="300.0">
+               <children>
+                  <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#goPromH" prefHeight="55.0" text="Add" />
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets top="15.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

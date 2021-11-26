@@ -132,6 +132,14 @@ public class Facade {
                 ClientPromotionInfoView clientprominfoview = new ClientPromotionInfoView(startView);
                 viewMap.put(layout, clientprominfoview);
             }
+            case HAIRDRESSERADDPROM -> {
+                HairdresserAddPromotionView hairaddpromview = new HairdresserAddPromotionView(startView);
+                viewMap.put(layout, hairaddpromview);
+            }
+            case HAIRDRESSERADDSERVICE -> {
+                HairdresserAddServiceView hairaddserviceview = new HairdresserAddServiceView(startView);
+                viewMap.put(layout, hairaddserviceview);
+            }
             default -> throw new IllegalStateException("Illegal state type" + layout);
         }
     }

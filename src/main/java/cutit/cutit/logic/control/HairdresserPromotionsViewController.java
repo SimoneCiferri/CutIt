@@ -24,6 +24,9 @@ public class HairdresserPromotionsViewController {
 
     private void showHairProm() {
         Button add = new Button("Add Promotion");
+        add.setOnMouseClicked((MouseEvent) -> {
+            goAddProm();
+        });
         vbInScrollHProm.getChildren().add(add);
         for(Integer i=0; i<4; i++) {
             Label l = new Label("Promotion"+i.toString());
@@ -42,6 +45,10 @@ public class HairdresserPromotionsViewController {
     public boolean goPromInfo(){
         Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERPROMINFO);
         return true;
+    }
+
+    private void goAddProm() {
+        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERADDPROM);
     }
 
 
