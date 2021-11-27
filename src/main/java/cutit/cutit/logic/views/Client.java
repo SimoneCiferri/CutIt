@@ -20,7 +20,6 @@ public class Client extends Application {
         facade.decorateView(ViewLayout.HOME);
         stage.setResizable(false);
         stage.setTitle("Cut-It!");
-        stage.initStyle(StageStyle.UNIFIED);
         stage.show();
     }
 
