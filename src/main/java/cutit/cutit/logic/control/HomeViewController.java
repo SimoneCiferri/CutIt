@@ -24,7 +24,7 @@ public class HomeViewController {
 
     private void showShops(){
         for(Integer i=0; i<6; i++){
-            Label l = new Label("Barber"+i.toString());
+            Label l = new Label("Barber"+ i);
             l.setPrefSize(895,130);
             l.setMinSize(895,130);
             l.setMaxSize(895,130);

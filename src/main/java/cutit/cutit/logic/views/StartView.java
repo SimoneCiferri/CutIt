@@ -2,7 +2,7 @@ package cutit.cutit.logic.views;
 
 import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
-import cutit.cutit.logic.facade.Facade;
+import cutit.cutit.logic.facade.Client;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;

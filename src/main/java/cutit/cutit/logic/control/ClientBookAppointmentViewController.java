@@ -2,7 +2,6 @@ package cutit.cutit.logic.control;
 
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
-import cutit.cutit.logic.views.Client;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;

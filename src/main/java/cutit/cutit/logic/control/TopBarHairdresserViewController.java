@@ -15,7 +15,6 @@ public class TopBarHairdresserViewController {
     private Label  btnHApp, btnHPromotions, btnHServices, btnHShop,  btnHLogout;
 
     public boolean initialize() throws IOException {
-        System.out.println("App page (Hairdresser)");
         btnHApp.setStyle(pageFlagStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHServices.setStyle(transparentStyle);

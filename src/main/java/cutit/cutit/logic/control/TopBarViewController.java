@@ -21,7 +21,6 @@ public class TopBarViewController {
     private AnchorPane apStart;
 
     public boolean initialize() throws IOException {
-        System.out.println("Home page ");
         btnHomeUn.setStyle(pageFlagStyle);
         btnPromotionsUn.setStyle(transparentStyle);
         return true;

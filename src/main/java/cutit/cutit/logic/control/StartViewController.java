@@ -12,7 +12,6 @@ public class StartViewController {
 
 
     public boolean initialize() throws IOException {
-        System.out.println("Start page ");
         return true;
     }
 

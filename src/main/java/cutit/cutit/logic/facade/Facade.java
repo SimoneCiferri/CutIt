@@ -146,6 +146,7 @@ public class Facade {
 
     public void logout(){
         startView.getLoaded().clear();
+        //forse anche il clear dei controller
         decorateView(ViewLayout.TOPBAR);
         decorateView(ViewLayout.HOME);
     }

@@ -1,7 +1,6 @@
-package cutit.cutit.logic.views;
+package cutit.cutit.logic.facade;
 
 import cutit.cutit.logic.decorator.ViewLayout;
-import cutit.cutit.logic.facade.Facade;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -16,9 +15,9 @@ public class Client extends Application {
         root.getChildren().add(facade.getSTartView().getPrLayout());
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        facade.decorateView(ViewLayout.HOME);
         stage.setResizable(false);
         stage.setTitle("Cut-It!");
+        facade.decorateView(ViewLayout.HOME);
         stage.show();
     }
 

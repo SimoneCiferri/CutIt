@@ -19,7 +19,6 @@ public class TopBarClientViewController {
     private AnchorPane apTopBarClient;
 
     public boolean initialize() throws IOException {
-        System.out.println("Home page (client)");
         btnClHome.setStyle(pageFlagStyle);
         btnClPromotion.setStyle(transparentStyle);
         btnClApp.setStyle(transparentStyle);
