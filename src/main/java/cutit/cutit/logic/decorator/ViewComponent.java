@@ -5,14 +5,14 @@ import java.io.IOException;
 
 public interface ViewComponent {
 
-    public Pane getPrLayout();
+    Pane getPrLayout();
 
-    public void setPrLayout(Pane prLayout);
+    void setPrLayout(Pane prLayout);
 
-    public void loadXML(ViewLayout layout) throws IOException;
+    void loadXML(ViewLayout layout) throws IOException;
 
-    public Pane getLoadedView(ViewLayout layout);
+    Pane getLoadedView(ViewLayout layout);
 
-    public Object getLoadedViewController(ViewLayout layout);
+    Object getLoadedViewController(ViewLayout layout);
 
 }
