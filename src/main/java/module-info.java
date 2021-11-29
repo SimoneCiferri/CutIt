@@ -6,10 +6,12 @@ module cutit.cutit {
 
 
 
-    exports cutit.cutit.logic.views;
-    opens cutit.cutit.logic.views to javafx.fxml;
-    exports cutit.cutit.logic.control;
-    opens cutit.cutit.logic.control to javafx.fxml;
+    exports cutit.cutit.logic.decorator.concreteDecorator;
+    opens cutit.cutit.logic.decorator.concreteDecorator to javafx.fxml;
+    exports cutit.cutit.logic.controller;
+    opens cutit.cutit.logic.controller to javafx.fxml;
     exports cutit.cutit.logic.facade;
     opens cutit.cutit.logic.facade to javafx.fxml;
+    exports cutit.cutit.logic.decorator.concreteViewComponent;
+    opens cutit.cutit.logic.decorator.concreteViewComponent to javafx.fxml;
 }

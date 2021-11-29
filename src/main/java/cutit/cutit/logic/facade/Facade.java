@@ -2,7 +2,9 @@ package cutit.cutit.logic.facade;
 
 import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
-import cutit.cutit.logic.views.*;
+import cutit.cutit.logic.decorator.concreteDecorator.*;
+import cutit.cutit.logic.decorator.concreteViewComponent.StartView;
+
 import java.util.EnumMap;
 import java.util.Map;
 
