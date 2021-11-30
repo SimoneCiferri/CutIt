@@ -110,10 +110,6 @@ public class Facade {
                 ClientBookAppointmentView clientbookappview = new ClientBookAppointmentView(startView);
                 viewMap.put(layout, clientbookappview);
             }
-            case CLIENTBOOKAPPFORM -> {
-                ClientBookAppointmentFormView clientbookformview = new ClientBookAppointmentFormView(startView);
-                viewMap.put(layout, clientbookformview);
-            }
             case HAIRDRESSERDELETEBOOKEDAPP -> {
                 HairdresserAppointmentInfoView hairdresserappinfoview = new HairdresserAppointmentInfoView(startView);
                 viewMap.put(layout, hairdresserappinfoview);
