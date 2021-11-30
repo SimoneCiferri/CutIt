@@ -30,7 +30,7 @@ public class HairdresserAppointmentsViewController {
             l.setStyle(labelStyle);
             l.setPadding(new Insets(0,0,10,20));
             l.setOnMouseClicked((MouseEvent) -> {
-                Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERAPPINFO);
+                Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERDELETEBOOKEDAPP);
             });
             vbInScrollHApp.getChildren().add(l);
         }

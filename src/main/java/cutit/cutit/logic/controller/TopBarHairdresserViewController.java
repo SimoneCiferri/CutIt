@@ -59,7 +59,7 @@ public class TopBarHairdresserViewController {
 
     @FXML
     public boolean goShop() {
-        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERSHOP);
+        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERMANAGESHOPPAGE);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHServices.setStyle(transparentStyle);

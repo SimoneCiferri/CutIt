@@ -94,7 +94,7 @@ public class Facade {
                 HairdresserServicesView hairservicesview = new HairdresserServicesView(startView);
                 viewMap.put(layout, hairservicesview);
             }
-            case HAIRDRESSERSHOP -> {
+            case HAIRDRESSERMANAGESHOPPAGE -> {
                 HairdresserShopView hairshopview = new HairdresserShopView(startView);
                 viewMap.put(layout, hairshopview);
             }
@@ -114,7 +114,7 @@ public class Facade {
                 ClientBookAppointmentFormView clientbookformview = new ClientBookAppointmentFormView(startView);
                 viewMap.put(layout, clientbookformview);
             }
-            case HAIRDRESSERAPPINFO -> {
+            case HAIRDRESSERDELETEBOOKEDAPP -> {
                 HairdresserAppointmentInfoView hairdresserappinfoview = new HairdresserAppointmentInfoView(startView);
                 viewMap.put(layout, hairdresserappinfoview);
             }

@@ -10,7 +10,7 @@ public class HairdresserAppointmentInfoView extends Decorator {
 
         super(view);
         try {
-            super.loadXML(ViewLayout.HAIRDRESSERAPPINFO);
+            super.loadXML(ViewLayout.HAIRDRESSERDELETEBOOKEDAPP);
         } catch (Exception e){
             e.printStackTrace();
         }

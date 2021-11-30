@@ -10,7 +10,7 @@ public class HairdresserShopView extends Decorator {
 
         super(view);
         try {
-            super.loadXML(ViewLayout.HAIRDRESSERSHOP);
+            super.loadXML(ViewLayout.HAIRDRESSERMANAGESHOPPAGE);
         } catch (Exception e){
             e.printStackTrace();
         }

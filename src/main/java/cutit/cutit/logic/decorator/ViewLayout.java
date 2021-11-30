@@ -8,9 +8,9 @@ public enum ViewLayout {
     HAIRDRESSERAPPOINTMENTS("/cutit/cutit/fxml/hairdresserappointments.fxml"), SIGNUP("/cutit/cutit/fxml/signup.fxml"),
     FAVSHOP("/cutit/cutit/fxml/clientfavouritescs.fxml"), APPCL("/cutit/cutit/fxml/clientappointments.fxml"), PROMOTIONCLIENT("/cutit/cutit/fxml/clientpromotions.fxml"),
     HAIRDRESSERPROMOTIONS("/cutit/cutit/fxml/hairdresserpromotions.fxml"), HAIRDRESSERSERVICES("/cutit/cutit/fxml/hairdresserservices.fxml"),
-    HAIRDRESSERSHOP("/cutit/cutit/fxml/hairdressershop.fxml"), SHOPINFO("/cutit/cutit/fxml/shopinfo.fxml"), CLIENTRATESHOP("/cutit/cutit/fxml/clientrateshop.fxml"),
+    HAIRDRESSERMANAGESHOPPAGE("/cutit/cutit/fxml/hairdressermanageshoppage.fxml"), SHOPINFO("/cutit/cutit/fxml/shopinfo.fxml"), CLIENTRATESHOP("/cutit/cutit/fxml/clientrateshop.fxml"),
     CLIENTBOOKAPPOINTMENT("/cutit/cutit/fxml/clientbookappointment.fxml"), CLIENTBOOKAPPFORM("/cutit/cutit/fxml/clientbookappform.fxml"),
-    HAIRDRESSERAPPINFO("/cutit/cutit/fxml/hairdresserappointmentinfo.fxml"), HAIRDRESSERPROMINFO("/cutit/cutit/fxml/hairdresserpromotioninfo.fxml"),
+    HAIRDRESSERDELETEBOOKEDAPP("/cutit/cutit/fxml/hairdresserdeleteappointment.fxml"), HAIRDRESSERPROMINFO("/cutit/cutit/fxml/hairdresserpromotioninfo.fxml"),
     CLIENTAPPINFO("/cutit/cutit/fxml/clientappointmentinfo.fxml"), HAIRDRESSERSERVICEINFO("/cutit/cutit/fxml/hairdresserserviceinfo.fxml"),
     CLIENTPROMOTIONINFO("/cutit/cutit/fxml/clientpromotioninfo.fxml"), HAIRDRESSERADDPROM("/cutit/cutit/fxml/hairdresseraddpromotion.fxml"),
     HAIRDRESSERADDSERVICE("/cutit/cutit/fxml/hairdresseraddservice.fxml");
