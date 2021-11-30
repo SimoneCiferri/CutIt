@@ -91,7 +91,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Button mnemonicParsing="false" text="Save">
+                  <Button mnemonicParsing="false" onMouseClicked="#manageShopPage" text="Save">
                      <VBox.margin>
                         <Insets bottom="15.0" top="15.0" />
                      </VBox.margin>

@@ -1,5 +1,6 @@
 package cutit.cutit.logic.bean;
 
+import cutit.cutit.logic.model.Shop;
 import javafx.scene.image.Image;
 import java.util.Map;
 
@@ -11,6 +12,8 @@ public class ShopBean {
     private String shopDescription;
     private Image images;
     private Map openDays;
+
+    private Shop shop;
 
     public String getShopName() {
         return shopName;
