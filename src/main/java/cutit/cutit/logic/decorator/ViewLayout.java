@@ -10,8 +10,8 @@ public enum ViewLayout {
     HAIRDRESSERPROMOTIONS("/cutit/cutit/fxml/hairdresserpromotions.fxml"), HAIRDRESSERSERVICES("/cutit/cutit/fxml/hairdresserservices.fxml"),
     HAIRDRESSERMANAGESHOPPAGE("/cutit/cutit/fxml/hairdressermanageshoppage.fxml"), SHOPINFO("/cutit/cutit/fxml/shopinfo.fxml"), CLIENTRATESHOP("/cutit/cutit/fxml/clientrateshop.fxml"),
     CLIENTBOOKAPPOINTMENT("/cutit/cutit/fxml/customerbookappointment.fxml"),
-    HAIRDRESSERDELETEBOOKEDAPP("/cutit/cutit/fxml/hairdresserdeleteappointment.fxml"), HAIRDRESSERPROMINFO("/cutit/cutit/fxml/hairdresserpromotioninfo.fxml"),
-    CLIENTAPPINFO("/cutit/cutit/fxml/clientappointmentinfo.fxml"), HAIRDRESSERSERVICEINFO("/cutit/cutit/fxml/hairdresserserviceinfo.fxml"),
+    HAIRDRESSERDELETEBOOKEDAPP("/cutit/cutit/fxml/hairdresserdeleteappointment.fxml"), HAIRDRESSERDELETEPROM("/cutit/cutit/fxml/hairdresserdeletepromotion.fxml"),
+    CLIENTAPPINFO("/cutit/cutit/fxml/clientappointmentinfo.fxml"), HAIRDRESSERDELETESERVICE("/cutit/cutit/fxml/hairdresserdeleteservice.fxml"),
     CLIENTPROMOTIONINFO("/cutit/cutit/fxml/clientpromotioninfo.fxml"), HAIRDRESSERADDPROM("/cutit/cutit/fxml/hairdresseraddpromotion.fxml"),
     HAIRDRESSERADDSERVICE("/cutit/cutit/fxml/hairdresseraddservice.fxml");
 

@@ -43,7 +43,7 @@ public class HairdresserPromotionsViewController {
     }
 
     public boolean goPromInfo(){
-        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERPROMINFO);
+        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERDELETEPROM);
         return true;
     }
 

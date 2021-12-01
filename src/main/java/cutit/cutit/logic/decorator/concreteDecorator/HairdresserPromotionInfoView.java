@@ -10,7 +10,7 @@ public class HairdresserPromotionInfoView extends Decorator {
 
         super(view);
         try {
-            super.loadXML(ViewLayout.HAIRDRESSERPROMINFO);
+            super.loadXML(ViewLayout.HAIRDRESSERDELETEPROM);
         } catch (Exception e){
             e.printStackTrace();
         }

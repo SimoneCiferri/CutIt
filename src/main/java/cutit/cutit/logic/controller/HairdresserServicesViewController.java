@@ -36,7 +36,7 @@ public class HairdresserServicesViewController {
             l.setStyle(labelStyle);
             l.setPadding(new Insets(0, 0, 10, 20));
             l.setOnMouseClicked((MouseEvent) -> {
-                Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERSERVICEINFO);
+                Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERDELETESERVICE);
             });
             vbInScrollHS.getChildren().add(l);
         }

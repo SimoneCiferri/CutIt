@@ -10,7 +10,7 @@ public class HairdresserServiceInfoView extends Decorator {
 
         super(view);
         try {
-            super.loadXML(ViewLayout.HAIRDRESSERSERVICEINFO);
+            super.loadXML(ViewLayout.HAIRDRESSERDELETESERVICE);
         } catch (Exception e){
             e.printStackTrace();
         }

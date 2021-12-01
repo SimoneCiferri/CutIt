@@ -114,7 +114,7 @@ public class Facade {
                 HairdresserAppointmentInfoView hairdresserappinfoview = new HairdresserAppointmentInfoView(startView);
                 viewMap.put(layout, hairdresserappinfoview);
             }
-            case HAIRDRESSERPROMINFO -> {
+            case HAIRDRESSERDELETEPROM -> {
                 HairdresserPromotionInfoView hairproinfoview = new HairdresserPromotionInfoView(startView);
                 viewMap.put(layout, hairproinfoview);
             }
@@ -122,7 +122,7 @@ public class Facade {
                 ClientAppointmentInfoView clientappinfoview = new ClientAppointmentInfoView(startView);
                 viewMap.put(layout, clientappinfoview);
             }
-            case HAIRDRESSERSERVICEINFO -> {
+            case HAIRDRESSERDELETESERVICE -> {
                 HairdresserServiceInfoView hairserviceinfoview = new HairdresserServiceInfoView(startView);
                 viewMap.put(layout, hairserviceinfoview);
             }

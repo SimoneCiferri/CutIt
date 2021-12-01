@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.HairdresserServiceInfoViewController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.viewController.HairdresserManageServicesViewController">
    <children>
       <Label text="Servece's Name" textFill="WHITE">
          <font>
@@ -43,7 +43,7 @@
          <children>
             <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="300.0">
                <children>
-                  <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#goBackToServices" prefHeight="55.0" text="Back" />
+                  <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#goServH" prefHeight="55.0" text="Back" />
                </children>
             </HBox>
             <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="300.0">
