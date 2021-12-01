@@ -70,7 +70,7 @@
             </HBox>
             <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="300.0">
                <children>
-                  <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#goPromH" prefHeight="55.0" text="Add" />
+                  <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#addPromotion" prefHeight="55.0" text="Add" />
                </children>
             </HBox>
          </children>

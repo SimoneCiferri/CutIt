@@ -6,8 +6,6 @@ import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 
-import java.security.Provider;
-
 public class HairdresserManageServicesViewController {
 
     private ManageServiceBean serviceBean;
@@ -20,9 +18,14 @@ public class HairdresserManageServicesViewController {
     }
 
     @FXML
-    public boolean goServH(){
+    public void goServH(){
         Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERSERVICES);
-        return true;
+    }
+
+    @FXML
+    public void deleteService(){
+        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
+        manageServicesController.deleteService(this.serviceBean);
     }
 
     @FXML
