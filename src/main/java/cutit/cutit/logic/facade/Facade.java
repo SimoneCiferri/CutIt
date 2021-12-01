@@ -142,6 +142,10 @@ public class Facade {
         }
     }
 
+    public Map<ViewLayout, ViewComponent> getViewMap(){
+        return viewMap;
+    }
+
     public void logout(){
         startView.getLoaded().clear();
         //forse anche il clear dei controller

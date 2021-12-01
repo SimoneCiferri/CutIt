@@ -11,6 +11,7 @@ public class LoginViewController {
     public boolean tryLogin() {
         Facade.getInstance().decorateView(ViewLayout.TOPBARCLIENT);
         Facade.getInstance().decorateView(ViewLayout.HOME);
+        //passa la bean al controller della topBar
         return true;
     }
 
@@ -24,6 +25,7 @@ public class LoginViewController {
     public boolean hairLogin() {
         Facade.getInstance().decorateView(ViewLayout.TOPBARHAIRDRESSER);
         Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERAPPOINTMENTS);
+        //passa la bean al controller della topBar
         return true;
     }
 
@@ -31,6 +33,7 @@ public class LoginViewController {
     public boolean backUnlogged(){
         Facade.getInstance().decorateView(ViewLayout.TOPBAR);
         Facade.getInstance().decorateView(ViewLayout.HOME);
+        //passa la bean al controller della topBar
         return true;
 
     }

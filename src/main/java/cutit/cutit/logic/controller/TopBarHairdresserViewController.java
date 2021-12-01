@@ -1,6 +1,9 @@
 package cutit.cutit.logic.controller;
 
+import cutit.cutit.logic.bean.ShopBean;
+import cutit.cutit.logic.controller.viewController.HairdresserManageShopPageViewController;
 import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -65,6 +68,9 @@ public class TopBarHairdresserViewController {
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(pageFlagStyle);
         btnHLogout.setStyle(transparentStyle);
+        HairdresserShopView view = (HairdresserShopView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERMANAGESHOPPAGE);
+        HairdresserManageShopPageViewController controller = (HairdresserManageShopPageViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERMANAGESHOPPAGE);
+        controller.fillView(new ShopBean()); //bean creata vuota solo per test
         return true;
     }
 
