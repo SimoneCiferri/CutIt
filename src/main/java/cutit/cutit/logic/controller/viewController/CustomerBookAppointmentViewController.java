@@ -52,30 +52,10 @@ public class CustomerBookAppointmentViewController {
     public void bookAppointment() {
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
         //DA RIVEDERE BENE LE FUNZIONI (RIVEDERE IL VOPC)!!
-        bookAppointmentController.compileAppointment(this.appointmentBean, this.customerBean, this.promotionBookAppBean, this.serviceBookAppBean, this.shopBookAppBean);
+        if(bookAppointmentController.compileAppointment(this.appointmentBean, this.customerBean, this.promotionBookAppBean, this.serviceBookAppBean, this.shopBookAppBean)){
+            Facade.getInstance().decorateView(ViewLayout.CUSTOMERPAYEDANDBOOKED);
+        }
     }
-
-    @FXML
-    public void getDirections(){
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-    }
-
-    @FXML
-    public void rateShop(){
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-    }
-
-    @FXML
-    public void addToFavourites(){
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-    }
-
-    @FXML
-    public void addAppToCalendar(){
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-    }
-
-
 
     @FXML
     private void set830(){

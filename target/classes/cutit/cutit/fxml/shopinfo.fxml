@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox fx:id="vbShopInfo" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.ShopInfoViewController">
+<VBox fx:id="vbShopInfo" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.ShopInfoViewController">
    <children>
       <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="1024.0" style="-fx-background-color: transparent; -fx-background: transparent;">
          <content>
@@ -25,27 +20,27 @@
                         <Insets top="25.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox alignment="CENTER_LEFT" prefHeight="210.0" prefWidth="920.0">
+                  <HBox alignment="CENTER_LEFT" prefHeight="270.0" prefWidth="975.0">
                      <VBox.margin>
                         <Insets top="5.0" />
                      </VBox.margin>
                      <children>
-                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="720.0">
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="720.0">
                            <children>
                               <ImageView fx:id="ivShopPhoto" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                              <TextField promptText="069625500">
+                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="90.0" promptText="069625500">
                                  <VBox.margin>
-                                    <Insets right="640.0" />
+                                    <Insets top="15.0" />
                                  </VBox.margin>
                               </TextField>
-                              <Label fx:id="lShopDescription" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="720.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Description">
+                              <Label fx:id="lShopDescription" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="720.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Description">
                                  <VBox.margin>
-                                    <Insets top="10.0" />
+                                    <Insets top="15.0" />
                                  </VBox.margin>
                               </Label>
                            </children>
                         </VBox>
-                        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
+                        <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="200.0">
                            <children>
                               <Button fx:id="btnBookApp" mnemonicParsing="false" onMouseClicked="#bookAppointment" prefHeight="35.0" prefWidth="160.0" text="Book Appointment">
                                  <VBox.margin>
@@ -57,23 +52,16 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Add to Favourites">
-                                 <VBox.margin>
-                                    <Insets top="15.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <Button mnemonicParsing="false" onMousePressed="#rateShop" prefHeight="35.0" prefWidth="160.0" text="Rate Shop">
-                                 <VBox.margin>
-                                    <Insets top="15.0" />
-                                 </VBox.margin>
-                              </Button>
                            </children>
+                           <HBox.margin>
+                              <Insets left="35.0" />
+                           </HBox.margin>
                         </VBox>
                      </children>
                   </HBox>
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="130.0" text="Opening time" underline="true">
                      <VBox.margin>
-                        <Insets top="25.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                      <font>
                         <Font size="18.0" />
@@ -82,7 +70,7 @@
                   <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" promptText="Opening Time..." style="-fx-border-radius: 5;" />
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="130.0" text="Price List" underline="true">
                      <VBox.margin>
-                        <Insets top="25.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                      <font>
                         <Font size="18.0" />
@@ -91,7 +79,7 @@
                   <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" promptText="Price List..." />
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="130.0" text="Hairdressers" underline="true">
                      <VBox.margin>
-                        <Insets top="25.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                      <font>
                         <Font size="18.0" />
@@ -100,7 +88,7 @@
                   <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0" promptText="Hairdressers..." />
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="130.0" text="Photo" underline="true">
                      <VBox.margin>
-                        <Insets top="25.0" />
+                        <Insets top="15.0" />
                      </VBox.margin>
                      <font>
                         <Font size="18.0" />

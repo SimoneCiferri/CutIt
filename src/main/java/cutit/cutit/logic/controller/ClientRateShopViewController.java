@@ -32,7 +32,7 @@ public class ClientRateShopViewController {
 
     @FXML
     public boolean rateShop(){
-        Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
+        Facade.getInstance().decorateView(ViewLayout.HOME);
         return true;
     }
 

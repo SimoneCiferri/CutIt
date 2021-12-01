@@ -102,7 +102,7 @@ public class Facade {
                 ShopInfoView shopinfoview = new ShopInfoView(startView);
                 viewMap.put(layout, shopinfoview);
             }
-            case CLIENTRATESHOP -> {
+            case CUSTOMERRATESHOP -> {
                 ClientRateShopView clientrateview = new ClientRateShopView(startView);
                 viewMap.put(layout, clientrateview);
             }
@@ -137,6 +137,10 @@ public class Facade {
             case HAIRDRESSERADDSERVICE -> {
                 HairdresserAddServiceView hairaddserviceview = new HairdresserAddServiceView(startView);
                 viewMap.put(layout, hairaddserviceview);
+            }
+            case CUSTOMERPAYEDANDBOOKED -> {
+                CustomerPayedAndBookedView customerPayedAndBookedView = new CustomerPayedAndBookedView(startView);
+                viewMap.put(layout, customerPayedAndBookedView);
             }
             default -> throw new IllegalStateException("Illegal state type" + layout);
         }

@@ -4,13 +4,13 @@ import cutit.cutit.logic.decorator.Decorator;
 import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
 
-public class ClientRateShopView extends Decorator {
+public class CustomerPayedAndBookedView extends Decorator {
 
-    public ClientRateShopView(ViewComponent view){
+    public CustomerPayedAndBookedView(ViewComponent view){
 
         super(view);
         try {
-            super.loadXML(ViewLayout.CUSTOMERRATESHOP);
+                super.loadXML(ViewLayout.CUSTOMERPAYEDANDBOOKED);
         } catch (Exception e){
             e.printStackTrace();
         }

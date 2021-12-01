@@ -12,18 +12,10 @@ public class ShopInfoViewController {
         return true;
     }
 
-
     @FXML
     public boolean bookAppointment() {
         Facade.getInstance().decorateView(ViewLayout.CLIENTBOOKAPPOINTMENT);
         return true;
     }
-
-    @FXML
-    public boolean rateShop() {
-        Facade.getInstance().decorateView(ViewLayout.CLIENTRATESHOP);
-        return true;
-    }
-
 
 }

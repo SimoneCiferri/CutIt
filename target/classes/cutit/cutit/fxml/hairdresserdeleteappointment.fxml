@@ -48,7 +48,7 @@
             </VBox>
             <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="300.0">
                <children>
-                  <Button alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="55.0" text="Delete" textFill="RED" />
+                  <Button alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#deleteAppointment" prefHeight="55.0" text="Delete" textFill="RED" />
                </children></VBox>
          </children>
       </HBox>
