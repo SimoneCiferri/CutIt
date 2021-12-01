@@ -21,6 +21,10 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </ImageView>
+                  <TextField fx:id="phoneNumberHairdresser" prefHeight="25.0" prefWidth="265.0" promptText="069620055">
+                     <VBox.margin>
+                        <Insets right="905.0" />
+                     </VBox.margin></TextField>
                   <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="720.0" promptText="Description">
                      <VBox.margin>
                         <Insets top="15.0" />
