@@ -10,14 +10,16 @@ public class Shop {
 
     private String shopName;
     private String address;
+    private String phoneNumber;
     private String description;
     private LocalTime openTime;
     private LocalTime closeTime;
     private Map<String, Boolean> openDays = new HashMap<String, Boolean>();
 
-    public Shop(String shopName, String address, String description, Map<String, Boolean> openDays){
+    public Shop(String shopName, String address, String phoneNumber, String description, Map<String, Boolean> openDays){
         setShopName(shopName);
         setAddress(address);
+        setPhoneNumber(phoneNumber);
         setDescription(description);
         setOpenDays(openDays);
     }
@@ -37,6 +39,10 @@ public class Shop {
     public void setAddress(String address){
         this.address = address;
     }
+
+    public String getPhoneNumber() { return phoneNumber;}
+
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
 
     public String getDescription(){
         return description;
