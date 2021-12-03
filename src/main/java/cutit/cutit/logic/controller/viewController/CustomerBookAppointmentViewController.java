@@ -51,7 +51,7 @@ public class CustomerBookAppointmentViewController {
     @FXML
     public void bookAppointment() {
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        //DA RIVEDERE BENE LE FUNZIONI (RIVEDERE IL VOPC)!!
+        //DA RIVEDERE BENE LE FUNZIONI (RIVEDERE IL VOPC)!
         if(bookAppointmentController.compileAppointment(this.appointmentBean, this.customerBean, this.promotionBookAppBean, this.serviceBookAppBean, this.shopBookAppBean)){
             Facade.getInstance().decorateView(ViewLayout.CUSTOMERPAYEDANDBOOKED);
         }
