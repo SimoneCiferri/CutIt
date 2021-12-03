@@ -110,33 +110,13 @@ public class Facade {
                 ClientBookAppointmentView clientbookappview = new ClientBookAppointmentView(startView);
                 viewMap.put(layout, clientbookappview);
             }
-            case HAIRDRESSERDELETEBOOKEDAPP -> {
-                HairdresserAppointmentInfoView hairdresserappinfoview = new HairdresserAppointmentInfoView(startView);
-                viewMap.put(layout, hairdresserappinfoview);
-            }
-            case HAIRDRESSERDELETEPROM -> {
-                HairdresserPromotionInfoView hairproinfoview = new HairdresserPromotionInfoView(startView);
-                viewMap.put(layout, hairproinfoview);
-            }
             case CLIENTAPPINFO -> {
                 ClientAppointmentInfoView clientappinfoview = new ClientAppointmentInfoView(startView);
                 viewMap.put(layout, clientappinfoview);
             }
-            case HAIRDRESSERDELETESERVICE -> {
-                HairdresserServiceInfoView hairserviceinfoview = new HairdresserServiceInfoView(startView);
-                viewMap.put(layout, hairserviceinfoview);
-            }
             case CLIENTPROMOTIONINFO -> {
                 ClientPromotionInfoView clientprominfoview = new ClientPromotionInfoView(startView);
                 viewMap.put(layout, clientprominfoview);
-            }
-            case HAIRDRESSERADDPROM -> {
-                HairdresserAddPromotionView hairaddpromview = new HairdresserAddPromotionView(startView);
-                viewMap.put(layout, hairaddpromview);
-            }
-            case HAIRDRESSERADDSERVICE -> {
-                HairdresserAddServiceView hairaddserviceview = new HairdresserAddServiceView(startView);
-                viewMap.put(layout, hairaddserviceview);
             }
             default -> throw new IllegalStateException("Illegal state type" + layout);
         }

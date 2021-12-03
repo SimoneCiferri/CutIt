@@ -23,7 +23,7 @@ public class HairdresserManageShopPageViewController {
 
     public void fillView(ShopBean bean){
         shopBean = bean;
-        System.out.println("Filling View from bean data passedBY TopBarHairdresserViewController");
+        System.out.println("Filling View from ShopBean data passedBY TopBarHairdresserViewController");
         //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
     }
 

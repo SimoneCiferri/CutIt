@@ -1,6 +1,10 @@
 package cutit.cutit.logic.controller;
 
+import cutit.cutit.logic.bean.DeleteAppointmentBean;
+import cutit.cutit.logic.controller.viewController.HairdresserDeleteBookedAppointmentsViewController;
 import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.decorator.concreteDecorator.HairdresserAppointmentsView;
+import cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 
@@ -24,8 +28,10 @@ public class LoginViewController {
     @FXML
     public boolean hairLogin() {
         Facade.getInstance().decorateView(ViewLayout.TOPBARHAIRDRESSER);
-        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERAPPOINTMENTS);
-        //passa la bean al controller della topBar
+        TopBarHairdresserView view = (TopBarHairdresserView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARHAIRDRESSER);
+        TopBarHairdresserViewController viewController = (TopBarHairdresserViewController) view.getLoadedViewController(ViewLayout.TOPBARHAIRDRESSER);
+        viewController.startBean(new DeleteAppointmentBean());
+        //passa la bean al controller della topBar così può fillare la view. La bean adesso viene creata a caso
         return true;
     }
 

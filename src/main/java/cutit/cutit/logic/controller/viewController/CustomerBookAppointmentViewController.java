@@ -11,10 +11,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
-
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class CustomerBookAppointmentViewController {
@@ -96,7 +92,7 @@ public class CustomerBookAppointmentViewController {
         btnRateShop.setOnMouseClicked((MouseEvent) -> rateShop());
         hCont.getChildren().addAll(btnGetDir, btnAddToFav, btnAddToCalendar, btnRateShop);
         cont.getChildren().addAll(l, l1, hCont);
-        bpInBookApp.getChildren().removeAll(hBoxTop, hBoxCentre, hBoxBottom);
+        bpInBookApp.getChildren().clear();
         bpInBookApp.setCenter(cont);
     }
 

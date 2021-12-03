@@ -5,15 +5,13 @@ import java.net.URL;
 public enum ViewLayout {
     START("/cutit/cutit/fxml/start.fxml"), TOPBAR("/cutit/cutit/fxml/topbar.fxml"),TOPBARCLIENT("/cutit/cutit/fxml/topbarclient.fxml"), TOPBARHAIRDRESSER("/cutit/cutit/fxml/topbarhairdresser.fxml"),
     HOME("/cutit/cutit/fxml/home.fxml"), UNLOGGEDPROMOTIONS("/cutit/cutit/fxml/unloggedpromotions.fxml"), LOGIN("/cutit/cutit/fxml/login.fxml"),
-    HAIRDRESSERAPPOINTMENTS("/cutit/cutit/fxml/hairdresserappointments.fxml"), SIGNUP("/cutit/cutit/fxml/signup.fxml"),
+    HAIRDRESSERAPPOINTMENTS("/cutit/cutit/fxml/hairdresserdeletebookedappointments.fxml"), SIGNUP("/cutit/cutit/fxml/signup.fxml"),
     FAVSHOP("/cutit/cutit/fxml/clientfavouritescs.fxml"), APPCL("/cutit/cutit/fxml/clientappointments.fxml"), PROMOTIONCLIENT("/cutit/cutit/fxml/clientpromotions.fxml"),
-    HAIRDRESSERPROMOTIONS("/cutit/cutit/fxml/hairdresserpromotions.fxml"), HAIRDRESSERSERVICES("/cutit/cutit/fxml/hairdresserservices.fxml"),
+    HAIRDRESSERPROMOTIONS("/cutit/cutit/fxml/hairdressermanagepromotions.fxml"), HAIRDRESSERSERVICES("/cutit/cutit/fxml/hairdressermanageservices.fxml"),
     HAIRDRESSERMANAGESHOPPAGE("/cutit/cutit/fxml/hairdressermanageshoppage.fxml"), SHOPINFO("/cutit/cutit/fxml/shopinfo.fxml"), CUSTOMERRATESHOP("/cutit/cutit/fxml/clientrateshop.fxml"),
     CLIENTBOOKAPPOINTMENT("/cutit/cutit/fxml/customerbookappointment.fxml"),
-    HAIRDRESSERDELETEBOOKEDAPP("/cutit/cutit/fxml/hairdresserdeleteappointment.fxml"), HAIRDRESSERDELETEPROM("/cutit/cutit/fxml/hairdresserdeletepromotion.fxml"),
-    CLIENTAPPINFO("/cutit/cutit/fxml/clientappointmentinfo.fxml"), HAIRDRESSERDELETESERVICE("/cutit/cutit/fxml/hairdresserdeleteservice.fxml"),
-    CLIENTPROMOTIONINFO("/cutit/cutit/fxml/clientpromotioninfo.fxml"), HAIRDRESSERADDPROM("/cutit/cutit/fxml/hairdresseraddpromotion.fxml"),
-    HAIRDRESSERADDSERVICE("/cutit/cutit/fxml/hairdresseraddservice.fxml");
+    CLIENTAPPINFO("/cutit/cutit/fxml/clientappointmentinfo.fxml"),
+    CLIENTPROMOTIONINFO("/cutit/cutit/fxml/clientpromotioninfo.fxml");
 
     private String res;
 
