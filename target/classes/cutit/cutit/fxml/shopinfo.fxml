@@ -72,7 +72,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="200.0" prefWidth="500.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Price list..." />
+                  <Label alignment="TOP_LEFT" prefHeight="200.0" prefWidth="500.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Price list..." />
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="130.0" text="Hairdressers" underline="true">
                      <VBox.margin>
                         <Insets top="15.0" />
@@ -81,7 +81,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="55.0" prefWidth="130.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Hairdressers..." />
+                  <Label alignment="TOP_LEFT" prefHeight="55.0" prefWidth="130.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Hairdressers..." />
                   <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="130.0" text="Photo" underline="true">
                      <VBox.margin>
                         <Insets top="15.0" />
