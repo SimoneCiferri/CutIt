@@ -28,7 +28,7 @@
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="720.0">
                            <children>
                               <ImageView fx:id="ivShopPhoto" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label prefHeight="25.0" prefWidth="90.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Label" />
+                              <Label prefHeight="25.0" prefWidth="90.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="069625500" />
                               <Label fx:id="lShopDescription" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="720.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Description">
                                  <VBox.margin>
                                     <Insets top="15.0" />
