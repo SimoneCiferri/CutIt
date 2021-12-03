@@ -13,7 +13,7 @@ public enum ViewLayout {
     HAIRDRESSERDELETEBOOKEDAPP("/cutit/cutit/fxml/hairdresserdeleteappointment.fxml"), HAIRDRESSERDELETEPROM("/cutit/cutit/fxml/hairdresserdeletepromotion.fxml"),
     CLIENTAPPINFO("/cutit/cutit/fxml/clientappointmentinfo.fxml"), HAIRDRESSERDELETESERVICE("/cutit/cutit/fxml/hairdresserdeleteservice.fxml"),
     CLIENTPROMOTIONINFO("/cutit/cutit/fxml/clientpromotioninfo.fxml"), HAIRDRESSERADDPROM("/cutit/cutit/fxml/hairdresseraddpromotion.fxml"),
-    HAIRDRESSERADDSERVICE("/cutit/cutit/fxml/hairdresseraddservice.fxml"), CUSTOMERPAYEDANDBOOKED("/cutit/cutit/fxml/customerpayedandbooked.fxml");
+    HAIRDRESSERADDSERVICE("/cutit/cutit/fxml/hairdresseraddservice.fxml");
 
     private String res;
 

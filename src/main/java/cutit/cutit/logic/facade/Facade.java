@@ -138,10 +138,6 @@ public class Facade {
                 HairdresserAddServiceView hairaddserviceview = new HairdresserAddServiceView(startView);
                 viewMap.put(layout, hairaddserviceview);
             }
-            case CUSTOMERPAYEDANDBOOKED -> {
-                CustomerPayedAndBookedView customerPayedAndBookedView = new CustomerPayedAndBookedView(startView);
-                viewMap.put(layout, customerPayedAndBookedView);
-            }
             default -> throw new IllegalStateException("Illegal state type" + layout);
         }
     }
