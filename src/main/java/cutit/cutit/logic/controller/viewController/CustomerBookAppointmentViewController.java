@@ -37,7 +37,6 @@ public class CustomerBookAppointmentViewController {
     @FXML
     public void initialize(){
         dtPicker.setValue(LocalDate.now());
-
         appointmentBean = new AppointmentBean();
         customerBean = new CustomerBean();
         promotionBookAppBean = new PromotionBookAppBean();
@@ -59,6 +58,12 @@ public class CustomerBookAppointmentViewController {
         if(bookAppointmentController.compileAppointment(this.appointmentBean, this.customerBean, this.promotionBookAppBean, this.serviceBookAppBean, this.shopBookAppBean)){
             showPayedAndBooked();
         }
+    }
+
+    @FXML
+    private void set830(){
+        labelDate.setText(dtPicker.getValue().toString() + "T" + "08:30:00");
+        label830.setBorder(new Border(new BorderStroke(Color.GREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
     }
 
     private void showPayedAndBooked() {
@@ -96,27 +101,21 @@ public class CustomerBookAppointmentViewController {
         bpInBookApp.setCenter(cont);
     }
 
-    @FXML
-    private void set830(){
-        labelDate.setText(dtPicker.getValue().toString() + "T" + "08:30:00");
-        label830.setBorder(new Border(new BorderStroke(Color.GREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
-    }
-
-    public void getDirections(){
+    private void getDirections(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
     }
 
-    public void rateShop(){
+    private void rateShop(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
         Facade.getInstance().decorateView(ViewLayout.CUSTOMERRATESHOP);
     }
 
-    public void addToFavourites(){
+    private void addToFavourites(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
         Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
     }
 
-    public void addAppToCalendar(){
+    private void addAppToCalendar(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
     }
 

@@ -1,11 +1,14 @@
-package cutit.cutit.logic.controller;
+package cutit.cutit.logic.controller.navigationViewController;
 
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+
 import java.io.IOException;
 
 public class HomeViewController {
@@ -23,6 +26,7 @@ public class HomeViewController {
     }
 
     private void showShops(){
+        vbInScroll.getChildren().clear();
         for(Integer i=0; i<6; i++){
             Label l = new Label("Barber"+ i);
             l.setPrefSize(895,130);
@@ -70,6 +74,15 @@ public class HomeViewController {
     public boolean goShopInfo() throws IOException {
         Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
         return true;
+    }
+
+    private void shopInfo(){
+        vbInScroll.getChildren().clear();
+        vbInScroll.setAlignment(Pos.TOP_LEFT);
+        Label name = new Label("Shop Name");
+        name.setTextFill(Color.WHITE);
+        vbInScroll.getChildren().addAll(name);
+        //Da completare dopo aver fatto la domanda al prof
     }
 
 }

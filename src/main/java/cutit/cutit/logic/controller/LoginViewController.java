@@ -1,9 +1,8 @@
 package cutit.cutit.logic.controller;
 
 import cutit.cutit.logic.bean.DeleteAppointmentBean;
-import cutit.cutit.logic.controller.viewController.HairdresserDeleteBookedAppointmentsViewController;
+import cutit.cutit.logic.controller.navigationViewController.TopBarHairdresserViewController;
 import cutit.cutit.logic.decorator.ViewLayout;
-import cutit.cutit.logic.decorator.concreteDecorator.HairdresserAppointmentsView;
 import cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;

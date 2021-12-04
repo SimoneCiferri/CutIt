@@ -16,4 +16,6 @@ module cutit.cutit {
     opens cutit.cutit.logic.decorator.concreteViewComponent to javafx.fxml;
     exports cutit.cutit.logic.controller.viewController;
     opens cutit.cutit.logic.controller.viewController  to javafx.fxml;
+    exports cutit.cutit.logic.controller.navigationViewController;
+    opens cutit.cutit.logic.controller.navigationViewController to javafx.fxml;
 }
