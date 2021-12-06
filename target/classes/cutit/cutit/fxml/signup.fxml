@@ -59,7 +59,7 @@
                         <Font size="14.0" />
                      </font>
                   </PasswordField>
-                  <Button mnemonicParsing="false" onMouseClicked="#trySignUp" text="SignUp">
+                  <Button mnemonicParsing="false" onMouseClicked="#trySignUpHair" text="SignUp">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
@@ -111,7 +111,7 @@
                         <Insets bottom="15.0" top="15.0" />
                      </VBox.margin>
                   </PasswordField>
-                  <Button mnemonicParsing="false" onMouseClicked="#trySignUp" text="SignUp">
+                  <Button mnemonicParsing="false" onMouseClicked="#trySignUpCustomer" text="SignUp">
                      <font>
                         <Font size="14.0" />
                      </font>

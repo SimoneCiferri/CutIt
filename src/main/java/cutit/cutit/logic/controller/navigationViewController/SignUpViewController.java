@@ -18,8 +18,16 @@ public class SignUpViewController {
     }
 
     @FXML
-    public boolean trySignUp(){
-        if(loginController.signUp(customerBean)){
+    public boolean trySignUpCustomer(){
+        if(loginController.signUpCustomer(customerBean)){
+            Facade.getInstance().decorateView(ViewLayout.LOGIN);
+        }
+        return true;
+    }
+
+    @FXML
+    public boolean trySignUpHair(){
+        if(loginController.signUpHair()){
             Facade.getInstance().decorateView(ViewLayout.LOGIN);
         }
         return true;
