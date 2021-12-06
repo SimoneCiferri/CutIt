@@ -16,6 +16,8 @@ import cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+
 import java.io.IOException;
 
 public class TopBarHairdresserViewController {
@@ -26,6 +28,9 @@ public class TopBarHairdresserViewController {
 
     @FXML
     private Label  btnHApp, btnHPromotions, btnHServices, btnHShop,  btnHLogout;
+
+    @FXML
+    private AnchorPane apTopBarHairdr;
 
     public boolean initialize() throws IOException {
         btnHApp.setStyle(pageFlagStyle);
@@ -95,7 +100,9 @@ public class TopBarHairdresserViewController {
 
     @FXML
     public boolean tryLogout() {
+        Facade.getInstance().getSTartView().getPrLayout().getChildren().remove(apTopBarHairdr);
         Facade.getInstance().logout();
+        Facade.getInstance().decorateView(ViewLayout.LOGIN);
         return true;
     }
 

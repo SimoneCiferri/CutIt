@@ -1,6 +1,5 @@
 package cutit.cutit.logic.facade;
 
-import cutit.cutit.logic.decorator.ViewLayout;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -17,7 +16,6 @@ public class Client extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Cut-It!");
-        facade.decorateView(ViewLayout.HOME);
         stage.show();
     }
 

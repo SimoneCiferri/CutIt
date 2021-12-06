@@ -3,8 +3,8 @@ package cutit.cutit.logic.decorator;
 import java.net.URL;
 
 public enum ViewLayout {
-    START("/cutit/cutit/fxml/start.fxml"), TOPBAR("/cutit/cutit/fxml/topbar.fxml"),TOPBARCLIENT("/cutit/cutit/fxml/topbarclient.fxml"), TOPBARHAIRDRESSER("/cutit/cutit/fxml/topbarhairdresser.fxml"),
-    HOME("/cutit/cutit/fxml/home.fxml"), UNLOGGEDPROMOTIONS("/cutit/cutit/fxml/unloggedpromotions.fxml"), LOGIN("/cutit/cutit/fxml/login.fxml"),
+    START("/cutit/cutit/fxml/start.fxml"),TOPBARCLIENT("/cutit/cutit/fxml/topbarcustomer.fxml"), TOPBARHAIRDRESSER("/cutit/cutit/fxml/topbarhairdresser.fxml"),
+    HOME("/cutit/cutit/fxml/home.fxml"), LOGIN("/cutit/cutit/fxml/login.fxml"),
     HAIRDRESSERAPPOINTMENTS("/cutit/cutit/fxml/hairdresserdeletebookedappointments.fxml"), SIGNUP("/cutit/cutit/fxml/signup.fxml"),
     FAVSHOP("/cutit/cutit/fxml/clientfavouritescs.fxml"), APPCL("/cutit/cutit/fxml/clientappointments.fxml"), PROMOTIONCLIENT("/cutit/cutit/fxml/clientpromotions.fxml"),
     HAIRDRESSERPROMOTIONS("/cutit/cutit/fxml/hairdressermanagepromotions.fxml"), HAIRDRESSERSERVICES("/cutit/cutit/fxml/hairdressermanageservices.fxml"),

@@ -1,4 +1,4 @@
-package cutit.cutit.logic.controller;
+package cutit.cutit.logic.controller.navigationViewController;
 
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;

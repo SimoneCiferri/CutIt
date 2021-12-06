@@ -1,4 +1,4 @@
-package cutit.cutit.logic.controller;
+package cutit.cutit.logic.controller.navigationViewController;
 
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import java.io.IOException;
 
-public class TopBarClientViewController {
+public class TopBarCustomerViewController {
 
     private final String transparentStyle = "-fx-background-color: transparent; ";
     private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
@@ -16,7 +16,7 @@ public class TopBarClientViewController {
     private Label btnClHome, btnClFav, btnClApp, btnClPromotion, btnClLogout;
 
     @FXML
-    private AnchorPane apTopBarClient;
+    private AnchorPane apTopBarCustomer;
 
     public boolean initialize() throws IOException {
         btnClHome.setStyle(pageFlagStyle);
@@ -73,7 +73,9 @@ public class TopBarClientViewController {
 
     @FXML
     public boolean tryLogout() {
+        Facade.getInstance().getSTartView().getPrLayout().getChildren().remove(apTopBarCustomer);
         Facade.getInstance().logout();
+        Facade.getInstance().decorateView(ViewLayout.LOGIN);
         return true;
     }
 

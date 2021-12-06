@@ -30,7 +30,7 @@ public class Facade {
         this.startView = new StartView();
         try{
             this.startView.loadXML(ViewLayout.START);
-            decorateView(ViewLayout.TOPBAR);
+            decorateView(ViewLayout.LOGIN);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -46,10 +46,6 @@ public class Facade {
                 HomeView homeview = new HomeView(startView);
                 viewMap.put(layout, homeview);
             }
-            case UNLOGGEDPROMOTIONS -> {
-                UnloggedPromotionView promotionView = new UnloggedPromotionView(startView);
-                viewMap.put(layout, promotionView);
-            }
             case LOGIN -> {
                 LoginView loginview = new LoginView(startView);
                 viewMap.put(layout, loginview);
@@ -61,10 +57,6 @@ public class Facade {
             case TOPBARHAIRDRESSER -> {
                 TopBarHairdresserView topbarhairdresserview = new TopBarHairdresserView(startView);
                 viewMap.put(layout, topbarhairdresserview);
-            }
-            case TOPBAR -> {
-                TopBarView topbarview = new TopBarView(startView);
-                viewMap.put(layout, topbarview);
             }
             case HAIRDRESSERAPPOINTMENTS -> {
                 HairdresserAppointmentsView hairdresserappointmentview = new HairdresserAppointmentsView(startView);
@@ -129,7 +121,5 @@ public class Facade {
     public void logout(){
         startView.getLoaded().clear();
         //forse anche il clear dei controller
-        decorateView(ViewLayout.TOPBAR);
-        decorateView(ViewLayout.HOME);
     }
 }

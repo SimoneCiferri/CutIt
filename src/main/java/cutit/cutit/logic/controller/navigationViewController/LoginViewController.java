@@ -1,4 +1,4 @@
-package cutit.cutit.logic.controller;
+package cutit.cutit.logic.controller.navigationViewController;
 
 import cutit.cutit.logic.bean.DeleteAppointmentBean;
 import cutit.cutit.logic.controller.navigationViewController.TopBarHairdresserViewController;
@@ -32,15 +32,6 @@ public class LoginViewController {
         viewController.startBean(new DeleteAppointmentBean());
         //passa la bean al controller della topBar così può fillare la view. La bean adesso viene creata a caso
         return true;
-    }
-
-    @FXML
-    public boolean backUnlogged(){
-        Facade.getInstance().decorateView(ViewLayout.TOPBAR);
-        Facade.getInstance().decorateView(ViewLayout.HOME);
-        //passa la bean al controller della topBar
-        return true;
-
     }
 
 }
