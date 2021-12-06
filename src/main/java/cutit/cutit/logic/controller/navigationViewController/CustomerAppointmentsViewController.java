@@ -1,4 +1,4 @@
-package cutit.cutit.logic.controller;
+package cutit.cutit.logic.controller.navigationViewController;
 
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
-public class ClientAppointmentsViewController {
+public class CustomerAppointmentsViewController {
 
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
 

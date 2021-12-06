@@ -1,4 +1,4 @@
-package cutit.cutit.logic.controller;
+package cutit.cutit.logic.controller.navigationViewController;
 
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.io.IOException;
 
-public class ClientRateShopViewController {
+public class CustomerRateShopViewController {
 
     private final String star = "/cutit/cutit/files/star.png";
 
