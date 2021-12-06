@@ -30,7 +30,7 @@ public class StartView implements ViewComponent {
     @Override
     public void loadXML(ViewLayout layout) throws IOException {
         if(!loadedView.containsKey(layout)){
-            System.out.println(layout + "( - view and controller) added to loadedView of StartView!");
+            //System.out.println(layout + "( - view and controller) added to loadedView of StartView!");
             FXMLLoader loader = new FXMLLoader(ViewLayout.getPath(layout));
             Pane prLayout = loader.load();
             Object controller = loader.getController();
