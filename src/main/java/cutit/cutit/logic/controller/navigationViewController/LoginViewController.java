@@ -1,6 +1,10 @@
 package cutit.cutit.logic.controller.navigationViewController;
 
+import cutit.cutit.logic.bean.CustomerBean;
 import cutit.cutit.logic.bean.DeleteAppointmentBean;
+import cutit.cutit.logic.bean.ManagePromotionBean;
+import cutit.cutit.logic.controller.applController.LoginController;
+import cutit.cutit.logic.controller.applController.ManagePromotionController;
 import cutit.cutit.logic.controller.navigationViewController.TopBarHairdresserViewController;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView;
@@ -10,12 +14,22 @@ import javafx.fxml.FXML;
 
 public class LoginViewController {
 
+    private CustomerBean customerBean;
+    private LoginController loginController;
+
     @FXML
-    public boolean tryLogin() {
-        Facade.getInstance().decorateView(ViewLayout.TOPBARCLIENT);
-        Facade.getInstance().decorateView(ViewLayout.HOME);
-        //passa la bean al controller della topBar
-        return true;
+    public void initialize(){
+        customerBean = new CustomerBean();
+        loginController = new LoginController();
+    }
+
+    @FXML
+    public void tryLogin() {
+        if(loginController.login(this.customerBean)){
+            Facade.getInstance().decorateView(ViewLayout.TOPBARCLIENT);
+            Facade.getInstance().decorateView(ViewLayout.HOME);
+            //passa la bean al controller della topBar
+        }
     }
 
     @FXML
