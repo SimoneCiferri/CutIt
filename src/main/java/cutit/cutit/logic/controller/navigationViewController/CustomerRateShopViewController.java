@@ -1,5 +1,8 @@
 package cutit.cutit.logic.controller.navigationViewController;
 
+import cutit.cutit.logic.bean.RateShopBean;
+import cutit.cutit.logic.controller.applController.BookAppointmentController;
+import cutit.cutit.logic.controller.applController.LoginController;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
@@ -10,12 +13,15 @@ import java.io.IOException;
 public class CustomerRateShopViewController {
 
     private final String star = "/cutit/cutit/files/star.png";
+    private BookAppointmentController bookAppointmentController;
+    private RateShopBean rateShopBean;
 
     @FXML
     private ImageView ivStar1, ivStar2, ivStar3, ivStar4, ivStar5;
 
     public boolean initialize() throws IOException {
-        System.out.println("Rate Shop page (client)");
+        bookAppointmentController = new BookAppointmentController();
+        rateShopBean = new RateShopBean();
         Image image = new Image(getClass().getResource(star).toString());
         ivStar1.setImage(image);
         ivStar2.setImage(image);
@@ -27,13 +33,16 @@ public class CustomerRateShopViewController {
 
     @FXML
     public void rate5(){
-        System.out.println("5 star pressed");
+        System.out.println("            5 star pressed");
     }
 
     @FXML
     public boolean rateShop(){
-        Facade.getInstance().decorateView(ViewLayout.HOME);
-        return true;
+        if(bookAppointmentController.rateShop(this.rateShopBean)) {
+            Facade.getInstance().decorateView(ViewLayout.HOME);
+            return true;
+        }
+        return false;
     }
 
 }

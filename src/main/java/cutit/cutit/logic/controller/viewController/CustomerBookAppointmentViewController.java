@@ -16,8 +16,8 @@ import java.time.LocalDate;
 public class CustomerBookAppointmentViewController {
 
     private AppointmentBean appointmentBean;
-    private RateShopBean rateShopBean;
     private BookAppointmentController bookAppointmentController;
+    private RateShopBean shopBean;
 
     @FXML
     private BorderPane bpInBookApp;
@@ -35,7 +35,7 @@ public class CustomerBookAppointmentViewController {
     public void initialize(){
         dtPicker.setValue(LocalDate.now());
         appointmentBean = new AppointmentBean();
-        rateShopBean = new RateShopBean();
+        shopBean = new RateShopBean();
         bookAppointmentController = new BookAppointmentController();
     }
 
@@ -106,7 +106,9 @@ public class CustomerBookAppointmentViewController {
 
     private void addToFavourites(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
+        if(bookAppointmentController.addShopToFavourites(this.shopBean)){
+            Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
+        }
     }
 
     private void addAppToCalendar(){
