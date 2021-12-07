@@ -16,10 +16,7 @@ import java.time.LocalDate;
 public class CustomerBookAppointmentViewController {
 
     private AppointmentBean appointmentBean;
-    private CustomerBean customerBean;
-    private PromotionBookAppBean promotionBookAppBean;
-    private ServiceBookAppBean serviceBookAppBean;
-    private ShopBookAppBean shopBookAppBean;
+    private RateShopBean rateShopBean;
     private BookAppointmentController bookAppointmentController;
 
     @FXML
@@ -38,10 +35,7 @@ public class CustomerBookAppointmentViewController {
     public void initialize(){
         dtPicker.setValue(LocalDate.now());
         appointmentBean = new AppointmentBean();
-        customerBean = new CustomerBean();
-        promotionBookAppBean = new PromotionBookAppBean();
-        serviceBookAppBean = new ServiceBookAppBean();
-        shopBookAppBean = new ShopBookAppBean();
+        rateShopBean = new RateShopBean();
         bookAppointmentController = new BookAppointmentController();
     }
 
@@ -55,7 +49,7 @@ public class CustomerBookAppointmentViewController {
     public void bookAppointment() {
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
         //DA RIVEDERE BENE LE FUNZIONI (RIVEDERE IL VOPC)!
-        if(bookAppointmentController.compileAppointment(this.appointmentBean, this.customerBean, this.promotionBookAppBean, this.serviceBookAppBean, this.shopBookAppBean)){
+        if(bookAppointmentController.compileAppointment(this.appointmentBean)){
             showPayedAndBooked();
         }
     }

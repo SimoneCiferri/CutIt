@@ -1,12 +1,8 @@
 package cutit.cutit.logic.controller.navigationViewController;
 
-import cutit.cutit.logic.bean.CustomerBean;
 import cutit.cutit.logic.bean.DeleteAppointmentBean;
-import cutit.cutit.logic.bean.ManagePromotionBean;
 import cutit.cutit.logic.bean.UserBean;
 import cutit.cutit.logic.controller.applController.LoginController;
-import cutit.cutit.logic.controller.applController.ManagePromotionController;
-import cutit.cutit.logic.controller.navigationViewController.TopBarHairdresserViewController;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView;
 import cutit.cutit.logic.facade.Facade;
