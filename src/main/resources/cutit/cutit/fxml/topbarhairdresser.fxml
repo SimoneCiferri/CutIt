@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="apTopBarHairdr" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="1024.0" style="-fx-border-color: grey; -fx-background-color: lightgrey; -fx-border-radius: 5;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.navigationViewController.TopBarHairdresserViewController">
+<AnchorPane fx:id="apTopBarHairdr" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="1024.0" style="-fx-border-color: grey; -fx-background-color: lightgrey;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.navigationViewController.TopBarHairdresserViewController">
     <children>
         <Label fx:id="btnHApp" alignment="CENTER" layoutX="61.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#goApp" prefHeight="55.0" prefWidth="150.0" text="Appointments" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
         <Label fx:id="btnHPromotions" alignment="CENTER" layoutX="176.0" layoutY="19.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#goProm" prefHeight="55.0" prefWidth="150.0" text="Promotions" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" />
