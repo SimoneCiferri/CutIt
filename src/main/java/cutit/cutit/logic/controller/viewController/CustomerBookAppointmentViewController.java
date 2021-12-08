@@ -37,6 +37,7 @@ public class CustomerBookAppointmentViewController {
         appointmentBean = new AppointmentBean();
         shopBean = new RateShopBean();
         bookAppointmentController = new BookAppointmentController();
+        System.out.println("CONTROLLER GRAFICO CUSTOMERBOOKAPPOINTMENTVIEWCONTROLLER");
     }
 
     @FXML
@@ -113,6 +114,9 @@ public class CustomerBookAppointmentViewController {
 
     private void addAppToCalendar(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
+        if(bookAppointmentController.addToCalendar(this.appointmentBean)){
+            Facade.getInstance().decorateView(ViewLayout.HOME);
+        }
     }
 
 

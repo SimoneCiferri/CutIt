@@ -24,6 +24,7 @@ public class TopBarCustomerViewController {
         btnClApp.setStyle(transparentStyle);
         btnClFav.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
+        System.out.println("CONTROLLER GRAFICO TOPBARCUSTOMERVIEWCONTROLLER");
         return true;
     }
 

@@ -9,6 +9,7 @@ import java.io.IOException;
 public class ShopInfoViewController {
 
     public boolean initialize() throws IOException {
+        System.out.println("CONTROLLER GRAFICO SHOPINFOVIEWCONTROLLER");
         return true;
     }
 

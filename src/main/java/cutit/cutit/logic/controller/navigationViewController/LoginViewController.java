@@ -26,6 +26,7 @@ public class LoginViewController {
     public void initialize(){
         userBean = new UserBean();
         loginController = new LoginController();
+        System.out.println("CONTROLLER GRAFICO LOGINVIEWCONTROLLER");
     }
 
     @FXML

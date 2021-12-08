@@ -31,6 +31,7 @@ public class HairdresserDeleteBookedAppointmentsViewController {
         deleteBookedAppointmentController = new DeleteBookedAppointmentController();
         vbInScrollHApp.setSpacing(15);
         showAppointments();
+        System.out.println("CONTROLLER GRAFICO HAIRDRESSERDELETEBOOKEDAPPOINTMENTSVIEWCONTROLLER");
     }
 
     private void showAppointments() {

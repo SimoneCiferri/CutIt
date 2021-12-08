@@ -13,6 +13,7 @@ public class HairdresserManageShopPageViewController {
     public void initialize(){
         shopBean = new ShopBean();
         manageShopPageController = new ManageShopPageController();
+        System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESHOPPAGEVIEWCONTROLLER");
     }
 
     @FXML

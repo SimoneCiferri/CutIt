@@ -19,6 +19,7 @@ public class HomeViewController {
     public boolean initialize() throws IOException {
         vbInScroll.setSpacing(15);
         showShops();
+        System.out.println("CONTROLLER GRAFICO HOMEVIEWCONTROLLER");
         return true;
     }
 

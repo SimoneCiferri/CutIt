@@ -27,6 +27,7 @@ public class HairdresserManagePromotionsViewController {
         managePromotionController = new ManagePromotionController();
         vbInScrollHProm.setSpacing(15);
         showHairProm();
+        System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGEPROMOTIONSVIEWCONTROLLER");
     }
 
     private void showHairProm() {

@@ -28,6 +28,7 @@ public class HairdresserManageServicesViewController {
         manageServicesController = new ManageServicesController();
         vbInScrollHS.setSpacing(15);
         showHairServ();
+        System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESERVICESVIEWCONTROLLER");
     }
 
     private void showHairServ() {
