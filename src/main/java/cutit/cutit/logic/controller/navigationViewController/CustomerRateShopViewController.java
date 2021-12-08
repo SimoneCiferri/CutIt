@@ -28,6 +28,7 @@ public class CustomerRateShopViewController {
         ivStar3.setImage(image);
         ivStar4.setImage(image);
         ivStar5.setImage(image);
+        System.out.println("CONTROLLER GRAFICO CUSTOMERRATESHOPVIEWCONTROLLER");
         return true;
     }
 

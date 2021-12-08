@@ -4,7 +4,14 @@ import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 
+import java.io.IOException;
+
 public class CustomerPromotionInfoViewController {
+
+    public boolean initialize(){
+        System.out.println("CONTROLLER GRAFICO CUSTOMERPROMOTIONINFOVIEWCONTROLLER");
+        return true;
+    }
 
     @FXML
     public boolean goBackToPromC(){

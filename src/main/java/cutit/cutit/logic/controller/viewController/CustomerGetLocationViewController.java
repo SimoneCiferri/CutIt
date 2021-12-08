@@ -12,6 +12,7 @@ public class CustomerGetLocationViewController {
 
 
     public boolean initialize() throws IOException {
+        System.out.println("CONTROLLER GRAFICO CUSTOMERGETLOCATIONVIEWCONTROLLER");
         return true;
     }
 

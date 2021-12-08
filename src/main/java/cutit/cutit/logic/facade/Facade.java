@@ -30,6 +30,7 @@ public class Facade {
         this.startView = new StartView();
         try{
             this.startView.loadXML(ViewLayout.START);
+            decorateView(ViewLayout.TOPBAR);
             decorateView(ViewLayout.LOGIN);
         }catch (Exception e){
             e.printStackTrace();
@@ -50,6 +51,11 @@ public class Facade {
                 LoginView loginview = new LoginView(startView);
                 viewMap.put(layout, loginview);
             }
+            case TOPBAR -> {
+                TopBarView topBarView = new TopBarView(startView);
+                viewMap.put(layout, topBarView);
+            }
+
             case TOPBARCLIENT -> {
                 TopBarClientView topbarclientview = new TopBarClientView(startView);
                 viewMap.put(layout, topbarclientview);

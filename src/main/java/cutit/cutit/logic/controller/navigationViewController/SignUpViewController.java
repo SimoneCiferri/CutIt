@@ -12,6 +12,7 @@ public class SignUpViewController {
     @FXML
     public void initialize(){
         loginController = new LoginController();
+        System.out.println("CONTROLLER GRAFICO SIGNUPVIEWCONTROLLER");
     }
 
     @FXML

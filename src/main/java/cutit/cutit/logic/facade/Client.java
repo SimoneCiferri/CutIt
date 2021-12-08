@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Client extends Application {
 
@@ -16,6 +17,7 @@ public class Client extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.setTitle("Cut-It!");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
 

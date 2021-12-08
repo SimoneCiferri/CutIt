@@ -19,6 +19,7 @@ public class CustomerAppointmentsViewController {
     public boolean initialize() throws IOException {
         vbInScrollCA.setSpacing(15);
         showClientApp();
+        System.out.println("CONTROLLER GRAFICO CUSTOMERAPPOINTMENTSVIEWCONTROLLER");
         return true;
     }
 

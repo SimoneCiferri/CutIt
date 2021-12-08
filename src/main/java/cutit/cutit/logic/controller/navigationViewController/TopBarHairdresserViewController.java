@@ -16,7 +16,10 @@ import cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -24,6 +27,8 @@ public class TopBarHairdresserViewController {
 
     private final String transparentStyle = "-fx-background-color: transparent; ";
     private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
+    private final String exit = "/cutit/cutit/files/exit.png";
+    private final String reduce = "/cutit/cutit/files/hair_comb.png";
     private DeleteAppointmentBean deleteAppointmentBean;
 
     @FXML
@@ -32,12 +37,16 @@ public class TopBarHairdresserViewController {
     @FXML
     private AnchorPane apTopBarHairdr;
 
+    @FXML
+    private ImageView ivExit, ivReduce;
+
     public boolean initialize() throws IOException {
         btnHApp.setStyle(pageFlagStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
+        setImageView();
         System.out.println("CONTROLLER GRAFICO TOPBARHAIRDRESSERVIEWCONTROLLER");
         return true;
     }
@@ -103,14 +112,34 @@ public class TopBarHairdresserViewController {
     public boolean tryLogout() {
         Facade.getInstance().getSTartView().getPrLayout().getChildren().remove(apTopBarHairdr);
         Facade.getInstance().logout();
+        Facade.getInstance().decorateView(ViewLayout.TOPBAR);
         Facade.getInstance().decorateView(ViewLayout.LOGIN);
         return true;
+    }
+
+    @FXML
+    public void closeIV(){
+        Stage stage = (Stage)apTopBarHairdr.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void reduce(){
+        Stage stage = (Stage)apTopBarHairdr.getScene().getWindow();
+        stage.setIconified(true);
     }
 
     public void startBean(DeleteAppointmentBean bean){
         System.out.println("Getting DeleteAppointmentBean passedBY LoginViewController");
         this.deleteAppointmentBean = bean;
         goApp();
+    }
+
+    private void setImageView() {
+        Image exitI = new Image(getClass().getResource(exit).toString());
+        Image comb = new Image(getClass().getResource(reduce).toString());
+        ivExit.setImage(exitI);
+        ivReduce.setImage(comb);
     }
 
 }

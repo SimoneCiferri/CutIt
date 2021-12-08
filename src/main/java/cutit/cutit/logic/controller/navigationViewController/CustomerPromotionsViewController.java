@@ -20,6 +20,7 @@ public class CustomerPromotionsViewController {
     public boolean initialize() throws IOException {
         vbInScrollCProm.setSpacing(15);
         showClientProm();
+        System.out.println("CONTROLLER GRAFICO CUSTOMERPROMOTIONSVIEWCONTROLLER");
         return true;
     }
 

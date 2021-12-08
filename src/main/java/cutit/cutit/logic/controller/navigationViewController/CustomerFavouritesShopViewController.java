@@ -16,9 +16,10 @@ public class CustomerFavouritesShopViewController {
     @FXML
     private VBox vbInScrollCFav;
 
-    public boolean initialize() throws IOException {
+    public boolean initialize(){
         vbInScrollCFav.setSpacing(15);
         showClientFav();
+        System.out.println("CONTROLLER GRAFICO CUSTOMERFAVOURITESSHOPVIEWCONTROLLER");
         return true;
     }
 
