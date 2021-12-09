@@ -1,13 +1,11 @@
 package cutit.cutit.logic.controller.navigationViewController;
 
-import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;

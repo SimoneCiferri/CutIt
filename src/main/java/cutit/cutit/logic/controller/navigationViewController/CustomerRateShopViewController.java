@@ -7,7 +7,6 @@ import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.io.IOException;
 import java.net.URL;
 
