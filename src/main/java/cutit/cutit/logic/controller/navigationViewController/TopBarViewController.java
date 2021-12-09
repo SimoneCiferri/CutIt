@@ -57,6 +57,7 @@ public class TopBarViewController {
         Image comb = new Image(getClass().getResource(reduce).toString());
         ivExit.setImage(exitI);
         ivReduce.setImage(comb);
+        //test
     }
 
 }
