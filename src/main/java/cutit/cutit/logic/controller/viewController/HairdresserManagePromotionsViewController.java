@@ -1,7 +1,6 @@
 package cutit.cutit.logic.controller.viewController;
 
 import cutit.cutit.logic.bean.ManagePromotionBean;
-import cutit.cutit.logic.bean.ManageServiceBean;
 import cutit.cutit.logic.controller.applController.ManagePromotionController;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -33,20 +32,16 @@ public class HairdresserManagePromotionsViewController {
     private void showHairProm() {
         vbInScrollHProm.getChildren().clear();
         Button add = new Button("Add Promotion");
-        add.setOnMouseClicked((MouseEvent) -> {
-            addForm();
-        });
+        add.setOnMouseClicked((MouseEvent) -> addForm());
         vbInScrollHProm.getChildren().add(add);
-        for(Integer i=0; i<4; i++) {
-            Label l = new Label("Promotion"+i.toString());
+        for(int i = 0; i<4; i++) {
+            Label l = new Label("Promotion"+ i);
             l.setPrefSize(895, 130);
             l.setMinSize(895, 130);
             l.setMaxSize(895, 130);
             l.setStyle(labelStyle);
             l.setPadding(new Insets(0, 0, 10, 20));
-            l.setOnMouseClicked((MouseEvent) -> {
-                deleteForm();
-            });
+            l.setOnMouseClicked((MouseEvent) -> deleteForm());
             vbInScrollHProm.getChildren().add(l);
         }
     }
