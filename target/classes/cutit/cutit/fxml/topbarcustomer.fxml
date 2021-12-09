@@ -4,7 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="apTopBarCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="1024.0" style="-fx-border-color: grey; -fx-background-color: lightgrey;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.navigationViewController.TopBarCustomerViewController">
+<AnchorPane fx:id="apTopBarCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#setOff" onMousePressed="#getOffset" prefHeight="81.0" prefWidth="1024.0" style="-fx-border-color: grey; -fx-background-color: lightgrey;" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.navigationViewController.TopBarCustomerViewController">
    <children>
       <Label fx:id="btnClHome" alignment="CENTER" layoutX="2.0" layoutY="26.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#goHome" prefHeight="55.0" prefWidth="150.0" text="Home" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" />
       <Label fx:id="btnClFav" alignment="CENTER" layoutX="153.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#goFav" prefHeight="55.0" prefWidth="150.0" text="Favourites" textAlignment="CENTER" underline="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="152.0" />

@@ -27,13 +27,6 @@ public class TopBarViewController {
         return true;
     }
 
-    private void setImageView() {
-        Image exitI = new Image(getClass().getResource(exit).toString());
-        Image comb = new Image(getClass().getResource(reduce).toString());
-        ivExit.setImage(exitI);
-        ivReduce.setImage(comb);
-    }
-
     @FXML
     public void closeIV(){
         Stage stage = (Stage)apTopBar.getScene().getWindow();
@@ -57,6 +50,13 @@ public class TopBarViewController {
     void setOff(MouseEvent event) {
         apTopBar.getScene().getWindow().setX(event.getScreenX() + xOffset);
         apTopBar.getScene().getWindow().setY(event.getScreenY() + yOffset);
+    }
+
+    private void setImageView() {
+        Image exitI = new Image(getClass().getResource(exit).toString());
+        Image comb = new Image(getClass().getResource(reduce).toString());
+        ivExit.setImage(exitI);
+        ivReduce.setImage(comb);
     }
 
 }
