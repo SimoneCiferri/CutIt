@@ -52,7 +52,7 @@ public class LoginViewController {
         TopBarHairdresserView view = (TopBarHairdresserView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARHAIRDRESSER);
         TopBarHairdresserViewController viewController = (TopBarHairdresserViewController) view.getLoadedViewController(ViewLayout.TOPBARHAIRDRESSER);
         viewController.startBean(new DeleteAppointmentBean());
-        //passa la bean al controller della topBar così può fillare la view. La bean adesso viene creata a caso
+        //passa la bean al controller della topBar così può fillare la view. La bean adesso viene creata a caso!
         return true;
     }
 
