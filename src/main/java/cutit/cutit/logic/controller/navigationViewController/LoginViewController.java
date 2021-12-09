@@ -32,7 +32,7 @@ public class LoginViewController {
     @FXML
     public void tryLogin() {
         userBean.setUsername(tfUsername.getText());
-        userBean.setPswd(pfPassword.getText());
+        userBean.setPasswd(pfPassword.getText());
         if(loginController.login(this.userBean)){
             Facade.getInstance().decorateView(ViewLayout.TOPBARCLIENT);
             Facade.getInstance().decorateView(ViewLayout.HOME);

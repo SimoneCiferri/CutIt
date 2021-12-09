@@ -48,9 +48,9 @@ public class TopBarViewController {
 
 
     @FXML
-    void setOffset(MouseEvent event) {
-        xOffset = apTopBar.getScene().getX() - event.getScreenX();
-        yOffset = apTopBar.getScene().getY() - event.getScreenY();
+    void getOffset(MouseEvent event) {
+        xOffset = apTopBar.getScene().getWindow().getX() - event.getScreenX();
+        yOffset = apTopBar.getScene().getWindow().getY() - event.getScreenY();
     }
 
     @FXML

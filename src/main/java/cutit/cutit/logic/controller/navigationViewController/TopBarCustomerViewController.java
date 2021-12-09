@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
@@ -17,6 +18,8 @@ public class TopBarCustomerViewController {
     private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
     private final String exit = "/cutit/cutit/files/exit.png";
     private final String reduce = "/cutit/cutit/files/hair_comb.png";
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @FXML
     private Label btnClHome, btnClFav, btnClApp, btnClPromotion, btnClLogout;
@@ -101,6 +104,18 @@ public class TopBarCustomerViewController {
     public void reduce(){
         Stage stage = (Stage)apTopBarCustomer.getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    @FXML
+    void getOffset(MouseEvent event) {
+        xOffset = apTopBarCustomer.getScene().getWindow().getX() - event.getScreenX();
+        yOffset = apTopBarCustomer.getScene().getWindow().getY() - event.getScreenY();
+    }
+
+    @FXML
+    void setOff(MouseEvent event) {
+        apTopBarCustomer.getScene().getWindow().setX(event.getScreenX() + xOffset);
+        apTopBarCustomer.getScene().getWindow().setY(event.getScreenY() + yOffset);
     }
 
     private void setImageView() {

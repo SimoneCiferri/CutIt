@@ -3,7 +3,7 @@ package cutit.cutit.logic.bean;
 public class UserBean {
 
     private String username;
-    private String pswd;
+    private String passwd;
 
     public String getUsername() {
         return username;
@@ -13,12 +13,12 @@ public class UserBean {
         this.username = username;
     }
 
-    public String getPswd() {
-        return pswd;
+    public String getPasswd() {
+        return passwd;
     }
 
-    public void setPswd(String pswd) {
-        this.pswd = pswd;
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
     }
 
 }
