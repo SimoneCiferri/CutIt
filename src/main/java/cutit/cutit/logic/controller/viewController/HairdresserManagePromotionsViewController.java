@@ -80,6 +80,9 @@ public class HairdresserManagePromotionsViewController {
         promName.setMaxSize(180, 25);
         ChoiceBox promService = new ChoiceBox();
         promService.setMaxSize(180,25);
+        promService.getItems().add("Taglio: 15$");
+        promService.getItems().add("Taglio = Shampo: 20$");
+        promService.getItems().add("Barba: 10$");
         TextArea promValue = new TextArea();
         promValue.setPromptText("5");
         promValue.setMaxSize(60,25);
