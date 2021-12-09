@@ -4,7 +4,9 @@ import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.decorator.concreteDecorator.*;
 import cutit.cutit.logic.decorator.concreteViewComponent.StartView;
+import cutit.cutit.logic.exception.ExceptionHandler;
 
+import java.io.IOException;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -32,8 +34,8 @@ public class Facade {
             this.startView.loadXML(ViewLayout.START);
             decorateView(ViewLayout.TOPBAR);
             decorateView(ViewLayout.LOGIN);
-        }catch (Exception e){
-            e.printStackTrace();
+        }catch (IOException e){
+            ExceptionHandler.getInstance().handleException(e);
         }
     }
 
@@ -116,7 +118,6 @@ public class Facade {
                 ClientPromotionInfoView clientprominfoview = new ClientPromotionInfoView(startView);
                 viewMap.put(layout, clientprominfoview);
             }
-            default -> throw new IllegalStateException("Illegal state type" + layout);
         }
     }
 
