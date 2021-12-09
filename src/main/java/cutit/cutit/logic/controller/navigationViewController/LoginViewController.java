@@ -1,9 +1,11 @@
 package cutit.cutit.logic.controller.navigationViewController;
 
+import cutit.cutit.logic.bean.CustomerBean;
 import cutit.cutit.logic.bean.DeleteAppointmentBean;
 import cutit.cutit.logic.bean.UserBean;
 import cutit.cutit.logic.controller.applController.LoginController;
 import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.decorator.concreteDecorator.TopBarCustomerView;
 import cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
@@ -34,8 +36,10 @@ public class LoginViewController {
         userBean.setUsername(tfUsername.getText());
         userBean.setPasswd(pfPassword.getText());
         if(loginController.login(this.userBean)){
-            Facade.getInstance().decorateView(ViewLayout.TOPBARCLIENT);
-            Facade.getInstance().decorateView(ViewLayout.HOME);
+            Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
+            TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
+            TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
+            viewController.startBean(new CustomerBean());
             //passa la bean al controller della topBar
         }
     }

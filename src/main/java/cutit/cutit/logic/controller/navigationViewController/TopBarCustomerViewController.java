@@ -1,6 +1,12 @@
 package cutit.cutit.logic.controller.navigationViewController;
 
+import cutit.cutit.logic.bean.CustomerBean;
+import cutit.cutit.logic.bean.ShopBean;
 import cutit.cutit.logic.decorator.ViewLayout;
+import cutit.cutit.logic.decorator.concreteDecorator.CustomerAppointmentsView;
+import cutit.cutit.logic.decorator.concreteDecorator.CustomerFavouritesShopView;
+import cutit.cutit.logic.decorator.concreteDecorator.CustomerPromotionsView;
+import cutit.cutit.logic.decorator.concreteDecorator.HomeView;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -20,6 +26,7 @@ public class TopBarCustomerViewController {
     private final String reduce = "/cutit/cutit/files/hair_comb.png";
     private double xOffset = 0;
     private double yOffset = 0;
+    private CustomerBean customerBean;
 
     @FXML
     private Label btnClHome, btnClFav, btnClApp, btnClPromotion, btnClLogout;
@@ -43,23 +50,29 @@ public class TopBarCustomerViewController {
 
     @FXML
     public boolean goHome() {
-        Facade.getInstance().decorateView(ViewLayout.HOME);
         btnClHome.setStyle(pageFlagStyle);
         btnClPromotion.setStyle(transparentStyle);
         btnClApp.setStyle(transparentStyle);
         btnClFav.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
+        Facade.getInstance().decorateView(ViewLayout.HOME);
+        HomeView view = (HomeView)Facade.getInstance().getViewMap().get(ViewLayout.HOME);
+        HomeViewController viewController = (HomeViewController) view.getLoadedViewController(ViewLayout.HOME);
+        viewController.fillView(new ShopBean());
         return true;
     }
 
     @FXML
     public boolean goFav() {
-        Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
         btnClHome.setStyle(transparentStyle);
         btnClFav.setStyle(pageFlagStyle);
         btnClApp.setStyle(transparentStyle);
         btnClPromotion.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
+        Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
+        CustomerFavouritesShopView view = (CustomerFavouritesShopView) Facade.getInstance().getViewMap().get(ViewLayout.FAVSHOP);
+        CustomerFavouritesShopViewController viewController = (CustomerFavouritesShopViewController) view.getLoadedViewController(ViewLayout.FAVSHOP);
+        viewController.fillView(new ShopBean());
         return true;
     }
 
@@ -70,18 +83,24 @@ public class TopBarCustomerViewController {
         btnClApp.setStyle(pageFlagStyle);
         btnClPromotion.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
-        Facade.getInstance().decorateView(ViewLayout.APPCL);
+        Facade.getInstance().decorateView(ViewLayout.CUSTOMERAPPOINTMENTS);
+        CustomerAppointmentsView view = (CustomerAppointmentsView) Facade.getInstance().getViewMap().get(ViewLayout.CUSTOMERAPPOINTMENTS);
+        CustomerAppointmentsViewController viewController =(CustomerAppointmentsViewController) view.getLoadedViewController(ViewLayout.CUSTOMERAPPOINTMENTS);
+        viewController.fillView(new ShopBean());
         return true;
     }
 
     @FXML
     public boolean goProm() {
-        Facade.getInstance().decorateView(ViewLayout.PROMOTIONCLIENT);
         btnClHome.setStyle(transparentStyle);
         btnClFav.setStyle(transparentStyle);
         btnClApp.setStyle(transparentStyle);
         btnClPromotion.setStyle(pageFlagStyle);
         btnClLogout.setStyle(transparentStyle);
+        Facade.getInstance().decorateView(ViewLayout.CUSTOMERPROMOTIONS);
+        CustomerPromotionsView view =(CustomerPromotionsView) Facade.getInstance().getViewMap().get(ViewLayout.CUSTOMERPROMOTIONS);
+        CustomerPromotionsViewController viewController = (CustomerPromotionsViewController) view.getLoadedViewController(ViewLayout.CUSTOMERPROMOTIONS);
+        viewController.fillView(new ShopBean());
         return true;
     }
 
@@ -123,6 +142,12 @@ public class TopBarCustomerViewController {
         Image comb = new Image(getClass().getResource(reduce).toString());
         ivExit.setImage(exitI);
         ivReduce.setImage(comb);
+    }
+
+    public void startBean(CustomerBean bean){
+        System.out.println("Getting CustomerBean passedBY LoginViewController");
+        this.customerBean = bean;
+        goHome();
     }
 
 }

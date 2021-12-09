@@ -56,8 +56,8 @@ public class Facade {
                 viewMap.put(layout, topBarView);
             }
 
-            case TOPBARCLIENT -> {
-                TopBarClientView topbarclientview = new TopBarClientView(startView);
+            case TOPBARCUSTOMER -> {
+                TopBarCustomerView topbarclientview = new TopBarCustomerView(startView);
                 viewMap.put(layout, topbarclientview);
             }
             case TOPBARHAIRDRESSER -> {
@@ -73,15 +73,15 @@ public class Facade {
                 viewMap.put(layout, signupview);
             }
             case FAVSHOP -> {
-                ClientFavouritesShopView clientfavshopview = new ClientFavouritesShopView(startView);
+                CustomerFavouritesShopView clientfavshopview = new CustomerFavouritesShopView(startView);
                 viewMap.put(layout, clientfavshopview);
             }
-            case PROMOTIONCLIENT -> {
-                ClientPromotionsView clientpromview = new ClientPromotionsView(startView);
+            case CUSTOMERPROMOTIONS -> {
+                CustomerPromotionsView clientpromview = new CustomerPromotionsView(startView);
                 viewMap.put(layout, clientpromview);
             }
-            case APPCL -> {
-                ClientAppointmentsView clientappview = new ClientAppointmentsView(startView);
+            case CUSTOMERAPPOINTMENTS -> {
+                CustomerAppointmentsView clientappview = new CustomerAppointmentsView(startView);
                 viewMap.put(layout, clientappview);
             }
             case HAIRDRESSERPROMOTIONS -> {

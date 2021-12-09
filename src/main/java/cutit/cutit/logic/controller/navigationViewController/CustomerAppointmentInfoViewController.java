@@ -4,8 +4,6 @@ import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 
-import java.io.IOException;
-
 public class CustomerAppointmentInfoViewController {
 
     public boolean initialize() {
@@ -15,7 +13,7 @@ public class CustomerAppointmentInfoViewController {
 
     @FXML
     public boolean goBackToAppList(){
-        Facade.getInstance().decorateView(ViewLayout.APPCL);
+        Facade.getInstance().decorateView(ViewLayout.CUSTOMERAPPOINTMENTS);
         return true;
     }
 

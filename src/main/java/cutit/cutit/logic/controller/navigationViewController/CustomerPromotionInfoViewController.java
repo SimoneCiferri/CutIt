@@ -4,8 +4,6 @@ import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 
-import java.io.IOException;
-
 public class CustomerPromotionInfoViewController {
 
     public boolean initialize(){
@@ -15,7 +13,7 @@ public class CustomerPromotionInfoViewController {
 
     @FXML
     public boolean goBackToPromC(){
-        Facade.getInstance().decorateView(ViewLayout.PROMOTIONCLIENT);
+        Facade.getInstance().decorateView(ViewLayout.CUSTOMERPROMOTIONS);
         return true;
     }
 

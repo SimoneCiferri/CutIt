@@ -1,5 +1,6 @@
 package cutit.cutit.logic.controller.navigationViewController;
 
+import cutit.cutit.logic.bean.ShopBean;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ public class HomeViewController {
 
     private Integer currPage = 1;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private ShopBean shopBean;
 
     @FXML
     private VBox vbInScroll;
@@ -25,20 +27,14 @@ public class HomeViewController {
 
     private void showShops(){
         vbInScroll.getChildren().clear();
-        for(Integer i=0; i<6; i++){
+        for(int i = 0; i<6; i++){
             Label l = new Label("Barber"+ i);
             l.setPrefSize(895,130);
             l.setMinSize(895,130);
             l.setMaxSize(895,130);
             l.setStyle(labelStyle);
             l.setPadding(new Insets(0,0,10,20));
-            l.setOnMouseClicked((MouseEvent) -> {
-                try {
-                    goShopInfo();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
+            l.setOnMouseClicked((MouseEvent) -> goShopInfo());
             vbInScroll.getChildren().add(l);
         }
         HBox key = new HBox();
@@ -50,28 +46,25 @@ public class HomeViewController {
         prev.setDisable(true);
         prev.setOnMouseClicked((MouseEvent) -> {
             currPage--;
-            if(currPage <= 1){
-                prev.setDisable(true);
-            }else{
-                prev.setDisable(false);
-            }
+            prev.setDisable(currPage <= 1);
         });
         Label next = new Label(">>");
         next.setOnMouseClicked((MouseEvent) -> {
             currPage++;
-            if(currPage <= 1){
-                prev.setDisable(true);
-            }else{
-                prev.setDisable(false);
-            }
+            prev.setDisable(currPage <= 1);
         });
         key.getChildren().addAll(prev,next);
         vbInScroll.getChildren().add(key);
     }
 
-    public boolean goShopInfo() throws IOException {
+    public void goShopInfo(){
         Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
-        return true;
+    }
+
+    public void fillView(ShopBean bean){
+        shopBean = bean;
+        System.out.println("Filling View from ShopBean data passedBY TopBarCustomerViewController");
+        //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
     }
 
 }

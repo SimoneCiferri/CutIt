@@ -4,9 +4,9 @@ import cutit.cutit.logic.decorator.Decorator;
 import cutit.cutit.logic.decorator.ViewComponent;
 import cutit.cutit.logic.decorator.ViewLayout;
 
-public class ClientFavouritesShopView extends Decorator {
+public class CustomerFavouritesShopView extends Decorator {
 
-    public ClientFavouritesShopView(ViewComponent view){
+    public CustomerFavouritesShopView(ViewComponent view){
 
         super(view);
         try {
