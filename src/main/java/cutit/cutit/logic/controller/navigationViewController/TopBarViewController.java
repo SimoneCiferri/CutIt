@@ -1,12 +1,16 @@
 package cutit.cutit.logic.controller.navigationViewController;
 
+import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
+import java.net.URL;
 
 public class TopBarViewController {
 
@@ -53,11 +57,14 @@ public class TopBarViewController {
     }
 
     private void setImageView() {
-        Image exitI = new Image(getClass().getResource(exit).toString());
-        Image comb = new Image(getClass().getResource(reduce).toString());
-        ivExit.setImage(exitI);
-        ivReduce.setImage(comb);
-        //test
+        URL exitURL = getClass().getResource(exit);
+        URL combURL = getClass().getResource(reduce);
+        if(exitURL != null && combURL != null){
+            Image exitI = new Image(exitURL.toString());
+            Image comb = new Image(combURL.toString());
+            ivExit.setImage(exitI);
+            ivReduce.setImage(comb);
+        }
     }
 
 }

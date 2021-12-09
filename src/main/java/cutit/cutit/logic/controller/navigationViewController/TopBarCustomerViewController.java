@@ -17,6 +17,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class TopBarCustomerViewController {
 
@@ -138,10 +139,14 @@ public class TopBarCustomerViewController {
     }
 
     private void setImageView() {
-        Image exitI = new Image(getClass().getResource(exit).toString());
-        Image comb = new Image(getClass().getResource(reduce).toString());
-        ivExit.setImage(exitI);
-        ivReduce.setImage(comb);
+        URL exitURL = getClass().getResource(exit);
+        URL combURL = getClass().getResource(reduce);
+        if(exitURL != null && combURL != null){
+            Image exitI = new Image(exitURL.toString());
+            Image comb = new Image(combURL.toString());
+            ivExit.setImage(exitI);
+            ivReduce.setImage(comb);
+        }
     }
 
     public void startBean(CustomerBean bean){

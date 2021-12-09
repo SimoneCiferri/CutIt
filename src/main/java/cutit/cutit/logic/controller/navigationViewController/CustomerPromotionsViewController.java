@@ -27,16 +27,14 @@ public class CustomerPromotionsViewController {
     }
 
     private void showClientProm() {
-        for(Integer i=0; i<3; i++){
-            Label l = new Label("Promotion"+i.toString());
+        for(int i = 0; i<3; i++){
+            Label l = new Label("Promotion"+ i);
             l.setPrefSize(895,130);
             l.setMinSize(895,130);
             l.setMaxSize(895,130);
             l.setStyle(labelStyle);
             l.setPadding(new Insets(0,0,10,20));
-            l.setOnMouseClicked((MouseEvent) -> {
-                Facade.getInstance().decorateView(ViewLayout.CLIENTPROMOTIONINFO);
-            });
+            l.setOnMouseClicked((MouseEvent) -> Facade.getInstance().decorateView(ViewLayout.CLIENTPROMOTIONINFO));
             vbInScrollCProm.getChildren().add(l);
         }
         Button add = new Button("Bring Friend");

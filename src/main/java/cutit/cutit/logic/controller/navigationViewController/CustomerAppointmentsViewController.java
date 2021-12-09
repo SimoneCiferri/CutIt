@@ -26,16 +26,14 @@ public class CustomerAppointmentsViewController {
     }
 
     private void showClientApp() {
-        for(Integer i=0; i<2; i++){
-            Label l = new Label("Appointment"+i.toString());
+        for(int i = 0; i<2; i++){
+            Label l = new Label("Appointment"+ i);
             l.setPrefSize(895,130);
             l.setMinSize(895,130);
             l.setMaxSize(895,130);
             l.setStyle(labelStyle);
             l.setPadding(new Insets(0,0,10,20));
-            l.setOnMouseClicked((MouseEvent) -> {
-                Facade.getInstance().decorateView(ViewLayout.CLIENTAPPINFO);
-            });
+            l.setOnMouseClicked((MouseEvent) -> Facade.getInstance().decorateView(ViewLayout.CLIENTAPPINFO));
             vbInScrollCA.getChildren().add(l);
         }
     }

@@ -2,13 +2,14 @@ package cutit.cutit.logic.controller.navigationViewController;
 
 import cutit.cutit.logic.bean.RateShopBean;
 import cutit.cutit.logic.controller.applController.BookAppointmentController;
-import cutit.cutit.logic.controller.applController.LoginController;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 import java.io.IOException;
+import java.net.URL;
 
 public class CustomerRateShopViewController {
 
@@ -22,12 +23,15 @@ public class CustomerRateShopViewController {
     public boolean initialize() throws IOException {
         bookAppointmentController = new BookAppointmentController();
         rateShopBean = new RateShopBean();
-        Image image = new Image(getClass().getResource(star).toString());
-        ivStar1.setImage(image);
-        ivStar2.setImage(image);
-        ivStar3.setImage(image);
-        ivStar4.setImage(image);
-        ivStar5.setImage(image);
+        URL starURL = getClass().getResource(star);
+        if(starURL != null){
+            Image image = new Image(starURL.toString());
+            ivStar1.setImage(image);
+            ivStar2.setImage(image);
+            ivStar3.setImage(image);
+            ivStar4.setImage(image);
+            ivStar5.setImage(image);
+        }
         System.out.println("CONTROLLER GRAFICO CUSTOMERRATESHOPVIEWCONTROLLER");
         return true;
     }
