@@ -24,6 +24,8 @@ public class ExceptionHandler {
     public void handleException(Exception e){
         if(e instanceof IOException){
             generateAlert(Alert.AlertType.ERROR, "IOException!!", "IOException detected!", "Ops! An error has occured! The Application will be closed!");
+            Stage stage = (Stage) Facade.getInstance().getSTartView().getPrLayout().getScene().getWindow();
+            stage.close();
             //e.printStackTrace();
         }
     }
@@ -34,8 +36,6 @@ public class ExceptionHandler {
         alert.setHeaderText(headerText);
         alert.setContentText(contentText);
         alert.showAndWait();
-        Stage stage = (Stage) Facade.getInstance().getSTartView().getPrLayout().getScene().getWindow();
-        stage.close();
     }
 
 }

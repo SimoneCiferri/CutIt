@@ -7,10 +7,13 @@ import cutit.cutit.logic.controller.applController.LoginController;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.decorator.concreteDecorator.TopBarCustomerView;
 import cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView;
+import cutit.cutit.logic.exception.ExceptionHandler;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 
 public class LoginViewController {
