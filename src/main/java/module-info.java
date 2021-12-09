@@ -17,6 +17,7 @@ module cutit.cutit {
     opens cutit.cutit.logic.decorator.concreteViewComponent to javafx.fxml;
     exports cutit.cutit.logic.bean;
     opens cutit.cutit.logic.bean to javafx.fxml;
+
     /*
     exports cutit.cutit.logic.decorator.concreteDecorator;
     opens cutit.cutit.logic.decorator.concreteDecorator to javafx.fxml;
