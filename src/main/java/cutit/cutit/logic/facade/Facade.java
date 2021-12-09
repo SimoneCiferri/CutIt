@@ -12,7 +12,7 @@ public class Facade {
 
     private static Facade instance;
     private StartView startView;
-    private static Map<ViewLayout, ViewComponent> viewMap = new EnumMap<>(ViewLayout.class);
+    private static final Map<ViewLayout, ViewComponent> viewMap = new EnumMap<>(ViewLayout.class);
 
     public static synchronized Facade getInstance(){
         if(instance == null){
