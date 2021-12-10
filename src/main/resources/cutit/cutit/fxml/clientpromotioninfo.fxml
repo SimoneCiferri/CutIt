@@ -30,7 +30,7 @@
       </Label>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="291.0">
          <children>
-            <Label text="XYZK-HFIS-JFKL-SLFI" textFill="WHITE">
+            <Label fx:id="promotionTf" text="XYZK-HFIS-JFKL-SLFI" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
