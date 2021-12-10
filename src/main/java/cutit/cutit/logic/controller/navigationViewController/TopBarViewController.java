@@ -1,5 +1,6 @@
 package cutit.cutit.logic.controller.navigationViewController;
 
+import cutit.cutit.logic.exception.ExceptionHandler;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -8,12 +9,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
+import java.util.Objects;
 
 public class TopBarViewController {
 
-    private final String exit = "/cutit/cutit/files/exit.png";
-    private final String reduce = "/cutit/cutit/files/hair_comb.png";
     private double xOffset = 0;
     private double yOffset = 0;
 
@@ -55,13 +54,13 @@ public class TopBarViewController {
     }
 
     private void setImageView() {
-        URL exitURL = getClass().getResource(exit);
-        URL combURL = getClass().getResource(reduce);
-        if(exitURL != null && combURL != null){
-            Image exitI = new Image(exitURL.toString());
-            Image comb = new Image(combURL.toString());
+        try {
+            Image exitI = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/exit.png"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
+            Image comb = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/hair_comb.png"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
             ivExit.setImage(exitI);
             ivReduce.setImage(comb);
+        }catch (NullPointerException e){
+            ExceptionHandler.getInstance().handleException(e);
         }
     }
 

@@ -14,7 +14,7 @@ public class ClientPromotionInfoView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.CLIENTPROMOTIONINFO);
-        } catch (IOException e){
+        } catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
 

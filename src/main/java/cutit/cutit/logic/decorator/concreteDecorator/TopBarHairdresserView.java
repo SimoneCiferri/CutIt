@@ -14,7 +14,7 @@ public class TopBarHairdresserView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.TOPBARHAIRDRESSER);
-        } catch (IOException e){
+        } catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
 

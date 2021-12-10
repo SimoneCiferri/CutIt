@@ -14,7 +14,7 @@ public class CustomerFavouritesShopView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.FAVSHOP);
-        } catch (IOException e){
+        } catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
 

@@ -14,7 +14,7 @@ public class CustomerAppointmentsView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.CUSTOMERAPPOINTMENTS);
-        } catch (IOException e){
+        } catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
 

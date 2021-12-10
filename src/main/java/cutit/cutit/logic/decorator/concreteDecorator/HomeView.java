@@ -14,7 +14,7 @@ public class HomeView  extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.HOME);
-        } catch (IOException e){
+        } catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
 

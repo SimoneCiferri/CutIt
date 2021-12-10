@@ -34,7 +34,7 @@ public class Facade {
             this.startView.loadXML(ViewLayout.START);
             decorateView(ViewLayout.TOPBAR);
             decorateView(ViewLayout.LOGIN);
-        }catch (IOException e){
+        }catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
     }

@@ -13,6 +13,7 @@ import cutit.cutit.logic.decorator.concreteDecorator.HairdresserAppointmentsView
 import cutit.cutit.logic.decorator.concreteDecorator.HairdresserPromotionsView;
 import cutit.cutit.logic.decorator.concreteDecorator.HairdresserServicesView;
 import cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView;
+import cutit.cutit.logic.exception.ExceptionHandler;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -23,14 +24,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
+import java.util.Objects;
 
 public class TopBarHairdresserViewController {
 
     private final String transparentStyle = "-fx-background-color: transparent; ";
     private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
-    private final String exit = "/cutit/cutit/files/exit.png";
-    private final String reduce = "/cutit/cutit/files/hair_comb.png";
     private double xOffset = 0;
     private double yOffset = 0;
     private DeleteAppointmentBean deleteAppointmentBean;
@@ -153,13 +152,13 @@ public class TopBarHairdresserViewController {
     }
 
     private void setImageView() {
-        URL exitURL = getClass().getResource(exit);
-        URL combURL = getClass().getResource(reduce);
-        if(exitURL != null && combURL != null){
-            Image exitI = new Image(exitURL.toString());
-            Image comb = new Image(combURL.toString());
+        try {
+            Image exitI = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/exit.png"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
+            Image comb = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/hair_comb.png"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
             ivExit.setImage(exitI);
             ivReduce.setImage(comb);
+        }catch (NullPointerException e){
+            ExceptionHandler.getInstance().handleException(e);
         }
     }
 

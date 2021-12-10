@@ -14,7 +14,7 @@ public class TopBarCustomerView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.TOPBARCUSTOMER);
-        } catch (IOException e){
+        } catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
 

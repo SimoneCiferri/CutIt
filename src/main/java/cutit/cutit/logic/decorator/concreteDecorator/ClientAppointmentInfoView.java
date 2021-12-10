@@ -14,7 +14,7 @@ public class ClientAppointmentInfoView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.CLIENTAPPINFO);
-        } catch (IOException e){
+        } catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
     }

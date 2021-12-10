@@ -14,7 +14,7 @@ public class ShopInfoView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.SHOPINFO);
-        } catch (IOException e){
+        } catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
 

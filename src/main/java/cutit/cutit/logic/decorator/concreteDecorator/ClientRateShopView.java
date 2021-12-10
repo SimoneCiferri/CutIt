@@ -14,7 +14,7 @@ public class ClientRateShopView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.CUSTOMERRATESHOP);
-        } catch (IOException e){
+        } catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
 

@@ -23,11 +23,15 @@ public class ExceptionHandler {
 
     public void handleException(Exception e){
         if(e instanceof IOException){
-            generateAlert(Alert.AlertType.ERROR, "IOException!!", "IOException detected!", "Ops! An error has occured! The Application will be closed!");
-            Stage stage = (Stage) Facade.getInstance().getSTartView().getPrLayout().getScene().getWindow();
-            stage.close();
-            //e.printStackTrace();
+            generateAlert(Alert.AlertType.ERROR, "IOException", "IOException detected!", e.getMessage());
         }
+        if(e instanceof NullPointerException){
+            generateAlert(Alert.AlertType.ERROR, "NullPointerException", "NullPointerException detected!",e.getMessage());
+        }else{
+            generateAlert(Alert.AlertType.ERROR,"Exception Detected!", e.getMessage(), "If the problem persist try reinstalling the application.");
+        }
+        Stage stage = (Stage) Facade.getInstance().getSTartView().getPrLayout().getScene().getWindow();
+        stage.close();
     }
 
     private void generateAlert(Alert.AlertType type, String title, String headerText, String contentText){

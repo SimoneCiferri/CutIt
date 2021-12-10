@@ -14,7 +14,7 @@ public class SignUpView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.SIGNUP);
-        } catch (IOException e){
+        } catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
 

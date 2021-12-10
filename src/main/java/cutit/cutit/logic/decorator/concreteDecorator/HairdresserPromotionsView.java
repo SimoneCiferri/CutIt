@@ -14,7 +14,7 @@ public class HairdresserPromotionsView extends Decorator {
         super(view);
         try {
             super.loadXML(ViewLayout.HAIRDRESSERPROMOTIONS);
-        } catch (IOException e){
+        } catch (Exception e){
             ExceptionHandler.getInstance().handleException(e);
         }
 
