@@ -23,12 +23,12 @@ public class ExceptionHandler {
 
     public void handleException(Exception e){
         if(e instanceof IOException){
-            generateAlert(Alert.AlertType.ERROR, "IOException", "IOException detected!", e.getMessage());
+            generateAlert(Alert.AlertType.ERROR, "IOException", "Io Exception detected!", e.getMessage());
         }
         if(e instanceof NullPointerException){
             generateAlert(Alert.AlertType.ERROR, "NullPointerException", "NullPointerException detected!",e.getMessage());
         }else{
-            generateAlert(Alert.AlertType.ERROR,"Exception Detected!", e.getMessage(), "If the problem persist try reinstalling the application.");
+            generateAlert(Alert.AlertType.ERROR, "Exception detected!", e.getMessage(), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.");
         }
         Stage stage = (Stage) Facade.getInstance().getSTartView().getPrLayout().getScene().getWindow();
         stage.close();
