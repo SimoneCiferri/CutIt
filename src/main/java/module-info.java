@@ -3,6 +3,8 @@ module cutit.cutit {
     requires javafx.fxml;
     requires javafx.graphics;
     requires com.jfoenix;
+    requires java.datatransfer;
+    requires java.desktop;
 
 
     exports cutit.cutit.logic.facade;

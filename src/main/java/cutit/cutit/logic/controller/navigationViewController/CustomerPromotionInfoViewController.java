@@ -4,7 +4,11 @@ import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.input.ClipboardContent;
+
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
+
 
 public class CustomerPromotionInfoViewController {
 
@@ -30,8 +34,11 @@ public class CustomerPromotionInfoViewController {
 
     @FXML
     public boolean copyPromotion(){
-        ClipboardContent clipboard = new ClipboardContent();
-        String text = promotionTf.getText();
+        Clipboard clipboard = java.awt.Toolkit.getDefaultToolkit().getSystemClipboard();
+        StringSelection text = new StringSelection(promotionTf.getText());
+        clipboard.setContents(text,text);
+        /*String resultText = clipboard.getString();
+        System.out.println(resultText);*/
         return true;
     }
 
