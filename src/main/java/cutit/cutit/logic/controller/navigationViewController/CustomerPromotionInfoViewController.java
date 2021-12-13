@@ -5,9 +5,10 @@ import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-
+import java.io.IOException;
 
 
 public class CustomerPromotionInfoViewController {
@@ -33,13 +34,14 @@ public class CustomerPromotionInfoViewController {
     }
 
     @FXML
-    public boolean copyPromotion(){
+    public void copyPromotion(){
+        try{
         Clipboard clipboard = java.awt.Toolkit.getDefaultToolkit().getSystemClipboard();
         StringSelection text = new StringSelection(promotionTf.getText());
         clipboard.setContents(text,text);
-        /*String resultText = clipboard.getString();
-        System.out.println(resultText);*/
-        return true;
     }
-
+        catch (AWTError error){
+            System.out.println("the default Toolkit cannot be initialized");
+        }
+    }
 }
