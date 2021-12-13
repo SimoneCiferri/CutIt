@@ -38,7 +38,7 @@
                   <Insets right="15.0" />
                </HBox.margin>
             </Label>
-            <Button mnemonicParsing="false" text="Copy">
+            <Button mnemonicParsing="false" onMouseClicked="#copyPromotion" text="Copy">
                <HBox.margin>
                   <Insets left="15.0" />
                </HBox.margin>
