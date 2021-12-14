@@ -20,22 +20,36 @@ public class LogWriter {
     }
 
 public void writeInLog(String infoLog){
+    BufferedReader rLog = null;
+    BufferedWriter wLog = null;
     try {
         File f = new File("src/main/java/cutit/cutit/logic/log/LOG.txt");
         if((f.exists() || f.createNewFile()) /*&& f.canRead() && f.canWrite()*/ ){
-            BufferedReader rLog = new BufferedReader(new FileReader("src/main/java/cutit/cutit/logic/log/LOG.txt"));
+            rLog = new BufferedReader(new FileReader("src/main/java/cutit/cutit/logic/log/LOG.txt"));
             String s, s1 = "";
             while ((s = rLog.readLine()) != null) {
                 s1 += s + "\n";
             }
-            rLog.close();
-            BufferedWriter wLog = new BufferedWriter(new FileWriter("src/main/java/cutit/cutit/logic/log/LOG.txt"));
+
+            wLog = new BufferedWriter(new FileWriter("src/main/java/cutit/cutit/logic/log/LOG.txt"));
             wLog.write( s1 + "\n" + currentDate() + "\n" + infoLog);
-            wLog.close();
+
         }
     } catch (IOException e) {
         e.printStackTrace();
         //in qualche modo avviso che non posso scrivere il log dei file.
+    } finally{
+        try {
+            rLog.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            wLog.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
 
