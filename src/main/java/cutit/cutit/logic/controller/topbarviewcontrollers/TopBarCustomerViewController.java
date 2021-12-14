@@ -145,7 +145,7 @@ public class TopBarCustomerViewController {
 
     private void setImageView() {
         try {
-            Image exitI = new Image(Objects.requireNonNull(getClass().getResource("cutit/cutit/files/exit.png"), "Unable to get resource file cutit/cutit/files/exit.png.").toString());
+            Image exitI = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/exit.png"), "Unable to get resource file cutit/cutit/files/exit.png.").toString());
             Image comb = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/hair_comb.png"), "Unable to get resource file /cutit/cutit/files/hair_comb.png.").toString());
             ivExit.setImage(exitI);
             ivReduce.setImage(comb);
