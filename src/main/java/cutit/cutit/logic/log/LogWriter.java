@@ -26,9 +26,10 @@ public void writeInLog(String infoLog){
         File f = new File("src/main/java/cutit/cutit/logic/log/LOG.txt");
         if((f.exists() || f.createNewFile()) /*&& f.canRead() && f.canWrite()*/ ){
             rLog = new BufferedReader(new FileReader("src/main/java/cutit/cutit/logic/log/LOG.txt"));
-            String s, s1 = "";
+            String s;
+            StringBuilder s1 = new StringBuilder();
             while ((s = rLog.readLine()) != null) {
-                s1 += s + "\n";
+                s1.append(s).append("\n");
             }
 
             wLog = new BufferedWriter(new FileWriter("src/main/java/cutit/cutit/logic/log/LOG.txt"));
