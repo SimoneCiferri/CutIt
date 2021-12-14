@@ -1,0 +1,4 @@
+
+2021/12/14 23:02:29
+class cutit.cutit.logic.decorator.concreteDecorator.ClientAppointmentInfoView
+ Location is not set.

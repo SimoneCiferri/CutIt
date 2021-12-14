@@ -21,15 +21,15 @@ public class LogWriter {
 
 public void writeInLog(String infoLog){
     try {
-        File f = new File("LOG.txt");
-        if((f.exists() || f.createNewFile()) && f.canRead() && f.canWrite() ){
-            BufferedReader rLog = new BufferedReader(new FileReader("LOG.txt"));
+        File f = new File("src/main/java/cutit/cutit/logic/log/LOG.txt");
+        if((f.exists() || f.createNewFile()) /*&& f.canRead() && f.canWrite()*/ ){
+            BufferedReader rLog = new BufferedReader(new FileReader("src/main/java/cutit/cutit/logic/log/LOG.txt"));
             String s, s1 = "";
             while ((s = rLog.readLine()) != null) {
                 s1 += s + "\n";
             }
             rLog.close();
-            BufferedWriter wLog = new BufferedWriter(new FileWriter("LOG.txt"));
+            BufferedWriter wLog = new BufferedWriter(new FileWriter("src/main/java/cutit/cutit/logic/log/LOG.txt"));
             wLog.write( s1 + "\n" + currentDate() + "\n" + infoLog);
             wLog.close();
         }
