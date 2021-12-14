@@ -40,11 +40,13 @@ public void writeInLog(String infoLog){
         //in qualche modo avviso che non posso scrivere il log dei file.
     } finally{
         try {
+            assert rLog != null;
             rLog.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
+            assert wLog != null;
             wLog.close();
         } catch (IOException e) {
             e.printStackTrace();
