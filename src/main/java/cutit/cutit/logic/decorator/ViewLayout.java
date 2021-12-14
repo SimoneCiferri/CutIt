@@ -15,7 +15,7 @@ public enum ViewLayout {
 
     private String res;
 
-    private ViewLayout(String res){
+    ViewLayout(String res){
         this.res = res;
     }
 

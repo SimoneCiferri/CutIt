@@ -13,9 +13,11 @@ import cutit.cutit.logic.decorator.concreteDecorator.HairdresserAppointmentsView
 import cutit.cutit.logic.decorator.concreteDecorator.HairdresserPromotionsView;
 import cutit.cutit.logic.decorator.concreteDecorator.HairdresserServicesView;
 import cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView;
-import cutit.cutit.logic.exception.ExceptionHandler;
 import cutit.cutit.logic.facade.Facade;
+import cutit.cutit.logic.factory.AlertFactory;
+import cutit.cutit.logic.log.LogWriter;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -113,7 +115,7 @@ public class TopBarHairdresserViewController {
 
     @FXML
     public boolean tryLogout() {
-        Facade.getInstance().getSTartView().getPrLayout().getChildren().remove(apTopBarHairdr);
+        Facade.getInstance().getStartView().getPrLayout().getChildren().remove(apTopBarHairdr);
         Facade.getInstance().logout();
         Facade.getInstance().decorateView(ViewLayout.TOPBAR);
         Facade.getInstance().decorateView(ViewLayout.LOGIN);
@@ -153,12 +155,13 @@ public class TopBarHairdresserViewController {
 
     private void setImageView() {
         try {
-            Image exitI = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/exit.png"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
-            Image comb = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/hair_comb.png"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
+            Image exitI = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/exit.png"), "Unable to get resource file cutit/cutit/files/exit.png.").toString());
+            Image comb = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/hair_comb.png"), "Unable to get resource file /cutit/cutit/files/hair_comb.png.").toString());
             ivExit.setImage(exitI);
             ivReduce.setImage(comb);
         }catch (NullPointerException e){
-            ExceptionHandler.getInstance().handleException(e);
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR);
         }
     }
 

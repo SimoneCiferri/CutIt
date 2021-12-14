@@ -12,7 +12,7 @@ public class Client extends Application {
     public void start(Stage stage) {
         Facade facade = Facade.getInstance();
         Group root = new Group();
-        root.getChildren().add(facade.getSTartView().getPrLayout());
+        root.getChildren().add(facade.getStartView().getPrLayout());
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setResizable(false);

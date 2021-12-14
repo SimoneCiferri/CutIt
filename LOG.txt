@@ -1,0 +1,4 @@
+
+2021/12/14 22:14:02
+class cutit.cutit.logic.controller.topbarviewcontrollers.TopBarCustomerViewController
+ Unable to get resource file cutit/cutit/files/exit.png.
