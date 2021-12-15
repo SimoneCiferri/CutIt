@@ -5,6 +5,7 @@ module cutit.cutit {
     requires com.jfoenix;
     requires java.datatransfer;
     requires java.desktop;
+    requires java.sql;
 
 
     exports cutit.cutit.logic.facade;
