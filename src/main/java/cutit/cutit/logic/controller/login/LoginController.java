@@ -11,6 +11,7 @@ public class LoginController {
         System.out.println("CONTROLLER APPLICATIVO -> Login (data from CustomerBean passed by my viewController)");
         System.out.println("        Username = " + bean.getUsername() + " Password = " + bean.getPasswd());
         DBConnection.getInstance().getConnection();
+        DBConnection.getInstance().closeConnection();
         return true;
     }
 

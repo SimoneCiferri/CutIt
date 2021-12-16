@@ -1,7 +1,5 @@
 package cutit.cutit.logic.database;
 
-import cutit.cutit.logic.log.LogWriter;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,9 +7,11 @@ import java.sql.SQLException;
 public class DBConnection {
 
     private static DBConnection instance;
-    private static String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
-    private static String DB_URL = "jdbc:mysql://localhost:3306/CutItDB";
-    private Connection conn = null;
+    private static final String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/CutItDB";
+    private static final String USER = "root";
+    private static final String PASS = "root";
+    private static Connection conn = null;
 
     private DBConnection(){
     }
@@ -27,16 +27,27 @@ public class DBConnection {
         if(conn == null){
             try {
                 Class.forName(DRIVER_CLASS_NAME);
-                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CutItDB", "root", "root");
+                conn = DriverManager.getConnection(DB_URL, USER, PASS);
             } catch(ClassNotFoundException e) {
-                String message = "Unable to load Driver - " + e.getMessage();
-                e.printStackTrace();
+                String message = "Unable to load mysql Driver - " + e.getMessage();
                 throw new Exception(message, e.getCause());
             }catch (SQLException e){
-                String message = "Unable to get Connection - " + e.getMessage();
+                String message = "Unable to get DB Connection - " + e.getMessage();
                 throw new Exception(message, e.getCause());
             }
         }
         return conn;
+    }
+
+    public void closeConnection() throws Exception {
+        try {
+            if(conn != null){
+                conn.close();
+            }
+        }catch (SQLException e){
+            String message = "Unable to close DB Connection - " + e.getMessage();
+            throw new Exception(message, e.getCause());
+        }
+
     }
 }
