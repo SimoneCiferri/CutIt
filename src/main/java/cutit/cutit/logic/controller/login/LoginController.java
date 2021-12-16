@@ -4,6 +4,7 @@ import cutit.cutit.logic.bean.CustomerBean;
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.UserBean;
 import cutit.cutit.logic.database.dao.CustomerDAO;
+import cutit.cutit.logic.database.dao.HairdresserDAO;
 import cutit.cutit.logic.database.dao.UserDAO;
 import cutit.cutit.logic.model.Customer;
 import cutit.cutit.logic.model.Hairdresser;
@@ -30,6 +31,7 @@ public class LoginController {
     public Boolean signUpHair(HairdresserBean hairdresserBean) throws Exception {
         Hairdresser hairdresser = new Hairdresser(hairdresserBean.getEmail(), hairdresserBean.getPassword(), 1, hairdresserBean.getName(), hairdresserBean.getSurname(), hairdresserBean.getpIVA());
         UserDAO.getInstance().insertNewUser(hairdresser);
+        HairdresserDAO.getInstance().insertNewHairdresser(hairdresser);
         System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from ....... passed by my viewController)");
         return true;
     }
