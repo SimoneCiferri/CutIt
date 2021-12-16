@@ -18,7 +18,7 @@ public class SignUpView extends Decorator {
             super.loadXML(ViewLayout.SIGNUP);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR);
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
         }
 
     }

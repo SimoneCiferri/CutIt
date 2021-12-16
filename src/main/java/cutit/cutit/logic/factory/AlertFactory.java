@@ -18,22 +18,25 @@ public class AlertFactory {
     }
 
 
-    public void generateAlert(String title, String headerText){
+    public void generateAlert(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(headerText);
-        alert.showAndWait();
-    }
-
-    public void generateAlert(Alert.AlertType type){
-        Alert alert = new Alert(type);
         alert.setTitle("Error!");
         alert.setHeaderText("An error occured!");
         alert.setContentText("Try to restart the application. If the problem persist try reinstalling the application.");
         alert.showAndWait();
+    }
+
+    public void generateAlert(Alert.AlertType type, String title, String headerText, String contentText){
+        Alert alert = new Alert(type);
         if(type == Alert.AlertType.ERROR){
+            generateAlert();
             Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout().getScene().getWindow();
             stage.close();
+        }else{
+            alert.setTitle(title);
+            alert.setHeaderText(headerText);
+            alert.setContentText(contentText);
+            alert.showAndWait();
         }
     }
 

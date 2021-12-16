@@ -16,7 +16,7 @@ public class CustomerAppointmentsView extends Decorator {
             super.loadXML(ViewLayout.CUSTOMERAPPOINTMENTS);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR);
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
         }
 
     }

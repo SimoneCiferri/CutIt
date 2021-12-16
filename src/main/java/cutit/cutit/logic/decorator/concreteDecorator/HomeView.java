@@ -16,7 +16,7 @@ public class HomeView  extends Decorator {
             super.loadXML(ViewLayout.HOME);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR);
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
         }
 
     }

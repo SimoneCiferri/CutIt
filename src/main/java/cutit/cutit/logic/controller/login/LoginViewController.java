@@ -9,7 +9,10 @@ import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.decorator.concreteDecorator.TopBarCustomerView;
 import cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView;
 import cutit.cutit.logic.facade.Facade;
+import cutit.cutit.logic.factory.AlertFactory;
+import cutit.cutit.logic.log.LogWriter;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -36,12 +39,17 @@ public class LoginViewController {
     public void tryLogin() {
         userBean.setUsername(tfUsername.getText());
         userBean.setPasswd(pfPassword.getText());
-        if(loginController.login(this.userBean)){
-            Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
-            TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
-            TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
-            viewController.startBean(new CustomerBean());
-            //passa la bean al controller della topBar
+        try {
+            if (loginController.login(this.userBean)) {
+                Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
+                TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
+                TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
+                viewController.startBean(new CustomerBean());
+                //passa la bean al controller della topBar
+            }
+        } catch (Exception e) {
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
         }
     }
 

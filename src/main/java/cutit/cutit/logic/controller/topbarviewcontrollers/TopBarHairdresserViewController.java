@@ -161,7 +161,7 @@ public class TopBarHairdresserViewController {
             ivReduce.setImage(comb);
         }catch (NullPointerException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR);
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
         }
     }
 

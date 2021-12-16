@@ -16,7 +16,7 @@ public class ClientRateShopView extends Decorator {
             super.loadXML(ViewLayout.CUSTOMERRATESHOP);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR);
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
         }
 
     }

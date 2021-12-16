@@ -16,7 +16,7 @@ public class TopBarCustomerView extends Decorator {
             super.loadXML(ViewLayout.TOPBARCUSTOMER);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR);
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
         }
 
     }
