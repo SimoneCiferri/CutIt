@@ -3,6 +3,8 @@ package cutit.cutit.logic.database.dao;
 import cutit.cutit.logic.database.DBConnection;
 import cutit.cutit.logic.database.query.UserQueries;
 import cutit.cutit.logic.model.Customer;
+import cutit.cutit.logic.model.User;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -31,11 +33,11 @@ public class UserDAO {
         DBConnection.getInstance().closeConnection();
     }
 
-    public void insertNewUser(Customer customer) throws Exception {
+    public void insertNewUser(User user) throws Exception {
         Connection conn = conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        UserQueries.insertUser(stm, customer);
+        UserQueries.insertUser(stm, user);
         if(stm != null){
             stm.close();
         }

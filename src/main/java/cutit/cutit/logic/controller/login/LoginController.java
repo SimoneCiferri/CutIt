@@ -1,9 +1,11 @@
 package cutit.cutit.logic.controller.login;
 
 import cutit.cutit.logic.bean.CustomerBean;
+import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.UserBean;
 import cutit.cutit.logic.database.dao.UserDAO;
 import cutit.cutit.logic.model.Customer;
+import cutit.cutit.logic.model.Hairdresser;
 
 public class LoginController {
 
@@ -23,9 +25,9 @@ public class LoginController {
         return true;
     }
 
-    public Boolean signUpHair(){
-        // la bean deve essere di un utente in generale
-        //dovrò passare la bean, in modo che questa si possa registrare come osservatore del model (e forse anche per prendere i dati in ingresso, oopure li metto da qui ma sempre usando la bean)
+    public Boolean signUpHair(HairdresserBean hairdresserBean) throws Exception {
+        Hairdresser hairdresser = new Hairdresser(hairdresserBean.getEmail(), hairdresserBean.getPassword(), 1, hairdresserBean.getName(), hairdresserBean.getSurname(), hairdresserBean.getpIVA());
+        UserDAO.getInstance().insertNewUser(hairdresser);
         System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from ....... passed by my viewController)");
         return true;
     }
