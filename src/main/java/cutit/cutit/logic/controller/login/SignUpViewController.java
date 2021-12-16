@@ -6,7 +6,6 @@ import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -38,7 +37,8 @@ public class SignUpViewController {
     @FXML
     public boolean trySignUpCustomer(){
         try{
-            if(checkSamePswd(pfCustomerPassword, pfCustomerConfirmPassword)){
+            if(checkSamePswd(pfCustomerPassword, pfCustomerConfirmPassword) && !isSomethingNull(tfCustomerName.getText(), tfCustomerSurname.getText(),
+                    "Female", tfCustomerEmail.getText(), pfCustomerPassword.getText())){
                 customerBean.setName(tfCustomerName.getText());
                 customerBean.setSurname(tfCustomerSurname.getText());
                 customerBean.setAge(25);
@@ -58,7 +58,8 @@ public class SignUpViewController {
     @FXML
     public boolean trySignUpHair(){
         try{
-            if(checkSamePswd(pfHairdresserPassword, pfHairdresserConfirmPassword)){
+            if(checkSamePswd(pfHairdresserPassword, pfHairdresserConfirmPassword) && !isSomethingNull(tfHairdresserName.getText(),
+                    tfHairdresserSurname.getText(), tfHairdresserEmail.getText(), tfHairdresserPIVA.getText(), tfHairdresserShopName.getText())){
                 hairdresserBean.setName(tfHairdresserName.getText());
                 hairdresserBean.setSurname(tfHairdresserSurname.getText());
                 hairdresserBean.setEmail(tfHairdresserEmail.getText());
@@ -80,6 +81,10 @@ public class SignUpViewController {
             return Objects.equals(p1.getText(), p2.getText());
         }
         return false;
+    }
+
+    private Boolean isSomethingNull(String s1, String s2, String s3, String s4, String s5){
+        return (Objects.equals(s1, "") || Objects.equals(s2, "") || Objects.equals(s3, "") || Objects.equals(s4, "") || Objects.equals(s5, ""));
     }
 
 }

@@ -22,17 +22,6 @@ public class UserDAO {
         return instance;
     }
 
-    public void userLogin() throws Exception {
-        Connection conn = conn = DBConnection.getInstance().getConnection();
-        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                ResultSet.CONCUR_READ_ONLY);
-        //int rs = UserQueries.insertCustomer(stm ,new Customer(4, "pellegrini", "pippo", "123@gmail.com"));
-        if(stm != null){
-            stm.close();
-        }
-        DBConnection.getInstance().closeConnection();
-    }
-
     public void insertNewUser(User user) throws Exception {
         Connection conn = conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -41,7 +30,18 @@ public class UserDAO {
         if(stm != null){
             stm.close();
         }
-        DBConnection.getInstance().closeConnection();
+        //DBConnection.getInstance().closeConnection();
+    }
+
+    public void userLogin(User user) throws Exception {
+        Connection conn = conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        //int rs = UserQueries.insertCustomer(stm ,new Customer(4, "pellegrini", "pippo", "123@gmail.com"));
+        if(stm != null){
+            stm.close();
+        }
+        //DBConnection.getInstance().closeConnection();
     }
 
 }

@@ -36,6 +36,7 @@
     </connection>
     <connection id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429">
       <console name="Connection Simone" type="STANDARD" schema="cutitdb" session="Main"><![CDATA[select * from user;
+select * from customer;
 delete from user where `UserID` is not null;]]></console>
     </connection>
   </component>

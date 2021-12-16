@@ -16,6 +16,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.util.Objects;
+
 
 public class LoginViewController {
 
@@ -37,19 +39,21 @@ public class LoginViewController {
 
     @FXML
     public void tryLogin() {
-        userBean.setUsername(tfUsername.getText());
-        userBean.setPasswd(pfPassword.getText());
-        try {
-            if (loginController.login(this.userBean)) {
-                Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
-                TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
-                TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
-                viewController.startBean(new CustomerBean());
-                //passa la bean al controller della topBar
+        if(!Objects.equals(tfUsername.getText(), "") && !Objects.equals(pfPassword.getText(), "")){
+            userBean.setUsername(tfUsername.getText());
+            userBean.setPasswd(pfPassword.getText());
+            try {
+                if (loginController.login(this.userBean)) {
+                    Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
+                    TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
+                    TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
+                    viewController.startBean(new CustomerBean());
+                    //passa la bean al controller della topBar
+                }
+            } catch (Exception e) {
+                LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
             }
-        } catch (Exception e) {
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
         }
     }
 
