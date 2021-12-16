@@ -12,3 +12,7 @@ class cutit.cutit.logic.controller.login.LoginViewController
 2021/12/16 12:09:58
 class cutit.cutit.logic.controller.login.LoginViewController
  Unable to load mysql Driver - com.mysql.cj.jdbc.Drivero
+
+2021/12/16 12:57:58
+class cutit.cutit.logic.controller.login.LoginViewController
+ Unknown column 'Beast' in 'field list'
