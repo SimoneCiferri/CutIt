@@ -12,12 +12,12 @@ import cutit.cutit.logic.model.User;
 
 public class LoginController {
 
-    public Boolean login(UserBean bean) throws Exception {
+    public Integer login(UserBean bean) throws Exception {
         User user = new User(bean.getUsername(), bean.getPasswd(), 3);
-        UserDAO.getInstance().userLogin(user);
+        user = UserDAO.getInstance().userLogin(user);
         System.out.println("CONTROLLER APPLICATIVO -> Login (data from CustomerBean passed by my viewController)");
         System.out.println("        Username = " + bean.getUsername() + " Password = " + bean.getPasswd());
-        return true;
+        return user.getRole();
     }
 
     public Boolean signUpCustomer(CustomerBean customerBean) throws Exception {

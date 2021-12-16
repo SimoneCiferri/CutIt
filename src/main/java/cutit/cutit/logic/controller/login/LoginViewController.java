@@ -43,12 +43,17 @@ public class LoginViewController {
             userBean.setUsername(tfUsername.getText());
             userBean.setPasswd(pfPassword.getText());
             try {
-                if (loginController.login(this.userBean)) {
+                if (loginController.login(this.userBean) == 0) {
                     Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
                     TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
                     TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
                     viewController.startBean(new CustomerBean());
                     //passa la bean al controller della topBar
+                }else{
+                    Facade.getInstance().decorateView(ViewLayout.TOPBARHAIRDRESSER);
+                    TopBarHairdresserView view = (TopBarHairdresserView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARHAIRDRESSER);
+                    TopBarHairdresserViewController viewController = (TopBarHairdresserViewController) view.getLoadedViewController(ViewLayout.TOPBARHAIRDRESSER);
+                    viewController.startBean(new DeleteAppointmentBean());
                 }
             } catch (Exception e) {
                 LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
