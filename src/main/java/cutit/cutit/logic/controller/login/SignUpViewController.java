@@ -38,7 +38,7 @@ public class SignUpViewController {
     @FXML
     public boolean trySignUpCustomer(){
         try{
-            if(checkSamePswd()){
+            if(checkSamePswd(pfCustomerPassword, pfCustomerConfirmPassword)){
                 customerBean.setName(tfCustomerName.getText());
                 customerBean.setSurname(tfCustomerSurname.getText());
                 customerBean.setAge(25);
@@ -55,9 +55,9 @@ public class SignUpViewController {
         return true;
     }
 
-    private boolean checkSamePswd() {
-        if(!Objects.equals(pfCustomerPassword.getText(), "") && !Objects.equals(pfCustomerConfirmPassword.getText(), "")){
-            return Objects.equals(pfCustomerPassword.getText(), pfCustomerConfirmPassword.getText());
+    private boolean checkSamePswd(PasswordField p1, PasswordField p2) {
+        if(!Objects.equals(p1.getText(), "") && !Objects.equals(p2.getText(), "")){
+            return Objects.equals(p1.getText(), p2.getText());
         }
         return false;
     }
@@ -65,7 +65,7 @@ public class SignUpViewController {
     @FXML
     public boolean trySignUpHair(){
         try{
-            if(checkSamePswd()){
+            if(checkSamePswd(pfHairdresserPassword, pfHairdresserConfirmPassword)){
                 hairdresserBean.setName(tfHairdresserName.getText());
                 hairdresserBean.setSurname(tfHairdresserSurname.getText());
                 hairdresserBean.setEmail(tfHairdresserEmail.getText());
