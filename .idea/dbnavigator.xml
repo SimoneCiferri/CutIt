@@ -26,8 +26,7 @@
     <show-object-properties value="false" />
     <loaded-nodes>
       <connection connection-id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429">
-        <schema name="cutitdb" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
-        <schema name="mysql" object-types="table, view" />
+        <schema name="cutitdb" object-types="table, view, function, column" />
       </connection>
     </loaded-nodes>
   </component>
@@ -36,13 +35,12 @@
       <console name="Connection" type="STANDARD" schema="cutitdb" session="Main" />
     </connection>
     <connection id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429">
-      <console name="Connection Simone" type="STANDARD" schema="cutitdb" session="Main"><![CDATA[select * from user;]]></console>
+      <console name="Connection Simone" type="STANDARD" schema="cutitdb" session="Main"><![CDATA[select * from user;
+delete from user where `UserID` is not null;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429" object-ref="consoles/Connection Simone" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="55e25c66-b3ef-4e3a-8e96-8e9276e07e93" />

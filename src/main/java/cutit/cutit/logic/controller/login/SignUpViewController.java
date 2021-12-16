@@ -55,13 +55,6 @@ public class SignUpViewController {
         return true;
     }
 
-    private boolean checkSamePswd(PasswordField p1, PasswordField p2) {
-        if(!Objects.equals(p1.getText(), "") && !Objects.equals(p2.getText(), "")){
-            return Objects.equals(p1.getText(), p2.getText());
-        }
-        return false;
-    }
-
     @FXML
     public boolean trySignUpHair(){
         try{
@@ -72,14 +65,21 @@ public class SignUpViewController {
                 hairdresserBean.setpIVA(tfHairdresserPIVA.getText());
                 hairdresserBean.setShopName(tfHairdresserShopName.getText());
                 hairdresserBean.setPassword(pfHairdresserPassword.getText());
-            }
-            if(loginController.signUpHair(hairdresserBean)){
-                Facade.getInstance().decorateView(ViewLayout.LOGIN);
+                if(loginController.signUpHair(hairdresserBean)){
+                    Facade.getInstance().decorateView(ViewLayout.LOGIN);
+                }
             }
         }catch (Exception e){
             e.printStackTrace();
         }
         return true;
+    }
+
+    private boolean checkSamePswd(PasswordField p1, PasswordField p2) {
+        if(!Objects.equals(p1.getText(), "") && !Objects.equals(p2.getText(), "")){
+            return Objects.equals(p1.getText(), p2.getText());
+        }
+        return false;
     }
 
 }
