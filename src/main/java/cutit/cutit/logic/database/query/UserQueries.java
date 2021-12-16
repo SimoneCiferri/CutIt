@@ -8,8 +8,14 @@ import java.sql.Statement;
 
 public class UserQueries {
 
+    public static void insertUser(Statement stmt, Customer customer) throws SQLException {
+        String insertStatement = String.format("INSERT INTO user (UserID, Password, Role) VALUES ('%s', '%s', %d)", customer.getUserID(), customer.getPwd(), 0);
+        System.out.println(insertStatement);
+        stmt.executeUpdate(insertStatement);
+    }
+
     public static int insertCustomer(Statement stmt, Customer customer) throws SQLException {
-        String insertStatement = String.format("INSERT INTO customer (CustomerID, NameSurname, Age, Gender) VALUES (%s,'%s','%s',%s)", customer.getId().toString(), customer.getUsername(), 27, "Beast"); //vedi perchè '%s' e non %s
+        String insertStatement = String.format("INSERT INTO customer (CustomerID, NameSurname, Age, Gender) VALUES (%s,'%s','%s',%s)", customer.getUserID().toString(), customer.getRole(), 27, "Beast"); //vedi perchè '%s' e non %s
         System.out.println(insertStatement);
         return stmt.executeUpdate(insertStatement);
     }

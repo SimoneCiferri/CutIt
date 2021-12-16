@@ -2,16 +2,16 @@ package cutit.cutit.logic.model;
 
 public class User {
 
-    private Integer id;
-    private String username;
+    private String userID;
     private String pwd;
+    private Integer role;
 
     public User(){}
 
-    public User(Integer id, String username, String pwd){
-        setId(id);
-        setUsername(username);
+    public User(String userID, String pwd, Integer role){
+        setUserID(userID);
         setPwd(pwd);
+        setRole(role);
     }
 
     public String getPwd() {
@@ -22,20 +22,20 @@ public class User {
         this.pwd = pwd;
     }
 
-    public Integer getId() {
-        return id;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
-    public String getUsername() {
-        return username;
+    public Integer getRole() {
+        return role;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRole(Integer role) {
+        this.role = role;
     }
 
 }

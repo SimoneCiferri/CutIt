@@ -16,3 +16,13 @@ class cutit.cutit.logic.controller.login.LoginViewController
 2021/12/16 12:57:58
 class cutit.cutit.logic.controller.login.LoginViewController
  Unknown column 'Beast' in 'field list'
+
+2021/12/16 18:18:52
+class cutit.cutit.logic.decorator.concreteDecorator.SignUpView
+ 
+/C:/Users/Simone/eclipse-workspace/CutIt/target/classes/cutit/cutit/fxml/signup.fxml:28
+
+2021/12/16 18:19:28
+class cutit.cutit.logic.decorator.concreteDecorator.SignUpView
+ 
+/C:/Users/Simone/eclipse-workspace/CutIt/target/classes/cutit/cutit/fxml/signup.fxml:28
