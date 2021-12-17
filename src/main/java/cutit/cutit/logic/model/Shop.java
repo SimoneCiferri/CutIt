@@ -2,6 +2,7 @@ package cutit.cutit.logic.model;
 
 import javax.crypto.spec.OAEPParameterSpec;
 import javax.security.auth.Destroyable;
+import java.security.PublicKey;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,12 +10,18 @@ import java.util.Map;
 public class Shop {
 
     private String shopName;
+    private String PIVA;
     private String address;
     private String phoneNumber;
     private String description;
     private LocalTime openTime;
     private LocalTime closeTime;
     private Map<String, Boolean> openDays = new HashMap<String, Boolean>();
+
+    public Shop(String shopName, String piva){
+        setShopName(shopName);
+        setPIVA(piva);
+    }
 
     public Shop(String shopName, String address, String phoneNumber, String description, Map<String, Boolean> openDays){
         setShopName(shopName);
@@ -60,6 +67,14 @@ public class Shop {
 
     public void setOpenDays(Map<String, Boolean> openDays){
         this.openDays = openDays;
+    }
+
+    public String getPIVA() {
+        return PIVA;
+    }
+
+    public void setPIVA(String PIVA) {
+        this.PIVA = PIVA;
     }
 
 }

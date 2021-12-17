@@ -1,6 +1,8 @@
 package cutit.cutit.logic.controller.manageservices;
 
 import cutit.cutit.logic.bean.ManageServiceBean;
+import cutit.cutit.logic.bean.UserBean;
+import cutit.cutit.logic.model.User;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,6 +16,7 @@ import javafx.scene.paint.Color;
 
 public class HairdresserManageServicesViewController {
 
+    private UserBean userBean;
     private ManageServiceBean serviceBean;
     private ManageServicesController manageServicesController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
@@ -113,10 +116,8 @@ public class HairdresserManageServicesViewController {
     private void addService(TextField serviceName, TextField servicePrice){
         serviceBean.setServiceName(serviceName.getText());
         serviceBean.setServicePrice(Float.valueOf(servicePrice.getText()));
-        //IL PROSSIMO ATTRIBUTO(SERVICE SHOP) DEVE ESSERE RIEMPITO CON IL VERO NOME DELLO SHOP CHE RECUPERO DA ME (PASSATOMI DALLA TOPBAR)
-        serviceBean.setServiceShopName("Da Mauro");
         try {
-            manageServicesController.addService(this.serviceBean);
+            manageServicesController.addService(this.serviceBean, this.userBean);
             showHairServ();
         } catch (Exception e) {
             e.printStackTrace();
@@ -161,9 +162,9 @@ public class HairdresserManageServicesViewController {
     }
 
 
-    public void fillView(ManageServiceBean bean){
-        serviceBean = bean;
-        System.out.println("Filling View from ManageServiceBean data passedBY TopBarHairdresserViewController");
+    public void fillView(UserBean bean){
+        userBean = bean;
+        System.out.println("Filling View from UserBEan data passedBY TopBarHairdresserViewController");
         //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
     }
 

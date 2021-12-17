@@ -11,13 +11,19 @@ public class ServiceQueries {
 
 
     public static void insertService(Statement stmt, Service service) throws SQLException {
-        String insertStatement = String.format("INSERT INTO service (Name, Price, Shop_ShopName) VALUES ('%s', '%f', '%s')", service.getServiceName(), service.getPrice(), service.getShopName());
+        String insertStatement = String.format("INSERT INTO service (Name, Price, Shop_ShopName) VALUES ('%s', '%s', '%s')", service.getServiceName(), service.getPrice() , service.getShopName());
         System.out.println(insertStatement);
         stmt.executeUpdate(insertStatement);
     }
 
     public static ResultSet getService(Statement stmt, Service service) throws SQLException {
-        String sql = "SELECT * FROM service WHERE Name = '" + service.getServiceName() + "' AND Price = '" + service.getPrice() + "' AND ShopName = " + service.getShopName() + "'";
+        String sql = "SELECT * FROM service WHERE Name = '" + service.getServiceName() + "' AND Price = '" + service.getPrice() + "' AND ShopName = '" + service.getShopName() + "'";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+
+    public static ResultSet getAllServices(Statement stmt, Service service) throws SQLException {
+        String sql = "SELECT * FROM service WHERE ShopName = '" + service.getShopName() + "'";
         System.out.println(sql);
         return stmt.executeQuery(sql);
     }
