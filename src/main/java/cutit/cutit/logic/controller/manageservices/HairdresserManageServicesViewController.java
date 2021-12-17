@@ -104,16 +104,23 @@ public class HairdresserManageServicesViewController {
         addButtonHB.setAlignment(Pos.CENTER_RIGHT);
         Button add = new Button("Add");
         add.setPrefHeight(55);
-        add.setOnMouseClicked((MouseEvent) -> addService());
+        add.setOnMouseClicked((MouseEvent) -> addService(serviceName,servicePrice));
         addButtonHB.getChildren().add(add);
         buttonsHB.getChildren().addAll(backButtonHB, addButtonHB);
         vbInScrollHS.getChildren().addAll(title, form, buttonsHB);
     }
 
-    private void addService(){
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        manageServicesController.addService(this.serviceBean);
-        showHairServ();
+    private void addService(TextField serviceName, TextField servicePrice){
+        serviceBean.setServiceName(serviceName.getText());
+        serviceBean.setServicePrice(Float.valueOf(servicePrice.getText()));
+        //IL PROSSIMO ATTRIBUTO(SERVICE SHOP) DEVE ESSERE RIEMPITO CON IL VERO NOME DELLO SHOP CHE RECUPERO DA ME (PASSATOMI DALLA TOPBAR)
+        serviceBean.setServiceShopName("Da Mauro");
+        try {
+            manageServicesController.addService(this.serviceBean);
+            showHairServ();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void deleteForm() {

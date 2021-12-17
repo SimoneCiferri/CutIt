@@ -1,9 +1,6 @@
 package cutit.cutit.logic.controller.topbarviewcontrollers;
 
-import cutit.cutit.logic.bean.DeleteAppointmentBean;
-import cutit.cutit.logic.bean.ManagePromotionBean;
-import cutit.cutit.logic.bean.ManageServiceBean;
-import cutit.cutit.logic.bean.ShopBean;
+import cutit.cutit.logic.bean.*;
 import cutit.cutit.logic.controller.deletebookedappointments.HairdresserDeleteBookedAppointmentsViewController;
 import cutit.cutit.logic.controller.managepromotions.HairdresserManagePromotionsViewController;
 import cutit.cutit.logic.controller.manageservices.HairdresserManageServicesViewController;
@@ -34,6 +31,7 @@ public class TopBarHairdresserViewController {
     private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
     private double xOffset = 0;
     private double yOffset = 0;
+    private UserBean userBean;
     private DeleteAppointmentBean deleteAppointmentBean;
 
     @FXML
@@ -147,9 +145,10 @@ public class TopBarHairdresserViewController {
     }
 
 
-    public void startBean(DeleteAppointmentBean bean){
+    public void startBean(UserBean bean){
         System.out.println("Getting DeleteAppointmentBean passedBY LoginViewController");
-        this.deleteAppointmentBean = bean;
+        this.userBean = bean;
+        System.out.println("Hirdresser = " + userBean.getUsername() + " " + userBean.getPasswd() + " " + userBean.getRole());
         goApp();
     }
 

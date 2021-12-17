@@ -4,12 +4,12 @@ public class Service {
 
     private String serviceName;
     private Float price;
-    private String description;
+    private String shopName;
 
-    public Service(String serviceName, Float price, String description){
+    public Service(String serviceName, Float price, String shopName){
          setServiceName(serviceName);
          setPrice(price);
-         setDescription(description);
+         setShopname(shopName);
     }
 
     public String getServiceName(){
@@ -28,12 +28,12 @@ public class Service {
         this.price = price;
     }
 
-    public String getDescription(){
-        return description;
+    public String getShopName(){
+        return shopName;
     }
 
-    public void setDescription(String description){
-        this.description = description;
+    public void setShopname(String shopName){
+        this.shopName = shopName;
     }
 
 }

@@ -2,14 +2,34 @@ package cutit.cutit.logic.bean;
 
 public class ManageServiceBean {
 
-    private String serviceCode;
+    private String serviceName;
+    private Float servicePrice;
+    private String serviceShopName;
 
-    public String getServiceCode() {
-        return serviceCode;
+    public String getServiceName() {
+        return serviceName;
     }
 
-    public void setServiceCode(String serviceCode) {
-        this.serviceCode = serviceCode;
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
+
+    public Float getServicePrice() {
+        return servicePrice;
+    }
+
+    public void setServicePrice(Float servicePrice) {
+        this.servicePrice = servicePrice;
+    }
+
+    public String getServiceShopName() {
+        return serviceShopName;
+    }
+
+    public void setServiceShopName(String serviceShopName) {
+        this.serviceShopName = serviceShopName;
+    }
+
+
 
 }

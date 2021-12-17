@@ -2,6 +2,7 @@ package cutit.cutit.logic.controller.topbarviewcontrollers;
 
 import cutit.cutit.logic.bean.CustomerBean;
 import cutit.cutit.logic.bean.ShopBean;
+import cutit.cutit.logic.bean.UserBean;
 import cutit.cutit.logic.controller.bookappointment.CustomerFavouritesShopViewController;
 import cutit.cutit.logic.controller.bookappointment.CustomerPromotionsViewController;
 import cutit.cutit.logic.controller.bookappointment.HomeViewController;
@@ -32,6 +33,7 @@ public class TopBarCustomerViewController {
     private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
     private double xOffset = 0;
     private double yOffset = 0;
+    private UserBean userBean;
     private CustomerBean customerBean;
 
     @FXML
@@ -155,9 +157,10 @@ public class TopBarCustomerViewController {
         }
     }
 
-    public void startBean(CustomerBean bean){
+    public void startBean(UserBean bean){
         System.out.println("Getting CustomerBean passedBY LoginViewController");
-        this.customerBean = bean;
+        this.userBean = bean;
+        System.out.println("Customer = " + userBean.getUsername() + " " + userBean.getPasswd() + " " + userBean.getRole());
         goHome();
     }
 
