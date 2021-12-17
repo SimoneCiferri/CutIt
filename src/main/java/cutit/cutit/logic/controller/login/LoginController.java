@@ -5,9 +5,11 @@ import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.UserBean;
 import cutit.cutit.logic.database.dao.CustomerDAO;
 import cutit.cutit.logic.database.dao.HairdresserDAO;
+import cutit.cutit.logic.database.dao.ShopDAO;
 import cutit.cutit.logic.database.dao.UserDAO;
 import cutit.cutit.logic.model.Customer;
 import cutit.cutit.logic.model.Hairdresser;
+import cutit.cutit.logic.model.Shop;
 import cutit.cutit.logic.model.User;
 
 public class LoginController {
@@ -46,6 +48,8 @@ public class LoginController {
         Hairdresser hairdresser = new Hairdresser(hairdresserBean.getEmail(), hairdresserBean.getPassword(), 1, hairdresserBean.getName(), hairdresserBean.getSurname(), hairdresserBean.getpIVA());
         UserDAO.getInstance().insertNewUser(hairdresser);
         HairdresserDAO.getInstance().insertNewHairdresser(hairdresser);
+        Shop shop = new Shop(hairdresserBean.getpIVA(), hairdresserBean.getShopName());
+        ShopDAO.insertShop(shop);
         System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from ....... passed by my viewController)");
         return true;
     }

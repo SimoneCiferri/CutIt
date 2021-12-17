@@ -1,12 +1,22 @@
 package cutit.cutit.logic.controller.manageservices;
 
 import cutit.cutit.logic.bean.ManageServiceBean;
+import cutit.cutit.logic.bean.UserBean;
+import cutit.cutit.logic.database.dao.HairdresserDAO;
 import cutit.cutit.logic.database.dao.ServiceDAO;
+import cutit.cutit.logic.database.dao.ShopDAO;
+import cutit.cutit.logic.model.Hairdresser;
 import cutit.cutit.logic.model.Service;
+import cutit.cutit.logic.model.Shop;
+import cutit.cutit.logic.model.User;
 
 public class ManageServicesController {
 
-    public Boolean addService(ManageServiceBean serviceBean) throws Exception {
+    public Boolean addService(ManageServiceBean serviceBean, UserBean userBean) throws Exception {
+        User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
+        Hairdresser hairdresser = HairdresserDAO.getInstance().getHairdresser(user);
+        Shop shop = ShopDAO.getShop(hairdresser);
+        serviceBean.setServiceShopName(shop.getShopName());
         Service service = new Service(serviceBean.getServiceName(), serviceBean.getServicePrice(), serviceBean.getServiceShopName());
         ServiceDAO.getInstance().insertService(service);
         System.out.println("CONTROLLER APPLICATIVO -> Adding Service (data from ManageServiceBean passed by my viewController)");

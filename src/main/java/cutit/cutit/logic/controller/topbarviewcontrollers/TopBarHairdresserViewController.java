@@ -32,6 +32,7 @@ public class TopBarHairdresserViewController {
     private double xOffset = 0;
     private double yOffset = 0;
     private UserBean userBean;
+    private ManageServiceBean manageServiceBean;
     private DeleteAppointmentBean deleteAppointmentBean;
 
     @FXML
@@ -92,7 +93,7 @@ public class TopBarHairdresserViewController {
         btnHLogout.setStyle(transparentStyle);
         HairdresserServicesView view = (HairdresserServicesView)  Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERSERVICES);
         HairdresserManageServicesViewController viewController = (HairdresserManageServicesViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERSERVICES);
-        viewController.fillView(new ManageServiceBean());
+        viewController.fillView(userBean);
         return true;
     }
 

@@ -2,6 +2,7 @@ package cutit.cutit.logic.bean;
 
 public class ManageServiceBean {
 
+    private String servicePIVA;
     private String serviceName;
     private Float servicePrice;
     private String serviceShopName;
