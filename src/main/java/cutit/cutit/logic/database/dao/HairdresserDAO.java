@@ -30,8 +30,7 @@ public class HairdresserDAO {
         if(stm != null){
             stm.close();
         }
-        DBConnection.getInstance().closeConnection();
-
+        //DBConnection.getInstance().closeConnection();
     }
 
 }
