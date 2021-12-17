@@ -2,12 +2,21 @@ package cutit.cutit.logic.bean;
 
 public class CustomerBean {
 
+    private String email;
+    private String password;
+    private Integer role;
     private String name;
     private String surname;
     private Integer age;
     private String gender;
-    private String email;
-    private String password;
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
 
     public String getName() {
         return name;

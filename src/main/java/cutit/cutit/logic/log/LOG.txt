@@ -63,6 +63,30 @@ class cutit.cutit.logic.controller.login.LoginViewController
 class cutit.cutit.logic.controller.login.LoginViewController
  No user Found matching with name: aaa
 
+2021/12/17 16:11:49
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: tttttttt
+
+2021/12/17 16:49:15
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: asd
+
+2021/12/17 16:49:18
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: asd
+
+2021/12/17 16:49:20
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: asd
+
+2021/12/17 16:49:23
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: asd
+
+2021/12/17 16:49:50
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: asd
+
 2021/12/17 15:52:12
 class cutit.cutit.logic.controller.login.LoginViewController
  No user Found matching with name: alessandrodifilippo98@gmail.com
@@ -74,3 +98,44 @@ class cutit.cutit.logic.controller.login.LoginViewController
 2021/12/17 15:59:23
 class cutit.cutit.logic.controller.login.LoginViewController
  No user Found matching with name: stefano@stefano.it
+
+2021/12/17 17:19:04
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView
+ 
+/C:/Users/Simone/eclipse-workspace/CutIt/target/classes/cutit/cutit/fxml/topbarhairdresser.fxml
+
+2021/12/17 17:19:06
+class cutit.cutit.logic.controller.login.LoginViewController
+ Cannot invoke "cutit.cutit.logic.controller.topbarviewcontrollers.TopBarHairdresserViewController.startBean(cutit.cutit.logic.bean.UserBean)" because "viewController" is null
+
+2021/12/17 17:20:06
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarCustomerView
+ 
+/C:/Users/Simone/eclipse-workspace/CutIt/target/classes/cutit/cutit/fxml/topbarcustomer.fxml
+
+2021/12/17 17:20:07
+class cutit.cutit.logic.controller.login.LoginViewController
+ Cannot invoke "cutit.cutit.logic.controller.topbarviewcontrollers.TopBarCustomerViewController.startBean(cutit.cutit.logic.bean.UserBean)" because "viewController" is null
+
+2021/12/17 17:22:33
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView
+ 
+/C:/Users/Simone/eclipse-workspace/CutIt/target/classes/cutit/cutit/fxml/topbarhairdresser.fxml
+
+2021/12/17 17:22:34
+class cutit.cutit.logic.controller.login.LoginViewController
+ Cannot invoke "cutit.cutit.logic.controller.topbarviewcontrollers.TopBarHairdresserViewController.startBean(cutit.cutit.logic.bean.UserBean)" because "viewController" is null
+
+2021/12/17 17:24:41
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView
+ 
+/C:/Users/Simone/eclipse-workspace/CutIt/target/classes/cutit/cutit/fxml/topbarhairdresser.fxml
+
+2021/12/17 17:24:42
+class cutit.cutit.logic.controller.login.LoginViewController
+ Cannot invoke "cutit.cutit.logic.controller.topbarviewcontrollers.TopBarHairdresserViewController.startBean(cutit.cutit.logic.bean.UserBean)" because "viewController" is null
+
+2021/12/17 17:26:02
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView
+ 
+/C:/Users/Simone/eclipse-workspace/CutIt/target/classes/cutit/cutit/fxml/topbarhairdresser.fxml
