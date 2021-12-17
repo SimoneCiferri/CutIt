@@ -63,7 +63,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="orLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#hairLogin" prefHeight="15.0" prefWidth="15.0" text="or" textFill="WHITE">
+      <Label fx:id="orLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="15.0" text="or" textFill="WHITE">
          <VBox.margin>
             <Insets top="10.0" />
          </VBox.margin>
