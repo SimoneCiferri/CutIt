@@ -26,3 +26,39 @@ class cutit.cutit.logic.decorator.concreteDecorator.SignUpView
 class cutit.cutit.logic.decorator.concreteDecorator.SignUpView
  
 /C:/Users/Simone/eclipse-workspace/CutIt/target/classes/cutit/cutit/fxml/signup.fxml:28
+
+2021/12/17 00:42:05
+class cutit.cutit.logic.controller.login.LoginViewController
+ You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+
+2021/12/17 00:42:09
+class cutit.cutit.logic.controller.login.LoginViewController
+ You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+
+2021/12/17 00:44:26
+class cutit.cutit.logic.controller.login.LoginViewController
+ Unknown column 'yyyy' in 'where clause'
+
+2021/12/17 00:45:39
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: yyy
+
+2021/12/17 00:46:13
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: pelle@grini
+
+2021/12/17 00:46:25
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: pelle@grini.com
+
+2021/12/17 00:52:41
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: pelle@grini.com
+
+2021/12/17 00:53:40
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: aaa
+
+2021/12/17 00:54:31
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: aaa

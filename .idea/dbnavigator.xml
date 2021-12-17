@@ -26,7 +26,7 @@
     <show-object-properties value="false" />
     <loaded-nodes>
       <connection connection-id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429">
-        <schema name="cutitdb" object-types="table, view, function, column" />
+        <schema name="cutitdb" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
@@ -41,7 +41,9 @@ delete from user where `UserID` is not null;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429" object-ref="consoles/Connection Simone" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="55e25c66-b3ef-4e3a-8e96-8e9276e07e93" />

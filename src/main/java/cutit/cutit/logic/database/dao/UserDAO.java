@@ -33,15 +33,23 @@ public class UserDAO {
         //DBConnection.getInstance().closeConnection();
     }
 
-    public void userLogin(User user) throws Exception {
+    public User userLogin(User user) throws Exception {
         Connection conn = conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        //int rs = UserQueries.insertCustomer(stm ,new Customer(4, "pellegrini", "pippo", "123@gmail.com"));
+        ResultSet rs = UserQueries.getUser(stm, user);
+        if(!rs.first()){
+            Exception e = new Exception("No user Found matching with name: "+ user.getUserID());
+            throw e;
+        }else{
+            Integer role = rs.getInt("Role");
+            user.setRole(role);
+        }
         if(stm != null){
             stm.close();
         }
         //DBConnection.getInstance().closeConnection();
+        return user;
     }
 
 }
