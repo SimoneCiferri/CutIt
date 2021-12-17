@@ -62,3 +62,15 @@ class cutit.cutit.logic.controller.login.LoginViewController
 2021/12/17 00:54:31
 class cutit.cutit.logic.controller.login.LoginViewController
  No user Found matching with name: aaa
+
+2021/12/17 15:52:12
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: alessandrodifilippo98@gmail.com
+
+2021/12/17 15:52:18
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: alessandrodifilipo98@gmail.com
+
+2021/12/17 15:59:23
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: stefano@stefano.it
