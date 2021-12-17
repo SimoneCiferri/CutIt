@@ -53,7 +53,6 @@ public class TopBarCustomerViewController {
         btnClLogout.setStyle(transparentStyle);
         setImageView();
         System.out.println("CONTROLLER GRAFICO TOPBARCUSTOMERVIEWCONTROLLER");
-        System.out.println("Customer = " + userBean.getUsername() + " " + userBean.getPasswd() + " " + userBean.getRole());
         return true;
     }
 
@@ -161,6 +160,7 @@ public class TopBarCustomerViewController {
     public void startBean(UserBean bean){
         System.out.println("Getting CustomerBean passedBY LoginViewController");
         this.userBean = bean;
+        System.out.println("Customer = " + userBean.getUsername() + " " + userBean.getPasswd() + " " + userBean.getRole());
         goHome();
     }
 

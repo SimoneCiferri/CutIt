@@ -51,7 +51,6 @@ public class TopBarHairdresserViewController {
         btnHLogout.setStyle(transparentStyle);
         setImageView();
         System.out.println("CONTROLLER GRAFICO TOPBARHAIRDRESSERVIEWCONTROLLER");
-        System.out.println("Hirdresser = " + userBean.getUsername() + " " + userBean.getPasswd() + " " + userBean.getRole());
         return true;
     }
 
@@ -149,6 +148,7 @@ public class TopBarHairdresserViewController {
     public void startBean(UserBean bean){
         System.out.println("Getting DeleteAppointmentBean passedBY LoginViewController");
         this.userBean = bean;
+        System.out.println("Hirdresser = " + userBean.getUsername() + " " + userBean.getPasswd() + " " + userBean.getRole());
         goApp();
     }
 
