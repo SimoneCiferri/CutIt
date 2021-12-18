@@ -2,6 +2,7 @@ package cutit.cutit.logic.controller.login;
 
 import cutit.cutit.logic.bean.CustomerBean;
 import cutit.cutit.logic.bean.DeleteAppointmentBean;
+import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.UserBean;
 import cutit.cutit.logic.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.cutit.logic.controller.topbarviewcontrollers.TopBarHairdresserViewController;
@@ -23,6 +24,7 @@ public class LoginViewController {
 
     private UserBean userBean;
     private CustomerBean customerBean;
+    private HairdresserBean hairdresserBean;
     private LoginController loginController;
 
     @FXML
@@ -49,12 +51,14 @@ public class LoginViewController {
                     Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
                     TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
                     TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
+                    //setta il customer bean
                     viewController.startBean(this.userBean);
                 }else{
+                    this.hairdresserBean = loginController.getHairdresser(userBean);
                     Facade.getInstance().decorateView(ViewLayout.TOPBARHAIRDRESSER);
                     TopBarHairdresserView view = (TopBarHairdresserView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARHAIRDRESSER);
                     TopBarHairdresserViewController viewController = (TopBarHairdresserViewController) view.getLoadedViewController(ViewLayout.TOPBARHAIRDRESSER);
-                    viewController.startBean(this.userBean);
+                    viewController.startBean(this.hairdresserBean);
                 }
             } catch (Exception e) {
                 LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());

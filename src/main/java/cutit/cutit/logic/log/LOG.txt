@@ -170,3 +170,7 @@ class cutit.cutit.logic.controller.login.LoginViewController
 2021/12/18 10:38:57
 class cutit.cutit.logic.controller.login.LoginViewController
  No user Found matching with name: qqq
+
+2021/12/18 12:23:58
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: aaa

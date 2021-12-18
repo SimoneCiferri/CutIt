@@ -33,7 +33,7 @@ public class UserDAO {
     }
 
     public User userLogin(User user) throws Exception {
-        Connection conn = conn = DBConnection.getInstance().getConnection();
+        Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = UserQueries.getUser(stm, user.getUserID(), user.getPwd());
@@ -44,6 +44,7 @@ public class UserDAO {
             Integer role = rs.getInt("Role");
             user.setRole(role);
         }
+        rs.close();
         if(stm != null){
             stm.close();
         }

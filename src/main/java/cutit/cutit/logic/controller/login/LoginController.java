@@ -53,4 +53,16 @@ public class LoginController {
         System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from ....... passed by my viewController)");
         return true;
     }
+
+    public HairdresserBean getHairdresser(UserBean userBean) throws Exception {
+        User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
+        Hairdresser hairdresser = HairdresserDAO.getInstance().getHairdresser(user);
+        HairdresserBean hairdresserBean = new HairdresserBean();
+        hairdresserBean.setEmail(hairdresser.getUserID());
+        hairdresserBean.setPassword(hairdresser.getPwd());
+        hairdresserBean.setpIVA(hairdresser.getpIVA());
+        hairdresserBean.setName(hairdresser.getName());
+        hairdresserBean.setSurname(hairdresser.getSurname());
+        return hairdresserBean;
+    }
 }

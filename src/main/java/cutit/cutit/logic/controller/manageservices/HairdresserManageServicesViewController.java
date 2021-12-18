@@ -1,7 +1,10 @@
 package cutit.cutit.logic.controller.manageservices;
 
+import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManageServiceBean;
 import cutit.cutit.logic.bean.UserBean;
+import cutit.cutit.logic.factory.CardFactory;
+import cutit.cutit.logic.model.Service;
 import cutit.cutit.logic.model.User;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -14,9 +17,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import java.util.List;
+
 public class HairdresserManageServicesViewController {
 
     private UserBean userBean;
+    private HairdresserBean hairdresserBean;
     private ManageServiceBean serviceBean;
     private ManageServicesController manageServicesController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
@@ -29,29 +35,27 @@ public class HairdresserManageServicesViewController {
         serviceBean = new ManageServiceBean();
         manageServicesController = new ManageServicesController();
         vbInScrollHS.setSpacing(15);
-        showHairServ();
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESERVICESVIEWCONTROLLER");
     }
 
     private void showHairServ() {
-        vbInScrollHS.getChildren().clear();
-        Button add = new Button("Add Service");
-        add.setOnMouseClicked((MouseEvent) -> {
-            addForm();
-        });
-        vbInScrollHS.getChildren().add(add);
-        //prendo i dati dalla bean e compongo le label (adesso sono composte a caso)
-        for(Integer i=0; i<4; i++) {
-            Label l = new Label("Service"+i.toString());
-            l.setPrefSize(895, 130);
-            l.setMinSize(895, 130);
-            l.setMaxSize(895, 130);
-            l.setStyle(labelStyle);
-            l.setPadding(new Insets(0, 0, 10, 20));
-            l.setOnMouseClicked((MouseEvent) -> {
-                deleteForm();
+        try {
+            this.serviceBean = manageServicesController.getAllServices(this.hairdresserBean);
+            vbInScrollHS.getChildren().clear();
+            Button add = new Button("Add Service");
+            add.setOnMouseClicked((MouseEvent) -> {
+                addForm();
             });
-            vbInScrollHS.getChildren().add(l);
+            vbInScrollHS.getChildren().add(add);
+            for(Integer i=0; i<serviceBean.getServicesList().size(); i++) {
+                Label l = CardFactory.getInstance().CreateLabel(serviceBean.getServiceName(i), labelStyle);
+                l.setOnMouseClicked((MouseEvent) -> {
+                    deleteForm();
+                });
+                vbInScrollHS.getChildren().add(l);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -117,7 +121,7 @@ public class HairdresserManageServicesViewController {
         serviceBean.setServiceName(serviceName.getText());
         serviceBean.setServicePrice(Float.valueOf(servicePrice.getText()));
         try {
-            manageServicesController.addService(this.serviceBean, this.userBean);
+            manageServicesController.addService(this.serviceBean, this.hairdresserBean);
             showHairServ();
         } catch (Exception e) {
             e.printStackTrace();
@@ -162,10 +166,10 @@ public class HairdresserManageServicesViewController {
     }
 
 
-    public void fillView(UserBean bean){
-        userBean = bean;
-        System.out.println("Filling View from UserBEan data passedBY TopBarHairdresserViewController");
-        //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
+    public void fillView(HairdresserBean hairdresserBean){
+        this.hairdresserBean = hairdresserBean;
+        System.out.println("Filling View from HairdresserBean data passedBY TopBarHairdresserViewController");
+        showHairServ();
     }
 
 }
