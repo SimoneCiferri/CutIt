@@ -1,14 +1,15 @@
 package cutit.cutit.logic.controller.manageservices;
 
+import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManageServiceBean;
 import cutit.cutit.logic.bean.UserBean;
-import cutit.cutit.logic.database.dao.HairdresserDAO;
 import cutit.cutit.logic.database.dao.ServiceDAO;
 import cutit.cutit.logic.database.dao.ShopDAO;
-import cutit.cutit.logic.model.Hairdresser;
 import cutit.cutit.logic.model.Service;
 import cutit.cutit.logic.model.Shop;
 import cutit.cutit.logic.model.User;
+
+import java.util.List;
 
 public class ManageServicesController {
 
@@ -26,6 +27,15 @@ public class ManageServicesController {
         //dovrò passare la bean, in modo che questa si possa registrare come osservatore del model (e forse anche per prendere i dati in ingresso, oopure li metto da qui ma sempre usando la bean)
         System.out.println("CONTROLLER APPLICATIVO -> Deleting Service (data from ManageServiceBean passed by my viewController)");
         return true;
+    }
+
+    public ManageServiceBean getAllServices(HairdresserBean hairdresserBean) throws Exception {
+        User user = new User(hairdresserBean.getEmail(), hairdresserBean.getPassword(), 1);
+        Shop shop = ShopDAO.getShopFromUser(user);
+        List<Service> serviceList = ServiceDAO.getInstance().getALlServices(shop);
+        ManageServiceBean manageServiceBean = new ManageServiceBean();
+        manageServiceBean.setServicesList(serviceList);
+        return manageServiceBean;
     }
 
 }

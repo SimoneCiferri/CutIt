@@ -35,6 +35,7 @@ public class ShopDAO {
             String shopName = rs.getString("ShopName");
             System.out.println(shopName);
             Shop shop = new Shop(shopName, hPIVA);
+            rs.close();
             if(stm != null){
                 stm.close();
             }
@@ -56,6 +57,7 @@ public class ShopDAO {
             String shopName = rs.getString("ShopName");
             System.out.println(shopName);
             Shop shop = new Shop(shopName, hPiva);
+            rs.close();
             if(stm != null){
                 stm.close();
             }

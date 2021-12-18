@@ -4,11 +4,14 @@ import cutit.cutit.logic.database.DBConnection;
 import cutit.cutit.logic.database.query.ServiceQueries;
 import cutit.cutit.logic.database.query.UserQueries;
 import cutit.cutit.logic.model.Service;
+import cutit.cutit.logic.model.Shop;
+import cutit.cutit.logic.model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceDAO {
@@ -35,5 +38,30 @@ public class ServiceDAO {
         }
     }
 
+    public List<Service> getALlServices(Shop shop) throws Exception {
+        List<Service> servicesList = new ArrayList<Service>();
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = ServiceQueries.getAllServices(stm, shop.getShopName());
+        if (!rs.first()) {
+            Exception e = new Exception("No services Found matching with name: " + shop.getShopName());
+            throw e;
+        } else {
+            rs.first();
+            do{
+                String serviceName = rs.getString("Name");
+                Float servicePrice = rs.getFloat("Price");
+                Service s = new Service(serviceName,servicePrice , shop.getShopName());
+                servicesList.add(s);
+            }while (rs.next());
+            rs.close();
+            if (stm != null) {
+                stm.close();
+            }
+            //DBConnection.getInstance().closeConnection();
+            return servicesList;
+        }
+    }
 
 }

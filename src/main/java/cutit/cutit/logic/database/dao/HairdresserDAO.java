@@ -47,6 +47,7 @@ public class HairdresserDAO {
             String surname = rs.getString(3);
             String piva = rs.getString(4);
             Hairdresser hairdresser = new Hairdresser(hEmail, user.getPwd(), user.getRole(), name, surname, piva);
+            rs.close();
             if(stm != null){
                 stm.close();
             }

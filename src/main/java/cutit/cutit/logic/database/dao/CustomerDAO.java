@@ -45,6 +45,7 @@ public class CustomerDAO {
             throw e;
         }else{
             Customer customer = new Customer(user.getUserID(), user.getPwd(), user.getRole(), rs.getString("CName"), rs.getString("CSurname"), rs.getInt("Age"), rs.getString("Gender"));
+            rs.close();
             if(stm != null){
                 stm.close();
             }

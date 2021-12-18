@@ -31,7 +31,7 @@ public class TopBarHairdresserViewController {
     private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
     private double xOffset = 0;
     private double yOffset = 0;
-    private UserBean userBean;
+    private HairdresserBean hairdresserBean;
     private ManageServiceBean manageServiceBean;
     private DeleteAppointmentBean deleteAppointmentBean;
 
@@ -93,7 +93,7 @@ public class TopBarHairdresserViewController {
         btnHLogout.setStyle(transparentStyle);
         HairdresserServicesView view = (HairdresserServicesView)  Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERSERVICES);
         HairdresserManageServicesViewController viewController = (HairdresserManageServicesViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERSERVICES);
-        viewController.fillView(userBean);
+        viewController.fillView(hairdresserBean);
         return true;
     }
 
@@ -146,10 +146,10 @@ public class TopBarHairdresserViewController {
     }
 
 
-    public void startBean(UserBean bean){
+    public void startBean(HairdresserBean hairdresserBean){
         System.out.println("Getting DeleteAppointmentBean passedBY LoginViewController");
-        this.userBean = bean;
-        System.out.println("Hirdresser = " + userBean.getUsername() + " " + userBean.getPasswd() + " " + userBean.getRole());
+        this.hairdresserBean = hairdresserBean;
+        System.out.println("Hirdresser = " + hairdresserBean.getName() + " " + hairdresserBean.getSurname() + " " + hairdresserBean.getpIVA());
         goApp();
     }
 

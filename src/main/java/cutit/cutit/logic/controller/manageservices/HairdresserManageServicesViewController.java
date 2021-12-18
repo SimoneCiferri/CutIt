@@ -1,7 +1,9 @@
 package cutit.cutit.logic.controller.manageservices;
 
+import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManageServiceBean;
 import cutit.cutit.logic.bean.UserBean;
+import cutit.cutit.logic.model.Service;
 import cutit.cutit.logic.model.User;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -14,9 +16,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import java.util.List;
+
 public class HairdresserManageServicesViewController {
 
     private UserBean userBean;
+    private HairdresserBean hairdresserBean;
     private ManageServiceBean serviceBean;
     private ManageServicesController manageServicesController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
@@ -29,11 +34,15 @@ public class HairdresserManageServicesViewController {
         serviceBean = new ManageServiceBean();
         manageServicesController = new ManageServicesController();
         vbInScrollHS.setSpacing(15);
-        showHairServ();
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESERVICESVIEWCONTROLLER");
     }
 
     private void showHairServ() {
+        try {
+            this.serviceBean = manageServicesController.getAllServices(this.hairdresserBean);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         vbInScrollHS.getChildren().clear();
         Button add = new Button("Add Service");
         add.setOnMouseClicked((MouseEvent) -> {
@@ -162,10 +171,10 @@ public class HairdresserManageServicesViewController {
     }
 
 
-    public void fillView(UserBean bean){
-        userBean = bean;
-        System.out.println("Filling View from UserBEan data passedBY TopBarHairdresserViewController");
-        //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
+    public void fillView(HairdresserBean hairdresserBean){
+        this.hairdresserBean = hairdresserBean;
+        System.out.println("Filling View from HairdresserBean data passedBY TopBarHairdresserViewController");
+        showHairServ();
     }
 
 }
