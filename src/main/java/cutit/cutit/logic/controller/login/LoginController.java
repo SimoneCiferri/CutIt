@@ -21,19 +21,6 @@ public class LoginController {
         System.out.println("        Username = " + bean.getUsername() + " Password = " + bean.getPasswd());
         bean.setRole(user.getRole());
         return bean;
-        /*
-        Customer customer = CustomerDAO.getInstance().getCustomer(user);
-        CustomerBean customerBean = new CustomerBean();
-        customerBean.setEmail(customer.getUserID());
-        customerBean.setPassword(customer.getPwd());
-        customerBean.setRole(customer.getRole());
-        customerBean.setName(customer.getName());
-        customerBean.setSurname(customer.getSurname());
-        customerBean.setAge(customer.getAge());
-        customerBean.setGender(customer.getGender());
-        return customerBean;
-
-         */
     }
 
     public Boolean signUpCustomer(CustomerBean customerBean) throws Exception {
@@ -63,6 +50,21 @@ public class LoginController {
         hairdresserBean.setpIVA(hairdresser.getpIVA());
         hairdresserBean.setName(hairdresser.getName());
         hairdresserBean.setSurname(hairdresser.getSurname());
+        hairdresserBean.setShopName(hairdresser.getShopName());
         return hairdresserBean;
+    }
+
+    public CustomerBean getCustomer(UserBean userBean) throws Exception {
+        User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
+        Customer customer = CustomerDAO.getInstance().getCustomer(user);
+        CustomerBean customerBean = new CustomerBean();
+        customerBean.setEmail(customer.getUserID());
+        customerBean.setPassword(customer.getPwd());
+        customerBean.setRole(customer.getRole());
+        customerBean.setName(customer.getName());
+        customerBean.setSurname(customer.getSurname());
+        customerBean.setAge(customer.getAge());
+        customerBean.setGender(customer.getGender());
+        return customerBean;
     }
 }

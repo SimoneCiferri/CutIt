@@ -3,6 +3,7 @@ package cutit.cutit.logic.database.dao;
 import cutit.cutit.logic.database.DBConnection;
 import cutit.cutit.logic.database.query.CustomerQueries;
 import cutit.cutit.logic.model.Customer;
+import cutit.cutit.logic.model.Hairdresser;
 import cutit.cutit.logic.model.User;
 
 import java.sql.Connection;
@@ -44,7 +45,12 @@ public class CustomerDAO {
             Exception e = new Exception("No user Found matching with name: "+ user.getUserID());
             throw e;
         }else{
-            Customer customer = new Customer(user.getUserID(), user.getPwd(), user.getRole(), rs.getString("CName"), rs.getString("CSurname"), rs.getInt("Age"), rs.getString("Gender"));
+            String cEmail = rs.getString(1);
+            Integer age = rs.getInt(2);
+            String name = rs.getString(3);
+            String surname = rs.getString(4);
+            String gender = rs.getString(5);
+            Customer customer = new Customer(cEmail, user.getPwd(), user.getRole(), name, surname, age, gender);
             rs.close();
             if(stm != null){
                 stm.close();

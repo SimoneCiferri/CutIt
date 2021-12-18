@@ -33,7 +33,6 @@ public class TopBarCustomerViewController {
     private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
     private double xOffset = 0;
     private double yOffset = 0;
-    private UserBean userBean;
     private CustomerBean customerBean;
 
     @FXML
@@ -157,10 +156,9 @@ public class TopBarCustomerViewController {
         }
     }
 
-    public void startBean(UserBean bean){
+    public void startBean(CustomerBean customerBean){
         System.out.println("Getting CustomerBean passedBY LoginViewController");
-        this.userBean = bean;
-        System.out.println("Customer = " + userBean.getUsername() + " " + userBean.getPasswd() + " " + userBean.getRole());
+        this.customerBean = customerBean;
         goHome();
     }
 

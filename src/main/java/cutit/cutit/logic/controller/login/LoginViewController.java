@@ -22,10 +22,10 @@ import java.util.Objects;
 
 public class LoginViewController {
 
+    private LoginController loginController;
     private UserBean userBean;
     private CustomerBean customerBean;
     private HairdresserBean hairdresserBean;
-    private LoginController loginController;
 
     @FXML
     TextField tfUsername;
@@ -48,11 +48,12 @@ public class LoginViewController {
             try {
                 this.userBean = loginController.login(this.userBean);
                 if (this.userBean.getRole() == 0) {
+                    this.customerBean = loginController.getCustomer(userBean);
                     Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
                     TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
                     TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
                     //setta il customer bean
-                    viewController.startBean(this.userBean);
+                    viewController.startBean(this.customerBean);
                 }else{
                     this.hairdresserBean = loginController.getHairdresser(userBean);
                     Facade.getInstance().decorateView(ViewLayout.TOPBARHAIRDRESSER);

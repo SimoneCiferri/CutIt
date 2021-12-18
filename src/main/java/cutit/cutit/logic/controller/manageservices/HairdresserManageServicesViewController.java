@@ -2,37 +2,33 @@ package cutit.cutit.logic.controller.manageservices;
 
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManageServiceBean;
-import cutit.cutit.logic.bean.UserBean;
-import cutit.cutit.logic.factory.CardFactory;
-import cutit.cutit.logic.model.Service;
-import cutit.cutit.logic.model.User;
+import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HairdresserManageServicesViewController {
 
-    private UserBean userBean;
     private HairdresserBean hairdresserBean;
-    private ManageServiceBean serviceBean;
+    private ManageServiceBean manageServicesBean;
     private ManageServicesController manageServicesController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private final Double TitleFontSize = 30.0;
+    private final Double normalLabelFontSize = 14.0;
 
     @FXML
     private VBox vbInScrollHS;
 
     @FXML
     public void initialize(){
-        serviceBean = new ManageServiceBean();
         manageServicesController = new ManageServicesController();
         vbInScrollHS.setSpacing(15);
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESERVICESVIEWCONTROLLER");
@@ -40,18 +36,16 @@ public class HairdresserManageServicesViewController {
 
     private void showHairServ() {
         try {
-            this.serviceBean = manageServicesController.getAllServices(this.hairdresserBean);
+            this.manageServicesBean = manageServicesController.getAllServices(this.hairdresserBean);
             vbInScrollHS.getChildren().clear();
-            Button add = new Button("Add Service");
-            add.setOnMouseClicked((MouseEvent) -> {
-                addForm();
-            });
+            Button add = JavaFXNodeFactory.getInstance().createButton("Add Service");
+            add.setOnMouseClicked((MouseEvent) -> showAddForm());
             vbInScrollHS.getChildren().add(add);
-            for(Integer i=0; i<serviceBean.getServicesList().size(); i++) {
-                Label l = CardFactory.getInstance().CreateLabel(serviceBean.getServiceName(i), labelStyle);
-                l.setOnMouseClicked((MouseEvent) -> {
-                    deleteForm();
-                });
+            for(int i = 0; i< manageServicesBean.getServicesList().size(); i++) {
+                String serviceName = manageServicesBean.getServiceName(i);
+                Float servicePrice = manageServicesBean.getServicePrice(i);
+                Label l = JavaFXNodeFactory.getInstance().createCardLabel(serviceName, labelStyle);
+                l.setOnMouseClicked((MouseEvent) -> deleteForm(serviceName, servicePrice));
                 vbInScrollHS.getChildren().add(l);
             }
         } catch (Exception e) {
@@ -59,109 +53,68 @@ public class HairdresserManageServicesViewController {
         }
     }
 
-    private void addForm() {
+    private void showAddForm() {
         vbInScrollHS.getChildren().clear();
-        Label title = new Label("Add Service");
-        HBox form = new HBox();
-        form.setMaxSize(500,250);
-        form.setMinSize(500, 250);
-        VBox leftVBox = new VBox();
-        leftVBox.setMaxSize(250, 250);
-        leftVBox.setMinSize(250, 250);
-        leftVBox.setAlignment(Pos.TOP_RIGHT);
-        leftVBox.setSpacing(25);
-        leftVBox.setPadding(new Insets(0, 10, 0,0));
-        Label name = new Label("Name:");
-        name.setTextFill(Color.WHITE);
-        Label price = new Label("Price:");
-        price.setTextFill(Color.WHITE);
-        Label descriptor = new Label("Description");
-        descriptor.setTextFill(Color.WHITE);
-        leftVBox.getChildren().addAll(name, price, descriptor);
-        VBox rightVBox = new VBox();
-        rightVBox.setMinSize(250,250);
-        rightVBox.setMaxSize(250, 250);
-        rightVBox.setAlignment(Pos.TOP_LEFT);
-        rightVBox.setSpacing(15);
+        List<Label> labelList = new ArrayList<Label>();
+        Label title = JavaFXNodeFactory.getInstance().createLabel("Add Service", TitleFontSize);
+        Label name = JavaFXNodeFactory.getInstance().createLabel("Name:", normalLabelFontSize);
+        labelList.add(name);
+        Label price = JavaFXNodeFactory.getInstance().createLabel("Price:", normalLabelFontSize);
+        labelList.add(price);
+        List<Node> nodeList = new ArrayList<Node>();
         TextField serviceName = new TextField();
         serviceName.setPromptText("Service Name");
         serviceName.setMaxSize(180, 25);
+        nodeList.add(serviceName);
         TextField servicePrice = new TextField();
         servicePrice.setPromptText("Service Price");
         servicePrice.setMaxSize(180, 25);
-        TextArea serviceDescription = new TextArea();
-        serviceDescription.setPromptText("Description");
-        serviceDescription.setMaxSize(235, 155);
-        rightVBox.getChildren().addAll(serviceName, servicePrice, serviceDescription);
-        form.getChildren().addAll(leftVBox, rightVBox);
-        HBox buttonsHB = new HBox();
-        buttonsHB.setMaxSize(600,55);
-        buttonsHB.setMinSize(600, 55);
-        HBox backButtonHB = new HBox();
-        backButtonHB.setMaxSize(300,55);
-        backButtonHB.setMinSize(300, 55);
-        backButtonHB.setAlignment(Pos.CENTER_LEFT);
-        Button back = new Button("Back");
+        nodeList.add(servicePrice);
+        HBox form = JavaFXNodeFactory.getInstance().createAddForm(labelList, nodeList);
+        Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
         back.setOnMouseClicked((MouseEvent) -> showHairServ());
-        backButtonHB.getChildren().add(back);
-        HBox addButtonHB = new HBox();
-        addButtonHB.setMaxSize(300,55);
-        addButtonHB.setMinSize(300, 55);
-        addButtonHB.setAlignment(Pos.CENTER_RIGHT);
-        Button add = new Button("Add");
+        Button add = JavaFXNodeFactory.getInstance().createButton("Add");
         add.setPrefHeight(55);
         add.setOnMouseClicked((MouseEvent) -> addService(serviceName,servicePrice));
-        addButtonHB.getChildren().add(add);
-        buttonsHB.getChildren().addAll(backButtonHB, addButtonHB);
+        HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, add);
         vbInScrollHS.getChildren().addAll(title, form, buttonsHB);
     }
 
     private void addService(TextField serviceName, TextField servicePrice){
-        serviceBean.setServiceName(serviceName.getText());
-        serviceBean.setServicePrice(Float.valueOf(servicePrice.getText()));
+        manageServicesBean.setServiceName(serviceName.getText());
+        manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
         try {
-            manageServicesController.addService(this.serviceBean, this.hairdresserBean);
+            manageServicesController.addService(this.manageServicesBean, this.hairdresserBean);
             showHairServ();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void deleteForm() {
+    private void deleteForm(String serviceName, Float servicePrice) {
         vbInScrollHS.getChildren().clear();
-        Label name = new Label("Service Name");
-        name.setTextFill(Color.WHITE);
-        Label price = new Label("Price $$");
-        price.setTextFill(Color.WHITE);
-        Label descriptor = new Label("Description");
-        descriptor.setTextFill(Color.WHITE);
-        HBox buttonsHB = new HBox();
-        buttonsHB.setMaxSize(600,55);
-        buttonsHB.setMinSize(600, 55);
-        HBox backButtonHB = new HBox();
-        backButtonHB.setMaxSize(300,55);
-        backButtonHB.setMinSize(300, 55);
-        backButtonHB.setAlignment(Pos.CENTER_LEFT);
-        Button back = new Button("Back");
+        Label name = JavaFXNodeFactory.getInstance().createLabel(serviceName, TitleFontSize);
+        Label price = JavaFXNodeFactory.getInstance().createLabel(servicePrice.toString(), normalLabelFontSize);
+        Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
         back.setOnMouseClicked((MouseEvent) -> showHairServ());
-        backButtonHB.getChildren().add(back);
-        HBox addButtonHB = new HBox();
-        addButtonHB.setMaxSize(300,55);
-        addButtonHB.setMinSize(300, 55);
-        addButtonHB.setAlignment(Pos.CENTER_RIGHT);
-        Button add = new Button("Delete");
-        add.setPrefHeight(55);
-        add.setOnMouseClicked((MouseEvent) -> deleteService());
-        addButtonHB.getChildren().add(add);
-        buttonsHB.getChildren().addAll(backButtonHB, addButtonHB);
-        vbInScrollHS.getChildren().addAll(name, price, descriptor, buttonsHB);
+        Button delete = JavaFXNodeFactory.getInstance().createButton("Delete");
+        delete.setPrefHeight(55);
+        delete.setOnMouseClicked((MouseEvent) -> deleteService(serviceName, servicePrice));
+        HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, delete);
+        vbInScrollHS.getChildren().addAll(name, price, buttonsHB);
     }
 
-    private void deleteService(){
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        manageServicesController.deleteService(this.serviceBean);
+    private void deleteService(String serviceName, Float servicePrice){
+        manageServicesBean.setServiceName(serviceName);
+        manageServicesBean.setServicePrice(servicePrice);
+        manageServicesBean.setServiceShopName(hairdresserBean.getShopName());
+        try {
+            manageServicesController.deleteService(this.manageServicesBean);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         showHairServ();
     }
 

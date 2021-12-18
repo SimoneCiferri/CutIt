@@ -13,18 +13,19 @@ import java.util.List;
 
 public class ManageServicesController {
 
-    public Boolean addService(ManageServiceBean serviceBean, HairdresserBean hairdresserBean) throws Exception {
+    public Boolean addService(ManageServiceBean manageServiceBean, HairdresserBean hairdresserBean) throws Exception {
         User user = new User(hairdresserBean.getEmail(), hairdresserBean.getPassword(), 1);
         Shop shop = ShopDAO.getShopFromUser(user);
-        serviceBean.setServiceShopName(shop.getShopName());
-        Service service = new Service(serviceBean.getServiceName(), serviceBean.getServicePrice(), serviceBean.getServiceShopName());
+        manageServiceBean.setServiceShopName(shop.getShopName());
+        Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
         ServiceDAO.getInstance().insertService(service);
         System.out.println("CONTROLLER APPLICATIVO -> Adding Service (data from ManageServiceBean passed by my viewController)");
         return true;
     }
 
-    public Boolean deleteService(ManageServiceBean serviceBean){
-        //dovrò passare la bean, in modo che questa si possa registrare come osservatore del model (e forse anche per prendere i dati in ingresso, oopure li metto da qui ma sempre usando la bean)
+    public Boolean deleteService(ManageServiceBean manageServiceBean) throws Exception {
+        Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
+        ServiceDAO.getInstance().deleteService(service);
         System.out.println("CONTROLLER APPLICATIVO -> Deleting Service (data from ManageServiceBean passed by my viewController)");
         return true;
     }

@@ -12,6 +12,13 @@ public class ServiceQueries {
         stmt.executeUpdate(insertStatement);
     }
 
+    public static void deleteService(Statement stmt, String serviceName, String shopName) throws SQLException {
+        String insertStatement = String.format("DELETE FROM service WHERE Name = '%s' and Shop_ShopName = '%s'", serviceName, shopName);
+        System.out.println(insertStatement);
+        stmt.executeUpdate(insertStatement);
+    }
+
+
     public static ResultSet getService(Statement stmt, String serviceName, String shopName) throws SQLException {
         String sql = "SELECT * FROM service WHERE Name = '" + serviceName + "' AND ShopName = '" + shopName + "'";
         System.out.println(sql);
