@@ -147,9 +147,8 @@ public class TopBarHairdresserViewController {
 
 
     public void startBean(HairdresserBean hairdresserBean){
-        System.out.println("Getting DeleteAppointmentBean passedBY LoginViewController");
+        System.out.println("HairdresserBean passedBY LoginViewController");
         this.hairdresserBean = hairdresserBean;
-        System.out.println("Hirdresser = " + hairdresserBean.getName() + " " + hairdresserBean.getSurname() + " " + hairdresserBean.getpIVA());
         goApp();
     }
 

@@ -44,24 +44,21 @@ public class ServiceDAO {
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = ServiceQueries.getAllServices(stm, shop.getShopName());
-        if (!rs.first()) {
-            Exception e = new Exception("No services Found matching with name: " + shop.getShopName());
-            throw e;
-        } else {
+        if (rs.first()) {
             rs.first();
-            do{
+            do {
                 String serviceName = rs.getString("Name");
                 Float servicePrice = rs.getFloat("Price");
-                Service s = new Service(serviceName,servicePrice , shop.getShopName());
+                Service s = new Service(serviceName, servicePrice, shop.getShopName());
                 servicesList.add(s);
-            }while (rs.next());
+            } while (rs.next());
             rs.close();
             if (stm != null) {
                 stm.close();
             }
             //DBConnection.getInstance().closeConnection();
-            return servicesList;
         }
+        return servicesList;
     }
 
 }
