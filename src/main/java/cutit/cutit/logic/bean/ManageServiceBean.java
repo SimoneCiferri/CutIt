@@ -44,6 +44,8 @@ public class ManageServiceBean {
         this.serviceShopName = serviceShopName;
     }
 
-
+    public String getServiceName(Integer i){
+        return servicesList.get(i).getServiceName();
+    }
 
 }

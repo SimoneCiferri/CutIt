@@ -3,6 +3,7 @@ package cutit.cutit.logic.controller.manageservices;
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManageServiceBean;
 import cutit.cutit.logic.bean.UserBean;
+import cutit.cutit.logic.factory.CardFactory;
 import cutit.cutit.logic.model.Service;
 import cutit.cutit.logic.model.User;
 import javafx.fxml.FXML;
@@ -46,13 +47,8 @@ public class HairdresserManageServicesViewController {
                 addForm();
             });
             vbInScrollHS.getChildren().add(add);
-            for(Integer i=0; i<4; i++) {
-                Label l = new Label("Service"+i.toString());
-                l.setPrefSize(895, 130);
-                l.setMinSize(895, 130);
-                l.setMaxSize(895, 130);
-                l.setStyle(labelStyle);
-                l.setPadding(new Insets(0, 0, 10, 20));
+            for(Integer i=0; i<serviceBean.getServicesList().size(); i++) {
+                Label l = CardFactory.getInstance().CreateLabel(serviceBean.getServiceName(i), labelStyle);
                 l.setOnMouseClicked((MouseEvent) -> {
                     deleteForm();
                 });
