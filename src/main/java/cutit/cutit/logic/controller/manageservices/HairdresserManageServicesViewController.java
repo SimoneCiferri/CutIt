@@ -40,27 +40,26 @@ public class HairdresserManageServicesViewController {
     private void showHairServ() {
         try {
             this.serviceBean = manageServicesController.getAllServices(this.hairdresserBean);
+            vbInScrollHS.getChildren().clear();
+            Button add = new Button("Add Service");
+            add.setOnMouseClicked((MouseEvent) -> {
+                addForm();
+            });
+            vbInScrollHS.getChildren().add(add);
+            for(Integer i=0; i<4; i++) {
+                Label l = new Label("Service"+i.toString());
+                l.setPrefSize(895, 130);
+                l.setMinSize(895, 130);
+                l.setMaxSize(895, 130);
+                l.setStyle(labelStyle);
+                l.setPadding(new Insets(0, 0, 10, 20));
+                l.setOnMouseClicked((MouseEvent) -> {
+                    deleteForm();
+                });
+                vbInScrollHS.getChildren().add(l);
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        vbInScrollHS.getChildren().clear();
-        Button add = new Button("Add Service");
-        add.setOnMouseClicked((MouseEvent) -> {
-            addForm();
-        });
-        vbInScrollHS.getChildren().add(add);
-        //prendo i dati dalla bean e compongo le label (adesso sono composte a caso)
-        for(Integer i=0; i<4; i++) {
-            Label l = new Label("Service"+i.toString());
-            l.setPrefSize(895, 130);
-            l.setMinSize(895, 130);
-            l.setMaxSize(895, 130);
-            l.setStyle(labelStyle);
-            l.setPadding(new Insets(0, 0, 10, 20));
-            l.setOnMouseClicked((MouseEvent) -> {
-                deleteForm();
-            });
-            vbInScrollHS.getChildren().add(l);
         }
     }
 
