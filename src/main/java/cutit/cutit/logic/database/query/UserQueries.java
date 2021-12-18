@@ -1,22 +1,19 @@
 package cutit.cutit.logic.database.query;
 
-import cutit.cutit.logic.model.Customer;
-import cutit.cutit.logic.model.User;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserQueries {
 
-    public static void insertUser(Statement stmt, User user) throws SQLException {
-        String insertStatement = String.format("INSERT INTO user (UserID, Password, Role) VALUES ('%s', '%s', %d)", user.getUserID(), user.getPwd(), user.getRole());
+    public static void insertUser(Statement stmt, String userID, String userPwd, Integer userRole) throws SQLException {
+        String insertStatement = String.format("INSERT INTO user (UserID, Password, Role) VALUES ('%s', '%s', %d)", userID, userPwd, userRole);
         System.out.println(insertStatement);
         stmt.executeUpdate(insertStatement);
     }
 
-    public static ResultSet getUser(Statement stmt, User user) throws SQLException {
-        String sql = "SELECT * FROM user WHERE UserID = '" + user.getUserID() + "' AND Password = '" + user.getPwd() + "'";
+    public static ResultSet getUser(Statement stmt, String userID, String userPwd) throws SQLException {
+        String sql = "SELECT * FROM user WHERE UserID = '" + userID + "' AND Password = '" + userPwd + "'";
         System.out.println(sql);
         return stmt.executeQuery(sql);
     }

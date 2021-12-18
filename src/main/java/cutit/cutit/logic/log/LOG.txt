@@ -162,3 +162,11 @@ class cutit.cutit.logic.decorator.concreteDecorator.TopBarHairdresserView
 2021/12/17 17:36:06
 class cutit.cutit.logic.controller.login.LoginViewController
  Cannot invoke "cutit.cutit.logic.controller.topbarviewcontrollers.TopBarHairdresserViewController.startBean(cutit.cutit.logic.bean.UserBean)" because "viewController" is null
+
+2021/12/18 10:08:05
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: qqq
+
+2021/12/18 10:38:57
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: qqq

@@ -1,29 +1,25 @@
 package cutit.cutit.logic.database.query;
 
-import cutit.cutit.logic.model.Service;
-import cutit.cutit.logic.model.User;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ServiceQueries {
 
-
-    public static void insertService(Statement stmt, Service service) throws SQLException {
-        String insertStatement = String.format("INSERT INTO service (Name, Price, Shop_ShopName) VALUES ('%s', '%s', '%s')", service.getServiceName(), service.getPrice() , service.getShopName());
+    public static void insertService(Statement stmt, String serviceName, Float servicePrice, String shopName) throws SQLException {
+        String insertStatement = String.format("INSERT INTO service (Name, Price, Shop_ShopName) VALUES ('%s', '%s', '%s')", serviceName, servicePrice , shopName);
         System.out.println(insertStatement);
         stmt.executeUpdate(insertStatement);
     }
 
-    public static ResultSet getService(Statement stmt, Service service) throws SQLException {
-        String sql = "SELECT * FROM service WHERE Name = '" + service.getServiceName() + "' AND Price = '" + service.getPrice() + "' AND ShopName = '" + service.getShopName() + "'";
+    public static ResultSet getService(Statement stmt, String serviceName, String shopName) throws SQLException {
+        String sql = "SELECT * FROM service WHERE Name = '" + serviceName + "' AND ShopName = '" + shopName + "'";
         System.out.println(sql);
         return stmt.executeQuery(sql);
     }
 
-    public static ResultSet getAllServices(Statement stmt, Service service) throws SQLException {
-        String sql = "SELECT * FROM service WHERE ShopName = '" + service.getShopName() + "'";
+    public static ResultSet getAllServices(Statement stmt, String shopNAme) throws SQLException {
+        String sql = "SELECT * FROM service WHERE Shop_ShopName = '" + shopNAme + "'";
         System.out.println(sql);
         return stmt.executeQuery(sql);
     }

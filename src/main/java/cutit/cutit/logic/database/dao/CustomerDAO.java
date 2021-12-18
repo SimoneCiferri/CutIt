@@ -2,7 +2,6 @@ package cutit.cutit.logic.database.dao;
 
 import cutit.cutit.logic.database.DBConnection;
 import cutit.cutit.logic.database.query.CustomerQueries;
-import cutit.cutit.logic.database.query.UserQueries;
 import cutit.cutit.logic.model.Customer;
 import cutit.cutit.logic.model.User;
 
@@ -29,7 +28,7 @@ public class CustomerDAO {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        CustomerQueries.insertCustomer(stm, customer);
+        CustomerQueries.insertCustomer(stm, customer.getUserID(), customer.getAge(), customer.getGender(), customer.getName(), customer.getSurname());
         if(stm != null){
             stm.close();
         }
@@ -37,10 +36,10 @@ public class CustomerDAO {
     }
 
     public Customer getCustomer(User user) throws Exception {
-        Connection conn = conn = DBConnection.getInstance().getConnection();
+        Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = CustomerQueries.getCustomer(stm, user);
+        ResultSet rs = CustomerQueries.getCustomer(stm, user.getUserID());
         if(!rs.first()){
             Exception e = new Exception("No user Found matching with name: "+ user.getUserID());
             throw e;
