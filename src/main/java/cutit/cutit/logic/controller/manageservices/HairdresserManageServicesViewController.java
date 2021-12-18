@@ -121,7 +121,7 @@ public class HairdresserManageServicesViewController {
         serviceBean.setServiceName(serviceName.getText());
         serviceBean.setServicePrice(Float.valueOf(servicePrice.getText()));
         try {
-            manageServicesController.addService(this.serviceBean, this.userBean);
+            manageServicesController.addService(this.serviceBean, this.hairdresserBean);
             showHairServ();
         } catch (Exception e) {
             e.printStackTrace();
