@@ -61,4 +61,14 @@ public class ServiceDAO {
         return servicesList;
     }
 
+    public void deleteService(Service service) throws Exception {
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ServiceQueries.deleteService(stm, service.getServiceName(), service.getShopName());
+        if(stm != null){
+            stm.close();
+        }
+    }
+
 }

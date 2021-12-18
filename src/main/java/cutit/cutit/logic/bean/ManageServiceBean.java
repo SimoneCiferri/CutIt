@@ -6,7 +6,6 @@ import java.util.List;
 
 public class ManageServiceBean {
 
-    private String servicePIVA;
     private String serviceName;
     private Float servicePrice;
     private String serviceShopName;
@@ -46,6 +45,10 @@ public class ManageServiceBean {
 
     public String getServiceName(Integer i){
         return servicesList.get(i).getServiceName();
+    }
+
+    public Float getServicePrice(Integer i){
+        return servicesList.get(i).getPrice();
     }
 
 }

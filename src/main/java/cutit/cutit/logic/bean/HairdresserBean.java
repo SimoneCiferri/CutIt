@@ -2,12 +2,21 @@ package cutit.cutit.logic.bean;
 
 public class HairdresserBean {
 
+    private String email;
+    private String password;
+    private Integer role;
+    private String pIVA;
+    private String shopName;
     private String name;
     private String surname;
-    private String email;
-    private String shopName;
-    private String pIVA;
-    private String password;
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
 
     public String getName() {
         return name;
