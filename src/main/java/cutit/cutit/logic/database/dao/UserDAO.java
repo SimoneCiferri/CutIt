@@ -2,7 +2,6 @@ package cutit.cutit.logic.database.dao;
 
 import cutit.cutit.logic.database.DBConnection;
 import cutit.cutit.logic.database.query.UserQueries;
-import cutit.cutit.logic.model.Customer;
 import cutit.cutit.logic.model.User;
 
 import java.sql.Connection;
@@ -23,10 +22,10 @@ public class UserDAO {
     }
 
     public void insertNewUser(User user) throws Exception {
-        Connection conn = conn = DBConnection.getInstance().getConnection();
+        Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        UserQueries.insertUser(stm, user);
+        UserQueries.insertUser(stm, user.getUserID(), user.getPwd(), user.getRole());
         if(stm != null){
             stm.close();
         }
@@ -37,7 +36,7 @@ public class UserDAO {
         Connection conn = conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = UserQueries.getUser(stm, user);
+        ResultSet rs = UserQueries.getUser(stm, user.getUserID(), user.getPwd());
         if(!rs.first()){
             Exception e = new Exception("No user Found matching with name: "+ user.getUserID());
             throw e;

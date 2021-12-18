@@ -26,10 +26,10 @@ public class ServiceDAO {
     }
 
     public void insertService(Service service) throws Exception {
-        Connection conn = conn = DBConnection.getInstance().getConnection();
+        Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ServiceQueries.insertService(stm, service);
+        ServiceQueries.insertService(stm, service.getServiceName(), service.getPrice(), service.getShopName());
         if(stm != null){
             stm.close();
         }

@@ -14,8 +14,7 @@ public class ManageServicesController {
 
     public Boolean addService(ManageServiceBean serviceBean, UserBean userBean) throws Exception {
         User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
-        Hairdresser hairdresser = HairdresserDAO.getInstance().getHairdresser(user);
-        Shop shop = ShopDAO.getShop(hairdresser);
+        Shop shop = ShopDAO.getShopFromUser(user);
         serviceBean.setServiceShopName(shop.getShopName());
         Service service = new Service(serviceBean.getServiceName(), serviceBean.getServicePrice(), serviceBean.getServiceShopName());
         ServiceDAO.getInstance().insertService(service);
