@@ -2,68 +2,68 @@ package cutit.cutit.logic.bean;
 
 public class CustomerBean {
 
-    private String email;
-    private String password;
-    private Integer role;
-    private String name;
-    private String surname;
-    private Integer age;
-    private String gender;
+    private String cEmail;
+    private String cPassword;
+    private Integer cRole;
+    private String cName;
+    private String cSurname;
+    private Integer cAge;
+    private String cGender;
 
-    public Integer getRole() {
-        return role;
+    public Integer getcRole() {
+        return cRole;
     }
 
-    public void setRole(Integer role) {
-        this.role = role;
+    public void setcRole(Integer cRole) {
+        this.cRole = cRole;
     }
 
-    public String getName() {
-        return name;
+    public String getcName() {
+        return cName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setcName(String cName) {
+        this.cName = cName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getcSurname() {
+        return cSurname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setcSurname(String cSurname) {
+        this.cSurname = cSurname;
     }
 
-    public Integer getAge() {
-        return age;
+    public Integer getcAge() {
+        return cAge;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setcAge(Integer cAge) {
+        this.cAge = cAge;
     }
 
-    public String getGender() {
-        return gender;
+    public String getcGender() {
+        return cGender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setcGender(String cGender) {
+        this.cGender = cGender;
     }
 
-    public String getEmail() {
-        return email;
+    public String getcEmail() {
+        return cEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setcEmail(String cEmail) {
+        this.cEmail = cEmail;
     }
 
-    public String getPassword() {
-        return password;
+    public String getcPassword() {
+        return cPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setcPassword(String cPassword) {
+        this.cPassword = cPassword;
     }
 
 }

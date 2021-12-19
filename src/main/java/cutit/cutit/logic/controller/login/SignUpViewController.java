@@ -39,12 +39,12 @@ public class SignUpViewController {
         try{
             if(checkSamePswd(pfCustomerPassword, pfCustomerConfirmPassword) && !isSomethingNull(tfCustomerName.getText(), tfCustomerSurname.getText(),
                     "Female", tfCustomerEmail.getText(), pfCustomerPassword.getText())){
-                customerBean.setName(tfCustomerName.getText());
-                customerBean.setSurname(tfCustomerSurname.getText());
-                customerBean.setAge(25);
-                customerBean.setGender("Female");
-                customerBean.setEmail(tfCustomerEmail.getText());
-                customerBean.setPassword(pfCustomerPassword.getText());
+                customerBean.setcName(tfCustomerName.getText());
+                customerBean.setcSurname(tfCustomerSurname.getText());
+                customerBean.setcAge(25);
+                customerBean.setcGender("Female");
+                customerBean.setcEmail(tfCustomerEmail.getText());
+                customerBean.setcPassword(pfCustomerPassword.getText());
                 if(loginController.signUpCustomer(this.customerBean)){
                     Facade.getInstance().decorateView(ViewLayout.LOGIN);
                 }
@@ -60,12 +60,12 @@ public class SignUpViewController {
         try{
             if(checkSamePswd(pfHairdresserPassword, pfHairdresserConfirmPassword) && !isSomethingNull(tfHairdresserName.getText(),
                     tfHairdresserSurname.getText(), tfHairdresserEmail.getText(), tfHairdresserPIVA.getText(), tfHairdresserShopName.getText())){
-                hairdresserBean.setName(tfHairdresserName.getText());
-                hairdresserBean.setSurname(tfHairdresserSurname.getText());
-                hairdresserBean.setEmail(tfHairdresserEmail.getText());
+                hairdresserBean.sethName(tfHairdresserName.getText());
+                hairdresserBean.sethSurname(tfHairdresserSurname.getText());
+                hairdresserBean.sethEmail(tfHairdresserEmail.getText());
                 hairdresserBean.setpIVA(tfHairdresserPIVA.getText());
                 hairdresserBean.setShopName(tfHairdresserShopName.getText());
-                hairdresserBean.setPassword(pfHairdresserPassword.getText());
+                hairdresserBean.sethPassword(pfHairdresserPassword.getText());
                 if(loginController.signUpHair(hairdresserBean)){
                     Facade.getInstance().decorateView(ViewLayout.LOGIN);
                 }

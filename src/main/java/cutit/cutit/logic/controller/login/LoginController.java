@@ -24,7 +24,7 @@ public class LoginController {
     }
 
     public Boolean signUpCustomer(CustomerBean customerBean) throws Exception {
-        Customer customer = new Customer(customerBean.getEmail(), customerBean.getPassword(), 0, customerBean.getName(), customerBean.getSurname(), customerBean.getAge(), customerBean.getGender());
+        Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcAge(), customerBean.getcGender());
         UserDAO.getInstance().insertNewUser(customer);
         CustomerDAO.getInstance().insertCustomer(customer);
         System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from CustomerBean passed by my viewController)");
@@ -32,7 +32,7 @@ public class LoginController {
     }
 
     public Boolean signUpHair(HairdresserBean hairdresserBean) throws Exception {
-        Hairdresser hairdresser = new Hairdresser(hairdresserBean.getEmail(), hairdresserBean.getPassword(), 1, hairdresserBean.getName(), hairdresserBean.getSurname(), hairdresserBean.getpIVA());
+        Hairdresser hairdresser = new Hairdresser(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1, hairdresserBean.gethName(), hairdresserBean.gethSurname(), hairdresserBean.getpIVA());
         UserDAO.getInstance().insertNewUser(hairdresser);
         HairdresserDAO.getInstance().insertNewHairdresser(hairdresser);
         Shop shop = new Shop(hairdresserBean.getpIVA(), hairdresserBean.getShopName());
@@ -45,11 +45,11 @@ public class LoginController {
         User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
         Hairdresser hairdresser = HairdresserDAO.getInstance().getHairdresser(user);
         HairdresserBean hairdresserBean = new HairdresserBean();
-        hairdresserBean.setEmail(hairdresser.getUserID());
-        hairdresserBean.setPassword(hairdresser.getPwd());
+        hairdresserBean.sethEmail(hairdresser.getUserID());
+        hairdresserBean.sethPassword(hairdresser.getPwd());
         hairdresserBean.setpIVA(hairdresser.getpIVA());
-        hairdresserBean.setName(hairdresser.getName());
-        hairdresserBean.setSurname(hairdresser.getSurname());
+        hairdresserBean.sethName(hairdresser.getName());
+        hairdresserBean.sethSurname(hairdresser.getSurname());
         hairdresserBean.setShopName(hairdresser.getShopName());
         return hairdresserBean;
     }
@@ -58,13 +58,13 @@ public class LoginController {
         User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
         Customer customer = CustomerDAO.getInstance().getCustomer(user);
         CustomerBean customerBean = new CustomerBean();
-        customerBean.setEmail(customer.getUserID());
-        customerBean.setPassword(customer.getPwd());
-        customerBean.setRole(customer.getRole());
-        customerBean.setName(customer.getName());
-        customerBean.setSurname(customer.getSurname());
-        customerBean.setAge(customer.getAge());
-        customerBean.setGender(customer.getGender());
+        customerBean.setcEmail(customer.getUserID());
+        customerBean.setcPassword(customer.getPwd());
+        customerBean.setcRole(customer.getRole());
+        customerBean.setcName(customer.getName());
+        customerBean.setcSurname(customer.getSurname());
+        customerBean.setcAge(customer.getAge());
+        customerBean.setcGender(customer.getGender());
         return customerBean;
     }
 }
