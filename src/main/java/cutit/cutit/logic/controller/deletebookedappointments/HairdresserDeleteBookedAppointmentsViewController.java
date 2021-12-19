@@ -1,6 +1,7 @@
 package cutit.cutit.logic.controller.deletebookedappointments;
 
 import cutit.cutit.logic.bean.DeleteAppointmentBean;
+import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,6 +16,8 @@ public class HairdresserDeleteBookedAppointmentsViewController {
     private DeleteAppointmentBean deleteAppointmentBean;
     private DeleteBookedAppointmentController deleteBookedAppointmentController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private final Double titleFontSize = 30.0;
+    private final Double normalLabelFontSize = 14.0;
 
     @FXML
     private VBox vbInScrollHApp;
@@ -46,35 +49,18 @@ public class HairdresserDeleteBookedAppointmentsViewController {
 
     private void deleteForm() {
        vbInScrollHApp.getChildren().clear();
-        Label name = new Label("yyyy-MM-dd");
-        name.setTextFill(Color.WHITE);
-        Label clientName = new Label("Client1");
-        clientName.setTextFill(Color.WHITE);
-        Label serviceName = new Label("service");
-        serviceName.setTextFill(Color.WHITE);
-        Label appNotes = new Label("Notes....");
-        appNotes.setTextFill(Color.WHITE);
-        HBox buttonsHB = new HBox();
-        buttonsHB.setMaxSize(600,55);
-        buttonsHB.setMinSize(600, 55);
-        HBox backButtonHB = new HBox();
-        backButtonHB.setMaxSize(300,55);
-        backButtonHB.setMinSize(300, 55);
-        backButtonHB.setAlignment(Pos.CENTER_LEFT);
-        Button back = new Button("Back");
+        Label appDate = JavaFXNodeFactory.getInstance().createLabel("dd-MM-yyyy",titleFontSize);
+        Label clientName = JavaFXNodeFactory.getInstance().createLabel("Customer Name", normalLabelFontSize);
+        Label serviceName = JavaFXNodeFactory.getInstance().createLabel("Service", normalLabelFontSize);
+        Label appNotes = JavaFXNodeFactory.getInstance().createLabel("Notes..", normalLabelFontSize);
+        Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
         back.setOnMouseClicked((MouseEvent) -> showAppointments());
-        backButtonHB.getChildren().add(back);
-        HBox addButtonHB = new HBox();
-        addButtonHB.setMaxSize(300,55);
-        addButtonHB.setMinSize(300, 55);
-        addButtonHB.setAlignment(Pos.CENTER_RIGHT);
-        Button add = new Button("Delete");
-        add.setPrefHeight(55);
-        add.setOnMouseClicked((MouseEvent) -> deleteAppointment());
-        addButtonHB.getChildren().add(add);
-        buttonsHB.getChildren().addAll(backButtonHB, addButtonHB);
-        vbInScrollHApp.getChildren().addAll(name, clientName, appNotes, buttonsHB);
+        Button delete = JavaFXNodeFactory.getInstance().createButton("Delete");
+        delete.setPrefHeight(55);
+        delete.setOnMouseClicked((MouseEvent) -> deleteAppointment());
+        HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, delete);
+        vbInScrollHApp.getChildren().addAll(appDate, clientName, serviceName, appNotes, buttonsHB);
     }
 
     private void deleteAppointment(){

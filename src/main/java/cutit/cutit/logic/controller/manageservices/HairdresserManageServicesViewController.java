@@ -4,7 +4,6 @@ import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManageServiceBean;
 import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,7 +20,7 @@ public class HairdresserManageServicesViewController {
     private ManageServiceBean manageServicesBean;
     private ManageServicesController manageServicesController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private final Double TitleFontSize = 30.0;
+    private final Double titleFontSize = 30.0;
     private final Double normalLabelFontSize = 14.0;
 
     @FXML
@@ -56,7 +55,7 @@ public class HairdresserManageServicesViewController {
     private void showAddForm() {
         vbInScrollHS.getChildren().clear();
         List<Label> labelList = new ArrayList<Label>();
-        Label title = JavaFXNodeFactory.getInstance().createLabel("Add Service", TitleFontSize);
+        Label title = JavaFXNodeFactory.getInstance().createLabel("Add Service", titleFontSize);
         Label name = JavaFXNodeFactory.getInstance().createLabel("Name:", normalLabelFontSize);
         labelList.add(name);
         Label price = JavaFXNodeFactory.getInstance().createLabel("Price:", normalLabelFontSize);
@@ -70,7 +69,7 @@ public class HairdresserManageServicesViewController {
         servicePrice.setPromptText("Service Price");
         servicePrice.setMaxSize(180, 25);
         nodeList.add(servicePrice);
-        HBox form = JavaFXNodeFactory.getInstance().createAddForm(labelList, nodeList);
+        HBox form = JavaFXNodeFactory.getInstance().createLRForm(labelList, nodeList, true);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
         back.setOnMouseClicked((MouseEvent) -> showHairServ());
@@ -94,7 +93,7 @@ public class HairdresserManageServicesViewController {
 
     private void deleteForm(String serviceName, Float servicePrice) {
         vbInScrollHS.getChildren().clear();
-        Label name = JavaFXNodeFactory.getInstance().createLabel(serviceName, TitleFontSize);
+        Label name = JavaFXNodeFactory.getInstance().createLabel(serviceName, titleFontSize);
         Label price = JavaFXNodeFactory.getInstance().createLabel(servicePrice.toString(), normalLabelFontSize);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
