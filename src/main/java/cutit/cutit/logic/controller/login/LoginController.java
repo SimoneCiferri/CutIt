@@ -35,7 +35,7 @@ public class LoginController {
         Hairdresser hairdresser = new Hairdresser(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1, hairdresserBean.gethName(), hairdresserBean.gethSurname(), hairdresserBean.getpIVA());
         UserDAO.getInstance().insertNewUser(hairdresser);
         HairdresserDAO.getInstance().insertNewHairdresser(hairdresser);
-        Shop shop = new Shop(hairdresserBean.getpIVA(), hairdresserBean.getShopName());
+        Shop shop = new Shop(hairdresserBean.getShopName(), hairdresserBean.getpIVA());
         ShopDAO.insertShop(shop);
         System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from ....... passed by my viewController)");
         return true;

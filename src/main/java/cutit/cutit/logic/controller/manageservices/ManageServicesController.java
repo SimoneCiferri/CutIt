@@ -28,7 +28,7 @@ public class ManageServicesController {
     }
 
     public ManageServiceBean getAllServices(HairdresserBean hairdresserBean) throws Exception {
-        Shop shop = new Shop(hairdresserBean.getpIVA(),hairdresserBean.getShopName());
+        Shop shop = new Shop(hairdresserBean.getShopName(), hairdresserBean.getpIVA());
         List<Service> serviceList = ServiceDAO.getInstance().getALlServices(shop);
         ManageServiceBean manageServiceBean = new ManageServiceBean();
         manageServiceBean.setServicesList(serviceList);

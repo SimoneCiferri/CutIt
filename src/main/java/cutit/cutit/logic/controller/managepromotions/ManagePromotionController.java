@@ -34,7 +34,7 @@ public class ManagePromotionController {
     }
 
     public ManagePromotionBean getAllPromotions(HairdresserBean hairdresserBean) throws Exception {
-        Shop shop = new Shop(hairdresserBean.getpIVA(),hairdresserBean.getShopName());
+        Shop shop = new Shop(hairdresserBean.getShopName(), hairdresserBean.getpIVA());
         List<Promotion> promotionsList = PromotionDAO.getAllPromotion(shop);
         ManagePromotionBean managePromotionBean = new ManagePromotionBean();
         managePromotionBean.setPromotionsList(promotionsList);
@@ -42,7 +42,7 @@ public class ManagePromotionController {
     }
 
     public ManagePromotionBean getAllServices(HairdresserBean hairdresserBean) throws Exception {
-        Shop shop = new Shop(hairdresserBean.getpIVA(),hairdresserBean.getShopName());
+        Shop shop = new Shop(hairdresserBean.getShopName(), hairdresserBean.getpIVA());
         List<Service> serviceList = ServiceDAO.getInstance().getALlServices(shop);
         ManagePromotionBean managePromotionBean = new ManagePromotionBean();
         managePromotionBean.setServiceList(serviceList);
