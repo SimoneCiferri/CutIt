@@ -83,8 +83,9 @@ public class HairdresserManageServicesViewController {
     private void addService(TextField serviceName, TextField servicePrice){
         manageServicesBean.setServiceName(serviceName.getText());
         manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
+        manageServicesBean.setServiceShopName(hairdresserBean.getShopName());
         try {
-            manageServicesController.addService(this.manageServicesBean, this.hairdresserBean);
+            manageServicesController.addService(this.manageServicesBean);
             showHairServ();
         } catch (Exception e) {
             e.printStackTrace();
