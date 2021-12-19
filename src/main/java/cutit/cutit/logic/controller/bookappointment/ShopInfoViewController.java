@@ -29,13 +29,8 @@ public class ShopInfoViewController {
     }
 
     @FXML
-    public void goToDirections(){
-        try{
-            Facade.getInstance().decorateView(ViewLayout.GMAPS);
-        } catch (Exception e) {
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
-        }
+    public boolean goToDirections(){
+        Facade.getInstance().decorateView(ViewLayout.GMAPS);
+        return true;
     }
-
 }
