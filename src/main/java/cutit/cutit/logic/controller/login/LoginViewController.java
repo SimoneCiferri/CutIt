@@ -52,7 +52,6 @@ public class LoginViewController {
                     Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
                     TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
                     TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
-                    //setta il customer bean
                     viewController.startBean(this.customerBean);
                 }else{
                     this.hairdresserBean = loginController.getHairdresser(userBean);
