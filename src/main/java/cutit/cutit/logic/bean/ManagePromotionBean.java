@@ -25,6 +25,10 @@ public class ManagePromotionBean {
         return promotionsList.get(i).getOffValue();
     }
 
+    public String getPromotionServiceName(int i){
+        return promotionsList.get(i).getServiceName();
+    }
+
     public int getPromotionCode() {
         return promotionCode;
     }
