@@ -2,44 +2,44 @@ package cutit.cutit.logic.bean;
 
 public class HairdresserBean {
 
-    private String email;
-    private String password;
-    private Integer role;
+    private String hEmail;
+    private String hPassword;
+    private Integer hRole;
     private String pIVA;
     private String shopName;
-    private String name;
-    private String surname;
+    private String hName;
+    private String hSurname;
 
-    public Integer getRole() {
-        return role;
+    public Integer gethRole() {
+        return hRole;
     }
 
-    public void setRole(Integer role) {
-        this.role = role;
+    public void sethRole(Integer hRole) {
+        this.hRole = hRole;
     }
 
-    public String getName() {
-        return name;
+    public String gethName() {
+        return hName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void sethName(String hName) {
+        this.hName = hName;
     }
 
-    public String getSurname() {
-        return surname;
+    public String gethSurname() {
+        return hSurname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void sethSurname(String hSurname) {
+        this.hSurname = hSurname;
     }
 
-    public String getEmail() {
-        return email;
+    public String gethEmail() {
+        return hEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void sethEmail(String hEmail) {
+        this.hEmail = hEmail;
     }
 
     public String getShopName() {
@@ -58,12 +58,12 @@ public class HairdresserBean {
         this.pIVA = pIVA;
     }
 
-    public String getPassword() {
-        return password;
+    public String gethPassword() {
+        return hPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void sethPassword(String hPassword) {
+        this.hPassword = hPassword;
     }
 
 

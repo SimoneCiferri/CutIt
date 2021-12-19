@@ -28,6 +28,7 @@ public class JavaFXNodeFactory {
     public Label createLabel(String title, Double fontSize){
         Label l = new Label(title);
         l.setFont(Font.font(fontSize));
+        l.setTextFill(Color.WHITE);
         return l;
     }
 
@@ -42,12 +43,10 @@ public class JavaFXNodeFactory {
     }
 
     public Button createButton(String title){
-        Button b = new Button(title);
-        return b;
+        return new Button(title);
     }
 
-    public HBox createAddForm(List<Label> leftLabelList, List<Node> rightLabelList){
-        //DA FINIRE
+    public HBox createLRForm(List<Label> leftLabelList, List<Node> rightLabelList, Boolean diffSpacing){
         HBox form = new HBox();
         form.setMaxSize(500,250);
         form.setMinSize(500, 100);
@@ -56,7 +55,11 @@ public class JavaFXNodeFactory {
         leftVBox.setMaxSize(250, 250);
         leftVBox.setMinSize(250, 100);
         leftVBox.setAlignment(Pos.TOP_RIGHT);
-        leftVBox.setSpacing(25);
+        if(diffSpacing){
+            leftVBox.setSpacing(25);
+        }else{
+            leftVBox.setSpacing(15);
+        }
         leftVBox.setPadding(new Insets(0, 10, 0,0));
         for(int i = 0; i<leftLabelList.size();i++){
             Label l = leftLabelList.get(i);

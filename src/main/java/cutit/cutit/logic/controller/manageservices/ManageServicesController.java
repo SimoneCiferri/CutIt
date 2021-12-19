@@ -2,7 +2,6 @@ package cutit.cutit.logic.controller.manageservices;
 
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManageServiceBean;
-import cutit.cutit.logic.bean.UserBean;
 import cutit.cutit.logic.database.dao.ServiceDAO;
 import cutit.cutit.logic.database.dao.ShopDAO;
 import cutit.cutit.logic.model.Service;
@@ -14,7 +13,7 @@ import java.util.List;
 public class ManageServicesController {
 
     public Boolean addService(ManageServiceBean manageServiceBean, HairdresserBean hairdresserBean) throws Exception {
-        User user = new User(hairdresserBean.getEmail(), hairdresserBean.getPassword(), 1);
+        User user = new User(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1);
         Shop shop = ShopDAO.getShopFromUser(user);
         manageServiceBean.setServiceShopName(shop.getShopName());
         Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
@@ -31,7 +30,7 @@ public class ManageServicesController {
     }
 
     public ManageServiceBean getAllServices(HairdresserBean hairdresserBean) throws Exception {
-        User user = new User(hairdresserBean.getEmail(), hairdresserBean.getPassword(), 1);
+        User user = new User(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1);
         Shop shop = ShopDAO.getShopFromUser(user);
         List<Service> serviceList = ServiceDAO.getInstance().getALlServices(shop);
         ManageServiceBean manageServiceBean = new ManageServiceBean();
