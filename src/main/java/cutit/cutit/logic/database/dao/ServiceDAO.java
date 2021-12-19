@@ -3,6 +3,7 @@ package cutit.cutit.logic.database.dao;
 import cutit.cutit.logic.database.DBConnection;
 import cutit.cutit.logic.database.query.ServiceQueries;
 import cutit.cutit.logic.database.query.UserQueries;
+import cutit.cutit.logic.model.Hairdresser;
 import cutit.cutit.logic.model.Service;
 import cutit.cutit.logic.model.Shop;
 import cutit.cutit.logic.model.User;
@@ -60,6 +61,8 @@ public class ServiceDAO {
         }
         return servicesList;
     }
+
+
 
     public void deleteService(Service service) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
