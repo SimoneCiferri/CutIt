@@ -203,3 +203,8 @@ class cutit.cutit.logic.controller.login.LoginViewController
 2021/12/19 17:35:20
 class cutit.cutit.logic.controller.login.LoginViewController
  No user Found matching with name: email
+
+2021/12/19 17:46:26
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gMaps.fxml
