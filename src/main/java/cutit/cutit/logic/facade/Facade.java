@@ -120,6 +120,10 @@ public class Facade {
                 ClientPromotionInfoView clientprominfoview = new ClientPromotionInfoView(startView);
                 viewMap.put(layout, clientprominfoview);
             }
+            case GMAPS -> {
+                CustomerGetLocationDirectionsView customerGetLocationDirectionsView = new CustomerGetLocationDirectionsView(startView);
+                viewMap.put(layout, customerGetLocationDirectionsView);
+            }
         }
     }
 

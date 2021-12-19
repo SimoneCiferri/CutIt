@@ -186,3 +186,8 @@ class cutit.cutit.logic.controller.login.LoginViewController
 2021/12/19 10:26:23
 class cutit.cutit.logic.controller.login.LoginViewController
  No user Found matching with name: qqq
+
+2021/12/19 13:19:52
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/E:/UNIVERSITA'%20AGGIORNATA/ISPW/progettoCutIt/target/classes/cutit/cutit/fxml/gMaps.fxml:7
