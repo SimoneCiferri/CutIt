@@ -3,9 +3,8 @@
 <?import com.lynden.gmapsfx.GoogleMapView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="789.0" prefWidth="1032.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.gmap.GMapsViewController">
    <children>
-      <GoogleMapView layoutX="116.0" layoutY="81.0" />
+      <GoogleMapView layoutX="151.0" layoutY="95.0" />
    </children>
 </AnchorPane>
