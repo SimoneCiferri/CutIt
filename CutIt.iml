@@ -39,7 +39,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../GMapsFXlib.jar!/" />
+          <root url="jar://C:/Users/GMapsFXlib.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

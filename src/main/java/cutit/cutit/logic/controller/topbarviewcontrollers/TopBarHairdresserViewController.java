@@ -79,7 +79,7 @@ public class TopBarHairdresserViewController {
         btnHLogout.setStyle(transparentStyle);
         HairdresserPromotionsView view = (HairdresserPromotionsView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERPROMOTIONS);
         HairdresserManagePromotionsViewController viewController = (HairdresserManagePromotionsViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERPROMOTIONS);
-        viewController.fillView(new ManagePromotionBean());
+        viewController.fillView(this.hairdresserBean);
         return true;
     }
 

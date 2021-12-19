@@ -1,5 +1,6 @@
 package cutit.cutit.logic.controller.managepromotions;
 
+import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManagePromotionBean;
 import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
@@ -9,12 +10,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class HairdresserManagePromotionsViewController {
 
+    private HairdresserBean hairdresserBean;
     private ManagePromotionBean managePromotionBean;
     private ManagePromotionController managePromotionController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
@@ -29,24 +32,25 @@ public class HairdresserManagePromotionsViewController {
         managePromotionBean = new ManagePromotionBean();
         managePromotionController = new ManagePromotionController();
         vbInScrollHProm.setSpacing(15);
-        showHairProm();
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGEPROMOTIONSVIEWCONTROLLER");
     }
 
     private void showHairProm() {
-        vbInScrollHProm.getChildren().clear();
-        Button add = JavaFXNodeFactory.getInstance().createButton("Add Promotion");
-        add.setOnMouseClicked((MouseEvent) -> addForm());
-        vbInScrollHProm.getChildren().add(add);
-        for(int i = 0; i<4; i++) {
-            Label l = new Label("Promotion"+ i);
-            l.setPrefSize(895, 130);
-            l.setMinSize(895, 130);
-            l.setMaxSize(895, 130);
-            l.setStyle(labelStyle);
-            l.setPadding(new Insets(0, 0, 10, 20));
-            l.setOnMouseClicked((MouseEvent) -> deleteForm());
-            vbInScrollHProm.getChildren().add(l);
+        try {
+            this.managePromotionBean = managePromotionController.getAllPromotions(this.hairdresserBean);
+            vbInScrollHProm.getChildren().clear();
+            Button add = JavaFXNodeFactory.getInstance().createButton("Add Promotion");
+            add.setOnMouseClicked((MouseEvent) -> addForm());
+            vbInScrollHProm.getChildren().add(add);
+            for(int i = 0; i<managePromotionBean.getPromotionsList().size(); i++) {
+                String promotionName = managePromotionBean.getPromotionName(i);
+                Integer promotionOffValue = managePromotionBean.getPromotionOffValue(i);
+                Label l = JavaFXNodeFactory.getInstance().createCardLabel(promotionName, labelStyle);
+                l.setOnMouseClicked((MouseEvent) -> deleteForm(promotionName, promotionOffValue));
+                vbInScrollHProm.getChildren().add(l);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -92,10 +96,10 @@ public class HairdresserManagePromotionsViewController {
         showHairProm();
     }
 
-    private void deleteForm() {
+    private void deleteForm(String promName, Integer promOffValue) {
        vbInScrollHProm.getChildren().clear();
-        Label name = JavaFXNodeFactory.getInstance().createLabel("promotion's name", titleFontSize);
-        Label promValue = JavaFXNodeFactory.getInstance().createLabel("X %off", titleFontSize);
+        Label name = JavaFXNodeFactory.getInstance().createLabel(promName, titleFontSize);
+        Label promValue = JavaFXNodeFactory.getInstance().createLabel(promOffValue.toString(), titleFontSize);
         List<Label> leftLabelList = new ArrayList<>();
         Label validFrom = JavaFXNodeFactory.getInstance().createLabel("From:", normalLabelFontSize);
         leftLabelList.add(validFrom);
@@ -123,10 +127,10 @@ public class HairdresserManagePromotionsViewController {
         showHairProm();
     }
 
-    public void fillView(ManagePromotionBean bean){
-        managePromotionBean = bean;
-        System.out.println("Filling View from ManagePromotionBean data passedBY TopBarHairdresserViewController");
-        //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
+    public void fillView(HairdresserBean hairdresserBean){
+        this.hairdresserBean = hairdresserBean;
+        System.out.println("Filling View from HairdresserBean data passedBY TopBarHairdresserViewController");
+        showHairProm();
     }
 
 }
