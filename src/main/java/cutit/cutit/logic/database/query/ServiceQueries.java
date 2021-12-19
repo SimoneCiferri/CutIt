@@ -20,7 +20,7 @@ public class ServiceQueries {
 
 
     public static ResultSet getService(Statement stmt, String serviceName, String shopName) throws SQLException {
-        String sql = "SELECT * FROM service WHERE Name = '" + serviceName + "' AND ShopName = '" + shopName + "'";
+        String sql = "SELECT * FROM service WHERE Name = '" + serviceName + "' AND Shop_ShopName = '" + shopName + "'";
         System.out.println(sql);
         return stmt.executeQuery(sql);
     }

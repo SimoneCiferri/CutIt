@@ -1,5 +1,6 @@
 package cutit.cutit.logic.database.dao;
 
+import cutit.cutit.logic.bean.ManagePromotionBean;
 import cutit.cutit.logic.database.DBConnection;
 import cutit.cutit.logic.database.query.ServiceQueries;
 import cutit.cutit.logic.database.query.UserQueries;
@@ -72,6 +73,24 @@ public class ServiceDAO {
         if(stm != null){
             stm.close();
         }
+    }
+
+    public Service getService(ManagePromotionBean managePromotionBean) throws Exception {
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = ServiceQueries.getService(stm, managePromotionBean.getPromServiceName(), managePromotionBean.getPromShopName());
+        rs.first();
+        String serviceName = rs.getString("Name");
+        Float servicePrice = rs.getFloat("Price");
+        String shopName = rs.getString("Shop_ShopName");
+        Service s = new Service(serviceName, servicePrice, shopName);
+        rs.close();
+        if (stm != null) {
+            stm.close();
+        }
+        //DBConnection.getInstance().closeConnection();
+        return s;
     }
 
 }
