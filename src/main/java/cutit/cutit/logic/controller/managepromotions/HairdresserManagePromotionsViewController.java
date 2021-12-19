@@ -45,8 +45,9 @@ public class HairdresserManagePromotionsViewController {
             for(int i = 0; i<managePromotionBean.getPromotionsList().size(); i++) {
                 String promotionName = managePromotionBean.getPromotionName(i);
                 Integer promotionOffValue = managePromotionBean.getPromotionOffValue(i);
+                String promotionServiceName = managePromotionBean.getPromotionServiceName(i);
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel(promotionName, labelStyle);
-                l.setOnMouseClicked((MouseEvent) -> deleteForm(promotionName, promotionOffValue));
+                l.setOnMouseClicked((MouseEvent) -> deleteForm(promotionName, promotionOffValue, promotionServiceName));
                 vbInScrollHProm.getChildren().add(l);
             }
         } catch (Exception e) {
@@ -91,15 +92,15 @@ public class HairdresserManagePromotionsViewController {
     }
 
     private void addPromotion(){
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
         managePromotionController.addPromotion(this.managePromotionBean);
         showHairProm();
     }
 
-    private void deleteForm(String promName, Integer promOffValue) {
+    private void deleteForm(String promName, Integer promOffValue, String promServiceName) {
        vbInScrollHProm.getChildren().clear();
         Label name = JavaFXNodeFactory.getInstance().createLabel(promName, titleFontSize);
         Label promValue = JavaFXNodeFactory.getInstance().createLabel(promOffValue.toString(), titleFontSize);
+        Label promService = JavaFXNodeFactory.getInstance().createLabel(promServiceName, titleFontSize);
         List<Label> leftLabelList = new ArrayList<>();
         Label validFrom = JavaFXNodeFactory.getInstance().createLabel("From:", normalLabelFontSize);
         leftLabelList.add(validFrom);
@@ -118,7 +119,7 @@ public class HairdresserManagePromotionsViewController {
         delete.setPrefHeight(55);
         delete.setOnMouseClicked((MouseEvent) -> removePromotion());
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, delete);
-        vbInScrollHProm.getChildren().addAll(name, promValue, form, buttonsHB);
+        vbInScrollHProm.getChildren().addAll(name, promValue, promService, form, buttonsHB);
     }
 
     private void removePromotion(){
