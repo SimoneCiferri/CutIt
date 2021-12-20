@@ -10,6 +10,7 @@ public class ShopBean {
     private String shopAddress;
     private String shopWorkers;
     private String shopDescription;
+    private String phoneNumber; //aggiunto attributo
     private Image images;
     private Map openDays;
 
@@ -30,6 +31,13 @@ public class ShopBean {
     public void setShopAddress(String shopAddress) {
         this.shopAddress = shopAddress;
     }
+
+    //aggiunto getter e setter
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(){ this.phoneNumber = phoneNumber;}
 
     public String getShopWorkers() {
         return shopWorkers;
