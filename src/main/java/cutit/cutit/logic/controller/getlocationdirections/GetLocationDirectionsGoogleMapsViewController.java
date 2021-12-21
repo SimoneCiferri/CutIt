@@ -1,49 +1,59 @@
 package cutit.cutit.logic.controller.getlocationdirections;
 
 
-import com.lynden.gmapsfx.GoogleMapView;
-import com.lynden.gmapsfx.MapComponentInitializedListener;
-import com.lynden.gmapsfx.javascript.object.*;
+import com.dlsc.gmapsfx.GoogleMapView;
+import com.dlsc.gmapsfx.MapComponentInitializedListener;
+import com.dlsc.gmapsfx.javascript.object.*;
+import com.dlsc.gmapsfx.service.directions.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GetLocationDirectionsGoogleMapsViewController implements Initializable, MapComponentInitializedListener{
+public class GetLocationDirectionsGoogleMapsViewController implements Initializable, MapComponentInitializedListener, DirectionsServiceCallback {
 
-    private GoogleMap map;
+    protected GoogleMap map;
+    protected DirectionsService directionsService;
+    protected DirectionsPane directionsPane;
+
+    protected StringProperty from = new SimpleStringProperty();
+    protected StringProperty to = new SimpleStringProperty();
+    protected DirectionsRenderer directionsRenderer = null;
 
     @FXML
-    private GoogleMapView mapView;
+    protected GoogleMapView mapView;
+
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        mapView.addMapInializedListener(this);
+    public void directionsReceived(DirectionsResult results, DirectionStatus status) {
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        mapView.addMapInitializedListener(this);
     }
 
     @Override
     public void mapInitialized() {
-        LatLong latLong = new LatLong(41.9102415, 12.3959136);
-        MapOptions mapOptions = new MapOptions();
-        mapOptions.center(latLong)
+        MapOptions options = new MapOptions();
+        LatLong latLong = new LatLong(41.853910, 12.624290);
+        options.center(latLong)
+                .zoomControl(true)
+                .zoom(12)
                 .overviewMapControl(false)
-                .panControl(false)
-                .rotateControl(false)
-                .scaleControl(false)
-                .streetViewControl(false)
-                .zoomControl(false)
-                .zoom(12);
-        map = mapView.createMap(mapOptions);
+                .mapType(MapTypeIdEnum.ROADMAP);
+        map = mapView.createMap(options);
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLong);
         Marker marker = new Marker(markerOptions);
         map.addMarker(marker);
-/*
-        InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-        infoWindowOptions.content("<h2>ROMA</h2>Location di Roma<br>");
-        InfoWindow infoWindow = new InfoWindow(infoWindowOptions);
-        infoWindow.open(map, marker);
 
- */
+        directionsService = new DirectionsService();
+        directionsPane = mapView.getDirec();
     }
+
 }

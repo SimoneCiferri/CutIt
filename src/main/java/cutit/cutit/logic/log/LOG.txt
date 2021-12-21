@@ -244,3 +244,128 @@ class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
 class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
  Error resolving onMouseClicked='#manageShopPage', either the event handler is not in the Namespace or there is an error in the script.
 /C:/Users/aless/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml:103
+
+2021/12/21 10:04:22
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:8
+
+2021/12/21 10:08:29
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:31
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:32
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:32
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:33
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:33
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:33
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:34
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:34
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:34
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:36
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:53
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:08:55
+class cutit.cutit.logic.decorator.concreteDecorator.TopBarView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/topbar.fxml:6
+
+2021/12/21 10:11:33
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:8
+
+2021/12/21 10:12:49
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:8
+
+2021/12/21 10:16:37
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:8
+
+2021/12/21 10:22:39
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:9
+
+2021/12/21 10:23:05
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:9
+
+2021/12/21 10:25:25
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:9
+
+2021/12/21 10:36:36
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:9
+
+2021/12/21 10:42:25
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:10
+
+2021/12/21 10:51:09
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:10
+
+2021/12/21 10:51:29
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:10
+
+2021/12/21 10:52:06
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:10
