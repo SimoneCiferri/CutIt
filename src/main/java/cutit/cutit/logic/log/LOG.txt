@@ -208,3 +208,8 @@ class cutit.cutit.logic.controller.login.LoginViewController
 class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
  
 /C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gMaps.fxml
+
+2021/12/20 16:34:45
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
+ 
+/C:/Users/simon/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml

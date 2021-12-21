@@ -7,6 +7,7 @@ module cutit.cutit {
     requires java.desktop;
     requires java.sql;
     requires mysql.connector.java;
+    requires GMapsFX;
 
 
     exports cutit.cutit.logic.facade;
