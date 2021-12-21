@@ -1,11 +1,14 @@
 package cutit.cutit.logic.model;
 
+import java.util.List;
+
 public class Customer extends User{
 
     private String name;
     private String surname;
     private Integer age;
     private String Gender;
+    private List<Appointment> bookedAppointments; //lista di appuntamenti prenotati passati e futuri
 
     public Customer(){
         super();

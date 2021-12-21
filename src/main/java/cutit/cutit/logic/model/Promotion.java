@@ -3,6 +3,7 @@ package cutit.cutit.logic.model;
 import javafx.scene.layout.BorderPane;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Promotion {
 
@@ -10,23 +11,23 @@ public class Promotion {
     private String promName;
     private Integer offValue;
     private LocalDateTime expireDate;
-    private String serviceName;
+    private Service service;
+    private List<Discount> discounts;
 
     //costruttore da ricontrollare bene
-    public Promotion(String code, String promName, Integer offValue, LocalDateTime expireDate, String serviceName){
+    public Promotion(String code, String promName, Integer offValue, LocalDateTime expireDate){
         setCode(code);
         setPromName(promName);
         setOffValue(offValue);
         setExpireDate(expireDate);
-        setServiceName(serviceName);
     }
 
-    public String getServiceName() {
-        return serviceName;
+    public Service getServiceName() {
+        return service;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+    public void setServiceName(Service service) {
+        this.service = service;
     }
 
     public String getPromName() {

@@ -5,7 +5,7 @@ public class Hairdresser extends User{
     private String name;
     private String surname;
     private String pIVA;
-    private String shopName;
+    private Shop shop;
 
     public Hairdresser(){
         super();
@@ -42,11 +42,11 @@ public class Hairdresser extends User{
         this.pIVA = pIVA;
     }
 
-    public String getShopName() {
-        return shopName;
+    public Shop getShopName() {
+        return shop;
     }
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
+    public void setShopName(Shop shop) {
+        this.shop = shop;
     }
 }

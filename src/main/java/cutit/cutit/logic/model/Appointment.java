@@ -4,9 +4,13 @@ import java.time.LocalDateTime;
 
 public class Appointment {
 
-    //mancano gli attributi derivanti dalle composizioni/aggregazionei/associazioni
-    private Float totalPrice;
-    private LocalDateTime startDTime;
-    private LocalDateTime finishDT;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private Customer customer;
+    private Discount discount;
+    private Service service;
+    private Shop shop;
+
+
 
 }
