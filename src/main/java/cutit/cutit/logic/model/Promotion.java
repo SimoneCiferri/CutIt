@@ -1,41 +1,27 @@
 package cutit.cutit.logic.model;
 
-import javafx.scene.layout.BorderPane;
-
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class Promotion {
 
     private String code;
-    private String promName;
     private Integer offValue;
     private LocalDateTime expireDate;
     private Service service;
-    private List<Discount> discounts;
 
-    //costruttore da ricontrollare bene
-    public Promotion(String code, String promName, Integer offValue, LocalDateTime expireDate){
+    public Promotion(String code, Integer offValue, LocalDateTime expireDate, Service service){
         setCode(code);
-        setPromName(promName);
         setOffValue(offValue);
         setExpireDate(expireDate);
+        setService(service);
     }
 
-    public Service getServiceName() {
+    public Service getService() {
         return service;
     }
 
-    public void setServiceName(Service service) {
+    public void setService(Service service) {
         this.service = service;
-    }
-
-    public String getPromName() {
-        return promName;
-    }
-
-    public void setPromName(String promName) {
-        this.promName = promName;
     }
 
     public Integer getOffValue() {
@@ -61,8 +47,5 @@ public class Promotion {
     public void setCode(String code){
         this.code = code;
     }
-
-    //mancano i metodi per l'expirationDate
-
 
 }
