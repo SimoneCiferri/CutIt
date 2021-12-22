@@ -369,3 +369,7 @@ class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirection
 class cutit.cutit.logic.decorator.concreteDecorator.CustomerGetLocationDirectionsView
  
 /C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/gmaps.fxml:10
+
+2021/12/21 19:58:36
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: email

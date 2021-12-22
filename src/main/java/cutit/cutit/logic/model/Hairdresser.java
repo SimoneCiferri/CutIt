@@ -18,6 +18,14 @@ public class Hairdresser extends User{
         setpIVA(pIVA);
     }
 
+    public Hairdresser(String userID, String pwd, Integer role, String name, String surname, String pIVA, Shop shop){
+        super(userID, pwd, role);
+        setName(name);
+        setSurname(surname);
+        setpIVA(pIVA);
+        setShop(shop);
+    }
+
     public String getName() {
         return name;
     }
@@ -42,11 +50,11 @@ public class Hairdresser extends User{
         this.pIVA = pIVA;
     }
 
-    public Shop getShopName() {
+    public Shop getShop() {
         return shop;
     }
 
-    public void setShopName(Shop shop) {
+    public void setShop(Shop shop) {
         this.shop = shop;
     }
 }

@@ -36,7 +36,7 @@ public class ManagePromotionBean {
     }
 
     public String getPromotionServiceName(int i){
-        return promotionsList.get(i).getServiceName();
+        return promotionsList.get(i).getService();
     }
 
     public String getExpireData(int i){

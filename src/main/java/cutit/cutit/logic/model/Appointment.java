@@ -7,7 +7,7 @@ public class Appointment {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private Customer customer;
-    private Discount discount;
+    private Promotion promotion;
     private Service service;
     private Shop shop;
 
