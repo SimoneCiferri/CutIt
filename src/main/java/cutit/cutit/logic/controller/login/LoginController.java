@@ -50,7 +50,7 @@ public class LoginController {
         hairdresserBean.setpIVA(hairdresser.getpIVA());
         hairdresserBean.sethName(hairdresser.getName());
         hairdresserBean.sethSurname(hairdresser.getSurname());
-        hairdresserBean.setShopName(hairdresser.getShop());
+        hairdresserBean.setShopName(hairdresser.getShop().getShopName());
         return hairdresserBean;
     }
 
