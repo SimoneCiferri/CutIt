@@ -9,6 +9,7 @@ public class ManageServiceBean {
     private String serviceName;
     private Float servicePrice;
     private String serviceShopName;
+
     private List<Service> servicesList;
 
     public List<Service> getServicesList() {

@@ -4,17 +4,14 @@ import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManagePromotionBean;
 import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.net.Inet4Address;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 
 public class HairdresserManagePromotionsViewController {
@@ -45,10 +42,10 @@ public class HairdresserManagePromotionsViewController {
             add.setOnMouseClicked((MouseEvent) -> addForm());
             vbInScrollHProm.getChildren().add(add);
             for(int i = 0; i<managePromotionBean.getPromotionsList().size(); i++) {
-                String promotionName = managePromotionBean.getPromotionName(i);
+                String promotionName = managePromotionBean.getPromotionCodeI(i);
                 Integer promotionOffValue = managePromotionBean.getPromotionOffValue(i);
-                String promotionServiceName = managePromotionBean.getPromotionServiceName(i);
-                String expire = managePromotionBean.getExpireData(i);
+                String promotionServiceName = managePromotionBean.getPromotionServiceNameI(i);
+                String expire = managePromotionBean.getPromExpireDataI(i);
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel(promotionName, labelStyle);
                 l.setOnMouseClicked((MouseEvent) -> deleteForm(promotionName, promotionOffValue, promotionServiceName, expire));
                 vbInScrollHProm.getChildren().add(l);
@@ -106,7 +103,7 @@ public class HairdresserManagePromotionsViewController {
     }
 
     private void addPromotion(String promName, Integer offValue,  String expireDate, String serviceName){
-        managePromotionBean.setPromotionNAme(promName);
+        managePromotionBean.setPromotionName(promName);
         managePromotionBean.setPromOffValue(offValue);
         managePromotionBean.setPromExpireDate(dateFromString(expireDate));
         managePromotionBean.setPromServiceName(serviceName);

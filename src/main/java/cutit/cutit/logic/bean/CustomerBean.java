@@ -1,5 +1,7 @@
 package cutit.cutit.logic.bean;
 
+import java.util.List;
+
 public class CustomerBean {
 
     private String cEmail;
@@ -9,6 +11,8 @@ public class CustomerBean {
     private String cSurname;
     private String cBirthDate;
     private String cGender;
+    private List<String> allBookedAppointments;
+    private List<String> allPromotions;
 
     public Integer getcRole() {
         return cRole;
@@ -64,6 +68,22 @@ public class CustomerBean {
 
     public void setcPassword(String cPassword) {
         this.cPassword = cPassword;
+    }
+
+    public List<String> getAllBookedAppointments() {
+        return allBookedAppointments;
+    }
+
+    public void setAllBookedAppointments(List<String> allBookedAppointments) {
+        this.allBookedAppointments = allBookedAppointments;
+    }
+
+    public List<String> getAllPromotions() {
+        return allPromotions;
+    }
+
+    public void setAllPromotions(List<String> allPromotions) {
+        this.allPromotions = allPromotions;
     }
 
 }

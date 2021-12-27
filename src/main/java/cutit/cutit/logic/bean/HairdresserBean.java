@@ -5,10 +5,10 @@ public class HairdresserBean {
     private String hEmail;
     private String hPassword;
     private Integer hRole;
-    private String pIVA;
-    private String shopName;
     private String hName;
     private String hSurname;
+    private String pIVA;
+    private String shopName;
 
     public Integer gethRole() {
         return hRole;

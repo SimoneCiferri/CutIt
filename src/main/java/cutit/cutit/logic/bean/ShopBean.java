@@ -1,20 +1,25 @@
 package cutit.cutit.logic.bean;
 
-import cutit.cutit.logic.model.Shop;
-import javafx.scene.image.Image;
+import java.io.File;
+import java.util.List;
 import java.util.Map;
 
 public class ShopBean {
 
     private String shopName;
-    private String shopAddress;
-    private String shopWorkers;
+    private String shopPIVA;
+    private String latitude;
+    private String longitude;
+    private String phoneNumber;
+    private String employee;
     private String shopDescription;
-    private String phoneNumber; //aggiunto attributo
-    private Image images;
-    private Map openDays;
-
-    private Shop shop;
+    private String openTime;
+    private String closeTime;
+    private Map<String, Boolean> openDays;
+    private List<File> images;
+    private List<String> promotions;
+    private List<String> services;
+    private List<String> allAppointments;
 
     public String getShopName() {
         return shopName;
@@ -24,27 +29,44 @@ public class ShopBean {
         this.shopName = shopName;
     }
 
-    public String getShopAddress() {
-        return shopAddress;
+    public String getShopPIVA() {
+        return shopPIVA;
     }
 
-    public void setShopAddress(String shopAddress) {
-        this.shopAddress = shopAddress;
+    public void setShopPIVA(String shopPIVA) {
+        this.shopPIVA = shopPIVA;
     }
 
-    //aggiunto getter e setter
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(){ this.phoneNumber = phoneNumber;}
-
-    public String getShopWorkers() {
-        return shopWorkers;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public void setShopWorkers(String shopWorkers) {
-        this.shopWorkers = shopWorkers;
+    public String getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(String employee) {
+        this.employee = employee;
     }
 
     public String getShopDescription() {
@@ -55,25 +77,59 @@ public class ShopBean {
         this.shopDescription = shopDescription;
     }
 
-    public Image getImages() {
-        return images;
+    public String getOpenTime() {
+        return openTime;
     }
 
-    public void setImages(Image images) {
-        this.images = images;
+    public void setOpenTime(String openTime) {
+        this.openTime = openTime;
     }
 
-    public Map getOpenDays() {
+    public String getCloseTime() {
+        return closeTime;
+    }
+
+    public void setCloseTime(String closeTime) {
+        this.closeTime = closeTime;
+    }
+
+    public Map<String, Boolean> getOpenDays() {
         return openDays;
     }
 
-    public void setOpenDays(Map openDays) {
+    public void setOpenDays(Map<String, Boolean> openDays) {
         this.openDays = openDays;
     }
 
+    public List<File> getImages() {
+        return images;
+    }
 
+    public void setImages(List<File> images) {
+        this.images = images;
+    }
 
+    public List<String> getPromotions() {
+        return promotions;
+    }
 
+    public void setPromotions(List<String> promotions) {
+        this.promotions = promotions;
+    }
 
+    public List<String> getServices() {
+        return services;
+    }
 
+    public void setServices(List<String> services) {
+        this.services = services;
+    }
+
+    public List<String> getAllAppointments() {
+        return allAppointments;
+    }
+
+    public void setAllAppointments(List<String> allAppointments) {
+        this.allAppointments = allAppointments;
+    }
 }

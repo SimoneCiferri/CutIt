@@ -2,11 +2,8 @@ package cutit.cutit.logic.controller.managepromotions;
 
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManagePromotionBean;
-import cutit.cutit.logic.bean.ManageServiceBean;
 import cutit.cutit.logic.database.dao.PromotionDAO;
 import cutit.cutit.logic.database.dao.ServiceDAO;
-import cutit.cutit.logic.database.query.PromotionQueries;
-import cutit.cutit.logic.database.query.ServiceQueries;
 import cutit.cutit.logic.model.Promotion;
 import cutit.cutit.logic.model.Service;
 import cutit.cutit.logic.model.Shop;
@@ -23,7 +20,7 @@ public class ManagePromotionController {
 
     public Boolean addPromotion(ManagePromotionBean managePromotionBean) throws Exception {
         Service service = ServiceDAO.getInstance().getService(managePromotionBean);
-        Promotion promotion = new Promotion(generateCode() , managePromotionBean.getPromotionNAme(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate(), managePromotionBean.getPromServiceName());
+        Promotion promotion = new Promotion(generateCode() , managePromotionBean.getPromotionCodeI(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate(), managePromotionBean.getPromServiceName());
         PromotionDAO.insertPromotion(promotion, service);
         System.out.println("CONTROLLER APPLICATIVO -> Adding Promotion (data from ManagePromotionBean passed by my viewController)");
         return true;

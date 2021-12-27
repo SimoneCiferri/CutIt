@@ -7,64 +7,26 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class ManagePromotionBean {
-
-    private int promotionCode;
-    private String promShopName;
-    private String promotionNAme;
+    private String promotionCode;
     private Integer promOffValue;
-    private LocalDateTime promExpireDate;
+    private String promShopName;
+
+    private String promExpireDate;
     private String promServiceName;
 
     private List<Service> serviceList;
-
     private List<Promotion> promotionsList;
 
-    public List<Promotion> getPromotionsList() {
-        return promotionsList;
-    }
-
-    public void setPromotionsList(List<Promotion> promotionsList) {
-        this.promotionsList = promotionsList;
-    }
-
-    public String getPromotionName(int i){
-        return promotionsList.get(i).getPromName();
-    }
-
-    public Integer getPromotionOffValue(int i){
-        return promotionsList.get(i).getOffValue();
-    }
-
-    public String getPromotionServiceName(int i){
-        return promotionsList.get(i).getService();
-    }
-
-    public String getExpireData(int i){
-        return promotionsList.get(i).getExpireDate().toString();
-    }
-
-    public int getPromotionCode() {
+    public String getPromotionCode() {
         return promotionCode;
     }
 
-    public void setPromotionCode(int promotionCode) {
+    public void setPromotionCode(String promotionCode) {
         this.promotionCode = promotionCode;
     }
 
-    public String getPromShopName() {
-        return promShopName;
-    }
-
-    public void setPromShopName(String promShopName) {
-        this.promShopName = promShopName;
-    }
-
-    public String getPromotionNAme() {
-        return promotionNAme;
-    }
-
-    public void setPromotionNAme(String promotionNAme) {
-        this.promotionNAme = promotionNAme;
+    public String getPromotionCodeI(int i){
+        return promotionsList.get(i).getCode();
     }
 
     public Integer getPromOffValue() {
@@ -75,12 +37,28 @@ public class ManagePromotionBean {
         this.promOffValue = promOffValue;
     }
 
-    public LocalDateTime getPromExpireDate() {
+    public Integer getPromotionOffValue(int i){
+        return promotionsList.get(i).getOffValue();
+    }
+
+    public String getPromShopName() {
+        return promShopName;
+    }
+
+    public void setPromShopName(String promShopName) {
+        this.promShopName = promShopName;
+    }
+
+    public String getPromExpireDate() {
         return promExpireDate;
     }
 
-    public void setPromExpireDate(LocalDateTime promExpireDate) {
+    public void setPromExpireDate(String promExpireDate) {
         this.promExpireDate = promExpireDate;
+    }
+
+    public String getPromExpireDataI(int i){
+        return promotionsList.get(i).getExpireDate().toString();
     }
 
     public String getPromServiceName() {
@@ -101,6 +79,18 @@ public class ManagePromotionBean {
 
     public String getServiceName(int i) {
         return serviceList.get(i).getServiceName();
+    }
+
+    public List<Promotion> getPromotionsList() {
+        return promotionsList;
+    }
+
+    public void setPromotionsList(List<Promotion> promotionsList) {
+        this.promotionsList = promotionsList;
+    }
+
+    public String getPromotionServiceNameI(int i){
+        return promotionsList.get(i).getService().getServiceName();
     }
 
 }

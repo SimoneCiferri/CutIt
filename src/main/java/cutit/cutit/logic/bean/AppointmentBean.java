@@ -4,51 +4,27 @@ import java.time.LocalDateTime;
 
 public class AppointmentBean {
 
-    private String shop;
-    private LocalDateTime appointmentDate;
-    private String serviceName;
-    private String promotionCode;
-    private String notes;
+    private String startTime;
+    private String endTime;
     private String customer;
+    private String promotionCode;
+    private String serviceName;
+    private String shopName;
 
-    public String getShop() {
-        return shop;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setShop(String shop) {
-        this.shop = shop;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public LocalDateTime getAppointmentDate() {
-        return appointmentDate;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setAppointmentDate(LocalDateTime appointmentDate) {
-        this.appointmentDate = appointmentDate;
-    }
-
-    public String getServiceName() {
-        return serviceName;
-    }
-
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
-
-    public String getPromotionCode() {
-        return promotionCode;
-    }
-
-    public void setPromotionCode(String promotionCode) {
-        this.promotionCode = promotionCode;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getCustomer() {
@@ -59,5 +35,27 @@ public class AppointmentBean {
         this.customer = customer;
     }
 
+    public String getPromotionCode() {
+        return promotionCode;
+    }
 
+    public void setPromotionCode(String promotionCode) {
+        this.promotionCode = promotionCode;
+    }
+
+    public String getServiceName() {
+        return serviceName;
+    }
+
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
 }

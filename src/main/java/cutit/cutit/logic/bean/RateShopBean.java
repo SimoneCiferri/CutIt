@@ -3,7 +3,8 @@ package cutit.cutit.logic.bean;
 public class RateShopBean {
 
     private String shopName;
-    private String rateCustomer;
+    private String rCustomer;
+    private Integer rate;
     
     public String getShopName() {
         return shopName;
@@ -13,12 +14,20 @@ public class RateShopBean {
         this.shopName = shopName;
     }
 
-    public String getRateCustomer() {
-        return rateCustomer;
+    public String getrCustomer() {
+        return rCustomer;
     }
 
-    public void setRateCustomer(String rateCustomer) {
-        this.rateCustomer = rateCustomer;
+    public void setrCustomer(String rCustomer) {
+        this.rCustomer = rCustomer;
+    }
+
+    public Integer getRate() {
+        return rate;
+    }
+
+    public void setRate(Integer rate) {
+        this.rate = rate;
     }
 
 

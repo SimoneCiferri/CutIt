@@ -1,23 +1,35 @@
 package cutit.cutit.logic.bean;
 
-import cutit.cutit.logic.model.Shop;
-
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class DeleteAppointmentBean {
 
-    private LocalDateTime appointmentDate;
-    private Shop appointmentShop;
+    private String startTime;
+    private String shopName;
+    private List<String> allAppointments;
 
-    public LocalDateTime getAppointmentDate() {
-        return appointmentDate;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setAppointmentDate(LocalDateTime appointmentDate) {
-        this.appointmentDate = appointmentDate;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
+    public String getShopName() {
+        return shopName;
+    }
 
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
 
+    public List<String> getAllAppointments() {
+        return allAppointments;
+    }
 
+    public void setAllAppointments(List<String> allAppointments) {
+        this.allAppointments = allAppointments;
+    }
 }
