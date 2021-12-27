@@ -6,7 +6,7 @@ public class Customer extends User{
 
     private String name;
     private String surname;
-    private Integer age;
+    private String birthDate;
     private String Gender;
     private List<Appointment> bookedAppointments; //lista di appuntamenti prenotati passati e futuri
     private List<Promotion> promotions; //Lista di promotion disponibili e usate per l'utente customer
@@ -14,19 +14,19 @@ public class Customer extends User{
 
     public Customer(){}
 
-    public Customer(String userID, String pwd, Integer role, String name, String surname, Integer age, String gender){
+    public Customer(String userID, String pwd, Integer role, String name, String surname, String birthDate, String gender){
         super(userID, pwd, role);
         setName(name);
         setSurname(surname);
-        setAge(age);
+        setBirthDate(birthDate);
         setGender(gender);
     }
 
-    public Customer(String userID, String pwd, Integer role, String name, String surname, Integer age, String gender, List<Appointment> bookedAppointments, List<Promotion> promotions){
+    public Customer(String userID, String pwd, Integer role, String name, String surname, String birthDate, String gender, List<Appointment> bookedAppointments, List<Promotion> promotions){
         super(userID, pwd, role);
         setName(name);
         setSurname(surname);
-        setAge(age);
+        setBirthDate(birthDate);
         setGender(gender);
         setBookedAppointments(bookedAppointments);
         setPromotions(promotions);
@@ -48,12 +48,12 @@ public class Customer extends User{
         this.surname = surname;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getBirthDate() {
+        return birthDate;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getGender() {

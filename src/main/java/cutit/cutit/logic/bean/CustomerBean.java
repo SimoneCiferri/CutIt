@@ -7,7 +7,7 @@ public class CustomerBean {
     private Integer cRole;
     private String cName;
     private String cSurname;
-    private Integer cAge;
+    private String cBirthDate;
     private String cGender;
 
     public Integer getcRole() {
@@ -34,12 +34,12 @@ public class CustomerBean {
         this.cSurname = cSurname;
     }
 
-    public Integer getcAge() {
-        return cAge;
+    public String getcBirthDate() {
+        return cBirthDate;
     }
 
-    public void setcAge(Integer cAge) {
-        this.cAge = cAge;
+    public void setcBirthDate(String cBirthDate) {
+        this.cBirthDate = cBirthDate;
     }
 
     public String getcGender() {

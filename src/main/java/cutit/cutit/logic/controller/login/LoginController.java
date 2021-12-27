@@ -24,7 +24,7 @@ public class LoginController {
     }
 
     public Boolean signUpCustomer(CustomerBean customerBean) throws Exception {
-        Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcAge(), customerBean.getcGender());
+        Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcBirthDate(), customerBean.getcGender());
         UserDAO.getInstance().insertNewUser(customer);
         CustomerDAO.getInstance().insertCustomer(customer);
         System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from CustomerBean passed by my viewController)");
@@ -63,7 +63,7 @@ public class LoginController {
         customerBean.setcRole(customer.getRole());
         customerBean.setcName(customer.getName());
         customerBean.setcSurname(customer.getSurname());
-        customerBean.setcAge(customer.getAge());
+        customerBean.setcBirthDate(customer.getBirthDate());
         customerBean.setcGender(customer.getGender());
         return customerBean;
     }

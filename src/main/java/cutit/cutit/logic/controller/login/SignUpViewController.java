@@ -6,6 +6,7 @@ import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -18,13 +19,16 @@ public class SignUpViewController {
     private LoginController loginController;
 
     @FXML
-    private TextField tfCustomerName, tfCustomerSurname, tfCustomerAge, tfCustomerEmail, tfHairdresserName, tfHairdresserSurname, tfHairdresserEmail, tfHairdresserShopName, tfHairdresserPIVA;
+    private TextField tfCustomerName, tfCustomerSurname, tfCustomerEmail, tfHairdresserName, tfHairdresserSurname, tfHairdresserEmail, tfHairdresserShopName, tfHairdresserPIVA;
 
     @FXML
     private PasswordField pfCustomerPassword, pfCustomerConfirmPassword, pfHairdresserPassword, pfHairdresserConfirmPassword;
 
     @FXML
     private ChoiceBox cbCustomerGender;
+
+    @FXML
+    private DatePicker dpCustomerBirthdate;
 
     @FXML
     public void initialize(){

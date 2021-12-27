@@ -3,7 +3,6 @@ package cutit.cutit.logic.database.dao;
 import cutit.cutit.logic.database.DBConnection;
 import cutit.cutit.logic.database.query.CustomerQueries;
 import cutit.cutit.logic.model.Customer;
-import cutit.cutit.logic.model.Hairdresser;
 import cutit.cutit.logic.model.User;
 
 import java.sql.Connection;
@@ -29,7 +28,7 @@ public class CustomerDAO {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        CustomerQueries.insertCustomer(stm, customer.getUserID(), customer.getAge(), customer.getGender(), customer.getName(), customer.getSurname());
+        CustomerQueries.insertCustomer(stm, customer.getUserID(), customer.getBirthDate(), customer.getGender(), customer.getName(), customer.getSurname());
         if(stm != null){
             stm.close();
         }
