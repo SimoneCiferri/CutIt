@@ -103,9 +103,9 @@ public class HairdresserManagePromotionsViewController {
     }
 
     private void addPromotion(String promName, Integer offValue,  String expireDate, String serviceName){
-        managePromotionBean.setPromotionName(promName);
+        managePromotionBean.setPromotionCode(promName);
         managePromotionBean.setPromOffValue(offValue);
-        managePromotionBean.setPromExpireDate(dateFromString(expireDate));
+        managePromotionBean.setPromExpireDate(expireDate);
         managePromotionBean.setPromServiceName(serviceName);
         managePromotionBean.setPromShopName(hairdresserBean.getShopName());
         try {
