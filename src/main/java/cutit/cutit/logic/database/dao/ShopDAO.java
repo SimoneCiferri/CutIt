@@ -12,22 +12,11 @@ import java.sql.Statement;
 
 public class ShopDAO {
 
-    private static ShopDAO instance = null;
-
-    private ShopDAO(){}
-
-    public static synchronized ShopDAO getInstance(){
-        if(instance == null){
-            instance = new ShopDAO();
-        }
-        return instance;
-    }
-
     public static void insertShop(Shop shop) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ShopQueries.insertShop(stm, shop.getPIVA(), shop.getShopName(), " ", " ");
+        ShopQueries.insertShop(stm, shop.getShopName(), shop.getEmployee(), shop.getLatitude(), shop.getpIVA(), shop.getLongitude(), shop.getPhoneNumber(), shop.getDescription(), shop.getOpenTime(), shop.getCloseTime());
         if(stm != null){
             stm.close();
         }

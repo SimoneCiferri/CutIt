@@ -10,18 +10,7 @@ import java.sql.Statement;
 
 public class UserDAO {
 
-    private static UserDAO instance = null;
-
-    private UserDAO(){}
-
-    public static synchronized UserDAO getInstance(){
-        if(instance == null){
-            instance = new UserDAO();
-        }
-        return instance;
-    }
-
-    public void insertNewUser(User user) throws Exception {
+    public static void insertNewUser(User user) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -32,7 +21,7 @@ public class UserDAO {
         //DBConnection.getInstance().closeConnection();
     }
 
-    public User userLogin(User user) throws Exception {
+    public static void userLogin(User user) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -49,7 +38,6 @@ public class UserDAO {
             stm.close();
         }
         //DBConnection.getInstance().closeConnection();
-        return user;
     }
 
 }

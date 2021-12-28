@@ -16,7 +16,7 @@ public class LoginController {
 
     public UserBean login(UserBean bean) throws Exception {
         User user = new User(bean.getUsername(), bean.getPasswd(), 3);
-        user = UserDAO.getInstance().userLogin(user);
+        UserDAO.userLogin(user);
         System.out.println("CONTROLLER APPLICATIVO -> Login (data from CustomerBean passed by my viewController)");
         System.out.println("        Username = " + bean.getUsername() + " Password = " + bean.getPasswd());
         bean.setRole(user.getRole());
@@ -25,16 +25,16 @@ public class LoginController {
 
     public Boolean signUpCustomer(CustomerBean customerBean) throws Exception {
         Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcBirthDate(), customerBean.getcGender());
-        UserDAO.getInstance().insertNewUser(customer);
-        CustomerDAO.getInstance().insertCustomer(customer);
+        UserDAO.insertNewUser(customer);
+        CustomerDAO.insertCustomer(customer);
         System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from CustomerBean passed by my viewController)");
         return true;
     }
 
     public Boolean signUpHair(HairdresserBean hairdresserBean) throws Exception {
         Hairdresser hairdresser = new Hairdresser(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1, hairdresserBean.gethName(), hairdresserBean.gethSurname(), hairdresserBean.getpIVA());
-        UserDAO.getInstance().insertNewUser(hairdresser);
-        HairdresserDAO.getInstance().insertNewHairdresser(hairdresser);
+        UserDAO.insertNewUser(hairdresser); //fa dopo
+        HairdresserDAO.insertNewHairdresser(hairdresser);
         Shop shop = new Shop(hairdresserBean.getShopName(), hairdresserBean.getpIVA());
         ShopDAO.insertShop(shop);
         System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from ....... passed by my viewController)");
@@ -43,20 +43,19 @@ public class LoginController {
 
     public HairdresserBean getHairdresser(UserBean userBean) throws Exception {
         User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
-        Hairdresser hairdresser = HairdresserDAO.getInstance().getHairdresser(user);
+        Hairdresser hairdresser = HairdresserDAO.getHairdresser(user);
         HairdresserBean hairdresserBean = new HairdresserBean();
         hairdresserBean.sethEmail(hairdresser.getUserID());
         hairdresserBean.sethPassword(hairdresser.getPwd());
         hairdresserBean.setpIVA(hairdresser.getpIVA());
         hairdresserBean.sethName(hairdresser.getName());
         hairdresserBean.sethSurname(hairdresser.getSurname());
-        hairdresserBean.setShopName(hairdresser.getShop().getShopName());
         return hairdresserBean;
     }
 
     public CustomerBean getCustomer(UserBean userBean) throws Exception {
         User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
-        Customer customer = CustomerDAO.getInstance().getCustomer(user);
+        Customer customer = CustomerDAO.getCustomer(user);
         CustomerBean customerBean = new CustomerBean();
         customerBean.setcEmail(customer.getUserID());
         customerBean.setcPassword(customer.getPwd());
