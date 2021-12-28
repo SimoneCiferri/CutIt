@@ -25,7 +25,7 @@ public class SignUpViewController {
     private PasswordField pfCustomerPassword, pfCustomerConfirmPassword, pfHairdresserPassword, pfHairdresserConfirmPassword;
 
     @FXML
-    private ChoiceBox cbCustomerGender;
+    private ChoiceBox<String> cbCustomerGender;
 
     @FXML
     private DatePicker dpCustomerBirthdate;
@@ -35,6 +35,7 @@ public class SignUpViewController {
         customerBean = new CustomerBean();
         hairdresserBean = new HairdresserBean();
         loginController = new LoginController();
+        cbCustomerGender.getItems().addAll("Female", "Male", "Other");
         System.out.println("CONTROLLER GRAFICO SIGNUPVIEWCONTROLLER");
     }
 
@@ -45,8 +46,8 @@ public class SignUpViewController {
                     "Female", tfCustomerEmail.getText(), pfCustomerPassword.getText())){
                 customerBean.setcName(tfCustomerName.getText());
                 customerBean.setcSurname(tfCustomerSurname.getText());
-                customerBean.setcAge(25);
-                customerBean.setcGender("Female");
+                customerBean.setcBirthDate(dpCustomerBirthdate.getValue().toString());
+                customerBean.setcGender(cbCustomerGender.getValue());
                 customerBean.setcEmail(tfCustomerEmail.getText());
                 customerBean.setcPassword(pfCustomerPassword.getText());
                 if(loginController.signUpCustomer(this.customerBean)){
