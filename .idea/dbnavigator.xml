@@ -25,29 +25,21 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
     <loaded-nodes>
-      <connection connection-id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429">
+      <connection connection-id="a4ba2880-2b92-4a88-a726-0f7a0bda18f5">
         <schema name="cutitdb" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="55e25c66-b3ef-4e3a-8e96-8e9276e07e93">
-      <console name="Connection" type="STANDARD" schema="cutitdb" session="Main" />
-    </connection>
-    <connection id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429">
-      <console name="Connection Simone" type="STANDARD" schema="cutitdb" session="Main"><![CDATA[select * from user;
-select * from customer;
-delete from user where `UserID` is not null;]]></console>
+    <connection id="a4ba2880-2b92-4a88-a726-0f7a0bda18f5">
+      <console name="Connection G" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429" object-ref="consoles/Connection Simone" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="55e25c66-b3ef-4e3a-8e96-8e9276e07e93" />
-    <connection id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429" />
+    <connection id="a4ba2880-2b92-4a88-a726-0f7a0bda18f5" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -78,99 +70,15 @@ delete from user where `UserID` is not null;]]></console>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="55e25c66-b3ef-4e3a-8e96-8e9276e07e93" active="true">
+      <connection id="a4ba2880-2b92-4a88-a726-0f7a0bda18f5" active="true">
         <database>
-          <name value="Connection" />
+          <name value="Connection G" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
           <database-version value="8.0" />
           <driver-source value="EXTERNAL" />
           <driver-library value="E:\UNIVERSITA' AGGIORNATA\ISPW\progettoCutIt\lib\mysql-connector-java-8.0.27.jar" />
-          <driver value="" />
-          <url-type value="DATABASE" />
-          <host value="localhost" />
-          <port value="3306" />
-          <database value="mysql" />
-          <type value="USER_PASSWORD" />
-          <user value="root" />
-          <deprecated-pwd value="cm9vdA==" />
-        </database>
-        <properties>
-          <auto-commit value="false" />
-        </properties>
-        <ssh-settings>
-          <active value="false" />
-          <proxy-host value="" />
-          <proxy-port value="22" />
-          <proxy-user value="" />
-          <deprecated-proxy-pwd value="" />
-          <auth-type value="PASSWORD" />
-          <key-file value="" />
-          <key-passphrase value="" />
-        </ssh-settings>
-        <ssl-settings>
-          <active value="false" />
-          <certificate-authority-file value="" />
-          <client-certificate-file value="" />
-          <client-key-file value="" />
-        </ssl-settings>
-        <details>
-          <charset value="UTF-8" />
-          <session-management value="true" />
-          <ddl-file-binding value="true" />
-          <database-logging value="false" />
-          <connect-automatically value="true" />
-          <restore-workspace value="true" />
-          <restore-workspace-deep value="true" />
-          <environment-type value="default" />
-          <connectivity-timeout value="5" />
-          <idle-time-to-disconnect value="30" />
-          <idle-time-to-disconnect-pool value="5" />
-          <credential-expiry-time value="10" />
-          <max-connection-pool-size value="7" />
-          <alternative-statement-delimiter value="" />
-        </details>
-        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
-          <object-type-filter use-master-settings="true">
-            <object-type name="SCHEMA" enabled="true" />
-            <object-type name="USER" enabled="true" />
-            <object-type name="ROLE" enabled="true" />
-            <object-type name="PRIVILEGE" enabled="true" />
-            <object-type name="CHARSET" enabled="true" />
-            <object-type name="TABLE" enabled="true" />
-            <object-type name="VIEW" enabled="true" />
-            <object-type name="MATERIALIZED_VIEW" enabled="true" />
-            <object-type name="NESTED_TABLE" enabled="true" />
-            <object-type name="COLUMN" enabled="true" />
-            <object-type name="INDEX" enabled="true" />
-            <object-type name="CONSTRAINT" enabled="true" />
-            <object-type name="DATASET_TRIGGER" enabled="true" />
-            <object-type name="DATABASE_TRIGGER" enabled="true" />
-            <object-type name="SYNONYM" enabled="true" />
-            <object-type name="SEQUENCE" enabled="true" />
-            <object-type name="PROCEDURE" enabled="true" />
-            <object-type name="FUNCTION" enabled="true" />
-            <object-type name="PACKAGE" enabled="true" />
-            <object-type name="TYPE" enabled="true" />
-            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
-            <object-type name="ARGUMENT" enabled="true" />
-            <object-type name="DIMENSION" enabled="true" />
-            <object-type name="CLUSTER" enabled="true" />
-            <object-type name="DBLINK" enabled="true" />
-          </object-type-filter>
-          <object-name-filters />
-        </object-filters>
-      </connection>
-      <connection id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429" active="true">
-        <database>
-          <name value="Connection Simone" />
-          <description value="" />
-          <database-type value="MYSQL" />
-          <config-type value="BASIC" />
-          <database-version value="8.0" />
-          <driver-source value="EXTERNAL" />
-          <driver-library value="C:\Users\Simone\eclipse-workspace\CutIt\lib\mysql-connector-java-8.0.27.jar" />
           <driver value="com.mysql.cj.jdbc.Driver" />
           <url-type value="DATABASE" />
           <host value="localhost" />
@@ -181,7 +89,7 @@ delete from user where `UserID` is not null;]]></console>
           <deprecated-pwd value="cm9vdA==" />
         </database>
         <properties>
-          <auto-commit value="true" />
+          <auto-commit value="false" />
         </properties>
         <ssh-settings>
           <active value="false" />
