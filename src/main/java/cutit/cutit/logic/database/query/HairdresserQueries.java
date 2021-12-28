@@ -12,7 +12,7 @@ public class HairdresserQueries {
     }
 
     public static ResultSet getHairdresser(Statement stmt, String userID) throws SQLException {
-        String sql = "SELECT * FROM hairdresser join shop on PIVA = Hairdresser_PIVA WHERE HairdresserEmail = '" + userID + "'";
+        String sql = "SELECT * FROM hairdresser WHERE HairdresserEmail = '" + userID + "'";
         System.out.println(sql);
         return stmt.executeQuery(sql);
     }
