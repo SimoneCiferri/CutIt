@@ -494,7 +494,42 @@ class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
  Error resolving onMouseClicked='#manageShopPage', either the event handler is not in the Namespace or there is an error in the script.
 /C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml:102
 
+2021/12/29 19:23:37
+class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
+ Error resolving onMouseClicked='#manageShopPage', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml:102
+
+2021/12/29 19:24:30
+class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
+ Error resolving onMouseClicked='#manageShopPage', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml:102
+
 2021/12/29 19:15:03
 class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
  
 /C:/Users/aless/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml:28
+
+2021/12/29 19:27:39
+class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml
+
+2021/12/29 19:28:56
+class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml
+
+2021/12/29 19:30:15
+class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml
+
+2021/12/29 19:34:11
+class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppagetest.fxml
+
+2021/12/29 19:35:03
+class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml

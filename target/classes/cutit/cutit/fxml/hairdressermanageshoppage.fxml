@@ -25,7 +25,7 @@
                      <VBox.margin>
                         <Insets right="905.0" />
                      </VBox.margin></TextField>
-                  <TextArea fx:id="tfDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="720.0" promptText="Description">
+                  <TextArea fx:id="tfShopDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="720.0" promptText="Description">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
@@ -95,7 +95,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Button fx:id="btnSave" mnemonicParsing="false" onMouseClicked="#manageShopPage" text="Save">
+                  <Button fx:id="btnSave" mnemonicParsing="false" text="Save">
                      <VBox.margin>
                         <Insets bottom="15.0" top="15.0" />
                      </VBox.margin>

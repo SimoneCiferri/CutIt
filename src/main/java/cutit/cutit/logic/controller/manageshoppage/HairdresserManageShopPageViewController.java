@@ -34,11 +34,6 @@ public class HairdresserManageShopPageViewController {
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESHOPPAGEVIEWCONTROLLER");
     }
 
-    //riempito manageShopPage (Alessandro)
-    @FXML
-    public void manageShopPage(){
-    }
-
     public void fillView(ShopBean bean){
         shopBean = bean;
         System.out.println("Filling View from ShopBean data passedBY TopBarHairdresserViewController");
