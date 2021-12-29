@@ -15,21 +15,21 @@ public class ManageServicesController {
 
     public Boolean addService(ManageServiceBean manageServiceBean) throws Exception {
         Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
-        ServiceDAO.getInstance().insertService(service);
+        ServiceDAO.insertService(service);
         System.out.println("CONTROLLER APPLICATIVO -> Adding Service (data from ManageServiceBean passed by my viewController)");
         return true;
     }
 
     public Boolean deleteService(ManageServiceBean manageServiceBean) throws Exception {
         Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
-        ServiceDAO.getInstance().deleteService(service);
+        ServiceDAO.deleteService(service);
         System.out.println("CONTROLLER APPLICATIVO -> Deleting Service (data from ManageServiceBean passed by my viewController)");
         return true;
     }
 
     public ManageServiceBean getAllServices(HairdresserBean hairdresserBean) throws Exception {
         Shop shop = new Shop(hairdresserBean.getShopName(), hairdresserBean.getpIVA());
-        List<Service> serviceList = ServiceDAO.getInstance().getALlServices(shop);
+        List<Service> serviceList = ServiceDAO.getALlServices(shop);
         ManageServiceBean manageServiceBean = new ManageServiceBean();
         manageServiceBean.setServicesList(serviceList);
         return manageServiceBean;

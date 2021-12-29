@@ -19,18 +19,7 @@ import java.util.List;
 public class ServiceDAO {
 
 
-    private static ServiceDAO instance = null;
-
-    private ServiceDAO(){}
-
-    public static synchronized ServiceDAO getInstance(){
-        if(instance == null){
-            instance = new ServiceDAO();
-        }
-        return instance;
-    }
-
-    public void insertService(Service service) throws Exception {
+    public static void insertService(Service service) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -40,7 +29,7 @@ public class ServiceDAO {
         }
     }
 
-    public List<Service> getALlServices(Shop shop) throws Exception {
+    public static List<Service> getALlServices(Shop shop) throws Exception {
         List<Service> servicesList = new ArrayList<Service>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -49,8 +38,8 @@ public class ServiceDAO {
         if (rs.first()) {
             rs.first();
             do {
-                String serviceName = rs.getString("Name");
-                Float servicePrice = rs.getFloat("Price");
+                String serviceName = rs.getString(1);
+                Float servicePrice = rs.getFloat(2);
                 Service s = new Service(serviceName, servicePrice, shop.getShopName());
                 servicesList.add(s);
             } while (rs.next());
@@ -65,7 +54,7 @@ public class ServiceDAO {
 
 
 
-    public void deleteService(Service service) throws Exception {
+    public static void deleteService(Service service) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -75,16 +64,16 @@ public class ServiceDAO {
         }
     }
 
-    public Service getService(ManagePromotionBean managePromotionBean) throws Exception {
+    public static Service getService(String shopName, String serviceName) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = ServiceQueries.getService(stm, managePromotionBean.getPromServiceName(), managePromotionBean.getPromShopName());
+        ResultSet rs = ServiceQueries.getService(stm, serviceName, shopName);
         rs.first();
-        String serviceName = rs.getString("Name");
-        Float servicePrice = rs.getFloat("Price");
-        String shopName = rs.getString("Shop_ShopName");
-        Service s = new Service(serviceName, servicePrice, shopName);
+        String servName = rs.getString(1);
+        Float servPrice = rs.getFloat(2);
+        String servShopName = rs.getString(3);
+        Service s = new Service(servName, servPrice, servShopName);
         rs.close();
         if (stm != null) {
             stm.close();

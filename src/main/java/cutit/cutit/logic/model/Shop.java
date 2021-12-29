@@ -17,7 +17,7 @@ public class Shop {
     private String description;
     private LocalTime openTime;
     private LocalTime closeTime;
-    private Map<String, Boolean> openDays = new HashMap<String, Boolean>();
+    private List<Integer> openDays;
     private List<File> images;
     private List<Promotion> promotions;
     private List<Service> services;
@@ -40,7 +40,7 @@ public class Shop {
         setCloseTime(closeTime);
     }
 
-    public Shop(String shopName, String piva, String latitude, String longitude, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, Map<String, Boolean> openDays, List<File> images){
+    public Shop(String shopName, String piva, String latitude, String longitude, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, List<Integer> openDays, List<File> images){
         setShopName(shopName);
         setpIVA(piva);
         setLatitude(latitude);
@@ -54,7 +54,7 @@ public class Shop {
         setImages(images);
     }
 
-    public Shop(String shopName, String piva, String latitude, String longitude, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, Map<String, Boolean> openDays, List<File> images, List<Promotion> promotions, List<Service> services, List<Appointment> allAppointments){
+    public Shop(String shopName, String piva, String latitude, String longitude, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, List<Integer> openDays, List<File> images, List<Promotion> promotions, List<Service> services, List<Appointment> allAppointments){
         setShopName(shopName);
         setpIVA(piva);
         setLatitude(latitude);
@@ -135,11 +135,11 @@ public class Shop {
         this.closeTime = closeTime;
     }
 
-    public Map<String, Boolean> getOpenDays() {
+    public List<Integer> getOpenDays() {
         return openDays;
     }
 
-    public void setOpenDays(Map<String, Boolean> openDays) {
+    public void setOpenDays(List<Integer> openDays) {
         this.openDays = openDays;
     }
 

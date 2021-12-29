@@ -43,7 +43,8 @@ public class HairdresserDAO {
             String name = rs.getString(3);
             String surname = rs.getString(4);
             Hairdresser hairdresser = new Hairdresser(hEmail, user.getPwd(), user.getRole(), name, surname, piva);
-            //retrieve dello shop!
+            Shop shop = ShopDAO.getShop(hairdresser);
+            hairdresser.setShop(shop);
             rs.close();
             if(stm != null){
                 stm.close();

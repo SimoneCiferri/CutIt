@@ -38,19 +38,14 @@ public class PromotionDAO {
         if (rs.first()) {
             rs.first();
             do {
-                String promotionCode = rs.getString("Code");
-                String promotionShop = rs.getString("Shop_ShopNAme");
-                Integer offValue = rs.getInt("Off");
-                String expireDate = rs.getString("ExpireDate");
-                String promotionName = rs.getString("Name");
-                String promService_Name = rs.getString("Service_Name");
-                String promService_Price = rs.getString("Service_Price");
-                String promService_ShopName = rs.getString("Service_Shop_ShopName");
-                /*
-                Promotion p = new Promotion(promotionCode, promotionName, offValue, dataFromString(expireDate), promService_Name);
+                String promotionCode = rs.getString(1);
+                Integer offValue = rs.getInt(2);
+                String expireDate = rs.getString(3);
+                String promService_Name = rs.getString(4);
+                String promService_ShopName = rs.getString(5);
+                Service service = ServiceDAO.getService(promService_ShopName, promService_Name);
+                Promotion p = new Promotion(promotionCode, offValue, dataFromString(expireDate), service);
                 promotionsList.add(p);
-
-                 */
             } while (rs.next());
             rs.close();
             if (stm != null) {

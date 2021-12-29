@@ -43,9 +43,11 @@ public class LoginController {
         HairdresserBean hairdresserBean = new HairdresserBean();
         hairdresserBean.sethEmail(hairdresser.getUserID());
         hairdresserBean.sethPassword(hairdresser.getPwd());
-        hairdresserBean.setpIVA(hairdresser.getpIVA());
+        hairdresserBean.sethRole(hairdresser.getRole());
         hairdresserBean.sethName(hairdresser.getName());
         hairdresserBean.sethSurname(hairdresser.getSurname());
+        hairdresserBean.setpIVA(hairdresser.getpIVA());
+        hairdresserBean.setShopName(hairdresser.getShop().getShopName());
         return hairdresserBean;
     }
 

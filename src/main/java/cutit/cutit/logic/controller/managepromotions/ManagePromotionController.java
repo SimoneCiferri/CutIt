@@ -20,10 +20,13 @@ public class ManagePromotionController {
     }
 
     public Boolean addPromotion(ManagePromotionBean managePromotionBean) throws Exception {
+        /*
         Service service = ServiceDAO.getInstance().getService(managePromotionBean);
         Promotion promotion = new Promotion(managePromotionBean.getPromotionCode(), managePromotionBean.getPromOffValue(), LocalDateTime.now(),service);
         PromotionDAO.insertPromotion(promotion, service);
         System.out.println("CONTROLLER APPLICATIVO -> Adding Promotion (data from ManagePromotionBean passed by my viewController)");
+
+         */
         return true;
     }
 
@@ -37,7 +40,7 @@ public class ManagePromotionController {
 
     public ManagePromotionBean getAllServices(HairdresserBean hairdresserBean) throws Exception {
         Shop shop = new Shop(hairdresserBean.getShopName(), hairdresserBean.getpIVA());
-        List<Service> serviceList = ServiceDAO.getInstance().getALlServices(shop);
+        List<Service> serviceList = ServiceDAO.getALlServices(shop);
         ManagePromotionBean managePromotionBean = new ManagePromotionBean();
         managePromotionBean.setServiceList(serviceList);
         return managePromotionBean;

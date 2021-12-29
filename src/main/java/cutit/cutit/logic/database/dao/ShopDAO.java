@@ -2,9 +2,7 @@ package cutit.cutit.logic.database.dao;
 
 import cutit.cutit.logic.database.DBConnection;
 import cutit.cutit.logic.database.query.ShopQueries;
-import cutit.cutit.logic.model.Hairdresser;
-import cutit.cutit.logic.model.Shop;
-import cutit.cutit.logic.model.User;
+import cutit.cutit.logic.model.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -66,7 +64,14 @@ public class ShopDAO {
             String description = rs.getString(7);
             String openTime = rs.getString(8);
             String closeTime = rs.getString(9);
-            Shop shop = new Shop(shopName, hPiva, latitude, longitude, phoneNumber, employee, description, dateFromString(openTime), dateFromString(closeTime), null, null);
+            Shop shop = new Shop(shopName, hPiva, latitude, longitude, phoneNumber, employee, description, dateFromString("10:00:45"), dateFromString("20:00:00"));
+            List<Integer> openDays = getOpenDays(shop.getpIVA());
+            shop.setOpenDays(openDays);
+            //manca il retrieve delle immagini
+            List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop);
+            shop.setPromotions(allPromotions);
+            List<Service> services = ServiceDAO.getALlServices(shop);
+            shop.setServices(services);
             rs.close();
             if(stm != null){
                 stm.close();
@@ -78,8 +83,8 @@ public class ShopDAO {
 
 
 
-    private static List<String> getOpenDays(String shopPiva) throws Exception {
-        List<String> openDays = new ArrayList<>();
+    private static List<Integer> getOpenDays(String shopPiva) throws Exception {
+        List<Integer> openDays = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -87,7 +92,7 @@ public class ShopDAO {
         if (rs.first()) {
             rs.first();
             do {
-                String day = rs.getString(2);
+                Integer day = rs.getInt(2);
                 openDays.add(day);
             } while (rs.next());
             rs.close();
