@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,12 +44,13 @@ public class HairdresserManagePromotionsViewController {
             add.setOnMouseClicked((MouseEvent) -> addForm());
             vbInScrollHProm.getChildren().add(add);
             for(int i = 0; i<managePromotionBean.getPromotionsList().size(); i++) {
-                String promotionName = managePromotionBean.getPromotionCodeI(i);
-                Integer promotionOffValue = managePromotionBean.getPromotionOffValue(i);
-                String promotionServiceName = managePromotionBean.getPromotionServiceNameI(i);
-                String expire = managePromotionBean.getPromExpireDataI(i);
-                Label l = JavaFXNodeFactory.getInstance().createCardLabel(promotionName, labelStyle);
-                l.setOnMouseClicked((MouseEvent) -> deleteForm(promotionName, promotionOffValue, promotionServiceName, expire));
+                ManagePromotionBean.PromData promData = managePromotionBean.getPromotionsList().get(i);
+                String promotionCode = promData.getServiceCode();
+                Integer promotionOffValue = promData.getOffV();
+                String promotionServiceName = promData.getServiceName();
+                LocalDate expire = promData.getExpire();
+                Label l = JavaFXNodeFactory.getInstance().createCardLabel(promotionCode, labelStyle);
+                l.setOnMouseClicked((MouseEvent) -> deleteForm(promotionCode, promotionOffValue, promotionServiceName, expire.toString()));
                 vbInScrollHProm.getChildren().add(l);
             }
         } catch (Exception e) {
@@ -77,39 +78,39 @@ public class HairdresserManagePromotionsViewController {
         ChoiceBox<String> promService = new ChoiceBox<>();
         promService.setMaxSize(180,25);
         try {
-            this.managePromotionBean = managePromotionController.getAllServices(this.hairdresserBean);
+            this.managePromotionBean = managePromotionController.getAllServices(shopBean);
         } catch (Exception e) {
             e.printStackTrace();
         }
         for(int j=0; j<managePromotionBean.getServiceList().size(); j++){
-            promService.getItems().add(managePromotionBean.getServiceName(j));
+            promService.getItems().add(managePromotionBean.getServiceList().get(j));
         }
         rightList.add(promService);
         TextArea promValue = new TextArea();
         promValue.setPromptText("5.50");
         promValue.setMaxSize(60,25);
         rightList.add(promValue);
-        TextField tfExpireDate = new TextField();
-        tfExpireDate.setPromptText("yyyy--MM-dd");
-        tfExpireDate.setMaxSize(180,25);
-        rightList.add(tfExpireDate);
+        DatePicker dp = new DatePicker();
+        dp.setMaxSize(180,25);
+        dp.setValue(LocalDate.now());
+        rightList.add(dp);
         HBox form = JavaFXNodeFactory.getInstance().createLRForm(leftLabelList, rightList, true);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
         back.setOnMouseClicked((MouseEvent) -> showHairProm());
         Button add = JavaFXNodeFactory.getInstance().createButton("Add");
         add.setPrefHeight(55);
-        add.setOnMouseClicked((MouseEvent) -> addPromotion(promName.getText(), 5, tfExpireDate.getText(), promService.getValue()));
+        add.setOnMouseClicked((MouseEvent) -> addPromotion(promName.getText(), 5, dp.getValue() , promService.getValue()));
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, add);
        vbInScrollHProm.getChildren().addAll(title, form, buttonsHB);
     }
 
-    private void addPromotion(String promName, Integer offValue,  String expireDate, String serviceName){
-        managePromotionBean.setPromotionCode(promName);
+    private void addPromotion(String promCode, Integer offValue,  LocalDate expireDate, String serviceName){
+        managePromotionBean.setPromotionCode(promCode);
         managePromotionBean.setPromOffValue(offValue);
         managePromotionBean.setPromExpireDate(expireDate);
         managePromotionBean.setPromServiceName(serviceName);
-        managePromotionBean.setPromShopName(hairdresserBean.getShopName());
+        managePromotionBean.setPromShopName(shopBean.getShopName());
         try {
             managePromotionController.addPromotion(this.managePromotionBean);
             showHairProm();
@@ -118,13 +119,9 @@ public class HairdresserManagePromotionsViewController {
         }
     }
 
-    private LocalDateTime dateFromString(String expireDate) {
-        return LocalDateTime.parse(expireDate + "T00:00");
-    }
-
-    private void deleteForm(String promName, Integer promOffValue, String promServiceName, String expireDate) {
+    private void deleteForm(String promCode, Integer promOffValue, String promServiceName, String expireDate) {
        vbInScrollHProm.getChildren().clear();
-        Label name = JavaFXNodeFactory.getInstance().createLabel(promName, titleFontSize);
+        Label name = JavaFXNodeFactory.getInstance().createLabel(promCode, titleFontSize);
         Label promValue = JavaFXNodeFactory.getInstance().createLabel(promOffValue.toString(), titleFontSize);
         Label promService = JavaFXNodeFactory.getInstance().createLabel(promServiceName, titleFontSize);
         List<Label> leftLabelList = new ArrayList<>();
@@ -139,14 +136,20 @@ public class HairdresserManagePromotionsViewController {
         back.setOnMouseClicked((MouseEvent) -> showHairProm());
         Button delete = JavaFXNodeFactory.getInstance().createButton("Delete");
         delete.setPrefHeight(55);
-        delete.setOnMouseClicked((MouseEvent) -> removePromotion());
+        delete.setOnMouseClicked((MouseEvent) -> removePromotion(promCode, promOffValue, expireDate));
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, delete);
         vbInScrollHProm.getChildren().addAll(name, promValue, promService, form, buttonsHB);
     }
 
-    private void removePromotion(){
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        managePromotionController.removePromotion(this.managePromotionBean);
+    private void removePromotion(String promCode, Integer offValue, String expireDate){
+        managePromotionBean.setPromotionCode(promCode);
+        managePromotionBean.setPromOffValue(offValue);
+        managePromotionBean.setPromExpireDate(LocalDate.parse(expireDate));
+        try {
+            managePromotionController.removePromotion(this.managePromotionBean);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         showHairProm();
     }
 

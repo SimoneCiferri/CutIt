@@ -470,3 +470,12 @@ class cutit.cutit.logic.controller.login.LoginViewController
 2021/12/29 16:52:14
 class cutit.cutit.logic.controller.login.LoginViewController
  No user Found matching with name: aaaa
+
+2021/12/29 18:11:55
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: aaa
+
+2021/12/29 18:12:46
+class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
+ Error resolving onMouseClicked='#manageShopPage', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml:103

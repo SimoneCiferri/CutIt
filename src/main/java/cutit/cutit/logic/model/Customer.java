@@ -1,12 +1,13 @@
 package cutit.cutit.logic.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Customer extends User{
 
     private String name;
     private String surname;
-    private String birthDate;
+    private LocalDate birthDate;
     private String Gender;
     private List<Appointment> bookedAppointments; //lista di appuntamenti prenotati passati e futuri
     private List<Promotion> promotions; //Lista di promotion disponibili e usate per l'utente customer
@@ -14,7 +15,7 @@ public class Customer extends User{
 
     public Customer(){}
 
-    public Customer(String userID, String pwd, Integer role, String name, String surname, String birthDate, String gender){
+    public Customer(String userID, String pwd, Integer role, String name, String surname, LocalDate birthDate, String gender){
         super(userID, pwd, role);
         setName(name);
         setSurname(surname);
@@ -22,7 +23,7 @@ public class Customer extends User{
         setGender(gender);
     }
 
-    public Customer(String userID, String pwd, Integer role, String name, String surname, String birthDate, String gender, List<Appointment> bookedAppointments, List<Promotion> promotions){
+    public Customer(String userID, String pwd, Integer role, String name, String surname, LocalDate birthDate, String gender, List<Appointment> bookedAppointments, List<Promotion> promotions){
         super(userID, pwd, role);
         setName(name);
         setSurname(surname);
@@ -48,11 +49,11 @@ public class Customer extends User{
         this.surname = surname;
     }
 
-    public String getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 

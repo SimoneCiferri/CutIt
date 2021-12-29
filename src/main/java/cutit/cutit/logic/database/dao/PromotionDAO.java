@@ -11,6 +11,7 @@ import javafx.util.converter.LocalDateTimeStringConverter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +20,13 @@ import java.util.Locale;
 public class PromotionDAO {
 
 
-    public static void insertPromotion(Promotion promotion, Service service) throws Exception {
+    public static void insertPromotion(Promotion promotion, String serviceName, String shopName) throws Exception {
+        Service service = ServiceDAO.getService(shopName, serviceName);
+        promotion.setService(service);
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        //PromotionQueries.insertPromotion(stm, promotion.getCode(), service.getShopName() , promotion.getOffValue(), stringFromData(promotion.getExpireDate()), promotion.getPromName(), service.getServiceName(), service.getPrice(), service.getShopName());
+        PromotionQueries.insertPromotion(stm, promotion.getCode(), promotion.getOffValue(), stringFromData(promotion.getExpireDate()), promotion.getService().getServiceName(), promotion.getService().getShopName());
         if(stm != null){
             stm.close();
         }
@@ -56,12 +59,21 @@ public class PromotionDAO {
         return promotionsList;
     }
 
-
-    private static LocalDateTime dataFromString(String expireDate) {
-        return LocalDateTime.parse(expireDate);
+    public static void deletePromotion(Promotion promotion) throws Exception{
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        PromotionQueries.deletePromotion(stm, promotion.getCode());
+        if(stm != null){
+            stm.close();
+        }
     }
 
-    private static String stringFromData(LocalDateTime expireDate){
+    private static LocalDate dataFromString(String expireDate) {
+        return LocalDate.parse(expireDate);
+    }
+
+    private static String stringFromData(LocalDate expireDate){
         return expireDate.toString();
     }
 

@@ -1,21 +1,22 @@
 package cutit.cutit.logic.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Promotion { //commit a caso
 
     private String code;
     private Integer offValue;
-    private LocalDateTime expireDate;
+    private LocalDate expireDate;
     private Service service;
 
-    public Promotion(String code, Integer offValue, LocalDateTime expireDate){
+    public Promotion(String code, Integer offValue, LocalDate expireDate){
         setCode(code);
         setOffValue(offValue);
         setExpireDate(expireDate);
     }
 
-    public Promotion(String code, Integer offValue, LocalDateTime expireDate, Service service){
+    public Promotion(String code, Integer offValue, LocalDate expireDate, Service service){
         setCode(code);
         setOffValue(offValue);
         setExpireDate(expireDate);
@@ -38,11 +39,11 @@ public class Promotion { //commit a caso
         this.offValue = offValue;
     }
 
-    public LocalDateTime getExpireDate() {
+    public LocalDate getExpireDate() {
         return expireDate;
     }
 
-    public void setExpireDate(LocalDateTime expireDate) {
+    public void setExpireDate(LocalDate expireDate) {
         this.expireDate = expireDate;
     }
 

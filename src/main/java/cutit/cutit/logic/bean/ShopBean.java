@@ -1,6 +1,7 @@
 package cutit.cutit.logic.bean;
 
 import java.io.File;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 
@@ -13,8 +14,8 @@ public class ShopBean {
     private String phoneNumber;
     private String employee;
     private String shopDescription;
-    private String openTime;
-    private String closeTime;
+    private LocalTime openTime;
+    private LocalTime closeTime;
     private List<Integer> openDays;
     private List<File> images;
     private List<String> promotions;
@@ -77,19 +78,19 @@ public class ShopBean {
         this.shopDescription = shopDescription;
     }
 
-    public String getOpenTime() {
+    public LocalTime getOpenTime() {
         return openTime;
     }
 
-    public void setOpenTime(String openTime) {
+    public void setOpenTime(LocalTime openTime) {
         this.openTime = openTime;
     }
 
-    public String getCloseTime() {
+    public LocalTime getCloseTime() {
         return closeTime;
     }
 
-    public void setCloseTime(String closeTime) {
+    public void setCloseTime(LocalTime closeTime) {
         this.closeTime = closeTime;
     }
 

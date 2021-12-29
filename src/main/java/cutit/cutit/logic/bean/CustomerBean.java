@@ -1,5 +1,6 @@
 package cutit.cutit.logic.bean;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class CustomerBean {
@@ -9,7 +10,7 @@ public class CustomerBean {
     private Integer cRole;
     private String cName;
     private String cSurname;
-    private String cBirthDate;
+    private LocalDate cBirthDate;
     private String cGender;
     private List<String> allBookedAppointments;
     private List<String> allPromotions;
@@ -38,11 +39,11 @@ public class CustomerBean {
         this.cSurname = cSurname;
     }
 
-    public String getcBirthDate() {
+    public LocalDate getcBirthDate() {
         return cBirthDate;
     }
 
-    public void setcBirthDate(String cBirthDate) {
+    public void setcBirthDate(LocalDate cBirthDate) {
         this.cBirthDate = cBirthDate;
     }
 

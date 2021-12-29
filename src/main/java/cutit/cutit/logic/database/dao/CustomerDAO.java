@@ -8,6 +8,7 @@ import cutit.cutit.logic.model.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 public class CustomerDAO {
 
@@ -17,7 +18,7 @@ public class CustomerDAO {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        CustomerQueries.insertCustomer(stm, customer.getUserID(), customer.getBirthDate(), customer.getGender(), customer.getName(), customer.getSurname());
+        CustomerQueries.insertCustomer(stm, customer.getUserID(), customer.getBirthDate().toString(), customer.getGender(), customer.getName(), customer.getSurname());
         if(stm != null){
             stm.close();
         }
@@ -38,7 +39,7 @@ public class CustomerDAO {
             String gender = rs.getString(3);
             String name = rs.getString(4);
             String surname = rs.getString(5);
-            Customer customer = new Customer(cEmail, user.getPwd(), user.getRole(), name, surname, birthDate, gender);
+            Customer customer = new Customer(cEmail, user.getPwd(), user.getRole(), name, surname, LocalDate.parse(birthDate), gender);
             rs.close();
             if(stm != null){
                 stm.close();

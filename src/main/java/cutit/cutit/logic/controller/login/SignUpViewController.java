@@ -46,7 +46,7 @@ public class SignUpViewController {
                     cbCustomerGender.getValue(), tfCustomerEmail.getText(), pfCustomerPassword.getText())){
                 customerBean.setcName(tfCustomerName.getText());
                 customerBean.setcSurname(tfCustomerSurname.getText());
-                customerBean.setcBirthDate(dpCustomerBirthdate.getValue().toString());
+                customerBean.setcBirthDate(dpCustomerBirthdate.getValue());
                 customerBean.setcGender(cbCustomerGender.getValue());
                 customerBean.setcEmail(tfCustomerEmail.getText());
                 customerBean.setcPassword(pfCustomerPassword.getText());

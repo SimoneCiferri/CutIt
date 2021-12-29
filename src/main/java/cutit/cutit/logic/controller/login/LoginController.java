@@ -54,8 +54,8 @@ public class LoginController {
         shopBean.setPhoneNumber(hairdresser.getShop().getPhoneNumber());
         shopBean.setEmployee(hairdresser.getShop().getEmployee());
         shopBean.setShopDescription(hairdresser.getShop().getDescription());
-        shopBean.setOpenTime(hairdresser.getShop().getOpenTime().toString());
-        shopBean.setCloseTime(hairdresser.getShop().getCloseTime().toString());
+        shopBean.setOpenTime(hairdresser.getShop().getOpenTime());
+        shopBean.setCloseTime(hairdresser.getShop().getCloseTime());
         shopBean.setOpenDays(hairdresser.getShop().getOpenDays());
         shopBean.setPromotions(stringListFromPromList(hairdresser.getShop().getPromotions()));
         shopBean.setServices(stringListFromServList(hairdresser.getShop().getServices()));
