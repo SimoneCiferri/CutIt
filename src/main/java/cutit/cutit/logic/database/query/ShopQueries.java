@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class ShopQueries {
 
     public static void insertShop(Statement stmt, String shopName, String hairdresserPIVA) throws SQLException {
-        String insertStatement = String.format("INSERT INTO shop (ShopName, Employee, Latitude, Hairdresser_PIVA, Longitude, PhoneNumber, Description, OpenTime, CloseTime) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", shopName, null, null, hairdresserPIVA, null, null, null, null, null);
+        String insertStatement = String.format("INSERT INTO shop (ShopName, Hairdresser_PIVA) VALUES ('%s', '%s')", shopName, hairdresserPIVA);
         System.out.println(insertStatement);
         stmt.executeUpdate(insertStatement);
     }

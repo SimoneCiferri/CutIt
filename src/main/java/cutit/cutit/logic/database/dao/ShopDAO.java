@@ -64,7 +64,7 @@ public class ShopDAO {
             String description = rs.getString(7);
             String openTime = rs.getString(8);
             String closeTime = rs.getString(9);
-            Shop shop = new Shop(shopName, hPiva, latitude, longitude, phoneNumber, employee, description, dateFromString("10:00:45"), dateFromString("20:00:00"));
+            Shop shop = new Shop(shopName, hPiva, latitude, longitude, phoneNumber, employee, description, dateFromString(openTime), dateFromString(closeTime));
             List<Integer> openDays = getOpenDays(shop.getpIVA());
             shop.setOpenDays(openDays);
             //manca il retrieve delle immagini

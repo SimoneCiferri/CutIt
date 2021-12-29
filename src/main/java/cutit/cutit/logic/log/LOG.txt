@@ -422,3 +422,11 @@ class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
 2021/12/29 13:27:27
 class cutit.cutit.logic.controller.login.LoginViewController
  Text 'null' could not be parsed at index 0
+
+2021/12/29 13:38:45
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: email
+
+2021/12/29 13:38:52
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: email
