@@ -9,6 +9,10 @@ import cutit.cutit.logic.model.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShopDAO {
 
@@ -16,7 +20,7 @@ public class ShopDAO {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ShopQueries.insertShop(stm, shop.getShopName(), shop.getEmployee(), shop.getLatitude(), shop.getpIVA(), shop.getLongitude(), shop.getPhoneNumber(), shop.getDescription(), shop.getOpenTime(), shop.getCloseTime());
+        ShopQueries.insertShop(stm, shop.getShopName(), shop.getpIVA());
         if(stm != null){
             stm.close();
         }
@@ -53,10 +57,16 @@ public class ShopDAO {
             Exception e = new Exception("No user Found matching with name: "+ hairdresser.getUserID());
             throw e;
         }else{
-            String hPiva = rs.getString("Hairdresser_PIVA");
-            String shopName = rs.getString("ShopName");
-            System.out.println(shopName);
-            Shop shop = new Shop(shopName, hPiva);
+            String shopName = rs.getString(1);
+            String employee = rs.getString(2);
+            String latitude = rs.getString(3);
+            String hPiva = rs.getString(4);
+            String longitude = rs.getString(5);
+            String phoneNumber = rs.getString(6);
+            String description = rs.getString(7);
+            String openTime = rs.getString(8);
+            String closeTime = rs.getString(9);
+            Shop shop = new Shop(shopName, hPiva, latitude, longitude, phoneNumber, employee, description, dateFromString(openTime), dateFromString(closeTime), null, null);
             rs.close();
             if(stm != null){
                 stm.close();
@@ -66,6 +76,36 @@ public class ShopDAO {
         }
     }
 
+
+
+    private static List<String> getOpenDays(String shopPiva) throws Exception {
+        List<String> openDays = new ArrayList<>();
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = ShopQueries.getOpenDays(stm, shopPiva);
+        if (rs.first()) {
+            rs.first();
+            do {
+                String day = rs.getString(2);
+                openDays.add(day);
+            } while (rs.next());
+            rs.close();
+            if (stm != null) {
+                stm.close();
+            }
+            //DBConnection.getInstance().closeConnection();
+        }
+        return openDays;
+    }
+
+
+    private static LocalTime dateFromString(String openTime) {
+        return LocalTime.parse(openTime);
+    }
+    private static String stringFromTime(LocalTime data){
+        return data.toString();
+    }
 
 
 }

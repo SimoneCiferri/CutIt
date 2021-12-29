@@ -12,6 +12,8 @@ import java.sql.Statement;
 public class CustomerDAO {
 
     public static void insertCustomer(Customer customer) throws Exception {
+        UserDAO.insertNewUser(customer);
+
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);

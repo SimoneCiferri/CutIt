@@ -25,7 +25,6 @@ public class LoginController {
 
     public Boolean signUpCustomer(CustomerBean customerBean) throws Exception {
         Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcBirthDate(), customerBean.getcGender());
-        UserDAO.insertNewUser(customer);
         CustomerDAO.insertCustomer(customer);
         System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from CustomerBean passed by my viewController)");
         return true;
@@ -33,10 +32,7 @@ public class LoginController {
 
     public Boolean signUpHair(HairdresserBean hairdresserBean) throws Exception {
         Hairdresser hairdresser = new Hairdresser(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1, hairdresserBean.gethName(), hairdresserBean.gethSurname(), hairdresserBean.getpIVA());
-        UserDAO.insertNewUser(hairdresser); //fa dopo
-        HairdresserDAO.insertNewHairdresser(hairdresser);
-        Shop shop = new Shop(hairdresserBean.getShopName(), hairdresserBean.getpIVA());
-        ShopDAO.insertShop(shop);
+        HairdresserDAO.insertNewHairdresser(hairdresser, hairdresserBean.getShopName());
         System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from ....... passed by my viewController)");
         return true;
     }
