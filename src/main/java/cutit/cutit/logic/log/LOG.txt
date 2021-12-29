@@ -479,3 +479,13 @@ class cutit.cutit.logic.controller.login.LoginViewController
 class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
  Error resolving onMouseClicked='#manageShopPage', either the event handler is not in the Namespace or there is an error in the script.
 /C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml:103
+
+2021/12/29 19:02:30
+class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
+ Error resolving onMouseClicked='#manageShopPage', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml:103
+
+2021/12/29 19:08:56
+class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
+ Error resolving onMouseClicked='#manageShopPage', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml:102
