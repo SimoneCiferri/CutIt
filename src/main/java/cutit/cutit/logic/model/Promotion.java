@@ -9,6 +9,12 @@ public class Promotion { //commit a caso
     private LocalDateTime expireDate;
     private Service service;
 
+    public Promotion(String code, Integer offValue, LocalDateTime expireDate){
+        setCode(code);
+        setOffValue(offValue);
+        setExpireDate(expireDate);
+    }
+
     public Promotion(String code, Integer offValue, LocalDateTime expireDate, Service service){
         setCode(code);
         setOffValue(offValue);
