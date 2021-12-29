@@ -112,7 +112,7 @@ public class TopBarHairdresserViewController {
         btnHLogout.setStyle(transparentStyle);
         HairdresserShopView view = (HairdresserShopView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERMANAGESHOPPAGE);
         HairdresserManageShopPageViewController viewController = (HairdresserManageShopPageViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERMANAGESHOPPAGE);
-        viewController.fillView(new ShopBean());
+        viewController.fillView(shopBean);
         return true;
     }
 
