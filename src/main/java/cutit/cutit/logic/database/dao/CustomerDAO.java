@@ -11,20 +11,9 @@ import java.sql.Statement;
 
 public class CustomerDAO {
 
-    private static CustomerDAO instance = null;
+    public static void insertCustomer(Customer customer) throws Exception {
+        UserDAO.insertNewUser(customer);
 
-    private CustomerDAO(){
-
-    }
-
-    public static synchronized CustomerDAO getInstance(){
-        if(instance == null){
-            instance = new CustomerDAO();
-        }
-        return instance;
-    }
-
-    public void insertCustomer(Customer customer) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -35,7 +24,7 @@ public class CustomerDAO {
         //DBConnection.getInstance().closeConnection();
     }
 
-    public Customer getCustomer(User user) throws Exception {
+    public static Customer getCustomer(User user) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -45,11 +34,11 @@ public class CustomerDAO {
             throw e;
         }else{
             String cEmail = rs.getString(1);
-            Integer age = rs.getInt(2);
-            String name = rs.getString(3);
-            String surname = rs.getString(4);
-            String gender = rs.getString(5);
-            Customer customer = new Customer(cEmail, user.getPwd(), user.getRole(), name, surname, age, gender);
+            String birthDate = rs.getString(2);
+            String gender = rs.getString(3);
+            String name = rs.getString(4);
+            String surname = rs.getString(5);
+            Customer customer = new Customer(cEmail, user.getPwd(), user.getRole(), name, surname, birthDate, gender);
             rs.close();
             if(stm != null){
                 stm.close();

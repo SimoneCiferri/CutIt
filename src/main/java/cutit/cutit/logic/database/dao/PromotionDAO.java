@@ -23,7 +23,7 @@ public class PromotionDAO {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        PromotionQueries.insertPromotion(stm, promotion.getCode(), service.getShopName() , promotion.getOffValue(), stringFromData(promotion.getExpireDate()), promotion.getPromName(), service.getServiceName(), service.getPrice(), service.getShopName());
+        //PromotionQueries.insertPromotion(stm, promotion.getCode(), service.getShopName() , promotion.getOffValue(), stringFromData(promotion.getExpireDate()), promotion.getPromName(), service.getServiceName(), service.getPrice(), service.getShopName());
         if(stm != null){
             stm.close();
         }
@@ -46,8 +46,11 @@ public class PromotionDAO {
                 String promService_Name = rs.getString("Service_Name");
                 String promService_Price = rs.getString("Service_Price");
                 String promService_ShopName = rs.getString("Service_Shop_ShopName");
+                /*
                 Promotion p = new Promotion(promotionCode, promotionName, offValue, dataFromString(expireDate), promService_Name);
                 promotionsList.add(p);
+
+                 */
             } while (rs.next());
             rs.close();
             if (stm != null) {

@@ -8,6 +8,7 @@ import cutit.cutit.logic.model.Promotion;
 import cutit.cutit.logic.model.Service;
 import cutit.cutit.logic.model.Shop;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ManagePromotionController {
@@ -20,14 +21,10 @@ public class ManagePromotionController {
 
     public Boolean addPromotion(ManagePromotionBean managePromotionBean) throws Exception {
         Service service = ServiceDAO.getInstance().getService(managePromotionBean);
-        Promotion promotion = new Promotion(generateCode() , managePromotionBean.getPromotionCodeI(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate(), managePromotionBean.getPromServiceName());
+        Promotion promotion = new Promotion(managePromotionBean.getPromotionCode(), managePromotionBean.getPromOffValue(), LocalDateTime.now(),service);
         PromotionDAO.insertPromotion(promotion, service);
         System.out.println("CONTROLLER APPLICATIVO -> Adding Promotion (data from ManagePromotionBean passed by my viewController)");
         return true;
-    }
-
-    private String generateCode() {
-        return "xxxx-yyyy-zzzz-wwww";
     }
 
     public ManagePromotionBean getAllPromotions(HairdresserBean hairdresserBean) throws Exception {

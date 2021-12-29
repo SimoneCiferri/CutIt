@@ -43,7 +43,7 @@ public class SignUpViewController {
     public boolean trySignUpCustomer(){
         try{
             if(checkSamePswd(pfCustomerPassword, pfCustomerConfirmPassword) && !isSomethingNull(tfCustomerName.getText(), tfCustomerSurname.getText(),
-                    "Female", tfCustomerEmail.getText(), pfCustomerPassword.getText())){
+                    cbCustomerGender.getValue(), tfCustomerEmail.getText(), pfCustomerPassword.getText())){
                 customerBean.setcName(tfCustomerName.getText());
                 customerBean.setcSurname(tfCustomerSurname.getText());
                 customerBean.setcBirthDate(dpCustomerBirthdate.getValue().toString());

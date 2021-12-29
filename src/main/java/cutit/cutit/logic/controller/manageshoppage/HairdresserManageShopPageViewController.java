@@ -34,8 +34,8 @@ public class HairdresserManageShopPageViewController {
     @FXML
     public void manageShopPage(TextField shopName, TextField shopAddress, TextField shopWorkers, TextField shopDescription){
         shopBean.setShopName(shopName.getText());
-        shopBean.setShopAddress(shopAddress.getText());
-        shopBean.setShopWorkers(shopWorkers.getText());
+        //shopBean.setShopAddress(shopAddress.getText());
+        //shopBean.setShopWorkers(shopWorkers.getText());
         shopBean.setShopDescription(shopDescription.getText());
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
         try {
