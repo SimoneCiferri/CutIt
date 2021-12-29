@@ -28,6 +28,18 @@ public class Shop {
         setpIVA(piva);
     }
 
+    public Shop(String shopName, String piva, String latitude, String longitude, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime){
+        setShopName(shopName);
+        setpIVA(piva);
+        setLatitude(latitude);
+        setLongitude(longitude);
+        setPhoneNumber(phoneNumber);
+        setEmployee(employee);
+        setDescription(description);
+        setOpenTime(openTime);
+        setCloseTime(closeTime);
+    }
+
     public Shop(String shopName, String piva, String latitude, String longitude, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, Map<String, Boolean> openDays, List<File> images){
         setShopName(shopName);
         setpIVA(piva);
