@@ -8,6 +8,7 @@ import cutit.cutit.logic.database.dao.UserDAO;
 import cutit.cutit.logic.model.Service;
 import cutit.cutit.logic.model.User;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import org.w3c.dom.Text;
 
@@ -19,33 +20,24 @@ public class HairdresserManageShopPageViewController {
     private ManageShopPageController manageShopPageController;
 
     @FXML
+    private TextField  tfShopName, phoneNumberHairdresser, tfDescription;
+
+    @FXML
+    private Button btnSave;
+
+    @FXML
     public void initialize(){
-        shopBean = new ShopBean();
+        tfShopName.setText(shopBean.getShopName());
+        phoneNumberHairdresser.setText(shopBean.getPhoneNumber());
+        tfDescription.setText(shopBean.getShopDescription());
         manageShopPageController = new ManageShopPageController();
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESHOPPAGEVIEWCONTROLLER");
     }
 
-    //fare il retrieve dello shop relativo all'user con ShopDAO.getShopFromUser
-    public ShopBean getShopInfo() throws Exception {
-        return shopBean;
-    }
-
     //riempito manageShopPage (Alessandro)
     @FXML
-    public void manageShopPage(TextField shopName, TextField shopAddress, TextField shopWorkers, TextField shopDescription){
-        shopBean.setShopName(shopName.getText());
-        //shopBean.setShopAddress(shopAddress.getText());
-        //shopBean.setShopWorkers(shopWorkers.getText());
-        shopBean.setShopDescription(shopDescription.getText());
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        try {
-            manageShopPageController.updateData(this.shopBean);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void manageShopPage(){
     }
-
-
 
     public void fillView(ShopBean bean){
         shopBean = bean;
