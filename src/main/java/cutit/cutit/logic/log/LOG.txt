@@ -430,3 +430,43 @@ class cutit.cutit.logic.controller.login.LoginViewController
 2021/12/29 13:38:52
 class cutit.cutit.logic.controller.login.LoginViewController
  No user Found matching with name: email
+
+2021/12/29 15:23:04
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: bridge
+
+2021/12/29 15:23:11
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: bridge
+
+2021/12/29 15:24:01
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: qqq
+
+2021/12/29 15:52:12
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: bridge@bridge@gmail.bridge
+
+2021/12/29 15:52:20
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: bridge@bridge@gmail.bridge
+
+2021/12/29 16:04:20
+class cutit.cutit.logic.controller.login.LoginViewController
+ Cannot invoke "java.util.List.size()" because "allAppointments" is null
+
+2021/12/29 16:04:45
+class cutit.cutit.logic.controller.login.LoginViewController
+ Cannot invoke "java.util.List.size()" because "allAppointments" is null
+
+2021/12/29 16:06:31
+class cutit.cutit.logic.controller.login.LoginViewController
+ Cannot invoke "java.util.List.isEmpty()" because "allAppointments" is null
+
+2021/12/29 16:09:01
+class cutit.cutit.logic.controller.login.LoginViewController
+ Cannot invoke "cutit.cutit.logic.bean.DeleteAppointmentBean.setShopName(String)" because "this.deleteAppointmentBean" is null
+
+2021/12/29 16:52:14
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: aaaa

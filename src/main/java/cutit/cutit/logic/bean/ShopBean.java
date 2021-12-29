@@ -15,7 +15,7 @@ public class ShopBean {
     private String shopDescription;
     private String openTime;
     private String closeTime;
-    private Map<String, Boolean> openDays;
+    private List<Integer> openDays;
     private List<File> images;
     private List<String> promotions;
     private List<String> services;
@@ -93,11 +93,11 @@ public class ShopBean {
         this.closeTime = closeTime;
     }
 
-    public Map<String, Boolean> getOpenDays() {
+    public List<Integer> getOpenDays() {
         return openDays;
     }
 
-    public void setOpenDays(Map<String, Boolean> openDays) {
+    public void setOpenDays(List<Integer> openDays) {
         this.openDays = openDays;
     }
 

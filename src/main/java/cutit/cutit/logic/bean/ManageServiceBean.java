@@ -3,6 +3,7 @@ package cutit.cutit.logic.bean;
 import cutit.cutit.logic.model.Service;
 
 import java.util.List;
+import java.util.Map;
 
 public class ManageServiceBean {
 
@@ -10,13 +11,14 @@ public class ManageServiceBean {
     private Float servicePrice;
     private String serviceShopName;
 
-    private List<Service> servicesList;
+    private List<String> servicesList;
+    private Map<String, Float> serviceList;
 
-    public List<Service> getServicesList() {
+    public List<String> getServicesList() {
         return servicesList;
     }
 
-    public void setServicesList(List<Service> servicesList) {
+    public void setServicesList(List<String> servicesList) {
         this.servicesList = servicesList;
     }
 
@@ -44,12 +46,11 @@ public class ManageServiceBean {
         this.serviceShopName = serviceShopName;
     }
 
-    public String getServiceName(Integer i){
-        return servicesList.get(i).getServiceName();
+    public Map<String, Float> getServiceList() {
+        return serviceList;
     }
 
-    public Float getServicePrice(Integer i){
-        return servicesList.get(i).getPrice();
+    public void setServiceList(Map<String, Float> serviceList) {
+        this.serviceList = serviceList;
     }
-
 }

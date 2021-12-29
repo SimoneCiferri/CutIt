@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ShopDAO {
@@ -72,6 +73,9 @@ public class ShopDAO {
             shop.setPromotions(allPromotions);
             List<Service> services = ServiceDAO.getALlServices(shop);
             shop.setServices(services);
+            //ho messo una lista di appuntamenti vuota senno dava NPE
+            List<Appointment> app = new ArrayList<>();
+            shop.setAllAppointments(app);
             rs.close();
             if(stm != null){
                 stm.close();

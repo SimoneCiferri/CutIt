@@ -1,9 +1,6 @@
 package cutit.cutit.logic.controller.login;
 
-import cutit.cutit.logic.bean.CustomerBean;
-import cutit.cutit.logic.bean.DeleteAppointmentBean;
-import cutit.cutit.logic.bean.HairdresserBean;
-import cutit.cutit.logic.bean.UserBean;
+import cutit.cutit.logic.bean.*;
 import cutit.cutit.logic.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.cutit.logic.controller.topbarviewcontrollers.TopBarHairdresserViewController;
 import cutit.cutit.logic.decorator.ViewLayout;
@@ -26,6 +23,7 @@ public class LoginViewController {
     private UserBean userBean;
     private CustomerBean customerBean;
     private HairdresserBean hairdresserBean;
+    private ShopBean shopBean;
 
     @FXML
     TextField tfUsername;
@@ -36,6 +34,8 @@ public class LoginViewController {
     @FXML
     public void initialize(){
         userBean = new UserBean();
+        hairdresserBean = new HairdresserBean();
+        shopBean = new ShopBean();
         loginController = new LoginController();
         System.out.println("CONTROLLER GRAFICO LOGINVIEWCONTROLLER");
     }
@@ -54,11 +54,11 @@ public class LoginViewController {
                     TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
                     viewController.startBean(this.customerBean);
                 }else{
-                    this.hairdresserBean = loginController.getHairdresser(userBean);
+                    loginController.getHairdresserAndShop(userBean, hairdresserBean, shopBean);
                     Facade.getInstance().decorateView(ViewLayout.TOPBARHAIRDRESSER);
                     TopBarHairdresserView view = (TopBarHairdresserView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARHAIRDRESSER);
                     TopBarHairdresserViewController viewController = (TopBarHairdresserViewController) view.getLoadedViewController(ViewLayout.TOPBARHAIRDRESSER);
-                    viewController.startBean(this.hairdresserBean);
+                    viewController.startBean(hairdresserBean, shopBean);
                 }
             } catch (Exception e) {
                 LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());

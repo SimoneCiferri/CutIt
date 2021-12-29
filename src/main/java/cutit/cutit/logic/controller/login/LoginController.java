@@ -2,15 +2,15 @@ package cutit.cutit.logic.controller.login;
 
 import cutit.cutit.logic.bean.CustomerBean;
 import cutit.cutit.logic.bean.HairdresserBean;
+import cutit.cutit.logic.bean.ShopBean;
 import cutit.cutit.logic.bean.UserBean;
 import cutit.cutit.logic.database.dao.CustomerDAO;
 import cutit.cutit.logic.database.dao.HairdresserDAO;
-import cutit.cutit.logic.database.dao.ShopDAO;
 import cutit.cutit.logic.database.dao.UserDAO;
-import cutit.cutit.logic.model.Customer;
-import cutit.cutit.logic.model.Hairdresser;
-import cutit.cutit.logic.model.Shop;
-import cutit.cutit.logic.model.User;
+import cutit.cutit.logic.model.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginController {
 
@@ -37,10 +37,9 @@ public class LoginController {
         return true;
     }
 
-    public HairdresserBean getHairdresser(UserBean userBean) throws Exception {
+    public void getHairdresserAndShop(UserBean userBean, HairdresserBean hairdresserBean, ShopBean shopBean) throws Exception {
         User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
         Hairdresser hairdresser = HairdresserDAO.getHairdresser(user);
-        HairdresserBean hairdresserBean = new HairdresserBean();
         hairdresserBean.sethEmail(hairdresser.getUserID());
         hairdresserBean.sethPassword(hairdresser.getPwd());
         hairdresserBean.sethRole(hairdresser.getRole());
@@ -48,7 +47,52 @@ public class LoginController {
         hairdresserBean.sethSurname(hairdresser.getSurname());
         hairdresserBean.setpIVA(hairdresser.getpIVA());
         hairdresserBean.setShopName(hairdresser.getShop().getShopName());
-        return hairdresserBean;
+        shopBean.setShopName(hairdresser.getShop().getShopName());
+        shopBean.setShopPIVA(hairdresser.getShop().getpIVA());
+        shopBean.setLatitude(hairdresser.getShop().getLatitude());
+        shopBean.setLongitude(hairdresser.getShop().getLongitude());
+        shopBean.setPhoneNumber(hairdresser.getShop().getPhoneNumber());
+        shopBean.setEmployee(hairdresser.getShop().getEmployee());
+        shopBean.setShopDescription(hairdresser.getShop().getDescription());
+        shopBean.setOpenTime(hairdresser.getShop().getOpenTime().toString());
+        shopBean.setCloseTime(hairdresser.getShop().getCloseTime().toString());
+        shopBean.setOpenDays(hairdresser.getShop().getOpenDays());
+        shopBean.setPromotions(stringListFromPromList(hairdresser.getShop().getPromotions()));
+        shopBean.setServices(stringListFromServList(hairdresser.getShop().getServices()));
+        shopBean.setAllAppointments(stringListFromAppList(hairdresser.getShop().getAllAppointments()));
+    }
+
+    private List<String> stringListFromAppList(List<Appointment> allAppointments) {
+        List<String> appList = new ArrayList<>();
+        if(!allAppointments.isEmpty()){
+            for(int i = 0; i<allAppointments.size(); i++){
+                String p = allAppointments.get(i).getStartTime().toString();
+                appList.add(p);
+            }
+        }
+        return appList;
+    }
+
+    private List<String> stringListFromServList(List<Service> services) {
+        List<String> servList = new ArrayList<>();
+        if(!services.isEmpty()){
+            for(int i = 0; i<services.size(); i++){
+                String p = services.get(i).getServiceName();
+                servList.add(p);
+            }
+        }
+        return servList;
+    }
+
+    private List<String> stringListFromPromList(List<Promotion> promotions) {
+        List<String> promList = new ArrayList<>();
+        if(!promotions.isEmpty()){
+            for(int i = 0; i<promotions.size(); i++){
+                String p = promotions.get(i).getCode();
+                promList.add(p);
+            }
+        }
+        return promList;
     }
 
     public CustomerBean getCustomer(UserBean userBean) throws Exception {
@@ -64,4 +108,5 @@ public class LoginController {
         customerBean.setcGender(customer.getGender());
         return customerBean;
     }
+
 }

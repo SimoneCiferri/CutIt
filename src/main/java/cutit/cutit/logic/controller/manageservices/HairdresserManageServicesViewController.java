@@ -2,6 +2,7 @@ package cutit.cutit.logic.controller.manageservices;
 
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManageServiceBean;
+import cutit.cutit.logic.bean.ShopBean;
 import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class HairdresserManageServicesViewController {
 
-    private HairdresserBean hairdresserBean;
+    private ShopBean shopBean;
     private ManageServiceBean manageServicesBean;
     private ManageServicesController manageServicesController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
@@ -28,6 +29,7 @@ public class HairdresserManageServicesViewController {
 
     @FXML
     public void initialize(){
+        shopBean = new ShopBean();
         manageServicesController = new ManageServicesController();
         vbInScrollHS.setSpacing(15);
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESERVICESVIEWCONTROLLER");
@@ -35,16 +37,15 @@ public class HairdresserManageServicesViewController {
 
     private void showHairServ() {
         try {
-            this.manageServicesBean = manageServicesController.getAllServices(this.hairdresserBean);
+            this.manageServicesBean = manageServicesController.getAllServices(shopBean);
             vbInScrollHS.getChildren().clear();
             Button add = JavaFXNodeFactory.getInstance().createButton("Add Service");
             add.setOnMouseClicked((MouseEvent) -> showAddForm());
             vbInScrollHS.getChildren().add(add);
             for(int i = 0; i< manageServicesBean.getServicesList().size(); i++) {
-                String serviceName = manageServicesBean.getServiceName(i);
-                Float servicePrice = manageServicesBean.getServicePrice(i);
+                String serviceName = manageServicesBean.getServicesList().get(i);
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel(serviceName, labelStyle);
-                l.setOnMouseClicked((MouseEvent) -> deleteForm(serviceName, servicePrice));
+                l.setOnMouseClicked((MouseEvent) -> deleteForm(serviceName, manageServicesBean.getServiceList().get(serviceName)));
                 vbInScrollHS.getChildren().add(l);
             }
         } catch (Exception e) {
@@ -83,7 +84,7 @@ public class HairdresserManageServicesViewController {
     private void addService(TextField serviceName, TextField servicePrice){
         manageServicesBean.setServiceName(serviceName.getText());
         manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
-        manageServicesBean.setServiceShopName(hairdresserBean.getShopName());
+        manageServicesBean.setServiceShopName(shopBean.getShopName());
         try {
             manageServicesController.addService(this.manageServicesBean);
             showHairServ();
@@ -109,7 +110,7 @@ public class HairdresserManageServicesViewController {
     private void deleteService(String serviceName, Float servicePrice){
         manageServicesBean.setServiceName(serviceName);
         manageServicesBean.setServicePrice(servicePrice);
-        manageServicesBean.setServiceShopName(hairdresserBean.getShopName());
+        manageServicesBean.setServiceShopName(shopBean.getShopName());
         try {
             manageServicesController.deleteService(this.manageServicesBean);
         } catch (Exception e) {
@@ -118,9 +119,8 @@ public class HairdresserManageServicesViewController {
         showHairServ();
     }
 
-
-    public void fillView(HairdresserBean hairdresserBean){
-        this.hairdresserBean = hairdresserBean;
+    public void fillView(ShopBean shopBean){
+        this.shopBean = shopBean;
         System.out.println("Filling View from HairdresserBean data passedBY TopBarHairdresserViewController");
         showHairServ();
     }

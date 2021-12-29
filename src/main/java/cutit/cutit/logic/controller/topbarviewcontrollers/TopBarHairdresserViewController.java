@@ -32,6 +32,7 @@ public class TopBarHairdresserViewController {
     private double xOffset = 0;
     private double yOffset = 0;
     private HairdresserBean hairdresserBean;
+    private ShopBean shopBean;
     private ManageServiceBean manageServiceBean;
     private DeleteAppointmentBean deleteAppointmentBean;
 
@@ -51,6 +52,7 @@ public class TopBarHairdresserViewController {
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
         setImageView();
+        deleteAppointmentBean = new DeleteAppointmentBean();
         System.out.println("CONTROLLER GRAFICO TOPBARHAIRDRESSERVIEWCONTROLLER");
         return true;
     }
@@ -63,6 +65,8 @@ public class TopBarHairdresserViewController {
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
+        deleteAppointmentBean.setShopName(shopBean.getShopName());
+        deleteAppointmentBean.setAllAppointments(shopBean.getAllAppointments());
         HairdresserAppointmentsView view = (HairdresserAppointmentsView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERAPPOINTMENTS);
         HairdresserDeleteBookedAppointmentsViewController viewController = (HairdresserDeleteBookedAppointmentsViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERAPPOINTMENTS);
         viewController.fillView(this.deleteAppointmentBean);
@@ -79,7 +83,7 @@ public class TopBarHairdresserViewController {
         btnHLogout.setStyle(transparentStyle);
         HairdresserPromotionsView view = (HairdresserPromotionsView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERPROMOTIONS);
         HairdresserManagePromotionsViewController viewController = (HairdresserManagePromotionsViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERPROMOTIONS);
-        viewController.fillView(this.hairdresserBean);
+        viewController.fillView(shopBean);
         return true;
     }
 
@@ -93,7 +97,7 @@ public class TopBarHairdresserViewController {
         btnHLogout.setStyle(transparentStyle);
         HairdresserServicesView view = (HairdresserServicesView)  Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERSERVICES);
         HairdresserManageServicesViewController viewController = (HairdresserManageServicesViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERSERVICES);
-        viewController.fillView(hairdresserBean);
+        viewController.fillView(shopBean);
         return true;
     }
 
@@ -145,13 +149,6 @@ public class TopBarHairdresserViewController {
         apTopBarHairdr.getScene().getWindow().setY(event.getScreenY() + yOffset);
     }
 
-
-    public void startBean(HairdresserBean hairdresserBean){
-        System.out.println("HairdresserBean passedBY LoginViewController");
-        this.hairdresserBean = hairdresserBean;
-        goApp();
-    }
-
     private void setImageView() {
         try {
             Image exitI = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/exit.png"), "Unable to get resource file cutit/cutit/files/exit.png.").toString());
@@ -162,6 +159,13 @@ public class TopBarHairdresserViewController {
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
         }
+    }
+
+    public void startBean(HairdresserBean hairdresserBean, ShopBean shopBean){
+        System.out.println("HairdresserBean passedBY LoginViewController");
+        this.hairdresserBean = hairdresserBean;
+        this.shopBean = shopBean;
+        goApp();
     }
 
 }

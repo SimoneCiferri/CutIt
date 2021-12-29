@@ -2,6 +2,7 @@ package cutit.cutit.logic.controller.managepromotions;
 
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManagePromotionBean;
+import cutit.cutit.logic.bean.ShopBean;
 import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,6 +18,7 @@ import java.util.List;
 public class HairdresserManagePromotionsViewController {
 
     private HairdresserBean hairdresserBean;
+    private ShopBean shopBean;
     private ManagePromotionBean managePromotionBean;
     private ManagePromotionController managePromotionController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
@@ -36,7 +38,7 @@ public class HairdresserManagePromotionsViewController {
 
     private void showHairProm() {
         try {
-            this.managePromotionBean = managePromotionController.getAllPromotions(this.hairdresserBean);
+            this.managePromotionBean = managePromotionController.getAllPromotions(shopBean);
             vbInScrollHProm.getChildren().clear();
             Button add = JavaFXNodeFactory.getInstance().createButton("Add Promotion");
             add.setOnMouseClicked((MouseEvent) -> addForm());
@@ -148,8 +150,8 @@ public class HairdresserManagePromotionsViewController {
         showHairProm();
     }
 
-    public void fillView(HairdresserBean hairdresserBean){
-        this.hairdresserBean = hairdresserBean;
+    public void fillView(ShopBean shopBean){
+        this.shopBean = shopBean;
         System.out.println("Filling View from HairdresserBean data passedBY TopBarHairdresserViewController");
         showHairProm();
     }

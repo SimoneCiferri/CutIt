@@ -14,8 +14,11 @@ public class ManagePromotionBean {
     private String promExpireDate;
     private String promServiceName;
 
-    private List<Service> serviceList;
-    private List<Promotion> promotionsList;
+    private List<String> serviceList;
+    private List<String> promotionList;
+
+    //private List<Service> serviceList;
+    //private List<Promotion> promotionsList;
 
     public String getPromotionCode() {
         return promotionCode;
@@ -25,9 +28,9 @@ public class ManagePromotionBean {
         this.promotionCode = promotionCode;
     }
 
-    public String getPromotionCodeI(int i){
+   /* public String getPromotionCodeI(int i){
         return promotionsList.get(i).getCode();
-    }
+    }*/
 
     public Integer getPromOffValue() {
         return promOffValue;
@@ -37,9 +40,9 @@ public class ManagePromotionBean {
         this.promOffValue = promOffValue;
     }
 
-    public Integer getPromotionOffValue(int i){
+   /* public Integer getPromotionOffValue(int i){
         return promotionsList.get(i).getOffValue();
-    }
+    }*/
 
     public String getPromShopName() {
         return promShopName;
@@ -57,9 +60,9 @@ public class ManagePromotionBean {
         this.promExpireDate = promExpireDate;
     }
 
-    public String getPromExpireDataI(int i){
+    /*public String getPromExpireDataI(int i){
         return promotionsList.get(i).getExpireDate().toString();
-    }
+    }*/
 
     public String getPromServiceName() {
         return promServiceName;
@@ -69,7 +72,7 @@ public class ManagePromotionBean {
         this.promServiceName = promServiceName;
     }
 
-    public List<Service> getServiceList() {
+  /*  public List<Service> getServiceList() {
         return serviceList;
     }
 
@@ -91,6 +94,21 @@ public class ManagePromotionBean {
 
     public String getPromotionServiceNameI(int i){
         return promotionsList.get(i).getService().getServiceName();
+    }*/
+
+    public List<String> getServiceList() {
+        return serviceList;
     }
 
+    public void setServiceList(List<String> serviceList) {
+        this.serviceList = serviceList;
+    }
+
+    public List<String> getPromotionList() {
+        return promotionList;
+    }
+
+    public void setPromotionList(List<String> promotionList) {
+        this.promotionList = promotionList;
+    }
 }
