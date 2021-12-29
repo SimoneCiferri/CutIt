@@ -18,4 +18,10 @@ public class PromotionQueries {
         return stmt.executeQuery(sql);
     }
 
+    public static void deletePromotion(Statement stmt, String promotionCode) throws SQLException {
+        String insertStatement = String.format("DELETE FROM promotion WHERE Code = '%s'", promotionCode);
+        System.out.println(insertStatement);
+        stmt.executeUpdate(insertStatement);
+    }
+
 }
