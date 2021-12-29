@@ -14,9 +14,6 @@ public class ManagePromotionBean {
     private List<String> serviceList;
     private List<PromData> promotionsList;
 
-    //private List<Service> serviceList;
-    //private List<Promotion> promotionsList;
-
     public String getPromotionCode() {
         return promotionCode;
     }
@@ -25,10 +22,6 @@ public class ManagePromotionBean {
         this.promotionCode = promotionCode;
     }
 
-   /* public String getPromotionCodeI(int i){
-        return promotionsList.get(i).getCode();
-    }*/
-
     public Integer getPromOffValue() {
         return promOffValue;
     }
@@ -36,10 +29,6 @@ public class ManagePromotionBean {
     public void setPromOffValue(Integer promOffValue) {
         this.promOffValue = promOffValue;
     }
-
-   /* public Integer getPromotionOffValue(int i){
-        return promotionsList.get(i).getOffValue();
-    }*/
 
     public String getPromShopName() {
         return promShopName;
@@ -57,10 +46,6 @@ public class ManagePromotionBean {
         this.promExpireDate = promExpireDate;
     }
 
-    /*public String getPromExpireDataI(int i){
-        return promotionsList.get(i).getExpireDate().toString();
-    }*/
-
     public String getPromServiceName() {
         return promServiceName;
     }
@@ -68,30 +53,6 @@ public class ManagePromotionBean {
     public void setPromServiceName(String promServiceName) {
         this.promServiceName = promServiceName;
     }
-
-  /*  public List<Service> getServiceList() {
-        return serviceList;
-    }
-
-    public void setServiceList(List<Service> serviceList) {
-        this.serviceList = serviceList;
-    }
-
-    public String getServiceName(int i) {
-        return serviceList.get(i).getServiceName();
-    }
-
-    public List<Promotion> getPromotionsList() {
-        return promotionsList;
-    }
-
-    public void setPromotionsList(List<Promotion> promotionsList) {
-        this.promotionsList = promotionsList;
-    }
-
-    public String getPromotionServiceNameI(int i){
-        return promotionsList.get(i).getService().getServiceName();
-    }*/
 
     public List<String> getServiceList() {
         return serviceList;

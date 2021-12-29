@@ -52,8 +52,6 @@ public class ServiceDAO {
         return servicesList;
     }
 
-
-
     public static void deleteService(Service service) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
