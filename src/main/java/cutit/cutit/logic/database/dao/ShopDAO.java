@@ -84,8 +84,6 @@ public class ShopDAO {
         }
     }
 
-
-
     private static List<Integer> getOpenDays(String shopPiva) throws Exception {
         List<Integer> openDays = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
@@ -107,6 +105,15 @@ public class ShopDAO {
         return openDays;
     }
 
+    public static void updateShop(Shop shop) throws Exception{
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ShopQueries.updateShop(stm, shop.getShopName(), shop.getAddress(), shop.getPhoneNumber(), shop.getEmployee(), shop.getDescription(), shop.getOpenTime().toString(), shop.getCloseTime().toString());
+        if(stm != null){
+            stm.close();
+        }
+    }
 
     private static LocalTime dateFromString(String openTime) {
         return LocalTime.parse(openTime);

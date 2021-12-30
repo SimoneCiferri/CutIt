@@ -8,30 +8,34 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.manageshoppage.HairdresserManageShopPageViewController">
    <children>
-      <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1024.0">
+      <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1024.0" style="-fx-background-color: transparent; -fx-background: transparent;">
          <content>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1024.0">
                <children>
-                  <TextField fx:id="tfShopName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" promptText="ShopName">
+                  <Label fx:id="shopName" text="ShopName" textFill="WHITE">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
                      <VBox.margin>
                         <Insets top="15.0" />
-                     </VBox.margin></TextField>
+                     </VBox.margin>
+                  </Label>
                   <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                   </ImageView>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Address">
+                  <TextField fx:id="tfAddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Address">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Phone Number">
+                  <TextField fx:id="tfPhoneNumber" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" promptText="Phone Number">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="720.0" promptText="Description">
+                  <TextArea fx:id="taDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="720.0" promptText="Description">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
@@ -41,15 +45,15 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="14.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="720.0" promptText="Employee">
+                  <TextArea fx:id="taEmployee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="720.0" promptText="Employee">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                   </TextArea>
-                  <Button fx:id="btnSave" mnemonicParsing="false" text="Save">
+                  <Button fx:id="btnSave" mnemonicParsing="false" onMouseClicked="#updateData" text="Save">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>

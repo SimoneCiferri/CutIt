@@ -30,10 +30,10 @@ public class ShopQueries {
         return stmt.executeQuery(sql);
     }
 
-    public static ResultSet updateShop(Statement stmt,String shopName, String address, String phoneNumber, String employee, String description, String openTime, String closeTime) throws SQLException {
+    public static void updateShop(Statement stmt,String shopName, String address, String phoneNumber, String employee, String description, String openTime, String closeTime) throws SQLException {
         String sql = "UPDATE shop SET Employee = '" + employee + "', Address = '" + address +"', PhoneNumber = '" + phoneNumber + "', Description = '" + description + "', OpenTime = '" + openTime +"', CloseTime = '" + closeTime + "' WHERE ShopName = '" + shopName + "'";
         System.out.println(sql);
-        return stmt.executeQuery(sql);
+        stmt.executeUpdate(sql);
     }
 
 

@@ -1,29 +1,25 @@
 package cutit.cutit.logic.controller.manageshoppage;
 
 import cutit.cutit.logic.bean.ShopBean;
-import cutit.cutit.logic.bean.UserBean;
-import cutit.cutit.logic.database.dao.ServiceDAO;
-import cutit.cutit.logic.database.dao.ShopDAO;
-import cutit.cutit.logic.database.dao.UserDAO;
-import cutit.cutit.logic.model.Service;
-import cutit.cutit.logic.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import org.w3c.dom.Text;
 
 public class HairdresserManageShopPageViewController {
 
     private ShopBean shopBean;
-    private User user;
-    private UserBean userBean;
     private ManageShopPageController manageShopPageController;
 
     @FXML
-    private TextField  tfShopName, phoneNumberHairdresser;
+    private Label shopName;
 
     @FXML
-    private Button btnSave;
+    private TextField  tfPhoneNumber, tfAddress;
+
+    @FXML
+    private TextArea taDescription, taEmployee;
 
     @FXML
     public void initialize(){
@@ -31,10 +27,35 @@ public class HairdresserManageShopPageViewController {
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESHOPPAGEVIEWCONTROLLER");
     }
 
+    @FXML
+    public void updateData(){
+        shopBean.setAddress(tfAddress.getText());
+        shopBean.setPhoneNumber(tfPhoneNumber.getText());
+        shopBean.setShopDescription(taDescription.getText());
+        shopBean.setEmployee(taEmployee.getText());
+        try {
+            manageShopPageController.updateShop(shopBean);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void fillView(ShopBean bean){
         shopBean = bean;
-        tfShopName.setText(shopBean.getShopName());
-        //phoneNumberHairdresser.setText(shopBean.getPhoneNumber());
+
+        shopName.setText(shopBean.getShopName());
+        if(shopBean.getAddress() != null){
+            tfAddress.setText(shopBean.getAddress());
+        }
+        if(shopBean.getPhoneNumber() != null){
+            tfPhoneNumber.setText(shopBean.getPhoneNumber());
+        }
+        if(shopBean.getShopDescription() != null){
+            taDescription.setText(shopBean.getShopDescription());
+        }
+        if(shopBean.getEmployee() != null){
+            taEmployee.setText(shopBean.getEmployee());
+        }
         System.out.println("Filling View from ShopBean data passedBY TopBarHairdresserViewController");
     }
 
