@@ -80,8 +80,9 @@ public class HairdresserManageServicesViewController {
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, add);
         vbInScrollHS.getChildren().addAll(title, form, buttonsHB);
     }
-
+@FXML
     private void addService(TextField serviceName, TextField servicePrice){
+        if(isNumeric(servicePrice.getText())) {
         manageServicesBean.setServiceName(serviceName.getText());
         manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
         manageServicesBean.setServiceShopName(shopBean.getShopName());
@@ -91,6 +92,19 @@ public class HairdresserManageServicesViewController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        }
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
 
     private void deleteForm(String serviceName, Float servicePrice) {
