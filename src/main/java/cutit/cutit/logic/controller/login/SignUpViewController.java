@@ -5,10 +5,7 @@ import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.util.Objects;
 
@@ -29,6 +26,9 @@ public class SignUpViewController {
 
     @FXML
     private DatePicker dpCustomerBirthdate;
+
+    @FXML
+    private Button btBack;
 
     @FXML
     public void initialize(){
@@ -90,6 +90,18 @@ public class SignUpViewController {
 
     private Boolean isSomethingNull(String s1, String s2, String s3, String s4, String s5){
         return (Objects.equals(s1, "") || Objects.equals(s2, "") || Objects.equals(s3, "") || Objects.equals(s4, "") || Objects.equals(s5, ""));
+    }
+
+    @FXML
+    private void goBack(){
+        try {
+            Facade.getInstance().decorateView(ViewLayout.LOGIN);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 }
