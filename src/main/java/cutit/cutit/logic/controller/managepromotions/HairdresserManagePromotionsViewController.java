@@ -100,22 +100,24 @@ public class HairdresserManagePromotionsViewController {
         back.setOnMouseClicked((MouseEvent) -> showHairProm());
         Button add = JavaFXNodeFactory.getInstance().createButton("Add");
         add.setPrefHeight(55);
-        add.setOnMouseClicked((MouseEvent) -> addPromotion(promName.getText(), 5, dp.getValue() , promService.getValue()));
+        add.setOnMouseClicked((MouseEvent) -> addPromotion(promName.getText(), promValue.getText(), dp.getValue() , promService.getValue()));
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, add);
        vbInScrollHProm.getChildren().addAll(title, form, buttonsHB);
     }
 
-    private void addPromotion(String promCode, Integer offValue,  LocalDate expireDate, String serviceName){
-        managePromotionBean.setPromotionCode(promCode);
-        managePromotionBean.setPromOffValue(offValue);
-        managePromotionBean.setPromExpireDate(expireDate);
-        managePromotionBean.setPromServiceName(serviceName);
-        managePromotionBean.setPromShopName(shopBean.getShopName());
-        try {
-            managePromotionController.addPromotion(this.managePromotionBean);
-            showHairProm();
-        } catch (Exception e) {
-            e.printStackTrace();
+    private void addPromotion(String promCode, String offValue,  LocalDate expireDate, String serviceName){
+        if(isNumeric(offValue)){
+            managePromotionBean.setPromotionCode(promCode);
+            managePromotionBean.setPromOffValue(Integer.valueOf(offValue));
+            managePromotionBean.setPromExpireDate(expireDate);
+            managePromotionBean.setPromServiceName(serviceName);
+            managePromotionBean.setPromShopName(shopBean.getShopName());
+            try {
+                managePromotionController.addPromotion(this.managePromotionBean);
+                showHairProm();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -159,4 +161,15 @@ public class HairdresserManagePromotionsViewController {
         showHairProm();
     }
 
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
+    }
 }
