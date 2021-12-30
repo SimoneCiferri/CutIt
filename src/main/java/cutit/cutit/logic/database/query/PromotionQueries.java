@@ -24,4 +24,16 @@ public class PromotionQueries {
         stmt.executeUpdate(insertStatement);
     }
 
+    public static ResultSet getPromotion(Statement stmt, String code) throws SQLException {
+        String sql = "SELECT * FROM promotion WHERE Code = '" + code + "'";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+
+    public static ResultSet getAllCustomerPromotion(Statement stmt, String customerID) throws SQLException {
+        String sql = "SELECT * FROM customer_has_promotion join promotion on Promotion_Code = Code WHERE Customer_CustomerEmail = '" + customerID + "'";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+
 }

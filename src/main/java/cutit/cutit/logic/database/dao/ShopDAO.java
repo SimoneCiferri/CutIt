@@ -26,19 +26,18 @@ public class ShopDAO {
         }
     }
 
-    public static Shop getShopFromUser(User user) throws Exception {
+    public static Shop getShopFromName(String shopName) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = ShopQueries.getShopFromUser(stm, user.getUserID());
+        ResultSet rs = ShopQueries.getShopFromName(stm, shopName);
         if(!rs.first()){
-            Exception e = new Exception("No user Found matching with name: "+ user.getUserID());
+            Exception e = new Exception("No Shop matching with name: "+ shopName);
             throw e;
         }else{
             String hPIVA = rs.getString("Hairdresser_PIVA");
-            String shopName = rs.getString("ShopName");
-            System.out.println(shopName);
-            Shop shop = new Shop(shopName, hPIVA);
+            String shopNAme = rs.getString("ShopName");
+            Shop shop = new Shop(shopNAme, hPIVA);
             rs.close();
             if(stm != null){
                 stm.close();
