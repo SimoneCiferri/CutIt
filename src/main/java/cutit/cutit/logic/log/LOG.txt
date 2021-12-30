@@ -567,3 +567,15 @@ class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
 2021/12/30 11:44:35
 class cutit.cutit.logic.controller.login.LoginViewController
  text
+
+2021/12/30 16:27:09
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: www
+
+2021/12/30 16:27:21
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: www
+
+2021/12/30 17:01:02
+class cutit.cutit.logic.controller.login.LoginViewController
+ No user Found matching with name: email
