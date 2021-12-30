@@ -3,6 +3,7 @@ package cutit.cutit.logic.controller.managepromotions;
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManagePromotionBean;
 import cutit.cutit.logic.bean.ShopBean;
+import cutit.cutit.logic.factory.AlertFactory;
 import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -100,22 +101,24 @@ public class HairdresserManagePromotionsViewController {
         back.setOnMouseClicked((MouseEvent) -> showHairProm());
         Button add = JavaFXNodeFactory.getInstance().createButton("Add");
         add.setPrefHeight(55);
-        add.setOnMouseClicked((MouseEvent) -> addPromotion(promName.getText(), 5, dp.getValue() , promService.getValue()));
+        add.setOnMouseClicked((MouseEvent) -> addPromotion(promName.getText(), promValue.getText(), dp.getValue() , promService.getValue()));
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, add);
        vbInScrollHProm.getChildren().addAll(title, form, buttonsHB);
     }
 
-    private void addPromotion(String promCode, Integer offValue,  LocalDate expireDate, String serviceName){
-        managePromotionBean.setPromotionCode(promCode);
-        managePromotionBean.setPromOffValue(offValue);
-        managePromotionBean.setPromExpireDate(expireDate);
-        managePromotionBean.setPromServiceName(serviceName);
-        managePromotionBean.setPromShopName(shopBean.getShopName());
-        try {
-            managePromotionController.addPromotion(this.managePromotionBean);
-            showHairProm();
-        } catch (Exception e) {
-            e.printStackTrace();
+    private void addPromotion(String promCode, String offValue,  LocalDate expireDate, String serviceName){
+        if(isNumeric(offValue)){
+            managePromotionBean.setPromotionCode(promCode);
+            managePromotionBean.setPromOffValue(Integer.valueOf(offValue));
+            managePromotionBean.setPromExpireDate(expireDate);
+            managePromotionBean.setPromServiceName(serviceName);
+            managePromotionBean.setPromShopName(shopBean.getShopName());
+            try {
+                managePromotionController.addPromotion(this.managePromotionBean);
+                showHairProm();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -159,4 +162,16 @@ public class HairdresserManagePromotionsViewController {
         showHairProm();
     }
 
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Error!", "Not Panic!", "You have to insert numbers in discount field!");
+            return false;
+        }
+        return true;
+    }
 }

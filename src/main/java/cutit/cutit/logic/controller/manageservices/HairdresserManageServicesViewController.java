@@ -3,9 +3,11 @@ package cutit.cutit.logic.controller.manageservices;
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManageServiceBean;
 import cutit.cutit.logic.bean.ShopBean;
+import cutit.cutit.logic.factory.AlertFactory;
 import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -80,8 +82,9 @@ public class HairdresserManageServicesViewController {
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, add);
         vbInScrollHS.getChildren().addAll(title, form, buttonsHB);
     }
-
+    @FXML
     private void addService(TextField serviceName, TextField servicePrice){
+        if(isNumeric(servicePrice.getText())) {
         manageServicesBean.setServiceName(serviceName.getText());
         manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
         manageServicesBean.setServiceShopName(shopBean.getShopName());
@@ -91,6 +94,20 @@ public class HairdresserManageServicesViewController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        }
+    }
+
+    public static boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Error!", "Not Panic!", "You have to insert numbers in the price field");
+            return false;
+        }
+        return true;
     }
 
     private void deleteForm(String serviceName, Float servicePrice) {
