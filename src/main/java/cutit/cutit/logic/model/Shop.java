@@ -171,25 +171,4 @@ public class Shop {
         this.allAppointments = allAppointments;
     }
 
-    public class openDayData{
-        Integer day;
-        Boolean open;
-
-        public Integer getDay() {
-            return day;
-        }
-
-        public void setDay(Integer day) {
-            this.day = day;
-        }
-
-        public Boolean getOpen() {
-            return open;
-        }
-
-        public void setOpen(Boolean open) {
-            this.open = open;
-        }
-    }
-
 }

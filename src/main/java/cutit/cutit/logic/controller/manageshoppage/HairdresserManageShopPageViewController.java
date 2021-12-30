@@ -5,6 +5,7 @@ import cutit.cutit.logic.model.Shop;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +30,9 @@ public class HairdresserManageShopPageViewController {
     private CheckBox cbMon, cbTue, cbWed, cbThu, cbFri, cbSat, cbSun;
 
     @FXML
+    private ChoiceBox<String> cbOpenTime, cbCloseTime;
+
+    @FXML
     public void initialize(){
         manageShopPageController = new ManageShopPageController();
         checkBoxList.add(cbMon);
@@ -38,6 +42,13 @@ public class HairdresserManageShopPageViewController {
         checkBoxList.add(cbFri);
         checkBoxList.add(cbSat);
         checkBoxList.add(cbSun);
+        List<String> timeList = new ArrayList<>();
+        timeList.add("08:00");
+        timeList.add("20:00");
+        for (String s : timeList) {
+            cbOpenTime.getItems().add(s);
+            cbCloseTime.getItems().add(s);
+        }
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESHOPPAGEVIEWCONTROLLER");
     }
 
@@ -49,6 +60,8 @@ public class HairdresserManageShopPageViewController {
         shopBean.setEmployee(taEmployee.getText());
         Map<Integer, Boolean> openDaysMap = getOpenDays(checkBoxList);
         shopBean.setOpenDays(openDaysMap);
+        shopBean.setOpenTime(LocalTime.parse(cbOpenTime.getValue()));
+        shopBean.setCloseTime(LocalTime.parse(cbCloseTime.getValue()));
         try {
             manageShopPageController.updateShop(shopBean);
         } catch (Exception e) {
@@ -78,6 +91,9 @@ public class HairdresserManageShopPageViewController {
                 checkBoxList.get(i).setSelected(shopBean.getOpenDays().get(i+1));
             }
         }
+
+        cbOpenTime.setValue(shopBean.getOpenTime().toString());
+        cbCloseTime.setValue(shopBean.getCloseTime().toString());
         System.out.println("Filling View from ShopBean data passedBY TopBarHairdresserViewController");
     }
 
