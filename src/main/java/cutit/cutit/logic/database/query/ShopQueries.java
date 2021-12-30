@@ -24,8 +24,8 @@ public class ShopQueries {
         return stmt.executeQuery(sql);
     }
 
-    public static ResultSet getOpenDays(Statement stmt, String shopPIVA) throws SQLException {
-        String sql = "SELECT * FROM opendays WHERE ODShopName = '" + shopPIVA + "'";
+    public static ResultSet getOpenDays(Statement stmt, String shopName) throws SQLException {
+        String sql = "SELECT * FROM opendays WHERE ODShopName = '" + shopName + "'";
         System.out.println(sql);
         return stmt.executeQuery(sql);
     }
