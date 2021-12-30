@@ -24,4 +24,10 @@ public class PromotionQueries {
         stmt.executeUpdate(insertStatement);
     }
 
+    public static ResultSet getPromotion(Statement stmt, String code) throws SQLException {
+        String sql = "SELECT * FROM promotion WHERE Code = '" + code + "'";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+
 }
