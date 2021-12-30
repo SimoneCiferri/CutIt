@@ -3,9 +3,11 @@ package cutit.cutit.logic.controller.manageservices;
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManageServiceBean;
 import cutit.cutit.logic.bean.ShopBean;
+import cutit.cutit.logic.factory.AlertFactory;
 import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -102,6 +104,7 @@ public class HairdresserManageServicesViewController {
         try {
             double d = Double.parseDouble(strNum);
         } catch (NumberFormatException nfe) {
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Error!", "Not Panic!", "You have to insert numbers in the price field");
             return false;
         }
         return true;
