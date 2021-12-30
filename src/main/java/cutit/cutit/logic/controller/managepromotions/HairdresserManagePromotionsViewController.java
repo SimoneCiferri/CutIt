@@ -3,6 +3,7 @@ package cutit.cutit.logic.controller.managepromotions;
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManagePromotionBean;
 import cutit.cutit.logic.bean.ShopBean;
+import cutit.cutit.logic.checkTest.checkTextField;
 import cutit.cutit.logic.factory.AlertFactory;
 import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
@@ -107,7 +108,7 @@ public class HairdresserManagePromotionsViewController {
     }
 
     private void addPromotion(String promCode, String offValue,  LocalDate expireDate, String serviceName){
-        if(isNumeric(offValue)){
+        if(checkTextField.isNumeric(offValue,"Error!", "Not Panic!", "You have to insert numbers in discount field!")){
             managePromotionBean.setPromotionCode(promCode);
             managePromotionBean.setPromOffValue(Integer.valueOf(offValue));
             managePromotionBean.setPromExpireDate(expireDate);
@@ -162,16 +163,4 @@ public class HairdresserManagePromotionsViewController {
         showHairProm();
     }
 
-    public static boolean isNumeric(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
-        try {
-            double d = Double.parseDouble(strNum);
-        } catch (NumberFormatException nfe) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Error!", "Not Panic!", "You have to insert numbers in discount field!");
-            return false;
-        }
-        return true;
-    }
 }

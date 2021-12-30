@@ -1,6 +1,8 @@
 package cutit.cutit.logic.controller.manageshoppage;
 
 import cutit.cutit.logic.bean.ShopBean;
+import cutit.cutit.logic.checkTest.checkTextField;
+import cutit.cutit.logic.factory.AlertFactory;
 import cutit.cutit.logic.model.Shop;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -74,21 +76,25 @@ public class HairdresserManageShopPageViewController {
 
     @FXML
     public void updateData(){
-        shopBean.setAddress(tfAddress.getText());
-        shopBean.setPhoneNumber(tfPhoneNumber.getText());
-        shopBean.setShopDescription(taDescription.getText());
-        shopBean.setEmployee(taEmployee.getText());
-        Map<Integer, Boolean> openDaysMap = getOpenDays(checkBoxList);
-        shopBean.setOpenDays(openDaysMap);
-        shopBean.setOpenTime(LocalTime.parse(cbOpenTime.getValue()));
-        shopBean.setCloseTime(LocalTime.parse(cbCloseTime.getValue()));
-        shopBean.setImages(getImages());
-        try {
-            manageShopPageController.updateShop(shopBean);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(checkTextField.isNumeric(tfPhoneNumber.getText(),"Error!", "Not Panic!", "You have to insert numbers in the phone number field") && tfPhoneNumber.getText().length() < 12 ) {
+            shopBean.setAddress(tfAddress.getText());
+            shopBean.setPhoneNumber(tfPhoneNumber.getText());
+            shopBean.setShopDescription(taDescription.getText());
+            shopBean.setEmployee(taEmployee.getText());
+            Map<Integer, Boolean> openDaysMap = getOpenDays(checkBoxList);
+            shopBean.setOpenDays(openDaysMap);
+            shopBean.setOpenTime(LocalTime.parse(cbOpenTime.getValue()));
+            shopBean.setCloseTime(LocalTime.parse(cbCloseTime.getValue()));
+            shopBean.setImages(getImages());
+            try {
+                manageShopPageController.updateShop(shopBean);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
+
+
 
     private List<File> getImages() {
         List<File> images = new ArrayList<>();

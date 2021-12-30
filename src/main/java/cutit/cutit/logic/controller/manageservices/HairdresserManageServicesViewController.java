@@ -3,6 +3,7 @@ package cutit.cutit.logic.controller.manageservices;
 import cutit.cutit.logic.bean.HairdresserBean;
 import cutit.cutit.logic.bean.ManageServiceBean;
 import cutit.cutit.logic.bean.ShopBean;
+import cutit.cutit.logic.checkTest.checkTextField;
 import cutit.cutit.logic.factory.AlertFactory;
 import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
@@ -84,7 +85,7 @@ public class HairdresserManageServicesViewController {
     }
     @FXML
     private void addService(TextField serviceName, TextField servicePrice){
-        if(isNumeric(servicePrice.getText())) {
+        if(checkTextField.isNumeric(servicePrice.getText(),"Error!", "Not Panic!", "You have to insert numbers in the price field")) {
         manageServicesBean.setServiceName(serviceName.getText());
         manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
         manageServicesBean.setServiceShopName(shopBean.getShopName());
