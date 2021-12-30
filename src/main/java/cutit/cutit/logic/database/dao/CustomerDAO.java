@@ -2,13 +2,16 @@ package cutit.cutit.logic.database.dao;
 
 import cutit.cutit.logic.database.DBConnection;
 import cutit.cutit.logic.database.query.CustomerQueries;
+import cutit.cutit.logic.model.Appointment;
 import cutit.cutit.logic.model.Customer;
+import cutit.cutit.logic.model.Promotion;
 import cutit.cutit.logic.model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.List;
 
 public class CustomerDAO {
 
@@ -40,6 +43,10 @@ public class CustomerDAO {
             String name = rs.getString(4);
             String surname = rs.getString(5);
             Customer customer = new Customer(cEmail, user.getPwd(), user.getRole(), name, surname, LocalDate.parse(birthDate), gender);
+            List<Appointment> bookedApp = AppointmentDAO.getAllCustomerAppointments(customer);
+            customer.setBookedAppointments(bookedApp);
+            List<Promotion> allProm = PromotionDAO.getAllCustomerPromotion(customer);
+            customer.setPromotions(allProm);
             rs.close();
             if(stm != null){
                 stm.close();

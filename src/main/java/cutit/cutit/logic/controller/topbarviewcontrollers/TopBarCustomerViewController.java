@@ -93,7 +93,7 @@ public class TopBarCustomerViewController {
         Facade.getInstance().decorateView(ViewLayout.CUSTOMERAPPOINTMENTS);
         CustomerAppointmentsView view = (CustomerAppointmentsView) Facade.getInstance().getViewMap().get(ViewLayout.CUSTOMERAPPOINTMENTS);
         CustomerAppointmentsViewController viewController =(CustomerAppointmentsViewController) view.getLoadedViewController(ViewLayout.CUSTOMERAPPOINTMENTS);
-        viewController.fillView(new ShopBean());
+        viewController.fillView(customerBean);
         return true;
     }
 

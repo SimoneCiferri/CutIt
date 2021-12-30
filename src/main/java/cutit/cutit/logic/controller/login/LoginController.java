@@ -105,6 +105,8 @@ public class LoginController {
         customerBean.setcSurname(customer.getSurname());
         customerBean.setcBirthDate(customer.getBirthDate());
         customerBean.setcGender(customer.getGender());
+        customerBean.setAllBookedAppointments(stringListFromAppList(customer.getBookedAppointments()));
+        customerBean.setAllPromotions(stringListFromPromList(customer.getPromotions()));
         return customerBean;
     }
 

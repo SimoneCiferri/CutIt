@@ -1,11 +1,10 @@
 package cutit.cutit.logic.database.dao;
 
 import cutit.cutit.logic.database.DBConnection;
+import cutit.cutit.logic.database.query.CustomerQueries;
 import cutit.cutit.logic.database.query.PromotionQueries;
 import cutit.cutit.logic.database.query.ServiceQueries;
-import cutit.cutit.logic.model.Promotion;
-import cutit.cutit.logic.model.Service;
-import cutit.cutit.logic.model.Shop;
+import cutit.cutit.logic.model.*;
 import javafx.util.converter.LocalDateTimeStringConverter;
 
 import java.sql.Connection;
@@ -59,6 +58,34 @@ public class PromotionDAO {
         return promotionsList;
     }
 
+    public static List<Promotion> getAllCustomerPromotion(Customer customer) throws Exception {
+        List<Promotion> promotionsList = new ArrayList<Promotion>();
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = PromotionQueries.getAllCustomerPromotion(stm, customer.getUserID());
+        if (rs.first()) {
+            rs.first();
+            do {
+                String promotionCode = rs.getString("Code");
+                Integer offValue = rs.getInt("Off");
+                String expireDate = rs.getString("ExpireDate");
+                String promService_Name = rs.getString("Service_Name");
+                String promService_ShopName = rs.getString("Service_Shop_ShopName");
+                Service service = ServiceDAO.getService(promService_ShopName, promService_Name);
+                Promotion p = new Promotion(promotionCode, offValue, dataFromString(expireDate), service);
+                promotionsList.add(p);
+            } while (rs.next());
+            rs.close();
+            if (stm != null) {
+                stm.close();
+            }
+            //DBConnection.getInstance().closeConnection();
+        }
+        return promotionsList;
+    }
+
+
     public static void deletePromotion(Promotion promotion) throws Exception{
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -66,6 +93,30 @@ public class PromotionDAO {
         PromotionQueries.deletePromotion(stm, promotion.getCode());
         if(stm != null){
             stm.close();
+        }
+    }
+
+    public static Promotion getPromotion(String promCode) throws Exception {
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = PromotionQueries.getPromotion(stm, promCode);
+        if(!rs.first()){
+            Exception e = new Exception("No Promotion Found matching with name: "+ promCode);
+            throw e;
+        }else{
+            Integer offValue = rs.getInt(2);
+            String expireDate = rs.getString(3);
+            String serviceName = rs.getString(4);
+            String serviceShopName = rs.getString(5);
+            Service service = ServiceDAO.getService(serviceShopName, serviceName);
+            Promotion prom = new Promotion(promCode, offValue, dataFromString(expireDate), service);
+            rs.close();
+            if(stm != null){
+                stm.close();
+            }
+            //DBConnection.getInstance().closeConnection();
+            return prom;
         }
     }
 
