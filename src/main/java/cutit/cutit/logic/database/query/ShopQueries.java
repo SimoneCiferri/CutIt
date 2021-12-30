@@ -20,6 +20,12 @@ public class ShopQueries {
         return stmt.executeQuery(sql);
     }
 
+    public static ResultSet getShopFromName(Statement stmt, String shopName) throws SQLException {
+        String sql = "SELECT * FROM shop WHERE ShopName = '" + shopName + "'";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+
     public static ResultSet getShopFromUser(Statement stmt, String userID) throws SQLException {
         String sql = "SELECT Hairdresser_PIVA, ShopName FROM user join Hairdresser on UserID = HairdresserEmail join shop on PIVA = Hairdresser_PIVA WHERE UserID= '" + userID + "'";
         System.out.println(sql);
