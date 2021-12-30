@@ -36,8 +36,14 @@ public class ShopQueries {
         stmt.executeUpdate(sql);
     }
 
-    public static void insertOpenDay(Statement stmt,String shopName, Integer day) throws SQLException {
-        String insertStatement = String.format("INSERT INTO opendays(ODShopName, Day) VALUES ('%s', '%d')", shopName, day);
+    public static void insertOpenDay(Statement stmt,String shopName, Integer day, Integer open) throws SQLException {
+        String insertStatement = String.format("INSERT INTO opendays(ODShopName, Day, Open) VALUES ('%s', '%d', '%d')", shopName, day, open);
+        System.out.println(insertStatement);
+        stmt.executeUpdate(insertStatement);
+    }
+
+    public static void updateOpenDay(Statement stmt,String shopName, Integer day, Integer open) throws SQLException {
+        String insertStatement = "UPDATE opendays SET Open = '" + open + "' WHERE ODShopName = '" + shopName + "' and Day = '" + day + "'";
         System.out.println(insertStatement);
         stmt.executeUpdate(insertStatement);
     }

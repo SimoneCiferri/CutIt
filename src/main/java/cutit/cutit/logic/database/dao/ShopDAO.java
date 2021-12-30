@@ -9,9 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class ShopDAO {
 
@@ -20,6 +18,9 @@ public class ShopDAO {
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
         ShopQueries.insertShop(stm, shop.getShopName(), shop.getpIVA());
+        for(int i =1; i<8; i++){
+            ShopQueries.insertOpenDay(stm, shop.getShopName(), i, 0);
+        }
         if(stm != null){
             stm.close();
         }
@@ -65,7 +66,7 @@ public class ShopDAO {
             String openTime = rs.getString(7);
             String closeTime = rs.getString(8);
             Shop shop = new Shop(shopName, hPiva, address, phoneNumber, employee, description, dateFromString(openTime), dateFromString(closeTime));
-            List<Integer> openDays = getOpenDays(shop.getpIVA());
+            Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
             shop.setOpenDays(openDays);
             //manca il retrieve delle immagini
             List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop);
@@ -84,17 +85,18 @@ public class ShopDAO {
         }
     }
 
-    private static List<Integer> getOpenDays(String shopPiva) throws Exception {
-        List<Integer> openDays = new ArrayList<>();
+    private static Map<Integer, Boolean> getOpenDays(String shopName) throws Exception {
+        Map<Integer, Boolean> openDays = new HashMap<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = ShopQueries.getOpenDays(stm, shopPiva);
+        ResultSet rs = ShopQueries.getOpenDays(stm, shopName);
         if (rs.first()) {
             rs.first();
             do {
                 Integer day = rs.getInt(2);
-                openDays.add(day);
+                Boolean open = rs.getBoolean(3);
+                openDays.put(day, open);
             } while (rs.next());
             rs.close();
             if (stm != null) {
@@ -110,6 +112,13 @@ public class ShopDAO {
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
         ShopQueries.updateShop(stm, shop.getShopName(), shop.getAddress(), shop.getPhoneNumber(), shop.getEmployee(), shop.getDescription(), shop.getOpenTime().toString(), shop.getCloseTime().toString());
+        for(int i = 0; i<shop.getOpenDays().size();i++){
+            if(shop.getOpenDays().get(i+1)){
+                ShopQueries.updateOpenDay(stm, shop.getShopName(), i+1, 1);
+            }else{
+                ShopQueries.updateOpenDay(stm, shop.getShopName(), i+1, 0);
+            }
+        }
         if(stm != null){
             stm.close();
         }

@@ -16,7 +16,7 @@ public class Shop {
     private String description;
     private LocalTime openTime;
     private LocalTime closeTime;
-    private List<Integer> openDays;
+    private Map<Integer, Boolean> openDays;
     private List<File> images;
     private List<Promotion> promotions;
     private List<Service> services;
@@ -38,7 +38,7 @@ public class Shop {
         setCloseTime(closeTime);
     }
 
-    public Shop(String shopName, String piva, String address, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, List<Integer> openDays, List<File> images){
+    public Shop(String shopName, String piva, String address, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, Map<Integer, Boolean> openDays, List<File> images){
         setShopName(shopName);
         setpIVA(piva);
         setAddress(address);
@@ -51,7 +51,7 @@ public class Shop {
         setImages(images);
     }
 
-    public Shop(String shopName, String piva, String address, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, List<Integer> openDays, List<File> images, List<Promotion> promotions, List<Service> services, List<Appointment> allAppointments){
+    public Shop(String shopName, String piva, String address, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, Map<Integer, Boolean> openDays, List<File> images, List<Promotion> promotions, List<Service> services, List<Appointment> allAppointments){
         setShopName(shopName);
         setpIVA(piva);
         setAddress(address);
@@ -123,11 +123,11 @@ public class Shop {
         this.closeTime = closeTime;
     }
 
-    public List<Integer> getOpenDays() {
+    public Map<Integer, Boolean> getOpenDays() {
         return openDays;
     }
 
-    public void setOpenDays(List<Integer> openDays) {
+    public void setOpenDays(Map<Integer, Boolean> openDays) {
         this.openDays = openDays;
     }
 
@@ -171,5 +171,25 @@ public class Shop {
         this.allAppointments = allAppointments;
     }
 
+    public class openDayData{
+        Integer day;
+        Boolean open;
+
+        public Integer getDay() {
+            return day;
+        }
+
+        public void setDay(Integer day) {
+            this.day = day;
+        }
+
+        public Boolean getOpen() {
+            return open;
+        }
+
+        public void setOpen(Boolean open) {
+            this.open = open;
+        }
+    }
 
 }

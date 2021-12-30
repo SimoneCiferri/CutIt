@@ -53,9 +53,58 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </TextArea>
-                  <Button fx:id="btnSave" mnemonicParsing="false" onMouseClicked="#updateData" text="Save">
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Open Days" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="224.0" prefWidth="100.0">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                     <children>
+                        <CheckBox fx:id="cbMon" mnemonicParsing="false" text="Mon" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="cbTue" mnemonicParsing="false" text="Tue" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="cbWed" mnemonicParsing="false" text="Wed" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="cbThu" mnemonicParsing="false" text="Thu" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="cbFri" mnemonicParsing="false" text="Fri" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="cbSat" mnemonicParsing="false" text="Sat" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="cbSun" mnemonicParsing="false" text="Sun" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                     </children></VBox>
+                  <Button fx:id="btnSave" mnemonicParsing="false" onMouseClicked="#updateData" text="Save">
+                     <VBox.margin>
+                        <Insets bottom="15.0" top="15.0" />
                      </VBox.margin>
                   </Button>
                </children>
@@ -64,6 +113,5 @@
                </padding>
             </VBox>
          </content></ScrollPane>
-      <TextArea prefHeight="200.0" prefWidth="200.0" />
    </children>
 </VBox>

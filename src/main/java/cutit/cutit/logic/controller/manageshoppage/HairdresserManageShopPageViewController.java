@@ -1,16 +1,20 @@
 package cutit.cutit.logic.controller.manageshoppage;
 
 import cutit.cutit.logic.bean.ShopBean;
+import cutit.cutit.logic.model.Shop;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class HairdresserManageShopPageViewController {
 
     private ShopBean shopBean;
     private ManageShopPageController manageShopPageController;
+    private List<CheckBox> checkBoxList = new ArrayList<>();
 
     @FXML
     private Label shopName;
@@ -22,8 +26,18 @@ public class HairdresserManageShopPageViewController {
     private TextArea taDescription, taEmployee;
 
     @FXML
+    private CheckBox cbMon, cbTue, cbWed, cbThu, cbFri, cbSat, cbSun;
+
+    @FXML
     public void initialize(){
         manageShopPageController = new ManageShopPageController();
+        checkBoxList.add(cbMon);
+        checkBoxList.add(cbTue);
+        checkBoxList.add(cbWed);
+        checkBoxList.add(cbThu);
+        checkBoxList.add(cbFri);
+        checkBoxList.add(cbSat);
+        checkBoxList.add(cbSun);
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESHOPPAGEVIEWCONTROLLER");
     }
 
@@ -33,6 +47,8 @@ public class HairdresserManageShopPageViewController {
         shopBean.setPhoneNumber(tfPhoneNumber.getText());
         shopBean.setShopDescription(taDescription.getText());
         shopBean.setEmployee(taEmployee.getText());
+        Map<Integer, Boolean> openDaysMap = getOpenDays(checkBoxList);
+        shopBean.setOpenDays(openDaysMap);
         try {
             manageShopPageController.updateShop(shopBean);
         } catch (Exception e) {
@@ -56,7 +72,25 @@ public class HairdresserManageShopPageViewController {
         if(shopBean.getEmployee() != null){
             taEmployee.setText(shopBean.getEmployee());
         }
+
+        if(!shopBean.getOpenDays().isEmpty()){
+            for(int i = 0; i<shopBean.getOpenDays().size(); i++){
+                checkBoxList.get(i).setSelected(shopBean.getOpenDays().get(i+1));
+            }
+        }
         System.out.println("Filling View from ShopBean data passedBY TopBarHairdresserViewController");
+    }
+
+    private Map<Integer, Boolean> getOpenDays(List<CheckBox> checkBoxList) {
+        Map<Integer, Boolean> map = new HashMap<>();
+        for(int i = 0; i<checkBoxList.size(); i++){
+            if(checkBoxList.get(i).isSelected()){
+                map.put(i+1, true);
+            }else{
+                map.put(i+1, false);
+            }
+        }
+        return map;
     }
 
 }
