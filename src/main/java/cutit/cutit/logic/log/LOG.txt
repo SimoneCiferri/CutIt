@@ -563,3 +563,7 @@ class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
 class cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView
  
 /C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/hairdressermanageshoppage.fxml
+
+2021/12/30 11:44:35
+class cutit.cutit.logic.controller.login.LoginViewController
+ text

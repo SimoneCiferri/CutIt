@@ -10,8 +10,7 @@ public class Shop {
 
     private String shopName;
     private String pIVA;
-    private String latitude;
-    private String longitude;
+    private String address;
     private String phoneNumber;
     private String employee;
     private String description;
@@ -28,11 +27,10 @@ public class Shop {
         setpIVA(piva);
     }
 
-    public Shop(String shopName, String piva, String latitude, String longitude, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime){
+    public Shop(String shopName, String piva, String address, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime){
         setShopName(shopName);
         setpIVA(piva);
-        setLatitude(latitude);
-        setLongitude(longitude);
+        setAddress(address);
         setPhoneNumber(phoneNumber);
         setEmployee(employee);
         setDescription(description);
@@ -40,11 +38,10 @@ public class Shop {
         setCloseTime(closeTime);
     }
 
-    public Shop(String shopName, String piva, String latitude, String longitude, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, List<Integer> openDays, List<File> images){
+    public Shop(String shopName, String piva, String address, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, List<Integer> openDays, List<File> images){
         setShopName(shopName);
         setpIVA(piva);
-        setLatitude(latitude);
-        setLongitude(longitude);
+        setAddress(address);
         setPhoneNumber(phoneNumber);
         setEmployee(employee);
         setDescription(description);
@@ -54,11 +51,10 @@ public class Shop {
         setImages(images);
     }
 
-    public Shop(String shopName, String piva, String latitude, String longitude, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, List<Integer> openDays, List<File> images, List<Promotion> promotions, List<Service> services, List<Appointment> allAppointments){
+    public Shop(String shopName, String piva, String address, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, List<Integer> openDays, List<File> images, List<Promotion> promotions, List<Service> services, List<Appointment> allAppointments){
         setShopName(shopName);
         setpIVA(piva);
-        setLatitude(latitude);
-        setLongitude(longitude);
+        setAddress(address);
         setPhoneNumber(phoneNumber);
         setEmployee(employee);
         setDescription(description);
@@ -79,20 +75,12 @@ public class Shop {
         this.pIVA = pIVA;
     }
 
-    public String getLatitude() {
-        return latitude;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhoneNumber() {

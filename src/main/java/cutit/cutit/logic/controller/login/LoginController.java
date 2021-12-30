@@ -49,8 +49,7 @@ public class LoginController {
         hairdresserBean.setShopName(hairdresser.getShop().getShopName());
         shopBean.setShopName(hairdresser.getShop().getShopName());
         shopBean.setShopPIVA(hairdresser.getShop().getpIVA());
-        shopBean.setLatitude(hairdresser.getShop().getLatitude());
-        shopBean.setLongitude(hairdresser.getShop().getLongitude());
+        shopBean.setAddress(hairdresser.getShop().getAddress());
         shopBean.setPhoneNumber(hairdresser.getShop().getPhoneNumber());
         shopBean.setEmployee(hairdresser.getShop().getEmployee());
         shopBean.setShopDescription(hairdresser.getShop().getDescription());

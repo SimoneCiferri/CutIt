@@ -9,8 +9,7 @@ public class ShopBean {
 
     private String shopName;
     private String shopPIVA;
-    private String latitude;
-    private String longitude;
+    private String address;
     private String phoneNumber;
     private String employee;
     private String shopDescription;
@@ -38,20 +37,12 @@ public class ShopBean {
         this.shopPIVA = shopPIVA;
     }
 
-    public String getLatitude() {
-        return latitude;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhoneNumber() {
