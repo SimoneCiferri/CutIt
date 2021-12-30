@@ -119,10 +119,12 @@ public class ShopDAO {
                 ShopQueries.updateOpenDay(stm, shop.getShopName(), i+1, 0);
             }
         }
+        //ShopQueries.insertImage(stm, shop.getShopName(), 1, shop.getImages().get(0));
         if(stm != null){
             stm.close();
         }
     }
+
 
     private static LocalTime dateFromString(String openTime) {
         return LocalTime.parse(openTime);
@@ -130,6 +132,8 @@ public class ShopDAO {
     private static String stringFromTime(LocalTime data){
         return data.toString();
     }
+
+
 
 
 }

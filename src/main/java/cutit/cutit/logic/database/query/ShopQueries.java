@@ -1,9 +1,10 @@
 package cutit.cutit.logic.database.query;
 
+import cutit.cutit.logic.database.DBConnection;
+
 import java.io.File;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.FileInputStream;
+import java.sql.*;
 import java.util.List;
 
 public class ShopQueries {
@@ -50,10 +51,12 @@ public class ShopQueries {
         stmt.executeUpdate(insertStatement);
     }
 
-    public static void insertImage(Statement stmt, String shopName,Integer imageID, File image) throws SQLException {
-        String insertStatement = String.format("INSERT INTO image (RefShop, ImageID, Image) VALUES ('%s', '%d', '%s')", shopName, imageID, image);
-        System.out.println(insertStatement);
-        stmt.executeUpdate(insertStatement);
+    public static void insertImage(Statement stmt, String shopName,Integer imageID, File image) throws Exception {
+        String insertStatement = String.format("INSERT INTO image (RefShop, ImageID, Image) VALUES ('%s', '%d', ?)", shopName, imageID);
+        PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(insertStatement);
+        statement.setBlob(1, (Blob) image);
+        System.out.println(statement);
+        statement.executeUpdate();
     }
 
     }
