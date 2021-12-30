@@ -20,24 +20,22 @@ public class HairdresserManageShopPageViewController {
     private ManageShopPageController manageShopPageController;
 
     @FXML
-    private TextField  tfShopName, phoneNumberHairdresser, tfDescription;
+    private TextField  tfShopName, phoneNumberHairdresser;
 
     @FXML
     private Button btnSave;
 
     @FXML
     public void initialize(){
-        tfShopName.setText(shopBean.getShopName());
-        phoneNumberHairdresser.setText(shopBean.getPhoneNumber());
-        tfDescription.setText(shopBean.getShopDescription());
         manageShopPageController = new ManageShopPageController();
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESHOPPAGEVIEWCONTROLLER");
     }
 
     public void fillView(ShopBean bean){
         shopBean = bean;
+        tfShopName.setText(shopBean.getShopName());
+        //phoneNumberHairdresser.setText(shopBean.getPhoneNumber());
         System.out.println("Filling View from ShopBean data passedBY TopBarHairdresserViewController");
-        //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
     }
 
 }

@@ -7,18 +7,17 @@ import cutit.cutit.logic.factory.AlertFactory;
 import cutit.cutit.logic.log.LogWriter;
 import javafx.scene.control.Alert;
 
-public class HairdresserShopView extends Decorator {
+public class HairdresserManageShopView extends Decorator {
 
-    public HairdresserShopView(ViewComponent view){
+    public HairdresserManageShopView(ViewComponent view){
 
         super(view);
         try {
-            super.loadXML(ViewLayout.HAIRDRESSERMANAGESHOPPAGE);
+            super.loadXML(ViewLayout.HAIRDRESSERMANAGESHOP);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
         }
 
     }
-
 }

@@ -96,10 +96,6 @@ public class Facade {
                 HairdresserServicesView hairservicesview = new HairdresserServicesView(startView);
                 viewMap.put(layout, hairservicesview);
             }
-            case HAIRDRESSERMANAGESHOPPAGE -> {
-                HairdresserShopView hairshopview = new HairdresserShopView(startView);
-                viewMap.put(layout, hairshopview);
-            }
             case SHOPINFO -> {
                 ShopInfoView shopinfoview = new ShopInfoView(startView);
                 viewMap.put(layout, shopinfoview);
@@ -123,6 +119,10 @@ public class Facade {
             case GMAPS -> {
                 CustomerGetLocationDirectionsView customerGetLocationDirectionsView = new CustomerGetLocationDirectionsView(startView);
                 viewMap.put(layout, customerGetLocationDirectionsView);
+            }
+            case HAIRDRESSERMANAGESHOP -> {
+                HairdresserManageShopView hairdresserManageShopView = new HairdresserManageShopView(startView);
+                viewMap.put(layout, hairdresserManageShopView);
             }
         }
     }

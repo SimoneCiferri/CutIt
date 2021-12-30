@@ -7,9 +7,9 @@ import cutit.cutit.logic.controller.manageservices.HairdresserManageServicesView
 import cutit.cutit.logic.controller.manageshoppage.HairdresserManageShopPageViewController;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.decorator.concreteDecorator.HairdresserAppointmentsView;
+import cutit.cutit.logic.decorator.concreteDecorator.HairdresserManageShopView;
 import cutit.cutit.logic.decorator.concreteDecorator.HairdresserPromotionsView;
 import cutit.cutit.logic.decorator.concreteDecorator.HairdresserServicesView;
-import cutit.cutit.logic.decorator.concreteDecorator.HairdresserShopView;
 import cutit.cutit.logic.facade.Facade;
 import cutit.cutit.logic.factory.AlertFactory;
 import cutit.cutit.logic.log.LogWriter;
@@ -22,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.text.View;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -101,18 +102,17 @@ public class TopBarHairdresserViewController {
         return true;
     }
 
-
     @FXML
-    public boolean goShop() {
-        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERMANAGESHOPPAGE);
+    public boolean goShopHair() {
+        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERMANAGESHOP);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(pageFlagStyle);
         btnHLogout.setStyle(transparentStyle);
-        HairdresserShopView view = (HairdresserShopView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERMANAGESHOPPAGE);
-        HairdresserManageShopPageViewController viewController = (HairdresserManageShopPageViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERMANAGESHOPPAGE);
-        //viewController.fillView(shopBean);
+        HairdresserManageShopView view = (HairdresserManageShopView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERMANAGESHOP);
+        HairdresserManageShopPageViewController viewController = (HairdresserManageShopPageViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERMANAGESHOP);
+        viewController.fillView(shopBean);
         return true;
     }
 
