@@ -64,7 +64,7 @@ public class TopBarCustomerViewController {
         Facade.getInstance().decorateView(ViewLayout.HOME);
         HomeView view = (HomeView)Facade.getInstance().getViewMap().get(ViewLayout.HOME);
         HomeViewController viewController = (HomeViewController) view.getLoadedViewController(ViewLayout.HOME);
-        viewController.fillView(new ShopBean());
+        viewController.fillView(customerBean);
         return true;
     }
 

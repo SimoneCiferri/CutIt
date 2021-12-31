@@ -5,12 +5,17 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+
+import java.io.File;
 import java.util.List;
+import java.util.Objects;
 
 public class JavaFXNodeFactory {
 
@@ -96,5 +101,31 @@ public class JavaFXNodeFactory {
         rightButtonHB.getChildren().add(rightButton);
         buttonsHB.getChildren().addAll(leftButtonHB, rightButtonHB);
         return buttonsHB;
+    }
+
+    public HBox createCard(String title, String address, String labelStyle, String imagePath){
+        HBox card = new HBox();
+        card.setPrefSize(895, 130);
+        card.setMinSize(895, 130);
+        card.setMaxSize(895, 130);
+        card.setStyle(labelStyle);
+        card.setAlignment(Pos.CENTER_LEFT);
+        card.setPadding(new Insets(0, 0, 10, 20));
+        Image im = new Image(Objects.requireNonNull(getClass().getResource(imagePath), "Unable to get resource file " + imagePath).toString());
+        ImageView iv = new ImageView();
+        iv.setFitHeight(75);
+        iv.setFitWidth(75);
+        iv.setImage(im);
+        card.getChildren().add(iv);
+        if(address == null){
+            address = "";
+        }
+        Label l = new Label(title + '\n' + address);
+        l.setPrefSize(895, 130);
+        l.setMinSize(895, 130);
+        l.setMaxSize(895, 130);
+        l.setPadding(new Insets(0, 0, 10, 20));
+        card.getChildren().add(l);
+        return card;
     }
 }

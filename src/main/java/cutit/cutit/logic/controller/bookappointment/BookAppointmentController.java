@@ -7,8 +7,10 @@ import cutit.cutit.logic.controller.payonline.PayOnlineController;
 import cutit.cutit.logic.controller.rateshop.RateShopController;
 import cutit.cutit.logic.database.dao.AppointmentDAO;
 import cutit.cutit.logic.database.dao.CustomerDAO;
+import cutit.cutit.logic.database.dao.ShopDAO;
 import cutit.cutit.logic.model.Appointment;
 import cutit.cutit.logic.model.Customer;
+import cutit.cutit.logic.model.Shop;
 import cutit.cutit.logic.model.User;
 
 import java.util.ArrayList;
@@ -58,6 +60,28 @@ public class BookAppointmentController {
         Customer customer = CustomerDAO.getCustomer(new User(customerBean.getcEmail(), customerBean.getcPassword(), customerBean.getcRole()));
         List<Appointment> appList = AppointmentDAO.getAllCustomerAppointments(customer);
         customerBean.setAllBookedAppointment(stringAppDataFromAppList(appList));
+    }
+
+    public ShopsBean getShops() throws Exception{
+        List<Shop> shopList = ShopDAO.getShops();
+        ShopsBean shopsBean = new ShopsBean();
+        shopsBean.setShopDataList(shopDataFromShopList(shopList));
+        return shopsBean;
+    }
+
+    private List<ShopsBean.ShopData> shopDataFromShopList(List<Shop> shopList) {
+        List<ShopsBean.ShopData> list = new ArrayList<>();
+        if(!shopList.isEmpty()){
+            for(int i = 0; i<shopList.size(); i++){
+                String shopName = shopList.get(i).getShopName();
+                String address = shopList.get(i).getAddress();
+                ShopsBean.ShopData data = new ShopsBean.ShopData();
+                data.setShopName(shopName);
+                data.setAddress(address);
+                list.add(data);
+            }
+        }
+        return list;
     }
 
     private List<CustomerBean.AppData> stringAppDataFromAppList(List<Appointment> allAppointments) {

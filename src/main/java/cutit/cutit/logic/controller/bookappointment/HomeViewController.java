@@ -1,70 +1,61 @@
 package cutit.cutit.logic.controller.bookappointment;
 
+import cutit.cutit.logic.bean.CustomerBean;
 import cutit.cutit.logic.bean.ShopBean;
+import cutit.cutit.logic.bean.ShopsBean;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.facade.Facade;
+import cutit.cutit.logic.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class HomeViewController {
 
-    private Integer currPage = 1;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private ShopBean shopBean;
+    private CustomerBean customerBean;
+    private ShopsBean shopsBean;
+    private BookAppointmentController bookAppointmentController;
 
     @FXML
     private VBox vbInScroll;
 
     public boolean initialize() throws IOException {
+        bookAppointmentController = new BookAppointmentController();
         vbInScroll.setSpacing(15);
-        showShops();
         System.out.println("CONTROLLER GRAFICO HOMEVIEWCONTROLLER");
         return true;
     }
 
     private void showShops(){
         vbInScroll.getChildren().clear();
-        for(int i = 0; i<6; i++){
-            Label l = new Label("Barber"+ i);
-            l.setPrefSize(895,130);
-            l.setMinSize(895,130);
-            l.setMaxSize(895,130);
-            l.setStyle(labelStyle);
-            l.setPadding(new Insets(0,0,10,20));
-            l.setOnMouseClicked((MouseEvent) -> goShopInfo());
-            vbInScroll.getChildren().add(l);
+        try {
+            this.shopsBean = bookAppointmentController.getShops();
+            for(int i = 0; i<shopsBean.getShopDataList().size(); i++){
+                String path = "/cutit/cutit/files/barberlogo.jpg";
+                HBox card = JavaFXNodeFactory.getInstance().createCard(shopsBean.getShopDataList().get(i).getShopName(), shopsBean.getShopDataList().get(i).getAddress(), labelStyle, path);
+                card.setOnMouseClicked((MouseEvent) -> goShopInfo());
+                vbInScroll.getChildren().add(card);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        HBox key = new HBox();
-        key.setPrefSize(100, 50);
-        key.setMaxSize(100, 50);
-        key.setMinSize(100, 50);
-        key.setSpacing(30);
-        Label prev = new Label("<<");
-        prev.setDisable(true);
-        prev.setOnMouseClicked((MouseEvent) -> {
-            currPage--;
-            prev.setDisable(currPage <= 1);
-        });
-        Label next = new Label(">>");
-        next.setOnMouseClicked((MouseEvent) -> {
-            currPage++;
-            prev.setDisable(currPage <= 1);
-        });
-        key.getChildren().addAll(prev,next);
-        vbInScroll.getChildren().add(key);
     }
 
     public void goShopInfo(){
         Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
     }
 
-    public void fillView(ShopBean bean){
-        shopBean = bean;
+    public void fillView(CustomerBean customerBean){
+        this.customerBean = customerBean;
         System.out.println("Filling View from ShopBean data passedBY TopBarCustomerViewController");
-        //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
+        showShops();
     }
 
 }

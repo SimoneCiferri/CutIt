@@ -124,6 +124,31 @@ public class ShopDAO {
         }
     }
 
+    public static List<Shop> getShops() throws Exception {
+        List<Shop> shopList = new ArrayList<>();
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = ShopQueries.getShops(stm);
+        if (rs.first()) {
+            rs.first();
+            do {
+                String shopNAme = rs.getString(1);
+                String shopAddress = rs.getString(3);
+                String hPIVA = rs.getString(4);
+                Shop shop = new Shop(shopNAme, hPIVA);
+                shop.setAddress(shopAddress);
+                shopList.add(shop);
+            } while (rs.next());
+            rs.close();
+            if (stm != null) {
+                stm.close();
+            }
+        }
+        //DBConnection.getInstance().closeConnection();
+        return shopList;
+    }
+
 
     private static LocalTime dateFromString(String openTime) {
         return LocalTime.parse(openTime);

@@ -65,4 +65,10 @@ public class ShopQueries {
         statement.executeUpdate();
     }
 
+    public static ResultSet getShops(Statement stmt) throws SQLException {
+        String sql = "SELECT * FROM shop";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
     }
+
+}
