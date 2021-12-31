@@ -601,3 +601,23 @@ class cutit.cutit.logic.decorator.concreteDecorator.CustomerAppointmentsView
 class cutit.cutit.logic.decorator.concreteDecorator.CustomerAppointmentsView
  
 /C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/clientappointments.fxml
+
+2021/12/31 00:58:35
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerAppointmentInfoView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/customerappointmentinfo.fxml:10
+
+2021/12/31 00:59:21
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerAppointmentInfoView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/customerappointmentinfo.fxml:10
+
+2021/12/31 01:02:09
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerAppointmentInfoView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/customerappointmentinfo.fxml:10
+
+2021/12/31 01:03:15
+class cutit.cutit.logic.decorator.concreteDecorator.CustomerAppointmentInfoView
+ 
+/C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/customerappointmentinfo.fxml:10

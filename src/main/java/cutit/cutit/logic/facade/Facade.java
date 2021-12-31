@@ -108,8 +108,8 @@ public class Facade {
                 ClientBookAppointmentView clientbookappview = new ClientBookAppointmentView(startView);
                 viewMap.put(layout, clientbookappview);
             }
-            case CLIENTAPPINFO -> {
-                ClientAppointmentInfoView clientappinfoview = new ClientAppointmentInfoView(startView);
+            case CUSTOMERAPPINFO -> {
+                CustomerAppointmentInfoView clientappinfoview = new CustomerAppointmentInfoView(startView);
                 viewMap.put(layout, clientappinfoview);
             }
             case CLIENTPROMOTIONINFO -> {

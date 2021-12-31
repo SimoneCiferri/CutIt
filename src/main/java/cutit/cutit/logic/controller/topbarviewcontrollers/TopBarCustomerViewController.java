@@ -2,11 +2,10 @@ package cutit.cutit.logic.controller.topbarviewcontrollers;
 
 import cutit.cutit.logic.bean.CustomerBean;
 import cutit.cutit.logic.bean.ShopBean;
-import cutit.cutit.logic.bean.UserBean;
 import cutit.cutit.logic.controller.bookappointment.CustomerFavouritesShopViewController;
 import cutit.cutit.logic.controller.bookappointment.CustomerPromotionsViewController;
 import cutit.cutit.logic.controller.bookappointment.HomeViewController;
-import cutit.cutit.logic.controller.getlocationdirections.CustomerAppointmentsViewController;
+import cutit.cutit.logic.controller.bookappointment.CustomerAppointmentsViewController;
 import cutit.cutit.logic.decorator.ViewLayout;
 import cutit.cutit.logic.decorator.concreteDecorator.CustomerAppointmentsView;
 import cutit.cutit.logic.decorator.concreteDecorator.CustomerFavouritesShopView;

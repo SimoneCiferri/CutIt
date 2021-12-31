@@ -14,6 +14,7 @@ public class CustomerBean {
     private String cGender;
     private List<String> allBookedAppointments;
     private List<String> allPromotions;
+    private List<AppData> allBookedAppointment;
 
     public Integer getcRole() {
         return cRole;
@@ -85,6 +86,71 @@ public class CustomerBean {
 
     public void setAllPromotions(List<String> allPromotions) {
         this.allPromotions = allPromotions;
+    }
+
+    public List<AppData> getAllBookedAppointment() {
+        return allBookedAppointment;
+    }
+
+    public void setAllBookedAppointment(List<AppData> allBookedAppointment) {
+        this.allBookedAppointment = allBookedAppointment;
+    }
+
+    public static class AppData{
+        String appStarTime;
+        String appEndTime;
+        String appCustomer;
+        String appService;
+        String appPromotion;
+        String appShopName;
+
+        public String getAppStarTime() {
+            return appStarTime;
+        }
+
+        public void setAppStarTime(String appStarTime) {
+            this.appStarTime = appStarTime;
+        }
+
+        public String getAppEndTime() {
+            return appEndTime;
+        }
+
+        public void setAppEndTime(String appEndTime) {
+            this.appEndTime = appEndTime;
+        }
+
+        public String getAppCustomer() {
+            return appCustomer;
+        }
+
+        public void setAppCustomer(String appCustomer) {
+            this.appCustomer = appCustomer;
+        }
+
+        public String getAppService() {
+            return appService;
+        }
+
+        public void setAppService(String appService) {
+            this.appService = appService;
+        }
+
+        public String getAppPromotion() {
+            return appPromotion;
+        }
+
+        public void setAppPromotion(String appPromotion) {
+            this.appPromotion = appPromotion;
+        }
+
+        public String getAppShopName() {
+            return appShopName;
+        }
+
+        public void setAppShopName(String appShopName) {
+            this.appShopName = appShopName;
+        }
     }
 
 }

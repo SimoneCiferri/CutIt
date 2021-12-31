@@ -5,6 +5,14 @@ import cutit.cutit.logic.controller.addappointmenttocalendar.AddAppointmentToCal
 import cutit.cutit.logic.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.cutit.logic.controller.payonline.PayOnlineController;
 import cutit.cutit.logic.controller.rateshop.RateShopController;
+import cutit.cutit.logic.database.dao.AppointmentDAO;
+import cutit.cutit.logic.database.dao.CustomerDAO;
+import cutit.cutit.logic.model.Appointment;
+import cutit.cutit.logic.model.Customer;
+import cutit.cutit.logic.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookAppointmentController {
 
@@ -44,5 +52,32 @@ public class BookAppointmentController {
         addAppointmentToCalendarController = new AddAppointmentToCalendarController();
         addAppointmentToCalendarController.addToCalendar(appBean);
         return true;
+    }
+
+    public void getAppointments(CustomerBean customerBean) throws Exception {
+        Customer customer = CustomerDAO.getCustomer(new User(customerBean.getcEmail(), customerBean.getcPassword(), customerBean.getcRole()));
+        List<Appointment> appList = AppointmentDAO.getAllCustomerAppointments(customer);
+        customerBean.setAllBookedAppointment(stringAppDataFromAppList(appList));
+    }
+
+    private List<CustomerBean.AppData> stringAppDataFromAppList(List<Appointment> allAppointments) {
+        List<CustomerBean.AppData> appList = new ArrayList<>();
+        if(!allAppointments.isEmpty()){
+            for(int i = 0; i<allAppointments.size(); i++){
+                String startTime = allAppointments.get(i).getStartTime().toString();
+                String endTime = allAppointments.get(i).getEndTime().toString();
+                String customer = allAppointments.get(i).getCustomer().getUserID();
+                String service = allAppointments.get(i).getService().getServiceName();
+                String shop = allAppointments.get(i).getShop().getShopName();
+                CustomerBean.AppData d = new CustomerBean.AppData();
+                d.setAppStarTime(startTime);
+                d.setAppEndTime(endTime);
+                d.setAppCustomer(customer);
+                d.setAppService(service);
+                d.setAppShopName(shop);
+                appList.add(d);
+            }
+        }
+        return appList;
     }
 }

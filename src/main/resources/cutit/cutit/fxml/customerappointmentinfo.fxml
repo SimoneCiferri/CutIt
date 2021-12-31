@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.getlocationdirections.CustomerAppointmentInfoViewController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.cutit.logic.controller.bookappointment.CustomerAppointmentInfoViewController">
    <children>
-      <Label text="dd/mm/yyyy hh/mm" textFill="WHITE">
+      <Label fx:id="lDate" text="dd/mm/yyyy hh/mm" textFill="WHITE">
          <font>
             <Font size="30.0" />
          </font></Label>
-      <Label text="ShopName" textFill="WHITE">
+      <Label fx:id="lShopName" text="ShopName" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
@@ -19,7 +19,7 @@
             <Insets top="15.0" />
          </VBox.margin>
       </Label>
-      <Label text="Service" textFill="WHITE">
+      <Label fx:id="lService" text="Service" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
@@ -27,21 +27,13 @@
             <Insets top="15.0" />
          </VBox.margin>
       </Label>
-      <Label text="Promotion" textFill="WHITE">
+      <Label fx:id="lPromotion" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
          <VBox.margin>
             <Insets top="15.0" />
          </VBox.margin></Label>
-      <Label text="Notes..." textFill="WHITE">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <VBox.margin>
-            <Insets top="15.0" />
-         </VBox.margin>
-      </Label>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="600.0">
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="300.0">

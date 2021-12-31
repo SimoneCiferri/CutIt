@@ -7,15 +7,13 @@ import cutit.cutit.logic.factory.AlertFactory;
 import cutit.cutit.logic.log.LogWriter;
 import javafx.scene.control.Alert;
 
-import java.io.IOException;
+public class CustomerAppointmentInfoView extends Decorator {
 
-public class ClientAppointmentInfoView extends Decorator {
-
-    public ClientAppointmentInfoView(ViewComponent view){
+    public CustomerAppointmentInfoView(ViewComponent view){
 
         super(view);
         try {
-            super.loadXML(ViewLayout.CLIENTAPPINFO);
+            super.loadXML(ViewLayout.CUSTOMERAPPINFO);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
