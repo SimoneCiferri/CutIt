@@ -3,6 +3,9 @@ package cutit.database.query;
 import cutit.database.DBConnection;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.*;
 
 public class ShopQueries {
@@ -55,12 +58,28 @@ public class ShopQueries {
         stmt.executeUpdate(insertStatement);
     }
 
-    public static void insertImage(Statement stmt, String shopName,Integer imageID, File image) throws Exception {
-        String insertStatement = String.format("INSERT INTO image (RefShop, ImageID, Image) VALUES ('%s', '%d', ?)", shopName, imageID);
-        PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(insertStatement);
-        statement.setBlob(1, (Blob) image);
-        System.out.println(statement);
+    public static void insertImage(Statement stmt, String imageID, File file, String shopName) throws Exception {
+        PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement("INSERT INTO image (Id, Size, Image, RefShop) VALUES (?, ?, ?, ?)");
+        statement.setString(1,imageID);
+        statement.setInt(2,99);
+        FileInputStream input = new FileInputStream(file);
+        System.out.println("qua sto");
+        statement.setBinaryStream(3, (InputStream)input, (int)file.length());
+        statement.setString(4, shopName);
+        System.out.println(statement.toString());
         statement.executeUpdate();
+    }
+
+    public static void deleteAllImages(Statement stmt, String shopName) throws Exception{
+        String insertStatement = "DELETE FROM image WHERE RefShop = '" + shopName + "'";
+        System.out.println(insertStatement);
+        stmt.executeUpdate(insertStatement);
+    }
+
+    public static ResultSet getImages(Statement stmt, String shopName) throws SQLException {
+        String sql = "SELECT * FROM image WHERE RefShop = '" + shopName + "'";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
     }
 
     public static ResultSet getShops(Statement stmt) throws SQLException {

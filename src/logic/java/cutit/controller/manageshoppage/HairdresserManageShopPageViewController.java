@@ -10,6 +10,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -19,7 +21,7 @@ public class HairdresserManageShopPageViewController {
     private ManageShopPageController manageShopPageController;
     private List<CheckBox> checkBoxList = new ArrayList<>();
     private List<ImageView> ivList = new ArrayList<>();
-    private Map<Integer, File> mapFile = new HashMap<>();
+    private Map<Integer, File> imageMap = new HashMap<>();
 
     @FXML
     private Label shopName;
@@ -90,15 +92,16 @@ public class HairdresserManageShopPageViewController {
         }
     }
 
-
-
     private List<File> getImages() {
         List<File> images = new ArrayList<>();
-        for(int i = 0;i<mapFile.size();i++){
-            images.add(mapFile.get(i));
+        for(int i = 1; i<imageMap.size()+1; i++){
+            if(imageMap.containsKey(i)){
+                images.add(imageMap.get(i));
+            }
         }
         return images;
     }
+
 
     public void fillView(ShopBean bean){
         shopBean = bean;
@@ -126,11 +129,13 @@ public class HairdresserManageShopPageViewController {
         cbOpenTime.setValue(shopBean.getOpenTime().toString());
         cbCloseTime.setValue(shopBean.getCloseTime().toString());
 
-        /*if(!shopBean.getImages().isEmpty()){
+       if(!shopBean.getImages().isEmpty()){
             for(int i = 0; i<shopBean.getImages().size(); i++){
-                ivList.get(i).setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
+                File file = shopBean.getImages().get(i);
+                imageMap.put(i+1, file);
+                ivList.get(i).setImage(new Image(String.valueOf(file.toURI())));
             }
-        }*/
+        }
         System.out.println("Filling View from ShopBean data passedBY TopBarHairdresserViewController");
     }
 
@@ -146,7 +151,7 @@ public class HairdresserManageShopPageViewController {
         return map;
     }
 
-    public void uploadImage(javafx.scene.input.MouseEvent mouseEvent) {
+    public void uploadImage(javafx.scene.input.MouseEvent mouseEvent) throws FileNotFoundException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         Stage stage = (Stage)shopName.getScene().getWindow();
@@ -154,28 +159,28 @@ public class HairdresserManageShopPageViewController {
         if(file != null){
             Image image = new Image(String.valueOf(file.toURI()));
             if (mouseEvent.getSource().equals(iv1)) {
-                mapFile.put(1, file);
+                imageMap.put(1, file);
                 iv1.setImage(image);
             }else if(mouseEvent.getSource().equals(iv2)){
-                mapFile.put(2, file);
+                imageMap.put(2, file);
                 iv2.setImage(image);
             }else if(mouseEvent.getSource().equals(iv3)){
-                mapFile.put(3, file);
+                imageMap.put(3, file);
                 iv3.setImage(image);
             }else if(mouseEvent.getSource().equals(iv4)){
-                mapFile.put(4, file);
+                imageMap.put(4, file);
                 iv4.setImage(image);
             }else if(mouseEvent.getSource().equals(iv5)){
-                mapFile.put(5, file);
+                imageMap.put(5, file);
                 iv5.setImage(image);
             }else if(mouseEvent.getSource().equals(iv6)){
-                mapFile.put(6, file);
+                imageMap.put(6, file);
                 iv6.setImage(image);
             }else if(mouseEvent.getSource().equals(iv7)){
-                mapFile.put(7, file);
+                imageMap.put(7, file);
                 iv7.setImage(image);
             }else if(mouseEvent.getSource().equals(iv8)){
-                mapFile.put(8, file);
+                imageMap.put(8, file);
                 iv8.setImage(image);
             }
         }

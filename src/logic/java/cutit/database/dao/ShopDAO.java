@@ -4,6 +4,7 @@ import cutit.database.DBConnection;
 import cutit.database.query.ShopQueries;
 import cutit.model.*;
 
+import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -66,7 +67,10 @@ public class ShopDAO {
             Shop shop = new Shop(shopName, hPiva, address, phoneNumber, employee, description, dateFromString(openTime), dateFromString(closeTime));
             Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
             shop.setOpenDays(openDays);
-            //manca il retrieve delle immagini
+
+            List<File> images = getImages(shop);
+            shop.setImages(images);
+
             List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop);
             shop.setPromotions(allPromotions);
             List<Service> services = ServiceDAO.getALlServices(shop);
@@ -105,6 +109,34 @@ public class ShopDAO {
         return openDays;
     }
 
+
+    private static List<File> getImages(Shop shop) throws Exception{
+        List<File> images = new ArrayList<File>();
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = ShopQueries.getImages(stm, shop.getShopName());
+        if (rs.first()) {
+            rs.first();
+            int i =0;
+            do {
+                byte[] image = rs.getBytes(3);
+                File file = new File("src/logic/resources/cutit/cutit/tmpfiles/image" + i + ".tmp");
+                OutputStream out = new FileOutputStream(file);
+                out.write(image);
+                images.add(file);
+                out.close();
+                i++;
+            } while (rs.next());
+            rs.close();
+            if (stm != null) {
+                stm.close();
+            }
+            //DBConnection.getInstance().closeConnection();
+        }
+        return images;
+    }
+
     public static void updateShop(Shop shop) throws Exception{
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -117,7 +149,13 @@ public class ShopDAO {
                 ShopQueries.updateOpenDay(stm, shop.getShopName(), i+1, 0);
             }
         }
-        //ShopQueries.insertImage(stm, shop.getShopName(), 1, shop.getImages().get(0));
+        if(!shop.getImages().isEmpty()){
+            ShopQueries.deleteAllImages(stm, shop.getShopName());
+            for(int j = 0;j<shop.getImages().size();j++){
+                ShopQueries.insertImage(stm, String.valueOf(j), shop.getImages().get(j), shop.getShopName());
+            }
+        }
+
         if(stm != null){
             stm.close();
         }

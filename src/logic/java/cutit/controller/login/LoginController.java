@@ -60,6 +60,7 @@ public class LoginController {
         shopBean.setPromotions(stringListFromPromList(hairdresser.getShop().getPromotions()));
         shopBean.setServices(stringListFromServList(hairdresser.getShop().getServices()));
         shopBean.setAllAppointments(stringListFromAppList(hairdresser.getShop().getAllAppointments()));
+        shopBean.setImages(hairdresser.getShop().getImages());
     }
 
     private List<String> stringListFromAppList(List<Appointment> allAppointments) {
