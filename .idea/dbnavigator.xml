@@ -24,12 +24,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="false" />
-    <loaded-nodes>
-      <connection connection-id="a9616340-b550-43d2-acf2-345053b7031c">
-        <schema name="cutitdb" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
-        <schema name="mysql" object-types="table, view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="55e25c66-b3ef-4e3a-8e96-8e9276e07e93">
