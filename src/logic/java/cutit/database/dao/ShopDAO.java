@@ -35,9 +35,24 @@ public class ShopDAO {
             Exception e = new Exception("No Shop matching with name: "+ shopName);
             throw e;
         }else{
-            String hPIVA = rs.getString("Hairdresser_PIVA");
-            String shopNAme = rs.getString("ShopName");
-            Shop shop = new Shop(shopNAme, hPIVA);
+            String employee = rs.getString(2);
+            String address = rs.getString(3);
+            String hPiva = rs.getString(4);
+            String phoneNumber = rs.getString(5);
+            String description = rs.getString(6);
+            String openTime = rs.getString(7);
+            String closeTime = rs.getString(8);
+            Shop shop = new Shop(shopName, hPiva, address, phoneNumber, employee, description, dateFromString(openTime), dateFromString(closeTime));
+            Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
+            shop.setOpenDays(openDays);
+
+            List<File> images = getImages(shop);
+            shop.setImages(images);
+
+            List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop);
+            shop.setPromotions(allPromotions);
+            List<Service> services = ServiceDAO.getALlServices(shop);
+            shop.setServices(services);
             rs.close();
             if(stm != null){
                 stm.close();

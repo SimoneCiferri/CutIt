@@ -80,7 +80,6 @@ public class BookAppointmentController {
         shopBean.setOpenDays(shop.getOpenDays());
         shopBean.setPromotions(stringListFromPromList(shop.getPromotions()));
         shopBean.setServices(stringListFromServList(shop.getServices()));
-        shopBean.setAllAppointments(stringListFromAppList(shop.getAllAppointments()));
         shopBean.setImages(shop.getImages());
         return shopBean;
     }

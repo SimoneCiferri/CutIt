@@ -23,16 +23,16 @@ public void writeInLog(String infoLog){
     BufferedReader rLog = null;
     BufferedWriter wLog = null;
     try {
-        File f = new File("src/main/java/cutit/cutit/logic/log/LOG.txt");
+        File f = new File("src/logic/java/cutit/log/LOG.txt");
         if((f.exists() || f.createNewFile()) /*&& f.canRead() && f.canWrite()*/ ){
-            rLog = new BufferedReader(new FileReader("src/main/java/cutit/cutit/logic/log/LOG.txt"));
+            rLog = new BufferedReader(new FileReader("src/logic/java/cutit/log/LOG.txt"));
             String s;
             StringBuilder s1 = new StringBuilder();
             while ((s = rLog.readLine()) != null) {
                 s1.append(s).append("\n");
             }
 
-            wLog = new BufferedWriter(new FileWriter("src/main/java/cutit/cutit/logic/log/LOG.txt"));
+            wLog = new BufferedWriter(new FileWriter("src/logic/java/cutit/log/LOG.txt"));
             wLog.write( s1 + "\n" + currentDate() + "\n" + infoLog);
 
         }

@@ -621,3 +621,56 @@ class CustomerAppointmentInfoView
 class CustomerAppointmentInfoView
  
 /C:/Users/Simone/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/customerappointmentinfo.fxml:10
+
+2022/01/10 11:15:40
+class cutit.decorator.concreteDecorator.ShopInfoView
+ 
+/C:/Users/simon/IdeaProjects/CutIt/target/classes/cutit/cutit/fxml/shopinfo.fxml:15
+
+2022/01/10 11:23:47
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/10 11:23:54
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/10 11:24:24
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/10 11:26:07
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/10 11:26:14
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/10 16:21:31
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/10 16:21:38
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/10 16:23:34
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/10 16:23:50
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/10 16:26:42
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/10 16:28:55
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/10 16:34:48
+class cutit.controller.login.LoginViewController
+ src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
