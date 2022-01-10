@@ -3,6 +3,7 @@ package cutit.controller.bookappointment;
 import cutit.bean.CustomerBean;
 import cutit.bean.ShopsBean;
 import cutit.decorator.ViewLayout;
+import cutit.decorator.concreteDecorator.ShopInfoView;
 import cutit.facade.Facade;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
@@ -33,8 +34,9 @@ public class HomeViewController {
             this.shopsBean = bookAppointmentController.getShops();
             for(int i = 0; i<shopsBean.getShopDataList().size(); i++){
                 String path = "/cutit/cutit/files/barberlogo.jpg";
+                int n = i;
                 HBox card = JavaFXNodeFactory.getInstance().createCard(shopsBean.getShopDataList().get(i).getShopName(), shopsBean.getShopDataList().get(i).getAddress(), labelStyle, path);
-                card.setOnMouseClicked((MouseEvent) -> goShopInfo());
+                card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopsBean.getShopDataList().get(n).getShopName()));
                 vbInScroll.getChildren().add(card);
             }
         } catch (Exception e) {
@@ -42,8 +44,12 @@ public class HomeViewController {
         }
     }
 
-    public void goShopInfo(){
+    public void goShopInfo(String shopName){
         Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
+        ShopInfoView view = (ShopInfoView) Facade.getInstance().getViewMap().get(ViewLayout.SHOPINFO);
+        ShopInfoViewController viewController = (ShopInfoViewController) view.getLoadedViewController(ViewLayout.SHOPINFO);
+        viewController.fillView(shopName);
+
     }
 
     public void fillView(CustomerBean customerBean){

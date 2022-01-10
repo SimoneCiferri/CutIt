@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox fx:id="vbShopInfo" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.bookappointment.ShopInfoViewController">
+<VBox fx:id="vbShopInfo" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.bookappointment.ShopInfoViewController">
    <children>
       <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="657.0" prefWidth="1024.0" style="-fx-background-color: transparent; -fx-background: transparent;">
          <content>
@@ -28,7 +28,7 @@
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="720.0">
                            <children>
                               <ImageView fx:id="ivShopPhoto" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label prefHeight="25.0" prefWidth="90.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="069625500" />
+                              <Label fx:id="lShopPhone" prefHeight="25.0" prefWidth="90.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="069625500" />
                               <Label fx:id="lShopDescription" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="720.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Description">
                                  <VBox.margin>
                                     <Insets top="15.0" />
@@ -94,22 +94,22 @@
                      <children>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="825.0">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="ivShop1" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
                               </ImageView>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="ivShop2" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
                                     <Insets left="75.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="ivShop3" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
                                     <Insets left="75.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="ivShop4" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
                                     <Insets left="75.0" />
                                  </HBox.margin>
@@ -121,13 +121,13 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="825.0">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="ivShop5" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="ivShop6" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
                                     <Insets left="75.0" />
                                  </HBox.margin>
                               </ImageView>
-                              <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="ivShop7" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
                                     <Insets left="75.0" />
                                  </HBox.margin>

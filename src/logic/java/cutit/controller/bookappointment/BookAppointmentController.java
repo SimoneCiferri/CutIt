@@ -1,9 +1,6 @@
 package cutit.controller.bookappointment;
 
-import cutit.bean.AppointmentBean;
-import cutit.bean.CustomerBean;
-import cutit.bean.RateShopBean;
-import cutit.bean.ShopsBean;
+import cutit.bean.*;
 import cutit.controller.addappointmenttocalendar.AddAppointmentToCalendarController;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.controller.payonline.PayOnlineController;
@@ -11,10 +8,7 @@ import cutit.controller.rateshop.RateShopController;
 import cutit.database.dao.AppointmentDAO;
 import cutit.database.dao.CustomerDAO;
 import cutit.database.dao.ShopDAO;
-import cutit.model.Appointment;
-import cutit.model.Customer;
-import cutit.model.Shop;
-import cutit.model.User;
+import cutit.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,6 +66,25 @@ public class BookAppointmentController {
         return shopsBean;
     }
 
+    public ShopBean getShop(String shopName) throws Exception {
+        Shop shop = ShopDAO.getShopFromName(shopName);
+        ShopBean shopBean = new ShopBean();
+        shopBean.setShopName(shop.getShopName());
+        shopBean.setShopPIVA(shop.getpIVA());
+        shopBean.setAddress(shop.getAddress());
+        shopBean.setPhoneNumber(shop.getPhoneNumber());
+        shopBean.setEmployee(shop.getEmployee());
+        shopBean.setShopDescription(shop.getDescription());
+        shopBean.setOpenTime(shop.getOpenTime());
+        shopBean.setCloseTime(shop.getCloseTime());
+        shopBean.setOpenDays(shop.getOpenDays());
+        shopBean.setPromotions(stringListFromPromList(shop.getPromotions()));
+        shopBean.setServices(stringListFromServList(shop.getServices()));
+        shopBean.setAllAppointments(stringListFromAppList(shop.getAllAppointments()));
+        shopBean.setImages(shop.getImages());
+        return shopBean;
+    }
+
     private List<ShopsBean.ShopData> shopDataFromShopList(List<Shop> shopList) {
         List<ShopsBean.ShopData> list = new ArrayList<>();
         if(!shopList.isEmpty()){
@@ -106,5 +119,38 @@ public class BookAppointmentController {
             }
         }
         return appList;
+    }
+
+    private List<String> stringListFromAppList(List<Appointment> allAppointments) {
+        List<String> appList = new ArrayList<>();
+        if(!allAppointments.isEmpty()){
+            for(int i = 0; i<allAppointments.size(); i++){
+                String p = allAppointments.get(i).getStartTime().toString();
+                appList.add(p);
+            }
+        }
+        return appList;
+    }
+
+    private List<String> stringListFromServList(List<Service> services) {
+        List<String> servList = new ArrayList<>();
+        if(!services.isEmpty()){
+            for(int i = 0; i<services.size(); i++){
+                String p = services.get(i).getServiceName();
+                servList.add(p);
+            }
+        }
+        return servList;
+    }
+
+    private List<String> stringListFromPromList(List<Promotion> promotions) {
+        List<String> promList = new ArrayList<>();
+        if(!promotions.isEmpty()){
+            for(int i = 0; i<promotions.size(); i++){
+                String p = promotions.get(i).getCode();
+                promList.add(p);
+            }
+        }
+        return promList;
     }
 }
