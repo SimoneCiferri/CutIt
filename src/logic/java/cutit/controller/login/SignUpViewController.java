@@ -6,9 +6,12 @@ import cutit.bean.firstui.CustomerBeanFirstUI;
 import cutit.bean.firstui.HairdresserBeanFirstUI;
 import cutit.decorator.ViewLayout;
 import cutit.facade.Facade;
+import cutit.utils.TextFieldCheck;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class SignUpViewController {
@@ -44,8 +47,9 @@ public class SignUpViewController {
     @FXML
     public boolean trySignUpCustomer(){
         try{
-            if(checkSamePasswd(pfCustomerPassword, pfCustomerConfirmPassword) && !isSomethingNull(tfCustomerName.getText(), tfCustomerSurname.getText(),
-                    cbCustomerGender.getValue(), tfCustomerEmail.getText(), pfCustomerPassword.getText())){
+            if(!checkIfNull(tfCustomerName.getText(), tfCustomerSurname.getText(), cbCustomerGender.getValue(), tfCustomerEmail.getText(), pfCustomerPassword.getText())
+                    && TextFieldCheck.isEmailAddress(tfCustomerEmail.getText())
+                    && checkSamePasswd(pfCustomerPassword, pfCustomerConfirmPassword)){
                 customerBeanFirstUI.setcName(tfCustomerName.getText());
                 customerBeanFirstUI.setcSurname(tfCustomerSurname.getText());
                 customerBeanFirstUI.setcBirthDate(dpCustomerBirthdate.getValue());
@@ -65,8 +69,10 @@ public class SignUpViewController {
     @FXML
     public boolean trySignUpHair(){
         try{
-            if(checkSamePasswd(pfHairdresserPassword, pfHairdresserConfirmPassword) && !isSomethingNull(tfHairdresserName.getText(),
-                    tfHairdresserSurname.getText(), tfHairdresserEmail.getText(), tfHairdresserPIVA.getText(), tfHairdresserShopName.getText())){
+            if(!checkIfNull(tfHairdresserName.getText(), tfHairdresserSurname.getText(), tfHairdresserEmail.getText(), tfHairdresserPIVA.getText(), tfHairdresserShopName.getText())
+                    && TextFieldCheck.isEmailAddress(tfHairdresserEmail.getText())
+                    && TextFieldCheck.isPiva(tfHairdresserPIVA.getText())
+                    && checkSamePasswd(pfHairdresserPassword, pfHairdresserConfirmPassword)){
                 hairdresserBeanFirstUI.sethName(tfHairdresserName.getText());
                 hairdresserBeanFirstUI.sethSurname(tfHairdresserSurname.getText());
                 hairdresserBeanFirstUI.sethEmail(tfHairdresserEmail.getText());
@@ -90,8 +96,14 @@ public class SignUpViewController {
         return false;
     }
 
-    private Boolean isSomethingNull(String s1, String s2, String s3, String s4, String s5){
-        return (Objects.equals(s1, "") || Objects.equals(s2, "") || Objects.equals(s3, "") || Objects.equals(s4, "") || Objects.equals(s5, ""));
+    private Boolean checkIfNull(String s1, String s2, String s3, String s4, String s5){
+        List<String> list = new ArrayList<>();
+        list.add(s1);
+        list.add(s2);
+        list.add(s3);
+        list.add(s4);
+        list.add(s5);
+        return TextFieldCheck.isSomethingNull(list);
     }
 
     @FXML
