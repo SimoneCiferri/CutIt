@@ -1,9 +1,10 @@
 package cutit.controller.login;
 
-import cutit.bean.CustomerBean;
-import cutit.bean.HairdresserBean;
-import cutit.bean.ShopBean;
-import cutit.bean.UserBean;
+import cutit.bean.*;
+import cutit.bean.firstui.CustomerBeanFirstUI;
+import cutit.bean.firstui.HairdresserBeanFirstUI;
+import cutit.bean.firstui.ShopBeanUQ;
+import cutit.bean.firstui.UserBeanFirstUI;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.controller.topbarviewcontrollers.TopBarHairdresserViewController;
 import cutit.decorator.ViewLayout;
@@ -23,10 +24,10 @@ import java.util.Objects;
 public class LoginViewController {
 
     private LoginController loginController;
-    private UserBean userBean;
-    private CustomerBean customerBean;
-    private HairdresserBean hairdresserBean;
-    private ShopBean shopBean;
+    private UserBean userBeanFirstUI;
+    private CustomerBean customerBeanFirstUI;
+    private HairdresserBean hairdresserBeanFirstUI;
+    private ShopBean shopBeanFirstUI;
 
     @FXML
     TextField tfUsername;
@@ -36,9 +37,10 @@ public class LoginViewController {
 
     @FXML
     public void initialize(){
-        userBean = new UserBean();
-        hairdresserBean = new HairdresserBean();
-        shopBean = new ShopBean();
+        userBeanFirstUI = new UserBeanFirstUI();
+        customerBeanFirstUI = new CustomerBeanFirstUI();
+        hairdresserBeanFirstUI = new HairdresserBeanFirstUI();
+        shopBeanFirstUI = new ShopBeanUQ();
         loginController = new LoginController();
         System.out.println("CONTROLLER GRAFICO LOGINVIEWCONTROLLER");
     }
@@ -46,22 +48,22 @@ public class LoginViewController {
     @FXML
     public void tryLogin() {
         if(!Objects.equals(tfUsername.getText(), "") && !Objects.equals(pfPassword.getText(), "")){
-            userBean.setUsername(tfUsername.getText());
-            userBean.setPasswd(pfPassword.getText());
+            userBeanFirstUI.setUsername(tfUsername.getText());
+            userBeanFirstUI.setPasswd(pfPassword.getText());
             try {
-                this.userBean = loginController.login(this.userBean);
-                if (this.userBean.getRole() == 0) {
-                    this.customerBean = loginController.getCustomer(userBean);
+                this.userBeanFirstUI = loginController.login(this.userBeanFirstUI);
+                if (this.userBeanFirstUI.getRole() == 0) {
+                    loginController.getCustomer(userBeanFirstUI, customerBeanFirstUI);
                     Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
                     TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
                     TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
-                    viewController.startBean(this.customerBean);
+                    viewController.startBean(this.customerBeanFirstUI);
                 }else{
-                    loginController.getHairdresserAndShop(userBean, hairdresserBean, shopBean);
+                    loginController.getHairdresserAndShop(userBeanFirstUI, hairdresserBeanFirstUI, shopBeanFirstUI);
                     Facade.getInstance().decorateView(ViewLayout.TOPBARHAIRDRESSER);
                     TopBarHairdresserView view = (TopBarHairdresserView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARHAIRDRESSER);
                     TopBarHairdresserViewController viewController = (TopBarHairdresserViewController) view.getLoadedViewController(ViewLayout.TOPBARHAIRDRESSER);
-                    viewController.startBean(hairdresserBean, shopBean);
+                    viewController.startBean(hairdresserBeanFirstUI, shopBeanFirstUI);
                 }
             } catch (Exception e) {
                 LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());

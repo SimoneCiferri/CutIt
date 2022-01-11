@@ -2,6 +2,8 @@ package cutit.controller.login;
 
 import cutit.bean.CustomerBean;
 import cutit.bean.HairdresserBean;
+import cutit.bean.firstui.CustomerBeanFirstUI;
+import cutit.bean.firstui.HairdresserBeanFirstUI;
 import cutit.decorator.ViewLayout;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
@@ -11,8 +13,8 @@ import java.util.Objects;
 
 public class SignUpViewController {
 
-    private CustomerBean customerBean;
-    private HairdresserBean hairdresserBean;
+    private CustomerBean customerBeanFirstUI;
+    private HairdresserBean hairdresserBeanFirstUI;
     private LoginController loginController;
 
     @FXML
@@ -32,8 +34,8 @@ public class SignUpViewController {
 
     @FXML
     public void initialize(){
-        customerBean = new CustomerBean();
-        hairdresserBean = new HairdresserBean();
+        customerBeanFirstUI = new CustomerBeanFirstUI();
+        hairdresserBeanFirstUI = new HairdresserBeanFirstUI();
         loginController = new LoginController();
         cbCustomerGender.getItems().addAll("Female", "Male", "Other");
         System.out.println("CONTROLLER GRAFICO SIGNUPVIEWCONTROLLER");
@@ -44,13 +46,13 @@ public class SignUpViewController {
         try{
             if(checkSamePasswd(pfCustomerPassword, pfCustomerConfirmPassword) && !isSomethingNull(tfCustomerName.getText(), tfCustomerSurname.getText(),
                     cbCustomerGender.getValue(), tfCustomerEmail.getText(), pfCustomerPassword.getText())){
-                customerBean.setcName(tfCustomerName.getText());
-                customerBean.setcSurname(tfCustomerSurname.getText());
-                customerBean.setcBirthDate(dpCustomerBirthdate.getValue());
-                customerBean.setcGender(cbCustomerGender.getValue());
-                customerBean.setcEmail(tfCustomerEmail.getText());
-                customerBean.setcPassword(pfCustomerPassword.getText());
-                if(loginController.signUpCustomer(this.customerBean)){
+                customerBeanFirstUI.setcName(tfCustomerName.getText());
+                customerBeanFirstUI.setcSurname(tfCustomerSurname.getText());
+                customerBeanFirstUI.setcBirthDate(dpCustomerBirthdate.getValue());
+                customerBeanFirstUI.setcGender(cbCustomerGender.getValue());
+                customerBeanFirstUI.setcEmail(tfCustomerEmail.getText());
+                customerBeanFirstUI.setcPassword(pfCustomerPassword.getText());
+                if(loginController.signUpCustomer(this.customerBeanFirstUI)){
                     Facade.getInstance().decorateView(ViewLayout.LOGIN);
                 }
             }
@@ -65,13 +67,13 @@ public class SignUpViewController {
         try{
             if(checkSamePasswd(pfHairdresserPassword, pfHairdresserConfirmPassword) && !isSomethingNull(tfHairdresserName.getText(),
                     tfHairdresserSurname.getText(), tfHairdresserEmail.getText(), tfHairdresserPIVA.getText(), tfHairdresserShopName.getText())){
-                hairdresserBean.sethName(tfHairdresserName.getText());
-                hairdresserBean.sethSurname(tfHairdresserSurname.getText());
-                hairdresserBean.sethEmail(tfHairdresserEmail.getText());
-                hairdresserBean.setpIVA(tfHairdresserPIVA.getText());
-                hairdresserBean.setShopName(tfHairdresserShopName.getText());
-                hairdresserBean.sethPassword(pfHairdresserPassword.getText());
-                if(loginController.signUpHair(hairdresserBean)){
+                hairdresserBeanFirstUI.sethName(tfHairdresserName.getText());
+                hairdresserBeanFirstUI.sethSurname(tfHairdresserSurname.getText());
+                hairdresserBeanFirstUI.sethEmail(tfHairdresserEmail.getText());
+                hairdresserBeanFirstUI.setpIVA(tfHairdresserPIVA.getText());
+                hairdresserBeanFirstUI.setShopName(tfHairdresserShopName.getText());
+                hairdresserBeanFirstUI.sethPassword(pfHairdresserPassword.getText());
+                if(loginController.signUpHair(hairdresserBeanFirstUI)){
                     Facade.getInstance().decorateView(ViewLayout.LOGIN);
                 }
             }

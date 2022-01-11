@@ -1,7 +1,8 @@
 package cutit.controller.bookappointment;
 
-import cutit.bean.AppointmentBean;
 import cutit.bean.RateShopBean;
+import cutit.bean.firstui.AppointmentBeanFirstUI;
+import cutit.bean.firstui.RateShopBeanUQ;
 import cutit.decorator.ViewLayout;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
@@ -15,9 +16,9 @@ import java.time.LocalDate;
 
 public class CustomerBookAppointmentViewController {
 
-    private AppointmentBean appointmentBean;
+    private AppointmentBeanFirstUI appointmentBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
-    private RateShopBean shopBean;
+    private RateShopBean rateShopBean;
 
     @FXML
     private BorderPane bpInBookApp;
@@ -34,8 +35,8 @@ public class CustomerBookAppointmentViewController {
     @FXML
     public void initialize(){
         dtPicker.setValue(LocalDate.now());
-        appointmentBean = new AppointmentBean();
-        shopBean = new RateShopBean();
+        appointmentBeanFirstUI = new AppointmentBeanFirstUI();
+        rateShopBean = new RateShopBeanUQ();
         bookAppointmentController = new BookAppointmentController();
         System.out.println("CONTROLLER GRAFICO CUSTOMERBOOKAPPOINTMENTVIEWCONTROLLER");
     }
@@ -50,7 +51,7 @@ public class CustomerBookAppointmentViewController {
     public void bookAppointment() {
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
         //DA RIVEDERE BENE LE FUNZIONI (RIVEDERE IL VOPC)!
-        if(bookAppointmentController.compileAppointment(this.appointmentBean)){
+        if(bookAppointmentController.compileAppointment(this.appointmentBeanFirstUI)){
             showPayedAndBooked();
         }
     }
@@ -107,14 +108,14 @@ public class CustomerBookAppointmentViewController {
 
     private void addToFavourites(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        if(bookAppointmentController.addShopToFavourites(this.shopBean)){
+        if(bookAppointmentController.addShopToFavourites("shopName")){
             Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
         }
     }
 
     private void addAppToCalendar(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        if(bookAppointmentController.addToCalendar(this.appointmentBean)){
+        if(bookAppointmentController.addToCalendar(this.appointmentBeanFirstUI)){
             Facade.getInstance().decorateView(ViewLayout.HOME);
         }
     }

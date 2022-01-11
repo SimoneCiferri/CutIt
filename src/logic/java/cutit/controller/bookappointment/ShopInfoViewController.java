@@ -1,10 +1,8 @@
 package cutit.controller.bookappointment;
 
-import cutit.bean.ShopBean;
-import cutit.database.dao.ShopDAO;
+import cutit.bean.firstui.ShopBeanUQ;
 import cutit.decorator.ViewLayout;
 import cutit.facade.Facade;
-import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -16,7 +14,7 @@ import java.util.List;
 
 public class ShopInfoViewController {
 
-    private ShopBean shopBean;
+    private ShopBeanUQ shopBeanUQ;
     private BookAppointmentController bookAppointmentController;
     private List<ImageView> ivList = new ArrayList<>();
 
@@ -61,12 +59,12 @@ public class ShopInfoViewController {
 
     public void fillView(String shopName){
         try {
-            this.shopBean = bookAppointmentController.getShop(shopName);
-            lShopName.setText(shopBean.getShopName());
-            lShopPhone.setText(shopBean.getPhoneNumber());
-            for(int i = 0;i<shopBean.getImages().size();i++){
+            this.shopBeanUQ = bookAppointmentController.getShop(shopName);
+            lShopName.setText(shopBeanUQ.getShopName());
+            lShopPhone.setText(shopBeanUQ.getPhoneNumber());
+            for(int i = 0; i< shopBeanUQ.getImages().size(); i++){
                 System.out.println("immagine");
-                ivList.get(i).setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
+                ivList.get(i).setImage(new Image(String.valueOf(shopBeanUQ.getImages().get(i).toURI())));
             }
         } catch (Exception e) {
             e.printStackTrace();

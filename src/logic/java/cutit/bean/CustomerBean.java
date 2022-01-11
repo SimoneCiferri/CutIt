@@ -3,154 +3,42 @@ package cutit.bean;
 import java.time.LocalDate;
 import java.util.List;
 
-public class CustomerBean {
+public interface CustomerBean {
 
-    private String cEmail;
-    private String cPassword;
-    private Integer cRole;
-    private String cName;
-    private String cSurname;
-    private LocalDate cBirthDate;
-    private String cGender;
-    private List<String> allBookedAppointments;
-    private List<String> allPromotions;
-    private List<AppData> allBookedAppointment;
+    String getcEmail();
 
-    public Integer getcRole() {
-        return cRole;
-    }
+    void setcEmail(String cEmail);
 
-    public void setcRole(Integer cRole) {
-        this.cRole = cRole;
-    }
+    String getcPassword();
 
-    public String getcName() {
-        return cName;
-    }
+    void setcPassword(String cPassword);
 
-    public void setcName(String cName) {
-        this.cName = cName;
-    }
+    Integer getcRole();
 
-    public String getcSurname() {
-        return cSurname;
-    }
+    void setcRole(Integer cRole);
 
-    public void setcSurname(String cSurname) {
-        this.cSurname = cSurname;
-    }
+    String getcName();
 
-    public LocalDate getcBirthDate() {
-        return cBirthDate;
-    }
+    void setcName(String cName);
 
-    public void setcBirthDate(LocalDate cBirthDate) {
-        this.cBirthDate = cBirthDate;
-    }
+    String getcSurname();
 
-    public String getcGender() {
-        return cGender;
-    }
+    void setcSurname(String cSurname);
 
-    public void setcGender(String cGender) {
-        this.cGender = cGender;
-    }
+    LocalDate getcBirthDate();
 
-    public String getcEmail() {
-        return cEmail;
-    }
+    void setcBirthDate(LocalDate cBirthDate);
 
-    public void setcEmail(String cEmail) {
-        this.cEmail = cEmail;
-    }
+    String getcGender();
 
-    public String getcPassword() {
-        return cPassword;
-    }
+    void setcGender(String cGender);
 
-    public void setcPassword(String cPassword) {
-        this.cPassword = cPassword;
-    }
+    List<String> getAllPromotions();
 
-    public List<String> getAllBookedAppointments() {
-        return allBookedAppointments;
-    }
+    void setAllPromotions(List<String> allPromotions);
 
-    public void setAllBookedAppointments(List<String> allBookedAppointments) {
-        this.allBookedAppointments = allBookedAppointments;
-    }
+    public List<AppointmentBean> getAllBookedAppointments();
 
-    public List<String> getAllPromotions() {
-        return allPromotions;
-    }
-
-    public void setAllPromotions(List<String> allPromotions) {
-        this.allPromotions = allPromotions;
-    }
-
-    public List<AppData> getAllBookedAppointment() {
-        return allBookedAppointment;
-    }
-
-    public void setAllBookedAppointment(List<AppData> allBookedAppointment) {
-        this.allBookedAppointment = allBookedAppointment;
-    }
-
-    public static class AppData{
-        String appStarTime;
-        String appEndTime;
-        String appCustomer;
-        String appService;
-        String appPromotion;
-        String appShopName;
-
-        public String getAppStarTime() {
-            return appStarTime;
-        }
-
-        public void setAppStarTime(String appStarTime) {
-            this.appStarTime = appStarTime;
-        }
-
-        public String getAppEndTime() {
-            return appEndTime;
-        }
-
-        public void setAppEndTime(String appEndTime) {
-            this.appEndTime = appEndTime;
-        }
-
-        public String getAppCustomer() {
-            return appCustomer;
-        }
-
-        public void setAppCustomer(String appCustomer) {
-            this.appCustomer = appCustomer;
-        }
-
-        public String getAppService() {
-            return appService;
-        }
-
-        public void setAppService(String appService) {
-            this.appService = appService;
-        }
-
-        public String getAppPromotion() {
-            return appPromotion;
-        }
-
-        public void setAppPromotion(String appPromotion) {
-            this.appPromotion = appPromotion;
-        }
-
-        public String getAppShopName() {
-            return appShopName;
-        }
-
-        public void setAppShopName(String appShopName) {
-            this.appShopName = appShopName;
-        }
-    }
+    public void setAllBookedAppointments(List<AppointmentBean> allBookedAppointments);
 
 }

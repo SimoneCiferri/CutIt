@@ -1,7 +1,9 @@
 package cutit.controller.manageservices;
 
 import cutit.bean.ManageServiceBean;
+import cutit.bean.firstui.ManageServiceBeanFirstUI;
 import cutit.bean.ShopBean;
+import cutit.bean.firstui.ShopBeanUQ;
 import cutit.checkTest.checkTextField;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
@@ -19,7 +21,7 @@ import java.util.List;
 
 public class HairdresserManageServicesViewController {
 
-    private ShopBean shopBean;
+    private ShopBean shopBeanFirstUI;
     private ManageServiceBean manageServicesBean;
     private ManageServicesController manageServicesController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
@@ -31,7 +33,8 @@ public class HairdresserManageServicesViewController {
 
     @FXML
     public void initialize(){
-        shopBean = new ShopBean();
+        shopBeanFirstUI = new ShopBeanUQ();
+        manageServicesBean = new ManageServiceBeanFirstUI();
         manageServicesController = new ManageServicesController();
         vbInScrollHS.setSpacing(15);
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESERVICESVIEWCONTROLLER");
@@ -39,13 +42,13 @@ public class HairdresserManageServicesViewController {
 
     private void showHairServ() {
         try {
-            this.manageServicesBean = manageServicesController.getAllServices(shopBean);
+            manageServicesController.getAllServices(manageServicesBean, shopBeanFirstUI);
             vbInScrollHS.getChildren().clear();
             Button add = JavaFXNodeFactory.getInstance().createButton("Add Service");
             add.setOnMouseClicked((MouseEvent) -> showAddForm());
             vbInScrollHS.getChildren().add(add);
-            for(int i = 0; i< manageServicesBean.getServicesList().size(); i++) {
-                String serviceName = manageServicesBean.getServicesList().get(i);
+            for(int i = 0; i< manageServicesBean.getAllServicesList().size(); i++) {
+                String serviceName = manageServicesBean.getAllServicesList().get(i);
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel(serviceName, labelStyle);
                 l.setOnMouseClicked((MouseEvent) -> deleteForm(serviceName, manageServicesBean.getServiceList().get(serviceName)));
                 vbInScrollHS.getChildren().add(l);
@@ -87,9 +90,9 @@ public class HairdresserManageServicesViewController {
         if(checkTextField.isNumeric(servicePrice.getText(),"Error!", "Not Panic!", "You have to insert numbers in the price field")) {
         manageServicesBean.setServiceName(serviceName.getText());
         manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
-        manageServicesBean.setServiceShopName(shopBean.getShopName());
+        manageServicesBean.setServiceShopName(shopBeanFirstUI.getShopName());
         try {
-            manageServicesController.addService(this.manageServicesBean);
+            manageServicesController.addService(manageServicesBean);
             showHairServ();
         } catch (Exception e) {
             e.printStackTrace();
@@ -127,7 +130,7 @@ public class HairdresserManageServicesViewController {
     private void deleteService(String serviceName, Float servicePrice){
         manageServicesBean.setServiceName(serviceName);
         manageServicesBean.setServicePrice(servicePrice);
-        manageServicesBean.setServiceShopName(shopBean.getShopName());
+        manageServicesBean.setServiceShopName(shopBeanFirstUI.getShopName());
         try {
             manageServicesController.deleteService(this.manageServicesBean);
         } catch (Exception e) {
@@ -136,8 +139,8 @@ public class HairdresserManageServicesViewController {
         showHairServ();
     }
 
-    public void fillView(ShopBean shopBean){
-        this.shopBean = shopBean;
+    public void fillView(ShopBean shopBeanFirstUI){
+        this.shopBeanFirstUI = shopBeanFirstUI;
         System.out.println("Filling View from HairdresserBean data passedBY TopBarHairdresserViewController");
         showHairServ();
     }

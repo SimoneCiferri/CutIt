@@ -27,13 +27,11 @@ public class ManageServicesController {
         return true;
     }
 
-    public ManageServiceBean getAllServices(ShopBean shopBean) throws Exception {
+    public void getAllServices(ManageServiceBean manageServiceBean, ShopBean shopBean) throws Exception {
         Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
         List<Service> serviceList = ServiceDAO.getALlServices(shop);
-        ManageServiceBean manageServiceBean = new ManageServiceBean();
-        manageServiceBean.setServicesList(stringListFromServList(serviceList));
+        manageServiceBean.setAllServicesList(stringListFromServList(serviceList));
         manageServiceBean.setServiceList(mapFromServList(serviceList));
-        return manageServiceBean;
     }
 
     private List<String> stringListFromServList(List<Service> serviceList) {

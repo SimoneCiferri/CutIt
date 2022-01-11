@@ -1,34 +1,17 @@
 package cutit.bean;
 
-public class RateShopBean {
+public interface RateShopBean {
 
-    private String shopName;
-    private String rCustomer;
-    private Integer rate;
-    
-    public String getShopName() {
-        return shopName;
-    }
+    String getShopName();
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
-    }
+    void setShopName(String shopName);
 
-    public String getrCustomer() {
-        return rCustomer;
-    }
+    String getrCustomer();
 
-    public void setrCustomer(String rCustomer) {
-        this.rCustomer = rCustomer;
-    }
+    void setrCustomer(String rCustomer);
 
-    public Integer getRate() {
-        return rate;
-    }
+    Integer getRate();
 
-    public void setRate(Integer rate) {
-        this.rate = rate;
-    }
-
+    void setRate(Integer rate);
 
 }

@@ -5,123 +5,58 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 
-public class ShopBean {
+public interface ShopBean {
 
-    private String shopName;
-    private String shopPIVA;
-    private String address;
-    private String phoneNumber;
-    private String employee;
-    private String shopDescription;
-    private LocalTime openTime;
-    private LocalTime closeTime;
-    private Map<Integer, Boolean> openDays;
-    private List<File> images;
-    private List<String> promotions;
-    private List<String> services;
-    private List<String> allAppointments;
+    String getShopName();
 
-    public String getShopName() {
-        return shopName;
-    }
+    void setShopName(String shopName);
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
-    }
+    String getShopPIVA();
 
-    public String getShopPIVA() {
-        return shopPIVA;
-    }
+    void setShopPIVA(String shopPIVA);
 
-    public void setShopPIVA(String shopPIVA) {
-        this.shopPIVA = shopPIVA;
-    }
+    String getAddress();
 
-    public String getAddress() {
-        return address;
-    }
+    void setAddress(String address);
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    String getPhoneNumber();
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+    void setPhoneNumber(String phoneNumber);
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+    String getEmployee();
 
-    public String getEmployee() {
-        return employee;
-    }
+    void setEmployee(String employee);
 
-    public void setEmployee(String employee) {
-        this.employee = employee;
-    }
+    String getShopDescription();
 
-    public String getShopDescription() {
-        return shopDescription;
-    }
+    void setShopDescription(String shopDescription);
 
-    public void setShopDescription(String shopDescription) {
-        this.shopDescription = shopDescription;
-    }
+    LocalTime getOpenTime();
 
-    public LocalTime getOpenTime() {
-        return openTime;
-    }
+    void setOpenTime(LocalTime openTime);
 
-    public void setOpenTime(LocalTime openTime) {
-        this.openTime = openTime;
-    }
+    LocalTime getCloseTime();
 
-    public LocalTime getCloseTime() {
-        return closeTime;
-    }
+    void setCloseTime(LocalTime closeTime);
 
-    public void setCloseTime(LocalTime closeTime) {
-        this.closeTime = closeTime;
-    }
+    Map<Integer, Boolean> getOpenDays();
 
-    public Map<Integer, Boolean> getOpenDays() {
-        return openDays;
-    }
+    void setOpenDays(Map<Integer, Boolean> openDays);
 
-    public void setOpenDays(Map<Integer, Boolean> openDays) {
-        this.openDays = openDays;
-    }
+    List<File> getImages();
 
-    public List<File> getImages() {
-        return images;
-    }
+    void setImages(List<File> images);
 
-    public void setImages(List<File> images) {
-        this.images = images;
-    }
+    List<String> getPromotions();
 
-    public List<String> getPromotions() {
-        return promotions;
-    }
+    void setPromotions(List<String> promotions);
 
-    public void setPromotions(List<String> promotions) {
-        this.promotions = promotions;
-    }
+    List<String> getServices();
 
-    public List<String> getServices() {
-        return services;
-    }
+    void setServices(List<String> services);
 
-    public void setServices(List<String> services) {
-        this.services = services;
-    }
+    List<String> getAllAppointments();
 
-    public List<String> getAllAppointments() {
-        return allAppointments;
-    }
+    void setAllAppointments(List<String> allAppointments);
 
-    public void setAllAppointments(List<String> allAppointments) {
-        this.allAppointments = allAppointments;
-    }
 }

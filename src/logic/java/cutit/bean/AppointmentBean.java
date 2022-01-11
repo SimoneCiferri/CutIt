@@ -1,61 +1,29 @@
 package cutit.bean;
 
-import java.time.LocalDateTime;
+public interface AppointmentBean {
 
-public class AppointmentBean {
+    String getStartTime();
 
-    private String startTime;
-    private String endTime;
-    private String customer;
-    private String promotionCode;
-    private String serviceName;
-    private String shopName;
+    void setStartTime(String startTime);
 
-    public String getStartTime() {
-        return startTime;
-    }
+    String getEndTime();
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
+    void setEndTime(String endTime);
 
-    public String getEndTime() {
-        return endTime;
-    }
+    String getCustomer();
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime;
-    }
+    void setCustomer(String customer);
 
-    public String getCustomer() {
-        return customer;
-    }
+    String getPromotionCode();
 
-    public void setCustomer(String customer) {
-        this.customer = customer;
-    }
+    void setPromotionCode(String promotionCode);
 
-    public String getPromotionCode() {
-        return promotionCode;
-    }
+    String getServiceName();
 
-    public void setPromotionCode(String promotionCode) {
-        this.promotionCode = promotionCode;
-    }
+    void setServiceName(String serviceName);
 
-    public String getServiceName() {
-        return serviceName;
-    }
+    String getShopName();
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
+    void setShopName(String shopName);
 
-    public String getShopName() {
-        return shopName;
-    }
-
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
-    }
 }

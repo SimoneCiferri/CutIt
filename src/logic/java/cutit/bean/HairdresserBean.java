@@ -1,70 +1,33 @@
 package cutit.bean;
 
-public class HairdresserBean {
+public interface HairdresserBean {
 
-    private String hEmail;
-    private String hPassword;
-    private Integer hRole;
-    private String hName;
-    private String hSurname;
-    private String pIVA;
-    private String shopName;
+    Integer gethRole();
 
-    public Integer gethRole() {
-        return hRole;
-    }
+    void sethRole(Integer hRole);
 
-    public void sethRole(Integer hRole) {
-        this.hRole = hRole;
-    }
+    String gethName();
 
-    public String gethName() {
-        return hName;
-    }
+    void sethName(String hName);
 
-    public void sethName(String hName) {
-        this.hName = hName;
-    }
+    String gethSurname();
 
-    public String gethSurname() {
-        return hSurname;
-    }
+    void sethSurname(String hSurname);
 
-    public void sethSurname(String hSurname) {
-        this.hSurname = hSurname;
-    }
+    String gethEmail();
 
-    public String gethEmail() {
-        return hEmail;
-    }
+    void sethEmail(String hEmail);
 
-    public void sethEmail(String hEmail) {
-        this.hEmail = hEmail;
-    }
+    String getShopName();
 
-    public String getShopName() {
-        return shopName;
-    }
+    void setShopName(String shopName);
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
-    }
+    String getpIVA();
 
-    public String getpIVA() {
-        return pIVA;
-    }
+    void setpIVA(String pIVA);
 
-    public void setpIVA(String pIVA) {
-        this.pIVA = pIVA;
-    }
+    String gethPassword();
 
-    public String gethPassword() {
-        return hPassword;
-    }
-
-    public void sethPassword(String hPassword) {
-        this.hPassword = hPassword;
-    }
-
+    void sethPassword(String hPassword);
 
 }

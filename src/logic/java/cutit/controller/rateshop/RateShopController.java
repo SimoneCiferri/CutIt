@@ -1,6 +1,7 @@
 package cutit.controller.rateshop;
 
 import cutit.bean.RateShopBean;
+import cutit.bean.firstui.RateShopBeanUQ;
 
 
 public class RateShopController {

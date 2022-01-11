@@ -1,13 +1,11 @@
 package cutit.controller.login;
 
-import cutit.bean.CustomerBean;
-import cutit.bean.HairdresserBean;
-import cutit.bean.ShopBean;
-import cutit.bean.UserBean;
+import cutit.bean.*;
+import cutit.bean.firstui.CustomerBeanFirstUI;
+import cutit.bean.firstui.HairdresserBeanFirstUI;
 import cutit.database.dao.CustomerDAO;
 import cutit.database.dao.HairdresserDAO;
 import cutit.database.dao.UserDAO;
-import cutit.model.*;
 import cutit.model.*;
 
 import java.util.ArrayList;
@@ -85,6 +83,21 @@ public class LoginController {
         return servList;
     }
 
+    public void getCustomer(UserBean userBean, CustomerBean customerBean) throws Exception {
+        User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
+        Customer customer = CustomerDAO.getCustomer(user);
+        customerBean.setcEmail(customer.getUserID());
+        customerBean.setcPassword(customer.getPwd());
+        customerBean.setcRole(customer.getRole());
+        customerBean.setcName(customer.getName());
+        customerBean.setcSurname(customer.getSurname());
+        customerBean.setcBirthDate(customer.getBirthDate());
+        customerBean.setcGender(customer.getGender());
+        customerBean.setAllPromotions(stringListFromPromList(customer.getPromotions()));
+        //customerBean.setAllBookedAppointments(stringListFromAppList(customer.getBookedAppointments()));
+
+    }
+
     private List<String> stringListFromPromList(List<Promotion> promotions) {
         List<String> promList = new ArrayList<>();
         if(!promotions.isEmpty()){
@@ -94,22 +107,6 @@ public class LoginController {
             }
         }
         return promList;
-    }
-
-    public CustomerBean getCustomer(UserBean userBean) throws Exception {
-        User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
-        Customer customer = CustomerDAO.getCustomer(user);
-        CustomerBean customerBean = new CustomerBean();
-        customerBean.setcEmail(customer.getUserID());
-        customerBean.setcPassword(customer.getPwd());
-        customerBean.setcRole(customer.getRole());
-        customerBean.setcName(customer.getName());
-        customerBean.setcSurname(customer.getSurname());
-        customerBean.setcBirthDate(customer.getBirthDate());
-        customerBean.setcGender(customer.getGender());
-        customerBean.setAllBookedAppointments(stringListFromAppList(customer.getBookedAppointments()));
-        customerBean.setAllPromotions(stringListFromPromList(customer.getPromotions()));
-        return customerBean;
     }
 
 }

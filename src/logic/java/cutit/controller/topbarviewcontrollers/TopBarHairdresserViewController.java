@@ -1,9 +1,6 @@
 package cutit.controller.topbarviewcontrollers;
 
-import cutit.bean.DeleteAppointmentBean;
-import cutit.bean.HairdresserBean;
-import cutit.bean.ManageServiceBean;
-import cutit.bean.ShopBean;
+import cutit.bean.*;
 import cutit.controller.deletebookedappointments.HairdresserDeleteBookedAppointmentsViewController;
 import cutit.controller.managepromotions.HairdresserManagePromotionsViewController;
 import cutit.controller.manageservices.HairdresserManageServicesViewController;
@@ -34,9 +31,8 @@ public class TopBarHairdresserViewController {
     private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
     private double xOffset = 0;
     private double yOffset = 0;
-    private HairdresserBean hairdresserBean;
-    private ShopBean shopBean;
-    private ManageServiceBean manageServiceBean;
+    private HairdresserBean hairdresserBeanFirstUI;
+    private ShopBean shopBeanFirstUI;
     private DeleteAppointmentBean deleteAppointmentBean;
 
     @FXML
@@ -68,8 +64,8 @@ public class TopBarHairdresserViewController {
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
-        deleteAppointmentBean.setShopName(shopBean.getShopName());
-        deleteAppointmentBean.setAllAppointments(shopBean.getAllAppointments());
+        deleteAppointmentBean.setShopName(shopBeanFirstUI.getShopName());
+        deleteAppointmentBean.setAllAppointments(shopBeanFirstUI.getAllAppointments());
         HairdresserAppointmentsView view = (HairdresserAppointmentsView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERAPPOINTMENTS);
         HairdresserDeleteBookedAppointmentsViewController viewController = (HairdresserDeleteBookedAppointmentsViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERAPPOINTMENTS);
         viewController.fillView(this.deleteAppointmentBean);
@@ -86,7 +82,7 @@ public class TopBarHairdresserViewController {
         btnHLogout.setStyle(transparentStyle);
         HairdresserPromotionsView view = (HairdresserPromotionsView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERPROMOTIONS);
         HairdresserManagePromotionsViewController viewController = (HairdresserManagePromotionsViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERPROMOTIONS);
-        viewController.fillView(shopBean);
+        viewController.fillView(shopBeanFirstUI);
         return true;
     }
 
@@ -100,7 +96,7 @@ public class TopBarHairdresserViewController {
         btnHLogout.setStyle(transparentStyle);
         HairdresserServicesView view = (HairdresserServicesView)  Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERSERVICES);
         HairdresserManageServicesViewController viewController = (HairdresserManageServicesViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERSERVICES);
-        viewController.fillView(shopBean);
+        viewController.fillView(shopBeanFirstUI);
         return true;
     }
 
@@ -114,7 +110,7 @@ public class TopBarHairdresserViewController {
         btnHLogout.setStyle(transparentStyle);
         HairdresserManageShopView view = (HairdresserManageShopView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERMANAGESHOP);
         HairdresserManageShopPageViewController viewController = (HairdresserManageShopPageViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERMANAGESHOP);
-        viewController.fillView(shopBean);
+        viewController.fillView(shopBeanFirstUI);
         return true;
     }
 
@@ -163,10 +159,10 @@ public class TopBarHairdresserViewController {
         }
     }
 
-    public void startBean(HairdresserBean hairdresserBean, ShopBean shopBean){
+    public void startBean(HairdresserBean hairdresserBeanFirstUI, ShopBean shopBeanFirstUI){
         System.out.println("HairdresserBean passedBY LoginViewController");
-        this.hairdresserBean = hairdresserBean;
-        this.shopBean = shopBean;
+        this.hairdresserBeanFirstUI = hairdresserBeanFirstUI;
+        this.shopBeanFirstUI = shopBeanFirstUI;
         goApp();
     }
 

@@ -10,14 +10,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.time.LocalTime;
 import java.util.*;
 
 public class HairdresserManageShopPageViewController {
 
-    private ShopBean shopBean;
+    private ShopBean shopBeanFirstUI;
     private ManageShopPageController manageShopPageController;
     private List<CheckBox> checkBoxList = new ArrayList<>();
     private List<ImageView> ivList = new ArrayList<>();
@@ -75,17 +74,17 @@ public class HairdresserManageShopPageViewController {
     @FXML
     public void updateData(){
         if(checkTextField.isNumeric(tfPhoneNumber.getText(),"Error!", "Not Panic!", "You have to insert numbers in the phone number field") && tfPhoneNumber.getText().length() < 12 ) {
-            shopBean.setAddress(tfAddress.getText());
-            shopBean.setPhoneNumber(tfPhoneNumber.getText());
-            shopBean.setShopDescription(taDescription.getText());
-            shopBean.setEmployee(taEmployee.getText());
+            shopBeanFirstUI.setAddress(tfAddress.getText());
+            shopBeanFirstUI.setPhoneNumber(tfPhoneNumber.getText());
+            shopBeanFirstUI.setShopDescription(taDescription.getText());
+            shopBeanFirstUI.setEmployee(taEmployee.getText());
             Map<Integer, Boolean> openDaysMap = getOpenDays(checkBoxList);
-            shopBean.setOpenDays(openDaysMap);
-            shopBean.setOpenTime(LocalTime.parse(cbOpenTime.getValue()));
-            shopBean.setCloseTime(LocalTime.parse(cbCloseTime.getValue()));
-            shopBean.setImages(getImages());
+            shopBeanFirstUI.setOpenDays(openDaysMap);
+            shopBeanFirstUI.setOpenTime(LocalTime.parse(cbOpenTime.getValue()));
+            shopBeanFirstUI.setCloseTime(LocalTime.parse(cbCloseTime.getValue()));
+            shopBeanFirstUI.setImages(getImages());
             try {
-                manageShopPageController.updateShop(shopBean);
+                manageShopPageController.updateShop(shopBeanFirstUI);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -104,34 +103,34 @@ public class HairdresserManageShopPageViewController {
 
 
     public void fillView(ShopBean bean){
-        shopBean = bean;
+        shopBeanFirstUI = bean;
 
-        shopName.setText(shopBean.getShopName());
-        if(shopBean.getAddress() != null){
-            tfAddress.setText(shopBean.getAddress());
+        shopName.setText(shopBeanFirstUI.getShopName());
+        if(shopBeanFirstUI.getAddress() != null){
+            tfAddress.setText(shopBeanFirstUI.getAddress());
         }
-        if(shopBean.getPhoneNumber() != null){
-            tfPhoneNumber.setText(shopBean.getPhoneNumber());
+        if(shopBeanFirstUI.getPhoneNumber() != null){
+            tfPhoneNumber.setText(shopBeanFirstUI.getPhoneNumber());
         }
-        if(shopBean.getShopDescription() != null){
-            taDescription.setText(shopBean.getShopDescription());
+        if(shopBeanFirstUI.getShopDescription() != null){
+            taDescription.setText(shopBeanFirstUI.getShopDescription());
         }
-        if(shopBean.getEmployee() != null){
-            taEmployee.setText(shopBean.getEmployee());
+        if(shopBeanFirstUI.getEmployee() != null){
+            taEmployee.setText(shopBeanFirstUI.getEmployee());
         }
 
-        if(!shopBean.getOpenDays().isEmpty()){
-            for(int i = 0; i<shopBean.getOpenDays().size(); i++){
-                checkBoxList.get(i).setSelected(shopBean.getOpenDays().get(i+1));
+        if(!shopBeanFirstUI.getOpenDays().isEmpty()){
+            for(int i = 0; i< shopBeanFirstUI.getOpenDays().size(); i++){
+                checkBoxList.get(i).setSelected(shopBeanFirstUI.getOpenDays().get(i+1));
             }
         }
 
-        cbOpenTime.setValue(shopBean.getOpenTime().toString());
-        cbCloseTime.setValue(shopBean.getCloseTime().toString());
+        cbOpenTime.setValue(shopBeanFirstUI.getOpenTime().toString());
+        cbCloseTime.setValue(shopBeanFirstUI.getCloseTime().toString());
 
-       if(!shopBean.getImages().isEmpty()){
-            for(int i = 0; i<shopBean.getImages().size(); i++){
-                File file = shopBean.getImages().get(i);
+       if(!shopBeanFirstUI.getImages().isEmpty()){
+            for(int i = 0; i< shopBeanFirstUI.getImages().size(); i++){
+                File file = shopBeanFirstUI.getImages().get(i);
                 imageMap.put(i+1, file);
                 ivList.get(i).setImage(new Image(String.valueOf(file.toURI())));
             }

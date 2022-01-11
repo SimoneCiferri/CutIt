@@ -1,7 +1,8 @@
 package cutit.controller.managepromotions;
 
-import cutit.bean.HairdresserBean;
 import cutit.bean.ManagePromotionBean;
+import cutit.bean.firstui.HairdresserBeanFirstUI;
+import cutit.bean.firstui.ManagePromotionBeanUQ;
 import cutit.bean.ShopBean;
 import cutit.checkTest.checkTextField;
 import cutit.factory.JavaFXNodeFactory;
@@ -18,9 +19,9 @@ import java.util.List;
 
 public class HairdresserManagePromotionsViewController {
 
-    private HairdresserBean hairdresserBean;
-    private ShopBean shopBean;
-    private ManagePromotionBean managePromotionBean;
+    private HairdresserBeanFirstUI hairdresserBeanFirstUI;
+    private ShopBean shopBeanFirstUI;
+    private ManagePromotionBean managePromotionBeanFirstUI;
     private ManagePromotionController managePromotionController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private final Double titleFontSize = 30.0;
@@ -31,7 +32,7 @@ public class HairdresserManagePromotionsViewController {
 
     @FXML
     public void initialize(){
-        managePromotionBean = new ManagePromotionBean();
+        managePromotionBeanFirstUI = new ManagePromotionBeanUQ();
         managePromotionController = new ManagePromotionController();
         vbInScrollHProm.setSpacing(15);
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGEPROMOTIONSVIEWCONTROLLER");
@@ -39,17 +40,17 @@ public class HairdresserManagePromotionsViewController {
 
     private void showHairProm() {
         try {
-            this.managePromotionBean = managePromotionController.getAllPromotions(shopBean);
+            managePromotionController.getAllPromotions(managePromotionBeanFirstUI, shopBeanFirstUI);
             vbInScrollHProm.getChildren().clear();
             Button add = JavaFXNodeFactory.getInstance().createButton("Add Promotion");
             add.setOnMouseClicked((MouseEvent) -> addForm());
             vbInScrollHProm.getChildren().add(add);
-            for(int i = 0; i<managePromotionBean.getPromotionsList().size(); i++) {
-                ManagePromotionBean.PromData promData = managePromotionBean.getPromotionsList().get(i);
-                String promotionCode = promData.getServiceCode();
-                Integer promotionOffValue = promData.getOffV();
-                String promotionServiceName = promData.getServiceName();
-                LocalDate expire = promData.getExpire();
+            for(int i = 0; i< managePromotionBeanFirstUI.getPromotionsBeanList().size(); i++) {
+                ManagePromotionBean promotionBean = managePromotionBeanFirstUI.getPromotionsBeanList().get(i);
+                String promotionCode = promotionBean.getPromotionCode();
+                Integer promotionOffValue = promotionBean.getPromOffValue();
+                String promotionServiceName = promotionBean.getPromServiceName();
+                LocalDate expire = promotionBean.getPromExpireDate();
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel(promotionCode, labelStyle);
                 l.setOnMouseClicked((MouseEvent) -> deleteForm(promotionCode, promotionOffValue, promotionServiceName, expire.toString()));
                 vbInScrollHProm.getChildren().add(l);
@@ -79,12 +80,12 @@ public class HairdresserManagePromotionsViewController {
         ChoiceBox<String> promService = new ChoiceBox<>();
         promService.setMaxSize(180,25);
         try {
-            this.managePromotionBean = managePromotionController.getAllServices(shopBean);
+            this.managePromotionBeanFirstUI = managePromotionController.getAllServices(shopBeanFirstUI);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        for(int j=0; j<managePromotionBean.getServiceList().size(); j++){
-            promService.getItems().add(managePromotionBean.getServiceList().get(j));
+        for(int j = 0; j< managePromotionBeanFirstUI.getServiceList().size(); j++){
+            promService.getItems().add(managePromotionBeanFirstUI.getServiceList().get(j));
         }
         rightList.add(promService);
         TextArea promValue = new TextArea();
@@ -108,13 +109,13 @@ public class HairdresserManagePromotionsViewController {
 
     private void addPromotion(String promCode, String offValue,  LocalDate expireDate, String serviceName){
         if(checkTextField.isNumeric(offValue,"Error!", "Not Panic!", "You have to insert numbers in discount field!")){
-            managePromotionBean.setPromotionCode(promCode);
-            managePromotionBean.setPromOffValue(Integer.valueOf(offValue));
-            managePromotionBean.setPromExpireDate(expireDate);
-            managePromotionBean.setPromServiceName(serviceName);
-            managePromotionBean.setPromShopName(shopBean.getShopName());
+            managePromotionBeanFirstUI.setPromotionCode(promCode);
+            managePromotionBeanFirstUI.setPromOffValue(Integer.valueOf(offValue));
+            managePromotionBeanFirstUI.setPromExpireDate(expireDate);
+            managePromotionBeanFirstUI.setPromServiceName(serviceName);
+            managePromotionBeanFirstUI.setPromShopName(shopBeanFirstUI.getShopName());
             try {
-                managePromotionController.addPromotion(this.managePromotionBean);
+                managePromotionController.addPromotion(this.managePromotionBeanFirstUI);
                 showHairProm();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -145,19 +146,19 @@ public class HairdresserManagePromotionsViewController {
     }
 
     private void removePromotion(String promCode, Integer offValue, String expireDate){
-        managePromotionBean.setPromotionCode(promCode);
-        managePromotionBean.setPromOffValue(offValue);
-        managePromotionBean.setPromExpireDate(LocalDate.parse(expireDate));
+        managePromotionBeanFirstUI.setPromotionCode(promCode);
+        managePromotionBeanFirstUI.setPromOffValue(offValue);
+        managePromotionBeanFirstUI.setPromExpireDate(LocalDate.parse(expireDate));
         try {
-            managePromotionController.removePromotion(this.managePromotionBean);
+            managePromotionController.removePromotion(this.managePromotionBeanFirstUI);
         } catch (Exception e) {
             e.printStackTrace();
         }
         showHairProm();
     }
 
-    public void fillView(ShopBean shopBean){
-        this.shopBean = shopBean;
+    public void fillView(ShopBean shopBeanFirstUI){
+        this.shopBeanFirstUI = shopBeanFirstUI;
         System.out.println("Filling View from HairdresserBean data passedBY TopBarHairdresserViewController");
         showHairProm();
     }

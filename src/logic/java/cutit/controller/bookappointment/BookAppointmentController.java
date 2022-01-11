@@ -1,6 +1,10 @@
 package cutit.controller.bookappointment;
 
 import cutit.bean.*;
+import cutit.bean.firstui.AppointmentBeanFirstUI;
+import cutit.bean.firstui.CustomerBeanFirstUI;
+import cutit.bean.firstui.RateShopBeanUQ;
+import cutit.bean.firstui.ShopBeanUQ;
 import cutit.controller.addappointmenttocalendar.AddAppointmentToCalendarController;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.controller.payonline.PayOnlineController;
@@ -20,16 +24,16 @@ public class BookAppointmentController {
     private AddShopToFavouritesController addShopToFavouritesController;
     private AddAppointmentToCalendarController addAppointmentToCalendarController;
 
-    public Boolean compileAppointment(AppointmentBean appointmentBean){
+    public Boolean compileAppointment(AppointmentBeanFirstUI appointmentBeanFirstUI){
         //dovrò passare le beans, in modo che queste si possano registrare come osservatori del model (e forse anche per prendere i dati in ingresso, oopure li metto da qui ma sempre usando la bean)
         System.out.println("CONTROLLER APPLICATIVO -> Compiling Appointment (data from AppointmentBean passed by my viewController)");
-        if(payAppointment(appointmentBean)){
+        if(payAppointment(appointmentBeanFirstUI)){
             return true;
         }
         return false;
     }
 
-    private Boolean payAppointment(AppointmentBean appBean){
+    private Boolean payAppointment(AppointmentBeanFirstUI appBean){
         payOnlineController = new PayOnlineController();
         payOnlineController.payAppointment(appBean);
         return true;
@@ -41,66 +45,48 @@ public class BookAppointmentController {
         return true;
     }
 
-    public Boolean addShopToFavourites(RateShopBean shopBean){
+    public Boolean addShopToFavourites(String shopName){
         addShopToFavouritesController = new AddShopToFavouritesController();
-        addShopToFavouritesController.addToFavourites(shopBean);
+        addShopToFavouritesController.addToFavourites(shopName);
         return true;
     }
 
-    public Boolean addToCalendar(AppointmentBean appBean){
+    public Boolean addToCalendar(AppointmentBeanFirstUI appBean){
         addAppointmentToCalendarController = new AddAppointmentToCalendarController();
         addAppointmentToCalendarController.addToCalendar(appBean);
         return true;
     }
 
-    public void getAppointments(CustomerBean customerBean) throws Exception {
-        Customer customer = CustomerDAO.getCustomer(new User(customerBean.getcEmail(), customerBean.getcPassword(), customerBean.getcRole()));
+    public void getAppointments(CustomerBeanFirstUI customerBeanFirstUI) throws Exception {
+        Customer customer = CustomerDAO.getCustomer(new User(customerBeanFirstUI.getcEmail(), customerBeanFirstUI.getcPassword(), customerBeanFirstUI.getcRole()));
         List<Appointment> appList = AppointmentDAO.getAllCustomerAppointments(customer);
-        customerBean.setAllBookedAppointment(stringAppDataFromAppList(appList));
     }
 
-    public ShopsBean getShops() throws Exception{
+    public void getShops(ShopListBean shopListBean) throws Exception{
         List<Shop> shopList = ShopDAO.getShops();
-        ShopsBean shopsBean = new ShopsBean();
-        shopsBean.setShopDataList(shopDataFromShopList(shopList));
-        return shopsBean;
+        shopListBean.setShopBeanList(beanListFromShopList(shopList));
     }
 
-    public ShopBean getShop(String shopName) throws Exception {
+    public ShopBeanUQ getShop(String shopName) throws Exception {
         Shop shop = ShopDAO.getShopFromName(shopName);
-        ShopBean shopBean = new ShopBean();
-        shopBean.setShopName(shop.getShopName());
-        shopBean.setShopPIVA(shop.getpIVA());
-        shopBean.setAddress(shop.getAddress());
-        shopBean.setPhoneNumber(shop.getPhoneNumber());
-        shopBean.setEmployee(shop.getEmployee());
-        shopBean.setShopDescription(shop.getDescription());
-        shopBean.setOpenTime(shop.getOpenTime());
-        shopBean.setCloseTime(shop.getCloseTime());
-        shopBean.setOpenDays(shop.getOpenDays());
-        shopBean.setPromotions(stringListFromPromList(shop.getPromotions()));
-        shopBean.setServices(stringListFromServList(shop.getServices()));
-        shopBean.setImages(shop.getImages());
-        return shopBean;
+        ShopBeanUQ shopBeanUQ = new ShopBeanUQ();
+        shopBeanUQ.setShopName(shop.getShopName());
+        shopBeanUQ.setShopPIVA(shop.getpIVA());
+        shopBeanUQ.setAddress(shop.getAddress());
+        shopBeanUQ.setPhoneNumber(shop.getPhoneNumber());
+        shopBeanUQ.setEmployee(shop.getEmployee());
+        shopBeanUQ.setShopDescription(shop.getDescription());
+        shopBeanUQ.setOpenTime(shop.getOpenTime());
+        shopBeanUQ.setCloseTime(shop.getCloseTime());
+        shopBeanUQ.setOpenDays(shop.getOpenDays());
+        shopBeanUQ.setPromotions(stringListFromPromList(shop.getPromotions()));
+        shopBeanUQ.setServices(stringListFromServList(shop.getServices()));
+        shopBeanUQ.setImages(shop.getImages());
+        return shopBeanUQ;
     }
 
-    private List<ShopsBean.ShopData> shopDataFromShopList(List<Shop> shopList) {
-        List<ShopsBean.ShopData> list = new ArrayList<>();
-        if(!shopList.isEmpty()){
-            for(int i = 0; i<shopList.size(); i++){
-                String shopName = shopList.get(i).getShopName();
-                String address = shopList.get(i).getAddress();
-                ShopsBean.ShopData data = new ShopsBean.ShopData();
-                data.setShopName(shopName);
-                data.setAddress(address);
-                list.add(data);
-            }
-        }
-        return list;
-    }
-
-    private List<CustomerBean.AppData> stringAppDataFromAppList(List<Appointment> allAppointments) {
-        List<CustomerBean.AppData> appList = new ArrayList<>();
+    /*private List<CustomerBeanFirstUI.AppData> stringAppDataFromAppList(List<Appointment> allAppointments) {
+        List<CustomerBeanFirstUI.AppData> appList = new ArrayList<>();
         if(!allAppointments.isEmpty()){
             for(int i = 0; i<allAppointments.size(); i++){
                 String startTime = allAppointments.get(i).getStartTime().toString();
@@ -108,7 +94,7 @@ public class BookAppointmentController {
                 String customer = allAppointments.get(i).getCustomer().getUserID();
                 String service = allAppointments.get(i).getService().getServiceName();
                 String shop = allAppointments.get(i).getShop().getShopName();
-                CustomerBean.AppData d = new CustomerBean.AppData();
+                CustomerBeanFirstUI.AppData d = new CustomerBeanFirstUI.AppData();
                 d.setAppStarTime(startTime);
                 d.setAppEndTime(endTime);
                 d.setAppCustomer(customer);
@@ -118,6 +104,21 @@ public class BookAppointmentController {
             }
         }
         return appList;
+    }*/
+
+    private List<ShopBean> beanListFromShopList(List<Shop> shopList) {
+        List<ShopBean> list = new ArrayList<>();
+        if(!shopList.isEmpty()){
+            for(int i = 0; i<shopList.size(); i++){
+                String name = shopList.get(i).getShopName();
+                String address = shopList.get(i).getAddress();
+                ShopBean shopBean = new ShopBeanUQ(); //si dovrebbe capire quale creare a runtime OPPURE si usa shopBEanFirstUI come shopBeanUnica per tutte e due le UI
+                shopBean.setShopName(name);
+                shopBean.setAddress(address);
+                list.add(shopBean);
+            }
+        }
+        return list;
     }
 
     private List<String> stringListFromAppList(List<Appointment> allAppointments) {

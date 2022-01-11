@@ -3,110 +3,33 @@ package cutit.bean;
 import java.time.LocalDate;
 import java.util.List;
 
-public class ManagePromotionBean {
-    private String promotionCode;
-    private Integer promOffValue;
-    private String promShopName;
+public interface ManagePromotionBean {
 
-    private LocalDate promExpireDate;
-    private String promServiceName;
+    String getPromotionCode();
 
-    private List<String> serviceList;
-    private List<PromData> promotionsList;
+    void setPromotionCode(String promotionCode);
 
-    public String getPromotionCode() {
-        return promotionCode;
-    }
+    Integer getPromOffValue();
 
-    public void setPromotionCode(String promotionCode) {
-        this.promotionCode = promotionCode;
-    }
+    void setPromOffValue(Integer promOffValue);
 
-    public Integer getPromOffValue() {
-        return promOffValue;
-    }
+    String getPromShopName();
 
-    public void setPromOffValue(Integer promOffValue) {
-        this.promOffValue = promOffValue;
-    }
+    void setPromShopName(String promShopName);
 
-    public String getPromShopName() {
-        return promShopName;
-    }
+    LocalDate getPromExpireDate();
 
-    public void setPromShopName(String promShopName) {
-        this.promShopName = promShopName;
-    }
+    void setPromExpireDate(LocalDate promExpireDate);
 
-    public LocalDate getPromExpireDate() {
-        return promExpireDate;
-    }
+    String getPromServiceName();
 
-    public void setPromExpireDate(LocalDate promExpireDate) {
-        this.promExpireDate = promExpireDate;
-    }
+    void setPromServiceName(String promServiceName);
 
-    public String getPromServiceName() {
-        return promServiceName;
-    }
+    List<String> getServiceList();
 
-    public void setPromServiceName(String promServiceName) {
-        this.promServiceName = promServiceName;
-    }
+    void setServiceList(List<String> serviceList);
 
-    public List<String> getServiceList() {
-        return serviceList;
-    }
+    List<ManagePromotionBean> getPromotionsBeanList();
 
-    public void setServiceList(List<String> serviceList) {
-        this.serviceList = serviceList;
-    }
-
-    public List<PromData> getPromotionsList() {
-        return promotionsList;
-    }
-
-    public void setPromotionsList(List<PromData> promotionsList) {
-        this.promotionsList = promotionsList;
-    }
-
-    public static class PromData{
-
-        String serviceCode;
-        Integer offV;
-        String serviceName;
-        LocalDate expire;
-
-        public String getServiceCode() {
-            return serviceCode;
-        }
-
-        public void setServiceCode(String serviceCode) {
-            this.serviceCode = serviceCode;
-        }
-
-        public Integer getOffV() {
-            return offV;
-        }
-
-        public void setOffV(Integer offV) {
-            this.offV = offV;
-        }
-
-        public String getServiceName() {
-            return serviceName;
-        }
-
-        public void setServiceName(String serviceName) {
-            this.serviceName = serviceName;
-        }
-
-        public LocalDate getExpire() {
-            return expire;
-        }
-
-        public void setExpire(LocalDate expire) {
-            this.expire = expire;
-        }
-    }
+    void setPromotionsBeanList(List<ManagePromotionBean> promotionsBeanList);
 }

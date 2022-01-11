@@ -1,6 +1,6 @@
 package cutit.controller.bookappointment;
 
-import cutit.bean.ShopBean;
+import cutit.bean.firstui.ShopBeanUQ;
 import cutit.decorator.ViewLayout;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
@@ -14,7 +14,7 @@ import java.io.IOException;
 public class CustomerPromotionsViewController {
 
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private ShopBean shopBean;
+    private ShopBeanUQ shopBeanUQ;
 
     @FXML
     private VBox vbInScrollCProm;
@@ -41,8 +41,8 @@ public class CustomerPromotionsViewController {
         vbInScrollCProm.getChildren().add(add);
     }
 
-    public void fillView(ShopBean bean){
-        shopBean = bean;
+    public void fillView(ShopBeanUQ bean){
+        shopBeanUQ = bean;
         System.out.println("Filling View from ShopBean data passedBY TopBarCustomerViewController");
         //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
     }

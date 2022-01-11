@@ -1,7 +1,7 @@
 package cutit.controller.topbarviewcontrollers;
 
 import cutit.bean.CustomerBean;
-import cutit.bean.ShopBean;
+import cutit.bean.firstui.ShopBeanUQ;
 import cutit.controller.bookappointment.CustomerFavouritesShopViewController;
 import cutit.controller.bookappointment.CustomerPromotionsViewController;
 import cutit.controller.bookappointment.HomeViewController;
@@ -32,7 +32,7 @@ public class TopBarCustomerViewController {
     private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
     private double xOffset = 0;
     private double yOffset = 0;
-    private CustomerBean customerBean;
+    private CustomerBean customerBeanFirstUI;
 
     @FXML
     private Label btnClHome, btnClFav, btnClApp, btnClPromotion, btnClLogout;
@@ -64,7 +64,7 @@ public class TopBarCustomerViewController {
         Facade.getInstance().decorateView(ViewLayout.HOME);
         HomeView view = (HomeView)Facade.getInstance().getViewMap().get(ViewLayout.HOME);
         HomeViewController viewController = (HomeViewController) view.getLoadedViewController(ViewLayout.HOME);
-        viewController.fillView(customerBean);
+        viewController.fillView(customerBeanFirstUI);
         return true;
     }
 
@@ -78,7 +78,7 @@ public class TopBarCustomerViewController {
         Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
         CustomerFavouritesShopView view = (CustomerFavouritesShopView) Facade.getInstance().getViewMap().get(ViewLayout.FAVSHOP);
         CustomerFavouritesShopViewController viewController = (CustomerFavouritesShopViewController) view.getLoadedViewController(ViewLayout.FAVSHOP);
-        viewController.fillView(new ShopBean());
+        viewController.fillView(new ShopBeanUQ());
         return true;
     }
 
@@ -92,7 +92,7 @@ public class TopBarCustomerViewController {
         Facade.getInstance().decorateView(ViewLayout.CUSTOMERAPPOINTMENTS);
         CustomerAppointmentsView view = (CustomerAppointmentsView) Facade.getInstance().getViewMap().get(ViewLayout.CUSTOMERAPPOINTMENTS);
         CustomerAppointmentsViewController viewController =(CustomerAppointmentsViewController) view.getLoadedViewController(ViewLayout.CUSTOMERAPPOINTMENTS);
-        viewController.fillView(customerBean);
+        viewController.fillView(customerBeanFirstUI);
         return true;
     }
 
@@ -106,7 +106,7 @@ public class TopBarCustomerViewController {
         Facade.getInstance().decorateView(ViewLayout.CUSTOMERPROMOTIONS);
         CustomerPromotionsView view =(CustomerPromotionsView) Facade.getInstance().getViewMap().get(ViewLayout.CUSTOMERPROMOTIONS);
         CustomerPromotionsViewController viewController = (CustomerPromotionsViewController) view.getLoadedViewController(ViewLayout.CUSTOMERPROMOTIONS);
-        viewController.fillView(new ShopBean());
+        viewController.fillView(new ShopBeanUQ());
         return true;
     }
 
@@ -155,9 +155,9 @@ public class TopBarCustomerViewController {
         }
     }
 
-    public void startBean(CustomerBean customerBean){
+    public void startBean(CustomerBean customerBeanFirstUI){
         System.out.println("Getting CustomerBean passedBY LoginViewController");
-        this.customerBean = customerBean;
+        this.customerBeanFirstUI = customerBeanFirstUI;
         goHome();
     }
 

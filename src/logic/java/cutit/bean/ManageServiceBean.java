@@ -3,52 +3,26 @@ package cutit.bean;
 import java.util.List;
 import java.util.Map;
 
-public class ManageServiceBean {
+public interface ManageServiceBean {
 
-    private String serviceName;
-    private Float servicePrice;
-    private String serviceShopName;
+    List<String> getAllServicesList();
 
-    private List<String> servicesList;
-    private Map<String, Float> serviceList;
+    void setAllServicesList(List<String> allServicesList);
 
-    public List<String> getServicesList() {
-        return servicesList;
-    }
+    String getServiceName();
 
-    public void setServicesList(List<String> servicesList) {
-        this.servicesList = servicesList;
-    }
+    void setServiceName(String serviceName);
 
-    public String getServiceName() {
-        return serviceName;
-    }
+    Float getServicePrice();
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
+    void setServicePrice(Float servicePrice);
 
-    public Float getServicePrice() {
-        return servicePrice;
-    }
+    String getServiceShopName();
 
-    public void setServicePrice(Float servicePrice) {
-        this.servicePrice = servicePrice;
-    }
+    void setServiceShopName(String serviceShopName);
 
-    public String getServiceShopName() {
-        return serviceShopName;
-    }
+    Map<String, Float> getServiceList();
 
-    public void setServiceShopName(String serviceShopName) {
-        this.serviceShopName = serviceShopName;
-    }
+    void setServiceList(Map<String, Float> serviceList);
 
-    public Map<String, Float> getServiceList() {
-        return serviceList;
-    }
-
-    public void setServiceList(Map<String, Float> serviceList) {
-        this.serviceList = serviceList;
-    }
 }

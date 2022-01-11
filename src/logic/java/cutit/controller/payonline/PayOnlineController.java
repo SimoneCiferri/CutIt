@@ -1,10 +1,10 @@
 package cutit.controller.payonline;
 
-import cutit.bean.AppointmentBean;
+import cutit.bean.firstui.AppointmentBeanFirstUI;
 
 public class PayOnlineController {
 
-    public Boolean payAppointment(AppointmentBean appBean){
+    public Boolean payAppointment(AppointmentBeanFirstUI appBean){
         //paga
         System.out.println("CONTROLLER APPLICATIVO -> paying Appointment (data from AppointmentBean passed by BookAppointmentController)");
         return true;

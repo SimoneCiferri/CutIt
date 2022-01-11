@@ -1,32 +1,14 @@
 package cutit.bean;
 
-public class ShopDirectionBean {
+public interface ShopDirectionBean {
 
-    private String shopName;
-    private String latitude;
-    private String longitude;
+    String getShopName();
 
-    public String getShopName() {
-        return shopName;
-    }
+    void setShopName(String shopName);
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
-    }
+    String getAddress();
 
-    public String getLatitude() {
-        return latitude;
-    }
+    void setAddress(String address);
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
 
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
 }

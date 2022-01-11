@@ -1,33 +1,17 @@
 package cutit.bean;
 
-public class UserBean {
+public interface UserBean {
 
-    private String username;
-    private String passwd;
-    private Integer role;
+    String getUsername();
 
-    public String getUsername() {
-        return username;
-    }
+    void setUsername(String username);
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    String getPasswd();
 
-    public String getPasswd() {
-        return passwd;
-    }
+    void setPasswd(String passwd);
 
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
-    }
+    Integer getRole();
 
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
-    }
+    void setRole(Integer role);
 
 }
