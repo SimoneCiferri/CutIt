@@ -86,8 +86,8 @@ public class TextFieldCheck {
 
     public static boolean isSomethingNull(List<String> listToCheck) {
         if(!listToCheck.isEmpty()){
-            for(int i = 0; i<listToCheck.size();i++){
-                if(Objects.equals(listToCheck.get(i), "")){
+            for (String s : listToCheck) {
+                if (Objects.equals(s, "")) {
                     AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "Some fields are empty!", "Please fill out all fields.");
                     return true;
                 }
