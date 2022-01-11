@@ -1,35 +1,19 @@
 package cutit.bean;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-public class DeleteAppointmentBean {
+public interface DeleteAppointmentBean {
 
-    private String startTime;
-    private String shopName;
-    private List<String> allAppointments;
+    String getStartTime();
 
-    public String getStartTime() {
-        return startTime;
-    }
+    void setStartTime(String startTime);
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime;
-    }
+    String getShopName();
 
-    public String getShopName() {
-        return shopName;
-    }
+    void setShopName(String shopName);
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
-    }
+    List<String> getAllAppointments();
 
-    public List<String> getAllAppointments() {
-        return allAppointments;
-    }
+    void setAllAppointments(List<String> allAppointments);
 
-    public void setAllAppointments(List<String> allAppointments) {
-        this.allAppointments = allAppointments;
-    }
 }

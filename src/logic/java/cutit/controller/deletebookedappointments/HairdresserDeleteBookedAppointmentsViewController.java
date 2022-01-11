@@ -1,6 +1,7 @@
 package cutit.controller.deletebookedappointments;
 
 import cutit.bean.DeleteAppointmentBean;
+import cutit.bean.firstui.DeleteAppointmentBeanFirstUI;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -11,7 +12,7 @@ import javafx.scene.layout.VBox;
 
 public class HairdresserDeleteBookedAppointmentsViewController {
 
-    private DeleteAppointmentBean deleteAppointmentBean;
+    private DeleteAppointmentBean deleteAppointmentBeanFirstUI;
     private DeleteBookedAppointmentController deleteBookedAppointmentController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private final Double titleFontSize = 30.0;
@@ -22,7 +23,7 @@ public class HairdresserDeleteBookedAppointmentsViewController {
 
     @FXML
     public void initialize(){
-        deleteAppointmentBean = new DeleteAppointmentBean();
+        deleteAppointmentBeanFirstUI = new DeleteAppointmentBeanFirstUI();
         deleteBookedAppointmentController = new DeleteBookedAppointmentController();
         vbInScrollHApp.setSpacing(15);
         showAppointments();
@@ -63,12 +64,12 @@ public class HairdresserDeleteBookedAppointmentsViewController {
 
     private void deleteAppointment(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        deleteBookedAppointmentController.deleteAppointment(this.deleteAppointmentBean);
+        deleteBookedAppointmentController.deleteAppointment(this.deleteAppointmentBeanFirstUI);
         showAppointments();
     }
 
     public void fillView(DeleteAppointmentBean bean){
-        deleteAppointmentBean = bean;
+        deleteAppointmentBeanFirstUI = bean;
         System.out.println("Filling View from DeleteAppointmentBean data passedBY TopBarHairdresserViewController");
         //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
     }

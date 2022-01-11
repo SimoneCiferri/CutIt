@@ -465,7 +465,7 @@ class LoginViewController
 
 2021/12/29 16:09:01
 class LoginViewController
- Cannot invoke "DeleteAppointmentBean.setShopName(String)" because "this.deleteAppointmentBean" is null
+ Cannot invoke "DeleteAppointmentBean.setShopName(String)" because "this.deleteAppointmentBeanFirstUI" is null
 
 2021/12/29 16:52:14
 class LoginViewController

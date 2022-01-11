@@ -1,6 +1,7 @@
 package cutit.controller.topbarviewcontrollers;
 
 import cutit.bean.*;
+import cutit.bean.firstui.DeleteAppointmentBeanFirstUI;
 import cutit.controller.deletebookedappointments.HairdresserDeleteBookedAppointmentsViewController;
 import cutit.controller.managepromotions.HairdresserManagePromotionsViewController;
 import cutit.controller.manageservices.HairdresserManageServicesViewController;
@@ -33,7 +34,7 @@ public class TopBarHairdresserViewController {
     private double yOffset = 0;
     private HairdresserBean hairdresserBeanFirstUI;
     private ShopBean shopBeanFirstUI;
-    private DeleteAppointmentBean deleteAppointmentBean;
+    private DeleteAppointmentBean deleteAppointmentBeanFirstUI;
 
     @FXML
     private Label  btnHApp, btnHPromotions, btnHServices, btnHShop,  btnHLogout;
@@ -51,7 +52,7 @@ public class TopBarHairdresserViewController {
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
         setImageView();
-        deleteAppointmentBean = new DeleteAppointmentBean();
+        deleteAppointmentBeanFirstUI = new DeleteAppointmentBeanFirstUI();
         System.out.println("CONTROLLER GRAFICO TOPBARHAIRDRESSERVIEWCONTROLLER");
         return true;
     }
@@ -64,11 +65,11 @@ public class TopBarHairdresserViewController {
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
-        deleteAppointmentBean.setShopName(shopBeanFirstUI.getShopName());
-        deleteAppointmentBean.setAllAppointments(shopBeanFirstUI.getAllAppointments());
+        deleteAppointmentBeanFirstUI.setShopName(shopBeanFirstUI.getShopName());
+        deleteAppointmentBeanFirstUI.setAllAppointments(shopBeanFirstUI.getAllAppointments());
         HairdresserAppointmentsView view = (HairdresserAppointmentsView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERAPPOINTMENTS);
         HairdresserDeleteBookedAppointmentsViewController viewController = (HairdresserDeleteBookedAppointmentsViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERAPPOINTMENTS);
-        viewController.fillView(this.deleteAppointmentBean);
+        viewController.fillView(deleteAppointmentBeanFirstUI);
         return true;
     }
 
