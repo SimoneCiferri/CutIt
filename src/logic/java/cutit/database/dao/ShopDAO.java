@@ -1,6 +1,7 @@
 package cutit.database.dao;
 
 import cutit.database.DBConnection;
+import cutit.database.query.HairdresserQueries;
 import cutit.database.query.ShopQueries;
 import cutit.model.*;
 
@@ -12,6 +13,30 @@ import java.time.LocalTime;
 import java.util.*;
 
 public class ShopDAO {
+
+    public static Boolean checkIfShopExists(String shopName) throws Exception {
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = ShopQueries.checkIfShopExists(stm, shopName);
+        if (!rs.first()) {
+            Exception e = new Exception("Unable to execute query");
+            throw e;
+        } else {
+            int exists = rs.getInt(1);
+            rs.close();
+            if (stm != null) {
+                stm.close();
+            }
+            //DBConnection.getInstance().closeConnection();
+            if(exists == 0){
+                return false;
+            }else{
+                Exception e = new Exception("An account with the selected shop name already exists.");
+                throw e;
+            }
+        }
+    }
 
     public static void insertShop(Shop shop) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();

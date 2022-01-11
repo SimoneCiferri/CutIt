@@ -18,4 +18,10 @@ public class UserQueries {
         return stmt.executeQuery(sql);
     }
 
+    public static ResultSet checkIfUserExists(Statement stmt, String userID) throws SQLException {
+        String sql = "SELECT COUNT(*) as isUsed FROM user WHERE UserID = '" + userID + "'";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+
 }

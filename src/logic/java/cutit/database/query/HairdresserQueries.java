@@ -16,4 +16,10 @@ public class HairdresserQueries {
         System.out.println(sql);
         return stmt.executeQuery(sql);
     }
+
+    public static ResultSet checkIfPIVAExists(Statement stmt, String piva) throws SQLException {
+        String sql = "SELECT COUNT(*) as isUsed FROM hairdresser WHERE PIVA = '" + piva + "'";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
 }

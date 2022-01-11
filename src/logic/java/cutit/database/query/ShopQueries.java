@@ -88,4 +88,9 @@ public class ShopQueries {
         return stmt.executeQuery(sql);
     }
 
+    public static ResultSet checkIfShopExists(Statement stmt, String shopName) throws SQLException {
+        String sql = "SELECT COUNT(*) as isUsed FROM shop WHERE ShopName = '" + shopName + "'";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
 }
