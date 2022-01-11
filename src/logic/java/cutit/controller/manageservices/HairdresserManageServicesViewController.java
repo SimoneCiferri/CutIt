@@ -4,7 +4,7 @@ import cutit.bean.ManageServiceBean;
 import cutit.bean.firstui.ManageServiceBeanFirstUI;
 import cutit.bean.ShopBean;
 import cutit.bean.firstui.ShopBeanUQ;
-import cutit.checkTest.checkTextField;
+import cutit.utils.TextFieldCheck;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
@@ -87,7 +87,7 @@ public class HairdresserManageServicesViewController {
     }
     @FXML
     private void addService(TextField serviceName, TextField servicePrice){
-        if(checkTextField.isNumeric(servicePrice.getText(),"Error!", "Not Panic!", "You have to insert numbers in the price field")) {
+        if(TextFieldCheck.isNumeric(servicePrice.getText(),"Information", "Not Panic!", "Price field must be a number (correct format is 4.5 instead of 4,5).")) {
         manageServicesBean.setServiceName(serviceName.getText());
         manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
         manageServicesBean.setServiceShopName(shopBeanFirstUI.getShopName());

@@ -1,7 +1,7 @@
 package cutit.controller.manageshoppage;
 
 import cutit.bean.ShopBean;
-import cutit.checkTest.checkTextField;
+import cutit.utils.TextFieldCheck;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -73,7 +73,7 @@ public class HairdresserManageShopPageViewController {
 
     @FXML
     public void updateData(){
-        if(checkTextField.isNumeric(tfPhoneNumber.getText(),"Error!", "Not Panic!", "You have to insert numbers in the phone number field") && tfPhoneNumber.getText().length() < 12 ) {
+        if(TextFieldCheck.isPhoneNumber(tfPhoneNumber.getText(),"Information", "Not Panic!", "Phone number field must be a number.")) {
             shopBeanFirstUI.setAddress(tfAddress.getText());
             shopBeanFirstUI.setPhoneNumber(tfPhoneNumber.getText());
             shopBeanFirstUI.setShopDescription(taDescription.getText());

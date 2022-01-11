@@ -4,7 +4,7 @@ import cutit.bean.ManagePromotionBean;
 import cutit.bean.firstui.HairdresserBeanFirstUI;
 import cutit.bean.firstui.ManagePromotionBeanUQ;
 import cutit.bean.ShopBean;
-import cutit.checkTest.checkTextField;
+import cutit.utils.TextFieldCheck;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -108,7 +108,7 @@ public class HairdresserManagePromotionsViewController {
     }
 
     private void addPromotion(String promCode, String offValue,  LocalDate expireDate, String serviceName){
-        if(checkTextField.isNumeric(offValue,"Error!", "Not Panic!", "You have to insert numbers in discount field!")){
+        if(TextFieldCheck.isInteger(offValue,"Information", "Not Panic!", "Discount field must be a number.")){
             managePromotionBeanFirstUI.setPromotionCode(promCode);
             managePromotionBeanFirstUI.setPromOffValue(Integer.valueOf(offValue));
             managePromotionBeanFirstUI.setPromExpireDate(expireDate);
