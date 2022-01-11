@@ -1,5 +1,6 @@
 package cutit.controller.bookappointment;
 
+import cutit.bean.PayOnlineBean;
 import cutit.bean.RateShopBean;
 import cutit.bean.firstui.AppointmentBeanFirstUI;
 import cutit.bean.firstui.RateShopBeanUQ;
@@ -111,6 +112,8 @@ public class CustomerBookAppointmentViewController {
         if(bookAppointmentController.addShopToFavourites("shopName")){
             Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
         }
+
+
     }
 
     private void addAppToCalendar(){
@@ -119,6 +122,9 @@ public class CustomerBookAppointmentViewController {
             Facade.getInstance().decorateView(ViewLayout.HOME);
         }
     }
-
+    @FXML
+    private void payTheApp(){
+        Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
+    }
 
 }

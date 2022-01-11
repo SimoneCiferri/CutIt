@@ -124,6 +124,12 @@ public class Facade {
                 HairdresserManageShopView hairdresserManageShopView = new HairdresserManageShopView(startView);
                 viewMap.put(layout, hairdresserManageShopView);
             }
+            case PAYONLINEPAYPAL -> {
+                CustomerPayOnlinePayPalView customerPayOnlinePayPalView = new CustomerPayOnlinePayPalView(startView);
+                viewMap.put(layout,customerPayOnlinePayPalView);
+
+
+            }
         }
     }
 

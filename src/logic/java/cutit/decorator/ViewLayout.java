@@ -12,7 +12,7 @@ public enum ViewLayout {
     SHOPINFO("/cutit/cutit/fxml/shopinfo.fxml"), CUSTOMERRATESHOP("/cutit/cutit/fxml/clientrateshop.fxml"),
     CLIENTBOOKAPPOINTMENT("/cutit/cutit/fxml/customerbookappointment.fxml"),
     CUSTOMERAPPINFO("/cutit/cutit/fxml/customerappointmentinfo.fxml"),
-    CLIENTPROMOTIONINFO("/cutit/cutit/fxml/clientpromotioninfo.fxml"),GMAPS("/cutit/cutit/fxml/gmaps.fxml"), HAIRDRESSERMANAGESHOP("/cutit/cutit/fxml/hairdressermanageshop.fxml");
+    CLIENTPROMOTIONINFO("/cutit/cutit/fxml/clientpromotioninfo.fxml"),GMAPS("/cutit/cutit/fxml/gmaps.fxml"), HAIRDRESSERMANAGESHOP("/cutit/cutit/fxml/hairdressermanageshop.fxml"), PAYONLINEPAYPAL("/cutit/cutit/fxml/customerpayonlinepaypal.fxml");
 
     private String res;
 

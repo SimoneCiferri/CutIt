@@ -28,16 +28,13 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="55e25c66-b3ef-4e3a-8e96-8e9276e07e93">
-      <console name="Connection" type="STANDARD" schema="cutitdb" session="Main" />
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
     <connection id="b9574b93-21d8-4dc2-aa9c-5df3ecac3429">
-      <console name="Connection Simone" type="STANDARD" schema="cutitdb" session="Main"><![CDATA[select * from user;
-select * from customer;
-delete from user where `UserID` is not null;]]></console>
+      <console name="Connection Simone" type="STANDARD" schema="" session="Main" />
     </connection>
     <connection id="a9616340-b550-43d2-acf2-345053b7031c">
-      <console name="Connection Alessandro" type="STANDARD" schema="cutitdb" session="Main"><![CDATA[select *
-from user]]></console>
+      <console name="Connection Alessandro" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
