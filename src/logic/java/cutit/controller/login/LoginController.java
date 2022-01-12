@@ -11,6 +11,7 @@ import cutit.database.dao.UserDAO;
 import cutit.database.query.HairdresserQueries;
 import cutit.exception.WrongCredentialsException;
 import cutit.factory.AlertFactory;
+import cutit.log.LogWriter;
 import cutit.model.*;
 import javafx.scene.control.Alert;
 
@@ -29,9 +30,9 @@ public class LoginController {
             System.out.println("        Username = " + bean.getUsername() + " Password = " + bean.getPasswd());
             bean.setRole(user.getRole());
             return true;
-        }catch (WrongCredentialsException e){
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, e.getMessage(), e.getCause().toString());
-            return false;
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
         }
     }
 
@@ -47,22 +48,21 @@ public class LoginController {
     }
 
     public Boolean signUpHair(HairdresserBean hairdresserBean) throws Exception {
-        Hairdresser hairdresser = new Hairdresser(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1, hairdresserBean.gethName(), hairdresserBean.gethSurname(), hairdresserBean.getpIVA());
-        if (!UserDAO.checkIfUserExist(hairdresser.getUserID())){
-            if(!ShopDAO.checkIfShopExists(hairdresserBean.getShopName())){
-                if(!HairdresserDAO.checkIfPIVAExists(hairdresser.getpIVA())){
-                    HairdresserDAO.insertNewHairdresser(hairdresser, hairdresserBean.getShopName());
-                    return true;
-                }else{
-                    AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "Selected PIVA already used.", "Try another.");
+        try {
+            Hairdresser hairdresser = new Hairdresser(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1, hairdresserBean.gethName(), hairdresserBean.gethSurname(), hairdresserBean.getpIVA());
+            if (!UserDAO.checkIfUserExist(hairdresser.getUserID())){
+                if(!ShopDAO.checkIfShopExists(hairdresserBean.getShopName())){
+                    if(!HairdresserDAO.checkIfPIVAExists(hairdresser.getpIVA())){
+                        HairdresserDAO.insertNewHairdresser(hairdresser, hairdresserBean.getShopName());
+                        return true;
+                    }
                 }
-            }else{
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "An account with the selected shop name already exists.", "Try another.");
             }
-        }else{
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "An account with selected email already exists!", "Try another email.");
+            return false;
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
         }
-        return false;
     }
 
     public void getHairdresserAndShop(UserBean userBean, HairdresserBean hairdresserBean, ShopBean shopBean) throws Exception {

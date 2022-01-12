@@ -31,16 +31,12 @@ public class UserDAO {
     }
 
     public static void insertNewUser(User user) throws Exception {
-        try{
-            Connection conn = DBConnection.getInstance().getConnection();
-            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
-            UserQueries.insertUser(stm, user.getUserID(), user.getPwd(), user.getRole());
-            stm.close();
-            //DBConnection.getInstance().closeConnection();
-        } catch (SQLException se){
-            throw new DBConnectionException(se.getMessage(), se.getCause());
-        }
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        UserQueries.insertUser(stm, user.getUserID(), user.getPwd(), user.getRole());
+        stm.close();
+        //DBConnection.getInstance().closeConnection();
     }
 
     public static void userLogin(User user) throws Exception {

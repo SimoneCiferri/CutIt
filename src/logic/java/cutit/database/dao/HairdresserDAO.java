@@ -24,9 +24,7 @@ public class HairdresserDAO {
         rs.first();
         int exists = rs.getInt(1);
         rs.close();
-        if (stm != null) {
-            stm.close();
-        }
+        stm.close();
         //DBConnection.getInstance().closeConnection();
         return exists != 0;
     }
@@ -37,9 +35,7 @@ public class HairdresserDAO {
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
         HairdresserQueries.insertHairdresser(stm, hairdresser.getpIVA(), hairdresser.getUserID(), hairdresser.getName(), hairdresser.getSurname());
-        if (stm != null) {
-            stm.close();
-        }
+        stm.close();
         Shop shop = new Shop(shopName, hairdresser.getpIVA());
         ShopDAO.insertShop(shop);
         //DBConnection.getInstance().closeConnection();
