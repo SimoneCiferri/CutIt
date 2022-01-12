@@ -5,6 +5,8 @@ import cutit.bean.firstui.ManagePromotionBeanUQ;
 import cutit.bean.ShopBean;
 import cutit.database.dao.PromotionDAO;
 import cutit.database.dao.ServiceDAO;
+import cutit.exception.DuplicatedRecordException;
+import cutit.log.LogWriter;
 import cutit.model.Promotion;
 import cutit.model.Service;
 import cutit.model.Shop;
@@ -15,24 +17,66 @@ import java.util.List;
 
 public class ManagePromotionController {
 
-    public Boolean removePromotion(ManagePromotionBean managePromotionBean) throws Exception {
-        Promotion promotion = new Promotion(managePromotionBean.getPromotionCode(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate());
-        PromotionDAO.deletePromotion(promotion);
-        System.out.println("CONTROLLER APPLICATIVO -> Deleting Promotion (data from ManagePromotionBean passed by my viewController)");
-        return true;
+    public void removePromotion(ManagePromotionBean managePromotionBean) throws Exception {
+        try{
+            Promotion promotion = new Promotion(managePromotionBean.getPromotionCode(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate());
+            PromotionDAO.deletePromotion(promotion);
+            System.out.println("CONTROLLER APPLICATIVO -> Deleting Promotion (data from ManagePromotionBean passed by my viewController)");
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
     }
 
-    public Boolean addPromotion(ManagePromotionBean managePromotionBean) throws Exception {
-        Promotion promotion = new Promotion(managePromotionBean.getPromotionCode(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate());
-        PromotionDAO.insertPromotion(promotion, managePromotionBean.getPromServiceName(), managePromotionBean.getPromShopName());
-        System.out.println("CONTROLLER APPLICATIVO -> Adding Promotion (data from ManagePromotionBean passed by my viewController)");
-        return true;
+    public void addPromotion(ManagePromotionBean managePromotionBean) throws Exception {
+        try{
+            Promotion promotion = new Promotion(managePromotionBean.getPromotionCode(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate());
+            PromotionDAO.insertPromotion(promotion, managePromotionBean.getPromServiceName(), managePromotionBean.getPromShopName());
+            System.out.println("CONTROLLER APPLICATIVO -> Adding Promotion (data from ManagePromotionBean passed by my viewController)");
+        } catch (DuplicatedRecordException de){
+            throw de;
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
     }
 
     public void getAllPromotions(ManagePromotionBean managePromotionBean, ShopBean shopBean) throws Exception {
-        Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
-        List<Promotion> promotionsList = PromotionDAO.getAllPromotion(shop);
-        managePromotionBean.setPromotionsBeanList(promBeanListFromPromList(promotionsList));
+        try {
+            Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
+            List<Promotion> promotionsList = PromotionDAO.getAllPromotion(shop);
+            managePromotionBean.setPromotionsBeanList(promBeanListFromPromList(promotionsList));
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
+
+    }
+
+
+    public ManagePromotionBeanUQ getAllServices(ShopBean shopBean) throws Exception {
+        try {
+            Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
+            List<Service> serviceList = ServiceDAO.getALlServices(shop);
+            ManagePromotionBeanUQ managePromotionBeanUQ = new ManagePromotionBeanUQ();
+            managePromotionBeanUQ.setServiceList(stringListFromServList(serviceList));
+            return managePromotionBeanUQ;
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
+
+    }
+
+    private List<String> stringListFromServList(List<Service> services) {
+        List<String> servList = new ArrayList<>();
+        if(!services.isEmpty()){
+            for(int i = 0; i<services.size(); i++){
+                String p = services.get(i).getServiceName();
+                servList.add(p);
+            }
+        }
+        return servList;
     }
 
     private List<ManagePromotionBean> promBeanListFromPromList(List<Promotion> promotionsList) {
@@ -54,23 +98,5 @@ public class ManagePromotionController {
         return promList;
     }
 
-    public ManagePromotionBeanUQ getAllServices(ShopBean shopBean) throws Exception {
-        Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
-        List<Service> serviceList = ServiceDAO.getALlServices(shop);
-        ManagePromotionBeanUQ managePromotionBeanUQ = new ManagePromotionBeanUQ();
-        managePromotionBeanUQ.setServiceList(stringListFromServList(serviceList));
-        return managePromotionBeanUQ;
-    }
-
-    private List<String> stringListFromServList(List<Service> services) {
-        List<String> servList = new ArrayList<>();
-        if(!services.isEmpty()){
-            for(int i = 0; i<services.size(); i++){
-                String p = services.get(i).getServiceName();
-                servList.add(p);
-            }
-        }
-        return servList;
-    }
 
 }
