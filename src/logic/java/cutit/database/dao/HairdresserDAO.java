@@ -21,18 +21,14 @@ public class HairdresserDAO {
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = HairdresserQueries.checkIfPIVAExists(stm, piva);
-        if (!rs.first()) {
-            Exception e = new Exception("Unable to execute checkIfPIVAExists query");
-            throw e;
-        } else {
-            int exists = rs.getInt(1);
-            rs.close();
-            if (stm != null) {
-                stm.close();
-            }
-            //DBConnection.getInstance().closeConnection();
-            return exists != 0;
+        rs.first();
+        int exists = rs.getInt(1);
+        rs.close();
+        if (stm != null) {
+            stm.close();
         }
+        //DBConnection.getInstance().closeConnection();
+        return exists != 0;
     }
 
     public static void insertNewHairdresser(Hairdresser hairdresser, String shopName) throws Exception {

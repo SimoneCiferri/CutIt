@@ -22,6 +22,7 @@ public class ShopDAO {
             Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = ShopQueries.checkIfShopExists(stm, shopName);
+            rs.first();
             int exists = rs.getInt(1);
             rs.close();
             stm.close();

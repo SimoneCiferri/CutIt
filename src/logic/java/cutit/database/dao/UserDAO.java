@@ -19,6 +19,7 @@ public class UserDAO {
             Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = UserQueries.checkIfUserExists(stm, userID);
+            rs.first();
             int exists = rs.getInt(1);
             rs.close();
             stm.close();
