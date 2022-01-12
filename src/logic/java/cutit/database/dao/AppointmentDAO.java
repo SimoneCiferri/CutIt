@@ -38,9 +38,7 @@ public class AppointmentDAO {
                 appointmentList.add(appointment);
             } while (rs.next());
             rs.close();
-            if (stm != null) {
-                stm.close();
-            }
+            stm.close();
             //DBConnection.getInstance().closeConnection();
         }
         return appointmentList;

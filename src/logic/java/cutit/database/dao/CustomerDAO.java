@@ -3,6 +3,7 @@ package cutit.database.dao;
 import cutit.database.DBConnection;
 import cutit.database.query.CustomerQueries;
 import cutit.database.query.UserQueries;
+import cutit.exception.RecordNotFoundException;
 import cutit.factory.AlertFactory;
 import cutit.model.Appointment;
 import cutit.model.Customer;
@@ -24,9 +25,7 @@ public class CustomerDAO {
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
         CustomerQueries.insertCustomer(stm, customer.getUserID(), customer.getBirthDate().toString(), customer.getGender(), customer.getName(), customer.getSurname());
-        if (stm != null) {
-            stm.close();
-        }
+        stm.close();
         //DBConnection.getInstance().closeConnection();
     }
 
@@ -36,9 +35,10 @@ public class CustomerDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = CustomerQueries.getCustomer(stm, user.getUserID());
         if(!rs.first()){
-            Exception e = new Exception("No user Found matching with name: "+ user.getUserID());
-            throw e;
+            Throwable cause = new Throwable("Customer not found");
+            throw new RecordNotFoundException(cause);
         }else{
+            rs.first();
             String cEmail = rs.getString(1);
             String birthDate = rs.getString(2);
             String gender = rs.getString(3);
@@ -50,9 +50,7 @@ public class CustomerDAO {
             List<Promotion> allProm = PromotionDAO.getAllCustomerPromotion(customer);
             customer.setPromotions(allProm);
             rs.close();
-            if(stm != null){
-                stm.close();
-            }
+            stm.close();
             //DBConnection.getInstance().closeConnection();
             return customer;
         }
