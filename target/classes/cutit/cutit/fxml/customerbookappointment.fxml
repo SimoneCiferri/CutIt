@@ -75,7 +75,7 @@
                         <Label alignment="CENTER" prefWidth="155.0" style="-fx-background-color: green; -fx-border-color: grey;" text="15:30" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <Label alignment="CENTER" prefWidth="155.0" style="-fx-background-color: green; -fx-border-color: grey;" text="16:00" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label alignment="CENTER" prefWidth="155.0" style="-fx-background-color: green; -fx-border-color: grey;" text="16:30" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label alignment="CENTER" prefWidth="155.0" style="-fx-background-color: red; -fx-border-color: grey;" text="17:00" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label alignment="CENTER" prefWidth="155.0" style="-fx-background-color: red; -fx-border-color: grey;" text="17:000" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Label alignment="CENTER" prefWidth="155.0" style="-fx-background-color: green; -fx-border-color: grey;" text="11:30" GridPane.rowIndex="7" />
                         <Label alignment="CENTER" prefWidth="155.0" style="-fx-background-color: green; -fx-border-color: grey;" text="17:30" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <Label alignment="CENTER" prefWidth="155.0" style="-fx-background-color: green; -fx-border-color: grey;" text="12:00" GridPane.rowIndex="8" />

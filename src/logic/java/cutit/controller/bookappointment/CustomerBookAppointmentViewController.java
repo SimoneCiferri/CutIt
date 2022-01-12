@@ -116,7 +116,7 @@ public class CustomerBookAppointmentViewController {
 
     private void addToFavourites() throws Exception {
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        if(bookAppointmentController.addShopToFavourites("shopName", "daGiulio" )){
+        if(bookAppointmentController.addShopToFavourites("a@a", "b" )){
             Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
         }
 
