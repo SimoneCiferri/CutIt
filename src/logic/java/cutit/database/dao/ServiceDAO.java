@@ -2,14 +2,18 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.ServiceQueries;
+import cutit.exception.DuplicatedRecordException;
+import cutit.exception.RecordNotFoundException;
 import cutit.model.Service;
 import cutit.model.Shop;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ServiceDAO {
 
@@ -18,10 +22,19 @@ public class ServiceDAO {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ServiceQueries.insertService(stm, service.getServiceName(), service.getPrice(), service.getShopName());
-        if(stm != null){
-            stm.close();
+        ResultSet rs = ServiceQueries.getAllServices(stm, service.getShopName());
+        while (rs.next()) {
+            String name = rs.getString(1);
+            if (Objects.equals(service.getServiceName(), name)) {
+                throw new DuplicatedRecordException(service.getServiceName() + " already exists!");
+            }
         }
+        rs.close();
+        stm.close();
+        stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ServiceQueries.insertService(stm, service.getServiceName(), service.getPrice(), service.getShopName());
+        stm.close();
     }
 
     public static List<Service> getALlServices(Shop shop) throws Exception {
@@ -39,9 +52,7 @@ public class ServiceDAO {
                 servicesList.add(s);
             } while (rs.next());
             rs.close();
-            if (stm != null) {
-                stm.close();
-            }
+            stm.close();
             //DBConnection.getInstance().closeConnection();
         }
         return servicesList;
@@ -52,9 +63,7 @@ public class ServiceDAO {
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
         ServiceQueries.deleteService(stm, service.getServiceName() ,service.getShopName());
-        if(stm != null){
-            stm.close();
-        }
+        stm.close();
     }
 
     public static Service getService(String shopName, String serviceName) throws Exception {
@@ -62,15 +71,17 @@ public class ServiceDAO {
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = ServiceQueries.getService(stm, serviceName, shopName);
+        if(!rs.first()){
+            Throwable cause = new Throwable("Service not found");
+            throw new RecordNotFoundException(cause);
+        }
         rs.first();
         String servName = rs.getString(1);
         Float servPrice = rs.getFloat(2);
         String servShopName = rs.getString(3);
         Service s = new Service(servName, servPrice, servShopName);
         rs.close();
-        if (stm != null) {
-            stm.close();
-        }
+        stm.close();
         //DBConnection.getInstance().closeConnection();
         return s;
     }

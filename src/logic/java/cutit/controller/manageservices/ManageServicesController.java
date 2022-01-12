@@ -3,6 +3,8 @@ package cutit.controller.manageservices;
 import cutit.bean.ManageServiceBean;
 import cutit.bean.ShopBean;
 import cutit.database.dao.ServiceDAO;
+import cutit.exception.DuplicatedRecordException;
+import cutit.log.LogWriter;
 import cutit.model.Service;
 import cutit.model.Shop;
 
@@ -14,24 +16,41 @@ import java.util.Map;
 public class ManageServicesController {
 
     public Boolean addService(ManageServiceBean manageServiceBean) throws Exception {
-        Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
-        ServiceDAO.insertService(service);
-        System.out.println("CONTROLLER APPLICATIVO -> Adding Service (data from ManageServiceBean passed by my viewController)");
-        return true;
+        try{
+            Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
+            ServiceDAO.insertService(service);
+            System.out.println("CONTROLLER APPLICATIVO -> Adding Service (data from ManageServiceBean passed by my viewController)");
+            return true;
+        } catch (DuplicatedRecordException de){
+            throw de;
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
     }
 
-    public Boolean deleteService(ManageServiceBean manageServiceBean) throws Exception {
-        Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
-        ServiceDAO.deleteService(service);
-        System.out.println("CONTROLLER APPLICATIVO -> Deleting Service (data from ManageServiceBean passed by my viewController)");
-        return true;
+    public void deleteService(ManageServiceBean manageServiceBean) throws Exception {
+        try{
+            Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
+            ServiceDAO.deleteService(service);
+            System.out.println("CONTROLLER APPLICATIVO -> Deleting Service (data from ManageServiceBean passed by my viewController)");
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
+
     }
 
     public void getAllServices(ManageServiceBean manageServiceBean, ShopBean shopBean) throws Exception {
-        Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
-        List<Service> serviceList = ServiceDAO.getALlServices(shop);
-        manageServiceBean.setAllServicesList(stringListFromServList(serviceList));
-        manageServiceBean.setServiceList(mapFromServList(serviceList));
+        try{
+            Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
+            List<Service> serviceList = ServiceDAO.getALlServices(shop);
+            manageServiceBean.setAllServicesList(stringListFromServList(serviceList));
+            manageServiceBean.setServiceList(mapFromServList(serviceList));
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
     }
 
     private List<String> stringListFromServList(List<Service> serviceList) {

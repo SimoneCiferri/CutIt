@@ -4,6 +4,8 @@ import cutit.bean.ManageServiceBean;
 import cutit.bean.firstui.ManageServiceBeanFirstUI;
 import cutit.bean.ShopBean;
 import cutit.bean.firstui.ShopBeanUQ;
+import cutit.exception.DBConnectionException;
+import cutit.exception.DuplicatedRecordException;
 import cutit.utils.TextFieldCheck;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
@@ -53,6 +55,8 @@ public class HairdresserManageServicesViewController {
                 l.setOnMouseClicked((MouseEvent) -> deleteForm(serviceName, manageServicesBean.getServiceList().get(serviceName)));
                 vbInScrollHS.getChildren().add(l);
             }
+        } catch(DBConnectionException dce){
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,16 +91,20 @@ public class HairdresserManageServicesViewController {
     }
     @FXML
     private void addService(TextField serviceName, TextField servicePrice){
-        if(TextFieldCheck.isNumeric(servicePrice.getText(),"Information", "Not Panic!", "Price field must be a number (correct format is 4.5 instead of 4,5).")) {
-        manageServicesBean.setServiceName(serviceName.getText());
-        manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
-        manageServicesBean.setServiceShopName(shopBeanFirstUI.getShopName());
-        try {
-            manageServicesController.addService(manageServicesBean);
-            showHairServ();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        if (TextFieldCheck.isNumeric(servicePrice.getText(), "Information", "Not Panic!", "Price field must be a number (correct format is 4.5 instead of 4,5).")) {
+            manageServicesBean.setServiceName(serviceName.getText());
+            manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
+            manageServicesBean.setServiceShopName(shopBeanFirstUI.getShopName());
+            try {
+                manageServicesController.addService(manageServicesBean);
+                showHairServ();
+            } catch (DuplicatedRecordException de) {
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+            } catch(DBConnectionException dce){
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -133,6 +141,8 @@ public class HairdresserManageServicesViewController {
         manageServicesBean.setServiceShopName(shopBeanFirstUI.getShopName());
         try {
             manageServicesController.deleteService(this.manageServicesBean);
+        } catch(DBConnectionException dce){
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
         } catch (Exception e) {
             e.printStackTrace();
         }

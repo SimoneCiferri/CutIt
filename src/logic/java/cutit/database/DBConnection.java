@@ -1,6 +1,6 @@
 package cutit.database;
 
-import cutit.exception.DBException;
+import cutit.exception.DBConnectionException;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,30 +25,30 @@ public class DBConnection {
         return instance;
     }
 
-    public Connection getConnection() throws DBException {
+    public Connection getConnection() throws DBConnectionException {
         if(conn == null){
             try {
                 Class.forName(DRIVER_CLASS_NAME);
                 conn = DriverManager.getConnection(DB_URL, USER, PASS);
             } catch(ClassNotFoundException e) {
                 String message = "Unable to load mysql Driver - " + e.getMessage();
-                throw new DBException(message, e.getCause());
+                throw new DBConnectionException(message, e.getCause());
             }catch (SQLException e){
                 String message = "Unable to get DB Connection - " + e.getMessage();
-                throw new DBException(message, e.getCause());
+                throw new DBConnectionException(message, e.getCause());
             }
         }
         return conn;
     }
 
-    public void closeConnection() throws DBException {
+    public void closeConnection() throws DBConnectionException {
         try {
             if(conn != null){
                 conn.close();
             }
         }catch (SQLException e){
             String message = "Unable to close DB Connection - " + e.getMessage();
-            throw new DBException(message, e.getCause());
+            throw new DBConnectionException(message, e.getCause());
         }
 
     }

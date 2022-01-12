@@ -2,19 +2,14 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.UserQueries;
-import cutit.exception.DBException;
+import cutit.exception.DBConnectionException;
 import cutit.exception.WrongCredentialsException;
-import cutit.model.Appointment;
-import cutit.model.Customer;
-import cutit.model.Promotion;
 import cutit.model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.List;
 
 public class UserDAO {
 
@@ -30,7 +25,7 @@ public class UserDAO {
             //DBConnection.getInstance().closeConnection();
             return exists != 0;
         } catch (SQLException se){
-            throw new DBException(se.getMessage(), se.getCause());
+            throw new DBConnectionException(se.getMessage(), se.getCause());
         }
     }
 
@@ -43,7 +38,7 @@ public class UserDAO {
             stm.close();
             //DBConnection.getInstance().closeConnection();
         } catch (SQLException se){
-            throw new DBException(se.getMessage(), se.getCause());
+            throw new DBConnectionException(se.getMessage(), se.getCause());
         }
     }
 
@@ -63,7 +58,7 @@ public class UserDAO {
             stm.close();
             //DBConnection.getInstance().closeConnection();
         } catch (SQLException se){
-            throw new DBException(se.getMessage(), se.getCause());
+            throw new DBConnectionException(se.getMessage(), se.getCause());
         }
 
     }
