@@ -170,8 +170,7 @@
             </HBox>
             <HBox alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="487.0">
                <children>
-                  <Button fx:id="addFavorite" mnemonicParsing="false" onMouseClicked="#addToFavourites" text="addF" />
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#payTheApp" prefHeight="50.0" text="Book" />
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#bookAppointment" prefHeight="50.0" text="Book" />
                </children>
             </HBox>
          </children>

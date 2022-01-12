@@ -22,9 +22,6 @@ public class CustomerBookAppointmentViewController {
     private RateShopBean rateShopBean;
 
     @FXML
-    private  Button addFavorite;
-
-    @FXML
     private BorderPane bpInBookApp;
 
     @FXML
@@ -55,9 +52,10 @@ public class CustomerBookAppointmentViewController {
     public void bookAppointment() {
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
         //DA RIVEDERE BENE LE FUNZIONI (RIVEDERE IL VOPC)!
-        if(bookAppointmentController.compileAppointment(this.appointmentBeanFirstUI)){
+        /*if(bookAppointmentController.compileAppointment(this.appointmentBeanFirstUI)){
             showPayedAndBooked();
-        }
+        }*/
+        showPayedAndBooked();
     }
 
     @FXML
