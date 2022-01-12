@@ -21,6 +21,7 @@ public class CustomerBookAppointmentViewController {
     private BookAppointmentController bookAppointmentController;
     private RateShopBean rateShopBean;
 
+
     @FXML
     private BorderPane bpInBookApp;
 
@@ -85,7 +86,13 @@ public class CustomerBookAppointmentViewController {
         btnGetDir.setOnMouseClicked((MouseEvent) -> getDirections());
         Button btnAddToFav = new Button("Add Shop To Favourites");
         btnAddToFav.setPrefHeight(55);
-        btnAddToFav.setOnMouseClicked((MouseEvent) -> addToFavourites());
+        btnAddToFav.setOnMouseClicked((MouseEvent) -> {
+            try {
+                addToFavourites();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
         Button btnAddToCalendar = new Button("Add Appointment To Calendar");
         btnAddToCalendar.setPrefHeight(55);
         btnAddToCalendar.setOnMouseClicked((MouseEvent) -> addAppToCalendar());
@@ -107,9 +114,9 @@ public class CustomerBookAppointmentViewController {
         Facade.getInstance().decorateView(ViewLayout.CUSTOMERRATESHOP);
     }
 
-    private void addToFavourites(){
+    private void addToFavourites() throws Exception {
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        if(bookAppointmentController.addShopToFavourites("shopName")){
+        if(bookAppointmentController.addShopToFavourites("shopName", "daGiulio" )){
             Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
         }
 

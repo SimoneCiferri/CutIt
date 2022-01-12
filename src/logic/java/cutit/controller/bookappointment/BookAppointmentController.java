@@ -3,7 +3,6 @@ package cutit.controller.bookappointment;
 import cutit.bean.*;
 import cutit.bean.firstui.AppointmentBeanFirstUI;
 import cutit.bean.firstui.CustomerBeanFirstUI;
-import cutit.bean.firstui.RateShopBeanUQ;
 import cutit.bean.firstui.ShopBeanUQ;
 import cutit.controller.addappointmenttocalendar.AddAppointmentToCalendarController;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
@@ -45,9 +44,9 @@ public class BookAppointmentController {
         return true;
     }
 
-    public Boolean addShopToFavourites(String shopName){
+    public Boolean addShopToFavourites(String shopName, String daGiulio) throws Exception {
         addShopToFavouritesController = new AddShopToFavouritesController();
-        addShopToFavouritesController.addToFavourites(shopName);
+        addShopToFavouritesController.addToFavourites(shopName, daGiulio);
         return true;
     }
 
