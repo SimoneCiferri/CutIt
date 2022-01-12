@@ -66,28 +66,52 @@ public class LoginController {
     }
 
     public void getHairdresserAndShop(UserBean userBean, HairdresserBean hairdresserBean, ShopBean shopBean) throws Exception {
-        User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
-        Hairdresser hairdresser = HairdresserDAO.getHairdresser(user);
-        hairdresserBean.sethEmail(hairdresser.getUserID());
-        hairdresserBean.sethPassword(hairdresser.getPwd());
-        hairdresserBean.sethRole(hairdresser.getRole());
-        hairdresserBean.sethName(hairdresser.getName());
-        hairdresserBean.sethSurname(hairdresser.getSurname());
-        hairdresserBean.setpIVA(hairdresser.getpIVA());
-        hairdresserBean.setShopName(hairdresser.getShop().getShopName());
-        shopBean.setShopName(hairdresser.getShop().getShopName());
-        shopBean.setShopPIVA(hairdresser.getShop().getpIVA());
-        shopBean.setAddress(hairdresser.getShop().getAddress());
-        shopBean.setPhoneNumber(hairdresser.getShop().getPhoneNumber());
-        shopBean.setEmployee(hairdresser.getShop().getEmployee());
-        shopBean.setShopDescription(hairdresser.getShop().getDescription());
-        shopBean.setOpenTime(hairdresser.getShop().getOpenTime());
-        shopBean.setCloseTime(hairdresser.getShop().getCloseTime());
-        shopBean.setOpenDays(hairdresser.getShop().getOpenDays());
-        shopBean.setPromotions(stringListFromPromList(hairdresser.getShop().getPromotions()));
-        shopBean.setServices(stringListFromServList(hairdresser.getShop().getServices()));
-        shopBean.setAllAppointments(stringListFromAppList(hairdresser.getShop().getAllAppointments()));
-        shopBean.setImages(hairdresser.getShop().getImages());
+        try {
+            User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
+            Hairdresser hairdresser = HairdresserDAO.getHairdresser(user);
+            hairdresserBean.sethEmail(hairdresser.getUserID());
+            hairdresserBean.sethPassword(hairdresser.getPwd());
+            hairdresserBean.sethRole(hairdresser.getRole());
+            hairdresserBean.sethName(hairdresser.getName());
+            hairdresserBean.sethSurname(hairdresser.getSurname());
+            hairdresserBean.setpIVA(hairdresser.getpIVA());
+            hairdresserBean.setShopName(hairdresser.getShop().getShopName());
+            shopBean.setShopName(hairdresser.getShop().getShopName());
+            shopBean.setShopPIVA(hairdresser.getShop().getpIVA());
+            shopBean.setAddress(hairdresser.getShop().getAddress());
+            shopBean.setPhoneNumber(hairdresser.getShop().getPhoneNumber());
+            shopBean.setEmployee(hairdresser.getShop().getEmployee());
+            shopBean.setShopDescription(hairdresser.getShop().getDescription());
+            shopBean.setOpenTime(hairdresser.getShop().getOpenTime());
+            shopBean.setCloseTime(hairdresser.getShop().getCloseTime());
+            shopBean.setOpenDays(hairdresser.getShop().getOpenDays());
+            shopBean.setPromotions(stringListFromPromList(hairdresser.getShop().getPromotions()));
+            shopBean.setServices(stringListFromServList(hairdresser.getShop().getServices()));
+            shopBean.setAllAppointments(stringListFromAppList(hairdresser.getShop().getAllAppointments()));
+            shopBean.setImages(hairdresser.getShop().getImages());
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public void getCustomer(UserBean userBean, CustomerBean customerBean) throws Exception {
+        try {
+            User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
+            Customer customer = CustomerDAO.getCustomer(user);
+            customerBean.setcEmail(customer.getUserID());
+            customerBean.setcPassword(customer.getPwd());
+            customerBean.setcRole(customer.getRole());
+            customerBean.setcName(customer.getName());
+            customerBean.setcSurname(customer.getSurname());
+            customerBean.setcBirthDate(customer.getBirthDate());
+            customerBean.setcGender(customer.getGender());
+            customerBean.setAllPromotions(stringListFromPromList(customer.getPromotions()));
+            //customerBean.setAllBookedAppointments(stringListFromAppList(customer.getBookedAppointments()));
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
     }
 
     private List<String> stringListFromAppList(List<Appointment> allAppointments) {
@@ -110,21 +134,6 @@ public class LoginController {
             }
         }
         return servList;
-    }
-
-    public void getCustomer(UserBean userBean, CustomerBean customerBean) throws Exception {
-        User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
-        Customer customer = CustomerDAO.getCustomer(user);
-        customerBean.setcEmail(customer.getUserID());
-        customerBean.setcPassword(customer.getPwd());
-        customerBean.setcRole(customer.getRole());
-        customerBean.setcName(customer.getName());
-        customerBean.setcSurname(customer.getSurname());
-        customerBean.setcBirthDate(customer.getBirthDate());
-        customerBean.setcGender(customer.getGender());
-        customerBean.setAllPromotions(stringListFromPromList(customer.getPromotions()));
-        //customerBean.setAllBookedAppointments(stringListFromAppList(customer.getBookedAppointments()));
-
     }
 
     private List<String> stringListFromPromList(List<Promotion> promotions) {
