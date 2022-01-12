@@ -9,6 +9,7 @@ import cutit.database.dao.HairdresserDAO;
 import cutit.database.dao.ShopDAO;
 import cutit.database.dao.UserDAO;
 import cutit.database.query.HairdresserQueries;
+import cutit.exception.DuplicatedRecordException;
 import cutit.exception.WrongCredentialsException;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
@@ -37,14 +38,21 @@ public class LoginController {
     }
 
     public boolean signUpCustomer(CustomerBean customerBean) throws Exception {
-        Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcBirthDate(), customerBean.getcGender());
-        if(!UserDAO.checkIfUserExist(customer.getUserID())){
-            CustomerDAO.insertCustomer(customer);
-            return true;
-        }else{
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "An account with selected email already exists!", "Try another email.");
-            return false;
+        try {
+            Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcBirthDate(), customerBean.getcGender());
+            if(!UserDAO.checkIfUserExist(customer.getUserID())){
+                CustomerDAO.insertCustomer(customer);
+                return true;
+            }else{
+                return false;
+            }
+        } catch (DuplicatedRecordException de){
+            throw de;
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
         }
+
     }
 
     public Boolean signUpHair(HairdresserBean hairdresserBean) throws Exception {
@@ -59,6 +67,8 @@ public class LoginController {
                 }
             }
             return false;
+        } catch (DuplicatedRecordException de){
+            throw de;
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
