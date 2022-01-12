@@ -20,7 +20,7 @@ public class ShopDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = ShopQueries.checkIfShopExists(stm, shopName);
         if (!rs.first()) {
-            Exception e = new Exception("Unable to execute query");
+            Exception e = new Exception("Unable to execute checkIfShopExists query");
             throw e;
         } else {
             int exists = rs.getInt(1);
@@ -29,12 +29,7 @@ public class ShopDAO {
                 stm.close();
             }
             //DBConnection.getInstance().closeConnection();
-            if(exists == 0){
-                return false;
-            }else{
-                Exception e = new Exception("An account with the selected shop name already exists.");
-                throw e;
-            }
+            return exists != 0;
         }
     }
 
@@ -93,7 +88,7 @@ public class ShopDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = ShopQueries.getShop(stm, hairdresser.getpIVA());
         if(!rs.first()){
-            Exception e = new Exception("No user Found matching with name: "+ hairdresser.getUserID());
+            Exception e = new Exception("No Shop matching.");
             throw e;
         }else{
             String shopName = rs.getString(1);

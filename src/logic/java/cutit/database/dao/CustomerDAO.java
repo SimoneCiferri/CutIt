@@ -3,10 +3,12 @@ package cutit.database.dao;
 import cutit.database.DBConnection;
 import cutit.database.query.CustomerQueries;
 import cutit.database.query.UserQueries;
+import cutit.factory.AlertFactory;
 import cutit.model.Appointment;
 import cutit.model.Customer;
 import cutit.model.Promotion;
 import cutit.model.User;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,17 +19,15 @@ import java.util.List;
 public class CustomerDAO {
 
     public static void insertCustomer(Customer customer) throws Exception {
-        if(!UserDAO.checkIfUserExist(customer.getUserID())){
-            UserDAO.insertNewUser(customer);
-            Connection conn = DBConnection.getInstance().getConnection();
-            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
-            CustomerQueries.insertCustomer(stm, customer.getUserID(), customer.getBirthDate().toString(), customer.getGender(), customer.getName(), customer.getSurname());
-            if(stm != null){
-                stm.close();
-            }
-            //DBConnection.getInstance().closeConnection();
+        UserDAO.insertNewUser(customer);
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        CustomerQueries.insertCustomer(stm, customer.getUserID(), customer.getBirthDate().toString(), customer.getGender(), customer.getName(), customer.getSurname());
+        if (stm != null) {
+            stm.close();
         }
+        //DBConnection.getInstance().closeConnection();
     }
 
     public static Customer getCustomer(User user) throws Exception {

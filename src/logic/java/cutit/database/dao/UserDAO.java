@@ -2,6 +2,7 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.UserQueries;
+import cutit.exception.WrongCredentialsException;
 import cutit.model.Appointment;
 import cutit.model.Customer;
 import cutit.model.Promotion;
@@ -21,7 +22,7 @@ public class UserDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = UserQueries.checkIfUserExists(stm, userID);
         if (!rs.first()) {
-            Exception e = new Exception("Unable to execute query");
+            Exception e = new Exception("Unable to execute checkIfUserExist query");
             throw e;
         } else {
             int exists = rs.getInt(1);
@@ -30,12 +31,7 @@ public class UserDAO {
                 stm.close();
             }
             //DBConnection.getInstance().closeConnection();
-            if(exists == 0){
-                return false;
-            }else{
-                Exception e = new Exception("An account with the selected email already exists. Try another email.");
-                throw e;
-            }
+            return exists != 0;
         }
     }
 
@@ -56,8 +52,7 @@ public class UserDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = UserQueries.getUser(stm, user.getUserID(), user.getPwd());
         if(!rs.first()){
-            Exception e = new Exception("No user Found matching with name: "+ user.getUserID());
-            throw e;
+            throw new WrongCredentialsException();
         }else{
             Integer role = rs.getInt("Role");
             user.setRole(role);

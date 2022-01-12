@@ -3,37 +3,66 @@ package cutit.controller.login;
 import cutit.bean.*;
 import cutit.bean.firstui.CustomerBeanFirstUI;
 import cutit.bean.firstui.HairdresserBeanFirstUI;
+import cutit.database.DBConnection;
 import cutit.database.dao.CustomerDAO;
 import cutit.database.dao.HairdresserDAO;
+import cutit.database.dao.ShopDAO;
 import cutit.database.dao.UserDAO;
+import cutit.database.query.HairdresserQueries;
+import cutit.exception.WrongCredentialsException;
+import cutit.factory.AlertFactory;
 import cutit.model.*;
+import javafx.scene.control.Alert;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoginController {
 
-    public UserBean login(UserBean bean) throws Exception {
-        User user = new User(bean.getUsername(), bean.getPasswd(), 3);
-        UserDAO.userLogin(user);
-        System.out.println("CONTROLLER APPLICATIVO -> Login (data from CustomerBean passed by my viewController)");
-        System.out.println("        Username = " + bean.getUsername() + " Password = " + bean.getPasswd());
-        bean.setRole(user.getRole());
-        return bean;
+    public boolean login(UserBean bean) throws Exception {
+        try{
+            User user = new User(bean.getUsername(), bean.getPasswd(), 3);
+            UserDAO.userLogin(user);
+            System.out.println("        Username = " + bean.getUsername() + " Password = " + bean.getPasswd());
+            bean.setRole(user.getRole());
+            return true;
+        }catch (WrongCredentialsException e){
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, e.getMessage(), e.getCause().toString());
+            return false;
+        }
     }
 
-    public Boolean signUpCustomer(CustomerBean customerBean) throws Exception {
+    public boolean signUpCustomer(CustomerBean customerBean) throws Exception {
         Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcBirthDate(), customerBean.getcGender());
-        CustomerDAO.insertCustomer(customer);
-        System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from CustomerBean passed by my viewController)");
-        return true;
+        if(!UserDAO.checkIfUserExist(customer.getUserID())){
+            CustomerDAO.insertCustomer(customer);
+            return true;
+        }else{
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "An account with selected email already exists!", "Try another email.");
+            return false;
+        }
     }
 
     public Boolean signUpHair(HairdresserBean hairdresserBean) throws Exception {
         Hairdresser hairdresser = new Hairdresser(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1, hairdresserBean.gethName(), hairdresserBean.gethSurname(), hairdresserBean.getpIVA());
-        HairdresserDAO.insertNewHairdresser(hairdresser, hairdresserBean.getShopName());
-        System.out.println("CONTROLLER APPLICATIVO -> SignUp (data from ....... passed by my viewController)");
-        return true;
+        if (!UserDAO.checkIfUserExist(hairdresser.getUserID())){
+            if(!ShopDAO.checkIfShopExists(hairdresserBean.getShopName())){
+                if(!HairdresserDAO.checkIfPIVAExists(hairdresser.getpIVA())){
+                    HairdresserDAO.insertNewHairdresser(hairdresser, hairdresserBean.getShopName());
+                    return true;
+                }else{
+                    AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "Selected PIVA already used.", "Try another.");
+                }
+            }else{
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "An account with the selected shop name already exists.", "Try another.");
+            }
+        }else{
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "An account with selected email already exists!", "Try another email.");
+        }
+        return false;
     }
 
     public void getHairdresserAndShop(UserBean userBean, HairdresserBean hairdresserBean, ShopBean shopBean) throws Exception {

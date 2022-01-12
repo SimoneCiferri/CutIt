@@ -51,19 +51,20 @@ public class LoginViewController {
             userBeanFirstUI.setUsername(tfUsername.getText());
             userBeanFirstUI.setPasswd(pfPassword.getText());
             try {
-                this.userBeanFirstUI = loginController.login(this.userBeanFirstUI);
-                if (this.userBeanFirstUI.getRole() == 0) {
-                    loginController.getCustomer(userBeanFirstUI, customerBeanFirstUI);
-                    Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
-                    TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
-                    TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
-                    viewController.startBean(this.customerBeanFirstUI);
-                }else{
-                    loginController.getHairdresserAndShop(userBeanFirstUI, hairdresserBeanFirstUI, shopBeanFirstUI);
-                    Facade.getInstance().decorateView(ViewLayout.TOPBARHAIRDRESSER);
-                    TopBarHairdresserView view = (TopBarHairdresserView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARHAIRDRESSER);
-                    TopBarHairdresserViewController viewController = (TopBarHairdresserViewController) view.getLoadedViewController(ViewLayout.TOPBARHAIRDRESSER);
-                    viewController.startBean(hairdresserBeanFirstUI, shopBeanFirstUI);
+                if(loginController.login(this.userBeanFirstUI)){
+                    if (this.userBeanFirstUI.getRole() == 0) {
+                        loginController.getCustomer(userBeanFirstUI, customerBeanFirstUI);
+                        Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
+                        TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
+                        TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
+                        viewController.startBean(this.customerBeanFirstUI);
+                    }else{
+                        loginController.getHairdresserAndShop(userBeanFirstUI, hairdresserBeanFirstUI, shopBeanFirstUI);
+                        Facade.getInstance().decorateView(ViewLayout.TOPBARHAIRDRESSER);
+                        TopBarHairdresserView view = (TopBarHairdresserView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARHAIRDRESSER);
+                        TopBarHairdresserViewController viewController = (TopBarHairdresserViewController) view.getLoadedViewController(ViewLayout.TOPBARHAIRDRESSER);
+                        viewController.startBean(hairdresserBeanFirstUI, shopBeanFirstUI);
+                    }
                 }
             } catch (Exception e) {
                 LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());

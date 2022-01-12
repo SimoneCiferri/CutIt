@@ -29,4 +29,15 @@ public class AlertFactory {
         }
     }
 
+    public void generateAlert(Alert.AlertType type, String title, String headerText){
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
+        if(type == Alert.AlertType.ERROR){
+            Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout().getScene().getWindow();
+            stage.close();
+        }
+    }
+
 }

@@ -4,9 +4,11 @@ import cutit.database.DBConnection;
 import cutit.database.query.HairdresserQueries;
 import cutit.database.query.ShopQueries;
 import cutit.database.query.UserQueries;
+import cutit.factory.AlertFactory;
 import cutit.model.Hairdresser;
 import cutit.model.Shop;
 import cutit.model.User;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,7 +22,7 @@ public class HairdresserDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = HairdresserQueries.checkIfPIVAExists(stm, piva);
         if (!rs.first()) {
-            Exception e = new Exception("Unable to execute query");
+            Exception e = new Exception("Unable to execute checkIfPIVAExists query");
             throw e;
         } else {
             int exists = rs.getInt(1);
@@ -29,30 +31,22 @@ public class HairdresserDAO {
                 stm.close();
             }
             //DBConnection.getInstance().closeConnection();
-            if(exists == 0){
-                return false;
-            }else{
-                Exception e = new Exception("Selected PIVA already used.");
-                throw e;
-            }
+            return exists != 0;
         }
     }
 
     public static void insertNewHairdresser(Hairdresser hairdresser, String shopName) throws Exception {
-        if (!UserDAO.checkIfUserExist(hairdresser.getUserID()) && !checkIfPIVAExists(hairdresser.getpIVA()) && !ShopDAO.checkIfShopExists(shopName)){
-            UserDAO.insertNewUser(hairdresser);
-            Connection conn = DBConnection.getInstance().getConnection();
-            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
-            HairdresserQueries.insertHairdresser(stm, hairdresser.getpIVA(), hairdresser.getUserID(), hairdresser.getName(), hairdresser.getSurname());
-            if(stm != null){
-                stm.close();
-            }
-
-            Shop shop = new Shop(shopName, hairdresser.getpIVA());
-            ShopDAO.insertShop(shop);
-            //DBConnection.getInstance().closeConnection();
+        UserDAO.insertNewUser(hairdresser);
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        HairdresserQueries.insertHairdresser(stm, hairdresser.getpIVA(), hairdresser.getUserID(), hairdresser.getName(), hairdresser.getSurname());
+        if (stm != null) {
+            stm.close();
         }
+        Shop shop = new Shop(shopName, hairdresser.getpIVA());
+        ShopDAO.insertShop(shop);
+        //DBConnection.getInstance().closeConnection();
     }
 
     public static Hairdresser getHairdresser(User user) throws Exception {
