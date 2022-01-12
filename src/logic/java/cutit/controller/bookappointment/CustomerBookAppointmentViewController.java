@@ -21,6 +21,8 @@ public class CustomerBookAppointmentViewController {
     private BookAppointmentController bookAppointmentController;
     private RateShopBean rateShopBean;
 
+    @FXML
+    private  Button addFavorite;
 
     @FXML
     private BorderPane bpInBookApp;
