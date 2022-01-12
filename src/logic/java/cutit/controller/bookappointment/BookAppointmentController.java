@@ -11,6 +11,7 @@ import cutit.controller.rateshop.RateShopController;
 import cutit.database.dao.AppointmentDAO;
 import cutit.database.dao.CustomerDAO;
 import cutit.database.dao.ShopDAO;
+import cutit.log.LogWriter;
 import cutit.model.*;
 
 import java.util.ArrayList;
@@ -44,9 +45,9 @@ public class BookAppointmentController {
         return true;
     }
 
-    public Boolean addShopToFavourites(String shopName, String daGiulio) throws Exception {
+    public Boolean addShopToFavourites(String customerEmail, String shopName) throws Exception {
         addShopToFavouritesController = new AddShopToFavouritesController();
-        addShopToFavouritesController.addToFavourites(shopName, daGiulio);
+        addShopToFavouritesController.addToFavourites(customerEmail, shopName);
         return true;
     }
 
@@ -57,31 +58,46 @@ public class BookAppointmentController {
     }
 
     public void getAppointments(CustomerBeanFirstUI customerBeanFirstUI) throws Exception {
-        Customer customer = CustomerDAO.getCustomer(new User(customerBeanFirstUI.getcEmail(), customerBeanFirstUI.getcPassword(), customerBeanFirstUI.getcRole()));
-        List<Appointment> appList = AppointmentDAO.getAllCustomerAppointments(customer);
+        try {
+            Customer customer = CustomerDAO.getCustomer(new User(customerBeanFirstUI.getcEmail(), customerBeanFirstUI.getcPassword(), customerBeanFirstUI.getcRole()));
+            List<Appointment> appList = AppointmentDAO.getAllCustomerAppointments(customer);
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
     }
 
     public void getShops(ShopListBean shopListBean) throws Exception{
-        List<Shop> shopList = ShopDAO.getShops();
-        shopListBean.setShopBeanList(beanListFromShopList(shopList));
+        try {
+            List<Shop> shopList = ShopDAO.getShops();
+            shopListBean.setShopBeanList(beanListFromShopList(shopList));
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
     }
 
     public ShopBeanUQ getShop(String shopName) throws Exception {
-        Shop shop = ShopDAO.getShopFromName(shopName);
-        ShopBeanUQ shopBeanUQ = new ShopBeanUQ();
-        shopBeanUQ.setShopName(shop.getShopName());
-        shopBeanUQ.setShopPIVA(shop.getpIVA());
-        shopBeanUQ.setAddress(shop.getAddress());
-        shopBeanUQ.setPhoneNumber(shop.getPhoneNumber());
-        shopBeanUQ.setEmployee(shop.getEmployee());
-        shopBeanUQ.setShopDescription(shop.getDescription());
-        shopBeanUQ.setOpenTime(shop.getOpenTime());
-        shopBeanUQ.setCloseTime(shop.getCloseTime());
-        shopBeanUQ.setOpenDays(shop.getOpenDays());
-        shopBeanUQ.setPromotions(stringListFromPromList(shop.getPromotions()));
-        shopBeanUQ.setServices(stringListFromServList(shop.getServices()));
-        shopBeanUQ.setImages(shop.getImages());
-        return shopBeanUQ;
+        try {
+            Shop shop = ShopDAO.getShopFromName(shopName);
+            ShopBeanUQ shopBeanUQ = new ShopBeanUQ();
+            shopBeanUQ.setShopName(shop.getShopName());
+            shopBeanUQ.setShopPIVA(shop.getpIVA());
+            shopBeanUQ.setAddress(shop.getAddress());
+            shopBeanUQ.setPhoneNumber(shop.getPhoneNumber());
+            shopBeanUQ.setEmployee(shop.getEmployee());
+            shopBeanUQ.setShopDescription(shop.getDescription());
+            shopBeanUQ.setOpenTime(shop.getOpenTime());
+            shopBeanUQ.setCloseTime(shop.getCloseTime());
+            shopBeanUQ.setOpenDays(shop.getOpenDays());
+            shopBeanUQ.setPromotions(stringListFromPromList(shop.getPromotions()));
+            shopBeanUQ.setServices(stringListFromServList(shop.getServices()));
+            shopBeanUQ.setImages(shop.getImages());
+            return shopBeanUQ;
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
     }
 
     /*private List<CustomerBeanFirstUI.AppData> stringAppDataFromAppList(List<Appointment> allAppointments) {

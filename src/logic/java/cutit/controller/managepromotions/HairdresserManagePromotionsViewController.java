@@ -4,6 +4,9 @@ import cutit.bean.ManagePromotionBean;
 import cutit.bean.firstui.HairdresserBeanFirstUI;
 import cutit.bean.firstui.ManagePromotionBeanUQ;
 import cutit.bean.ShopBean;
+import cutit.exception.DBConnectionException;
+import cutit.exception.DuplicatedRecordException;
+import cutit.factory.AlertFactory;
 import cutit.utils.TextFieldCheck;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
@@ -117,6 +120,10 @@ public class HairdresserManagePromotionsViewController {
             try {
                 managePromotionController.addPromotion(this.managePromotionBeanFirstUI);
                 showHairProm();
+            } catch (DuplicatedRecordException de) {
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+            } catch(DBConnectionException dce){
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -1,7 +1,9 @@
 package cutit.controller.bookappointment;
 
+import cutit.bean.CustomerBean;
 import cutit.bean.firstui.ShopBeanUQ;
 import cutit.decorator.ViewLayout;
+import cutit.decorator.concreteDecorator.ClientBookAppointmentView;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,8 +17,10 @@ import java.util.List;
 public class ShopInfoViewController {
 
     private ShopBeanUQ shopBeanUQ;
+    private CustomerBean customerBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
     private List<ImageView> ivList = new ArrayList<>();
+
 
     @FXML
     private Label lShopName, lShopPhone;
@@ -42,6 +46,9 @@ public class ShopInfoViewController {
     @FXML
     public boolean bookAppointment() {
         Facade.getInstance().decorateView(ViewLayout.CLIENTBOOKAPPOINTMENT);
+        ClientBookAppointmentView view = (ClientBookAppointmentView) Facade.getInstance().getViewMap().get(ViewLayout.CLIENTBOOKAPPOINTMENT);
+        CustomerBookAppointmentViewController viewController = (CustomerBookAppointmentViewController) view.getLoadedViewController(ViewLayout.CLIENTBOOKAPPOINTMENT);
+        viewController.fillView(customerBeanFirstUI, shopBeanUQ);
         return true;
     }
 
@@ -57,9 +64,10 @@ public class ShopInfoViewController {
         return true;
     }
 
-    public void fillView(String shopName){
+    public void fillView(CustomerBean customerBeanFirstUI, String shopName){
         try {
-            this.shopBeanUQ = bookAppointmentController.getShop(shopName);
+            this.customerBeanFirstUI = customerBeanFirstUI;
+            shopBeanUQ = bookAppointmentController.getShop(shopName);
             lShopName.setText(shopBeanUQ.getShopName());
             lShopPhone.setText(shopBeanUQ.getPhoneNumber());
             for(int i = 0; i< shopBeanUQ.getImages().size(); i++){

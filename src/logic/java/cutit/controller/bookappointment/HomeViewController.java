@@ -50,7 +50,7 @@ public class HomeViewController {
         Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
         ShopInfoView view = (ShopInfoView) Facade.getInstance().getViewMap().get(ViewLayout.SHOPINFO);
         ShopInfoViewController viewController = (ShopInfoViewController) view.getLoadedViewController(ViewLayout.SHOPINFO);
-        viewController.fillView(shopName);
+        viewController.fillView(customerBeanFirstUI, shopName);
 
     }
 

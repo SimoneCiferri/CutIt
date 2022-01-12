@@ -21,7 +21,7 @@ public class FavoriteShopsDAO {
         while (rs.next()) {
             String shopN = rs.getString(2);
             if(Objects.equals(shopNameF, shopN)){
-                throw new DuplicatedRecordException(shopNameF + " already exists!");
+                throw new DuplicatedRecordException(shopNameF + " already added!");
             }
         }
         rs.close();

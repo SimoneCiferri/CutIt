@@ -4,6 +4,7 @@ import cutit.database.DBConnection;
 import cutit.database.query.HairdresserQueries;
 import cutit.database.query.ShopQueries;
 import cutit.database.query.UserQueries;
+import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
 import cutit.factory.AlertFactory;
 import cutit.model.Hairdresser;
@@ -27,7 +28,11 @@ public class HairdresserDAO {
         rs.close();
         stm.close();
         //DBConnection.getInstance().closeConnection();
-        return exists != 0;
+        if(exists == 0){
+            return false;
+        }else{
+            throw new DuplicatedRecordException("User with selected PIVA already exists");
+        }
     }
 
     public static void insertNewHairdresser(Hairdresser hairdresser, String shopName) throws Exception {

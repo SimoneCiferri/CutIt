@@ -15,7 +15,7 @@
                   <Insets left="15.0" />
                </HBox.margin>
             </ImageView>
-            <Label text="ShopName" textFill="WHITE">
+            <Label fx:id="lblTitleShopName" text="ShopName" textFill="WHITE">
                <font>
                   <Font size="30.0" />
                </font>

@@ -3,6 +3,7 @@ package cutit.database.dao;
 import cutit.database.DBConnection;
 import cutit.database.query.ShopQueries;
 import cutit.exception.DBConnectionException;
+import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
 import cutit.model.*;
 
@@ -26,7 +27,11 @@ public class ShopDAO {
         rs.close();
         stm.close();
         //DBConnection.getInstance().closeConnection();
-        return exists != 0;
+        if(exists == 0){
+            return false;
+        }else{
+            throw new DuplicatedRecordException("Shop with selected name already exists");
+        }
     }
 
     public static void insertShop(Shop shop) throws Exception {

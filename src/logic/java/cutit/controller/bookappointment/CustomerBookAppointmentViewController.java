@@ -1,13 +1,19 @@
 package cutit.controller.bookappointment;
 
+import cutit.bean.CustomerBean;
 import cutit.bean.PayOnlineBean;
 import cutit.bean.RateShopBean;
+import cutit.bean.ShopBean;
 import cutit.bean.firstui.AppointmentBeanFirstUI;
 import cutit.bean.firstui.RateShopBeanUQ;
 import cutit.decorator.ViewLayout;
+import cutit.exception.DBConnectionException;
+import cutit.exception.DuplicatedRecordException;
 import cutit.facade.Facade;
+import cutit.factory.AlertFactory;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -17,15 +23,17 @@ import java.time.LocalDate;
 
 public class CustomerBookAppointmentViewController {
 
+    private CustomerBean customerBeanFirstUI;
     private AppointmentBeanFirstUI appointmentBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
     private RateShopBean rateShopBean;
+    private ShopBean shopBeanUQ;
 
     @FXML
     private BorderPane bpInBookApp;
 
     @FXML
-    private Label labelDate, label830, labelService;
+    private Label labelDate, label830, labelService, lblTitleShopName;
 
     @FXML
     private DatePicker dtPicker;
@@ -86,13 +94,7 @@ public class CustomerBookAppointmentViewController {
         btnGetDir.setOnMouseClicked((MouseEvent) -> getDirections());
         Button btnAddToFav = new Button("Add Shop To Favourites");
         btnAddToFav.setPrefHeight(55);
-        btnAddToFav.setOnMouseClicked((MouseEvent) -> {
-            try {
-                addToFavourites();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+        btnAddToFav.setOnMouseClicked((MouseEvent) -> addToFavourites());
         Button btnAddToCalendar = new Button("Add Appointment To Calendar");
         btnAddToCalendar.setPrefHeight(55);
         btnAddToCalendar.setOnMouseClicked((MouseEvent) -> addAppToCalendar());
@@ -114,13 +116,19 @@ public class CustomerBookAppointmentViewController {
         Facade.getInstance().decorateView(ViewLayout.CUSTOMERRATESHOP);
     }
 
-    private void addToFavourites() throws Exception {
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        if(bookAppointmentController.addShopToFavourites("a@a", "b" )){
+    private void addToFavourites() {
+        try {
+            if(bookAppointmentController.addShopToFavourites(customerBeanFirstUI.getcEmail(), shopBeanUQ.getShopName() )){
+                Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
+            }
+        } catch (DuplicatedRecordException de) {
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
             Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
+        } catch(DBConnectionException dce){
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-
     }
 
     private void addAppToCalendar(){
@@ -132,6 +140,12 @@ public class CustomerBookAppointmentViewController {
     @FXML
     private void payTheApp(){
         Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
+    }
+
+    public void fillView(CustomerBean customerBeanFirstUI, ShopBean shopBeanUQ){
+        this.customerBeanFirstUI = customerBeanFirstUI;
+        this.shopBeanUQ = shopBeanUQ;
+        lblTitleShopName.setText(shopBeanUQ.getShopName());
     }
 
 }

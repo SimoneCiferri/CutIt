@@ -5,7 +5,11 @@ import cutit.bean.HairdresserBean;
 import cutit.bean.firstui.CustomerBeanFirstUI;
 import cutit.bean.firstui.HairdresserBeanFirstUI;
 import cutit.decorator.ViewLayout;
+import cutit.exception.DBConnectionException;
+import cutit.exception.DuplicatedRecordException;
+import cutit.exception.RecordNotFoundException;
 import cutit.facade.Facade;
+import cutit.factory.AlertFactory;
 import cutit.utils.TextFieldCheck;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -45,7 +49,7 @@ public class SignUpViewController {
     }
 
     @FXML
-    public boolean trySignUpCustomer(){
+    public void trySignUpCustomer(){
         try{
             if(!checkIfNull(tfCustomerName.getText(), tfCustomerSurname.getText(), cbCustomerGender.getValue(), tfCustomerEmail.getText(), pfCustomerPassword.getText())
                     && TextFieldCheck.isEmailAddress(tfCustomerEmail.getText())
@@ -60,14 +64,17 @@ public class SignUpViewController {
                     Facade.getInstance().decorateView(ViewLayout.LOGIN);
                 }
             }
-        }catch (Exception e){
+        } catch (DuplicatedRecordException de) {
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+        } catch(DBConnectionException dce){
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return true;
     }
 
     @FXML
-    public boolean trySignUpHair(){
+    public void trySignUpHair(){
         try{
             if(!checkIfNull(tfHairdresserName.getText(), tfHairdresserSurname.getText(), tfHairdresserEmail.getText(), tfHairdresserPIVA.getText(), tfHairdresserShopName.getText())
                     && TextFieldCheck.isEmailAddress(tfHairdresserEmail.getText())
@@ -83,10 +90,13 @@ public class SignUpViewController {
                     Facade.getInstance().decorateView(ViewLayout.LOGIN);
                 }
             }
-        }catch (Exception e){
+        } catch (DuplicatedRecordException de) {
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+        } catch(DBConnectionException dce){
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return true;
     }
 
     private boolean checkSamePasswd(PasswordField p1, PasswordField p2) {
