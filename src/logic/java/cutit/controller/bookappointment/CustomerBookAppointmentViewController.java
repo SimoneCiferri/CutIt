@@ -7,6 +7,7 @@ import cutit.bean.ShopBean;
 import cutit.bean.firstui.AppointmentBeanFirstUI;
 import cutit.bean.firstui.RateShopBeanUQ;
 import cutit.decorator.ViewLayout;
+import cutit.decorator.concreteDecorator.CustomerFavouritesShopView;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.facade.Facade;
@@ -120,6 +121,9 @@ public class CustomerBookAppointmentViewController {
         try {
             if(bookAppointmentController.addShopToFavourites(customerBeanFirstUI.getcEmail(), shopBeanUQ.getShopName() )){
                 Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
+                CustomerFavouritesShopView view = (CustomerFavouritesShopView) Facade.getInstance().getViewMap().get(ViewLayout.FAVSHOP);
+                CustomerFavouritesShopViewController viewController = (CustomerFavouritesShopViewController) view.getLoadedViewController(ViewLayout.FAVSHOP);
+                viewController.fillView(customerBeanFirstUI);
             }
         } catch (DuplicatedRecordException de) {
             AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());

@@ -1,9 +1,10 @@
 package cutit.bean;
 
-public interface FavoriteShopBean {
-    String getCustomerEmailF();
-    String getShopNameF();
+import java.util.List;
 
-    void setCustomerEmailF(String customerEmailF);
-    void setShopNameF(String shopNameF);
+public interface FavoriteShopBean {
+
+    List<String> getFavShopList();
+
+    void setFavShopList(List<String> favShopList);
 }

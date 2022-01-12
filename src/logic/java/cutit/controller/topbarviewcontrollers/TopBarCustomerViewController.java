@@ -78,7 +78,7 @@ public class TopBarCustomerViewController {
         Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
         CustomerFavouritesShopView view = (CustomerFavouritesShopView) Facade.getInstance().getViewMap().get(ViewLayout.FAVSHOP);
         CustomerFavouritesShopViewController viewController = (CustomerFavouritesShopViewController) view.getLoadedViewController(ViewLayout.FAVSHOP);
-        viewController.fillView(new ShopBeanUQ());
+        viewController.fillView(customerBeanFirstUI);
         return true;
     }
 

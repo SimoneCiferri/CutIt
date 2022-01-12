@@ -2,28 +2,19 @@ package cutit.bean.firstui;
 
 import cutit.bean.FavoriteShopBean;
 
+import java.util.List;
+
 public class FavoriteShopBeanUQ implements FavoriteShopBean {
 
-    private String customerEmailF;
-    private String shopNameF;
+    private List<String> favShopList;
 
     @Override
-    public String getCustomerEmailF() {
-        return customerEmailF;
+    public List<String> getFavShopList() {
+        return favShopList;
     }
 
     @Override
-    public String getShopNameF() {
-        return shopNameF;
-    }
-
-    @Override
-    public void setCustomerEmailF(String customerEmailF) {
-        this.customerEmailF = customerEmailF;
-    }
-
-    @Override
-    public void setShopNameF(String shopNameF) {
-       this.shopNameF = shopNameF;
+    public void setFavShopList(List<String> favShopList) {
+        this.favShopList = favShopList;
     }
 }

@@ -10,6 +10,7 @@ import cutit.controller.payonline.PayOnlineController;
 import cutit.controller.rateshop.RateShopController;
 import cutit.database.dao.AppointmentDAO;
 import cutit.database.dao.CustomerDAO;
+import cutit.database.dao.FavoriteShopsDAO;
 import cutit.database.dao.ShopDAO;
 import cutit.log.LogWriter;
 import cutit.model.*;
@@ -120,6 +121,16 @@ public class BookAppointmentController {
         }
         return appList;
     }*/
+
+    public void getFavouritesShop(ShopListBean bean, String customerEmail) throws Exception {
+        try{
+            List<Shop> shopList = FavoriteShopsDAO.getFavouritesShops(customerEmail);
+            bean.setShopBeanList(beanListFromShopList(shopList));
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
+    }
 
     private List<ShopBean> beanListFromShopList(List<Shop> shopList) {
         List<ShopBean> list = new ArrayList<>();
