@@ -2,6 +2,7 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.UserQueries;
+import cutit.exception.DBException;
 import cutit.exception.WrongCredentialsException;
 import cutit.model.Appointment;
 import cutit.model.Customer;
@@ -10,6 +11,7 @@ import cutit.model.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.List;
@@ -17,51 +19,53 @@ import java.util.List;
 public class UserDAO {
 
     public static Boolean checkIfUserExist(String userID) throws Exception {
-        Connection conn = DBConnection.getInstance().getConnection();
-        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = UserQueries.checkIfUserExists(stm, userID);
-        if (!rs.first()) {
-            Exception e = new Exception("Unable to execute checkIfUserExist query");
-            throw e;
-        } else {
+        try{
+            Connection conn = DBConnection.getInstance().getConnection();
+            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = UserQueries.checkIfUserExists(stm, userID);
             int exists = rs.getInt(1);
             rs.close();
-            if (stm != null) {
-                stm.close();
-            }
+            stm.close();
             //DBConnection.getInstance().closeConnection();
             return exists != 0;
+        } catch (SQLException se){
+            throw new DBException(se.getMessage(), se.getCause());
         }
     }
 
     public static void insertNewUser(User user) throws Exception {
-        Connection conn = DBConnection.getInstance().getConnection();
-        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                ResultSet.CONCUR_READ_ONLY);
-        UserQueries.insertUser(stm, user.getUserID(), user.getPwd(), user.getRole());
-        if(stm != null){
+        try{
+            Connection conn = DBConnection.getInstance().getConnection();
+            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+            UserQueries.insertUser(stm, user.getUserID(), user.getPwd(), user.getRole());
             stm.close();
+            //DBConnection.getInstance().closeConnection();
+        } catch (SQLException se){
+            throw new DBException(se.getMessage(), se.getCause());
         }
-        //DBConnection.getInstance().closeConnection();
     }
 
     public static void userLogin(User user) throws Exception {
-        Connection conn = DBConnection.getInstance().getConnection();
-        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-                ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = UserQueries.getUser(stm, user.getUserID(), user.getPwd());
-        if(!rs.first()){
-            throw new WrongCredentialsException();
-        }else{
-            Integer role = rs.getInt("Role");
-            user.setRole(role);
-        }
-        rs.close();
-        if(stm != null){
+        try{
+            Connection conn = DBConnection.getInstance().getConnection();
+            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+            ResultSet rs = UserQueries.getUser(stm, user.getUserID(), user.getPwd());
+            if(!rs.first()){
+                throw new WrongCredentialsException();
+            }else{
+                Integer role = rs.getInt("Role");
+                user.setRole(role);
+            }
+            rs.close();
             stm.close();
+            //DBConnection.getInstance().closeConnection();
+        } catch (SQLException se){
+            throw new DBException(se.getMessage(), se.getCause());
         }
-        //DBConnection.getInstance().closeConnection();
+
     }
 
 
