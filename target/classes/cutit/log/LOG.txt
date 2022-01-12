@@ -674,3 +674,7 @@ class cutit.controller.login.LoginViewController
 2022/01/10 16:34:48
 class cutit.controller.login.LoginViewController
  src\logic\resources\cutit\cutit\tmpfiles\image0.tmp (The system cannot find the path specified)
+
+2022/01/11 17:16:39
+class cutit.controller.login.LoginViewController
+ No user Found matching with name: a
