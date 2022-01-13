@@ -24,10 +24,10 @@ public class ShopInfoViewController {
     private List<ImageView> ivList = new ArrayList<>();
 
     @FXML
-    private Label lShopName, lShopPhone;
+    private Label lShopName, lShopPhone, lblPhoto;
 
     @FXML
-    private VBox vboxShopInfo;
+    private VBox vboxShopInfo, vboxPhoto;
 
     @FXML
     private ImageView ivShop1, ivShop2, ivShop3, ivShop4, ivShop5, ivShop6, ivShop7, ivShop8;
@@ -48,15 +48,17 @@ public class ShopInfoViewController {
     }
 
     public void showShopInfo(){
-        vboxShopInfo.getChildren().clear();
-        Label lblShopName = JavaFXNodeFactory.getInstance().createLabel(shopBeanUQ.getShopName(), 30.0);
-        //ImageView del titolo da mettere
-        Label lblPhone = JavaFXNodeFactory.getInstance().createLabel(shopBeanUQ.getPhoneNumber(), 12.0);
-        vboxShopInfo.getChildren().addAll(lblShopName, lblPhone);
-        /*for(int i = 0; i< shopBeanUQ.getImages().size(); i++){
-            System.out.println("immagine");
-            ivList.get(i).setImage(new Image(String.valueOf(shopBeanUQ.getImages().get(i).toURI())));
-        }*/
+        lShopName.setText(shopBeanUQ.getShopName());
+        lShopPhone.setText(shopBeanUQ.getPhoneNumber());
+        if(!shopBeanUQ.getImages().isEmpty()){
+            for(int i = 0; i< shopBeanUQ.getImages().size(); i++){
+                ivList.get(i).setImage(new Image(String.valueOf(shopBeanUQ.getImages().get(i).toURI())));
+            }
+        } else {
+            lblPhoto.setVisible(false);
+            vboxPhoto.setVisible(false);
+        }
+
     }
 
     @FXML
