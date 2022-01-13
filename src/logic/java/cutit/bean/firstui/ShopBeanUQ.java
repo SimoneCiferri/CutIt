@@ -4,6 +4,7 @@ import cutit.bean.ShopBean;
 
 import java.io.File;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public class ShopBeanUQ implements ShopBean {
     private LocalTime openTime;
     private LocalTime closeTime;
     private Map<Integer, Boolean> openDays;
-    private List<File> images;
+    private List<File> images = new ArrayList<>();
     private List<String> promotions;
     private List<String> services;
     private List<String> allAppointments;

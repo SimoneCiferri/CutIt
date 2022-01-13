@@ -9,12 +9,17 @@ import cutit.facade.Facade;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.scene.layout.*;
+import javafx.stage.FileChooser;
 
+import javax.swing.*;
+import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class HomeViewController {
 
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private static final String defaultLogo = "/cutit/cutit/files/barberlogo.jpg";
     private CustomerBean customerBeanFirstUI;
     private ShopListBean shopListBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
@@ -35,9 +40,14 @@ public class HomeViewController {
         try {
             bookAppointmentController.getShops(shopListBeanFirstUI);
             for(int i = 0; i< shopListBeanFirstUI.getShopBeanList().size(); i++){
-                String path = "/cutit/cutit/files/barberlogo.jpg";
+                HBox card;
+                if(!shopListBeanFirstUI.getShopBeanList().get(i).getImages().isEmpty()){
+                    File im = shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0);
+                    card = JavaFXNodeFactory.getInstance().createCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getAddress(), labelStyle, im);
+                } else {
+                    card = JavaFXNodeFactory.getInstance().createCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getAddress(), labelStyle);
+                }
                 int n = i;
-                HBox card = JavaFXNodeFactory.getInstance().createCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getAddress(), labelStyle, path);
                 card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
                 vbInScroll.getChildren().add(card);
             }

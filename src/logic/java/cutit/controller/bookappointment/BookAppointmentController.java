@@ -4,6 +4,7 @@ import cutit.bean.*;
 import cutit.bean.firstui.AppointmentBeanFirstUI;
 import cutit.bean.firstui.CustomerBeanFirstUI;
 import cutit.bean.firstui.ShopBeanUQ;
+import cutit.bean.firstui.ShopListBeanFirstUI;
 import cutit.controller.addappointmenttocalendar.AddAppointmentToCalendarController;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.controller.payonline.PayOnlineController;
@@ -15,6 +16,7 @@ import cutit.database.dao.ShopDAO;
 import cutit.log.LogWriter;
 import cutit.model.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -134,9 +136,11 @@ public class BookAppointmentController {
             for(int i = 0; i<shopList.size(); i++){
                 String name = shopList.get(i).getShopName();
                 String address = shopList.get(i).getAddress();
+                List<File> images = shopList.get(i).getImages();
                 ShopBean shopBean = new ShopBeanUQ(); //si dovrebbe capire quale creare a runtime OPPURE si usa shopBEanFirstUI come shopBeanUnica per tutte e due le UI
                 shopBean.setShopName(name);
                 shopBean.setAddress(address);
+                shopBean.setImages(images);
                 list.add(shopBean);
             }
         }

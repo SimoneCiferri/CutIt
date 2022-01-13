@@ -195,11 +195,13 @@ public class ShopDAO {
         if (rs.first()) {
             rs.first();
             do {
-                String shopNAme = rs.getString(1);
+                String shopName = rs.getString(1);
                 String shopAddress = rs.getString(3);
                 String hPIVA = rs.getString(4);
-                Shop shop = new Shop(shopNAme, hPIVA);
+                Shop shop = new Shop(shopName, hPIVA);
                 shop.setAddress(shopAddress);
+                List<File> images = getImages(shop);
+                shop.setImages(images);
                 shopList.add(shop);
             } while (rs.next());
             rs.close();
