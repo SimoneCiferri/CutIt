@@ -12,4 +12,10 @@ public class AppointmentQueries {
         return stmt.executeQuery(sql);
     }
 
+    public static ResultSet getAllShopAppointments(Statement stmt, String shopName) throws SQLException {
+        String sql = "SELECT * FROM appointment WHERE Shop_ShopName = '" + shopName + "'";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+
 }

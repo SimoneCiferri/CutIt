@@ -1,28 +1,27 @@
 package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
-import cutit.bean.PayOnlineBean;
 import cutit.bean.RateShopBean;
 import cutit.bean.ShopBean;
 import cutit.bean.firstui.AppointmentBeanFirstUI;
 import cutit.bean.firstui.RateShopBeanUQ;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.decorator.ViewLayout;
-import cutit.decorator.concreteDecorator.CustomerFavouritesShopView;
 import cutit.decorator.concreteDecorator.TopBarCustomerView;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
+import cutit.exception.WrongInputDataException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
 
 public class CustomerBookAppointmentViewController {
 
@@ -43,6 +42,12 @@ public class CustomerBookAppointmentViewController {
 
     @FXML
     private HBox hBoxTop, hBoxCentre, hBoxBottom;
+
+    @FXML
+    private VBox vbDateAndTime;
+
+    @FXML
+    private ChoiceBox<LocalTime> cbTimeSlot;
 
     @FXML
     public void initialize(){
@@ -73,9 +78,23 @@ public class CustomerBookAppointmentViewController {
     }
 
     @FXML
-    private void set830(){
-        labelDate.setText(dtPicker.getValue().toString() + "T" + "08:30:00");
-        label830.setBorder(new Border(new BorderStroke(Color.GREY, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(5))));
+    private void showAvailableTimeSlots(){
+        try {
+            LocalDate day = dtPicker.getValue();
+            appointmentBeanFirstUI.setSelectedDay(day);
+            bookAppointmentController.getAvailableSlots(appointmentBeanFirstUI, shopBeanUQ.getShopName());
+            List<LocalTime> availableSlots = appointmentBeanFirstUI.getAvailableSlots();
+            cbTimeSlot.getItems().clear();
+            for (LocalTime availableSlot : availableSlots) {
+                cbTimeSlot.getItems().add(availableSlot);
+            }
+            //differenza e ho quelli liberi
+        } catch (WrongInputDataException wde) {
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+            dtPicker.setValue(LocalDate.now());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void showPayedAndBooked() {
@@ -152,6 +171,7 @@ public class CustomerBookAppointmentViewController {
         this.customerBeanFirstUI = customerBeanFirstUI;
         this.shopBeanUQ = shopBeanUQ;
         lblTitleShopName.setText(shopBeanUQ.getShopName());
+        showAvailableTimeSlots();
     }
 
 }

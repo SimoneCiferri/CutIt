@@ -1,5 +1,9 @@
 package cutit.bean;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
 public interface AppointmentBean {
 
     String getStartTime();
@@ -25,5 +29,13 @@ public interface AppointmentBean {
     String getShopName();
 
     void setShopName(String shopName);
+
+    List<LocalTime> getAvailableSlots();
+
+    void setAvailableSlots(List<LocalTime> availableSlots);
+
+    LocalDate getSelectedDay();
+
+    void setSelectedDay(LocalDate selectedDay);
 
 }

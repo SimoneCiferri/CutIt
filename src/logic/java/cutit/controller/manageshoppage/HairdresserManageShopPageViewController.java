@@ -1,6 +1,8 @@
 package cutit.controller.manageshoppage;
 
 import cutit.bean.ShopBean;
+import cutit.exception.WrongInputDataException;
+import cutit.factory.AlertFactory;
 import cutit.utils.TextFieldCheck;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -35,7 +37,7 @@ public class HairdresserManageShopPageViewController {
     private CheckBox cbMon, cbTue, cbWed, cbThu, cbFri, cbSat, cbSun;
 
     @FXML
-    private ChoiceBox<String> cbOpenTime, cbCloseTime;
+    private ChoiceBox<LocalTime> cbOpenTime, cbCloseTime;
 
     @FXML
     private ImageView ivProfPhoto, iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8;
@@ -50,10 +52,18 @@ public class HairdresserManageShopPageViewController {
         checkBoxList.add(cbFri);
         checkBoxList.add(cbSat);
         checkBoxList.add(cbSun);
-        List<String> timeList = new ArrayList<>();
-        timeList.add("08:00");
-        timeList.add("20:00");
-        for (String s : timeList) {
+        List<LocalTime> timeList = new ArrayList<>();
+        LocalTime l;
+        for(int i = 7; i<=21;i++){
+            if(i<10){
+                l = LocalTime.parse("0"+ i + ":00:00");
+            }else{
+                l = LocalTime.parse(i + ":00:00");
+            }
+            timeList.add(l);
+            timeList.add(l.plusMinutes(30));
+        }
+        for (LocalTime s : timeList) {
             cbOpenTime.getItems().add(s);
             cbCloseTime.getItems().add(s);
         }
@@ -80,11 +90,13 @@ public class HairdresserManageShopPageViewController {
             shopBeanFirstUI.setEmployee(taEmployee.getText());
             Map<Integer, Boolean> openDaysMap = getOpenDays(checkBoxList);
             shopBeanFirstUI.setOpenDays(openDaysMap);
-            shopBeanFirstUI.setOpenTime(LocalTime.parse(cbOpenTime.getValue()));
-            shopBeanFirstUI.setCloseTime(LocalTime.parse(cbCloseTime.getValue()));
+            shopBeanFirstUI.setOpenTime(cbOpenTime.getValue());
+            shopBeanFirstUI.setCloseTime(cbCloseTime.getValue());
             shopBeanFirstUI.setImages(getImages());
             try {
                 manageShopPageController.updateShop(shopBeanFirstUI);
+            } catch (WrongInputDataException wde){
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -125,8 +137,8 @@ public class HairdresserManageShopPageViewController {
             }
         }
 
-        cbOpenTime.setValue(shopBeanFirstUI.getOpenTime().toString());
-        cbCloseTime.setValue(shopBeanFirstUI.getCloseTime().toString());
+        cbOpenTime.setValue(shopBeanFirstUI.getOpenTime());
+        cbCloseTime.setValue(shopBeanFirstUI.getCloseTime());
 
        if(!shopBeanFirstUI.getImages().isEmpty()){
             for(int i = 0; i< shopBeanFirstUI.getImages().size(); i++){

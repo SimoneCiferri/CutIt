@@ -73,6 +73,9 @@ public class ShopDAO {
             shop.setPromotions(allPromotions);
             List<Service> services = ServiceDAO.getALlServices(shop);
             shop.setServices(services);
+
+            List<Appointment> app = AppointmentDAO.getAllShopAppointments(shop);
+            shop.setAllAppointments(app);
             rs.close();
             stm.close();
             //DBConnection.getInstance().closeConnection();
@@ -109,8 +112,8 @@ public class ShopDAO {
             shop.setPromotions(allPromotions);
             List<Service> services = ServiceDAO.getALlServices(shop);
             shop.setServices(services);
-            //ho messo una lista di appuntamenti vuota senno dava NPE
-            List<Appointment> app = new ArrayList<>();
+
+            List<Appointment> app = AppointmentDAO.getAllShopAppointments(shop);
             shop.setAllAppointments(app);
             rs.close();
             stm.close();
@@ -209,6 +212,10 @@ public class ShopDAO {
         }
         //DBConnection.getInstance().closeConnection();
         return shopList;
+    }
+
+    private static LocalTime localTimeFromString(String openTime) {
+        return LocalTime.parse(openTime);
     }
 
 

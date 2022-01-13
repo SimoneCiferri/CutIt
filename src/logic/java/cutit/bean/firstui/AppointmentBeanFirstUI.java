@@ -2,6 +2,10 @@ package cutit.bean.firstui;
 
 import cutit.bean.AppointmentBean;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+
 public class AppointmentBeanFirstUI implements AppointmentBean {
 
     private String startTime;
@@ -10,6 +14,9 @@ public class AppointmentBeanFirstUI implements AppointmentBean {
     private String promotionCode;
     private String serviceName;
     private String shopName;
+    private LocalDate selectedDay;
+    private List<LocalTime> availableSlots;
+
 
     public String getStartTime() {
         return startTime;
@@ -58,4 +65,25 @@ public class AppointmentBeanFirstUI implements AppointmentBean {
     public void setShopName(String shopName) {
         this.shopName = shopName;
     }
+
+    @Override
+    public List<LocalTime> getAvailableSlots() {
+        return availableSlots;
+    }
+
+    @Override
+    public void setAvailableSlots(List<LocalTime> availableSlots) {
+        this.availableSlots = availableSlots;
+    }
+
+    @Override
+    public LocalDate getSelectedDay() {
+        return selectedDay;
+    }
+
+    @Override
+    public void setSelectedDay(LocalDate selectedDay) {
+        this.selectedDay = selectedDay;
+    }
+
 }

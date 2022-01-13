@@ -28,6 +28,14 @@ public class Appointment {
         setShop(shop);
     }
 
+    public Appointment(LocalDateTime startTime, LocalDateTime endTime, Service service, Shop shop){
+        setStartTime(startTime);
+        setEndTime(endTime);
+        setCustomer(customer);
+        setService(service);
+        setShop(shop);
+    }
+
 
     public LocalDateTime getStartTime() {
         return startTime;

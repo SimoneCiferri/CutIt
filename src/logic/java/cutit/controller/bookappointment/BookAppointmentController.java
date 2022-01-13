@@ -13,10 +13,13 @@ import cutit.database.dao.AppointmentDAO;
 import cutit.database.dao.CustomerDAO;
 import cutit.database.dao.FavoriteShopsDAO;
 import cutit.database.dao.ShopDAO;
+import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.*;
 
 import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +67,50 @@ public class BookAppointmentController {
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
+    }
+
+    public void getAvailableSlots(AppointmentBean bean, String shopName) throws Exception {
+        try {
+            if(bean.getSelectedDay().isBefore(LocalDate.now())){
+                throw new WrongInputDataException("Impossible to select a past day.");
+            }
+            Shop shop = ShopDAO.getShopFromName(shopName);
+            LocalTime open = shop.getOpenTime();
+            LocalTime close = shop.getCloseTime();
+            List<Appointment> allAppList = shop.getAllAppointments();
+            List<Appointment> appList = filterByDay(allAppList, bean.getSelectedDay());
+            List<LocalTime> availableList = new ArrayList<>();
+            LocalTime temp = open;
+            while (!temp.equals(close)) {
+                if(!allAppList.isEmpty()){
+                    for (Appointment appointment : appList) {
+                        System.out.println("Quà anche ci arrivo");
+                        if (!appointment.getStartTime().toLocalTime().equals(temp)) {
+                            availableList.add(temp);
+                        }
+                    }
+                }else{
+                    availableList.add(temp);
+                }
+                temp = temp.plusMinutes(30);
+            }
+            bean.setAvailableSlots(availableList);
+        } catch (WrongInputDataException wde) {
+            throw wde;
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
+    }
+
+    private List<Appointment> filterByDay(List<Appointment> allAppList, LocalDate day) {
+        List<Appointment> list = new ArrayList<>();
+        for(int i = 0; i<allAppList.size(); i++){
+            if(allAppList.get(i).getStartTime().toLocalDate().equals(day)){
+                list.add(allAppList.get(i));
+            }
+        }
+        return list;
     }
 
     public void getShops(ShopListBean shopListBean) throws Exception{
