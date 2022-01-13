@@ -20,12 +20,12 @@ import javafx.fxml.FXML;
 public class PayOnlinePayPalViewController {
 
     private PayOnlineBean payOnlineBean;
-    private VBox VBoxPayPal;
 
+    @FXML
+    private VBox vbPaypal;
 
     @FXML
     public void initialize(){
-
         payOnlineBean = new PayOnlineBeanUQ();
     }
 
@@ -45,25 +45,15 @@ public class PayOnlinePayPalViewController {
         }
         Image image = new Image(stream);
             //Creating the image view
-            ImageView imageView = new ImageView();
+            ImageView iv = new ImageView();
             //Setting image to the image view
-            imageView.setImage(image);
+            iv.setImage(image);
             //Setting the image view parameters
-            imageView.setX(10);
-            imageView.setY(10);
-            imageView.setFitWidth(575);
-            imageView.setPreserveRatio(true);
+            iv.setX(10);
+            iv.setY(10);
+            iv.setFitWidth(575);
+            iv.setPreserveRatio(true);
             //Setting the Scene object
-            Group root = new Group(imageView);
-            Scene scene = new Scene(root, 595, 370);
-            /*stage.setTitle("PayPal Payment confirmed");
-            stage.setScene(scene);
-            stage.show();
-             */
+            vbPaypal.getChildren().add(iv);
         }
-        String price = payOnlineBean.getServicePrice();
-        String name = payOnlineBean.getPaymentShopName();
-
-        //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
-        //showClientApp();
     }

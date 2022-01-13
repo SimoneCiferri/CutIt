@@ -6,8 +6,10 @@ import cutit.bean.RateShopBean;
 import cutit.bean.ShopBean;
 import cutit.bean.firstui.AppointmentBeanFirstUI;
 import cutit.bean.firstui.RateShopBeanUQ;
+import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.decorator.ViewLayout;
 import cutit.decorator.concreteDecorator.CustomerFavouritesShopView;
+import cutit.decorator.concreteDecorator.TopBarCustomerView;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.facade.Facade;
@@ -59,12 +61,15 @@ public class CustomerBookAppointmentViewController {
 
     @FXML
     public void bookAppointment() {
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        //DA RIVEDERE BENE LE FUNZIONI (RIVEDERE IL VOPC)!
-        /*if(bookAppointmentController.compileAppointment(this.appointmentBeanFirstUI)){
-            showPayedAndBooked();
-        }*/
-        showPayedAndBooked();
+        if(bookAppointmentController.compileAppointment(this.appointmentBeanFirstUI)){
+            if(bookAppointmentController.payAppointment(appointmentBeanFirstUI)){
+                showPayedAndBooked();
+            } else {
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Warning", "Payment rejected!");
+            }
+        } else {
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "Please check your data.");
+        }
     }
 
     @FXML
@@ -120,14 +125,15 @@ public class CustomerBookAppointmentViewController {
     private void addToFavourites() {
         try {
             if(bookAppointmentController.addShopToFavourites(customerBeanFirstUI.getcEmail(), shopBeanUQ.getShopName() )){
-                Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
-                CustomerFavouritesShopView view = (CustomerFavouritesShopView) Facade.getInstance().getViewMap().get(ViewLayout.FAVSHOP);
-                CustomerFavouritesShopViewController viewController = (CustomerFavouritesShopViewController) view.getLoadedViewController(ViewLayout.FAVSHOP);
-                viewController.fillView(customerBeanFirstUI);
+                TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
+                TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
+                viewController.goFav();
             }
         } catch (DuplicatedRecordException de) {
             AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
-            Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
+            TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
+            TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
+            viewController.goFav();
         } catch(DBConnectionException dce){
             AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
         } catch (Exception e) {
@@ -140,10 +146,6 @@ public class CustomerBookAppointmentViewController {
         if(bookAppointmentController.addToCalendar(this.appointmentBeanFirstUI)){
             Facade.getInstance().decorateView(ViewLayout.HOME);
         }
-    }
-    @FXML
-    private void payTheApp(){
-        Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
     }
 
     public void fillView(CustomerBean customerBeanFirstUI, ShopBean shopBeanUQ){

@@ -26,18 +26,14 @@ public class BookAppointmentController {
     private AddAppointmentToCalendarController addAppointmentToCalendarController;
 
     public Boolean compileAppointment(AppointmentBeanFirstUI appointmentBeanFirstUI){
-        //dovrò passare le beans, in modo che queste si possano registrare come osservatori del model (e forse anche per prendere i dati in ingresso, oopure li metto da qui ma sempre usando la bean)
+        //controlla se semanticamente corretto (tipo app libero, ecc..)
         System.out.println("CONTROLLER APPLICATIVO -> Compiling Appointment (data from AppointmentBean passed by my viewController)");
-        if(payAppointment(appointmentBeanFirstUI)){
-            return true;
-        }
-        return false;
+        return true;
     }
 
-    private Boolean payAppointment(AppointmentBeanFirstUI appBean){
+    public Boolean payAppointment(AppointmentBeanFirstUI appBean){
         payOnlineController = new PayOnlineController();
-        payOnlineController.payAppointment(appBean);
-        return true;
+        return payOnlineController.payAppointment(appBean);
     }
 
     public Boolean rateShop(RateShopBean rateShopBean){
