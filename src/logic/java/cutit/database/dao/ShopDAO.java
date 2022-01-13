@@ -151,7 +151,7 @@ public class ShopDAO {
             int i = 0;
             do {
                 byte[] image = rs.getBytes(3);
-                File file = new File("src/logic/resources/cutit/cutit/tmpfiles/image" + i + ".tmp");
+                File file = new File("src/logic/resources/cutit/cutit/tmpfiles/image" + i + shop.getShopName() + ".tmp");
                 OutputStream out = new FileOutputStream(file);
                 out.write(image);
                 images.add(file);

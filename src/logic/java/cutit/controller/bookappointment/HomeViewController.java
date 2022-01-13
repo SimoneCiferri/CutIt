@@ -9,12 +9,9 @@ import cutit.facade.Facade;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.scene.layout.*;
-import javafx.stage.FileChooser;
 
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 
 public class HomeViewController {
 
@@ -43,9 +40,10 @@ public class HomeViewController {
                 HBox card;
                 if(!shopListBeanFirstUI.getShopBeanList().get(i).getImages().isEmpty()){
                     File im = shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0);
+                    System.out.println(shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0).toString());
                     card = JavaFXNodeFactory.getInstance().createCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getAddress(), labelStyle, im);
                 } else {
-                    card = JavaFXNodeFactory.getInstance().createCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getAddress(), labelStyle);
+                    card = JavaFXNodeFactory.getInstance().createDefaulImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getAddress(), labelStyle);
                 }
                 int n = i;
                 card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));

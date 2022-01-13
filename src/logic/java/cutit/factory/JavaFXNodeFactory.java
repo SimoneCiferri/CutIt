@@ -129,7 +129,7 @@ public class JavaFXNodeFactory {
         return card;
     }
 
-    public HBox createCard(String title, String address, String labelStyle){
+    public HBox createDefaulImageCard(String title, String address, String labelStyle){
         HBox card = new HBox();
         card.setPrefSize(895, 130);
         card.setMinSize(895, 130);
