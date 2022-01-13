@@ -7,8 +7,10 @@ import cutit.bean.firstui.FavoriteShopBeanUQ;
 import cutit.bean.firstui.ShopBeanUQ;
 import cutit.bean.firstui.ShopListBeanFirstUI;
 import cutit.decorator.ViewLayout;
+import cutit.decorator.concreteDecorator.ShopInfoView;
 import cutit.facade.Facade;
 import cutit.factory.JavaFXNodeFactory;
+import cutit.model.Shop;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -50,12 +52,19 @@ public class CustomerFavouritesShopViewController {
                 }
                 int n = i;
                 HBox card = JavaFXNodeFactory.getInstance().createCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getAddress(), labelStyle, im);
-                //card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
+                card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
                 vbInScrollCFav.getChildren().add(card);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void goShopInfo(String shopName) {
+        Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
+        ShopInfoView view = (ShopInfoView) Facade.getInstance().getViewMap().get(ViewLayout.SHOPINFO);
+        ShopInfoViewController viewController = (ShopInfoViewController) view.getLoadedViewController(ViewLayout.SHOPINFO);
+        viewController.fillView(customerBeanFirstUI, shopName);
     }
 
     public void fillView(CustomerBean customerBeanFirstUI){

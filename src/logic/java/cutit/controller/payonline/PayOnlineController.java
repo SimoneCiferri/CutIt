@@ -9,7 +9,7 @@ public class PayOnlineController {
 
     public Boolean payAppointment(AppointmentBeanFirstUI appBean){
         System.out.println("CONTROLLER APPLICATIVO -> paying Appointment (data from AppointmentBean passed by BookAppointmentController)");
-        return false;
+        return true;
     }
 
     public void getData(PayOnlineBean payOnlineBean){
