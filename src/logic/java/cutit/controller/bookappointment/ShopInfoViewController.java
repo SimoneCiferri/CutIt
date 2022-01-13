@@ -5,10 +5,12 @@ import cutit.bean.firstui.ShopBeanUQ;
 import cutit.decorator.ViewLayout;
 import cutit.decorator.concreteDecorator.ClientBookAppointmentView;
 import cutit.facade.Facade;
+import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,9 +23,11 @@ public class ShopInfoViewController {
     private BookAppointmentController bookAppointmentController;
     private List<ImageView> ivList = new ArrayList<>();
 
-
     @FXML
     private Label lShopName, lShopPhone;
+
+    @FXML
+    private VBox vboxShopInfo;
 
     @FXML
     private ImageView ivShop1, ivShop2, ivShop3, ivShop4, ivShop5, ivShop6, ivShop7, ivShop8;
@@ -41,6 +45,18 @@ public class ShopInfoViewController {
         ivList.add(ivShop7);
         ivList.add(ivShop8);
         return true;
+    }
+
+    public void showShopInfo(){
+        vboxShopInfo.getChildren().clear();
+        Label lblShopName = JavaFXNodeFactory.getInstance().createLabel(shopBeanUQ.getShopName(), 30.0);
+        //ImageView del titolo da mettere
+        Label lblPhone = JavaFXNodeFactory.getInstance().createLabel(shopBeanUQ.getPhoneNumber(), 12.0);
+        vboxShopInfo.getChildren().addAll(lblShopName, lblPhone);
+        /*for(int i = 0; i< shopBeanUQ.getImages().size(); i++){
+            System.out.println("immagine");
+            ivList.get(i).setImage(new Image(String.valueOf(shopBeanUQ.getImages().get(i).toURI())));
+        }*/
     }
 
     @FXML
@@ -68,12 +84,7 @@ public class ShopInfoViewController {
         try {
             this.customerBeanFirstUI = customerBeanFirstUI;
             shopBeanUQ = bookAppointmentController.getShop(shopName);
-            lShopName.setText(shopBeanUQ.getShopName());
-            lShopPhone.setText(shopBeanUQ.getPhoneNumber());
-            for(int i = 0; i< shopBeanUQ.getImages().size(); i++){
-                System.out.println("immagine");
-                ivList.get(i).setImage(new Image(String.valueOf(shopBeanUQ.getImages().get(i).toURI())));
-            }
+            showShopInfo();
         } catch (Exception e) {
             e.printStackTrace();
         }

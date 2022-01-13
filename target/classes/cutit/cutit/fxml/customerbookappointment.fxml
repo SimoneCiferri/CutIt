@@ -30,7 +30,7 @@
       </HBox>
    </top>
    <center>
-      <HBox fx:id="hBoxCentre" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#payTheApp" prefHeight="570.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="hBoxCentre" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="1024.0" BorderPane.alignment="CENTER">
          <children>
             <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="414.0">
                <children>
@@ -64,7 +64,7 @@
                      <children>
                         <Label alignment="CENTER" prefHeight="19.0" prefWidth="155.0" style="-fx-border-color: grey; -fx-background-color: red;" text="08:00" />
                         <Label fx:id="label830" alignment="CENTER" onMouseClicked="#set830" prefHeight="19.0" prefWidth="155.0" style="-fx-border-color: grey; -fx-background-color: green;" text="08:30" GridPane.rowIndex="1" />
-                        <Label fx:id="label14" alignment="CENTER" prefHeight="19.0" prefWidth="155.0" style="-fx-border-color: grey; -fx-background-color: green;" text="14:00" GridPane.columnIndex="1" />
+                        <Label alignment="CENTER" prefHeight="19.0" prefWidth="155.0" style="-fx-border-color: grey; -fx-background-color: green;" text="14:00" GridPane.columnIndex="1" />
                         <Label alignment="CENTER" prefHeight="19.0" prefWidth="155.0" style="-fx-border-color: grey; -fx-background-color: red;" text="14:30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label alignment="CENTER" prefHeight="17.0" prefWidth="155.0" style="-fx-background-color: red; -fx-border-color: grey;" text="09:00" GridPane.rowIndex="2" />
                         <Label alignment="CENTER" prefWidth="155.0" style="-fx-background-color: green; -fx-border-color: grey;" text="09:30" GridPane.rowIndex="3" />

@@ -8,7 +8,6 @@ import cutit.facade.Facade;
 public class PayOnlineController {
 
     public Boolean payAppointment(AppointmentBeanFirstUI appBean){
-        //Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
         System.out.println("CONTROLLER APPLICATIVO -> paying Appointment (data from AppointmentBean passed by BookAppointmentController)");
         return false;
     }
