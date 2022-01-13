@@ -16,6 +16,7 @@ public class AppointmentBeanFirstUI implements AppointmentBean {
     private String shopName;
     private LocalDate selectedDay;
     private List<LocalTime> availableSlots;
+    private List<String> availableServices;
 
 
     public String getStartTime() {
@@ -84,6 +85,16 @@ public class AppointmentBeanFirstUI implements AppointmentBean {
     @Override
     public void setSelectedDay(LocalDate selectedDay) {
         this.selectedDay = selectedDay;
+    }
+
+    @Override
+    public List<String> getAvailableServices() {
+        return availableServices;
+    }
+
+    @Override
+    public void setAvailableServices(List<String> servicesList) {
+        this.availableServices = servicesList;
     }
 
 }

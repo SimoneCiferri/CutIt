@@ -13,6 +13,8 @@ import cutit.exception.DuplicatedRecordException;
 import cutit.exception.WrongInputDataException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
+import javafx.beans.Observable;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -50,11 +52,24 @@ public class CustomerBookAppointmentViewController {
     private ChoiceBox<LocalTime> cbTimeSlot;
 
     @FXML
+    private ChoiceBox<String> cbServices;
+
+    @FXML
     public void initialize(){
         dtPicker.setValue(LocalDate.now());
         appointmentBeanFirstUI = new AppointmentBeanFirstUI();
         rateShopBean = new RateShopBeanUQ();
         bookAppointmentController = new BookAppointmentController();
+
+        cbTimeSlot.setOnAction((event) -> {
+            LocalTime selectedItem = cbTimeSlot.getSelectionModel().getSelectedItem();
+            if(selectedItem != null){
+                labelDate.setText(dtPicker.getValue().toString() + " " + selectedItem);
+            }else{
+                labelDate.setText(dtPicker.getValue().toString());
+            }
+
+        });
         System.out.println("CONTROLLER GRAFICO CUSTOMERBOOKAPPOINTMENTVIEWCONTROLLER");
     }
 
@@ -88,10 +103,25 @@ public class CustomerBookAppointmentViewController {
             for (LocalTime availableSlot : availableSlots) {
                 cbTimeSlot.getItems().add(availableSlot);
             }
+            cbTimeSlot.setDisable(availableSlots.isEmpty());
             //differenza e ho quelli liberi
         } catch (WrongInputDataException wde) {
             AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
             dtPicker.setValue(LocalDate.now());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void showAvailableServices() {
+        try {
+            bookAppointmentController.getAvailableServices(appointmentBeanFirstUI, shopBeanUQ.getShopName());
+            for(int i = 0; i<appointmentBeanFirstUI.getAvailableServices().size(); i++){
+                String service = appointmentBeanFirstUI.getAvailableServices().get(i);
+                cbServices.getItems().add(service);
+            }
+            cbServices.setDisable(appointmentBeanFirstUI.getAvailableServices().isEmpty());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -172,6 +202,7 @@ public class CustomerBookAppointmentViewController {
         this.shopBeanUQ = shopBeanUQ;
         lblTitleShopName.setText(shopBeanUQ.getShopName());
         showAvailableTimeSlots();
+        showAvailableServices();
     }
 
 }

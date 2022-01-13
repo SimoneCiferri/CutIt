@@ -38,4 +38,8 @@ public interface AppointmentBean {
 
     void setSelectedDay(LocalDate selectedDay);
 
+    List<String> getAvailableServices();
+
+    void setAvailableServices(List<String> servicesList);
+
 }

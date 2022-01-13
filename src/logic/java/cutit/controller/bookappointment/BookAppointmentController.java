@@ -9,10 +9,7 @@ import cutit.controller.addappointmenttocalendar.AddAppointmentToCalendarControl
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.controller.payonline.PayOnlineController;
 import cutit.controller.rateshop.RateShopController;
-import cutit.database.dao.AppointmentDAO;
-import cutit.database.dao.CustomerDAO;
-import cutit.database.dao.FavoriteShopsDAO;
-import cutit.database.dao.ShopDAO;
+import cutit.database.dao.*;
 import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.*;
@@ -97,6 +94,17 @@ public class BookAppointmentController {
             bean.setAvailableSlots(availableList);
         } catch (WrongInputDataException wde) {
             throw wde;
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public void getAvailableServices(AppointmentBean bean, String shopName) throws Exception {
+        try {
+            Shop shop = ShopDAO.getShopFromName(shopName);
+            List<Service> servicesList = shop.getServices();
+            bean.setAvailableServices(stringListFromServList(servicesList));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
