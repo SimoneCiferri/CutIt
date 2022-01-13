@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ShopInfoViewController {
 
@@ -24,13 +25,13 @@ public class ShopInfoViewController {
     private List<ImageView> ivList = new ArrayList<>();
 
     @FXML
-    private Label lShopName, lShopPhone, lblPhoto;
+    private Label lShopName, lShopPhone, lShopDescription, lShopOpenTime, lTitleEmployee, lEmployee, lblPhoto;
 
     @FXML
     private VBox vboxShopInfo, vboxPhoto;
 
     @FXML
-    private ImageView ivShop1, ivShop2, ivShop3, ivShop4, ivShop5, ivShop6, ivShop7, ivShop8;
+    private ImageView ivShopProfPhoto, ivShop1, ivShop2, ivShop3, ivShop4, ivShop5, ivShop6, ivShop7, ivShop8;
 
 
     public boolean initialize() throws IOException {
@@ -49,16 +50,43 @@ public class ShopInfoViewController {
 
     public void showShopInfo(){
         lShopName.setText(shopBeanUQ.getShopName());
-        lShopPhone.setText(shopBeanUQ.getPhoneNumber());
+        if(Objects.equals(shopBeanUQ.getPhoneNumber(), "")){
+            lShopPhone.setVisible(true);
+            lShopPhone.setText(shopBeanUQ.getPhoneNumber());
+        } else {
+            lShopPhone.setVisible(false);
+        }
         if(!shopBeanUQ.getImages().isEmpty()){
+            ivShopProfPhoto.setVisible(true);
+            lblPhoto.setVisible(true);
+            vboxPhoto.setVisible(true);
             for(int i = 0; i< shopBeanUQ.getImages().size(); i++){
+                if(i==0){
+                    ivShopProfPhoto.setImage(new Image(String.valueOf(shopBeanUQ.getImages().get(i).toURI())));
+                }
                 ivList.get(i).setImage(new Image(String.valueOf(shopBeanUQ.getImages().get(i).toURI())));
             }
         } else {
+            ivShopProfPhoto.setVisible(false);
             lblPhoto.setVisible(false);
             vboxPhoto.setVisible(false);
         }
-
+        if(Objects.equals(shopBeanUQ.getShopDescription(), "")){
+            lShopDescription.setVisible(true);
+            lShopDescription.setText(shopBeanUQ.getShopDescription());
+        } else {
+            lShopDescription.setVisible(false);
+        }
+        lShopOpenTime.setText(shopBeanUQ.getOpenTime() + " - " + shopBeanUQ.getCloseTime());
+        //priceList
+        if(Objects.equals(shopBeanUQ.getEmployee(), "")){
+            lTitleEmployee.setVisible(true);
+            lEmployee.setVisible(true);
+            lEmployee.setText(shopBeanUQ.getEmployee());
+        } else{
+            lTitleEmployee.setVisible(false);
+            lEmployee.setVisible(false);
+        }
     }
 
     @FXML

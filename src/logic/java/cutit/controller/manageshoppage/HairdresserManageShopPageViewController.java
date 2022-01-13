@@ -38,7 +38,7 @@ public class HairdresserManageShopPageViewController {
     private ChoiceBox<String> cbOpenTime, cbCloseTime;
 
     @FXML
-    private ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8;
+    private ImageView ivProfPhoto, iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8;
 
     @FXML
     public void initialize(){
@@ -131,6 +131,9 @@ public class HairdresserManageShopPageViewController {
        if(!shopBeanFirstUI.getImages().isEmpty()){
             for(int i = 0; i< shopBeanFirstUI.getImages().size(); i++){
                 File file = shopBeanFirstUI.getImages().get(i);
+                if(i == 0){
+                    ivProfPhoto.setImage(new Image(String.valueOf(file.toURI())));
+                }
                 imageMap.put(i+1, file);
                 ivList.get(i).setImage(new Image(String.valueOf(file.toURI())));
             }
@@ -157,9 +160,10 @@ public class HairdresserManageShopPageViewController {
         File file = fileChooser.showOpenDialog(stage);
         if(file != null){
             Image image = new Image(String.valueOf(file.toURI()));
-            if (mouseEvent.getSource().equals(iv1)) {
+            if (mouseEvent.getSource().equals(iv1) || mouseEvent.getSource().equals(ivProfPhoto)) {
                 imageMap.put(1, file);
                 iv1.setImage(image);
+                ivProfPhoto.setImage(image);
             }else if(mouseEvent.getSource().equals(iv2)){
                 imageMap.put(2, file);
                 iv2.setImage(image);

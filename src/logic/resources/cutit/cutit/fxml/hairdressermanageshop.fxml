@@ -20,7 +20,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                   </Label>
-                  <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="ivProfPhoto" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
