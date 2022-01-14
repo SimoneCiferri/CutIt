@@ -63,6 +63,9 @@ public class CustomerBookAppointmentViewController {
     private TextArea taNotes;
 
     @FXML
+    private Button checkPromotion;
+
+    @FXML
     public void initialize(){
         dtPicker.setValue(LocalDate.now());
         appointmentBeanFirstUI = new AppointmentBeanFirstUI();
@@ -95,7 +98,15 @@ public class CustomerBookAppointmentViewController {
     public void bookAppointment() {
         appointmentBeanFirstUI.setStartTime(getAppointmentStartTime());
         appointmentBeanFirstUI.setCustomer(customerBeanFirstUI.getcEmail());
-        //promotionCode
+        if(!Objects.equals(tfPromotionCode.getText(), "")){
+            if(checkPromotion()){
+                appointmentBeanFirstUI.setPromotionCode(tfPromotionCode.getText());
+            } else{
+                appointmentBeanFirstUI.setPromotionCode(null);
+            }
+        } else {
+            appointmentBeanFirstUI.setPromotionCode(null);
+        }
         appointmentBeanFirstUI.setServiceName(cbServices.getValue());
         appointmentBeanFirstUI.setShopName(shopBeanUQ.getShopName());
         if(!Objects.equals(taNotes.getText(), "")){
@@ -154,10 +165,27 @@ public class CustomerBookAppointmentViewController {
     }
 
     @FXML
-    private void checkPromotion(){
-        if(!Objects.equals(tfPromotionCode.getText(), "")){
-            System.out.println("codice non nullo = '" + tfPromotionCode.getText() + "'");
-            //chiamo il controller per cercare di applicare la promozione
+    private boolean checkPromotion(){
+        try {
+            if(!Objects.equals(tfPromotionCode.getText(), "")){
+                System.out.println("codice non nullo = '" + tfPromotionCode.getText() + "'");
+                appointmentBeanFirstUI.setPromotionCode(tfPromotionCode.getText());
+                appointmentBeanFirstUI.setCustomer(customerBeanFirstUI.getcEmail());
+                if(bookAppointmentController.checkPromotion(appointmentBeanFirstUI)){
+                    tfPromotionCode.setDisable(true);
+                    checkPromotion.setDisable(true);
+                    lblPromotionApplied.setVisible(true);
+                    return true;
+                } else {
+                    tfPromotionCode.setText("");
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 

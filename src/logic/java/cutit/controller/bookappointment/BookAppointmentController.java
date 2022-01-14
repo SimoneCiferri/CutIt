@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BookAppointmentController {
 
@@ -31,8 +32,11 @@ public class BookAppointmentController {
             Customer customer = CustomerDAO.getCustomer(appointmentBean.getCustomer());
             Service service = ServiceDAO.getService(appointmentBean.getShopName(), appointmentBean.getServiceName());
             Shop shop = ShopDAO.getShopFromName(appointmentBean.getShopName());
-            //manca il set della Promotion se c'è
             Appointment appointment = new Appointment(appointmentBean.getStartTime(), appointmentBean.getStartTime().plusMinutes(30), customer, service, shop);
+            if(appointmentBean.getPromotionCode() != null){
+                Promotion promotion = PromotionDAO.getPromotion(appointmentBean.getPromotionCode());
+                appointment.setPromotion(promotion);
+            }
             AppointmentDAO.insertAppointment(appointment);
             return true;
         } catch (DuplicatedRecordException de){
@@ -176,31 +180,26 @@ public class BookAppointmentController {
         }
     }
 
-    /*private List<CustomerBeanFirstUI.AppData> stringAppDataFromAppList(List<Appointment> allAppointments) {
-        List<CustomerBeanFirstUI.AppData> appList = new ArrayList<>();
-        if(!allAppointments.isEmpty()){
-            for(int i = 0; i<allAppointments.size(); i++){
-                String startTime = allAppointments.get(i).getStartTime().toString();
-                String endTime = allAppointments.get(i).getEndTime().toString();
-                String customer = allAppointments.get(i).getCustomer().getUserID();
-                String service = allAppointments.get(i).getService().getServiceName();
-                String shop = allAppointments.get(i).getShop().getShopName();
-                CustomerBeanFirstUI.AppData d = new CustomerBeanFirstUI.AppData();
-                d.setAppStarTime(startTime);
-                d.setAppEndTime(endTime);
-                d.setAppCustomer(customer);
-                d.setAppService(service);
-                d.setAppShopName(shop);
-                appList.add(d);
-            }
-        }
-        return appList;
-    }*/
-
     public void getFavouritesShop(ShopListBean bean, String customerEmail) throws Exception {
         try{
             List<Shop> shopList = FavoriteShopsDAO.getFavouritesShops(customerEmail);
             bean.setShopBeanList(beanListFromShopList(shopList));
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public boolean checkPromotion(AppointmentBean bean) throws Exception {
+        try {
+            Customer customer = CustomerDAO.getCustomer(bean.getCustomer());
+            List<Promotion> promList = customer.getPromotions();
+            for (Promotion promotion : promList) {
+                if (Objects.equals(promotion.getCode(), bean.getPromotionCode())) {
+                    return true;
+                }
+            }
+            return false;
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;

@@ -101,7 +101,7 @@
                                  </VBox.margin>
                                  <children>
                                     <TextField fx:id="tfPromotionCode" disable="true" prefHeight="30.0" prefWidth="240.0" promptText="Promotion Code" />
-                                    <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#checkPromotion" prefHeight="30.0" prefWidth="49.0" text="Check">
+                                    <Button fx:id="checkPromotion" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#checkPromotion" prefHeight="30.0" prefWidth="49.0" text="Check">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin></Button>

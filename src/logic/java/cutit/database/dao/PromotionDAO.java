@@ -75,6 +75,31 @@ public class PromotionDAO {
         if (rs.first()) {
             rs.first();
             do {
+                String promotionCode = rs.getString("Code");
+                Integer offValue = rs.getInt("Off");
+                String expireDate = rs.getString("ExpireDate");
+                String promService_Name = rs.getString("Service_Name");
+                String promService_ShopName = rs.getString("Service_Shop_ShopName");
+                Service service = ServiceDAO.getService(promService_ShopName, promService_Name);
+                Promotion p = new Promotion(promotionCode, offValue, dataFromString(expireDate), service);
+                promotionsList.add(p);
+            } while (rs.next());
+            rs.close();
+            stm.close();
+            //DBConnection.getInstance().closeConnection();
+        }
+        return promotionsList;
+    }
+
+    /*public static Promotion checkPersonalPromotion(Customer customer) throws Exception {
+        List<Promotion> promotionsList = new ArrayList<Promotion>();
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = PromotionQueries.getAllCustomerPromotion(stm, customer.getUserID());
+        if (rs.first()) {
+            rs.first();
+            do {
                 String promotionCode = rs.getString(1);
                 Integer offValue = rs.getInt(2);
                 String expireDate = rs.getString(3);
@@ -89,7 +114,8 @@ public class PromotionDAO {
             //DBConnection.getInstance().closeConnection();
         }
         return promotionsList;
-    }
+    }*/
+
 
 
     public static void deletePromotion(Promotion promotion) throws Exception{

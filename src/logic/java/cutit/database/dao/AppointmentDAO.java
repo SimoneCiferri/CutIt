@@ -35,8 +35,12 @@ public class AppointmentDAO {
 
         stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        //codice promozionemesso a caso
-        AppointmentQueries.insertAppointment(stm, stringFromData(appointment.getStartTime()), stringFromData(appointment.getEndTime()), appointment.getShop().getShopName(), appointment.getCustomer().getUserID(), appointment.getService().getServiceName(), appointment.getService().getPrice(), "XMAS");
+        if(appointment.getPromotion() != null){
+            AppointmentQueries.insertAppointment(stm, stringFromData(appointment.getStartTime()), stringFromData(appointment.getEndTime()), appointment.getShop().getShopName(), appointment.getCustomer().getUserID(), appointment.getService().getServiceName(), appointment.getService().getPrice(), appointment.getPromotion().getCode());
+        } else {
+            AppointmentQueries.insertAppointment(stm, stringFromData(appointment.getStartTime()), stringFromData(appointment.getEndTime()), appointment.getShop().getShopName(), appointment.getCustomer().getUserID(), appointment.getService().getServiceName(), appointment.getService().getPrice());
+
+        }
         stm.close();
     }
 
