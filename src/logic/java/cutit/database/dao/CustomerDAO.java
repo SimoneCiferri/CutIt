@@ -73,6 +73,10 @@ public class CustomerDAO {
             customer.setUserID(cEmail);
             customer.setName(name);
             customer.setSurname(surname);
+            List<Appointment> bookedApp = AppointmentDAO.getAllCustomerAppointments(customer);
+            customer.setBookedAppointments(bookedApp);
+            List<Promotion> allProm = PromotionDAO.getAllCustomerPromotion(customer);
+            customer.setPromotions(allProm);
             rs.close();
             stm.close();
             //DBConnection.getInstance().closeConnection();

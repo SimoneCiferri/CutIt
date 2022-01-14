@@ -84,13 +84,12 @@ public class AppointmentDAO {
             do {
                 String startTime = rs.getString(1);
                 String endTime = rs.getString(2);
-                String customerEmail = rs.getString(4);
+                //String customerEmail = rs.getString(4);
                 String serviceName = rs.getString(5);
                 String serviceShopName = rs.getString(7);
                 String promotionCode = rs.getString(8);
                 Service service = ServiceDAO.getService(serviceShopName, serviceName);
-                Customer customer = CustomerDAO.getCustomer(customerEmail);
-                Appointment appointment = new Appointment(dataFromString(startTime), dataFromString(endTime), customer, service, shop);
+                Appointment appointment = new Appointment(dataFromString(startTime), dataFromString(endTime), service, shop);
                 if(promotionCode != null){
                     Promotion prom = PromotionDAO.getPromotion(promotionCode);
                     appointment.setPromotion(prom);

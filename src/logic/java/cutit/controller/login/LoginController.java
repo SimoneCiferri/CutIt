@@ -128,7 +128,7 @@ public class LoginController {
         List<String> appList = new ArrayList<>();
         if(!allAppointments.isEmpty()){
             for(int i = 0; i<allAppointments.size(); i++){
-                String p = allAppointments.get(i).getCustomer().getName() + " " + allAppointments.get(i).getCustomer().getSurname() + "--->" + allAppointments.get(i).getStartTime().toString();
+                String p = allAppointments.get(i).getStartTime().toString();
                 appList.add(p);
             }
         }

@@ -2,9 +2,7 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.*;
 import cutit.bean.firstui.AppointmentBeanFirstUI;
-import cutit.bean.firstui.CustomerBeanFirstUI;
 import cutit.bean.firstui.ShopBeanUQ;
-import cutit.bean.firstui.ShopListBeanFirstUI;
 import cutit.controller.addappointmenttocalendar.AddAppointmentToCalendarController;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.controller.payonline.PayOnlineController;
@@ -71,7 +69,8 @@ public class BookAppointmentController {
     public void getAppointments(CustomerBean customerBean) throws Exception {
         try {
             Customer customer = CustomerDAO.getCustomer(new User(customerBean.getcEmail(), customerBean.getcPassword(), customerBean.getcRole()));
-            List<Appointment> appList = AppointmentDAO.getAllCustomerAppointments(customer);
+            List<Appointment> appList = customer.getBookedAppointments();
+            customerBean.setAllBookedAppointments(appBeanListFromAppList(appList));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
@@ -225,15 +224,20 @@ public class BookAppointmentController {
         return list;
     }
 
-    private List<String> stringListFromAppList(List<Appointment> allAppointments) {
-        List<String> appList = new ArrayList<>();
+    private List<AppointmentBean> appBeanListFromAppList(List<Appointment> allAppointments) {
+        List<AppointmentBean> beanAppList = new ArrayList<>();
         if(!allAppointments.isEmpty()){
             for(int i = 0; i<allAppointments.size(); i++){
-                String p = allAppointments.get(i).getStartTime().toString();
-                appList.add(p);
+                AppointmentBean bean = new AppointmentBeanFirstUI();
+                bean.setStartTime(allAppointments.get(i).getStartTime());
+                bean.setEndTime(allAppointments.get(i).getStartTime().plusMinutes(30));
+                bean.setShopName(allAppointments.get(i).getShop().getShopName());
+                bean.setCustomer(allAppointments.get(i).getCustomer().getUserID());
+                bean.setServiceName(allAppointments.get(i).getService().getServiceName());
+                beanAppList.add(bean);
             }
         }
-        return appList;
+        return beanAppList;
     }
 
     private List<String> stringListFromServList(List<Service> services) {
