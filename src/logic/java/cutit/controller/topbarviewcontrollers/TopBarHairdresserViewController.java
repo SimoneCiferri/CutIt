@@ -69,7 +69,7 @@ public class TopBarHairdresserViewController {
         deleteAppointmentBeanFirstUI.setAllAppointments(shopBeanFirstUI.getAllAppointments());
         HairdresserAppointmentsView view = (HairdresserAppointmentsView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERAPPOINTMENTS);
         HairdresserDeleteBookedAppointmentsViewController viewController = (HairdresserDeleteBookedAppointmentsViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERAPPOINTMENTS);
-        viewController.fillView(deleteAppointmentBeanFirstUI);
+        viewController.fillView(shopBeanFirstUI);
         return true;
     }
 

@@ -1,19 +1,14 @@
 package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
-import cutit.bean.FavoriteShopBean;
 import cutit.bean.ShopListBean;
-import cutit.bean.firstui.FavoriteShopBeanUQ;
 import cutit.bean.firstui.ShopBeanUQ;
 import cutit.bean.firstui.ShopListBeanFirstUI;
 import cutit.decorator.ViewLayout;
 import cutit.decorator.concreteDecorator.ShopInfoView;
 import cutit.facade.Facade;
 import cutit.factory.JavaFXNodeFactory;
-import cutit.model.Shop;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -51,7 +46,7 @@ public class CustomerFavouritesShopViewController {
                     im = new File(defaultLogo);
                 }
                 int n = i;
-                HBox card = JavaFXNodeFactory.getInstance().createCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getAddress(), labelStyle, im);
+                HBox card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getAddress(), labelStyle, im);
                 card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
                 vbInScrollCFav.getChildren().add(card);
             }

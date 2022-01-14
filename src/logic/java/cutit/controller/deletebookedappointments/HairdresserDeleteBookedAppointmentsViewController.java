@@ -1,7 +1,9 @@
 package cutit.controller.deletebookedappointments;
 
 import cutit.bean.DeleteAppointmentBean;
+import cutit.bean.ShopBean;
 import cutit.bean.firstui.DeleteAppointmentBeanFirstUI;
+import cutit.bean.firstui.ShopBeanUQ;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -10,8 +12,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.io.File;
+
 public class HairdresserDeleteBookedAppointmentsViewController {
 
+    private ShopBean shopBean;
     private DeleteAppointmentBean deleteAppointmentBeanFirstUI;
     private DeleteBookedAppointmentController deleteBookedAppointmentController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
@@ -26,23 +31,23 @@ public class HairdresserDeleteBookedAppointmentsViewController {
         deleteAppointmentBeanFirstUI = new DeleteAppointmentBeanFirstUI();
         deleteBookedAppointmentController = new DeleteBookedAppointmentController();
         vbInScrollHApp.setSpacing(15);
-        showAppointments();
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERDELETEBOOKEDAPPOINTMENTSVIEWCONTROLLER");
     }
 
     private void showAppointments() {
         vbInScrollHApp.getChildren().clear();
-        for(Integer i=0; i<6; i++){
-            Label l = new Label("Appointment"+i.toString());
-            l.setPrefSize(895,130);
-            l.setMinSize(895,130);
-            l.setMaxSize(895,130);
-            l.setStyle(labelStyle);
-            l.setPadding(new Insets(0,0,10,20));
-            l.setOnMouseClicked((MouseEvent) -> {
-                deleteForm();
-            });
-            vbInScrollHApp.getChildren().add(l);
+        deleteAppointmentBeanFirstUI.setShopName(shopBean.getShopName());
+        try {
+            deleteBookedAppointmentController.getAllShopAppointments(deleteAppointmentBeanFirstUI);
+            for(int i = 0; i< deleteAppointmentBeanFirstUI.getAllAppointments().size(); i++){
+                String appointmentTitle = deleteAppointmentBeanFirstUI.getAllAppointments().get(i);
+                Label card = JavaFXNodeFactory.getInstance().createCardLabel(appointmentTitle, labelStyle);
+                //int n = i;
+                //card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
+                vbInScrollHApp.getChildren().add(card);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -68,10 +73,10 @@ public class HairdresserDeleteBookedAppointmentsViewController {
         showAppointments();
     }
 
-    public void fillView(DeleteAppointmentBean bean){
-        deleteAppointmentBeanFirstUI = bean;
+    public void fillView(ShopBean shopBean){
+        this.shopBean = shopBean;
         System.out.println("Filling View from DeleteAppointmentBean data passedBY TopBarHairdresserViewController");
-        //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
+        showAppointments();
     }
 
 }

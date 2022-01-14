@@ -103,7 +103,7 @@ public class JavaFXNodeFactory {
         return buttonsHB;
     }
 
-    public HBox createCard(String title, String address, String labelStyle, File file){
+    public HBox createImageCard(String title, String address, String labelStyle, File file){
         HBox card = new HBox();
         card.setPrefSize(895, 130);
         card.setMinSize(895, 130);
