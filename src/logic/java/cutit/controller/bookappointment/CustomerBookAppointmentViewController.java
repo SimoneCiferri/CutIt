@@ -13,6 +13,7 @@ import cutit.exception.DuplicatedRecordException;
 import cutit.exception.WrongInputDataException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
+import cutit.log.LogWriter;
 import javafx.beans.Observable;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -24,6 +25,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Objects;
 
 public class CustomerBookAppointmentViewController {
 
@@ -37,7 +39,7 @@ public class CustomerBookAppointmentViewController {
     private BorderPane bpInBookApp;
 
     @FXML
-    private Label labelDate, label830, labelService, lblTitleShopName;
+    private Label labelDate, labelService, lblTitleShopName, lblPromotionApplied;
 
     @FXML
     private DatePicker dtPicker;
@@ -55,6 +57,12 @@ public class CustomerBookAppointmentViewController {
     private ChoiceBox<String> cbServices;
 
     @FXML
+    private TextField tfPromotionCode;
+
+    @FXML
+    private TextArea taNotes;
+
+    @FXML
     public void initialize(){
         dtPicker.setValue(LocalDate.now());
         appointmentBeanFirstUI = new AppointmentBeanFirstUI();
@@ -62,13 +70,17 @@ public class CustomerBookAppointmentViewController {
         bookAppointmentController = new BookAppointmentController();
 
         cbTimeSlot.setOnAction((event) -> {
-            LocalTime selectedItem = cbTimeSlot.getSelectionModel().getSelectedItem();
-            if(selectedItem != null){
-                labelDate.setText(dtPicker.getValue().toString() + " " + selectedItem);
+            LocalTime selectedTime = cbTimeSlot.getSelectionModel().getSelectedItem();
+            if(selectedTime != null){
+                labelDate.setText(dtPicker.getValue().toString() + " " + selectedTime);
             }else{
                 labelDate.setText(dtPicker.getValue().toString());
             }
+        });
 
+        cbServices.setOnAction((event) -> {
+            String selectedService = cbServices.getSelectionModel().getSelectedItem();
+            tfPromotionCode.setDisable(selectedService == null);
         });
         System.out.println("CONTROLLER GRAFICO CUSTOMERBOOKAPPOINTMENTVIEWCONTROLLER");
     }
@@ -81,15 +93,29 @@ public class CustomerBookAppointmentViewController {
 
     @FXML
     public void bookAppointment() {
-        if(bookAppointmentController.compileAppointment(this.appointmentBeanFirstUI)){
-            if(bookAppointmentController.payAppointment(appointmentBeanFirstUI)){
-                showPayedAndBooked();
-            } else {
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Warning", "Payment rejected!");
-            }
-        } else {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "Please check your data.");
+        appointmentBeanFirstUI.setStartTime(getAppointmentStartTime());
+        appointmentBeanFirstUI.setCustomer(customerBeanFirstUI.getcEmail());
+        //promotionCode
+        appointmentBeanFirstUI.setServiceName(cbServices.getValue());
+        appointmentBeanFirstUI.setShopName(shopBeanUQ.getShopName());
+        if(!Objects.equals(taNotes.getText(), "")){
+            appointmentBeanFirstUI.setAppNotes(taNotes.getText());
         }
+        try {
+            if(bookAppointmentController.bookAppointment(appointmentBeanFirstUI)){
+                showPayedAndBooked();
+            }
+        } catch (DuplicatedRecordException de){
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    private LocalDateTime getAppointmentStartTime() {
+        String dateAndTime = dtPicker.getValue().toString() + "T" + cbTimeSlot.getValue().toString();
+        return LocalDateTime.parse(dateAndTime);
     }
 
     @FXML
@@ -124,6 +150,14 @@ public class CustomerBookAppointmentViewController {
             cbServices.setDisable(appointmentBeanFirstUI.getAvailableServices().isEmpty());
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void checkPromotion(){
+        if(!Objects.equals(tfPromotionCode.getText(), "")){
+            System.out.println("codice non nullo = '" + tfPromotionCode.getText() + "'");
+            //chiamo il controller per cercare di applicare la promozione
         }
     }
 

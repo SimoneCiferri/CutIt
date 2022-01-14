@@ -10,6 +10,7 @@ import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.controller.payonline.PayOnlineController;
 import cutit.controller.rateshop.RateShopController;
 import cutit.database.dao.*;
+import cutit.exception.DuplicatedRecordException;
 import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.*;
@@ -27,13 +28,24 @@ public class BookAppointmentController {
     private AddShopToFavouritesController addShopToFavouritesController;
     private AddAppointmentToCalendarController addAppointmentToCalendarController;
 
-    public Boolean compileAppointment(AppointmentBeanFirstUI appointmentBeanFirstUI){
-        //controlla se semanticamente corretto (tipo app libero, ecc..)
-        System.out.println("CONTROLLER APPLICATIVO -> Compiling Appointment (data from AppointmentBean passed by my viewController)");
-        return true;
+    public boolean bookAppointment(AppointmentBean appointmentBean) throws Exception {
+        try {
+            Customer customer = CustomerDAO.getCustomer(appointmentBean.getCustomer());
+            Service service = ServiceDAO.getService(appointmentBean.getShopName(), appointmentBean.getServiceName());
+            Shop shop = ShopDAO.getShopFromName(appointmentBean.getShopName());
+            //manca il set della Promotion se c'è
+            Appointment appointment = new Appointment(appointmentBean.getStartTime(), appointmentBean.getStartTime().plusMinutes(30), customer, service, shop);
+            AppointmentDAO.insertAppointment(appointment);
+            return true;
+        } catch (DuplicatedRecordException de){
+            throw de;
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
     }
 
-    public Boolean payAppointment(AppointmentBeanFirstUI appBean){
+    private Boolean payAppointment(AppointmentBean appBean){
         payOnlineController = new PayOnlineController();
         return payOnlineController.payAppointment(appBean);
     }
@@ -50,15 +62,15 @@ public class BookAppointmentController {
         return true;
     }
 
-    public Boolean addToCalendar(AppointmentBeanFirstUI appBean){
+    public Boolean addToCalendar(AppointmentBean appBean){
         addAppointmentToCalendarController = new AddAppointmentToCalendarController();
         addAppointmentToCalendarController.addToCalendar(appBean);
         return true;
     }
 
-    public void getAppointments(CustomerBeanFirstUI customerBeanFirstUI) throws Exception {
+    public void getAppointments(CustomerBean customerBean) throws Exception {
         try {
-            Customer customer = CustomerDAO.getCustomer(new User(customerBeanFirstUI.getcEmail(), customerBeanFirstUI.getcPassword(), customerBeanFirstUI.getcRole()));
+            Customer customer = CustomerDAO.getCustomer(new User(customerBean.getcEmail(), customerBean.getcPassword(), customerBean.getcRole()));
             List<Appointment> appList = AppointmentDAO.getAllCustomerAppointments(customer);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
@@ -78,18 +90,21 @@ public class BookAppointmentController {
             List<Appointment> appList = filterByDay(allAppList, bean.getSelectedDay());
             List<LocalTime> availableList = new ArrayList<>();
             LocalTime temp = open;
-            while (!temp.equals(close)) {
-                if(!allAppList.isEmpty()){
+            if (!appList.isEmpty()) {
+                while (!temp.equals(close)) {
                     for (Appointment appointment : appList) {
                         System.out.println("Quà anche ci arrivo");
                         if (!appointment.getStartTime().toLocalTime().equals(temp)) {
                             availableList.add(temp);
                         }
                     }
-                }else{
-                    availableList.add(temp);
+                    temp = temp.plusMinutes(30);
                 }
-                temp = temp.plusMinutes(30);
+            } else {
+                while (!temp.equals(close)) {
+                    availableList.add(temp);
+                    temp = temp.plusMinutes(30);
+                }
             }
             bean.setAvailableSlots(availableList);
         } catch (WrongInputDataException wde) {

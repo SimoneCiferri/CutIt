@@ -1,18 +1,19 @@
 package cutit.bean;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
 public interface AppointmentBean {
 
-    String getStartTime();
+    LocalDateTime getStartTime();
 
-    void setStartTime(String startTime);
+    void setStartTime(LocalDateTime startTime);
 
-    String getEndTime();
+    LocalDateTime getEndTime();
 
-    void setEndTime(String endTime);
+    void setEndTime(LocalDateTime endTime);
 
     String getCustomer();
 
@@ -29,6 +30,10 @@ public interface AppointmentBean {
     String getShopName();
 
     void setShopName(String shopName);
+
+    String getAppNotes();
+
+    void setAppNotes(String notes);
 
     List<LocalTime> getAvailableSlots();
 

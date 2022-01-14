@@ -3,35 +3,37 @@ package cutit.bean.firstui;
 import cutit.bean.AppointmentBean;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
 public class AppointmentBeanFirstUI implements AppointmentBean {
 
-    private String startTime;
-    private String endTime;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     private String customer;
     private String promotionCode;
     private String serviceName;
     private String shopName;
+    private String notes;
     private LocalDate selectedDay;
     private List<LocalTime> availableSlots;
     private List<String> availableServices;
 
 
-    public String getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 
@@ -65,6 +67,16 @@ public class AppointmentBeanFirstUI implements AppointmentBean {
 
     public void setShopName(String shopName) {
         this.shopName = shopName;
+    }
+
+    @Override
+    public String getAppNotes() {
+        return notes;
+    }
+
+    @Override
+    public void setAppNotes(String notes) {
+        this.notes = notes;
     }
 
     @Override

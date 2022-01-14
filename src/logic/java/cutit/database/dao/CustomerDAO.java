@@ -56,6 +56,30 @@ public class CustomerDAO {
         }
     }
 
+    public static Customer getCustomer(String customerEmail) throws Exception {
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = CustomerQueries.getCustomer(stm, customerEmail);
+        if(!rs.first()){
+            Throwable cause = new Throwable("Customer not found");
+            throw new RecordNotFoundException(cause);
+        }else{
+            rs.first();
+            String cEmail = rs.getString(1);
+            String name = rs.getString(4);
+            String surname = rs.getString(5);
+            Customer customer = new Customer();
+            customer.setUserID(cEmail);
+            customer.setName(name);
+            customer.setSurname(surname);
+            rs.close();
+            stm.close();
+            //DBConnection.getInstance().closeConnection();
+            return customer;
+        }
+    }
+
     
 
 }
