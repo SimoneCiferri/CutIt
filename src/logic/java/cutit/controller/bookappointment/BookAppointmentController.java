@@ -92,11 +92,19 @@ public class BookAppointmentController {
             LocalTime temp = open;
             if (!appList.isEmpty()) {
                 while (!temp.equals(close)) {
+                    System.out.println("Controllo per le ore " + temp);
+                    boolean busy = false;
                     for (Appointment appointment : appList) {
-                        System.out.println("Quà anche ci arrivo");
-                        if (!appointment.getStartTime().toLocalTime().equals(temp)) {
-                            availableList.add(temp);
+                        System.out.println("---Controllo su appuntamento: " + appointment.getStartTime().toLocalTime());
+                        if(appointment.getStartTime().toLocalTime().equals(temp)){
+                            System.out.println("---Slot " + appointment.getStartTime().toLocalTime() +" occupato");
+                            busy = true;
+                            break;
                         }
+                    }
+                    if(!busy){
+                        System.out.println("---Slot " + temp + " libero -> aggiungo");
+                        availableList.add(temp);
                     }
                     temp = temp.plusMinutes(30);
                 }

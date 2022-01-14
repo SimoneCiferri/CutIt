@@ -100,15 +100,20 @@
                                     <Insets top="25.0" />
                                  </VBox.margin>
                                  <children>
-                                    <TextField prefHeight="30.0" prefWidth="240.0" promptText="Promotion Code" />
-                                    <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="49.0" text="Check">
+                                    <TextField fx:id="tfPromotionCode" disable="true" prefHeight="30.0" prefWidth="240.0" promptText="Promotion Code" />
+                                    <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#checkPromotion" prefHeight="30.0" prefWidth="49.0" text="Check">
                                        <HBox.margin>
                                           <Insets left="10.0" />
                                        </HBox.margin></Button>
                                  </children></HBox>
-                              <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="299.0">
+                              <Label fx:id="lblPromotionApplied" prefHeight="6.0" prefWidth="240.0" text="Promotion Applied!" textFill="#04ff29" visible="false">
+                                 <font>
+                                    <Font size="8.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="taNotes" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="299.0" promptText="Notes....">
                                  <VBox.margin>
-                                    <Insets top="25.0" />
+                                    <Insets top="15.0" />
                                  </VBox.margin></TextArea>
                            </children></VBox>
                      </children></HBox>
