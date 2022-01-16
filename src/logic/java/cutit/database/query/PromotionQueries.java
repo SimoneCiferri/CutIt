@@ -36,8 +36,8 @@ public class PromotionQueries {
         return stmt.executeQuery(sql);
     }
 
-    public static ResultSet checkPersonalPromotion(Statement stmt, String customerID, String code) throws SQLException {
-        String sql = "SELECT * FROM customer_has_promotion WHERE Customer_CustomerEmail = '" + customerID + "' and Code = '" + code + "'";
+    public static ResultSet getPersonalPromotion(Statement stmt, String customerID, String code) throws SQLException {
+        String sql = "SELECT * FROM customer_has_promotion WHERE Customer_CustomerEmail = '" + customerID + "' and Promotion_Code = '" + code + "'";
         System.out.println(sql);
         return stmt.executeQuery(sql);
     }

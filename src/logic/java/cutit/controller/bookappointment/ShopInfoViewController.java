@@ -35,7 +35,7 @@ public class ShopInfoViewController {
 
 
     public boolean initialize() throws IOException {
-        System.out.println("CONTROLLER GRAFICO SHOPINFOVIEWCONTROLLER");
+        shopBeanUQ = new ShopBeanUQ();
         bookAppointmentController = new BookAppointmentController();
         ivList.add(ivShop1);
         ivList.add(ivShop2);
@@ -113,7 +113,7 @@ public class ShopInfoViewController {
     public void fillView(CustomerBean customerBeanFirstUI, String shopName){
         try {
             this.customerBeanFirstUI = customerBeanFirstUI;
-            shopBeanUQ = bookAppointmentController.getShop(shopName);
+            bookAppointmentController.getShop(shopBeanUQ, shopName);
             showShopInfo();
         } catch (Exception e) {
             e.printStackTrace();

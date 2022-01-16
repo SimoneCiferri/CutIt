@@ -35,8 +35,8 @@ public class CustomerDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = CustomerQueries.getCustomer(stm, user.getUserID());
         if(!rs.first()){
-            Throwable cause = new Throwable("Customer not found");
-            throw new RecordNotFoundException(cause);
+            String message = "Customer not found";
+            throw new RecordNotFoundException(message);
         }else{
             rs.first();
             String cEmail = rs.getString(1);
@@ -47,7 +47,7 @@ public class CustomerDAO {
             Customer customer = new Customer(cEmail, user.getPwd(), user.getRole(), name, surname, LocalDate.parse(birthDate), gender);
             List<Appointment> bookedApp = AppointmentDAO.getAllCustomerAppointments(customer);
             customer.setBookedAppointments(bookedApp);
-            List<Promotion> allProm = PromotionDAO.getAllCustomerPromotion(customer);
+            List<Promotion> allProm = PromotionDAO.getAllCustomerPromotion(customer.getUserID());
             customer.setPromotions(allProm);
             rs.close();
             stm.close();
@@ -62,8 +62,8 @@ public class CustomerDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = CustomerQueries.getCustomer(stm, customerEmail);
         if(!rs.first()){
-            Throwable cause = new Throwable("Customer not found");
-            throw new RecordNotFoundException(cause);
+            String message = "Customer not found";
+            throw new RecordNotFoundException(message);
         }else{
             rs.first();
             String cEmail = rs.getString(1);
@@ -75,7 +75,7 @@ public class CustomerDAO {
             customer.setSurname(surname);
             List<Appointment> bookedApp = AppointmentDAO.getAllCustomerAppointments(customer);
             customer.setBookedAppointments(bookedApp);
-            List<Promotion> allProm = PromotionDAO.getAllCustomerPromotion(customer);
+            List<Promotion> allProm = PromotionDAO.getAllCustomerPromotion(customer.getUserID());
             customer.setPromotions(allProm);
             rs.close();
             stm.close();
@@ -83,7 +83,5 @@ public class CustomerDAO {
             return customer;
         }
     }
-
-    
 
 }

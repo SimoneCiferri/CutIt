@@ -9,6 +9,7 @@ import cutit.controller.payonline.PayOnlineController;
 import cutit.controller.rateshop.RateShopController;
 import cutit.database.dao.*;
 import cutit.exception.DuplicatedRecordException;
+import cutit.exception.RecordNotFoundException;
 import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.*;
@@ -70,6 +71,37 @@ public class BookAppointmentController {
         return true;
     }
 
+    public void getShops(ShopListBean shopListBean) throws Exception{
+        try {
+            List<Shop> shopList = ShopDAO.getDefaultShops();
+            shopListBean.setShopBeanList(beanListFromShopList(shopList));
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public void getShop(ShopBeanUQ shopBeanUQ, String shopName) throws Exception {
+        try {
+            Shop shop = ShopDAO.getShopFromName(shopName);
+            shopBeanUQ.setShopName(shop.getShopName());
+            shopBeanUQ.setShopPIVA(shop.getpIVA());
+            shopBeanUQ.setAddress(shop.getAddress());
+            shopBeanUQ.setPhoneNumber(shop.getPhoneNumber());
+            shopBeanUQ.setEmployee(shop.getEmployee());
+            shopBeanUQ.setShopDescription(shop.getDescription());
+            shopBeanUQ.setOpenTime(shop.getOpenTime());
+            shopBeanUQ.setCloseTime(shop.getCloseTime());
+            shopBeanUQ.setOpenDays(shop.getOpenDays());
+            shopBeanUQ.setPromotions(stringListFromPromList(shop.getPromotions()));
+            shopBeanUQ.setServices(stringListFromServList(shop.getServices()));
+            shopBeanUQ.setImages(shop.getImages());
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
+    }
+
     public void getAppointments(CustomerBean customerBean) throws Exception {
         try {
             Customer customer = CustomerDAO.getCustomer(new User(customerBean.getcEmail(), customerBean.getcPassword(), customerBean.getcRole()));
@@ -95,18 +127,14 @@ public class BookAppointmentController {
             LocalTime temp = open;
             if (!appList.isEmpty()) {
                 while (!temp.equals(close)) {
-                    System.out.println("Controllo per le ore " + temp);
                     boolean busy = false;
                     for (Appointment appointment : appList) {
-                        System.out.println("---Controllo su appuntamento: " + appointment.getStartTime().toLocalTime());
                         if(appointment.getStartTime().toLocalTime().equals(temp)){
-                            System.out.println("---Slot " + appointment.getStartTime().toLocalTime() +" occupato");
                             busy = true;
                             break;
                         }
                     }
                     if(!busy){
-                        System.out.println("---Slot " + temp + " libero -> aggiungo");
                         availableList.add(temp);
                     }
                     temp = temp.plusMinutes(30);
@@ -147,39 +175,6 @@ public class BookAppointmentController {
         return list;
     }
 
-    public void getShops(ShopListBean shopListBean) throws Exception{
-        try {
-            List<Shop> shopList = ShopDAO.getShops();
-            shopListBean.setShopBeanList(beanListFromShopList(shopList));
-        } catch (Exception e){
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            throw e;
-        }
-    }
-
-    public ShopBeanUQ getShop(String shopName) throws Exception {
-        try {
-            Shop shop = ShopDAO.getShopFromName(shopName);
-            ShopBeanUQ shopBeanUQ = new ShopBeanUQ();
-            shopBeanUQ.setShopName(shop.getShopName());
-            shopBeanUQ.setShopPIVA(shop.getpIVA());
-            shopBeanUQ.setAddress(shop.getAddress());
-            shopBeanUQ.setPhoneNumber(shop.getPhoneNumber());
-            shopBeanUQ.setEmployee(shop.getEmployee());
-            shopBeanUQ.setShopDescription(shop.getDescription());
-            shopBeanUQ.setOpenTime(shop.getOpenTime());
-            shopBeanUQ.setCloseTime(shop.getCloseTime());
-            shopBeanUQ.setOpenDays(shop.getOpenDays());
-            shopBeanUQ.setPromotions(stringListFromPromList(shop.getPromotions()));
-            shopBeanUQ.setServices(stringListFromServList(shop.getServices()));
-            shopBeanUQ.setImages(shop.getImages());
-            return shopBeanUQ;
-        } catch (Exception e){
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            throw e;
-        }
-    }
-
     public void getFavouritesShop(ShopListBean bean, String customerEmail) throws Exception {
         try{
             List<Shop> shopList = FavoriteShopsDAO.getFavouritesShops(customerEmail);
@@ -192,14 +187,18 @@ public class BookAppointmentController {
 
     public boolean checkPromotion(AppointmentBean bean) throws Exception {
         try {
-            Customer customer = CustomerDAO.getCustomer(bean.getCustomer());
-            List<Promotion> promList = customer.getPromotions();
-            for (Promotion promotion : promList) {
-                if (Objects.equals(promotion.getCode(), bean.getPromotionCode())) {
+            Promotion promotion = PromotionDAO.getPersonalPromotion(bean.getCustomer(), bean.getPromotionCode());
+            if(Objects.equals(bean.getServiceName(), promotion.getService().getServiceName())){
+                if(LocalDate.now().isBefore(promotion.getExpireDate())){
                     return true;
+                } else {
+                    throw new WrongInputDataException("Selected promotion is expired.");
                 }
+            } else {
+                throw new WrongInputDataException("Selected promotion is not available for selected Service.");
             }
-            return false;
+        } catch (RecordNotFoundException | WrongInputDataException exception){
+            throw exception;
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;

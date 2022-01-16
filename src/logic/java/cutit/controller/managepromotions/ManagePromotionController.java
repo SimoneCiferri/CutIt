@@ -44,7 +44,7 @@ public class ManagePromotionController {
     public void getAllPromotions(ManagePromotionBean managePromotionBean, ShopBean shopBean) throws Exception {
         try {
             Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
-            List<Promotion> promotionsList = PromotionDAO.getAllPromotion(shop);
+            List<Promotion> promotionsList = PromotionDAO.getAllPromotion(shop.getShopName());
             managePromotionBean.setPromotionsBeanList(promBeanListFromPromList(promotionsList));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
@@ -57,7 +57,7 @@ public class ManagePromotionController {
     public ManagePromotionBeanUQ getAllServices(ShopBean shopBean) throws Exception {
         try {
             Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
-            List<Service> serviceList = ServiceDAO.getALlServices(shop);
+            List<Service> serviceList = ServiceDAO.getALlServices(shop.getShopName());
             ManagePromotionBeanUQ managePromotionBeanUQ = new ManagePromotionBeanUQ();
             managePromotionBeanUQ.setServiceList(stringListFromServList(serviceList));
             return managePromotionBeanUQ;

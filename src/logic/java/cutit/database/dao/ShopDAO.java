@@ -2,7 +2,6 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.ShopQueries;
-import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
 import cutit.model.*;
@@ -10,14 +9,13 @@ import cutit.model.*;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalTime;
 import java.util.*;
 
 public class ShopDAO {
 
-    public static Boolean checkIfShopExists(String shopName) throws Exception {
+    public static Boolean checkShop(String shopName) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -51,8 +49,8 @@ public class ShopDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = ShopQueries.getShopFromName(stm, shopName);
         if (!rs.first()) {
-            Throwable cause = new Throwable("Shop not found");
-            throw new RecordNotFoundException(cause);
+            String message = "Service not found";
+            throw new RecordNotFoundException(message);
         } else {
             rs.first();
             String employee = rs.getString(2);
@@ -66,12 +64,12 @@ public class ShopDAO {
             Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
             shop.setOpenDays(openDays);
 
-            List<File> images = getImages(shop);
+            List<File> images = getImages(shop.getShopName());
             shop.setImages(images);
 
-            List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop);
+            List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop.getShopName());
             shop.setPromotions(allPromotions);
-            List<Service> services = ServiceDAO.getALlServices(shop);
+            List<Service> services = ServiceDAO.getALlServices(shop.getShopName());
             shop.setServices(services);
 
             List<Appointment> app = AppointmentDAO.getAllShopAppointments(shop);
@@ -83,14 +81,39 @@ public class ShopDAO {
         }
     }
 
-    public static Shop getShop(Hairdresser hairdresser) throws Exception {
+    public static Shop getShopLite(String shopName) throws Exception {
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = ShopQueries.getShopFromName(stm, shopName);
+        if (!rs.first()) {
+            String message = "Service not found";
+            throw new RecordNotFoundException(message);
+        } else {
+            rs.first();
+            String address = rs.getString(3);
+            String hPiva = rs.getString(4);
+            String phoneNumber = rs.getString(5);
+            Shop shop = new Shop(shopName, hPiva);
+            shop.setAddress(address);
+            shop.setPhoneNumber(phoneNumber);
+            /*List<File> images = getImages(shop.getShopName());
+            shop.setImages(images);*/
+            rs.close();
+            stm.close();
+            //DBConnection.getInstance().closeConnection();
+            return shop;
+        }
+    }
+
+    public static Shop getShopFromHairdresser(Hairdresser hairdresser) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = ShopQueries.getShop(stm, hairdresser.getpIVA());
         if (!rs.first()) {
-            Throwable cause = new Throwable("Shop not found");
-            throw new RecordNotFoundException(cause);
+            String message = "Service not found";
+            throw new RecordNotFoundException(message);
         } else {
             rs.first();
             String shopName = rs.getString(1);
@@ -105,12 +128,12 @@ public class ShopDAO {
             Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
             shop.setOpenDays(openDays);
 
-            List<File> images = getImages(shop);
+            List<File> images = getImages(shop.getShopName());
             shop.setImages(images);
 
-            List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop);
+            List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop.getShopName());
             shop.setPromotions(allPromotions);
-            List<Service> services = ServiceDAO.getALlServices(shop);
+            List<Service> services = ServiceDAO.getALlServices(shop.getShopName());
             shop.setServices(services);
 
             List<Appointment> app = AppointmentDAO.getAllShopAppointments(shop);
@@ -143,18 +166,18 @@ public class ShopDAO {
     }
 
 
-    private static List<File> getImages(Shop shop) throws Exception{
+    private static List<File> getImages(String shopName) throws Exception{
         List<File> images = new ArrayList<File>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = ShopQueries.getImages(stm, shop.getShopName());
+        ResultSet rs = ShopQueries.getImages(stm, shopName);
         if (rs.first()) {
             rs.first();
             int i = 0;
             do {
                 byte[] image = rs.getBytes(3);
-                File file = new File("src/logic/resources/cutit/cutit/tmpfiles/image" + i + shop.getShopName() + ".tmp");
+                File file = new File("src/logic/resources/cutit/cutit/tmpfiles/image" + i + shopName + ".tmp");
                 OutputStream out = new FileOutputStream(file);
                 out.write(image);
                 images.add(file);
@@ -189,7 +212,7 @@ public class ShopDAO {
         stm.close();
     }
 
-    public static List<Shop> getShops() throws Exception {
+    public static List<Shop> getDefaultShops() throws Exception {
         List<Shop> shopList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -203,7 +226,7 @@ public class ShopDAO {
                 String hPIVA = rs.getString(4);
                 Shop shop = new Shop(shopName, hPIVA);
                 shop.setAddress(shopAddress);
-                List<File> images = getImages(shop);
+                List<File> images = getImages(shop.getShopName());
                 shop.setImages(images);
                 shopList.add(shop);
             } while (rs.next());

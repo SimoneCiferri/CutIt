@@ -7,7 +7,6 @@ import cutit.bean.firstui.HairdresserBeanFirstUI;
 import cutit.decorator.ViewLayout;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
-import cutit.exception.RecordNotFoundException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.utils.TextFieldCheck;
@@ -37,15 +36,11 @@ public class SignUpViewController {
     private DatePicker dpCustomerBirthdate;
 
     @FXML
-    private Button btBack;
-
-    @FXML
     public void initialize(){
         customerBeanFirstUI = new CustomerBeanFirstUI();
         hairdresserBeanFirstUI = new HairdresserBeanFirstUI();
         loginController = new LoginController();
         cbCustomerGender.getItems().addAll("Female", "Male", "Other");
-        System.out.println("CONTROLLER GRAFICO SIGNUPVIEWCONTROLLER");
     }
 
     @FXML

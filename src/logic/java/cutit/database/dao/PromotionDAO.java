@@ -4,6 +4,7 @@ import cutit.database.DBConnection;
 import cutit.database.query.PromotionQueries;
 import cutit.database.query.ServiceQueries;
 import cutit.exception.DuplicatedRecordException;
+import cutit.exception.RecordNotFoundException;
 import cutit.model.Customer;
 import cutit.model.Promotion;
 import cutit.model.Service;
@@ -41,12 +42,12 @@ public class PromotionDAO {
         stm.close();
     }
 
-    public static List<Promotion> getAllPromotion(Shop shop) throws Exception {
+    public static List<Promotion> getAllPromotion(String shopName) throws Exception {
         List<Promotion> promotionsList = new ArrayList<Promotion>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = PromotionQueries.getAllPromotion(stm, shop.getShopName());
+        ResultSet rs = PromotionQueries.getAllPromotion(stm, shopName);
         if (rs.first()) {
             rs.first();
             do {
@@ -66,12 +67,12 @@ public class PromotionDAO {
         return promotionsList;
     }
 
-    public static List<Promotion> getAllCustomerPromotion(Customer customer) throws Exception {
+    public static List<Promotion> getAllCustomerPromotion(String customerEmail) throws Exception {
         List<Promotion> promotionsList = new ArrayList<Promotion>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = PromotionQueries.getAllCustomerPromotion(stm, customer.getUserID());
+        ResultSet rs = PromotionQueries.getAllCustomerPromotion(stm, customerEmail);
         if (rs.first()) {
             rs.first();
             do {
@@ -116,7 +117,22 @@ public class PromotionDAO {
         return promotionsList;
     }*/
 
-
+    public static Promotion getPersonalPromotion(String customerEmail, String promCode) throws Exception {
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = PromotionQueries.getPersonalPromotion(stm, customerEmail, promCode);
+        if (!rs.first()) {
+            String message = "Promotion not available";
+            throw new RecordNotFoundException(message);
+        } else{
+            Promotion prom = getPromotion(promCode);
+            rs.close();
+            stm.close();
+            //DBConnection.getInstance().closeConnection();
+            return prom;
+        }
+    }
 
     public static void deletePromotion(Promotion promotion) throws Exception{
         Connection conn = DBConnection.getInstance().getConnection();
@@ -142,9 +158,7 @@ public class PromotionDAO {
             Service service = ServiceDAO.getService(serviceShopName, serviceName);
             Promotion prom = new Promotion(promCode, offValue, dataFromString(expireDate), service);
             rs.close();
-            if(stm != null){
-                stm.close();
-            }
+            stm.close();
             //DBConnection.getInstance().closeConnection();
             return prom;
         }

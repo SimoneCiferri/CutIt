@@ -37,18 +37,18 @@ public class ServiceDAO {
         stm.close();
     }
 
-    public static List<Service> getALlServices(Shop shop) throws Exception {
+    public static List<Service> getALlServices(String shopName) throws Exception {
         List<Service> servicesList = new ArrayList<Service>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = ServiceQueries.getAllServices(stm, shop.getShopName());
+        ResultSet rs = ServiceQueries.getAllServices(stm, shopName);
         if (rs.first()) {
             rs.first();
             do {
                 String serviceName = rs.getString(1);
                 Float servicePrice = rs.getFloat(2);
-                Service s = new Service(serviceName, servicePrice, shop.getShopName());
+                Service s = new Service(serviceName, servicePrice, shopName);
                 servicesList.add(s);
             } while (rs.next());
             rs.close();
@@ -72,8 +72,8 @@ public class ServiceDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = ServiceQueries.getService(stm, serviceName, shopName);
         if(!rs.first()){
-            Throwable cause = new Throwable("Service not found");
-            throw new RecordNotFoundException(cause);
+            String message = "Service not found";
+            throw new RecordNotFoundException(message);
         }
         rs.first();
         String servName = rs.getString(1);

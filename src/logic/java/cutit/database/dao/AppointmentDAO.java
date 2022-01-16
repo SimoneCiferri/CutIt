@@ -62,7 +62,7 @@ public class AppointmentDAO {
                 String serviceShopName = rs.getString(7);
                 String promotionCode = rs.getString(8);
                 Service service = ServiceDAO.getService(serviceShopName, serviceName);
-                Shop shop = ShopDAO.getShopFromName(shopName);
+                Shop shop = ShopDAO.getShopLite(shopName); //chiamata Lite dello shop
                 Appointment appointment = new Appointment(LocalDateTime.parse(startTime), LocalDateTime.parse(endTime), customer, service, shop);
                 if(promotionCode != null){
                     Promotion prom = PromotionDAO.getPromotion(promotionCode);

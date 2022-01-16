@@ -42,7 +42,6 @@ public class LoginViewController {
         hairdresserBeanFirstUI = new HairdresserBeanFirstUI();
         shopBeanFirstUI = new ShopBeanUQ();
         loginController = new LoginController();
-        System.out.println("CONTROLLER GRAFICO LOGINVIEWCONTROLLER");
     }
 
     @FXML

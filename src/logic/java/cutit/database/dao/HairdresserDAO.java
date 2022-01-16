@@ -2,15 +2,11 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.HairdresserQueries;
-import cutit.database.query.ShopQueries;
-import cutit.database.query.UserQueries;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
-import cutit.factory.AlertFactory;
 import cutit.model.Hairdresser;
 import cutit.model.Shop;
 import cutit.model.User;
-import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,7 +14,7 @@ import java.sql.Statement;
 
 public class HairdresserDAO {
 
-    public static Boolean checkIfPIVAExists(String piva) throws Exception {
+    public static Boolean checkPIVA(String piva) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -53,8 +49,8 @@ public class HairdresserDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = HairdresserQueries.getHairdresser(stm, user.getUserID());
         if(!rs.first()){
-            Throwable cause = new Throwable("Hairdresser not found");
-            throw new RecordNotFoundException(cause);
+            String message = "Hairdresser not found";
+            throw new RecordNotFoundException(message);
         }else{
             rs.first();
             String piva = rs.getString(1);
@@ -62,7 +58,7 @@ public class HairdresserDAO {
             String name = rs.getString(3);
             String surname = rs.getString(4);
             Hairdresser hairdresser = new Hairdresser(hEmail, user.getPwd(), user.getRole(), name, surname, piva);
-            Shop shop = ShopDAO.getShop(hairdresser);
+            Shop shop = ShopDAO.getShopFromHairdresser(hairdresser);
             hairdresser.setShop(shop);
             rs.close();
             stm.close();

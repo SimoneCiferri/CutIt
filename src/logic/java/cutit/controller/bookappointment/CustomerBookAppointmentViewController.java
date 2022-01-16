@@ -10,6 +10,7 @@ import cutit.decorator.ViewLayout;
 import cutit.decorator.concreteDecorator.TopBarCustomerView;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
+import cutit.exception.RecordNotFoundException;
 import cutit.exception.WrongInputDataException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
@@ -67,11 +68,11 @@ public class CustomerBookAppointmentViewController {
 
     @FXML
     public void initialize(){
-        dtPicker.setValue(LocalDate.now());
         appointmentBeanFirstUI = new AppointmentBeanFirstUI();
         rateShopBean = new RateShopBeanUQ();
         bookAppointmentController = new BookAppointmentController();
 
+        dtPicker.setValue(LocalDate.now());
         cbTimeSlot.setOnAction((event) -> {
             LocalTime selectedTime = cbTimeSlot.getSelectionModel().getSelectedItem();
             if(selectedTime != null){
@@ -171,18 +172,20 @@ public class CustomerBookAppointmentViewController {
                 System.out.println("codice non nullo = '" + tfPromotionCode.getText() + "'");
                 appointmentBeanFirstUI.setPromotionCode(tfPromotionCode.getText());
                 appointmentBeanFirstUI.setCustomer(customerBeanFirstUI.getcEmail());
-                if(bookAppointmentController.checkPromotion(appointmentBeanFirstUI)){
-                    tfPromotionCode.setDisable(true);
-                    checkPromotion.setDisable(true);
-                    lblPromotionApplied.setVisible(true);
-                    return true;
-                } else {
-                    tfPromotionCode.setText("");
-                    return false;
-                }
+                appointmentBeanFirstUI.setServiceName(cbServices.getValue());
+                appointmentBeanFirstUI.setShopName(shopBeanUQ.getShopName());
+                bookAppointmentController.checkPromotion(appointmentBeanFirstUI);
+                tfPromotionCode.setDisable(true);
+                checkPromotion.setDisable(true);
+                lblPromotionApplied.setVisible(true);
+                return true;
             } else {
                 return false;
             }
+        } catch (RecordNotFoundException | WrongInputDataException exception){
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+            tfPromotionCode.setText("");
+            return false;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
