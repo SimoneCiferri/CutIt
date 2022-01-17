@@ -113,6 +113,14 @@ public class BookAppointmentController {
         }
     }
 
+    public void getPromotion(PromotionBean bean) throws Exception {
+        Promotion promotion = PromotionDAO.getPromotion(bean.getPromotionCode());
+        bean.setOffValue(promotion.getOffValue());
+        bean.setExpireDate(promotion.getExpireDate());
+        bean.setServiceName(promotion.getService().getServiceName());
+        bean.setShopName(promotion.getService().getShopName());
+    }
+
     public void getAppointments(CustomerBean customerBean) throws Exception {
         try {
             Customer customer = CustomerDAO.getCustomer(new User(customerBean.getcEmail(), customerBean.getcPassword(), customerBean.getcRole()));

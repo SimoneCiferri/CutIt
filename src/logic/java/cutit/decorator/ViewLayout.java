@@ -7,12 +7,12 @@ public enum ViewLayout {
     HOME("/cutit/cutit/fxml/home.fxml"), LOGIN("/cutit/cutit/fxml/login.fxml"), TOPBAR("/cutit/cutit/fxml/topbar.fxml"),
     HAIRDRESSERAPPOINTMENTS("/cutit/cutit/fxml/hairdresserdeletebookedappointments.fxml"), SIGNUP("/cutit/cutit/fxml/signup.fxml"),
     FAVSHOP("/cutit/cutit/fxml/clientfavouritescs.fxml"), CUSTOMERAPPOINTMENTS("/cutit/cutit/fxml/customerappointments.fxml"),
-    CUSTOMERPROMOTIONS("/cutit/cutit/fxml/clientpromotions.fxml"), HAIRDRESSERPROMOTIONS("/cutit/cutit/fxml/hairdressermanagepromotions.fxml"),
+    CUSTOMERPROMOTIONS("/cutit/cutit/fxml/customerpromotions.fxml"), HAIRDRESSERPROMOTIONS("/cutit/cutit/fxml/hairdressermanagepromotions.fxml"),
     HAIRDRESSERSERVICES("/cutit/cutit/fxml/hairdressermanageservices.fxml"),
     SHOPINFO("/cutit/cutit/fxml/shopinfo.fxml"), CUSTOMERRATESHOP("/cutit/cutit/fxml/clientrateshop.fxml"),
     CLIENTBOOKAPPOINTMENT("/cutit/cutit/fxml/customerbookappointment.fxml"),
     CUSTOMERAPPINFO("/cutit/cutit/fxml/customerappointmentinfo.fxml"),
-    CLIENTPROMOTIONINFO("/cutit/cutit/fxml/clientpromotioninfo.fxml"),GMAPS("/cutit/cutit/fxml/gmaps.fxml"), HAIRDRESSERMANAGESHOP("/cutit/cutit/fxml/hairdressermanageshop.fxml"), PAYONLINEPAYPAL("/cutit/cutit/fxml/customerpayonlinepaypal.fxml");
+    CUSTOMERPROMOTIONINFO("/cutit/cutit/fxml/customerpromotioninfo.fxml"),GMAPS("/cutit/cutit/fxml/gmaps.fxml"), HAIRDRESSERMANAGESHOP("/cutit/cutit/fxml/hairdressermanageshop.fxml"), PAYONLINEPAYPAL("/cutit/cutit/fxml/customerpayonlinepaypal.fxml");
 
     private String res;
 

@@ -116,7 +116,8 @@ public class CustomerBookAppointmentViewController {
         }
         try {
             bookAppointmentController.bookAppointment(appointmentBeanFirstUI);
-            Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
+            //Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
+            showPayedAndBooked();
         } catch (DuplicatedRecordException de){
             AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
         } catch (Exception e){

@@ -13,7 +13,7 @@ import cutit.bean.firstui.PayOnlineBeanUQ;
 import javafx.fxml.FXML;
 
 
-public class PayOnlinePayPalViewControllerUQ {
+public class PayOnlinePayPalViewControllerUQ implements PayOnlinePayPalViewController{
 
     private PayOnlineBean payOnlineBean;
 
@@ -52,4 +52,9 @@ public class PayOnlinePayPalViewControllerUQ {
             //Setting the Scene object
             vbPaypal.getChildren().add(iv);
         }
+
+    @Override
+    public void setData(PayOnlineBean payOnlineBean) {
+
     }
+}

@@ -112,8 +112,8 @@ public class Facade {
                 CustomerAppointmentInfoView clientappinfoview = new CustomerAppointmentInfoView(startView);
                 viewMap.put(layout, clientappinfoview);
             }
-            case CLIENTPROMOTIONINFO -> {
-                ClientPromotionInfoView clientprominfoview = new ClientPromotionInfoView(startView);
+            case CUSTOMERPROMOTIONINFO -> {
+                CustomerPromotionInfoView clientprominfoview = new CustomerPromotionInfoView(startView);
                 viewMap.put(layout, clientprominfoview);
             }
             case GMAPS -> {

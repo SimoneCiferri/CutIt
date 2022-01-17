@@ -167,8 +167,8 @@ public class PromotionDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = PromotionQueries.getPromotion(stm, promCode);
         if(!rs.first()){
-            Exception e = new Exception("No Promotion Found matching with name: "+ promCode);
-            throw e;
+            String message = "Promotion not available";
+            throw new RecordNotFoundException(message);
         }else{
             Integer offValue = rs.getInt(2);
             String expireDate = rs.getString(3);
