@@ -42,4 +42,10 @@ public class PromotionQueries {
         return stmt.executeQuery(sql);
     }
 
+    public static ResultSet getAllPersonalPromotions(Statement stmt, String customerID) throws SQLException {
+        String sql = "SELECT * FROM customer_has_promotion WHERE Customer_CustomerEmail = '" + customerID + "'";
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+    }
+
 }

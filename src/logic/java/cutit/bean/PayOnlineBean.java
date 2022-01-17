@@ -1,6 +1,7 @@
 package cutit.bean;
 
 public interface PayOnlineBean {
+
     String getPaymentShopName();
 
     String getServicePrice();

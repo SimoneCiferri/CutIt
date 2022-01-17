@@ -106,7 +106,7 @@ public class TopBarCustomerViewController {
         Facade.getInstance().decorateView(ViewLayout.CUSTOMERPROMOTIONS);
         CustomerPromotionsView view =(CustomerPromotionsView) Facade.getInstance().getViewMap().get(ViewLayout.CUSTOMERPROMOTIONS);
         CustomerPromotionsViewController viewController = (CustomerPromotionsViewController) view.getLoadedViewController(ViewLayout.CUSTOMERPROMOTIONS);
-        viewController.fillView(new ShopBeanUQ());
+        viewController.fillView(customerBeanFirstUI);
         return true;
     }
 

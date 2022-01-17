@@ -27,8 +27,9 @@ public class BookAppointmentController {
     private RateShopController rateShopController;
     private AddShopToFavouritesController addShopToFavouritesController;
     private AddAppointmentToCalendarController addAppointmentToCalendarController;
+    private Appointment appointment;
 
-    public boolean bookAppointment(AppointmentBean appointmentBean) throws Exception {
+    public void bookAppointment(AppointmentBean appointmentBean) throws Exception {
         try {
             Customer customer = CustomerDAO.getCustomer(appointmentBean.getCustomer());
             Service service = ServiceDAO.getService(appointmentBean.getShopName(), appointmentBean.getServiceName());
@@ -39,9 +40,19 @@ public class BookAppointmentController {
                 appointment.setPromotion(promotion);
             }
             AppointmentDAO.insertAppointment(appointment);
-            return true;
-        } catch (DuplicatedRecordException de){
-            throw de;
+            payAppointment(appointmentBean);
+        } catch (DuplicatedRecordException | RecordNotFoundException exception){
+            throw exception;
+        } catch (Exception e){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
+    }
+
+    public void getPersonalPromotions(CustomerBean bean) throws Exception {
+        try {
+            List<Promotion> personalProm = PromotionDAO.getAllPersonalPromotions(bean.getcEmail());
+            bean.setAllPersonalPromotions(stringListFromPromList(personalProm));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;

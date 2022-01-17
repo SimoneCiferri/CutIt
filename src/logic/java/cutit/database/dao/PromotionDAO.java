@@ -3,17 +3,16 @@ package cutit.database.dao;
 import cutit.database.DBConnection;
 import cutit.database.query.PromotionQueries;
 import cutit.database.query.ServiceQueries;
+import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
-import cutit.model.Customer;
-import cutit.model.Promotion;
-import cutit.model.Service;
-import cutit.model.Shop;
+import cutit.model.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -132,6 +131,26 @@ public class PromotionDAO {
             //DBConnection.getInstance().closeConnection();
             return prom;
         }
+    }
+
+    public static List<Promotion> getAllPersonalPromotions(String customerEmail) throws Exception {
+        List<Promotion> promotionList = new ArrayList<>();
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = PromotionQueries.getAllPersonalPromotions(stm, customerEmail);
+        if (rs.first()) {
+            rs.first();
+            do {
+                String promCode = rs.getString(2);
+                Promotion promotion = getPromotion(promCode);
+                promotionList.add(promotion);
+            } while (rs.next());
+            rs.close();
+            stm.close();
+            //DBConnection.getInstance().closeConnection();
+        }
+        return promotionList;
     }
 
     public static void deletePromotion(Promotion promotion) throws Exception{

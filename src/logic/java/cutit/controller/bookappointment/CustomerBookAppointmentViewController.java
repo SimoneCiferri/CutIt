@@ -85,6 +85,7 @@ public class CustomerBookAppointmentViewController {
         cbServices.setOnAction((event) -> {
             String selectedService = cbServices.getSelectionModel().getSelectedItem();
             tfPromotionCode.setDisable(selectedService == null);
+            checkPromotion.setDisable(selectedService == null);
         });
         System.out.println("CONTROLLER GRAFICO CUSTOMERBOOKAPPOINTMENTVIEWCONTROLLER");
     }
@@ -114,9 +115,8 @@ public class CustomerBookAppointmentViewController {
             appointmentBeanFirstUI.setAppNotes(taNotes.getText());
         }
         try {
-            if(bookAppointmentController.bookAppointment(appointmentBeanFirstUI)){
-                showPayedAndBooked();
-            }
+            bookAppointmentController.bookAppointment(appointmentBeanFirstUI);
+            Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
         } catch (DuplicatedRecordException de){
             AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
         } catch (Exception e){

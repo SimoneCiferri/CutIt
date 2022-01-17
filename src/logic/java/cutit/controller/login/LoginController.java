@@ -58,7 +58,7 @@ public class LoginController {
             customerBean.setcSurname(customer.getSurname());
             customerBean.setcBirthDate(customer.getBirthDate());
             customerBean.setcGender(customer.getGender());
-            customerBean.setAllPromotions(stringListFromPromList(customer.getPromotions()));
+            customerBean.setAllPersonalPromotions(stringListFromPromList(customer.getPromotions()));
             //customerBean.setAllBookedAppointments(stringListFromAppList(customer.getBookedAppointments()));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());

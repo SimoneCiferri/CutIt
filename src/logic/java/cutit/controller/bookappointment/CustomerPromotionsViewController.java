@@ -1,8 +1,10 @@
 package cutit.controller.bookappointment;
 
+import cutit.bean.CustomerBean;
 import cutit.bean.firstui.ShopBeanUQ;
 import cutit.decorator.ViewLayout;
 import cutit.facade.Facade;
+import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -14,37 +16,38 @@ import java.io.IOException;
 public class CustomerPromotionsViewController {
 
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private ShopBeanUQ shopBeanUQ;
+    private CustomerBean customerBeanFirstUI;
+    private BookAppointmentController bookAppointmentController;
 
     @FXML
     private VBox vbInScrollCProm;
 
     public boolean initialize() throws IOException {
+        bookAppointmentController = new BookAppointmentController();
         vbInScrollCProm.setSpacing(15);
-        showClientProm();
-        System.out.println("CONTROLLER GRAFICO CUSTOMERPROMOTIONSVIEWCONTROLLER");
         return true;
     }
 
     private void showClientProm() {
-        for(int i = 0; i<3; i++){
-            Label l = new Label("Promotion"+ i);
-            l.setPrefSize(895,130);
-            l.setMinSize(895,130);
-            l.setMaxSize(895,130);
-            l.setStyle(labelStyle);
-            l.setPadding(new Insets(0,0,10,20));
-            l.setOnMouseClicked((MouseEvent) -> Facade.getInstance().decorateView(ViewLayout.CLIENTPROMOTIONINFO));
-            vbInScrollCProm.getChildren().add(l);
+        vbInScrollCProm.getChildren().clear();
+        try {
+            bookAppointmentController.getPersonalPromotions(customerBeanFirstUI);
+            for(int i=0;i<customerBeanFirstUI.getAllPersonalPromotions().size();i++){
+                String promotion = customerBeanFirstUI.getAllPersonalPromotions().get(i);
+                Label card = JavaFXNodeFactory.getInstance().createCardLabel(promotion, labelStyle);
+                vbInScrollCProm.getChildren().add(card);
+            }
+            Button add = new Button("Bring Friend");
+            vbInScrollCProm.getChildren().add(add);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        Button add = new Button("Bring Friend");
-        vbInScrollCProm.getChildren().add(add);
     }
 
-    public void fillView(ShopBeanUQ bean){
-        shopBeanUQ = bean;
+    public void fillView(CustomerBean customerBeanFirstUI){
+        this.customerBeanFirstUI = customerBeanFirstUI;
         System.out.println("Filling View from ShopBean data passedBY TopBarCustomerViewController");
-        //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
+        showClientProm();
     }
 
 

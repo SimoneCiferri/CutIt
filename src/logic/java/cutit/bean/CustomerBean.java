@@ -33,12 +33,14 @@ public interface CustomerBean {
 
     void setcGender(String cGender);
 
-    List<String> getAllPromotions();
+    List<String> getAllPersonalPromotions();
 
-    void setAllPromotions(List<String> allPromotions);
+    void setAllPersonalPromotions(List<String> allPromotions);
 
-    public List<AppointmentBean> getAllBookedAppointments();
+    List<AppointmentBean> getAllBookedAppointments();
 
-    public void setAllBookedAppointments(List<AppointmentBean> allBookedAppointments);
+    void setAllBookedAppointments(List<AppointmentBean> allBookedAppointments);
+
+
 
 }

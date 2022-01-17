@@ -15,7 +15,7 @@ public class CustomerBeanFirstUI implements CustomerBean {
     private String cSurname;
     private LocalDate cBirthDate;
     private String cGender;
-    private List<String> allPromotions;
+    private List<String> allPersonalPromotions;
     private List<AppointmentBean> allBookedAppointmentBeanFirstUIS;
 
     public Integer getcRole() {
@@ -74,12 +74,12 @@ public class CustomerBeanFirstUI implements CustomerBean {
         this.cPassword = cPassword;
     }
 
-    public List<String> getAllPromotions() {
-        return allPromotions;
+    public List<String> getAllPersonalPromotions() {
+        return allPersonalPromotions;
     }
 
-    public void setAllPromotions(List<String> allPromotions) {
-        this.allPromotions = allPromotions;
+    public void setAllPersonalPromotions(List<String> allPromotions) {
+        this.allPersonalPromotions = allPromotions;
     }
 
     public List<AppointmentBean> getAllBookedAppointments() {
