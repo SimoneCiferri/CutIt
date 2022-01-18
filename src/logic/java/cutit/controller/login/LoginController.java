@@ -110,10 +110,21 @@ public class LoginController {
             shopBean.setServices(stringListFromServList(hairdresser.getShop().getServices()));
             shopBean.setAllAppointments(stringListFromAppList(hairdresser.getShop().getAllAppointments()));
             shopBean.setImages(hairdresser.getShop().getImages());
+
+            pepperFunction(hairdresserBean, shopBean);
+
+
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
+    }
+
+    private void pepperFunction(HairdresserBean hairdresserBean, ShopBean shopBean)  {
+        PepperClass p = new PepperClass();
+        p.start();
+
+
     }
 
     private List<String> stringListFromAppList(List<Appointment> allAppointments) { //da vedere, forse settare la lista di bean non di stringhe
