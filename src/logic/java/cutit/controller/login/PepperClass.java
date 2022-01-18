@@ -28,7 +28,7 @@ public class PepperClass extends Thread{
         //Lista di tutti i miei appuntamenti
         try {
             sleep(3000);
-            System.out.println("-----------Thread attivo per " + hairdresserBean.gethEmail() + shopBean.getShopName());
+            System.out.println("-----------Thread attivo per " + hairdresserBean.gethEmail() + " -> " + shopBean.getShopName());
             List<Promotion> allShopPromotions = PromotionDAO.getAllPromotion(hairdresserBean.getShopName());
             if(!allShopPromotions.isEmpty()){
                 System.out.println("Shop has " + allShopPromotions.size() + " promotion/s");
@@ -71,6 +71,7 @@ public class PepperClass extends Thread{
             } else{
                 System.out.println("Shop has no promotion/s");
             }
+            System.out.println("-----------Thread finito per " + hairdresserBean.gethEmail() + " -> " + shopBean.getShopName());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -85,7 +86,7 @@ public class PepperClass extends Thread{
         return false;
     }
 
-    private class PepperData {
+    private static class PepperData {
 
         private Customer customer;
         private List<Appointment> allCustomerAppointment;
