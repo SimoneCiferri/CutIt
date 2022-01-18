@@ -113,7 +113,6 @@ public class LoginController {
 
             pepperFunction(hairdresserBean, shopBean);
 
-
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
@@ -121,10 +120,8 @@ public class LoginController {
     }
 
     private void pepperFunction(HairdresserBean hairdresserBean, ShopBean shopBean)  {
-        PepperClass p = new PepperClass();
+        PepperClass p = new PepperClass(hairdresserBean, shopBean);
         p.start();
-
-
     }
 
     private List<String> stringListFromAppList(List<Appointment> allAppointments) { //da vedere, forse settare la lista di bean non di stringhe
