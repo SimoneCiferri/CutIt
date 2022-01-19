@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatter;
 
 public class LogWriter {
 
+    private static final String LOG = "src/logic/java/cutit/log/LOG.txt";
+
     private static LogWriter instance = null;
 
     private LogWriter(){
@@ -23,16 +25,16 @@ public void writeInLog(String infoLog){
     BufferedReader rLog = null;
     BufferedWriter wLog = null;
     try {
-        File f = new File("src/logic/java/cutit/log/LOG.txt");
+        File f = new File(LOG);
         if((f.exists() || f.createNewFile()) /*&& f.canRead() && f.canWrite()*/ ){
-            rLog = new BufferedReader(new FileReader("src/logic/java/cutit/log/LOG.txt"));
+            rLog = new BufferedReader(new FileReader(LOG));
             String s;
             StringBuilder s1 = new StringBuilder();
             while ((s = rLog.readLine()) != null) {
                 s1.append(s).append("\n");
             }
 
-            wLog = new BufferedWriter(new FileWriter("src/logic/java/cutit/log/LOG.txt"));
+            wLog = new BufferedWriter(new FileWriter(LOG));
             wLog.write( s1 + "\n" + currentDate() + "\n" + infoLog);
 
         }

@@ -11,8 +11,8 @@ public class ManageShopPageController {
     public void updateShop(ShopBean shopBean) throws Exception {
         try{
             if(semanticCheck(shopBean)){
-                Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA(), shopBean.getAddress(), shopBean.getPhoneNumber(), shopBean.getEmployee(), shopBean.getShopDescription(), shopBean.getOpenTime(), shopBean.getCloseTime());
-                shop.setOpenDays(shopBean.getOpenDays());
+                Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA(), shopBean.getShopAddress(), shopBean.getShopPhoneNumber(), shopBean.getShopEmployee(), shopBean.getShopDescription(), shopBean.getShopOpenTime(), shopBean.getShopCloseTime());
+                shop.setOpenDays(shopBean.getShopOpenDays());
                 shop.setImages(shopBean.getImages());
                 ShopDAO.updateShop(shop);
             } else {
@@ -27,6 +27,6 @@ public class ManageShopPageController {
     }
 
     private boolean semanticCheck(ShopBean shopBean) {
-        return shopBean.getOpenTime().isBefore(shopBean.getCloseTime());
+        return shopBean.getShopOpenTime().isBefore(shopBean.getShopCloseTime());
     }
 }

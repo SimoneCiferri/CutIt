@@ -84,14 +84,14 @@ public class HairdresserManageShopPageViewController {
     @FXML
     public void updateData(){
         if(TextFieldCheck.isPhoneNumber(tfPhoneNumber.getText(),"Information", "Not Panic!", "Phone number field must be a number.")) {
-            shopBeanFirstUI.setAddress(tfAddress.getText());
-            shopBeanFirstUI.setPhoneNumber(tfPhoneNumber.getText());
+            shopBeanFirstUI.setShopAddress(tfAddress.getText());
+            shopBeanFirstUI.setShopPhoneNumber(tfPhoneNumber.getText());
             shopBeanFirstUI.setShopDescription(taDescription.getText());
-            shopBeanFirstUI.setEmployee(taEmployee.getText());
+            shopBeanFirstUI.setShopEmployee(taEmployee.getText());
             Map<Integer, Boolean> openDaysMap = getOpenDays(checkBoxList);
-            shopBeanFirstUI.setOpenDays(openDaysMap);
-            shopBeanFirstUI.setOpenTime(cbOpenTime.getValue());
-            shopBeanFirstUI.setCloseTime(cbCloseTime.getValue());
+            shopBeanFirstUI.setShopOpenDays(openDaysMap);
+            shopBeanFirstUI.setShopOpenTime(cbOpenTime.getValue());
+            shopBeanFirstUI.setShopCloseTime(cbCloseTime.getValue());
             shopBeanFirstUI.setImages(getImages());
             try {
                 manageShopPageController.updateShop(shopBeanFirstUI);
@@ -118,27 +118,27 @@ public class HairdresserManageShopPageViewController {
         shopBeanFirstUI = bean;
 
         shopName.setText(shopBeanFirstUI.getShopName());
-        if(shopBeanFirstUI.getAddress() != null){
-            tfAddress.setText(shopBeanFirstUI.getAddress());
+        if(shopBeanFirstUI.getShopAddress() != null){
+            tfAddress.setText(shopBeanFirstUI.getShopAddress());
         }
-        if(shopBeanFirstUI.getPhoneNumber() != null){
-            tfPhoneNumber.setText(shopBeanFirstUI.getPhoneNumber());
+        if(shopBeanFirstUI.getShopPhoneNumber() != null){
+            tfPhoneNumber.setText(shopBeanFirstUI.getShopPhoneNumber());
         }
         if(shopBeanFirstUI.getShopDescription() != null){
             taDescription.setText(shopBeanFirstUI.getShopDescription());
         }
-        if(shopBeanFirstUI.getEmployee() != null){
-            taEmployee.setText(shopBeanFirstUI.getEmployee());
+        if(shopBeanFirstUI.getShopEmployee() != null){
+            taEmployee.setText(shopBeanFirstUI.getShopEmployee());
         }
 
-        if(!shopBeanFirstUI.getOpenDays().isEmpty()){
-            for(int i = 0; i< shopBeanFirstUI.getOpenDays().size(); i++){
-                checkBoxList.get(i).setSelected(shopBeanFirstUI.getOpenDays().get(i+1));
+        if(!shopBeanFirstUI.getShopOpenDays().isEmpty()){
+            for(int i = 0; i< shopBeanFirstUI.getShopOpenDays().size(); i++){
+                checkBoxList.get(i).setSelected(shopBeanFirstUI.getShopOpenDays().get(i+1));
             }
         }
 
-        cbOpenTime.setValue(shopBeanFirstUI.getOpenTime());
-        cbCloseTime.setValue(shopBeanFirstUI.getCloseTime());
+        cbOpenTime.setValue(shopBeanFirstUI.getShopOpenTime());
+        cbCloseTime.setValue(shopBeanFirstUI.getShopCloseTime());
 
        if(!shopBeanFirstUI.getImages().isEmpty()){
             for(int i = 0; i< shopBeanFirstUI.getImages().size(); i++){

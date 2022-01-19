@@ -12,13 +12,13 @@ public class ShopBeanUQ implements ShopBean {
 
     private String shopName;
     private String shopPIVA;
-    private String address;
-    private String phoneNumber;
-    private String employee;
+    private String shopAddress;
+    private String shopPhoneNumber;
+    private String shopEmployee;
     private String shopDescription;
-    private LocalTime openTime;
-    private LocalTime closeTime;
-    private Map<Integer, Boolean> openDays;
+    private LocalTime shopOpenTime;
+    private LocalTime shopCloseTime;
+    private Map<Integer, Boolean> shopOpenDays;
     private List<File> images = new ArrayList<>();
     private List<String> promotions;
     private List<String> services;
@@ -40,28 +40,28 @@ public class ShopBeanUQ implements ShopBean {
         this.shopPIVA = shopPIVA;
     }
 
-    public String getAddress() {
-        return address;
+    public String getShopAddress() {
+        return shopAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setShopAddress(String shopAddress) {
+        this.shopAddress = shopAddress;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getShopPhoneNumber() {
+        return shopPhoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setShopPhoneNumber(String shopPhoneNumber) {
+        this.shopPhoneNumber = shopPhoneNumber;
     }
 
-    public String getEmployee() {
-        return employee;
+    public String getShopEmployee() {
+        return shopEmployee;
     }
 
-    public void setEmployee(String employee) {
-        this.employee = employee;
+    public void setShopEmployee(String shopEmployee) {
+        this.shopEmployee = shopEmployee;
     }
 
     public String getShopDescription() {
@@ -72,28 +72,28 @@ public class ShopBeanUQ implements ShopBean {
         this.shopDescription = shopDescription;
     }
 
-    public LocalTime getOpenTime() {
-        return openTime;
+    public LocalTime getShopOpenTime() {
+        return shopOpenTime;
     }
 
-    public void setOpenTime(LocalTime openTime) {
-        this.openTime = openTime;
+    public void setShopOpenTime(LocalTime shopOpenTime) {
+        this.shopOpenTime = shopOpenTime;
     }
 
-    public LocalTime getCloseTime() {
-        return closeTime;
+    public LocalTime getShopCloseTime() {
+        return shopCloseTime;
     }
 
-    public void setCloseTime(LocalTime closeTime) {
-        this.closeTime = closeTime;
+    public void setShopCloseTime(LocalTime shopCloseTime) {
+        this.shopCloseTime = shopCloseTime;
     }
 
-    public Map<Integer, Boolean> getOpenDays() {
-        return openDays;
+    public Map<Integer, Boolean> getShopOpenDays() {
+        return shopOpenDays;
     }
 
-    public void setOpenDays(Map<Integer, Boolean> openDays) {
-        this.openDays = openDays;
+    public void setShopOpenDays(Map<Integer, Boolean> shopOpenDays) {
+        this.shopOpenDays = shopOpenDays;
     }
 
     public List<File> getImages() {

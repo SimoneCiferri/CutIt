@@ -49,9 +49,9 @@ public class ShopInfoViewController {
 
     public void showShopInfo(){
         lShopName.setText(shopBeanUQ.getShopName());
-        if(Objects.equals(shopBeanUQ.getPhoneNumber(), "")){
+        if(Objects.equals(shopBeanUQ.getShopPhoneNumber(), "")){
             lShopPhone.setVisible(true);
-            lShopPhone.setText(shopBeanUQ.getPhoneNumber());
+            lShopPhone.setText(shopBeanUQ.getShopPhoneNumber());
         } else {
             lShopPhone.setVisible(false);
         }
@@ -76,12 +76,12 @@ public class ShopInfoViewController {
         } else {
             lShopDescription.setVisible(false);
         }
-        lShopOpenTime.setText(shopBeanUQ.getOpenTime() + " - " + shopBeanUQ.getCloseTime());
+        lShopOpenTime.setText(shopBeanUQ.getShopOpenTime() + " - " + shopBeanUQ.getShopCloseTime());
         //priceList
-        if(Objects.equals(shopBeanUQ.getEmployee(), "")){
+        if(Objects.equals(shopBeanUQ.getShopEmployee(), "")){
             lTitleEmployee.setVisible(true);
             lEmployee.setVisible(true);
-            lEmployee.setText(shopBeanUQ.getEmployee());
+            lEmployee.setText(shopBeanUQ.getShopEmployee());
         } else{
             lTitleEmployee.setVisible(false);
             lEmployee.setVisible(false);

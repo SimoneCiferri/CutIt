@@ -10,7 +10,7 @@ public class PromotionBeanUQ implements PromotionBean {
     private Integer offValue;
     private LocalDate expireDate;
     private String serviceName;
-    private String ShopName;
+    private String shopName;
 
 
     public String getPromotionCode() {
@@ -46,11 +46,11 @@ public class PromotionBeanUQ implements PromotionBean {
     }
 
     public String getShopName() {
-        return ShopName;
+        return shopName;
     }
 
     public void setShopName(String shopName) {
-        ShopName = shopName;
+        this.shopName = shopName;
     }
 
 }

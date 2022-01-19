@@ -60,7 +60,7 @@ public class JavaFXNodeFactory {
         leftVBox.setMaxSize(250, 250);
         leftVBox.setMinSize(250, 100);
         leftVBox.setAlignment(Pos.TOP_RIGHT);
-        if(diffSpacing){
+        if(Boolean.TRUE.equals(diffSpacing)){
             leftVBox.setSpacing(25);
         }else{
             leftVBox.setSpacing(15);
@@ -104,6 +104,20 @@ public class JavaFXNodeFactory {
     }
 
     public HBox createImageCard(String title, String address, String labelStyle, File file){
+        HBox card = getDefaultBox(labelStyle);
+        Image im = new Image(String.valueOf(file.toURI()));
+        setHBox(title, address, card, im);
+        return card;
+    }
+
+    public HBox createImageCard(String title, String address, String labelStyle){
+        HBox card = getDefaultBox(labelStyle);
+        Image im = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/barberlogo.jpg")).toString());
+        setHBox(title, address, card, im);
+        return card;
+    }
+
+    private HBox getDefaultBox(String labelStyle){
         HBox card = new HBox();
         card.setPrefSize(895, 130);
         card.setMinSize(895, 130);
@@ -111,7 +125,10 @@ public class JavaFXNodeFactory {
         card.setStyle(labelStyle);
         card.setAlignment(Pos.CENTER_LEFT);
         card.setPadding(new Insets(0, 0, 10, 20));
-        Image im = new Image(String.valueOf(file.toURI()));
+        return card;
+    }
+
+    private HBox setHBox(String title, String address, HBox card, Image im) {
         ImageView iv = new ImageView();
         iv.setFitHeight(75);
         iv.setFitWidth(75);
@@ -129,29 +146,4 @@ public class JavaFXNodeFactory {
         return card;
     }
 
-    public HBox createDefaulImageCard(String title, String address, String labelStyle){
-        HBox card = new HBox();
-        card.setPrefSize(895, 130);
-        card.setMinSize(895, 130);
-        card.setMaxSize(895, 130);
-        card.setStyle(labelStyle);
-        card.setAlignment(Pos.CENTER_LEFT);
-        card.setPadding(new Insets(0, 0, 10, 20));
-        Image im = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/barberlogo.jpg")).toString());
-        ImageView iv = new ImageView();
-        iv.setFitHeight(75);
-        iv.setFitWidth(75);
-        iv.setImage(im);
-        card.getChildren().add(iv);
-        if(address == null){
-            address = "";
-        }
-        Label l = new Label(title + '\n' + address);
-        l.setPrefSize(895, 130);
-        l.setMinSize(895, 130);
-        l.setMaxSize(895, 130);
-        l.setPadding(new Insets(0, 0, 10, 20));
-        card.getChildren().add(l);
-        return card;
-    }
 }

@@ -15,33 +15,33 @@ public interface ShopBean {
 
     void setShopPIVA(String shopPIVA);
 
-    String getAddress();
+    String getShopAddress();
 
-    void setAddress(String address);
+    void setShopAddress(String shopAddress);
 
-    String getPhoneNumber();
+    String getShopPhoneNumber();
 
-    void setPhoneNumber(String phoneNumber);
+    void setShopPhoneNumber(String shopPhoneNumber);
 
-    String getEmployee();
+    String getShopEmployee();
 
-    void setEmployee(String employee);
+    void setShopEmployee(String shopEmployee);
 
     String getShopDescription();
 
     void setShopDescription(String shopDescription);
 
-    LocalTime getOpenTime();
+    LocalTime getShopOpenTime();
 
-    void setOpenTime(LocalTime openTime);
+    void setShopOpenTime(LocalTime shopOpenTime);
 
-    LocalTime getCloseTime();
+    LocalTime getShopCloseTime();
 
-    void setCloseTime(LocalTime closeTime);
+    void setShopCloseTime(LocalTime shopCloseTime);
 
-    Map<Integer, Boolean> getOpenDays();
+    Map<Integer, Boolean> getShopOpenDays();
 
-    void setOpenDays(Map<Integer, Boolean> openDays);
+    void setShopOpenDays(Map<Integer, Boolean> shopOpenDays);
 
     List<File> getImages();
 

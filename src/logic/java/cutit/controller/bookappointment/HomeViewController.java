@@ -41,9 +41,9 @@ public class HomeViewController {
                 if(!shopListBeanFirstUI.getShopBeanList().get(i).getImages().isEmpty()){
                     File im = shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0);
                     System.out.println(shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0).toString());
-                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getAddress(), labelStyle, im);
+                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle, im);
                 } else {
-                    card = JavaFXNodeFactory.getInstance().createDefaulImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getAddress(), labelStyle);
+                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle);
                 }
                 int n = i;
                 card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));

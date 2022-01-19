@@ -97,13 +97,13 @@ public class BookAppointmentController {
             Shop shop = ShopDAO.getShopFromName(shopName);
             shopBeanUQ.setShopName(shop.getShopName());
             shopBeanUQ.setShopPIVA(shop.getpIVA());
-            shopBeanUQ.setAddress(shop.getAddress());
-            shopBeanUQ.setPhoneNumber(shop.getPhoneNumber());
-            shopBeanUQ.setEmployee(shop.getEmployee());
+            shopBeanUQ.setShopAddress(shop.getAddress());
+            shopBeanUQ.setShopPhoneNumber(shop.getPhoneNumber());
+            shopBeanUQ.setShopEmployee(shop.getEmployee());
             shopBeanUQ.setShopDescription(shop.getDescription());
-            shopBeanUQ.setOpenTime(shop.getOpenTime());
-            shopBeanUQ.setCloseTime(shop.getCloseTime());
-            shopBeanUQ.setOpenDays(shop.getOpenDays());
+            shopBeanUQ.setShopOpenTime(shop.getOpenTime());
+            shopBeanUQ.setShopCloseTime(shop.getCloseTime());
+            shopBeanUQ.setShopOpenDays(shop.getOpenDays());
             shopBeanUQ.setPromotions(stringListFromPromList(shop.getPromotions()));
             shopBeanUQ.setServices(stringListFromServList(shop.getServices()));
             shopBeanUQ.setImages(shop.getImages());
@@ -233,7 +233,7 @@ public class BookAppointmentController {
                 List<File> images = shopList.get(i).getImages();
                 ShopBean shopBean = new ShopBeanUQ(); //si dovrebbe capire quale creare a runtime OPPURE si usa shopBEanFirstUI come shopBeanUnica per tutte e due le UI
                 shopBean.setShopName(name);
-                shopBean.setAddress(address);
+                shopBean.setShopAddress(address);
                 shopBean.setImages(images);
                 list.add(shopBean);
             }
