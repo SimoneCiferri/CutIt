@@ -1,6 +1,7 @@
 package cutit.controller.login;
 
 import cutit.bean.*;
+import cutit.controller.pepper.PepperClass;
 import cutit.database.dao.CustomerDAO;
 import cutit.database.dao.HairdresserDAO;
 import cutit.database.dao.ShopDAO;

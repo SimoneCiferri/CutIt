@@ -1,4 +1,4 @@
-package cutit.controller.login;
+package cutit.controller.pepper;
 
 import cutit.bean.HairdresserBean;
 import cutit.bean.ShopBean;

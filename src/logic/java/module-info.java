@@ -47,6 +47,8 @@ module cutit.cutit {
     opens cutit.controller.rateshop to javafx.fxml;
     exports cutit.bean.firstui;
     opens cutit.bean.firstui to javafx.fxml;
+    exports cutit.controller.pepper;
+    opens cutit.controller.pepper to javafx.fxml;
 
     /*
     exports cutit.cutit.logic.decorator.concreteDecorator;
