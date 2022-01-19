@@ -10,6 +10,7 @@ import cutit.model.Customer;
 import cutit.model.Promotion;
 import cutit.model.Shop;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -29,7 +30,7 @@ public class PepperClass extends Thread{
         //Lista di tutti i miei appuntamenti
         try {
             sleep(3000);
-            System.out.println("-----------Thread attivo per " + hairdresserBean.gethEmail() + " -> " + shopBean.getShopName());
+            System.out.println("------------------------------------------------------------Thread attivo per " + hairdresserBean.gethEmail() + " -> " + shopBean.getShopName() + "------------------------------------------------------------");
             List<Promotion> allShopPromotions = PromotionDAO.getAllPromotion(hairdresserBean.getShopName());
             if(!allShopPromotions.isEmpty()){
                 System.out.println("Shop " + hairdresserBean.getShopName() + " has " + allShopPromotions.size() + " promotion/s");
@@ -65,7 +66,7 @@ public class PepperClass extends Thread{
                     for (PepperData pepperData : pepperDataList) {
                         System.out.println("Customer " + pepperData.getCustomer().getUserID() + " ha " + pepperData.getAllCustomerAppointment().size() + " appointments.");
                     }
-                    workOnPromotions(allShopPromotions, pepperDataList);
+                    workOnPromotions(allShopPromotions, pepperDataList, allShopAppointments);
                 } else{
                     System.out.println("Shop has no Appointments booked = no Customer to send promotion (mandale ad utenti random)");
                     //altre cose
@@ -73,31 +74,31 @@ public class PepperClass extends Thread{
             } else{
                 System.out.println("Shop has no promotion/s");
             }
-            System.out.println("-----------Thread finito per " + hairdresserBean.gethEmail() + " -> " + shopBean.getShopName());
+            System.out.println("------------------------------------------------------------Thread finito per " + hairdresserBean.gethEmail() + " -> " + shopBean.getShopName() + "------------------------------------------------------------");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void workOnPromotions(List<Promotion> allShopPromotions, List<PepperData> pepperDataList) {
+    private void workOnPromotions(List<Promotion> allShopPromotions, List<PepperData> pepperDataList, List<Appointment> allShopAppointments) {
         List<String> promoServices = getPromoServices(allShopPromotions);
         System.out.println(promoServices);
         for(int i=0;i<pepperDataList.size();i++){
             for(int k=0;k<promoServices.size();k++){
                 int numberOfAppointments = getNumberOfAppointmentOfServices(pepperDataList.get(i), promoServices.get(k));
                 System.out.println("Customer " + pepperDataList.get(i).getCustomer().getUserID() + " has " + numberOfAppointments + " appointment with service " + promoServices.get(k));
-                tryAssignPromotion(promoServices.get(k), numberOfAppointments, pepperDataList.get(i).getCustomer(), allShopPromotions);
+                tryAssignPromotion(promoServices.get(k), numberOfAppointments, pepperDataList.get(i).getCustomer(), allShopPromotions, allShopAppointments);
             }
         }
     }
 
-    private void tryAssignPromotion(String service, Integer numberOfAppointments, Customer customer, List<Promotion> allShopPromotions) {
+    private void tryAssignPromotion(String service, Integer numberOfAppointments, Customer customer, List<Promotion> allShopPromotions, List<Appointment> allShopAppointments) {
         switch (numberOfAppointments) {
             case 0 -> {
                 assignZero(customer, service, allShopPromotions);
             }
             case 1 -> {
-                assignOne(customer, service, allShopPromotions);
+                assignOne(customer, service, allShopPromotions, allShopAppointments);
             }
             default -> {
                 assignTwoOrMore(customer, numberOfAppointments, service, allShopPromotions);
@@ -107,41 +108,78 @@ public class PepperClass extends Thread{
 
     private void assignTwoOrMore(Customer customer, int numberOfAppointments, String service, List<Promotion> allShopPromotions) {
         System.out.println("Try assigning promotion at " + customer.getUserID() + " on " + service + " with " + numberOfAppointments + " appointments booked");
+
     }
 
-    private void assignOne(Customer customer, String service, List<Promotion> allShopPromotions) {
+    private void assignOne(Customer customer, String service, List<Promotion> allShopPromotions, List<Appointment> allShopAppointments) {
         System.out.println("Try assigning promotion at " + customer.getUserID() + " on " + service + " with one appointment booked");
+        Appointment appointment = null;
+        //faccio il retrieve di quel preciso appuntamento
+        for (Appointment allShopAppointment : allShopAppointments) {
+            if (Objects.equals(allShopAppointment.getService().getServiceName(), service) && Objects.equals(allShopAppointment.getCustomer().getUserID(), customer.getUserID())) {
+                appointment = allShopAppointment;
+                break;
+            }
+        }
+        if(appointment != null){
+            //faccio il retrieve della promozione da aggiungere
+            Promotion promotion = getMinProm(service, allShopPromotions);
+            if(promotion != null){
+                System.out.println("Min promotion on " + service + " is " + promotion.getCode());
+                //prendo la data dell'appuntamento
+                LocalDate appointmentDay = appointment.getStartTime().toLocalDate();
+                System.out.println("Last appointment day is " + appointmentDay.toString());
+                //ci aggiungo un mese
+                appointmentDay = appointmentDay.plusMonths(1);
+                //rispetto a quella data prendo 3 giorni prima e 3 giorni dopo
+                LocalDate leftDate = appointmentDay.minusDays(3);
+                LocalDate rightDate = appointmentDay.plusDays(3);
+                //se mi trovo nell'intervallo di +- 3 giorni da quella data e la promozione non sarà scaduta allora mando la promozione al Customer
+                System.out.println("Trying to add " + promotion.getCode() + " at " + customer.getUserID() + " (only if i'm between " + leftDate + " and " + rightDate + ", perfect day is " + appointmentDay + ")");
+                if(LocalDate.now().isAfter(leftDate) && LocalDate.now().isBefore(rightDate) && LocalDate.now().isBefore(promotion.getExpireDate())){
+                    try {
+                        PromotionDAO.insertPersonaPromotion(customer.getUserID(), promotion.getCode());
+                        System.out.println("Promotion " + promotion.getCode() + " added");
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    System.out.println("Promotion " + promotion.getCode() + " not added, i'm not between " + leftDate + " and " + rightDate + " or promotion is expired");
+                }
+            }
+        }
     }
 
     private void assignZero(Customer customer, String service, List<Promotion> allShopPromotions) {
         System.out.println("Try assigning promotion at " + customer.getUserID() + " on " + service + " with zero appointments booked");
-        String promotion = getMinProm(service, allShopPromotions);
-        System.out.println("Min promotion on " + service + " is " + promotion);
+        Promotion promotion = getMinProm(service, allShopPromotions);
         if(promotion!= null){
+            System.out.println("Min promotion on " + service + " is " + promotion.getCode());
             try {
-                System.out.println("Trying to add" + promotion + " at " + customer.getUserID());
-                PromotionDAO.insertPersonaPromotion(customer.getUserID(), promotion);
+                System.out.println("Trying to add" + promotion.getCode() + " at " + customer.getUserID());
+                PromotionDAO.insertPersonaPromotion(customer.getUserID(), promotion.getCode());
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private String getMinProm(String service, List<Promotion> allShopPromotions) {
-        String promotion = null;
+    private Promotion getMinProm(String service, List<Promotion> allShopPromotions) {
+        Promotion prom = null;
         int offValue = 100;
         for (Promotion allShopPromotion : allShopPromotions) {
             if (Objects.equals(allShopPromotion.getService().getServiceName(), service)) {
                 if (allShopPromotion.getOffValue() < offValue) {
-                    promotion = allShopPromotion.getCode();
-                    offValue = allShopPromotion.getOffValue();
+                    prom = allShopPromotion;
+                    offValue = prom.getOffValue();
                 }
             }
         }
-        if(Objects.equals(promotion, BRING_A_FRIEND_PHYSICALLY)){
-            promotion = null;
+        if(Objects.equals(prom.getCode(), BRING_A_FRIEND_PHYSICALLY)){
+            prom = null;
         }
-        return promotion;
+        return prom;
     }
 
     private int getNumberOfAppointmentOfServices(PepperData pepperData, String service) {
@@ -158,7 +196,9 @@ public class PepperClass extends Thread{
         List<String> promoServices = new ArrayList<>();
         for(Promotion promotion: allShopPromotions){
             String service = promotion.getService().getServiceName();
-            promoServices.add(service);
+            if(!promoServices.contains(service)){
+                promoServices.add(service);
+            }
         }
         return promoServices;
     }

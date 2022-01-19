@@ -57,7 +57,9 @@ public class PromotionDAO {
                 String promService_ShopName = rs.getString(5);
                 Service service = ServiceDAO.getService(promService_ShopName, promService_Name);
                 Promotion p = new Promotion(promotionCode, offValue, dataFromString(expireDate), service);
-                promotionsList.add(p);
+                if(!LocalDate.now().isAfter(p.getExpireDate())){
+                    promotionsList.add(p);
+                }
             } while (rs.next());
             rs.close();
             stm.close();
@@ -82,7 +84,9 @@ public class PromotionDAO {
                 String promService_ShopName = rs.getString("Service_Shop_ShopName");
                 Service service = ServiceDAO.getService(promService_ShopName, promService_Name);
                 Promotion p = new Promotion(promotionCode, offValue, dataFromString(expireDate), service);
-                promotionsList.add(p);
+                if(!LocalDate.now().isAfter(p.getExpireDate())){
+                    promotionsList.add(p);
+                }
             } while (rs.next());
             rs.close();
             stm.close();
@@ -144,7 +148,9 @@ public class PromotionDAO {
             do {
                 String promCode = rs.getString(2);
                 Promotion promotion = getPromotion(promCode);
-                promotionList.add(promotion);
+                if(!LocalDate.now().isAfter(promotion.getExpireDate())){
+                    promotionList.add(promotion);
+                }
             } while (rs.next());
             rs.close();
             stm.close();

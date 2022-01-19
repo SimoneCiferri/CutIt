@@ -46,8 +46,6 @@ public class CustomerPromotionsViewController {
                 card.setOnMouseClicked((MouseEvent) -> showPromotion(promotion));
                 vbInScrollCProm.getChildren().add(card);
             }
-            Button add = new Button("Bring Friend");
-            vbInScrollCProm.getChildren().add(add);
         } catch (Exception e) {
             e.printStackTrace();
         }
