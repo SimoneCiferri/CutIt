@@ -106,15 +106,15 @@ public class PepperClass extends Thread{
     }
 
     private void assignTwoOrMore(Customer customer, int numberOfAppointments, String service, List<Promotion> allShopPromotions) {
-        System.out.println("Assigning promotion at " + customer.getUserID() + " on " + service + " with " + numberOfAppointments + " appointments booked");
+        System.out.println("Try assigning promotion at " + customer.getUserID() + " on " + service + " with " + numberOfAppointments + " appointments booked");
     }
 
     private void assignOne(Customer customer, String service, List<Promotion> allShopPromotions) {
-        System.out.println("Assigning promotion at " + customer.getUserID() + " on " + service + " with one appointment booked");
+        System.out.println("Try assigning promotion at " + customer.getUserID() + " on " + service + " with one appointment booked");
     }
 
     private void assignZero(Customer customer, String service, List<Promotion> allShopPromotions) {
-        System.out.println("Assigning promotion at " + customer.getUserID() + " on " + service + " with zero appointments booked");
+        System.out.println("Try assigning promotion at " + customer.getUserID() + " on " + service + " with zero appointments booked");
         String promotion = getMinProm(service, allShopPromotions);
         System.out.println("Min promotion on " + service + " is " + promotion);
         if(promotion!= null){
