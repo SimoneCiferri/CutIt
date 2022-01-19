@@ -64,6 +64,7 @@ public class PepperClass extends Thread{
                     for (PepperData pepperData : pepperDataList) {
                         System.out.println("Customer " + pepperData.getCustomer().getUserID() + " ha " + pepperData.getAllCustomerAppointment().size() + " appointments.");
                     }
+                    workOnPromotions(allShopPromotions, pepperDataList);
                 } else{
                     System.out.println("Shop has no Appointments booked = no Customer to send promotion (mandale ad utenti random)");
                     //altre cose
@@ -75,6 +76,36 @@ public class PepperClass extends Thread{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void workOnPromotions(List<Promotion> allShopPromotions, List<PepperData> pepperDataList) {
+        List<String> promoServices = getPromoServices(allShopPromotions);
+
+        for(int i=0;i<pepperDataList.size();i++){
+            for(int k=0;k<promoServices.size();k++){
+                Integer numberOfAppointment = getNumberOfAppointmentOfServices(pepperDataList.get(i), promoServices.get(k));
+                tryAssignPrmomotion(promoServices.get(k), numberOfAppointment, pepperDataList.get(i).getCustomer());
+            }
+        }
+    }
+
+    private void tryAssignPrmomotion(String s, Integer numberOfAppointment, Customer customer) {
+
+    }
+
+    private Integer getNumberOfAppointmentOfServices(PepperData pepperData, String service) {
+        Integer number = 0;
+
+        return number;
+    }
+
+    private List<String> getPromoServices(List<Promotion> allShopPromotions) {
+        List<String> promoServices = new ArrayList<>();
+        for(Promotion promotion: allShopPromotions){
+            String service = promotion.getService().getServiceName();
+            promoServices.add(service);
+        }
+        return promoServices;
     }
 
     private boolean isAlreadyAdded(Appointment appointmentToCheck, List<Customer> allShopCustomer) {
