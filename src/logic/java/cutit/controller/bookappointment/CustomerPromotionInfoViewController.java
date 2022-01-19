@@ -3,7 +3,7 @@ package cutit.controller.bookappointment;
 import cutit.bean.CustomerBean;
 import cutit.bean.PromotionBean;
 import cutit.decorator.ViewLayout;
-import cutit.decorator.concreteDecorator.ShopInfoView;
+import cutit.decorator.concrete_decorator.ShopInfoView;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

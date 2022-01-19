@@ -17,8 +17,8 @@ module cutit.cutit {
     opens cutit.controller.topbarviewcontrollers to javafx.fxml;
     exports cutit.decorator;
     opens cutit.decorator to javafx.fxml;
-    exports cutit.decorator.concreteViewComponent;
-    opens cutit.decorator.concreteViewComponent to javafx.fxml;
+    exports cutit.decorator.concrete_view_component;
+    opens cutit.decorator.concrete_view_component to javafx.fxml;
     exports cutit.bean;
     opens cutit.bean to javafx.fxml;
     exports cutit.controller.bookappointment;

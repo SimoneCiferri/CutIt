@@ -47,7 +47,7 @@ public class AppointmentDAO {
 
 
     public static List<Appointment> getAllCustomerAppointments(Customer customer) throws Exception {
-        List<Appointment> appointmentList = new ArrayList<Appointment>();
+        List<Appointment> appointmentList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -78,7 +78,7 @@ public class AppointmentDAO {
     }
 
     public static List<Appointment> getAllShopAppointments(Shop shop) throws Exception {
-        List<Appointment> appointmentList = new ArrayList<Appointment>();
+        List<Appointment> appointmentList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);

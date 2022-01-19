@@ -1,4 +1,4 @@
-package cutit.decorator.concreteViewComponent;
+package cutit.decorator.concrete_view_component;
 
 import cutit.decorator.ViewComponent;
 import cutit.decorator.ViewLayout;
@@ -31,19 +31,18 @@ public class StartView implements ViewComponent {
     @Override
     public void loadXML(ViewLayout layout) throws IOException, NullPointerException {
         if(!loadedView.containsKey(layout)){
-            //System.out.println(layout + "( - view and controller) added to loadedView of StartView!");
             FXMLLoader loader = new FXMLLoader(ViewLayout.getPath(layout));
-            Pane prLayout = loader.load();
+            Pane primaryLayout = loader.load();
             Object controller = loader.getController();
             loadedViewContorllerHM.put(layout, controller);
 
             if(layout == ViewLayout.START){
                 Image image = new Image(Objects.requireNonNull(Client.class.getResource("/cutit/cutit/files/backgr.jpg"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
                 BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-                prLayout.setBackground(new Background(back));
-                setPrLayout(prLayout);
+                primaryLayout.setBackground(new Background(back));
+                setPrLayout(primaryLayout);
             } else {
-                loadedView.put(layout, prLayout);
+                loadedView.put(layout, primaryLayout);
             }
         }
     }

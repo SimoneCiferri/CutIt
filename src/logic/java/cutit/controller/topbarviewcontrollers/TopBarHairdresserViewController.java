@@ -7,10 +7,10 @@ import cutit.controller.managepromotions.HairdresserManagePromotionsViewControll
 import cutit.controller.manageservices.HairdresserManageServicesViewController;
 import cutit.controller.manageshoppage.HairdresserManageShopPageViewController;
 import cutit.decorator.ViewLayout;
-import cutit.decorator.concreteDecorator.HairdresserAppointmentsView;
-import cutit.decorator.concreteDecorator.HairdresserManageShopView;
-import cutit.decorator.concreteDecorator.HairdresserPromotionsView;
-import cutit.decorator.concreteDecorator.HairdresserServicesView;
+import cutit.decorator.concrete_decorator.HairdresserAppointmentsView;
+import cutit.decorator.concrete_decorator.HairdresserManageShopView;
+import cutit.decorator.concrete_decorator.HairdresserPromotionsView;
+import cutit.decorator.concrete_decorator.HairdresserServicesView;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;

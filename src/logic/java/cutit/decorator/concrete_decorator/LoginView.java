@@ -1,4 +1,4 @@
-package cutit.decorator.concreteDecorator;
+package cutit.decorator.concrete_decorator;
 
 import cutit.decorator.Decorator;
 import cutit.decorator.ViewComponent;

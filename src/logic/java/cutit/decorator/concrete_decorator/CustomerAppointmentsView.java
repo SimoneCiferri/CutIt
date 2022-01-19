@@ -1,4 +1,4 @@
-package cutit.decorator.concreteDecorator;
+package cutit.decorator.concrete_decorator;
 
 import cutit.decorator.Decorator;
 import cutit.decorator.ViewComponent;
@@ -7,13 +7,13 @@ import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
 import javafx.scene.control.Alert;
 
-public class HairdresserPromotionsView extends Decorator {
+public class CustomerAppointmentsView extends Decorator {
 
-    public HairdresserPromotionsView(ViewComponent view){
+    public CustomerAppointmentsView(ViewComponent view){
 
         super(view);
         try {
-            super.loadXML(ViewLayout.HAIRDRESSERPROMOTIONS);
+            super.loadXML(ViewLayout.CUSTOMERAPPOINTMENTS);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");

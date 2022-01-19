@@ -15,6 +15,8 @@ import java.util.*;
 
 public class ShopDAO {
 
+    private static final String SERVICE_NOT_FOUND = "Service not found";
+
     public static Boolean checkShop(String shopName) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -49,8 +51,7 @@ public class ShopDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = ShopQueries.getShopFromName(stm, shopName);
         if (!rs.first()) {
-            String message = "Service not found";
-            throw new RecordNotFoundException(message);
+            throw new RecordNotFoundException(SERVICE_NOT_FOUND);
         } else {
             rs.first();
             String employee = rs.getString(2);
@@ -60,7 +61,7 @@ public class ShopDAO {
             String description = rs.getString(6);
             String openTime = rs.getString(7);
             String closeTime = rs.getString(8);
-            Shop shop = new Shop(shopName, hPiva, address, phoneNumber, employee, description, dateFromString(openTime), dateFromString(closeTime));
+            Shop shop = new Shop(shopName, hPiva, address, phoneNumber, employee, description, timeFromString(openTime), timeFromString(closeTime));
             Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
             shop.setOpenDays(openDays);
 
@@ -87,8 +88,7 @@ public class ShopDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = ShopQueries.getShopFromName(stm, shopName);
         if (!rs.first()) {
-            String message = "Service not found";
-            throw new RecordNotFoundException(message);
+            throw new RecordNotFoundException(SERVICE_NOT_FOUND);
         } else {
             rs.first();
             String address = rs.getString(3);
@@ -97,8 +97,6 @@ public class ShopDAO {
             Shop shop = new Shop(shopName, hPiva);
             shop.setAddress(address);
             shop.setPhoneNumber(phoneNumber);
-            /*List<File> images = getImages(shop.getShopName());
-            shop.setImages(images);*/
             rs.close();
             stm.close();
             //DBConnection.getInstance().closeConnection();
@@ -124,7 +122,7 @@ public class ShopDAO {
             String description = rs.getString(6);
             String openTime = rs.getString(7);
             String closeTime = rs.getString(8);
-            Shop shop = new Shop(shopName, hPiva, address, phoneNumber, employee, description, dateFromString(openTime), dateFromString(closeTime));
+            Shop shop = new Shop(shopName, hPiva, address, phoneNumber, employee, description, timeFromString(openTime), timeFromString(closeTime));
             Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
             shop.setOpenDays(openDays);
 
@@ -167,7 +165,7 @@ public class ShopDAO {
 
 
     private static List<File> getImages(String shopName) throws Exception{
-        List<File> images = new ArrayList<File>();
+        List<File> images = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -195,7 +193,7 @@ public class ShopDAO {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ShopQueries.updateShop(stm, shop.getShopName(), shop.getAddress(), shop.getPhoneNumber(), shop.getEmployee(), shop.getDescription(), shop.getOpenTime().toString(), shop.getCloseTime().toString());
+        ShopQueries.updateShop(stm, shop.getShopName(), shop.getAddress(), shop.getPhoneNumber(), shop.getEmployee(), shop.getDescription(), stringFromTime(shop.getOpenTime()), stringFromTime(shop.getCloseTime()));
         for (int i = 0; i < shop.getOpenDays().size(); i++) {
             if (shop.getOpenDays().get(i + 1)) {
                 ShopQueries.updateOpenDay(stm, shop.getShopName(), i + 1, 1);
@@ -237,12 +235,8 @@ public class ShopDAO {
         return shopList;
     }
 
-    private static LocalTime localTimeFromString(String openTime) {
-        return LocalTime.parse(openTime);
-    }
 
-
-    private static LocalTime dateFromString(String openTime) {
+    private static LocalTime timeFromString(String openTime) {
         return LocalTime.parse(openTime);
     }
 

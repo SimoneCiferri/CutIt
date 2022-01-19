@@ -1,16 +1,15 @@
 package cutit.controller.topbarviewcontrollers;
 
 import cutit.bean.CustomerBean;
-import cutit.bean.firstui.ShopBeanUQ;
 import cutit.controller.bookappointment.CustomerFavouritesShopViewController;
 import cutit.controller.bookappointment.CustomerPromotionsViewController;
 import cutit.controller.bookappointment.HomeViewController;
 import cutit.controller.bookappointment.CustomerAppointmentsViewController;
 import cutit.decorator.ViewLayout;
-import cutit.decorator.concreteDecorator.CustomerAppointmentsView;
-import cutit.decorator.concreteDecorator.CustomerFavouritesShopView;
-import cutit.decorator.concreteDecorator.CustomerPromotionsView;
-import cutit.decorator.concreteDecorator.HomeView;
+import cutit.decorator.concrete_decorator.CustomerAppointmentsView;
+import cutit.decorator.concrete_decorator.CustomerFavouritesShopView;
+import cutit.decorator.concrete_decorator.CustomerPromotionsView;
+import cutit.decorator.concrete_decorator.HomeView;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;

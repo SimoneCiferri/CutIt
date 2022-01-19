@@ -5,7 +5,7 @@ import cutit.bean.ShopListBean;
 import cutit.bean.firstui.ShopBeanUQ;
 import cutit.bean.firstui.ShopListBeanFirstUI;
 import cutit.decorator.ViewLayout;
-import cutit.decorator.concreteDecorator.ShopInfoView;
+import cutit.decorator.concrete_decorator.ShopInfoView;
 import cutit.facade.Facade;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;

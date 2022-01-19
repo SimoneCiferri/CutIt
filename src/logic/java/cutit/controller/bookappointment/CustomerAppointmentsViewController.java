@@ -2,7 +2,7 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
 import cutit.decorator.ViewLayout;
-import cutit.decorator.concreteDecorator.CustomerAppointmentInfoView;
+import cutit.decorator.concrete_decorator.CustomerAppointmentInfoView;
 import cutit.facade.Facade;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;

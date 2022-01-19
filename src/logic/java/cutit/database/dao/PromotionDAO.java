@@ -53,9 +53,9 @@ public class PromotionDAO {
                 String promotionCode = rs.getString(1);
                 Integer offValue = rs.getInt(2);
                 String expireDate = rs.getString(3);
-                String promService_Name = rs.getString(4);
-                String promService_ShopName = rs.getString(5);
-                Service service = ServiceDAO.getService(promService_ShopName, promService_Name);
+                String promServiceName = rs.getString(4);
+                String promServiceShopName = rs.getString(5);
+                Service service = ServiceDAO.getService(promServiceShopName, promServiceName);
                 Promotion p = new Promotion(promotionCode, offValue, dataFromString(expireDate), service);
                 if(!LocalDate.now().isAfter(p.getExpireDate())){
                     promotionsList.add(p);
@@ -69,7 +69,7 @@ public class PromotionDAO {
     }
 
     public static List<Promotion> getAllCustomerPromotion(String customerEmail) throws Exception {
-        List<Promotion> promotionsList = new ArrayList<Promotion>();
+        List<Promotion> promotionsList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -80,9 +80,9 @@ public class PromotionDAO {
                 String promotionCode = rs.getString("Code");
                 Integer offValue = rs.getInt("Off");
                 String expireDate = rs.getString("ExpireDate");
-                String promService_Name = rs.getString("Service_Name");
-                String promService_ShopName = rs.getString("Service_Shop_ShopName");
-                Service service = ServiceDAO.getService(promService_ShopName, promService_Name);
+                String promServiceName = rs.getString("Service_Name");
+                String promServiceShopName = rs.getString("Service_Shop_ShopName");
+                Service service = ServiceDAO.getService(promServiceShopName, promServiceName);
                 Promotion p = new Promotion(promotionCode, offValue, dataFromString(expireDate), service);
                 if(!LocalDate.now().isAfter(p.getExpireDate())){
                     promotionsList.add(p);
@@ -171,7 +171,9 @@ public class PromotionDAO {
         if (!rs.first()){
             stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             PromotionQueries.insertPersonalPromotion(stm, customerE, promoCode);
-        } else System.out.println("Promotion " + promoCode + " already exists for " + customerE);
+        } else {
+            System.out.println("Promotion " + promoCode + " already exists for " + customerE);
+        }
         rs.close();
         stm.close();
     }

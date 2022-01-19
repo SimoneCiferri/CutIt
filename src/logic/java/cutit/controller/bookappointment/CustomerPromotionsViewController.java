@@ -4,19 +4,16 @@ import cutit.bean.CustomerBean;
 import cutit.bean.PromotionBean;
 import cutit.bean.firstui.PromotionBeanUQ;
 import cutit.decorator.ViewLayout;
-import cutit.decorator.concreteDecorator.CustomerPromotionInfoView;
-import cutit.decorator.concreteDecorator.CustomerPromotionsView;
+import cutit.decorator.concrete_decorator.CustomerPromotionInfoView;
 import cutit.exception.RecordNotFoundException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-import javax.swing.text.View;
 import java.io.IOException;
 
 public class CustomerPromotionsViewController {

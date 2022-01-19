@@ -2,8 +2,8 @@ package cutit.facade;
 
 import cutit.decorator.ViewComponent;
 import cutit.decorator.ViewLayout;
-import cutit.decorator.concreteDecorator.*;
-import cutit.decorator.concreteViewComponent.StartView;
+import cutit.decorator.concrete_decorator.*;
+import cutit.decorator.concrete_view_component.StartView;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
 import javafx.scene.control.Alert;

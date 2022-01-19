@@ -1,4 +1,4 @@
-package cutit.decorator.concreteDecorator;
+package cutit.decorator.concrete_decorator;
 
 import cutit.decorator.Decorator;
 import cutit.decorator.ViewComponent;
@@ -7,18 +7,17 @@ import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
 import javafx.scene.control.Alert;
 
-public class ClientRateShopView extends Decorator {
+public class HairdresserManageShopView extends Decorator {
 
-    public ClientRateShopView(ViewComponent view){
+    public HairdresserManageShopView(ViewComponent view){
 
         super(view);
         try {
-            super.loadXML(ViewLayout.CUSTOMERRATESHOP);
+            super.loadXML(ViewLayout.HAIRDRESSERMANAGESHOP);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
         }
 
     }
-
 }

@@ -38,7 +38,7 @@ public class ServiceDAO {
     }
 
     public static List<Service> getALlServices(String shopName) throws Exception {
-        List<Service> servicesList = new ArrayList<Service>();
+        List<Service> servicesList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
