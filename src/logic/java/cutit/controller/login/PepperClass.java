@@ -16,6 +16,7 @@ import java.util.Objects;
 
 public class PepperClass extends Thread{
 
+    private static final String BRING_A_FRIEND_PHYSICALLY = "bringAFriendPhysically";
     private HairdresserBean hairdresserBean;
     private ShopBean shopBean;
 
@@ -31,7 +32,7 @@ public class PepperClass extends Thread{
             System.out.println("-----------Thread attivo per " + hairdresserBean.gethEmail() + " -> " + shopBean.getShopName());
             List<Promotion> allShopPromotions = PromotionDAO.getAllPromotion(hairdresserBean.getShopName());
             if(!allShopPromotions.isEmpty()){
-                System.out.println("Shop has " + allShopPromotions.size() + " promotion/s");
+                System.out.println("Shop " + hairdresserBean.getShopName() + " has " + allShopPromotions.size() + " promotion/s");
                 Shop shop = ShopDAO.getShopFromName(hairdresserBean.getShopName());
                 List<Appointment> allShopAppointments = AppointmentDAO.getAllShopAppointments(shop);
                 if(!allShopAppointments.isEmpty()){
@@ -80,22 +81,76 @@ public class PepperClass extends Thread{
 
     private void workOnPromotions(List<Promotion> allShopPromotions, List<PepperData> pepperDataList) {
         List<String> promoServices = getPromoServices(allShopPromotions);
-
+        System.out.println(promoServices);
         for(int i=0;i<pepperDataList.size();i++){
             for(int k=0;k<promoServices.size();k++){
-                Integer numberOfAppointment = getNumberOfAppointmentOfServices(pepperDataList.get(i), promoServices.get(k));
-                tryAssignPrmomotion(promoServices.get(k), numberOfAppointment, pepperDataList.get(i).getCustomer());
+                int numberOfAppointments = getNumberOfAppointmentOfServices(pepperDataList.get(i), promoServices.get(k));
+                System.out.println("Customer " + pepperDataList.get(i).getCustomer().getUserID() + " has " + numberOfAppointments + " appointment with service " + promoServices.get(k));
+                tryAssignPromotion(promoServices.get(k), numberOfAppointments, pepperDataList.get(i).getCustomer(), allShopPromotions);
             }
         }
     }
 
-    private void tryAssignPrmomotion(String s, Integer numberOfAppointment, Customer customer) {
-
+    private void tryAssignPromotion(String service, Integer numberOfAppointments, Customer customer, List<Promotion> allShopPromotions) {
+        switch (numberOfAppointments) {
+            case 0 -> {
+                assignZero(customer, service, allShopPromotions);
+            }
+            case 1 -> {
+                assignOne(customer, service, allShopPromotions);
+            }
+            default -> {
+                assignTwoOrMore(customer, numberOfAppointments, service, allShopPromotions);
+            }
+        }
     }
 
-    private Integer getNumberOfAppointmentOfServices(PepperData pepperData, String service) {
-        Integer number = 0;
+    private void assignTwoOrMore(Customer customer, int numberOfAppointments, String service, List<Promotion> allShopPromotions) {
+        System.out.println("Assigning promotion at " + customer.getUserID() + " on " + service + " with " + numberOfAppointments + " appointments booked");
+    }
 
+    private void assignOne(Customer customer, String service, List<Promotion> allShopPromotions) {
+        System.out.println("Assigning promotion at " + customer.getUserID() + " on " + service + " with one appointment booked");
+    }
+
+    private void assignZero(Customer customer, String service, List<Promotion> allShopPromotions) {
+        System.out.println("Assigning promotion at " + customer.getUserID() + " on " + service + " with zero appointments booked");
+        String promotion = getMinProm(service, allShopPromotions);
+        System.out.println("Min promotion on " + service + " is " + promotion);
+        if(promotion!= null){
+            try {
+                System.out.println("Trying to add" + promotion + " at " + customer.getUserID());
+                PromotionDAO.insertPersonaPromotion(customer.getUserID(), promotion);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private String getMinProm(String service, List<Promotion> allShopPromotions) {
+        String promotion = null;
+        int offValue = 100;
+        for (Promotion allShopPromotion : allShopPromotions) {
+            if (Objects.equals(allShopPromotion.getService().getServiceName(), service)) {
+                if (allShopPromotion.getOffValue() < offValue) {
+                    promotion = allShopPromotion.getCode();
+                    offValue = allShopPromotion.getOffValue();
+                }
+            }
+        }
+        if(Objects.equals(promotion, BRING_A_FRIEND_PHYSICALLY)){
+            promotion = null;
+        }
+        return promotion;
+    }
+
+    private int getNumberOfAppointmentOfServices(PepperData pepperData, String service) {
+        int number = 0;
+        for(int i =0; i<pepperData.getAllCustomerAppointment().size();i++){
+            if(Objects.equals(pepperData.getAllCustomerAppointment().get(i).getService().getServiceName(), service)){
+                number = number+1;
+            }
+        }
         return number;
     }
 
