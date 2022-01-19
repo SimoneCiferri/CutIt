@@ -183,6 +183,13 @@ public class PromotionDAO {
         }
     }
 
+    public static void insertPersonaPromotion(String customer, String promoCode) throws Exception{
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        PromotionQueries.insertPersonalPromotion(stm, customer, promoCode);
+        stm.close();
+    }
+
     private static LocalDate dataFromString(String expireDate) {
         return LocalDate.parse(expireDate);
     }

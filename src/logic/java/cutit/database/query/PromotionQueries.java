@@ -48,4 +48,10 @@ public class PromotionQueries {
         return stmt.executeQuery(sql);
     }
 
+    public static ResultSet insertPersonalPromotion(Statement stmt, String customer, String code) throws SQLException {
+        String sql = String.format("INSERT INTO customer_has_promotion(Customer_CustomerEmail, Promotion_Code) VALUES('%s', '%s')", customer, code);
+        System.out.println(sql);
+        return stmt.executeQuery(sql);
+
+    }
 }
