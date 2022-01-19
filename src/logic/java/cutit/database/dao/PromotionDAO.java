@@ -183,10 +183,15 @@ public class PromotionDAO {
         }
     }
 
-    public static void insertPersonaPromotion(String customer, String promoCode) throws Exception{
+    public static void insertPersonaPromotion(String customerE, String promoCode) throws Exception{
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        PromotionQueries.insertPersonalPromotion(stm, customer, promoCode);
+        ResultSet rs = PromotionQueries.getPersonalPromotion(stm, customerE, promoCode);
+        if (!rs.first()){
+            stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            PromotionQueries.insertPersonalPromotion(stm, customerE, promoCode);
+        } else System.out.println("Promotion " + promoCode + " already exists for " + customerE);
+        rs.close();
         stm.close();
     }
 
