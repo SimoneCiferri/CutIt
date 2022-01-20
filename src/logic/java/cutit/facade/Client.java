@@ -1,17 +1,19 @@
 package cutit.facade;
 
+import cutit.decorator.ViewLayout2;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.awt.*;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Client extends Application {
 
@@ -26,6 +28,9 @@ public class Client extends Application {
         FXMLLoader loader = new FXMLLoader(Client.class.getResource("/cutit/cutit/fxml/uiselection.fxml"));
         try {
             Pane primaryLayout = loader.load();
+            Image image = new Image(Objects.requireNonNull(ViewLayout2.class.getResource("/cutit/cutit/files/barber-shop-welcome.jpg"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
+            BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+            primaryLayout.setBackground(new Background(back));
             Group root = new Group();
             root.getChildren().add(primaryLayout);
             Scene scene = new Scene(root);
