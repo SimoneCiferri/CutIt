@@ -55,6 +55,18 @@ public class Facade2 {
                 LeftBarView leftBarView = new LeftBarView(startView2);
                 viewMap.put(layout, leftBarView);
             }
+            case LEFTBARCUSTOMER -> {
+                LeftBarCustomerView leftBarCustomerView = new LeftBarCustomerView(startView2);
+                viewMap.put(layout, leftBarCustomerView);
+            }
+            case LEFTBARHAIRDRESSER -> {
+                LeftBarHairdresserView leftBarHairdresserView = new LeftBarHairdresserView(startView2);
+                viewMap.put(layout, leftBarHairdresserView);
+            }
+            case HOME2 -> {
+                HomeView2 homeView2 = new HomeView2(startView2);
+                viewMap.put(layout, homeView2);
+            }
         }
     }
 
