@@ -27,7 +27,6 @@ public class BookAppointmentController {
     private RateShopController rateShopController;
     private AddShopToFavouritesController addShopToFavouritesController;
     private AddAppointmentToCalendarController addAppointmentToCalendarController;
-    private Appointment appointment;
 
     public void bookAppointment(AppointmentBean appointmentBean) throws Exception {
         try {
@@ -134,9 +133,7 @@ public class BookAppointmentController {
 
     public void getAvailableSlots(AppointmentBean bean, String shopName) throws Exception {
         try {
-            if(bean.getSelectedDay().isBefore(LocalDate.now())){
-                throw new WrongInputDataException("Impossible to select a past day.");
-            }
+            if(bean.getSelectedDay().isBefore(LocalDate.now())){throw new WrongInputDataException("Impossible to select a past day.");}
             Shop shop = ShopDAO.getShopFromName(shopName);
             LocalTime open = shop.getOpenTime();
             LocalTime close = shop.getCloseTime();
@@ -153,9 +150,7 @@ public class BookAppointmentController {
                             break;
                         }
                     }
-                    if(!busy){
-                        availableList.add(temp);
-                    }
+                    if(!busy){availableList.add(temp);}
                     temp = temp.plusMinutes(30);
                 }
             } else {
@@ -186,9 +181,9 @@ public class BookAppointmentController {
 
     private List<Appointment> filterByDay(List<Appointment> allAppList, LocalDate day) {
         List<Appointment> list = new ArrayList<>();
-        for(int i = 0; i<allAppList.size(); i++){
-            if(allAppList.get(i).getStartTime().toLocalDate().equals(day)){
-                list.add(allAppList.get(i));
+        for (Appointment value : allAppList) {
+            if (value.getStartTime().toLocalDate().equals(day)) {
+                list.add(value);
             }
         }
         return list;
@@ -204,12 +199,11 @@ public class BookAppointmentController {
         }
     }
 
-    public boolean checkPromotion(AppointmentBean bean) throws Exception {
+    public void checkPromotion(AppointmentBean bean) throws Exception {
         try {
             Promotion promotion = PromotionDAO.getPersonalPromotion(bean.getCustomer(), bean.getPromotionCode());
             if(Objects.equals(bean.getServiceName(), promotion.getService().getServiceName())){
                 if(LocalDate.now().isBefore(promotion.getExpireDate())){
-                    return true;
                 } else {
                     throw new WrongInputDataException("Selected promotion is expired.");
                 }
@@ -227,10 +221,10 @@ public class BookAppointmentController {
     private List<ShopBean> beanListFromShopList(List<Shop> shopList) {
         List<ShopBean> list = new ArrayList<>();
         if(!shopList.isEmpty()){
-            for(int i = 0; i<shopList.size(); i++){
-                String name = shopList.get(i).getShopName();
-                String address = shopList.get(i).getAddress();
-                List<File> images = shopList.get(i).getImages();
+            for (Shop shop : shopList) {
+                String name = shop.getShopName();
+                String address = shop.getAddress();
+                List<File> images = shop.getImages();
                 ShopBean shopBean = new ShopBeanUQ(); //si dovrebbe capire quale creare a runtime OPPURE si usa shopBEanFirstUI come shopBeanUnica per tutte e due le UI
                 shopBean.setShopName(name);
                 shopBean.setShopAddress(address);
@@ -244,13 +238,13 @@ public class BookAppointmentController {
     private List<AppointmentBean> appBeanListFromAppList(List<Appointment> allAppointments) {
         List<AppointmentBean> beanAppList = new ArrayList<>();
         if(!allAppointments.isEmpty()){
-            for(int i = 0; i<allAppointments.size(); i++){
+            for (Appointment allAppointment : allAppointments) {
                 AppointmentBean bean = new AppointmentBeanFirstUI();
-                bean.setStartTime(allAppointments.get(i).getStartTime());
-                bean.setEndTime(allAppointments.get(i).getStartTime().plusMinutes(30));
-                bean.setShopName(allAppointments.get(i).getShop().getShopName());
-                bean.setCustomer(allAppointments.get(i).getCustomer().getUserID());
-                bean.setServiceName(allAppointments.get(i).getService().getServiceName());
+                bean.setStartTime(allAppointment.getStartTime());
+                bean.setEndTime(allAppointment.getStartTime().plusMinutes(30));
+                bean.setShopName(allAppointment.getShop().getShopName());
+                bean.setCustomer(allAppointment.getCustomer().getUserID());
+                bean.setServiceName(allAppointment.getService().getServiceName());
                 beanAppList.add(bean);
             }
         }
@@ -260,8 +254,8 @@ public class BookAppointmentController {
     private List<String> stringListFromServList(List<Service> services) {
         List<String> servList = new ArrayList<>();
         if(!services.isEmpty()){
-            for(int i = 0; i<services.size(); i++){
-                String p = services.get(i).getServiceName();
+            for (Service service : services) {
+                String p = service.getServiceName();
                 servList.add(p);
             }
         }
@@ -271,8 +265,8 @@ public class BookAppointmentController {
     private List<String> stringListFromPromList(List<Promotion> promotions) {
         List<String> promList = new ArrayList<>();
         if(!promotions.isEmpty()){
-            for(int i = 0; i<promotions.size(); i++){
-                String p = promotions.get(i).getCode();
+            for (Promotion promotion : promotions) {
+                String p = promotion.getCode();
                 promList.add(p);
             }
         }
