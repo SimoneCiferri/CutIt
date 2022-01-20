@@ -8,7 +8,7 @@ public class Customer extends User{
     private String name;
     private String surname;
     private LocalDate birthDate;
-    private String Gender;
+    private String gender;
     private List<Appointment> bookedAppointments; //lista di appuntamenti prenotati passati e futuri
     private List<Promotion> promotions; //Lista di promotion disponibili e usate per l'utente customer
 
@@ -58,11 +58,11 @@ public class Customer extends User{
     }
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
     public void setGender(String gender) {
-        Gender = gender;
+        this.gender = gender;
     }
 
     public List<Appointment> getBookedAppointments() {

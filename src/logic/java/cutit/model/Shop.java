@@ -26,46 +26,6 @@ public class Shop {
         setpIVA(piva);
     }
 
-    public Shop(String shopName, String piva, String address, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime){
-        setShopName(shopName);
-        setpIVA(piva);
-        setAddress(address);
-        setPhoneNumber(phoneNumber);
-        setEmployee(employee);
-        setDescription(description);
-        setOpenTime(openTime);
-        setCloseTime(closeTime);
-    }
-
-    public Shop(String shopName, String piva, String address, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, Map<Integer, Boolean> openDays, List<File> images){
-        setShopName(shopName);
-        setpIVA(piva);
-        setAddress(address);
-        setPhoneNumber(phoneNumber);
-        setEmployee(employee);
-        setDescription(description);
-        setOpenDays(openDays);
-        setOpenTime(openTime);
-        setCloseTime(closeTime);
-        setImages(images);
-    }
-
-    public Shop(String shopName, String piva, String address, String phoneNumber, String employee, String description, LocalTime openTime, LocalTime closeTime, Map<Integer, Boolean> openDays, List<File> images, List<Promotion> promotions, List<Service> services, List<Appointment> allAppointments){
-        setShopName(shopName);
-        setpIVA(piva);
-        setAddress(address);
-        setPhoneNumber(phoneNumber);
-        setEmployee(employee);
-        setDescription(description);
-        setOpenDays(openDays);
-        setOpenTime(openTime);
-        setCloseTime(closeTime);
-        setImages(images);
-        setPromotions(promotions);
-        setServices(services);
-        setAllAppointments(allAppointments);
-    }
-
     public String getpIVA() {
         return pIVA;
     }

@@ -10,12 +10,18 @@ import java.util.regex.Pattern;
 
 public class TextFieldCheck {
 
+    private static final String INFORMATION_TITLE = "Information";
+
+    private TextFieldCheck(){
+
+    }
+
     public static boolean isNumeric(String strNum, String title, String headerText, String contentText) {
         if (strNum == null) {
             return false;
         }
         try {
-            double d = Double.parseDouble(strNum);
+            Double.parseDouble(strNum);
         } catch (NumberFormatException nfe) {
             AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, title, headerText, contentText);
             return false;
@@ -28,7 +34,7 @@ public class TextFieldCheck {
             return false;
         }
         try {
-            double d = Integer.parseInt(strNum);
+            Integer.parseInt(strNum);
         } catch (NumberFormatException nfe) {
             AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, title, headerText, contentText);
             return false;
@@ -61,7 +67,7 @@ public class TextFieldCheck {
             if(m.matches()){
                 return true;
             }else{
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "Invalid Email", "Please enter a valid email address.");
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Invalid Email", "Please enter a valid email address.");
                 return false;
             }
 
@@ -77,7 +83,7 @@ public class TextFieldCheck {
             if(m.matches()){
                 return true;
             }else{
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "Invalid PIVA", "Please enter a valid PIVA.");
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Invalid PIVA", "Please enter a valid PIVA.");
                 return false;
             }
 
@@ -88,7 +94,7 @@ public class TextFieldCheck {
         if(!listToCheck.isEmpty()){
             for (String s : listToCheck) {
                 if (Objects.equals(s, "")) {
-                    AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", "Some fields are empty!", "Please fill out all fields.");
+                    AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Some fields are empty!", "Please fill out all fields.");
                     return true;
                 }
             }

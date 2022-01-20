@@ -61,7 +61,13 @@ public class ShopDAO {
             String description = rs.getString(6);
             String openTime = rs.getString(7);
             String closeTime = rs.getString(8);
-            Shop shop = new Shop(shopName, hPiva, address, phoneNumber, employee, description, timeFromString(openTime), timeFromString(closeTime));
+            Shop shop = new Shop(shopName, hPiva);
+            shop.setAddress(address);
+            shop.setPhoneNumber(phoneNumber);
+            shop.setEmployee(employee);
+            shop.setDescription(description);
+            shop.setOpenTime(timeFromString(openTime));
+            shop.setCloseTime(timeFromString(closeTime));
             Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
             shop.setOpenDays(openDays);
 
@@ -122,7 +128,13 @@ public class ShopDAO {
             String description = rs.getString(6);
             String openTime = rs.getString(7);
             String closeTime = rs.getString(8);
-            Shop shop = new Shop(shopName, hPiva, address, phoneNumber, employee, description, timeFromString(openTime), timeFromString(closeTime));
+            Shop shop = new Shop(shopName, hPiva);
+            shop.setAddress(address);
+            shop.setPhoneNumber(phoneNumber);
+            shop.setEmployee(employee);
+            shop.setDescription(description);
+            shop.setOpenTime(timeFromString(openTime));
+            shop.setCloseTime(timeFromString(closeTime));
             Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
             shop.setOpenDays(openDays);
 
