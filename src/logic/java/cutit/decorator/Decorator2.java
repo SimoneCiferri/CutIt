@@ -28,7 +28,7 @@ public class Decorator2 implements ViewComponent2{
     public void loadXML2(ViewLayout2 layout) throws IOException {
         this.view.loadXML2(layout);
         setPrLayout2(getPrLayout2());
-        if( layout == ViewLayout2.LEFTBAR){
+        if( layout == ViewLayout2.LEFTBAR || layout == ViewLayout2.LEFTBARCUSTOMER || layout == ViewLayout2.LEFTBARHAIRDRESSER){
             this.prLayout.setLeft(getLoadedView2(layout));
         } else {
             this.prLayout.setCenter(getLoadedView2(layout));
