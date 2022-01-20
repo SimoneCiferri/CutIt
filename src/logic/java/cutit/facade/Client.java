@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -13,6 +14,9 @@ import java.awt.*;
 import java.io.IOException;
 
 public class Client extends Application {
+
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @FXML
     private Pane bpSelection;
