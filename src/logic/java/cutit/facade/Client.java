@@ -28,7 +28,7 @@ public class Client extends Application {
         FXMLLoader loader = new FXMLLoader(Client.class.getResource("/cutit/cutit/fxml/uiselection.fxml"));
         try {
             Pane primaryLayout = loader.load();
-            Image image = new Image(Objects.requireNonNull(ViewLayout2.class.getResource("/cutit/cutit/files/barber-shop-welcome.jpg"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
+            Image image = new Image(Objects.requireNonNull(ViewLayout2.class.getResource("/cutit/cutit/files/barber-shop-welcome.png"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
             BackgroundImage back = new BackgroundImage(image, null, null, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
             primaryLayout.setBackground(new Background(back));
             Group root = new Group();
