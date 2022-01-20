@@ -3,16 +3,16 @@ package cutit.decorator;
 import java.net.URL;
 
 public enum ViewLayout1 {
-    START("/cutit/cutit/fxml/start.fxml"), TOPBARCUSTOMER("/cutit/cutit/fxml/topbarcustomer.fxml"), TOPBARHAIRDRESSER("/cutit/cutit/fxml/topbarhairdresser.fxml"),
-    HOME("/cutit/cutit/fxml/home.fxml"), LOGIN("/cutit/cutit/fxml/login.fxml"), TOPBAR("/cutit/cutit/fxml/topbar.fxml"),
-    HAIRDRESSERAPPOINTMENTS("/cutit/cutit/fxml/hairdresserdeletebookedappointments.fxml"), SIGNUP("/cutit/cutit/fxml/signup.fxml"),
-    FAVSHOP("/cutit/cutit/fxml/clientfavouritescs.fxml"), CUSTOMERAPPOINTMENTS("/cutit/cutit/fxml/customerappointments.fxml"),
-    CUSTOMERPROMOTIONS("/cutit/cutit/fxml/customerpromotions.fxml"), HAIRDRESSERPROMOTIONS("/cutit/cutit/fxml/hairdressermanagepromotions.fxml"),
-    HAIRDRESSERSERVICES("/cutit/cutit/fxml/hairdressermanageservices.fxml"),
-    SHOPINFO("/cutit/cutit/fxml/shopinfo.fxml"), CUSTOMERRATESHOP("/cutit/cutit/fxml/clientrateshop.fxml"),
-    CLIENTBOOKAPPOINTMENT("/cutit/cutit/fxml/customerbookappointment.fxml"),
-    CUSTOMERAPPINFO("/cutit/cutit/fxml/customerappointmentinfo.fxml"),
-    CUSTOMERPROMOTIONINFO("/cutit/cutit/fxml/customerpromotioninfo.fxml"),GMAPS("/cutit/cutit/fxml/gmaps.fxml"), HAIRDRESSERMANAGESHOP("/cutit/cutit/fxml/hairdressermanageshop.fxml"), PAYONLINEPAYPAL("/cutit/cutit/fxml/customerpayonlinepaypal.fxml");
+    START("/cutit/cutit/fxml/fxml1/start.fxml"), TOPBARCUSTOMER("/cutit/cutit/fxml/fxml1/topbarcustomer.fxml"), TOPBARHAIRDRESSER("/cutit/cutit/fxml/fxml1/topbarhairdresser.fxml"),
+    HOME("/cutit/cutit/fxml/fxml1/home.fxml"), LOGIN("/cutit/cutit/fxml/fxml1/login.fxml"), TOPBAR("/cutit/cutit/fxml/fxml1/topbar.fxml"),
+    HAIRDRESSERAPPOINTMENTS("/cutit/cutit/fxml/fxml1/hairdresserdeletebookedappointments.fxml"), SIGNUP("/cutit/cutit/fxml/fxml1/signup.fxml"),
+    FAVSHOP("/cutit/cutit/fxml/fxml1/clientfavouritescs.fxml"), CUSTOMERAPPOINTMENTS("/cutit/cutit/fxml/fxml1/customerappointments.fxml"),
+    CUSTOMERPROMOTIONS("/cutit/cutit/fxml/fxml1/customerpromotions.fxml"), HAIRDRESSERPROMOTIONS("/cutit/cutit/fxml/fxml1/hairdressermanagepromotions.fxml"),
+    HAIRDRESSERSERVICES("/cutit/cutit/fxml/fxml1/hairdressermanageservices.fxml"),
+    SHOPINFO("/cutit/cutit/fxml/fxml1/shopinfo.fxml"), CUSTOMERRATESHOP("/cutit/cutit/fxml/fxml1/clientrateshop.fxml"),
+    CLIENTBOOKAPPOINTMENT("/cutit/cutit/fxml/fxml1/customerbookappointment.fxml"),
+    CUSTOMERAPPINFO("/cutit/cutit/fxml/fxml1/customerappointmentinfo.fxml"),
+    CUSTOMERPROMOTIONINFO("/cutit/cutit/fxml/fxml1/customerpromotioninfo.fxml"),GMAPS("/cutit/cutit/fxml/fxml1/gmaps.fxml"), HAIRDRESSERMANAGESHOP("/cutit/cutit/fxml/fxml1/hairdressermanageshop.fxml"), PAYONLINEPAYPAL("/cutit/cutit/fxml/fxml1/customerpayonlinepaypal.fxml");
 
     private String res;
 

@@ -11,7 +11,7 @@
          <children>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../files/icons8-home-30.png" />
+                  <Image url="@../../files/icons8-home-30.png" />
                </image>
                <VBox.margin>
                   <Insets top="30.0" />
@@ -22,12 +22,12 @@
                   <Insets />
                </VBox.margin>
                <image>
-                  <Image url="@../files/icons8-heart-30.png" />
+                  <Image url="@../../files/icons8-heart-30.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../files/icons8-coupon-32.png" />
+                  <Image url="@../../files/icons8-coupon-32.png" />
                </image>
                <VBox.margin>
                   <Insets />
@@ -35,7 +35,7 @@
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../files/icons8-calendar-50.png" />
+                  <Image url="@../../files/icons8-calendar-50.png" />
                </image>
                <VBox.margin>
                   <Insets />
@@ -49,12 +49,12 @@
                   <Insets />
                </VBox.margin>
                <image>
-                  <Image url="@../files/exit.png" />
+                  <Image url="@../../files/exit.png" />
                </image>
             </ImageView>
             <ImageView fx:id="ivReduce" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#reduce" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../files/hair_comb.png" />
+                  <Image url="@../../files/hair_comb.png" />
                </image>
                <VBox.margin>
                   <Insets bottom="15.0" />

@@ -3,7 +3,7 @@ package cutit.decorator;
 import java.net.URL;
 
 public enum ViewLayout2 {
-    START2("/cutit/cutit/fxmlsecondui/start2.fxml"), LOGIN2("/cutit/cutit/fxmlsecondui/login2.fxml"), LEFTBAR("/cutit/cutit/fxmlsecondui/leftbar.fxml");
+    START2("/cutit/cutit/fxml/fxml2/start2.fxml"), LOGIN2("/cutit/cutit/fxml/fxml2/login2.fxml"), LEFTBAR("/cutit/cutit/fxml/fxml2/leftbar.fxml");
 
     private String res;
 
