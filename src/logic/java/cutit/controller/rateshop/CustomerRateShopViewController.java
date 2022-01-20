@@ -3,7 +3,7 @@ package cutit.controller.rateshop;
 import cutit.bean.RateShopBean;
 import cutit.bean.firstui.RateShopBeanUQ;
 import cutit.controller.bookappointment.BookAppointmentController;
-import cutit.decorator.ViewLayout;
+import cutit.decorator.ViewLayout1;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -44,7 +44,7 @@ public class CustomerRateShopViewController {
     @FXML
     public boolean rateShop(){
         if(bookAppointmentController.rateShop(this.rateShopBeanUQ)) {
-            Facade.getInstance().decorateView(ViewLayout.HOME);
+            Facade.getInstance().decorateView(ViewLayout1.HOME);
             return true;
         }
         return false;

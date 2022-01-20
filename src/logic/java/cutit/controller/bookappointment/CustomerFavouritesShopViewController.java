@@ -4,8 +4,8 @@ import cutit.bean.CustomerBean;
 import cutit.bean.ShopListBean;
 import cutit.bean.firstui.ShopBeanUQ;
 import cutit.bean.firstui.ShopListBeanFirstUI;
-import cutit.decorator.ViewLayout;
-import cutit.decorator.concrete_decorator.ShopInfoView;
+import cutit.decorator.ViewLayout1;
+import cutit.decorator.concrete_decorator.ShopInfoView1;
 import cutit.facade.Facade;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
@@ -56,9 +56,9 @@ public class CustomerFavouritesShopViewController {
     }
 
     private void goShopInfo(String shopName) {
-        Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
-        ShopInfoView view = (ShopInfoView) Facade.getInstance().getViewMap().get(ViewLayout.SHOPINFO);
-        ShopInfoViewController viewController = (ShopInfoViewController) view.getLoadedViewController(ViewLayout.SHOPINFO);
+        Facade.getInstance().decorateView(ViewLayout1.SHOPINFO);
+        ShopInfoView1 view = (ShopInfoView1) Facade.getInstance().getViewMap().get(ViewLayout1.SHOPINFO);
+        ShopInfoViewController viewController = (ShopInfoViewController) view.getLoadedViewController1(ViewLayout1.SHOPINFO);
         viewController.fillView(customerBeanFirstUI, shopName);
     }
 

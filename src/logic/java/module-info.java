@@ -49,6 +49,8 @@ module cutit.cutit {
     opens cutit.bean.firstui to javafx.fxml;
     exports cutit.controller.pepper;
     opens cutit.controller.pepper to javafx.fxml;
+    exports cutit.controller.leftbarviewcontrollers;
+    opens cutit.controller.leftbarviewcontrollers to javafx.fxml;
 
     /*
     exports cutit.cutit.logic.decorator.concreteDecorator;

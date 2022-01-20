@@ -2,8 +2,8 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
 import cutit.bean.PromotionBean;
-import cutit.decorator.ViewLayout;
-import cutit.decorator.concrete_decorator.ShopInfoView;
+import cutit.decorator.ViewLayout1;
+import cutit.decorator.concrete_decorator.ShopInfoView1;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -29,15 +29,15 @@ public class CustomerPromotionInfoViewController {
 
     @FXML
     public boolean goBackToPromC(){
-        Facade.getInstance().decorateView(ViewLayout.CUSTOMERPROMOTIONS);
+        Facade.getInstance().decorateView(ViewLayout1.CUSTOMERPROMOTIONS);
         return true;
     }
 
     @FXML
     public boolean goShopFromProm(){
-        Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
-        ShopInfoView view = (ShopInfoView) Facade.getInstance().getViewMap().get(ViewLayout.SHOPINFO);
-        ShopInfoViewController viewController = (ShopInfoViewController) view.getLoadedViewController(ViewLayout.SHOPINFO);
+        Facade.getInstance().decorateView(ViewLayout1.SHOPINFO);
+        ShopInfoView1 view = (ShopInfoView1) Facade.getInstance().getViewMap().get(ViewLayout1.SHOPINFO);
+        ShopInfoViewController viewController = (ShopInfoViewController) view.getLoadedViewController1(ViewLayout1.SHOPINFO);
         viewController.fillView(customerBeanFirstUI, promotionBean.getShopName());
         return true;
     }

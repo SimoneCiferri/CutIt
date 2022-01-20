@@ -1,6 +1,5 @@
 package cutit.facade;
 
-import cutit.decorator.ViewLayout;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class Client extends Application {
@@ -40,7 +40,7 @@ public class Client extends Application {
         Stage stage = (Stage) bpSelection.getScene().getWindow();
         Facade facade = Facade.getInstance();
         Group root = new Group();
-        root.getChildren().add(facade.getStartView().getPrLayout());
+        root.getChildren().add(facade.getStartView().getPrLayout1());
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -49,9 +49,9 @@ public class Client extends Application {
     @FXML
     private void goSecond(){
         Stage stage = (Stage) bpSelection.getScene().getWindow();
-        //Facade facade = Facade.getInstance();
+        Facade2 facade2 = Facade2.getInstance();
         Group root = new Group();
-        //root.getChildren().add(facade.getStartView().getPrLayout());
+        root.getChildren().add(facade2.getStartView2().getPrLayout2());
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

@@ -1,9 +1,9 @@
 package cutit.facade;
 
-import cutit.decorator.ViewComponent;
-import cutit.decorator.ViewLayout;
+import cutit.decorator.ViewComponent1;
+import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.*;
-import cutit.decorator.concrete_view_component.StartView;
+import cutit.decorator.concrete_view_component.StartView1;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
 import javafx.scene.control.Alert;
@@ -14,8 +14,8 @@ import java.util.Map;
 public class Facade {
 
     private static Facade instance;
-    private StartView startView;
-    private static final Map<ViewLayout, ViewComponent> viewMap = new EnumMap<>(ViewLayout.class);
+    private StartView1 startView;
+    private static final Map<ViewLayout1, ViewComponent1> viewMap = new EnumMap<>(ViewLayout1.class);
 
     public static synchronized Facade getInstance(){
         if(instance == null){
@@ -30,110 +30,108 @@ public class Facade {
 
     private void initStartView() {
         System.out.println("Singleton Facade created!");
-        this.startView = new StartView();
+        this.startView = new StartView1();
         try{
-            this.startView.loadXML(ViewLayout.START);
-            decorateView(ViewLayout.TOPBAR);
-            decorateView(ViewLayout.LOGIN);
+            this.startView.loadXML1(ViewLayout1.START);
+            decorateView(ViewLayout1.TOPBAR);
+            decorateView(ViewLayout1.LOGIN);
         }catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "","", "");
         }
     }
 
-    public StartView getStartView(){
+    public StartView1 getStartView(){
         return startView;
     }
 
-    public void decorateView(ViewLayout layout){
+    public void decorateView(ViewLayout1 layout){
         switch (layout) {
             case HOME -> {
-                HomeView homeview = new HomeView(startView);
+                Home1View homeview = new Home1View(startView);
                 viewMap.put(layout, homeview);
             }
             case LOGIN -> {
-                LoginView loginview = new LoginView(startView);
+                Login1View loginview = new Login1View(startView);
                 viewMap.put(layout, loginview);
             }
             case TOPBAR -> {
-                TopBarView topBarView = new TopBarView(startView);
+                TopBarView1 topBarView = new TopBarView1(startView);
                 viewMap.put(layout, topBarView);
             }
 
             case TOPBARCUSTOMER -> {
-                TopBarCustomerView topbarclientview = new TopBarCustomerView(startView);
+                TopBarCustomerView1 topbarclientview = new TopBarCustomerView1(startView);
                 viewMap.put(layout, topbarclientview);
             }
             case TOPBARHAIRDRESSER -> {
-                TopBarHairdresserView topbarhairdresserview = new TopBarHairdresserView(startView);
+                TopBarHairdresserView1 topbarhairdresserview = new TopBarHairdresserView1(startView);
                 viewMap.put(layout, topbarhairdresserview);
             }
             case HAIRDRESSERAPPOINTMENTS -> {
-                HairdresserAppointmentsView hairdresserappointmentview = new HairdresserAppointmentsView(startView);
+                HairdresserAppointmentsView1 hairdresserappointmentview = new HairdresserAppointmentsView1(startView);
                 viewMap.put(layout, hairdresserappointmentview);
             }
             case SIGNUP -> {
-                SignUpView signupview = new SignUpView(startView);
+                SignUpView1 signupview = new SignUpView1(startView);
                 viewMap.put(layout, signupview);
             }
             case FAVSHOP -> {
-                CustomerFavouritesShopView clientfavshopview = new CustomerFavouritesShopView(startView);
+                CustomerFavouritesShopView1 clientfavshopview = new CustomerFavouritesShopView1(startView);
                 viewMap.put(layout, clientfavshopview);
             }
             case CUSTOMERPROMOTIONS -> {
-                CustomerPromotionsView clientpromview = new CustomerPromotionsView(startView);
+                CustomerPromotionsView1 clientpromview = new CustomerPromotionsView1(startView);
                 viewMap.put(layout, clientpromview);
             }
             case CUSTOMERAPPOINTMENTS -> {
-                CustomerAppointmentsView clientappview = new CustomerAppointmentsView(startView);
+                CustomerAppointmentsView1 clientappview = new CustomerAppointmentsView1(startView);
                 viewMap.put(layout, clientappview);
             }
             case HAIRDRESSERPROMOTIONS -> {
-                HairdresserPromotionsView hairpromview = new HairdresserPromotionsView(startView);
+                HairdresserPromotionsView1 hairpromview = new HairdresserPromotionsView1(startView);
                 viewMap.put(layout, hairpromview);
             }
             case HAIRDRESSERSERVICES -> {
-                HairdresserServicesView hairservicesview = new HairdresserServicesView(startView);
+                HairdresserServicesView1 hairservicesview = new HairdresserServicesView1(startView);
                 viewMap.put(layout, hairservicesview);
             }
             case SHOPINFO -> {
-                ShopInfoView shopinfoview = new ShopInfoView(startView);
+                ShopInfoView1 shopinfoview = new ShopInfoView1(startView);
                 viewMap.put(layout, shopinfoview);
             }
             case CUSTOMERRATESHOP -> {
-                ClientRateShopView clientrateview = new ClientRateShopView(startView);
+                ClientRateShopView1 clientrateview = new ClientRateShopView1(startView);
                 viewMap.put(layout, clientrateview);
             }
             case CLIENTBOOKAPPOINTMENT -> {
-                ClientBookAppointmentView clientbookappview = new ClientBookAppointmentView(startView);
+                ClientBookAppointmentView1 clientbookappview = new ClientBookAppointmentView1(startView);
                 viewMap.put(layout, clientbookappview);
             }
             case CUSTOMERAPPINFO -> {
-                CustomerAppointmentInfoView clientappinfoview = new CustomerAppointmentInfoView(startView);
+                CustomerAppointmentInfoView1 clientappinfoview = new CustomerAppointmentInfoView1(startView);
                 viewMap.put(layout, clientappinfoview);
             }
             case CUSTOMERPROMOTIONINFO -> {
-                CustomerPromotionInfoView clientprominfoview = new CustomerPromotionInfoView(startView);
+                CustomerPromotionInfoView1 clientprominfoview = new CustomerPromotionInfoView1(startView);
                 viewMap.put(layout, clientprominfoview);
             }
             case GMAPS -> {
-                CustomerGetLocationDirectionsView customerGetLocationDirectionsView = new CustomerGetLocationDirectionsView(startView);
+                CustomerGetLocationDirectionsView1 customerGetLocationDirectionsView = new CustomerGetLocationDirectionsView1(startView);
                 viewMap.put(layout, customerGetLocationDirectionsView);
             }
             case HAIRDRESSERMANAGESHOP -> {
-                HairdresserManageShopView hairdresserManageShopView = new HairdresserManageShopView(startView);
+                HairdresserManageShopView1 hairdresserManageShopView = new HairdresserManageShopView1(startView);
                 viewMap.put(layout, hairdresserManageShopView);
             }
             case PAYONLINEPAYPAL -> {
-                CustomerPayOnlinePayPalView customerPayOnlinePayPalView = new CustomerPayOnlinePayPalView(startView);
+                CustomerPayOnlinePayPalView1 customerPayOnlinePayPalView = new CustomerPayOnlinePayPalView1(startView);
                 viewMap.put(layout,customerPayOnlinePayPalView);
-
-
             }
         }
     }
 
-    public Map<ViewLayout, ViewComponent> getViewMap(){
+    public Map<ViewLayout1, ViewComponent1> getViewMap(){
         return viewMap;
     }
 

@@ -5,11 +5,10 @@ import cutit.controller.bookappointment.CustomerFavouritesShopViewController;
 import cutit.controller.bookappointment.CustomerPromotionsViewController;
 import cutit.controller.bookappointment.HomeViewController;
 import cutit.controller.bookappointment.CustomerAppointmentsViewController;
-import cutit.decorator.ViewLayout;
-import cutit.decorator.concrete_decorator.CustomerAppointmentsView;
-import cutit.decorator.concrete_decorator.CustomerFavouritesShopView;
-import cutit.decorator.concrete_decorator.CustomerPromotionsView;
-import cutit.decorator.concrete_decorator.HomeView;
+import cutit.decorator.ViewLayout1;
+import cutit.decorator.concrete_decorator.*;
+import cutit.decorator.concrete_decorator.CustomerAppointmentsView1;
+import cutit.decorator.concrete_decorator.CustomerPromotionsView1;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
@@ -60,9 +59,9 @@ public class TopBarCustomerViewController {
         btnClApp.setStyle(transparentStyle);
         btnClFav.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
-        Facade.getInstance().decorateView(ViewLayout.HOME);
-        HomeView view = (HomeView)Facade.getInstance().getViewMap().get(ViewLayout.HOME);
-        HomeViewController viewController = (HomeViewController) view.getLoadedViewController(ViewLayout.HOME);
+        Facade.getInstance().decorateView(ViewLayout1.HOME);
+        Home1View view = (Home1View)Facade.getInstance().getViewMap().get(ViewLayout1.HOME);
+        HomeViewController viewController = (HomeViewController) view.getLoadedViewController1(ViewLayout1.HOME);
         viewController.fillView(customerBeanFirstUI);
         return true;
     }
@@ -74,9 +73,9 @@ public class TopBarCustomerViewController {
         btnClApp.setStyle(transparentStyle);
         btnClPromotion.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
-        Facade.getInstance().decorateView(ViewLayout.FAVSHOP);
-        CustomerFavouritesShopView view = (CustomerFavouritesShopView) Facade.getInstance().getViewMap().get(ViewLayout.FAVSHOP);
-        CustomerFavouritesShopViewController viewController = (CustomerFavouritesShopViewController) view.getLoadedViewController(ViewLayout.FAVSHOP);
+        Facade.getInstance().decorateView(ViewLayout1.FAVSHOP);
+        CustomerFavouritesShopView1 view = (CustomerFavouritesShopView1) Facade.getInstance().getViewMap().get(ViewLayout1.FAVSHOP);
+        CustomerFavouritesShopViewController viewController = (CustomerFavouritesShopViewController) view.getLoadedViewController1(ViewLayout1.FAVSHOP);
         viewController.fillView(customerBeanFirstUI);
         return true;
     }
@@ -88,9 +87,9 @@ public class TopBarCustomerViewController {
         btnClApp.setStyle(pageFlagStyle);
         btnClPromotion.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
-        Facade.getInstance().decorateView(ViewLayout.CUSTOMERAPPOINTMENTS);
-        CustomerAppointmentsView view = (CustomerAppointmentsView) Facade.getInstance().getViewMap().get(ViewLayout.CUSTOMERAPPOINTMENTS);
-        CustomerAppointmentsViewController viewController =(CustomerAppointmentsViewController) view.getLoadedViewController(ViewLayout.CUSTOMERAPPOINTMENTS);
+        Facade.getInstance().decorateView(ViewLayout1.CUSTOMERAPPOINTMENTS);
+        CustomerAppointmentsView1 view = (CustomerAppointmentsView1) Facade.getInstance().getViewMap().get(ViewLayout1.CUSTOMERAPPOINTMENTS);
+        CustomerAppointmentsViewController viewController =(CustomerAppointmentsViewController) view.getLoadedViewController1(ViewLayout1.CUSTOMERAPPOINTMENTS);
         viewController.fillView(customerBeanFirstUI);
         return true;
     }
@@ -102,19 +101,19 @@ public class TopBarCustomerViewController {
         btnClApp.setStyle(transparentStyle);
         btnClPromotion.setStyle(pageFlagStyle);
         btnClLogout.setStyle(transparentStyle);
-        Facade.getInstance().decorateView(ViewLayout.CUSTOMERPROMOTIONS);
-        CustomerPromotionsView view =(CustomerPromotionsView) Facade.getInstance().getViewMap().get(ViewLayout.CUSTOMERPROMOTIONS);
-        CustomerPromotionsViewController viewController = (CustomerPromotionsViewController) view.getLoadedViewController(ViewLayout.CUSTOMERPROMOTIONS);
+        Facade.getInstance().decorateView(ViewLayout1.CUSTOMERPROMOTIONS);
+        CustomerPromotionsView1 view =(CustomerPromotionsView1) Facade.getInstance().getViewMap().get(ViewLayout1.CUSTOMERPROMOTIONS);
+        CustomerPromotionsViewController viewController = (CustomerPromotionsViewController) view.getLoadedViewController1(ViewLayout1.CUSTOMERPROMOTIONS);
         viewController.fillView(customerBeanFirstUI);
         return true;
     }
 
     @FXML
     public boolean tryLogout() {
-        Facade.getInstance().getStartView().getPrLayout().getChildren().remove(apTopBarCustomer);
+        Facade.getInstance().getStartView().getPrLayout1().getChildren().remove(apTopBarCustomer);
         Facade.getInstance().logout();
-        Facade.getInstance().decorateView(ViewLayout.TOPBAR);
-        Facade.getInstance().decorateView(ViewLayout.LOGIN);
+        Facade.getInstance().decorateView(ViewLayout1.TOPBAR);
+        Facade.getInstance().decorateView(ViewLayout1.LOGIN);
         return true;
     }
 

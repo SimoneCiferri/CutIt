@@ -6,8 +6,8 @@ import cutit.bean.ShopBean;
 import cutit.bean.firstui.AppointmentBeanFirstUI;
 import cutit.bean.firstui.RateShopBeanUQ;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
-import cutit.decorator.ViewLayout;
-import cutit.decorator.concrete_decorator.TopBarCustomerView;
+import cutit.decorator.ViewLayout1;
+import cutit.decorator.concrete_decorator.TopBarCustomerView1;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
@@ -89,7 +89,7 @@ public class CustomerBookAppointmentViewController {
 
     @FXML
     public boolean backToShopInfo() {
-        Facade.getInstance().decorateView(ViewLayout.SHOPINFO);
+        Facade.getInstance().decorateView(ViewLayout1.SHOPINFO);
         return true;
     }
 
@@ -231,20 +231,20 @@ public class CustomerBookAppointmentViewController {
 
     private void rateShop(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        Facade.getInstance().decorateView(ViewLayout.CUSTOMERRATESHOP);
+        Facade.getInstance().decorateView(ViewLayout1.CUSTOMERRATESHOP);
     }
 
     private void addToFavourites() {
         try {
             if(bookAppointmentController.addShopToFavourites(customerBeanFirstUI.getcEmail(), shopBeanUQ.getShopName() )){
-                TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
-                TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
+                TopBarCustomerView1 view = (TopBarCustomerView1) Facade.getInstance().getViewMap().get(ViewLayout1.TOPBARCUSTOMER);
+                TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController1(ViewLayout1.TOPBARCUSTOMER);
                 viewController.goFav();
             }
         } catch (DuplicatedRecordException de) {
             AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
-            TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
-            TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
+            TopBarCustomerView1 view = (TopBarCustomerView1) Facade.getInstance().getViewMap().get(ViewLayout1.TOPBARCUSTOMER);
+            TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController1(ViewLayout1.TOPBARCUSTOMER);
             viewController.goFav();
         } catch(DBConnectionException dce){
             AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
@@ -256,7 +256,7 @@ public class CustomerBookAppointmentViewController {
     private void addAppToCalendar(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
         if(bookAppointmentController.addToCalendar(this.appointmentBeanFirstUI)){
-            Facade.getInstance().decorateView(ViewLayout.HOME);
+            Facade.getInstance().decorateView(ViewLayout1.HOME);
         }
     }
 

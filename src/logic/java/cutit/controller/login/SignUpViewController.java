@@ -4,7 +4,7 @@ import cutit.bean.CustomerBean;
 import cutit.bean.HairdresserBean;
 import cutit.bean.firstui.CustomerBeanFirstUI;
 import cutit.bean.firstui.HairdresserBeanFirstUI;
-import cutit.decorator.ViewLayout;
+import cutit.decorator.ViewLayout1;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.facade.Facade;
@@ -56,7 +56,7 @@ public class SignUpViewController {
                 customerBeanFirstUI.setcEmail(tfCustomerEmail.getText());
                 customerBeanFirstUI.setcPassword(pfCustomerPassword.getText());
                 if(loginController.signUpCustomer(this.customerBeanFirstUI)){
-                    Facade.getInstance().decorateView(ViewLayout.LOGIN);
+                    Facade.getInstance().decorateView(ViewLayout1.LOGIN);
                 }
             }
         } catch (DuplicatedRecordException de) {
@@ -82,7 +82,7 @@ public class SignUpViewController {
                 hairdresserBeanFirstUI.setShopName(tfHairdresserShopName.getText());
                 hairdresserBeanFirstUI.sethPassword(pfHairdresserPassword.getText());
                 if(loginController.signUpHair(hairdresserBeanFirstUI)){
-                    Facade.getInstance().decorateView(ViewLayout.LOGIN);
+                    Facade.getInstance().decorateView(ViewLayout1.LOGIN);
                 }
             }
         } catch (DuplicatedRecordException de) {
@@ -114,7 +114,7 @@ public class SignUpViewController {
     @FXML
     private void goBack(){
         try {
-            Facade.getInstance().decorateView(ViewLayout.LOGIN);
+            Facade.getInstance().decorateView(ViewLayout1.LOGIN);
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -7,9 +7,9 @@ import cutit.bean.firstui.ShopBeanUQ;
 import cutit.bean.firstui.UserBeanFirstUI;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.controller.topbarviewcontrollers.TopBarHairdresserViewController;
-import cutit.decorator.ViewLayout;
-import cutit.decorator.concrete_decorator.TopBarCustomerView;
-import cutit.decorator.concrete_decorator.TopBarHairdresserView;
+import cutit.decorator.ViewLayout1;
+import cutit.decorator.concrete_decorator.TopBarCustomerView1;
+import cutit.decorator.concrete_decorator.TopBarHairdresserView1;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
@@ -53,15 +53,15 @@ public class LoginViewController {
                 if(loginController.login(this.userBeanFirstUI)){
                     if (this.userBeanFirstUI.getRole() == 0) {
                         loginController.getCustomer(userBeanFirstUI, customerBeanFirstUI);
-                        Facade.getInstance().decorateView(ViewLayout.TOPBARCUSTOMER);
-                        TopBarCustomerView view = (TopBarCustomerView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARCUSTOMER);
-                        TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController(ViewLayout.TOPBARCUSTOMER);
+                        Facade.getInstance().decorateView(ViewLayout1.TOPBARCUSTOMER);
+                        TopBarCustomerView1 view = (TopBarCustomerView1) Facade.getInstance().getViewMap().get(ViewLayout1.TOPBARCUSTOMER);
+                        TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController1(ViewLayout1.TOPBARCUSTOMER);
                         viewController.startBean(this.customerBeanFirstUI);
                     }else{
                         loginController.getHairdresserAndShop(userBeanFirstUI, hairdresserBeanFirstUI, shopBeanFirstUI);
-                        Facade.getInstance().decorateView(ViewLayout.TOPBARHAIRDRESSER);
-                        TopBarHairdresserView view = (TopBarHairdresserView) Facade.getInstance().getViewMap().get(ViewLayout.TOPBARHAIRDRESSER);
-                        TopBarHairdresserViewController viewController = (TopBarHairdresserViewController) view.getLoadedViewController(ViewLayout.TOPBARHAIRDRESSER);
+                        Facade.getInstance().decorateView(ViewLayout1.TOPBARHAIRDRESSER);
+                        TopBarHairdresserView1 view = (TopBarHairdresserView1) Facade.getInstance().getViewMap().get(ViewLayout1.TOPBARHAIRDRESSER);
+                        TopBarHairdresserViewController viewController = (TopBarHairdresserViewController) view.getLoadedViewController1(ViewLayout1.TOPBARHAIRDRESSER);
                         viewController.startBean(hairdresserBeanFirstUI, shopBeanFirstUI);
                     }
                 }
@@ -74,7 +74,7 @@ public class LoginViewController {
 
     @FXML
     public boolean goSignUp() {
-        Facade.getInstance().decorateView(ViewLayout.SIGNUP);
+        Facade.getInstance().decorateView(ViewLayout1.SIGNUP);
         return true;
     }
 

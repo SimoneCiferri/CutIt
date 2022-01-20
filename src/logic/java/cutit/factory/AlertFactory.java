@@ -24,7 +24,7 @@ public class AlertFactory {
         alert.setContentText(contentText);
         alert.showAndWait();
         if(type == Alert.AlertType.ERROR){
-            Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout().getScene().getWindow();
+            Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout1().getScene().getWindow();
             stage.close();
         }
     }
@@ -35,7 +35,7 @@ public class AlertFactory {
         alert.setHeaderText(headerText);
         alert.showAndWait();
         if(type == Alert.AlertType.ERROR){
-            Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout().getScene().getWindow();
+            Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout1().getScene().getWindow();
             stage.close();
         }
     }

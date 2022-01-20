@@ -3,8 +3,8 @@ package cutit.controller.bookappointment;
 import cutit.bean.CustomerBean;
 import cutit.bean.PromotionBean;
 import cutit.bean.firstui.PromotionBeanUQ;
-import cutit.decorator.ViewLayout;
-import cutit.decorator.concrete_decorator.CustomerPromotionInfoView;
+import cutit.decorator.ViewLayout1;
+import cutit.decorator.concrete_decorator.CustomerPromotionInfoView1;
 import cutit.exception.RecordNotFoundException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
@@ -52,9 +52,9 @@ public class CustomerPromotionsViewController {
         try {
             promotionBeanUQ.setPromotionCode(promotion);
             bookAppointmentController.getPromotion(promotionBeanUQ);
-            Facade.getInstance().decorateView(ViewLayout.CUSTOMERPROMOTIONINFO);
-            CustomerPromotionInfoView view = (CustomerPromotionInfoView) Facade.getInstance().getViewMap().get(ViewLayout.CUSTOMERPROMOTIONINFO);
-            CustomerPromotionInfoViewController viewController = (CustomerPromotionInfoViewController) view.getLoadedViewController(ViewLayout.CUSTOMERPROMOTIONINFO);
+            Facade.getInstance().decorateView(ViewLayout1.CUSTOMERPROMOTIONINFO);
+            CustomerPromotionInfoView1 view = (CustomerPromotionInfoView1) Facade.getInstance().getViewMap().get(ViewLayout1.CUSTOMERPROMOTIONINFO);
+            CustomerPromotionInfoViewController viewController = (CustomerPromotionInfoViewController) view.getLoadedViewController1(ViewLayout1.CUSTOMERPROMOTIONINFO);
             viewController.fillView(customerBeanFirstUI, promotionBeanUQ);
         } catch (RecordNotFoundException rne) {
             AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", rne.getMessage());

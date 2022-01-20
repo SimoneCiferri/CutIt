@@ -6,11 +6,10 @@ import cutit.controller.deletebookedappointments.HairdresserDeleteBookedAppointm
 import cutit.controller.managepromotions.HairdresserManagePromotionsViewController;
 import cutit.controller.manageservices.HairdresserManageServicesViewController;
 import cutit.controller.manageshoppage.HairdresserManageShopPageViewController;
-import cutit.decorator.ViewLayout;
-import cutit.decorator.concrete_decorator.HairdresserAppointmentsView;
-import cutit.decorator.concrete_decorator.HairdresserManageShopView;
-import cutit.decorator.concrete_decorator.HairdresserPromotionsView;
-import cutit.decorator.concrete_decorator.HairdresserServicesView;
+import cutit.decorator.ViewLayout1;
+import cutit.decorator.concrete_decorator.*;
+import cutit.decorator.concrete_decorator.HairdresserAppointmentsView1;
+import cutit.decorator.concrete_decorator.HairdresserServicesView1;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
@@ -59,7 +58,7 @@ public class TopBarHairdresserViewController {
 
     @FXML
     public boolean goApp() {
-        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERAPPOINTMENTS);
+        Facade.getInstance().decorateView(ViewLayout1.HAIRDRESSERAPPOINTMENTS);
         btnHApp.setStyle(pageFlagStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHServices.setStyle(transparentStyle);
@@ -67,60 +66,60 @@ public class TopBarHairdresserViewController {
         btnHLogout.setStyle(transparentStyle);
         deleteAppointmentBeanFirstUI.setShopName(shopBeanFirstUI.getShopName());
         deleteAppointmentBeanFirstUI.setAllAppointments(shopBeanFirstUI.getAllAppointments());
-        HairdresserAppointmentsView view = (HairdresserAppointmentsView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERAPPOINTMENTS);
-        HairdresserDeleteBookedAppointmentsViewController viewController = (HairdresserDeleteBookedAppointmentsViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERAPPOINTMENTS);
+        HairdresserAppointmentsView1 view = (HairdresserAppointmentsView1) Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERAPPOINTMENTS);
+        HairdresserDeleteBookedAppointmentsViewController viewController = (HairdresserDeleteBookedAppointmentsViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERAPPOINTMENTS);
         viewController.fillView(shopBeanFirstUI);
         return true;
     }
 
     @FXML
     public boolean goProm() {
-        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERPROMOTIONS);
+        Facade.getInstance().decorateView(ViewLayout1.HAIRDRESSERPROMOTIONS);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(pageFlagStyle);
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
-        HairdresserPromotionsView view = (HairdresserPromotionsView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERPROMOTIONS);
-        HairdresserManagePromotionsViewController viewController = (HairdresserManagePromotionsViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERPROMOTIONS);
+        HairdresserPromotionsView1 view = (HairdresserPromotionsView1) Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERPROMOTIONS);
+        HairdresserManagePromotionsViewController viewController = (HairdresserManagePromotionsViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERPROMOTIONS);
         viewController.fillView(shopBeanFirstUI);
         return true;
     }
 
     @FXML
     public boolean goServices() {
-        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERSERVICES);
+        Facade.getInstance().decorateView(ViewLayout1.HAIRDRESSERSERVICES);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHServices.setStyle(pageFlagStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
-        HairdresserServicesView view = (HairdresserServicesView)  Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERSERVICES);
-        HairdresserManageServicesViewController viewController = (HairdresserManageServicesViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERSERVICES);
+        HairdresserServicesView1 view = (HairdresserServicesView1)  Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERSERVICES);
+        HairdresserManageServicesViewController viewController = (HairdresserManageServicesViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERSERVICES);
         viewController.fillView(shopBeanFirstUI);
         return true;
     }
 
     @FXML
     public boolean goShopHair() {
-        Facade.getInstance().decorateView(ViewLayout.HAIRDRESSERMANAGESHOP);
+        Facade.getInstance().decorateView(ViewLayout1.HAIRDRESSERMANAGESHOP);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(transparentStyle);
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(pageFlagStyle);
         btnHLogout.setStyle(transparentStyle);
-        HairdresserManageShopView view = (HairdresserManageShopView) Facade.getInstance().getViewMap().get(ViewLayout.HAIRDRESSERMANAGESHOP);
-        HairdresserManageShopPageViewController viewController = (HairdresserManageShopPageViewController) view.getLoadedViewController(ViewLayout.HAIRDRESSERMANAGESHOP);
+        HairdresserManageShopView1 view = (HairdresserManageShopView1) Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERMANAGESHOP);
+        HairdresserManageShopPageViewController viewController = (HairdresserManageShopPageViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERMANAGESHOP);
         viewController.fillView(shopBeanFirstUI);
         return true;
     }
 
     @FXML
     public boolean tryLogout() {
-        Facade.getInstance().getStartView().getPrLayout().getChildren().remove(apTopBarHairdr);
+        Facade.getInstance().getStartView().getPrLayout1().getChildren().remove(apTopBarHairdr);
         Facade.getInstance().logout();
-        Facade.getInstance().decorateView(ViewLayout.TOPBAR);
-        Facade.getInstance().decorateView(ViewLayout.LOGIN);
+        Facade.getInstance().decorateView(ViewLayout1.TOPBAR);
+        Facade.getInstance().decorateView(ViewLayout1.LOGIN);
         return true;
     }
 

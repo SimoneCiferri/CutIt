@@ -1,6 +1,6 @@
 package cutit.controller.bookappointment;
 
-import cutit.decorator.ViewLayout;
+import cutit.decorator.ViewLayout1;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -21,7 +21,7 @@ public class CustomerAppointmentInfoViewController {
 
     @FXML
     public boolean goBackToAppList(){
-        Facade.getInstance().decorateView(ViewLayout.CUSTOMERAPPOINTMENTS);
+        Facade.getInstance().decorateView(ViewLayout1.CUSTOMERAPPOINTMENTS);
         return true;
     }
 

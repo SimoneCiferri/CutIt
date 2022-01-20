@@ -1,8 +1,8 @@
 package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
-import cutit.decorator.ViewLayout;
-import cutit.decorator.concrete_decorator.CustomerAppointmentInfoView;
+import cutit.decorator.ViewLayout1;
+import cutit.decorator.concrete_decorator.CustomerAppointmentInfoView1;
 import cutit.facade.Facade;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
@@ -45,9 +45,9 @@ public class CustomerAppointmentsViewController {
     }
 
     private void showAppInfo(LocalDateTime appStartTime, LocalDateTime appEndTime, String appService, String appShop){
-        Facade.getInstance().decorateView(ViewLayout.CUSTOMERAPPINFO);
-        CustomerAppointmentInfoView view = (CustomerAppointmentInfoView) Facade.getInstance().getViewMap().get(ViewLayout.CUSTOMERAPPINFO);
-        CustomerAppointmentInfoViewController viewController = (CustomerAppointmentInfoViewController) view.getLoadedViewController(ViewLayout.CUSTOMERAPPINFO);
+        Facade.getInstance().decorateView(ViewLayout1.CUSTOMERAPPINFO);
+        CustomerAppointmentInfoView1 view = (CustomerAppointmentInfoView1) Facade.getInstance().getViewMap().get(ViewLayout1.CUSTOMERAPPINFO);
+        CustomerAppointmentInfoViewController viewController = (CustomerAppointmentInfoViewController) view.getLoadedViewController1(ViewLayout1.CUSTOMERAPPINFO);
         viewController.fillView(appStartTime, appEndTime, appService, appShop);
     }
 

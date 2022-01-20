@@ -2,8 +2,8 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
 import cutit.bean.firstui.ShopBeanUQ;
-import cutit.decorator.ViewLayout;
-import cutit.decorator.concrete_decorator.ClientBookAppointmentView;
+import cutit.decorator.ViewLayout1;
+import cutit.decorator.concrete_decorator.ClientBookAppointmentView1;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -90,22 +90,22 @@ public class ShopInfoViewController {
 
     @FXML
     public boolean bookAppointment() {
-        Facade.getInstance().decorateView(ViewLayout.CLIENTBOOKAPPOINTMENT);
-        ClientBookAppointmentView view = (ClientBookAppointmentView) Facade.getInstance().getViewMap().get(ViewLayout.CLIENTBOOKAPPOINTMENT);
-        CustomerBookAppointmentViewController viewController = (CustomerBookAppointmentViewController) view.getLoadedViewController(ViewLayout.CLIENTBOOKAPPOINTMENT);
+        Facade.getInstance().decorateView(ViewLayout1.CLIENTBOOKAPPOINTMENT);
+        ClientBookAppointmentView1 view = (ClientBookAppointmentView1) Facade.getInstance().getViewMap().get(ViewLayout1.CLIENTBOOKAPPOINTMENT);
+        CustomerBookAppointmentViewController viewController = (CustomerBookAppointmentViewController) view.getLoadedViewController1(ViewLayout1.CLIENTBOOKAPPOINTMENT);
         viewController.fillView(customerBeanFirstUI, shopBeanUQ);
         return true;
     }
 
     @FXML
     public boolean backToHome(){
-        Facade.getInstance().decorateView(ViewLayout.HOME);
+        Facade.getInstance().decorateView(ViewLayout1.HOME);
         return true;
     }
 
     @FXML
     public boolean goToDirections(){
-        Facade.getInstance().decorateView(ViewLayout.GMAPS);
+        Facade.getInstance().decorateView(ViewLayout1.GMAPS);
         return true;
     }
 
