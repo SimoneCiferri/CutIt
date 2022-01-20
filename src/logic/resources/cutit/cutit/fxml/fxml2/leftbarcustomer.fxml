@@ -7,7 +7,7 @@
 
 <VBox fx:id="vbLeftBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.66" prefHeight="900.0" prefWidth="70.0" style="-fx-background-color: F9D371; -fx-background-radius: 5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <VBox alignment="TOP_CENTER" prefHeight="464.0" prefWidth="70.0" spacing="80.0" style="-fx-border-radius: 5;">
+        <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="70.0" spacing="80.0" style="-fx-border-radius: 5;">
             <children>
                 <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -41,20 +41,25 @@
                         <Insets />
                     </VBox.margin>
                 </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../files/icons8-fire-exit-48.png" />
+               </image>
+            </ImageView>
             </children></VBox>
-        <VBox alignment="BOTTOM_CENTER" prefHeight="450.0" prefWidth="31.0" spacing="10.0" style="-fx-background-radius: 5;">
+        <VBox alignment="BOTTOM_CENTER" prefHeight="300.0" prefWidth="70.0" spacing="40.0" style="-fx-background-radius: 5;">
             <children>
-                <ImageView fx:id="ivExit" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#closeIV" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="ivExit" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#closeIV" pickOnBounds="true" preserveRatio="true">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
                     <image>
-                        <Image url="@../../files/exit.png" />
+                        <Image url="@../../files/icons8-x-50.png" />
                     </image>
                 </ImageView>
-                <ImageView fx:id="ivReduce" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#reduce" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="ivReduce" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#reduce" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../files/hair_comb.png" />
+                        <Image url="@../../files/icons8-horizontal-line-100.png" />
                     </image>
                     <VBox.margin>
                         <Insets bottom="15.0" />
