@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="bpSelection" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.facade.Client">
+<BorderPane fx:id="bpSelection" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.facade.Client">
    <center>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button fx:id="btnFirstUI" mnemonicParsing="false" onMouseClicked="#goFirst" text="FirstUI" />
-            <Button fx:id="btnSecondUI" mnemonicParsing="false" onMouseClicked="#goSecond" text="SecondUI" />
-         </children>
-      </HBox>
-   </center>
-   <top>
       <VBox alignment="CENTER" prefHeight="100.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Welcome to CutIt">
                <font>
-                  <Font size="30.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Label>
             <Label text="Select your favourite version!">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <children>
+                  <Button fx:id="btnFirstUI" mnemonicParsing="false" onMouseClicked="#goFirst" style="-fx-border-color: black;" text="FirstUI">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="btnSecondUI" mnemonicParsing="false" onMouseClicked="#goSecond" style="-fx-border-color: black;" text="SecondUI">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onMouseClicked="#exitApp" style="-fx-border-color: black;" text="Exit" textFill="#e80000">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
          </children>
       </VBox>
-   </top>
-   <bottom>
-      <Button mnemonicParsing="false" onMouseClicked="#exitApp" text="Exit" textFill="#e80000" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="25.0" />
-         </BorderPane.margin>
-      </Button>
-   </bottom>
+   </center>
 </BorderPane>
