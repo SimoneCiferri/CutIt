@@ -6,7 +6,7 @@ public class LoginViewController2 {
 
     @FXML
     public void initialize(){
-        System.out.println("Login 2 viewcontroller");
+        System.out.println(" Starting ---> LoginViewController2");
     }
 
 }
