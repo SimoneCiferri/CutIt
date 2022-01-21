@@ -19,7 +19,7 @@
             </VBox>
             <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="700.0" prefWidth="843.0" style="-fx-background-color: transparent;">
               <items>
-                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="841.0">
+                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="841.0">
                      <children>
                         <Label text="SignUp Customer">
                            <font>
@@ -28,7 +28,7 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="841.0">
+                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="841.0">
                      <children>
                         <Label text="SignUp Hairdresser">
                            <font>
