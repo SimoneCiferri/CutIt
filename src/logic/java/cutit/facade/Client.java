@@ -17,9 +17,6 @@ import java.util.Objects;
 
 public class Client extends Application {
 
-    private double xOffset = 0;
-    private double yOffset = 0;
-
     @FXML
     private Pane bpSelection;
 

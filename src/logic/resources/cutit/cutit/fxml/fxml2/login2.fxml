@@ -8,13 +8,23 @@
    <children>
       <SplitPane dividerPositions="0.3" prefHeight="700.0" prefWidth="1210.0" style="-fx-background-color: transparent;">
         <items>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="350.0">
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="350.0" spacing="15.0">
                <children>
                   <Label text="Login">
                      <font>
-                        <Font size="30.0" />
+                        <Font size="46.0" />
                      </font>
                   </Label>
+                  <TextField fx:id="tfUsernameLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Username">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextField>
+                  <PasswordField fx:id="pfPasswordLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Password">
+                     <font>
+                        <Font size="16.0" />
+                     </font></PasswordField>
+                  <Button fx:id="btnLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Login" />
                </children>
             </VBox>
             <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="700.0" prefWidth="843.0" style="-fx-background-color: transparent;">
@@ -23,18 +33,97 @@
                      <children>
                         <Label text="SignUp Customer">
                            <font>
-                              <Font size="30.0" />
+                              <Font size="46.0" />
                            </font>
                         </Label>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" spacing="90.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                                 <children>
+                                    <TextField fx:id="tfNameAndSurnameCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Name, Surname">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></TextField>
+                                    <TextField fx:id="tfBirthDateCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Birthdate: dd/MM/yyyy">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></TextField>
+                                    <ChoiceBox fx:id="cbGenderCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                                 <children>
+                                    <TextField fx:id="tfEmailCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Email">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font></TextField>
+                                    <PasswordField fx:id="pfPasswordCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Password">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </PasswordField>
+                                    <PasswordField fx:id="pfConfirmPasswordCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Confirm Password">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </PasswordField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Button fx:id="btnSignUpCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="SignUp" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="841.0">
                      <children>
                         <Label text="SignUp Hairdresser">
                            <font>
-                              <Font size="30.0" />
+                              <Font size="46.0" />
                            </font>
                         </Label>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="600.0" spacing="90.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                                 <children>
+                                    <TextField fx:id="tfNameAndSurnameHairdresser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Name, Surname">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="tfShopNameHairdresser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Shop Name">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="tfPivaHairdresser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="PIVA">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                                 <children>
+                                    <TextField fx:id="tfEmailHairdresser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Email">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </TextField>
+                                    <PasswordField fx:id="pfPasswordHairdresser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Password">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </PasswordField>
+                                    <PasswordField fx:id="pfConfirmPasswordHairdresser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Confirm Password">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </PasswordField>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <Button fx:id="btnSignUpHairdresser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="SignUp" />
                      </children>
                   </VBox>
               </items>
