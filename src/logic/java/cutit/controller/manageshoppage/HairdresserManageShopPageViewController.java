@@ -74,9 +74,10 @@ public class HairdresserManageShopPageViewController {
         ivList.add(iv5);
         ivList.add(iv6);
         ivList.add(iv7);
+        ivList.add(iv8);
         Image im = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/file_upload.png"), "Unable to get resource file /cutit/cutit/files/file_upload.png").toString());
-        for(int j=0;j<ivList.size();j++){
-            ivList.get(j).setImage(im);
+        for (ImageView imageView : ivList) {
+            imageView.setImage(im);
         }
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESHOPPAGEVIEWCONTROLLER");
     }

@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class ShopInfoViewController {
@@ -24,7 +25,7 @@ public class ShopInfoViewController {
     private List<ImageView> ivList = new ArrayList<>();
 
     @FXML
-    private Label lShopName, lShopPhone, lShopDescription, lShopOpenTime, lTitleEmployee, lEmployee, lblPhoto;
+    private Label lShopName, lShopPhone, lShopDescription, lShopOpenTime, lblServiceList, lTitleEmployee, lEmployee, lblPhoto;
 
     @FXML
     private VBox vboxShopInfo, vboxPhoto;
@@ -52,8 +53,6 @@ public class ShopInfoViewController {
         if(Objects.equals(shopBeanUQ.getShopPhoneNumber(), "")){
             lShopPhone.setVisible(true);
             lShopPhone.setText(shopBeanUQ.getShopPhoneNumber());
-        } else {
-            lShopPhone.setVisible(false);
         }
         if(!shopBeanUQ.getImages().isEmpty()){
             ivShopProfPhoto.setVisible(true);
@@ -70,21 +69,58 @@ public class ShopInfoViewController {
             lblPhoto.setVisible(false);
             vboxPhoto.setVisible(false);
         }
-        if(Objects.equals(shopBeanUQ.getShopDescription(), "")){
+        if(!Objects.equals(shopBeanUQ.getShopDescription(), "")){
             lShopDescription.setVisible(true);
             lShopDescription.setText(shopBeanUQ.getShopDescription());
-        } else {
-            lShopDescription.setVisible(false);
         }
-        lShopOpenTime.setText(shopBeanUQ.getShopOpenTime() + " - " + shopBeanUQ.getShopCloseTime());
-        //priceList
-        if(Objects.equals(shopBeanUQ.getShopEmployee(), "")){
+        Map<Integer,Boolean> opendays = shopBeanUQ.getShopOpenDays();
+        String openTimes = "";
+        for(int i=1;i<opendays.size()+1;i++){
+           if(opendays.get(i)){
+               switch (i){
+                   case 1:{
+                       openTimes = openTimes + "Monday" + "\n";
+                       break;
+                   }case 2:{
+                       openTimes = openTimes + "Tuesday" + "\n";
+                       break;
+                   }case 3:{
+                       openTimes = openTimes + "Wednesday" + "\n";
+                       break;
+                   }case 4:{
+                       openTimes = openTimes + "Thursday" + "\n";
+                       break;
+                   }case 5:{
+                       openTimes = openTimes + "Friday" + "\n";
+                       break;
+                   }case 6:{
+                       openTimes = openTimes + "Saturday" + "\n";
+                       break;
+                   }case 7:{
+                       openTimes = openTimes + "Sunday" + "\n";
+                       break;
+                   }
+               }
+           }
+        }
+        if(!(openTimes.equals(""))){
+            openTimes = openTimes + shopBeanUQ.getShopOpenTime() + " - " + shopBeanUQ.getShopCloseTime();
+            lShopOpenTime.setText(openTimes);
+        } else {
+            lShopOpenTime.setText("Shop is closed.");
+        }
+        if(!shopBeanUQ.getServices().isEmpty()){
+            List<String> allServices = shopBeanUQ.getServices();
+            String servicesLabel = "";
+            for (String allService : allServices) {
+                servicesLabel = servicesLabel +  allService + "\n";
+            }
+            lblServiceList.setText(servicesLabel);
+        }
+        if(!Objects.equals(shopBeanUQ.getShopEmployee(), "")){
             lTitleEmployee.setVisible(true);
             lEmployee.setVisible(true);
             lEmployee.setText(shopBeanUQ.getShopEmployee());
-        } else{
-            lTitleEmployee.setVisible(false);
-            lEmployee.setVisible(false);
         }
     }
 

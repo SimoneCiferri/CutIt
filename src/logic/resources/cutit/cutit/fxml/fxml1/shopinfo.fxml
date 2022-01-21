@@ -12,7 +12,7 @@
          <content>
             <VBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1000.0">
                <children>
-                  <Label fx:id="lShopName" text="ShopName">
+                  <Label fx:id="lShopName" text="ShopName" textFill="WHITE">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -28,14 +28,20 @@
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="720.0">
                            <children>
                               <ImageView fx:id="ivShopProfPhoto" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                              <Label fx:id="lShopPhone" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="069625500">
-                                 <VBox.margin>
-                                    <Insets top="15.0" />
-                                 </VBox.margin></Label>
-                              <Label fx:id="lShopDescription" alignment="TOP_LEFT" maxHeight="115.0" maxWidth="720.0" minHeight="-Infinity" minWidth="-Infinity" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Description">
+                              <Label fx:id="lShopPhone" alignment="CENTER" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Phone number non available" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets top="15.0" />
                                  </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding></Label>
+                              <Label fx:id="lShopDescription" maxWidth="720.0" minHeight="-Infinity" minWidth="-Infinity" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Welcome to my shop!" textFill="WHITE">
+                                 <VBox.margin>
+                                    <Insets bottom="15.0" top="15.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
                               </Label>
                            </children>
                         </VBox>
@@ -58,42 +64,66 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Label fx:id="lTitleOpenTime" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="130.0" text="Opening time" underline="true">
+                  <Label fx:id="lTitleOpenTime" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Opening time" textFill="WHITE" underline="true">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="lShopOpenTime" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Opening Time...">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding></Label>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Service List" textFill="WHITE" underline="true">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="10.0" right="10.0" top="10.0" />
+                     </padding>
                   </Label>
-                  <Label fx:id="lShopOpenTime" alignment="TOP_LEFT" prefHeight="40.0" prefWidth="105.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Opening Time..." />
-                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="130.0" text="Price List" underline="true">
+                  <Label fx:id="lblServiceList" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Service list not available" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding></Label>
+                  <Label fx:id="lTitleEmployee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Employee" textFill="WHITE" underline="true">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="10.0" right="10.0" top="10.0" />
+                     </padding>
                   </Label>
-                  <Label alignment="TOP_LEFT" prefHeight="200.0" prefWidth="500.0" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Price list..." />
-                  <Label fx:id="lTitleEmployee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="130.0" text="Employee" underline="true">
+                  <Label fx:id="lEmployee" alignment="TOP_LEFT" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Employe...." textFill="WHITE">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding></Label>
+                  <Label fx:id="lblPhoto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Photo" textFill="WHITE" underline="true">
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="10.0" right="10.0" top="10.0" />
+                     </padding>
                   </Label>
-                  <Label fx:id="lEmployee" alignment="TOP_LEFT" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Employe...." />
-                  <Label fx:id="lblPhoto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="130.0" text="Photo" underline="true">
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <VBox fx:id="vboxPhoto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="825.0" style="-fx-border-color: grey; -fx-border-radius: 5;">
+                  <VBox fx:id="vboxPhoto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="850.0" style="-fx-border-color: grey; -fx-border-radius: 5;">
                      <children>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="825.0">
                            <children>
@@ -121,6 +151,9 @@
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
                         </HBox>
                         <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="825.0">
                            <children>
@@ -144,6 +177,9 @@
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
                         </HBox>
                      </children>
                      <VBox.margin>
