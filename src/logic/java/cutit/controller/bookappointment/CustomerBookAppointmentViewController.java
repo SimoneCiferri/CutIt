@@ -95,32 +95,38 @@ public class CustomerBookAppointmentViewController {
 
     @FXML
     public void bookAppointment() {
-        appointmentBeanFirstUI.setStartTime(getAppointmentStartTime());
-        appointmentBeanFirstUI.setCustomer(customerBeanFirstUI.getcEmail());
-        if(!Objects.equals(tfPromotionCode.getText(), "")){
-            if(checkPromotion()){
-                appointmentBeanFirstUI.setPromotionCode(tfPromotionCode.getText());
-            } else{
+        if(checkInput()){
+            appointmentBeanFirstUI.setStartTime(getAppointmentStartTime());
+            appointmentBeanFirstUI.setCustomer(customerBeanFirstUI.getcEmail());
+            if(!Objects.equals(tfPromotionCode.getText(), "")){
+                if(checkPromotion()){
+                    appointmentBeanFirstUI.setPromotionCode(tfPromotionCode.getText());
+                } else{
+                    appointmentBeanFirstUI.setPromotionCode(null);
+                }
+            } else {
                 appointmentBeanFirstUI.setPromotionCode(null);
             }
-        } else {
-            appointmentBeanFirstUI.setPromotionCode(null);
-        }
-        appointmentBeanFirstUI.setServiceName(cbServices.getValue());
-        appointmentBeanFirstUI.setShopName(shopBeanUQ.getShopName());
-        if(!Objects.equals(taNotes.getText(), "")){
-            appointmentBeanFirstUI.setAppNotes(taNotes.getText());
-        }
-        try {
-            bookAppointmentController.bookAppointment(appointmentBeanFirstUI);
-            //Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
-            showPayedAndBooked();
-        } catch (DuplicatedRecordException de){
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
-        } catch (Exception e){
-            e.printStackTrace();
+            appointmentBeanFirstUI.setServiceName(cbServices.getValue());
+            appointmentBeanFirstUI.setShopName(shopBeanUQ.getShopName());
+            if(!Objects.equals(taNotes.getText(), "")){
+                appointmentBeanFirstUI.setAppNotes(taNotes.getText());
+            }
+            try {
+                bookAppointmentController.bookAppointment(appointmentBeanFirstUI);
+                //Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
+                showPayedAndBooked();
+            } catch (DuplicatedRecordException de){
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
 
+    }
+
+    private boolean checkInput() {
+        return cbTimeSlot.getValue() != null && cbServices.getValue()  != null;
     }
 
     private LocalDateTime getAppointmentStartTime() {
@@ -213,13 +219,7 @@ public class CustomerBookAppointmentViewController {
         Button btnAddToFav = new Button("Add Shop To Favourites");
         btnAddToFav.setPrefHeight(55);
         btnAddToFav.setOnMouseClicked((MouseEvent) -> addToFavourites());
-        Button btnAddToCalendar = new Button("Add Appointment To Calendar");
-        btnAddToCalendar.setPrefHeight(55);
-        btnAddToCalendar.setOnMouseClicked((MouseEvent) -> addAppToCalendar());
-        Button btnRateShop = new Button("Rate Shop");
-        btnRateShop.setPrefHeight(55);
-        btnRateShop.setOnMouseClicked((MouseEvent) -> rateShop());
-        hCont.getChildren().addAll(btnGetDir, btnAddToFav, btnAddToCalendar, btnRateShop);
+        hCont.getChildren().addAll(btnGetDir, btnAddToFav);
         cont.getChildren().addAll(l, l1, hCont);
         bpInBookApp.getChildren().clear();
         bpInBookApp.setCenter(cont);
@@ -227,11 +227,6 @@ public class CustomerBookAppointmentViewController {
 
     private void getDirections(){
         //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-    }
-
-    private void rateShop(){
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        Facade.getInstance().decorateView(ViewLayout1.CUSTOMERRATESHOP);
     }
 
     private void addToFavourites() {
@@ -250,13 +245,6 @@ public class CustomerBookAppointmentViewController {
             AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    private void addAppToCalendar(){
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
-        if(bookAppointmentController.addToCalendar(this.appointmentBeanFirstUI)){
-            Facade.getInstance().decorateView(ViewLayout1.HOME);
         }
     }
 

@@ -3,7 +3,7 @@ package cutit.controller.bookappointment;
 import cutit.bean.CustomerBean;
 import cutit.bean.ShopBeanUQ;
 import cutit.decorator.ViewLayout1;
-import cutit.decorator.concrete_decorator.ClientBookAppointmentView1;
+import cutit.decorator.concrete_decorator.CustomerBookAppointmentView1;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -90,9 +90,9 @@ public class ShopInfoViewController {
 
     @FXML
     public boolean bookAppointment() {
-        Facade.getInstance().decorateView(ViewLayout1.CLIENTBOOKAPPOINTMENT);
-        ClientBookAppointmentView1 view = (ClientBookAppointmentView1) Facade.getInstance().getViewMap().get(ViewLayout1.CLIENTBOOKAPPOINTMENT);
-        CustomerBookAppointmentViewController viewController = (CustomerBookAppointmentViewController) view.getLoadedViewController1(ViewLayout1.CLIENTBOOKAPPOINTMENT);
+        Facade.getInstance().decorateView(ViewLayout1.CUSTOMERBOOKAPPOINTMENT);
+        CustomerBookAppointmentView1 view = (CustomerBookAppointmentView1) Facade.getInstance().getViewMap().get(ViewLayout1.CUSTOMERBOOKAPPOINTMENT);
+        CustomerBookAppointmentViewController viewController = (CustomerBookAppointmentViewController) view.getLoadedViewController1(ViewLayout1.CUSTOMERBOOKAPPOINTMENT);
         viewController.fillView(customerBeanFirstUI, shopBeanUQ);
         return true;
     }

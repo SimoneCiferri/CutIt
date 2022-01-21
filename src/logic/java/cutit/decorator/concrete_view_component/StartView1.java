@@ -30,7 +30,7 @@ public class StartView1 implements ViewComponent1 {
 
     @Override
     public void loadXML1(ViewLayout1 layout) throws IOException, NullPointerException {
-        if(!loadedView.containsKey(layout)){
+        if(!loadedView.containsKey(layout) || layout == ViewLayout1.CUSTOMERBOOKAPPOINTMENT){
             FXMLLoader loader = new FXMLLoader(ViewLayout1.getPath(layout));
             Pane primaryLayout = loader.load();
             Object controller = loader.getController();

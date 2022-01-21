@@ -16,7 +16,6 @@ import java.io.IOException;
 public class HomeViewController {
 
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private static final String defaultLogo = "/cutit/cutit/files/barberlogo.jpg";
     private CustomerBean customerBeanFirstUI;
     private ShopListBean shopListBeanFirstUI;
     private BookAppointmentController bookAppointmentController;

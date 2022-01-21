@@ -104,8 +104,8 @@ public class Facade {
                 ClientRateShopView1 clientrateview = new ClientRateShopView1(startView);
                 viewMap.put(layout, clientrateview);
             }
-            case CLIENTBOOKAPPOINTMENT -> {
-                ClientBookAppointmentView1 clientbookappview = new ClientBookAppointmentView1(startView);
+            case CUSTOMERBOOKAPPOINTMENT -> {
+                CustomerBookAppointmentView1 clientbookappview = new CustomerBookAppointmentView1(startView);
                 viewMap.put(layout, clientbookappview);
             }
             case CUSTOMERAPPINFO -> {
@@ -138,5 +138,10 @@ public class Facade {
     public void logout(){
         startView.getLoaded().clear();
         //forse anche il clear dei controller
+    }
+
+    public void forgetMe(ViewLayout1 layout1){
+        startView.getLoaded().remove(layout1);
+        viewMap.remove(layout1);
     }
 }

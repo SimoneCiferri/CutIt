@@ -17,7 +17,6 @@ import java.io.File;
 public class CustomerFavouritesShopViewController {
 
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private static final String defaultLogo = "/cutit/cutit/files/barberlogo.jpg";
     private ShopBeanUQ shopBeanUQ;
     private CustomerBean customerBeanFirstUI;
     private ShopListBean shopListBeanFirstUI;
@@ -39,14 +38,16 @@ public class CustomerFavouritesShopViewController {
         try {
             bookAppointmentController.getFavouritesShop(shopListBeanFirstUI, customerBeanFirstUI.getcEmail());
             for (int i = 0; i < shopListBeanFirstUI.getShopBeanList().size(); i++) {
+                HBox card;
                 File im;
                 if(!shopListBeanFirstUI.getShopBeanList().get(i).getImages().isEmpty()){
                     im = shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0);
+                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle, im);
                 } else {
-                    im = new File(defaultLogo);
+                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle);
+
                 }
                 int n = i;
-                HBox card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle, im);
                 card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
                 vbInScrollCFav.getChildren().add(card);
             }

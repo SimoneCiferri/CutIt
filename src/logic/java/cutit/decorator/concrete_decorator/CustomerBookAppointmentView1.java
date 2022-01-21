@@ -7,13 +7,13 @@ import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
 import javafx.scene.control.Alert;
 
-public class ClientBookAppointmentView1 extends Decorator {
+public class CustomerBookAppointmentView1 extends Decorator {
 
-    public ClientBookAppointmentView1(ViewComponent1 view){
+    public CustomerBookAppointmentView1(ViewComponent1 view){
 
         super(view);
         try {
-            super.loadXML1(ViewLayout1.CLIENTBOOKAPPOINTMENT);
+            super.loadXML1(ViewLayout1.CUSTOMERBOOKAPPOINTMENT);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
