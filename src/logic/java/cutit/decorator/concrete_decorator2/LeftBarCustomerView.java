@@ -9,8 +9,7 @@ import javafx.scene.control.Alert;
 
 public class LeftBarCustomerView extends Decorator2 {
 
-    public LeftBarCustomerView(
-    ViewComponent2 view){
+    public LeftBarCustomerView(ViewComponent2 view){
 
         super(view);
         try {

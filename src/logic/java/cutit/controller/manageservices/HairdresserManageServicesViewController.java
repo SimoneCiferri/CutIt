@@ -3,7 +3,7 @@ package cutit.controller.manageservices;
 import cutit.bean.ManageServiceBean;
 import cutit.bean.firstui.ManageServiceBeanFirstUI;
 import cutit.bean.ShopBean;
-import cutit.bean.firstui.ShopBeanUQ;
+import cutit.bean.ShopBeanUQ;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.utils.TextFieldCheck;

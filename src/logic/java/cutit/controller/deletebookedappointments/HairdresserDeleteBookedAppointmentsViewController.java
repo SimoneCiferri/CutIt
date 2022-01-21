@@ -3,16 +3,12 @@ package cutit.controller.deletebookedappointments;
 import cutit.bean.DeleteAppointmentBean;
 import cutit.bean.ShopBean;
 import cutit.bean.firstui.DeleteAppointmentBeanFirstUI;
-import cutit.bean.firstui.ShopBeanUQ;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
-import java.io.File;
 
 public class HairdresserDeleteBookedAppointmentsViewController {
 

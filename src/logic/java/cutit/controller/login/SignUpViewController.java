@@ -2,8 +2,8 @@ package cutit.controller.login;
 
 import cutit.bean.CustomerBean;
 import cutit.bean.HairdresserBean;
-import cutit.bean.firstui.CustomerBeanFirstUI;
-import cutit.bean.firstui.HairdresserBeanFirstUI;
+import cutit.bean.CustomerBeanUQ;
+import cutit.bean.HairdresserBeanUQ;
 import cutit.decorator.ViewLayout1;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
@@ -37,8 +37,8 @@ public class SignUpViewController {
 
     @FXML
     public void initialize(){
-        customerBeanFirstUI = new CustomerBeanFirstUI();
-        hairdresserBeanFirstUI = new HairdresserBeanFirstUI();
+        customerBeanFirstUI = new CustomerBeanUQ();
+        hairdresserBeanFirstUI = new HairdresserBeanUQ();
         loginController = new LoginController();
         cbCustomerGender.getItems().addAll("Female", "Male", "Other");
     }

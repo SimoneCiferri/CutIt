@@ -24,7 +24,7 @@
                      <font>
                         <Font size="16.0" />
                      </font></PasswordField>
-                  <Button fx:id="btnLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Login" />
+                  <Button fx:id="btnLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#login" prefHeight="30.0" prefWidth="60.0" text="Login" />
                </children>
             </VBox>
             <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="700.0" prefWidth="843.0" style="-fx-background-color: transparent;">
@@ -71,7 +71,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <Button fx:id="btnSignUpCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="SignUp" />
+                        <Button fx:id="btnSignUpCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#signUpCustomer" prefHeight="30.0" prefWidth="60.0" text="SignUp" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="841.0">
@@ -123,7 +123,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <Button fx:id="btnSignUpHairdresser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="SignUp" />
+                        <Button fx:id="btnSignUpHairdresser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#signUpHairdresser" prefHeight="30.0" prefWidth="60.0" text="SignUp" />
                      </children>
                   </VBox>
               </items>

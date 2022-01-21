@@ -1,4 +1,4 @@
-package cutit.bean.firstui;
+package cutit.bean;
 
 import cutit.bean.ShopBean;
 

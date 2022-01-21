@@ -9,8 +9,7 @@ import javafx.scene.control.Alert;
 
 public class HomeView2 extends Decorator2 {
 
-    public HomeView2(
-    ViewComponent2 view){
+    public HomeView2(ViewComponent2 view){
 
         super(view);
         try {

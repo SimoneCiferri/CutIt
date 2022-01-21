@@ -1,8 +1,8 @@
-package cutit.bean.firstui;
+package cutit.bean;
 
 import cutit.bean.HairdresserBean;
 
-public class HairdresserBeanFirstUI implements HairdresserBean {
+public class HairdresserBeanUQ implements HairdresserBean {
 
     private String hEmail;
     private String hPassword;

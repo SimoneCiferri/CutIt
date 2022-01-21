@@ -2,7 +2,7 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.*;
 import cutit.bean.firstui.AppointmentBeanFirstUI;
-import cutit.bean.firstui.ShopBeanUQ;
+import cutit.bean.ShopBeanUQ;
 import cutit.controller.addappointmenttocalendar.AddAppointmentToCalendarController;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.controller.payonline.PayOnlineController;

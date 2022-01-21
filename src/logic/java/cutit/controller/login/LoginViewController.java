@@ -1,10 +1,10 @@
 package cutit.controller.login;
 
 import cutit.bean.*;
-import cutit.bean.firstui.CustomerBeanFirstUI;
-import cutit.bean.firstui.HairdresserBeanFirstUI;
-import cutit.bean.firstui.ShopBeanUQ;
-import cutit.bean.firstui.UserBeanFirstUI;
+import cutit.bean.CustomerBeanUQ;
+import cutit.bean.HairdresserBeanUQ;
+import cutit.bean.ShopBeanUQ;
+import cutit.bean.UserBeanUQ;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.controller.topbarviewcontrollers.TopBarHairdresserViewController;
 import cutit.decorator.ViewLayout1;
@@ -37,9 +37,9 @@ public class LoginViewController {
 
     @FXML
     public void initialize(){
-        userBeanFirstUI = new UserBeanFirstUI();
-        customerBeanFirstUI = new CustomerBeanFirstUI();
-        hairdresserBeanFirstUI = new HairdresserBeanFirstUI();
+        userBeanFirstUI = new UserBeanUQ();
+        customerBeanFirstUI = new CustomerBeanUQ();
+        hairdresserBeanFirstUI = new HairdresserBeanUQ();
         shopBeanFirstUI = new ShopBeanUQ();
         loginController = new LoginController();
     }

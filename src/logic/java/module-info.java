@@ -23,6 +23,8 @@ module cutit.cutit {
     opens cutit.bean to javafx.fxml;
     exports cutit.controller.bookappointment;
     opens cutit.controller.bookappointment to javafx.fxml;
+    exports cutit.controller.bookappointment.secondui;
+    opens cutit.controller.bookappointment.secondui to javafx.fxml;
     exports cutit.controller.getlocationdirections;
     opens cutit.controller.getlocationdirections to javafx.fxml;
     exports cutit.controller.managepromotions;

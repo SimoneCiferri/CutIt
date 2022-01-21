@@ -1,7 +1,7 @@
 package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
-import cutit.bean.firstui.ShopBeanUQ;
+import cutit.bean.ShopBeanUQ;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.ClientBookAppointmentView1;
 import cutit.facade.Facade;

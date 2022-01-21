@@ -1,12 +1,9 @@
-package cutit.bean.firstui;
-
-import cutit.bean.AppointmentBean;
-import cutit.bean.CustomerBean;
+package cutit.bean;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class CustomerBeanFirstUI implements CustomerBean {
+public class CustomerBeanUQ implements CustomerBean {
 
     private String cEmail;
     private String cPassword;

@@ -1,7 +1,7 @@
 package cutit.controller.managepromotions;
 
 import cutit.bean.ManagePromotionBean;
-import cutit.bean.firstui.HairdresserBeanFirstUI;
+import cutit.bean.HairdresserBeanUQ;
 import cutit.bean.firstui.ManagePromotionBeanUQ;
 import cutit.bean.ShopBean;
 import cutit.exception.DBConnectionException;
@@ -22,7 +22,7 @@ import java.util.List;
 
 public class HairdresserManagePromotionsViewController {
 
-    private HairdresserBeanFirstUI hairdresserBeanFirstUI;
+    private HairdresserBeanUQ hairdresserBeanFirstUI;
     private ShopBean shopBeanFirstUI;
     private ManagePromotionBean managePromotionBeanFirstUI;
     private ManagePromotionController managePromotionController;

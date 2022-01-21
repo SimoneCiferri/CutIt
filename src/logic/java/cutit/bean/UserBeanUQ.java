@@ -1,8 +1,8 @@
-package cutit.bean.firstui;
+package cutit.bean;
 
 import cutit.bean.UserBean;
 
-public class UserBeanFirstUI implements UserBean {
+public class UserBeanUQ implements UserBean {
 
     private String username;
     private String passwd;

@@ -8,7 +8,7 @@
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="550.0" prefWidth="70.0" spacing="60.0" style="-fx-border-radius: 5;">
             <children>
-                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="ivHome" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#homePage" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../files/icons8-home-30.png" />
                     </image>
@@ -16,7 +16,7 @@
                         <Insets top="30.0" />
                     </VBox.margin>
                 </ImageView>
-                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="ivFavourites" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#favouritesPage" pickOnBounds="true" preserveRatio="true">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
@@ -24,7 +24,7 @@
                         <Image url="@../../files/icons8-heart-30.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="ivPromotions" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#promPage" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../files/icons8-coupon-32.png" />
                     </image>
@@ -32,7 +32,7 @@
                         <Insets />
                     </VBox.margin>
                 </ImageView>
-                <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="ivAppointments" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#appPage" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../files/icons8-calendar-50.png" />
                     </image>
@@ -40,7 +40,7 @@
                         <Insets />
                     </VBox.margin>
                 </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ivLogout" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../files/icons8-fire-exit-48.png" />
                </image>
