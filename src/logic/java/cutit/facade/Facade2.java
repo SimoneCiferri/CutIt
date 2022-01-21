@@ -67,6 +67,51 @@ public class Facade2 {
                 HomeView2 homeView2 = new HomeView2(startView2);
                 viewMap.put(layout, homeView2);
             }
+            case CUSTOMERAPPOINTMENTS -> {
+                CustomerAppointmentsView2 customerAppointmentsView2 = new CustomerAppointmentsView2(startView2);
+                viewMap.put(layout, customerAppointmentsView2);
+            }
+            case CUSTOMERBOOKAPPOINTMENT -> {
+                CustomerBookAppointmentView2 customerBookAppointmentView2 = new CustomerBookAppointmentView2(startView2);
+                viewMap.put(layout, customerBookAppointmentView2);
+            }
+            case CUSTOMERFAVOURITESSHOP -> {
+                CustomerFavouritesShopView2 customerFavouritesShopView2 = new CustomerFavouritesShopView2(startView2);
+                viewMap.put(layout, customerFavouritesShopView2);
+            }
+            case CUSTOMERPROMOTIONINFO -> {
+                CustomerPromotionInfoView2 customerPromotionInfoView2 = new CustomerPromotionInfoView2(startView2);
+                viewMap.put(layout, customerPromotionInfoView2);
+            }
+            case CUSTOMERPROMOTION -> {
+                CustomerPromotionView2 customerPromotionView2 = new CustomerPromotionView2(startView2);
+                viewMap.put(layout, customerPromotionView2);
+            }
+            case CUSTOMERRATESHOP -> {
+                CustomerRateShopView2 customerRateShopView2 = new CustomerRateShopView2(startView2);
+                viewMap.put(layout, customerRateShopView2);
+            }
+            case HAIRDRESSERDELETEBOOKEDAPPOINTMENTS -> {
+                HairdresserDeleteBookedAppointmentsView2 hairdresserDeleteBookedAppointmentsView2 = new HairdresserDeleteBookedAppointmentsView2(startView2);
+                viewMap.put(layout, hairdresserDeleteBookedAppointmentsView2);
+            }
+            case HAIRDRESSERMANAGEPROMOTIONS -> {
+                HairdresserManagePromotionsView2 hairdresserManagePromotionsView2 = new HairdresserManagePromotionsView2(startView2);
+                viewMap.put(layout, hairdresserManagePromotionsView2);
+            }
+            case HAIRDRESSERMANAGESERVICES -> {
+                HairdresserManageServicesView2 hairdresserManageServicesView2 = new HairdresserManageServicesView2(startView2);
+                viewMap.put(layout, hairdresserManageServicesView2);
+            }
+            case HAIRDRESSERMANAGESHOPPAGE -> {
+                HairdresserManageShopPageView2 hairdresserManageShopPageView2 = new HairdresserManageShopPageView2(startView2);
+                viewMap.put(layout, hairdresserManageShopPageView2);
+            }
+            case SHOPINFOVIEW2 -> {
+                ShopInfoView2 shopInfoView2 = new ShopInfoView2(startView2);
+                viewMap.put(layout, shopInfoView2);
+            }
+
         }
     }
 
