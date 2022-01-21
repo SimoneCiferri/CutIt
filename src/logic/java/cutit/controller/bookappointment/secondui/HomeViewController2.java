@@ -30,7 +30,7 @@ public class HomeViewController2 {
         try {
             bookAppointmentController.getShops(shopListBeanSecondUI);
             for(int i=0;i<shopListBeanSecondUI.getShopBeanList().size();i++){
-                VBox shop = JavaFXNodeFactory.getInstance().createFullShopCard(shopListBeanSecondUI.getShopBeanList().get(i).getShopName(), shopListBeanSecondUI.getShopBeanList().get(i).getShopAddress());
+                VBox shop = JavaFXNodeFactory.getInstance().createFavouritesShopCard(shopListBeanSecondUI.getShopBeanList().get(i).getShopName(), shopListBeanSecondUI.getShopBeanList().get(i).getShopAddress());
                 vbInScroll.getChildren().add(shop);
             }
         } catch (Exception e) {
