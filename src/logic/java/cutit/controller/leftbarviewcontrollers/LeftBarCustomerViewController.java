@@ -1,8 +1,9 @@
 package cutit.controller.leftbarviewcontrollers;
 
-import com.mysql.cj.util.DnsSrv;
 import cutit.bean.CustomerBean;
+import cutit.controller.bookappointment.secondui.HomeViewController2;
 import cutit.decorator.ViewLayout2;
+import cutit.decorator.concrete_decorator2.HomeView2;
 import cutit.facade.Facade2;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -10,7 +11,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.image.ImageView;
 
-import java.util.List;
 
 public class LeftBarCustomerViewController {
 
@@ -36,9 +36,9 @@ public class LeftBarCustomerViewController {
     public boolean homePage() {
         setOnPageStyle(ivHome);
         Facade2.getInstance().decorateView2(ViewLayout2.HOME2);
-        /*Home1View view = (Home1View)Facade.getInstance().getViewMap().get(ViewLayout1.HOME);
-        HomeViewController viewController = (HomeViewController) view.getLoadedViewController1(ViewLayout1.HOME);
-        viewController.fillView(customerBeanFirstUI);*/
+        HomeView2 view = (HomeView2) Facade2.getInstance().getViewMap().get(ViewLayout2.HOME2);
+        HomeViewController2 viewController = (HomeViewController2) view.getLoadedViewController2(ViewLayout2.HOME2);
+        viewController.fillView(customerBeanSecondUI);
         return true;
     }
 

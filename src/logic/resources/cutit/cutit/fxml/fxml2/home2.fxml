@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.bookappointment.secondui.HomeViewController2">
@@ -10,5 +11,13 @@
             <Insets top="35.0" />
          </VBox.margin>
       </AnchorPane>
+      <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="1210.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+         <content>
+            <VBox fx:id="vbInScroll" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1205.0" spacing="15.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+               <padding>
+                  <Insets top="15.0" />
+               </padding></VBox>
+         </content>
+      </ScrollPane>
    </children>
 </VBox>

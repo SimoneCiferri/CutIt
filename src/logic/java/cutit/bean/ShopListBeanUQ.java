@@ -1,4 +1,4 @@
-package cutit.bean.firstui;
+package cutit.bean;
 
 import cutit.bean.ShopBean;
 import cutit.bean.ShopListBean;
@@ -6,7 +6,7 @@ import cutit.bean.ShopListBean;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShopListBeanFirstUI implements ShopListBean {
+public class ShopListBeanUQ implements ShopListBean {
 
     private List<ShopBean> shopBeanList = new ArrayList<>();
 

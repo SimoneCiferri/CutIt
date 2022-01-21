@@ -3,7 +3,7 @@ package cutit.controller.bookappointment;
 import cutit.bean.CustomerBean;
 import cutit.bean.ShopListBean;
 import cutit.bean.ShopBeanUQ;
-import cutit.bean.firstui.ShopListBeanFirstUI;
+import cutit.bean.ShopListBeanUQ;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.ShopInfoView1;
 import cutit.facade.Facade;
@@ -27,7 +27,7 @@ public class CustomerFavouritesShopViewController {
     private VBox vbInScrollCFav;
 
     public boolean initialize(){
-        shopListBeanFirstUI =  new ShopListBeanFirstUI();
+        shopListBeanFirstUI =  new ShopListBeanUQ();
         bookAppointmentController = new BookAppointmentController();
         vbInScrollCFav.setSpacing(15);
         System.out.println("CONTROLLER GRAFICO CUSTOMERFAVOURITESSHOPVIEWCONTROLLER");

@@ -2,7 +2,7 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
 import cutit.bean.ShopListBean;
-import cutit.bean.firstui.ShopListBeanFirstUI;
+import cutit.bean.ShopListBeanUQ;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.ShopInfoView1;
 import cutit.facade.Facade;
@@ -25,7 +25,7 @@ public class HomeViewController {
     private VBox vbInScroll;
 
     public boolean initialize() throws IOException {
-        shopListBeanFirstUI = new ShopListBeanFirstUI();
+        shopListBeanFirstUI = new ShopListBeanUQ();
         bookAppointmentController = new BookAppointmentController();
         vbInScroll.setSpacing(15);
         System.out.println("CONTROLLER GRAFICO HOMEVIEWCONTROLLER");

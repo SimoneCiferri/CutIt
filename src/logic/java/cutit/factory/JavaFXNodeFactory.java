@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -144,6 +145,27 @@ public class JavaFXNodeFactory {
         l.setPadding(new Insets(0, 0, 10, 20));
         card.getChildren().add(l);
         return card;
+    }
+
+    public VBox createFullShopCard(String shopName, String address){
+        VBox vbShop = new VBox();
+        vbShop.setMinSize(800, 600);
+        vbShop.setPrefSize(800, 600);
+        vbShop.setMaxSize(800, 600);
+        String style = "-fx-border-color: black; -fx-border-radius: 5;";
+        vbShop.setStyle(style);
+        vbShop.setAlignment(Pos.TOP_LEFT);
+        Label sName = createLabel2(shopName, 30.0);
+        Label shopAddress = createLabel2(address, 12.0);
+        vbShop.getChildren().addAll(sName, shopAddress);
+        return vbShop;
+    }
+
+    public Label createLabel2(String title, Double fontSize){
+        Label l = new Label(title);
+        l.setTextFill(Color.BLACK);
+        l.setFont(Font.font(fontSize));
+        return l;
     }
 
 }
