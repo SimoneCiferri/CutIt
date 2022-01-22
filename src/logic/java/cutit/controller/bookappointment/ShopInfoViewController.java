@@ -2,10 +2,14 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
 import cutit.bean.ShopBeanUQ;
+import cutit.controller.getlocationdirections.GetLocationDirectionsController;
+import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController1;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.CustomerBookAppointmentView1;
+import cutit.decorator.concrete_decorator.GetLocationDirectionsGoogleMapsView1;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,7 +26,11 @@ public class ShopInfoViewController {
     private ShopBeanUQ shopBeanUQ;
     private CustomerBean customerBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
+    private GetLocationDirectionsController getLocationDirectionsController;
     private List<ImageView> ivList = new ArrayList<>();
+
+    @FXML
+    private Button btnMaps;
 
     @FXML
     private Label lShopName, lShopPhone, lShopDescription, lShopOpenTime, lblServiceList, lTitleEmployee, lEmployee, lblPhoto;
@@ -37,6 +45,7 @@ public class ShopInfoViewController {
     public boolean initialize() throws IOException {
         shopBeanUQ = new ShopBeanUQ();
         bookAppointmentController = new BookAppointmentController();
+        getLocationDirectionsController = new GetLocationDirectionsController();
         ivList.add(ivShop1);
         ivList.add(ivShop2);
         ivList.add(ivShop3);
@@ -65,9 +74,12 @@ public class ShopInfoViewController {
                 ivList.get(i).setImage(new Image(String.valueOf(shopBeanUQ.getImages().get(i).toURI())));
             }
         } else {
-            ivShopProfPhoto.setVisible(false);
+            ivShopProfPhoto.setImage(new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/blank-profile-picture.png")).toString()));
             lblPhoto.setVisible(false);
             vboxPhoto.setVisible(false);
+        }
+        if(Objects.equals(shopBeanUQ.getShopAddress(), "")){
+            btnMaps.setDisable(true);
         }
         if(!Objects.equals(shopBeanUQ.getShopDescription(), "")){
             lShopDescription.setVisible(true);
@@ -142,6 +154,9 @@ public class ShopInfoViewController {
     @FXML
     public boolean goToDirections(){
         Facade.getInstance().decorateView(ViewLayout1.GMAPS);
+        GetLocationDirectionsGoogleMapsView1 view = (GetLocationDirectionsGoogleMapsView1) Facade.getInstance().getViewMap().get(ViewLayout1.GMAPS);
+        GetLocationDirectionsGoogleMapsViewController1 viewController = (GetLocationDirectionsGoogleMapsViewController1) view.getLoadedViewController1(ViewLayout1.GMAPS);
+        getLocationDirectionsController.getDirection(viewController ,shopBeanUQ.getShopAddress());
         return true;
     }
 

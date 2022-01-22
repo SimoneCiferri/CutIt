@@ -8,9 +8,9 @@ import cutit.log.LogWriter;
 import javafx.scene.control.Alert;
 
 
-public class CustomerGetLocationDirectionsView1 extends Decorator {
+public class GetLocationDirectionsGoogleMapsView1 extends Decorator {
 
- public CustomerGetLocationDirectionsView1(ViewComponent1 view) {
+ public GetLocationDirectionsGoogleMapsView1(ViewComponent1 view) {
      super(view);
      try {
          super.loadXML1(ViewLayout1.GMAPS);

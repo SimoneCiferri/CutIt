@@ -117,7 +117,7 @@ public class Facade {
                 viewMap.put(layout, clientprominfoview);
             }
             case GMAPS -> {
-                CustomerGetLocationDirectionsView1 customerGetLocationDirectionsView = new CustomerGetLocationDirectionsView1(startView);
+                GetLocationDirectionsGoogleMapsView1 customerGetLocationDirectionsView = new GetLocationDirectionsGoogleMapsView1(startView);
                 viewMap.put(layout, customerGetLocationDirectionsView);
             }
             case HAIRDRESSERMANAGESHOP -> {

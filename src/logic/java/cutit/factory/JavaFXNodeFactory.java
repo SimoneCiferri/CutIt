@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -112,7 +113,7 @@ public class JavaFXNodeFactory {
 
     public HBox createImageCard(String title, String address, String labelStyle){
         HBox card = getDefaultBox(labelStyle);
-        Image im = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/barberlogo.jpg")).toString());
+        Image im = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/blank-profile-picture.png")).toString());
         setHBox(title, address, card, im);
         return card;
     }

@@ -3,7 +3,7 @@ package cutit.facade;
 import cutit.decorator.ViewComponent2;
 import cutit.decorator.ViewLayout2;
 import cutit.decorator.concrete_decorator2.*;
-import cutit.decorator.concrete_view_component.StartView2;
+import cutit.decorator.concrete_view_component2.StartView2;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
 import javafx.scene.control.Alert;
