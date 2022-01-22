@@ -35,12 +35,6 @@ module cutit.cutit {
     opens cutit.controller.deletebookedappointments to javafx.fxml;
     exports cutit.controller.manageservices;
     opens cutit.controller.manageservices to javafx.fxml;
-    exports cutit.controller.addappointmenttocalendar;
-    opens cutit.controller.addappointmenttocalendar to javafx.fxml;
-    exports cutit.controller.facebooklogin;
-    opens cutit.controller.facebooklogin to javafx.fxml;
-    exports cutit.controller.googlelogin;
-    opens cutit.controller.googlelogin to javafx.fxml;
     exports cutit.controller.payonline;
     opens cutit.controller.payonline to javafx.fxml;
     exports cutit.controller.login;
@@ -53,9 +47,4 @@ module cutit.cutit {
     opens cutit.controller.leftbarviewcontrollers to javafx.fxml;
     exports cutit.decorator.concrete_view_component2;
     opens cutit.decorator.concrete_view_component2 to javafx.fxml;
-
-    /*
-    exports cutit.cutit.logic.decorator.concreteDecorator;
-    opens cutit.cutit.logic.decorator.concreteDecorator to javafx.fxml;
-     */
 }
