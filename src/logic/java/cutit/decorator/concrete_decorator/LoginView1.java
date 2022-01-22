@@ -7,9 +7,9 @@ import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
 import javafx.scene.control.Alert;
 
-public class Login1View extends Decorator {
+public class LoginView1 extends Decorator {
 
-    public Login1View(ViewComponent1 view){
+    public LoginView1(ViewComponent1 view){
 
         super(view);
         try {

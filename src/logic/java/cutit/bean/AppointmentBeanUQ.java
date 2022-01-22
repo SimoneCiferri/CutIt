@@ -70,16 +70,6 @@ public class AppointmentBeanUQ implements AppointmentBean {
     }
 
     @Override
-    public String getAppNotes() {
-        return notes;
-    }
-
-    @Override
-    public void setAppNotes(String notes) {
-        this.notes = notes;
-    }
-
-    @Override
     public List<LocalTime> getAvailableSlots() {
         return availableSlots;
     }

@@ -3,12 +3,10 @@ package cutit.controller.bookappointment;
 import cutit.bean.*;
 import cutit.bean.AppointmentBeanUQ;
 import cutit.bean.ShopBeanUQ;
-import cutit.controller.addappointmenttocalendar.AddAppointmentToCalendarController;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewControllerInterface;
 import cutit.controller.payonline.PayOnlineController;
-import cutit.controller.rateshop.RateShopController;
 import cutit.database.dao.*;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.PaymentException;
@@ -27,9 +25,7 @@ import java.util.Objects;
 public class BookAppointmentController {
 
     private PayOnlineController payOnlineController;
-    private RateShopController rateShopController;
     private AddShopToFavouritesController addShopToFavouritesController;
-    private AddAppointmentToCalendarController addAppointmentToCalendarController;
     private GetLocationDirectionsController getLocationDirectionsController;
 
     public void bookAppointment(AppointmentBean appointmentBean) throws Exception {
@@ -68,12 +64,6 @@ public class BookAppointmentController {
     private Boolean payAppointment(AppointmentBean appBean){
         payOnlineController = new PayOnlineController();
         return payOnlineController.payAppointment(appBean);
-    }
-
-    public Boolean rateShop(RateShopBean rateShopBean){
-        rateShopController = new RateShopController();
-        rateShopController.rateShop(rateShopBean);
-        return true;
     }
 
     public Boolean addShopToFavourites(String customerEmail, String shopName) throws Exception {

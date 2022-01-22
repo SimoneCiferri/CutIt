@@ -1,11 +1,8 @@
 package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
-import cutit.bean.RateShopBean;
 import cutit.bean.ShopBean;
 import cutit.bean.AppointmentBeanUQ;
-import cutit.bean.firstui.RateShopBeanUQ;
-import cutit.controller.getlocationdirections.GetLocationDirectionsController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController1;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.decorator.ViewLayout1;
@@ -30,7 +27,6 @@ public class CustomerBookAppointmentViewController {
     private CustomerBean customerBeanFirstUI;
     private AppointmentBeanUQ appointmentBeanUQ;
     private BookAppointmentController bookAppointmentController;
-    private RateShopBean rateShopBean;
     private ShopBean shopBeanUQ;
 
     @FXML
@@ -63,7 +59,6 @@ public class CustomerBookAppointmentViewController {
     @FXML
     public void initialize(){
         appointmentBeanUQ = new AppointmentBeanUQ();
-        rateShopBean = new RateShopBeanUQ();
         bookAppointmentController = new BookAppointmentController();
 
         dtPicker.setValue(LocalDate.now());

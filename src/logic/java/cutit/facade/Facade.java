@@ -52,7 +52,7 @@ public class Facade {
                 viewMap.put(layout, homeview);
             }
             case LOGIN -> {
-                Login1View loginview = new Login1View(startView);
+                LoginView1 loginview = new LoginView1(startView);
                 viewMap.put(layout, loginview);
             }
             case TOPBAR -> {
@@ -99,10 +99,6 @@ public class Facade {
             case SHOPINFO -> {
                 ShopInfoView1 shopinfoview = new ShopInfoView1(startView);
                 viewMap.put(layout, shopinfoview);
-            }
-            case CUSTOMERRATESHOP -> {
-                ClientRateShopView1 clientrateview = new ClientRateShopView1(startView);
-                viewMap.put(layout, clientrateview);
             }
             case CUSTOMERBOOKAPPOINTMENT -> {
                 CustomerBookAppointmentView1 clientbookappview = new CustomerBookAppointmentView1(startView);

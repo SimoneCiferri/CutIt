@@ -9,7 +9,7 @@ public enum ViewLayout1 {
     FAVSHOP("/cutit/cutit/fxml/fxml1/clientfavouritescs.fxml"), CUSTOMERAPPOINTMENTS("/cutit/cutit/fxml/fxml1/customerappointments.fxml"),
     CUSTOMERPROMOTIONS("/cutit/cutit/fxml/fxml1/customerpromotions.fxml"), HAIRDRESSERPROMOTIONS("/cutit/cutit/fxml/fxml1/hairdressermanagepromotions.fxml"),
     HAIRDRESSERSERVICES("/cutit/cutit/fxml/fxml1/hairdressermanageservices.fxml"),
-    SHOPINFO("/cutit/cutit/fxml/fxml1/shopinfo.fxml"), CUSTOMERRATESHOP("/cutit/cutit/fxml/fxml1/clientrateshop.fxml"),
+    SHOPINFO("/cutit/cutit/fxml/fxml1/shopinfo.fxml"),
     CUSTOMERBOOKAPPOINTMENT("/cutit/cutit/fxml/fxml1/customerbookappointment.fxml"),
     CUSTOMERAPPINFO("/cutit/cutit/fxml/fxml1/customerappointmentinfo.fxml"),
     CUSTOMERPROMOTIONINFO("/cutit/cutit/fxml/fxml1/customerpromotioninfo.fxml"),GMAPS("/cutit/cutit/fxml/fxml1/gmaps.fxml"), HAIRDRESSERMANAGESHOP("/cutit/cutit/fxml/fxml1/hairdressermanageshop.fxml"), PAYONLINEPAYPAL("/cutit/cutit/fxml/fxml1/customerpayonlinepaypal.fxml");

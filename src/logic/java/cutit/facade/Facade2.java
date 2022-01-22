@@ -87,10 +87,6 @@ public class Facade2 {
                 CustomerPromotionView2 customerPromotionView2 = new CustomerPromotionView2(startView2);
                 viewMap.put(layout, customerPromotionView2);
             }
-            case CUSTOMERRATESHOP -> {
-                CustomerRateShopView2 customerRateShopView2 = new CustomerRateShopView2(startView2);
-                viewMap.put(layout, customerRateShopView2);
-            }
             case HAIRDRESSERDELETEBOOKEDAPPOINTMENTS -> {
                 HairdresserDeleteBookedAppointmentsView2 hairdresserDeleteBookedAppointmentsView2 = new HairdresserDeleteBookedAppointmentsView2(startView2);
                 viewMap.put(layout, hairdresserDeleteBookedAppointmentsView2);

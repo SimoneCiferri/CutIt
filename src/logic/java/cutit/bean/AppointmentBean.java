@@ -31,10 +31,6 @@ public interface AppointmentBean {
 
     void setShopName(String shopName);
 
-    String getAppNotes();
-
-    void setAppNotes(String notes);
-
     List<LocalTime> getAvailableSlots();
 
     void setAvailableSlots(List<LocalTime> availableSlots);
