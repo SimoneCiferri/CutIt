@@ -1,7 +1,7 @@
 package cutit.controller.bookappointment;
 
 import cutit.bean.*;
-import cutit.bean.firstui.AppointmentBeanFirstUI;
+import cutit.bean.AppointmentBeanUQ;
 import cutit.bean.ShopBeanUQ;
 import cutit.controller.addappointmenttocalendar.AddAppointmentToCalendarController;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
@@ -239,7 +239,7 @@ public class BookAppointmentController {
         List<AppointmentBean> beanAppList = new ArrayList<>();
         if(!allAppointments.isEmpty()){
             for (Appointment allAppointment : allAppointments) {
-                AppointmentBean bean = new AppointmentBeanFirstUI();
+                AppointmentBean bean = new AppointmentBeanUQ();
                 bean.setStartTime(allAppointment.getStartTime());
                 bean.setEndTime(allAppointment.getStartTime().plusMinutes(30));
                 bean.setShopName(allAppointment.getShop().getShopName());

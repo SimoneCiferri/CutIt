@@ -1,19 +1,20 @@
 package cutit.bean;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface DeleteAppointmentBean {
 
-    String getStartTime();
+    LocalDateTime getStartTime();
 
-    void setStartTime(String startTime);
+    void setStartTime(LocalDateTime startTime);
 
     String getShopName();
 
     void setShopName(String shopName);
 
-    List<String> getAllAppointments();
+    List<AppointmentBean> getAllBookedAppointments();
 
-    void setAllAppointments(List<String> allAppointments);
+    void setAllBookedAppointments(List<AppointmentBean> allBookedAppointments);
 
 }

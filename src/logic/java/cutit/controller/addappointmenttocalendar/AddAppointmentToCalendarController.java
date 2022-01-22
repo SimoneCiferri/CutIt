@@ -1,7 +1,6 @@
 package cutit.controller.addappointmenttocalendar;
 
 import cutit.bean.AppointmentBean;
-import cutit.bean.firstui.AppointmentBeanFirstUI;
 
 public class AddAppointmentToCalendarController {
 

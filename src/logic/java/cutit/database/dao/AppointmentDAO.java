@@ -3,6 +3,7 @@ package cutit.database.dao;
 import cutit.database.DBConnection;
 import cutit.database.query.AppointmentQueries;
 import cutit.database.query.PromotionQueries;
+import cutit.database.query.ServiceQueries;
 import cutit.exception.DuplicatedRecordException;
 import cutit.model.*;
 
@@ -106,6 +107,14 @@ public class AppointmentDAO {
             //DBConnection.getInstance().closeConnection();
         }
         return appointmentList;
+    }
+
+    public static void deleteAppointment(String appointmentStartTime, String shopName) throws Exception {
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        AppointmentQueries.deleteAppointment(stm, appointmentStartTime , shopName);
+        stm.close();
     }
 
     private static LocalDateTime dataFromString(String expireDate) {

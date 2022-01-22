@@ -26,4 +26,9 @@ public class AppointmentQueries {
         return stmt.executeQuery(sql);
     }
 
+    public static void deleteAppointment(Statement stmt, String appointmentStartTime, String shopName) throws SQLException {
+        String insertStatement = String.format("DELETE FROM appointment WHERE StartTime = '%s' and Shop_ShopName = '%s'", appointmentStartTime, shopName);
+        stmt.executeUpdate(insertStatement);
+    }
+
 }

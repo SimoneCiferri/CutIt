@@ -1,4 +1,4 @@
-package cutit.bean.firstui;
+package cutit.bean;
 
 import cutit.bean.AppointmentBean;
 
@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
-public class AppointmentBeanFirstUI implements AppointmentBean {
+public class AppointmentBeanUQ implements AppointmentBean {
 
     private LocalDateTime startTime;
     private LocalDateTime endTime;

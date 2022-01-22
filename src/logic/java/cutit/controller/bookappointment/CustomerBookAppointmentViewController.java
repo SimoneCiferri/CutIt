@@ -3,7 +3,7 @@ package cutit.controller.bookappointment;
 import cutit.bean.CustomerBean;
 import cutit.bean.RateShopBean;
 import cutit.bean.ShopBean;
-import cutit.bean.firstui.AppointmentBeanFirstUI;
+import cutit.bean.AppointmentBeanUQ;
 import cutit.bean.firstui.RateShopBeanUQ;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.decorator.ViewLayout1;
@@ -28,7 +28,7 @@ import java.util.Objects;
 public class CustomerBookAppointmentViewController {
 
     private CustomerBean customerBeanFirstUI;
-    private AppointmentBeanFirstUI appointmentBeanFirstUI;
+    private AppointmentBeanUQ appointmentBeanUQ;
     private BookAppointmentController bookAppointmentController;
     private RateShopBean rateShopBean;
     private ShopBean shopBeanUQ;
@@ -65,7 +65,7 @@ public class CustomerBookAppointmentViewController {
 
     @FXML
     public void initialize(){
-        appointmentBeanFirstUI = new AppointmentBeanFirstUI();
+        appointmentBeanUQ = new AppointmentBeanUQ();
         rateShopBean = new RateShopBeanUQ();
         bookAppointmentController = new BookAppointmentController();
 
@@ -96,24 +96,24 @@ public class CustomerBookAppointmentViewController {
     @FXML
     public void bookAppointment() {
         if(checkInput()){
-            appointmentBeanFirstUI.setStartTime(getAppointmentStartTime());
-            appointmentBeanFirstUI.setCustomer(customerBeanFirstUI.getcEmail());
+            appointmentBeanUQ.setStartTime(getAppointmentStartTime());
+            appointmentBeanUQ.setCustomer(customerBeanFirstUI.getcEmail());
             if(!Objects.equals(tfPromotionCode.getText(), "")){
                 if(checkPromotion()){
-                    appointmentBeanFirstUI.setPromotionCode(tfPromotionCode.getText());
+                    appointmentBeanUQ.setPromotionCode(tfPromotionCode.getText());
                 } else{
-                    appointmentBeanFirstUI.setPromotionCode(null);
+                    appointmentBeanUQ.setPromotionCode(null);
                 }
             } else {
-                appointmentBeanFirstUI.setPromotionCode(null);
+                appointmentBeanUQ.setPromotionCode(null);
             }
-            appointmentBeanFirstUI.setServiceName(cbServices.getValue());
-            appointmentBeanFirstUI.setShopName(shopBeanUQ.getShopName());
+            appointmentBeanUQ.setServiceName(cbServices.getValue());
+            appointmentBeanUQ.setShopName(shopBeanUQ.getShopName());
             if(!Objects.equals(taNotes.getText(), "")){
-                appointmentBeanFirstUI.setAppNotes(taNotes.getText());
+                appointmentBeanUQ.setAppNotes(taNotes.getText());
             }
             try {
-                bookAppointmentController.bookAppointment(appointmentBeanFirstUI);
+                bookAppointmentController.bookAppointment(appointmentBeanUQ);
                 //Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
                 showPayedAndBooked();
             } catch (DuplicatedRecordException de){
@@ -138,9 +138,9 @@ public class CustomerBookAppointmentViewController {
     private void showAvailableTimeSlots(){
         try {
             LocalDate day = dtPicker.getValue();
-            appointmentBeanFirstUI.setSelectedDay(day);
-            bookAppointmentController.getAvailableSlots(appointmentBeanFirstUI, shopBeanUQ.getShopName());
-            List<LocalTime> availableSlots = appointmentBeanFirstUI.getAvailableSlots();
+            appointmentBeanUQ.setSelectedDay(day);
+            bookAppointmentController.getAvailableSlots(appointmentBeanUQ, shopBeanUQ.getShopName());
+            List<LocalTime> availableSlots = appointmentBeanUQ.getAvailableSlots();
             cbTimeSlot.getItems().clear();
             for (LocalTime availableSlot : availableSlots) {
                 cbTimeSlot.getItems().add(availableSlot);
@@ -158,12 +158,12 @@ public class CustomerBookAppointmentViewController {
     @FXML
     private void showAvailableServices() {
         try {
-            bookAppointmentController.getAvailableServices(appointmentBeanFirstUI, shopBeanUQ.getShopName());
-            for(int i = 0; i<appointmentBeanFirstUI.getAvailableServices().size(); i++){
-                String service = appointmentBeanFirstUI.getAvailableServices().get(i);
+            bookAppointmentController.getAvailableServices(appointmentBeanUQ, shopBeanUQ.getShopName());
+            for(int i = 0; i< appointmentBeanUQ.getAvailableServices().size(); i++){
+                String service = appointmentBeanUQ.getAvailableServices().get(i);
                 cbServices.getItems().add(service);
             }
-            cbServices.setDisable(appointmentBeanFirstUI.getAvailableServices().isEmpty());
+            cbServices.setDisable(appointmentBeanUQ.getAvailableServices().isEmpty());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -174,11 +174,11 @@ public class CustomerBookAppointmentViewController {
         try {
             if(!Objects.equals(tfPromotionCode.getText(), "")){
                 System.out.println("codice non nullo = '" + tfPromotionCode.getText() + "'");
-                appointmentBeanFirstUI.setPromotionCode(tfPromotionCode.getText());
-                appointmentBeanFirstUI.setCustomer(customerBeanFirstUI.getcEmail());
-                appointmentBeanFirstUI.setServiceName(cbServices.getValue());
-                appointmentBeanFirstUI.setShopName(shopBeanUQ.getShopName());
-                bookAppointmentController.checkPromotion(appointmentBeanFirstUI);
+                appointmentBeanUQ.setPromotionCode(tfPromotionCode.getText());
+                appointmentBeanUQ.setCustomer(customerBeanFirstUI.getcEmail());
+                appointmentBeanUQ.setServiceName(cbServices.getValue());
+                appointmentBeanUQ.setShopName(shopBeanUQ.getShopName());
+                bookAppointmentController.checkPromotion(appointmentBeanUQ);
                 tfPromotionCode.setDisable(true);
                 checkPromotion.setDisable(true);
                 lblPromotionApplied.setVisible(true);

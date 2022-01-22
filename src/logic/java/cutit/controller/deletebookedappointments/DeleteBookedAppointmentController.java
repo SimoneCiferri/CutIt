@@ -1,28 +1,51 @@
 package cutit.controller.deletebookedappointments;
 
+import cutit.bean.AppointmentBean;
 import cutit.bean.DeleteAppointmentBean;
+import cutit.bean.AppointmentBeanUQ;
 import cutit.database.dao.AppointmentDAO;
 import cutit.database.dao.ShopDAO;
+import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.Appointment;
 import cutit.model.Shop;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DeleteBookedAppointmentController {
 
-    public Boolean deleteAppointment(DeleteAppointmentBean deleteAppointmentBean){
-        //dovrò passare la bean, in modo che questa si possa registrare come osservatore del model (e forse anche per prendere i dati in ingresso, oopure li metto da qui ma sempre usando la bean)
-        System.out.println("CONTROLLER APPLICATIVO -> Deleting Appointment (data from DeleteAppointmentBean passed by my viewController)");
+    public Boolean deleteAppointment(DeleteAppointmentBean deleteAppointmentBean) throws Exception {
+        try {
+            LocalDate appointmentDay= deleteAppointmentBean.getStartTime().toLocalDate();
+            if(isMoreThanTwoDaysAway(appointmentDay)){
+                AppointmentDAO.deleteAppointment(deleteAppointmentBean.getStartTime().toString(), deleteAppointmentBean.getShopName());
+            } else{
+                throw new WrongInputDataException("Impossible to delete appointment.\nSelected appointment day is less than 2 days away.");
+            }
+        } catch (WrongInputDataException wde) {
+            throw wde;
+        }catch (Exception e) {
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
+            throw e;
+        }
         return true;
     }
 
-    public void getAllShopAppointments(DeleteAppointmentBean deleteAppointmentBeanFirstUI) throws Exception {
+    private boolean isMoreThanTwoDaysAway(LocalDate appointmentDay) {
+        LocalDate day = appointmentDay;
+        //tolgo 2 giorni alla data di appuntamento
+        day = day.minusDays(2);
+        //verifico che sia dopo la data odierna
+        return day.isAfter(LocalDate.now());
+    }
+
+    public void getAllShopAppointments(DeleteAppointmentBean deleteAppointmentBean) throws Exception {
         try {
-            Shop shop = ShopDAO.getShopFromName(deleteAppointmentBeanFirstUI.getShopName());
+            Shop shop = ShopDAO.getShopFromName(deleteAppointmentBean.getShopName());
             List<Appointment> allAppointments = shop.getAllAppointments();
-            deleteAppointmentBeanFirstUI.setAllAppointments(stringListFromAppList(allAppointments));
+            deleteAppointmentBean.setAllBookedAppointments(appointmentBeanListFromAppList(allAppointments));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
@@ -30,14 +53,33 @@ public class DeleteBookedAppointmentController {
 
     }
 
-    private List<String> stringListFromAppList(List<Appointment> allAppointments) {
-        List<String> appList = new ArrayList<>();
+    private List<AppointmentBean> appointmentBeanListFromAppList(List<Appointment> allAppointments) {
+        List<AppointmentBean> appList = new ArrayList<>();
         if(!allAppointments.isEmpty()){
             for(int i = 0; i<allAppointments.size(); i++){
-                String p = allAppointments.get(i).getStartTime().toLocalDate() + " at " + allAppointments.get(i).getStartTime().toLocalTime();
-                appList.add(p);
+                AppointmentBean bean = new AppointmentBeanUQ();
+                bean.setStartTime(allAppointments.get(i).getStartTime());
+                bean.setCustomer(allAppointments.get(i).getCustomer().getUserID());
+                bean.setServiceName(allAppointments.get(i).getService().getServiceName());
+                appList.add(bean);
             }
         }
         return appList;
+    }
+
+    private List<AppointmentBean> appBeanListFromAppList(List<Appointment> allAppointments) {
+        List<AppointmentBean> beanAppList = new ArrayList<>();
+        if(!allAppointments.isEmpty()){
+            for (Appointment allAppointment : allAppointments) {
+                AppointmentBean bean = new AppointmentBeanUQ();
+                bean.setStartTime(allAppointment.getStartTime());
+                bean.setEndTime(allAppointment.getStartTime().plusMinutes(30));
+                bean.setShopName(allAppointment.getShop().getShopName());
+                bean.setCustomer(allAppointment.getCustomer().getUserID());
+                bean.setServiceName(allAppointment.getService().getServiceName());
+                beanAppList.add(bean);
+            }
+        }
+        return beanAppList;
     }
 }

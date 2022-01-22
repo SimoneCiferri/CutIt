@@ -33,7 +33,6 @@ public class TopBarHairdresserViewController {
     private double yOffset = 0;
     private HairdresserBean hairdresserBeanFirstUI;
     private ShopBean shopBeanFirstUI;
-    private DeleteAppointmentBean deleteAppointmentBeanFirstUI;
 
     @FXML
     private Label  btnHApp, btnHPromotions, btnHServices, btnHShop,  btnHLogout;
@@ -51,7 +50,6 @@ public class TopBarHairdresserViewController {
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
         setImageView();
-        deleteAppointmentBeanFirstUI = new DeleteAppointmentBeanFirstUI();
         System.out.println("CONTROLLER GRAFICO TOPBARHAIRDRESSERVIEWCONTROLLER");
         return true;
     }
@@ -64,8 +62,6 @@ public class TopBarHairdresserViewController {
         btnHServices.setStyle(transparentStyle);
         btnHShop.setStyle(transparentStyle);
         btnHLogout.setStyle(transparentStyle);
-        deleteAppointmentBeanFirstUI.setShopName(shopBeanFirstUI.getShopName());
-        deleteAppointmentBeanFirstUI.setAllAppointments(shopBeanFirstUI.getAllAppointments());
         HairdresserAppointmentsView1 view = (HairdresserAppointmentsView1) Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERAPPOINTMENTS);
         HairdresserDeleteBookedAppointmentsViewController viewController = (HairdresserDeleteBookedAppointmentsViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERAPPOINTMENTS);
         viewController.fillView(shopBeanFirstUI);
