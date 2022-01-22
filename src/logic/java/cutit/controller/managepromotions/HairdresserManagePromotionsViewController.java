@@ -6,6 +6,8 @@ import cutit.bean.firstui.ManagePromotionBeanUQ;
 import cutit.bean.ShopBean;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
+import cutit.exception.RecordNotFoundException;
+import cutit.exception.WrongInputDataException;
 import cutit.factory.AlertFactory;
 import cutit.utils.TextFieldCheck;
 import cutit.factory.JavaFXNodeFactory;
@@ -18,6 +20,7 @@ import javafx.scene.layout.VBox;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class HairdresserManagePromotionsViewController {
@@ -111,7 +114,7 @@ public class HairdresserManagePromotionsViewController {
     }
 
     private void addPromotion(String promCode, String offValue,  LocalDate expireDate, String serviceName){
-        if(TextFieldCheck.isInteger(offValue,"Information", "Not Panic!", "Discount field must be a number.")){
+        if(!Objects.equals(promCode, "") && TextFieldCheck.isInteger(offValue,"Information", "Not Panic!", "Discount field must be a number.")){
             managePromotionBeanFirstUI.setPromotionCode(promCode);
             managePromotionBeanFirstUI.setPromOffValue(Integer.valueOf(offValue));
             managePromotionBeanFirstUI.setPromExpireDate(expireDate);
@@ -120,8 +123,8 @@ public class HairdresserManagePromotionsViewController {
             try {
                 managePromotionController.addPromotion(this.managePromotionBeanFirstUI);
                 showHairProm();
-            } catch (DuplicatedRecordException de) {
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+            } catch (DuplicatedRecordException | WrongInputDataException | RecordNotFoundException exception) {
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
             } catch(DBConnectionException dce){
                 AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
             } catch (Exception e) {

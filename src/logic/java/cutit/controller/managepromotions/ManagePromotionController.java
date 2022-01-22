@@ -6,6 +6,7 @@ import cutit.bean.ShopBean;
 import cutit.database.dao.PromotionDAO;
 import cutit.database.dao.ServiceDAO;
 import cutit.exception.DuplicatedRecordException;
+import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.Promotion;
 import cutit.model.Service;
@@ -30,11 +31,14 @@ public class ManagePromotionController {
 
     public void addPromotion(ManagePromotionBean managePromotionBean) throws Exception {
         try{
-            Promotion promotion = new Promotion(managePromotionBean.getPromotionCode(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate());
-            PromotionDAO.insertPromotion(promotion, managePromotionBean.getPromServiceName(), managePromotionBean.getPromShopName());
-            System.out.println("CONTROLLER APPLICATIVO -> Adding Promotion (data from ManagePromotionBean passed by my viewController)");
-        } catch (DuplicatedRecordException de){
-            throw de;
+            if(managePromotionBean.getPromExpireDate().isAfter(LocalDate.now())){
+                Promotion promotion = new Promotion(managePromotionBean.getPromotionCode(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate());
+                PromotionDAO.insertPromotion(promotion, managePromotionBean.getPromServiceName(), managePromotionBean.getPromShopName());
+            }else{
+                throw new WrongInputDataException("Expiry date can't be a past day.");
+            }
+        } catch (DuplicatedRecordException | WrongInputDataException exception){
+            throw exception;
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
