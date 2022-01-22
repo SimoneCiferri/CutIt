@@ -8,9 +8,11 @@ import cutit.database.dao.ShopDAO;
 import cutit.database.dao.UserDAO;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.WrongCredentialsException;
+import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,15 +34,19 @@ public class LoginController {
 
     public boolean signUpCustomer(CustomerBean customerBean) throws Exception {
         try {
-            Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcBirthDate(), customerBean.getcGender());
-            if(!UserDAO.checkUser(customer.getUserID())){
-                CustomerDAO.insertCustomer(customer);
-                return true;
+            if(!customerBean.getcBirthDate().isAfter(LocalDate.now())){
+                Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcBirthDate(), customerBean.getcGender());
+                if(!UserDAO.checkUser(customer.getUserID())){
+                    CustomerDAO.insertCustomer(customer);
+                    return true;
+                }else{
+                    return false;
+                }
             }else{
-                return false;
+                throw new WrongInputDataException("Cannot use selected day as the Birthday!");
             }
-        } catch (DuplicatedRecordException de){
-            throw de;
+        } catch (DuplicatedRecordException | WrongInputDataException exception){
+            throw exception;
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;

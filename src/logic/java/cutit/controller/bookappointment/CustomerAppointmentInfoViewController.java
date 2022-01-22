@@ -9,15 +9,8 @@ import java.time.LocalDateTime;
 
 public class CustomerAppointmentInfoViewController {
 
-    private String shopName;
-
     @FXML
-    private Label lDate, lShopName, lService, lPromotion;
-
-    public boolean initialize() {
-        System.out.println("CONTROLLER GRAFICO CUSTOMERAPPOINTMENTINFOVIEWCONTROLLER");
-        return true;
-    }
+    private Label lDate, lAppTimeSlot, lShopName, lService;
 
     @FXML
     public boolean goBackToAppList(){
@@ -26,8 +19,8 @@ public class CustomerAppointmentInfoViewController {
     }
 
     public void fillView(LocalDateTime appStartTime, LocalDateTime appEndTime, String appService, String shopName){
-        this.shopName = shopName;
-        lDate.setText(appStartTime.toLocalDate() + " at " + appStartTime.toLocalTime());
+        lDate.setText(appStartTime.toLocalDate().toString());
+        lAppTimeSlot.setText(appStartTime.toLocalTime() + " - " + appEndTime.toLocalTime());
         lShopName.setText(shopName);
         lService.setText(appService);
     }

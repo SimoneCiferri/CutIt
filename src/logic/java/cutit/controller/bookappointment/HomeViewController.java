@@ -8,10 +8,12 @@ import cutit.decorator.concrete_decorator.ShopInfoView1;
 import cutit.facade.Facade;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class HomeViewController {
 
@@ -19,6 +21,9 @@ public class HomeViewController {
     private CustomerBean customerBeanFirstUI;
     private ShopListBean shopListBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
+
+    @FXML
+    private TextField tfSearchName,tfSearchPlace;
 
     @FXML
     private VBox vbInScroll;
@@ -59,6 +64,49 @@ public class HomeViewController {
         ShopInfoViewController viewController = (ShopInfoViewController) view.getLoadedViewController1(ViewLayout1.SHOPINFO);
         viewController.fillView(customerBeanFirstUI, shopName);
 
+    }
+
+    @FXML
+    private void filterShops(){
+        if(Objects.equals(tfSearchName.getText(), "") && Objects.equals(tfSearchPlace.getText(), "")){
+            showShops();
+        } else {
+            if(!Objects.equals(tfSearchName.getText(), "")){
+                vbInScroll.getChildren().clear();
+                for(int i = 0; i< shopListBeanFirstUI.getShopBeanList().size(); i++){
+                    if(shopListBeanFirstUI.getShopBeanList().get(i).getShopName().contains(tfSearchName.getText())){
+                        HBox card;
+                        if(!shopListBeanFirstUI.getShopBeanList().get(i).getImages().isEmpty()){
+                            File im = shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0);
+                            System.out.println(shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0).toString());
+                            card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle, im);
+                        } else {
+                            card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle);
+                        }
+                        int n = i;
+                        card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
+                        vbInScroll.getChildren().add(card);
+                    }
+                }
+            } else if(!Objects.equals(tfSearchPlace.getText(), "")){
+                vbInScroll.getChildren().clear();
+                for(int i = 0; i< shopListBeanFirstUI.getShopBeanList().size(); i++){
+                    if(shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress().contains(tfSearchPlace.getText())){
+                        HBox card;
+                        if(!shopListBeanFirstUI.getShopBeanList().get(i).getImages().isEmpty()){
+                            File im = shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0);
+                            System.out.println(shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0).toString());
+                            card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle, im);
+                        } else {
+                            card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle);
+                        }
+                        int n = i;
+                        card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
+                        vbInScroll.getChildren().add(card);
+                    }
+                }
+            }
+        }
     }
 
     public void fillView(CustomerBean customerBeanFirstUI){

@@ -3,18 +3,22 @@ package cutit.controller.payonline;
 import cutit.bean.AppointmentBean;
 import cutit.bean.PayOnlineBean;
 
+import java.util.Random;
+
 public class PayOnlineController {
 
     public Boolean payAppointment(AppointmentBean appBean){
-        System.out.println("CONTROLLER APPLICATIVO -> paying Appointment (data from AppointmentBean passed by BookAppointmentController)");
-        return true;
+        return pay();
     }
 
-    public void getData(PayOnlineBean payOnlineBean){
-        String shopName = payOnlineBean.getPaymentShopName();
-        String servicePrice = payOnlineBean.getServicePrice();
-        //paga!
+    private boolean pay() {
+        Random random = new Random();
+        int upperbound = 100;
+        int number = random.nextInt(upperbound);
+        System.out.println("Random number is " + number);
+        return ((number%2) == 0);
     }
+
 
 
 }

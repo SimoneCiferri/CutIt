@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -101,6 +102,17 @@ public class TextFieldCheck {
             return false;
         }else{
             return true;
+        }
+    }
+
+    public static boolean checkAddress(String text){
+        StringTokenizer st = new StringTokenizer(text, "-");
+        if(st.countTokens() == 3){
+            String[] address = text.split("-");
+            return isInteger(address[2], "Information", "CAP must be a number.", "Please follow the syntax Street-City-CAP");
+        } else {
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Address field is not correct", "Please follow the syntax Street-City-CAP.");
+            return false;
         }
     }
 }

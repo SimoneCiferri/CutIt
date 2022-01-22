@@ -5,10 +5,13 @@ import cutit.bean.AppointmentBeanUQ;
 import cutit.bean.ShopBeanUQ;
 import cutit.controller.addappointmenttocalendar.AddAppointmentToCalendarController;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
+import cutit.controller.getlocationdirections.GetLocationDirectionsController;
+import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewControllerInterface;
 import cutit.controller.payonline.PayOnlineController;
 import cutit.controller.rateshop.RateShopController;
 import cutit.database.dao.*;
 import cutit.exception.DuplicatedRecordException;
+import cutit.exception.PaymentException;
 import cutit.exception.RecordNotFoundException;
 import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
@@ -27,6 +30,7 @@ public class BookAppointmentController {
     private RateShopController rateShopController;
     private AddShopToFavouritesController addShopToFavouritesController;
     private AddAppointmentToCalendarController addAppointmentToCalendarController;
+    private GetLocationDirectionsController getLocationDirectionsController;
 
     public void bookAppointment(AppointmentBean appointmentBean) throws Exception {
         try {
@@ -38,9 +42,12 @@ public class BookAppointmentController {
                 Promotion promotion = PromotionDAO.getPromotion(appointmentBean.getPromotionCode());
                 appointment.setPromotion(promotion);
             }
-            AppointmentDAO.insertAppointment(appointment);
-            payAppointment(appointmentBean);
-        } catch (DuplicatedRecordException | RecordNotFoundException exception){
+            if(payAppointment(appointmentBean)){
+                AppointmentDAO.insertAppointment(appointment);
+            }else{
+                throw new PaymentException("Payment rejected.");
+            }
+        } catch (DuplicatedRecordException | RecordNotFoundException | PaymentException exception){
             throw exception;
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
@@ -75,9 +82,9 @@ public class BookAppointmentController {
         return true;
     }
 
-    public Boolean addToCalendar(AppointmentBean appBean){
-        addAppointmentToCalendarController = new AddAppointmentToCalendarController();
-        addAppointmentToCalendarController.addToCalendar(appBean);
+    public Boolean getShopDirections(GetLocationDirectionsGoogleMapsViewControllerInterface viewController, ShopBean bean){
+        getLocationDirectionsController = new GetLocationDirectionsController();
+        getLocationDirectionsController.getDirection(viewController, bean);
         return true;
     }
 

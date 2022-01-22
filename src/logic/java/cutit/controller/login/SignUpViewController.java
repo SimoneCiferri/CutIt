@@ -7,6 +7,7 @@ import cutit.bean.HairdresserBeanUQ;
 import cutit.decorator.ViewLayout1;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
+import cutit.exception.WrongInputDataException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.utils.TextFieldCheck;
@@ -59,8 +60,8 @@ public class SignUpViewController {
                     Facade.getInstance().decorateView(ViewLayout1.LOGIN);
                 }
             }
-        } catch (DuplicatedRecordException de) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+        } catch (DuplicatedRecordException | WrongInputDataException exception) {
+            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
         } catch(DBConnectionException dce){
             AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
         } catch (Exception e) {

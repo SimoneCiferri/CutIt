@@ -5,13 +5,13 @@ import cutit.bean.RateShopBean;
 import cutit.bean.ShopBean;
 import cutit.bean.AppointmentBeanUQ;
 import cutit.bean.firstui.RateShopBeanUQ;
+import cutit.controller.getlocationdirections.GetLocationDirectionsController;
+import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController1;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.decorator.ViewLayout1;
+import cutit.decorator.concrete_decorator.GetLocationDirectionsGoogleMapsView1;
 import cutit.decorator.concrete_decorator.TopBarCustomerView1;
-import cutit.exception.DBConnectionException;
-import cutit.exception.DuplicatedRecordException;
-import cutit.exception.RecordNotFoundException;
-import cutit.exception.WrongInputDataException;
+import cutit.exception.*;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import javafx.fxml.FXML;
@@ -56,9 +56,6 @@ public class CustomerBookAppointmentViewController {
 
     @FXML
     private TextField tfPromotionCode;
-
-    @FXML
-    private TextArea taNotes;
 
     @FXML
     private Button checkPromotion;
@@ -109,15 +106,12 @@ public class CustomerBookAppointmentViewController {
             }
             appointmentBeanUQ.setServiceName(cbServices.getValue());
             appointmentBeanUQ.setShopName(shopBeanUQ.getShopName());
-            if(!Objects.equals(taNotes.getText(), "")){
-                appointmentBeanUQ.setAppNotes(taNotes.getText());
-            }
             try {
                 bookAppointmentController.bookAppointment(appointmentBeanUQ);
                 //Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
                 showPayedAndBooked();
-            } catch (DuplicatedRecordException de){
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+            } catch (DuplicatedRecordException | PaymentException | RecordNotFoundException exception){
+                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -226,7 +220,10 @@ public class CustomerBookAppointmentViewController {
     }
 
     private void getDirections(){
-        //"riempio" la Bean con i nuovi valori (usando i setter) e poi la passo al controller applicativo
+        Facade.getInstance().decorateView(ViewLayout1.GMAPS);
+        GetLocationDirectionsGoogleMapsView1 view = (GetLocationDirectionsGoogleMapsView1) Facade.getInstance().getViewMap().get(ViewLayout1.GMAPS);
+        GetLocationDirectionsGoogleMapsViewController1 viewController = (GetLocationDirectionsGoogleMapsViewController1) view.getLoadedViewController1(ViewLayout1.GMAPS);
+        bookAppointmentController.getShopDirections(viewController, shopBeanUQ);
     }
 
     private void addToFavourites() {

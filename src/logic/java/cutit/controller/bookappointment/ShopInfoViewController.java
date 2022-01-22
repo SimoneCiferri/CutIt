@@ -156,7 +156,7 @@ public class ShopInfoViewController {
         Facade.getInstance().decorateView(ViewLayout1.GMAPS);
         GetLocationDirectionsGoogleMapsView1 view = (GetLocationDirectionsGoogleMapsView1) Facade.getInstance().getViewMap().get(ViewLayout1.GMAPS);
         GetLocationDirectionsGoogleMapsViewController1 viewController = (GetLocationDirectionsGoogleMapsViewController1) view.getLoadedViewController1(ViewLayout1.GMAPS);
-        getLocationDirectionsController.getDirection(viewController ,shopBeanUQ.getShopAddress());
+        getLocationDirectionsController.getDirection(viewController ,shopBeanUQ);
         return true;
     }
 

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.bookappointment.HomeViewController">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.bookappointment.HomeViewController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="920.0" style="-fx-border-color: grey; -fx-border-radius: 5;">
          <opaqueInsets>
@@ -14,10 +14,9 @@
             <Insets top="15.0" />
          </VBox.margin>
          <children>
-            <TextField layoutX="14.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="200.0" promptText="Shop Name..." AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0" />
-            <ChoiceBox layoutX="260.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="10.0" />
-            <ChoiceBox layoutX="492.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="490.0" AnchorPane.topAnchor="10.0" />
-            <Button layoutX="854.0" layoutY="15.0" mnemonicParsing="false" text="Search" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="10.0" />
+            <TextField fx:id="tfSearchName" layoutX="14.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="200.0" promptText="Shop..." AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0" />
+            <Button layoutX="854.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#filterShops" text="Search" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="10.0" />
+            <TextField fx:id="tfSearchPlace" layoutX="278.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="200.0" promptText="Where..." AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="10.0" />
          </children>
       </AnchorPane>
       <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="1024.0" style="-fx-background-color: transparent; -fx-background: transparent;">
