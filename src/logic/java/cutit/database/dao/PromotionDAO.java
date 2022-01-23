@@ -2,8 +2,6 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.PromotionQueries;
-import cutit.database.query.ServiceQueries;
-import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
 import cutit.model.*;
@@ -12,7 +10,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -164,7 +161,7 @@ public class PromotionDAO {
         }
     }
 
-    public static void insertPersonaPromotion(String customerE, String promoCode) throws Exception{
+    public static void insertPersonalPromotion(String customerE, String promoCode) throws Exception{
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = PromotionQueries.getPersonalPromotion(stm, customerE, promoCode);

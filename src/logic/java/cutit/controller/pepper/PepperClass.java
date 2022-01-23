@@ -130,7 +130,7 @@ public class PepperClass extends Thread{
             System.out.println("Trying to add " + promotion.getCode() + " at " + pepperData.getCustomer().getUserID() + " (only if i'm between " + leftDate + " and " + rightDate + ", perfect day is " + nextPromotionDay + ")");
             if(LocalDate.now().isAfter(leftDate) && LocalDate.now().isBefore(rightDate) && LocalDate.now().isBefore(promotion.getExpireDate())){
                 try {
-                    PromotionDAO.insertPersonaPromotion(pepperData.getCustomer().getUserID(), promotion.getCode());
+                    PromotionDAO.insertPersonalPromotion(pepperData.getCustomer().getUserID(), promotion.getCode());
                     System.out.println("Promotion " + promotion.getCode() + " added");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -187,7 +187,7 @@ public class PepperClass extends Thread{
                 System.out.println("Trying to add " + promotion.getCode() + " at " + customer.getUserID() + " (only if i'm between " + leftDate + " and " + rightDate + ", perfect day is " + appointmentDay + ")");
                 if(LocalDate.now().isAfter(leftDate) && LocalDate.now().isBefore(rightDate) && LocalDate.now().isBefore(promotion.getExpireDate())){
                     try {
-                        PromotionDAO.insertPersonaPromotion(customer.getUserID(), promotion.getCode());
+                        PromotionDAO.insertPersonalPromotion(customer.getUserID(), promotion.getCode());
                         System.out.println("Promotion " + promotion.getCode() + " added");
 
                     } catch (Exception e) {
@@ -207,7 +207,7 @@ public class PepperClass extends Thread{
             System.out.println("Min promotion on " + service + " is " + promotion.getCode());
             try {
                 System.out.println("Trying to add" + promotion.getCode() + " at " + customer.getUserID());
-                PromotionDAO.insertPersonaPromotion(customer.getUserID(), promotion.getCode());
+                PromotionDAO.insertPersonalPromotion(customer.getUserID(), promotion.getCode());
             } catch (Exception e) {
                 e.printStackTrace();
             }
