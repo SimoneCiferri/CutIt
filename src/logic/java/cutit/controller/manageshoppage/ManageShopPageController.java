@@ -1,6 +1,6 @@
 package cutit.controller.manageshoppage;
 
-import cutit.bean.ShopBean;
+import cutit.bean.ShopBeanInterface;
 import cutit.database.dao.ShopDAO;
 import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
@@ -8,7 +8,7 @@ import cutit.model.Shop;
 
 public class ManageShopPageController {
 
-    public void updateShop(ShopBean shopBean) throws Exception {
+    public void updateShop(ShopBeanInterface shopBean) throws Exception {
         try{
             if(semanticCheck(shopBean)){
                 Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
@@ -32,7 +32,7 @@ public class ManageShopPageController {
         }
     }
 
-    private boolean semanticCheck(ShopBean shopBean) {
+    private boolean semanticCheck(ShopBeanInterface shopBean) {
         return shopBean.getShopOpenTime().isBefore(shopBean.getShopCloseTime());
     }
 }

@@ -2,7 +2,7 @@ package cutit.controller.managepromotions;
 
 import cutit.bean.ManagePromotionBeanInterface;
 import cutit.bean.ManagePromotionBean;
-import cutit.bean.ShopBean;
+import cutit.bean.ShopBeanInterface;
 import cutit.database.dao.PromotionDAO;
 import cutit.database.dao.ServiceDAO;
 import cutit.exception.DuplicatedRecordException;
@@ -45,7 +45,7 @@ public class ManagePromotionController {
         }
     }
 
-    public void getAllPromotions(ManagePromotionBeanInterface managePromotionBean, ShopBean shopBean) throws Exception {
+    public void getAllPromotions(ManagePromotionBeanInterface managePromotionBean, ShopBeanInterface shopBean) throws Exception {
         try {
             Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
             List<Promotion> promotionsList = PromotionDAO.getAllPromotion(shop.getShopName());
@@ -58,7 +58,7 @@ public class ManagePromotionController {
     }
 
 
-    public ManagePromotionBean getAllServices(ShopBean shopBean) throws Exception {
+    public ManagePromotionBean getAllServices(ShopBeanInterface shopBean) throws Exception {
         try {
             Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
             List<Service> serviceList = ServiceDAO.getALlServices(shop.getShopName());

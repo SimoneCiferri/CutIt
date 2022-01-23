@@ -57,7 +57,8 @@ public class CustomerPromotionsViewController {
             CustomerPromotionInfoViewController viewController = (CustomerPromotionInfoViewController) view.getLoadedViewController1(ViewLayout1.CUSTOMERPROMOTIONINFO);
             viewController.fillView(customerBeanFirstUI, promotionBeanUQ);
         } catch (RecordNotFoundException rne) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", rne.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", rne.getMessage());
+            alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -19,7 +19,7 @@ public class CustomerPromotionInfoView2  extends Decorator2 {
             super.loadXML2(ViewLayout2.CUSTOMERPROMOTIONINFO);
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, "", "", "");
             alert.showAndWait();
             Stage stage = (Stage) Facade2.getInstance().getStartView2().getPrLayout2().getScene().getWindow();
             stage.close();

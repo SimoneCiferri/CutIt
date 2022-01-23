@@ -1,6 +1,6 @@
 package cutit.controller.manageshoppage;
 
-import cutit.bean.ShopBean;
+import cutit.bean.ShopBeanInterface;
 import cutit.exception.WrongInputDataException;
 import cutit.factory.AlertFactory;
 import cutit.utils.TextFieldCheck;
@@ -18,7 +18,7 @@ import java.util.*;
 
 public class HairdresserManageShopPageViewController {
 
-    private ShopBean shopBeanFirstUI;
+    private ShopBeanInterface shopBeanFirstUI;
     private ManageShopPageController manageShopPageController;
     private List<CheckBox> checkBoxList = new ArrayList<>();
     private List<ImageView> ivList = new ArrayList<>();
@@ -97,7 +97,8 @@ public class HairdresserManageShopPageViewController {
             try {
                 manageShopPageController.updateShop(shopBeanFirstUI);
             } catch (WrongInputDataException wde){
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+                alert.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -115,7 +116,7 @@ public class HairdresserManageShopPageViewController {
     }
 
 
-    public void fillView(ShopBean bean){
+    public void fillView(ShopBeanInterface bean){
         shopBeanFirstUI = bean;
 
         shopName.setText(shopBeanFirstUI.getShopName());

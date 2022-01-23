@@ -1,7 +1,7 @@
 package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
-import cutit.bean.ShopBean;
+import cutit.bean.ShopBeanInterface;
 import cutit.bean.AppointmentBeanUQ;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController1;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
@@ -27,7 +27,7 @@ public class CustomerBookAppointmentViewController {
     private CustomerBean customerBeanFirstUI;
     private AppointmentBeanUQ appointmentBeanUQ;
     private BookAppointmentController bookAppointmentController;
-    private ShopBean shopBeanUQ;
+    private ShopBeanInterface shopBeanUQ;
 
     @FXML
     private BorderPane bpInBookApp;
@@ -106,7 +106,8 @@ public class CustomerBookAppointmentViewController {
                 //Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
                 showPayedAndBooked();
             } catch (DuplicatedRecordException | PaymentException | RecordNotFoundException exception){
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+                alert.showAndWait();
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -137,7 +138,8 @@ public class CustomerBookAppointmentViewController {
             cbTimeSlot.setDisable(availableSlots.isEmpty());
             //differenza e ho quelli liberi
         } catch (WrongInputDataException wde) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+            alert.showAndWait();
             dtPicker.setValue(LocalDate.now());
         } catch (Exception e) {
             e.printStackTrace();
@@ -176,7 +178,8 @@ public class CustomerBookAppointmentViewController {
                 return false;
             }
         } catch (RecordNotFoundException | WrongInputDataException exception){
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+            alert.showAndWait();
             tfPromotionCode.setText("");
             return false;
         } catch (Exception e) {
@@ -229,18 +232,19 @@ public class CustomerBookAppointmentViewController {
                 viewController.goFav();
             }
         } catch (DuplicatedRecordException de) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+            AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
             TopBarCustomerView1 view = (TopBarCustomerView1) Facade.getInstance().getViewMap().get(ViewLayout1.TOPBARCUSTOMER);
             TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController1(ViewLayout1.TOPBARCUSTOMER);
             viewController.goFav();
         } catch(DBConnectionException dce){
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            Alert alert =  AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void fillView(CustomerBean customerBeanFirstUI, ShopBean shopBeanUQ){
+    public void fillView(CustomerBean customerBeanFirstUI, ShopBeanInterface shopBeanUQ){
         this.customerBeanFirstUI = customerBeanFirstUI;
         this.shopBeanUQ = shopBeanUQ;
         lblTitleShopName.setText(shopBeanUQ.getShopName());

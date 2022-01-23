@@ -1,20 +1,17 @@
 package cutit.bean;
 
-import cutit.bean.ShopBean;
-import cutit.bean.ShopListBean;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShopListBeanUQ implements ShopListBean {
 
-    private List<ShopBean> shopBeanList = new ArrayList<>();
+    private List<ShopBeanInterface> shopBeanList = new ArrayList<>();
 
-    public List<ShopBean> getShopBeanList() {
+    public List<ShopBeanInterface> getShopBeanList() {
         return shopBeanList;
     }
 
-    public void setShopBeanList(List<ShopBean> shopBeanList) {
+    public void setShopBeanList(List<ShopBeanInterface> shopBeanList) {
         this.shopBeanList = shopBeanList;
     }
 

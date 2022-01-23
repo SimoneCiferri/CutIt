@@ -93,7 +93,7 @@ public class LoginController {
         }
     }
 
-    public void getHairdresserAndShop(UserBean userBean, HairdresserBean hairdresserBean, ShopBean shopBean) throws Exception {
+    public void getHairdresserAndShop(UserBean userBean, HairdresserBean hairdresserBean, ShopBeanInterface shopBean) throws Exception {
         try {
             User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
             Hairdresser hairdresser = HairdresserDAO.getHairdresser(user);
@@ -126,7 +126,7 @@ public class LoginController {
         }
     }
 
-    private void pepperFunction(HairdresserBean hairdresserBean, ShopBean shopBean)  {
+    private void pepperFunction(HairdresserBean hairdresserBean, ShopBeanInterface shopBean)  {
         PepperClass p = new PepperClass(hairdresserBean, shopBean);
         p.start();
     }

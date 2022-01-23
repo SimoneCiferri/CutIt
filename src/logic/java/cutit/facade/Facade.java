@@ -38,7 +38,7 @@ public class Facade {
             decorateView(ViewLayout1.LOGIN);
         }catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "Error",e.getMessage(), "");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, "Error",e.getMessage(), "");
             alert.showAndWait();
             Stage stage = (Stage) getStartView().getPrLayout1().getScene().getWindow();
             stage.close();

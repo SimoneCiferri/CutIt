@@ -61,9 +61,11 @@ public class SignUpViewController {
                 }
             }
         } catch (DuplicatedRecordException | WrongInputDataException exception) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+            alert.showAndWait();
         } catch(DBConnectionException dce){
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -87,9 +89,11 @@ public class SignUpViewController {
                 }
             }
         } catch (DuplicatedRecordException de) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+            alert.showAndWait();
         } catch(DBConnectionException dce){
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
         }

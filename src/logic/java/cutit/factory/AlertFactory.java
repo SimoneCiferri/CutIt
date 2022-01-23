@@ -1,8 +1,6 @@
 package cutit.factory;
 
-import cutit.facade.Facade;
 import javafx.scene.control.Alert;
-import javafx.stage.Stage;
 
 public class AlertFactory {
 
@@ -17,7 +15,7 @@ public class AlertFactory {
         return AlertFactory.instance;
     }
 
-    public Alert generateAlert(Alert.AlertType type, String title, String headerText, String contentText){
+    public Alert createAlert(Alert.AlertType type, String title, String headerText, String contentText){
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
@@ -25,15 +23,11 @@ public class AlertFactory {
         return alert;
     }
 
-    public void generateAlert(Alert.AlertType type, String title, String headerText){
+    public Alert createAlert(Alert.AlertType type, String title, String headerText){
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
-        alert.showAndWait();
-        if(type == Alert.AlertType.ERROR){
-            Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout1().getScene().getWindow();
-            stage.close();
-        }
+        return alert;
     }
 
 }

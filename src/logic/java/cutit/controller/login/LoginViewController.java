@@ -3,7 +3,7 @@ package cutit.controller.login;
 import cutit.bean.*;
 import cutit.bean.CustomerBeanUQ;
 import cutit.bean.HairdresserBeanUQ;
-import cutit.bean.ShopBeanUQ;
+import cutit.bean.ShopBean;
 import cutit.bean.UserBeanUQ;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.controller.topbarviewcontrollers.TopBarHairdresserViewController;
@@ -27,7 +27,7 @@ public class LoginViewController {
     private UserBean userBeanFirstUI;
     private CustomerBean customerBeanFirstUI;
     private HairdresserBean hairdresserBeanFirstUI;
-    private ShopBean shopBeanFirstUI;
+    private ShopBeanInterface shopBeanFirstUI;
 
     @FXML
     TextField tfUsername;
@@ -40,7 +40,7 @@ public class LoginViewController {
         userBeanFirstUI = new UserBeanUQ();
         customerBeanFirstUI = new CustomerBeanUQ();
         hairdresserBeanFirstUI = new HairdresserBeanUQ();
-        shopBeanFirstUI = new ShopBeanUQ();
+        shopBeanFirstUI = new ShopBean();
         loginController = new LoginController();
     }
 
@@ -67,7 +67,7 @@ public class LoginViewController {
                 }
             } catch (Exception e) {
                 LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
                 alert.showAndWait();
             }
         }

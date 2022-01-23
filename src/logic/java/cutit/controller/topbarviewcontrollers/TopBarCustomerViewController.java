@@ -149,7 +149,7 @@ public class TopBarCustomerViewController {
             ivReduce.setImage(comb);
         }catch (NullPointerException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, "", "", "");
             alert.showAndWait();
             Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout1().getScene().getWindow();
             stage.close();

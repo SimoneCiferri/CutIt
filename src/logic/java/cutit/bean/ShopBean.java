@@ -2,61 +2,127 @@ package cutit.bean;
 
 import java.io.File;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public interface ShopBean {
+public class ShopBean implements ShopBeanInterface {
 
-    String getShopName();
+    private String shopName;
+    private String shopPIVA;
+    private String shopAddress;
+    private String shopPhoneNumber;
+    private String shopEmployee;
+    private String shopDescription;
+    private LocalTime shopOpenTime;
+    private LocalTime shopCloseTime;
+    private Map<Integer, Boolean> shopOpenDays;
+    private List<File> images = new ArrayList<>();
+    private List<String> promotions;
+    private List<String> services;
+    private List<String> allAppointments;
 
-    void setShopName(String shopName);
+    public String getShopName() {
+        return shopName;
+    }
 
-    String getShopPIVA();
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
 
-    void setShopPIVA(String shopPIVA);
+    public String getShopPIVA() {
+        return shopPIVA;
+    }
 
-    String getShopAddress();
+    public void setShopPIVA(String shopPIVA) {
+        this.shopPIVA = shopPIVA;
+    }
 
-    void setShopAddress(String shopAddress);
+    public String getShopAddress() {
+        return shopAddress;
+    }
 
-    String getShopPhoneNumber();
+    public void setShopAddress(String shopAddress) {
+        this.shopAddress = shopAddress;
+    }
 
-    void setShopPhoneNumber(String shopPhoneNumber);
+    public String getShopPhoneNumber() {
+        return shopPhoneNumber;
+    }
 
-    String getShopEmployee();
+    public void setShopPhoneNumber(String shopPhoneNumber) {
+        this.shopPhoneNumber = shopPhoneNumber;
+    }
 
-    void setShopEmployee(String shopEmployee);
+    public String getShopEmployee() {
+        return shopEmployee;
+    }
 
-    String getShopDescription();
+    public void setShopEmployee(String shopEmployee) {
+        this.shopEmployee = shopEmployee;
+    }
 
-    void setShopDescription(String shopDescription);
+    public String getShopDescription() {
+        return shopDescription;
+    }
 
-    LocalTime getShopOpenTime();
+    public void setShopDescription(String shopDescription) {
+        this.shopDescription = shopDescription;
+    }
 
-    void setShopOpenTime(LocalTime shopOpenTime);
+    public LocalTime getShopOpenTime() {
+        return shopOpenTime;
+    }
 
-    LocalTime getShopCloseTime();
+    public void setShopOpenTime(LocalTime shopOpenTime) {
+        this.shopOpenTime = shopOpenTime;
+    }
 
-    void setShopCloseTime(LocalTime shopCloseTime);
+    public LocalTime getShopCloseTime() {
+        return shopCloseTime;
+    }
 
-    Map<Integer, Boolean> getShopOpenDays();
+    public void setShopCloseTime(LocalTime shopCloseTime) {
+        this.shopCloseTime = shopCloseTime;
+    }
 
-    void setShopOpenDays(Map<Integer, Boolean> shopOpenDays);
+    public Map<Integer, Boolean> getShopOpenDays() {
+        return shopOpenDays;
+    }
 
-    List<File> getImages();
+    public void setShopOpenDays(Map<Integer, Boolean> shopOpenDays) {
+        this.shopOpenDays = shopOpenDays;
+    }
 
-    void setImages(List<File> images);
+    public List<File> getImages() {
+        return images;
+    }
 
-    List<String> getPromotions();
+    public void setImages(List<File> images) {
+        this.images = images;
+    }
 
-    void setPromotions(List<String> promotions);
+    public List<String> getPromotions() {
+        return promotions;
+    }
 
-    List<String> getServices();
+    public void setPromotions(List<String> promotions) {
+        this.promotions = promotions;
+    }
 
-    void setServices(List<String> services);
+    public List<String> getServices() {
+        return services;
+    }
 
-    List<String> getAllAppointments();
+    public void setServices(List<String> services) {
+        this.services = services;
+    }
 
-    void setAllAppointments(List<String> allAppointments);
+    public List<String> getAllAppointments() {
+        return allAppointments;
+    }
 
+    public void setAllAppointments(List<String> allAppointments) {
+        this.allAppointments = allAppointments;
+    }
 }

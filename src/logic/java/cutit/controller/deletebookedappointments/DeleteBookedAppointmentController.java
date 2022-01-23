@@ -66,20 +66,4 @@ public class DeleteBookedAppointmentController {
         }
         return appList;
     }
-
-    private List<AppointmentBean> appBeanListFromAppList(List<Appointment> allAppointments) {
-        List<AppointmentBean> beanAppList = new ArrayList<>();
-        if(!allAppointments.isEmpty()){
-            for (Appointment allAppointment : allAppointments) {
-                AppointmentBean bean = new AppointmentBeanUQ();
-                bean.setStartTime(allAppointment.getStartTime());
-                bean.setEndTime(allAppointment.getStartTime().plusMinutes(30));
-                bean.setShopName(allAppointment.getShop().getShopName());
-                bean.setCustomer(allAppointment.getCustomer().getUserID());
-                bean.setServiceName(allAppointment.getService().getServiceName());
-                beanAppList.add(bean);
-            }
-        }
-        return beanAppList;
-    }
 }

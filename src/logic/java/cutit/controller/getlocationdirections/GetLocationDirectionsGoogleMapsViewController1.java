@@ -7,8 +7,6 @@ import com.dlsc.gmapsfx.javascript.object.*;
 import com.dlsc.gmapsfx.service.directions.*;
 import com.dlsc.gmapsfx.service.geocoding.*;
 import cutit.factory.AlertFactory;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -59,7 +57,8 @@ public class GetLocationDirectionsGoogleMapsViewController1 implements Initializ
         geocodingService.geocode(address, (geocodingResults, geocoderStatus) -> {
             LatLong latLong1;
             if( geocoderStatus == GeocoderStatus.ZERO_RESULTS) {
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Warning", "No matching address found");
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Warning", "No matching address found");
+                alert.showAndWait();
                 return;
             } else if( geocodingResults.length > 1 ) {
                 System.out.println("1 risultato");

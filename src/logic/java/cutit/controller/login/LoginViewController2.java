@@ -1,7 +1,7 @@
 package cutit.controller.login;
 
 import cutit.bean.*;
-import cutit.bean.ShopBeanUQ;
+import cutit.bean.ShopBean;
 import cutit.controller.leftbarviewcontrollers.LeftBarCustomerViewController;
 import cutit.controller.leftbarviewcontrollers.LeftBarHairdresserViewController;
 import cutit.decorator.ViewLayout2;
@@ -9,7 +9,6 @@ import cutit.decorator.concrete_decorator2.LeftBarCustomerView;
 import cutit.decorator.concrete_decorator2.LeftBarHairdresserView;
 import cutit.facade.Facade2;
 import cutit.factory.AlertFactory;
-import cutit.log.LogWriter;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -21,7 +20,7 @@ public class LoginViewController2 {
     private UserBean userBeanSecondUI;
     private CustomerBean customerBeanSecondUI;
     private HairdresserBean hairdresserBeanSecondUI;
-    private ShopBean shopBeanSecondUI;
+    private ShopBeanInterface shopBeanSecondUI;
 
     @FXML
     private TextField tfUsernameLogin, tfNameAndSurnameCustomer, tfBirthDateCustomer, tfEmailCustomer, tfNameAndSurnameHairdresser, tfEmailHairdresser,
@@ -39,7 +38,7 @@ public class LoginViewController2 {
         userBeanSecondUI = new UserBeanUQ();
         customerBeanSecondUI = new CustomerBeanUQ();
         hairdresserBeanSecondUI = new HairdresserBeanUQ();
-        shopBeanSecondUI = new ShopBeanUQ();
+        shopBeanSecondUI = new ShopBean();
         loginController = new LoginController();
     }
 
@@ -65,7 +64,7 @@ public class LoginViewController2 {
                     }
                 }
             } catch (Exception e) {
-                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
                 alert.showAndWait();
             }
         }
