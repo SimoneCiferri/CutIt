@@ -16,7 +16,7 @@ public class StartView1 implements ViewComponent1 {
 
     private Pane prLayout;
     private Map<ViewLayout1, Pane> loadedView = new EnumMap<>(ViewLayout1.class);
-    private Map<ViewLayout1, Object> loadedViewContorllerHM = new EnumMap<>(ViewLayout1.class);
+    private Map<ViewLayout1, Object> loadedViewControllerHM = new EnumMap<>(ViewLayout1.class);
 
     @Override
     public Pane getPrLayout1() {
@@ -34,7 +34,7 @@ public class StartView1 implements ViewComponent1 {
             FXMLLoader loader = new FXMLLoader(ViewLayout1.getPath(layout));
             Pane primaryLayout = loader.load();
             Object controller = loader.getController();
-            loadedViewContorllerHM.put(layout, controller);
+            loadedViewControllerHM.put(layout, controller);
 
             if(layout == ViewLayout1.START){
                 Image image = new Image(Objects.requireNonNull(Client.class.getResource("/cutit/cutit/files/backgr.jpg"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
@@ -57,7 +57,7 @@ public class StartView1 implements ViewComponent1 {
 
     @Override
     public Object getLoadedViewController1(ViewLayout1 layout) {
-        return loadedViewContorllerHM.get(layout);
+        return loadedViewControllerHM.get(layout);
     }
 
     public Map<ViewLayout1, Pane> getLoaded(){
