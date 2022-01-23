@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface ShopListBean {
 
-    List<ShopBean> getShopBeanList();
+    List<ShopBeanInterface> getShopBeanList();
 
-    void setShopBeanList(List<ShopBean> shopBeanList);
+    void setShopBeanList(List<ShopBeanInterface> shopBeanList);
 
 }

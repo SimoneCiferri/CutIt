@@ -2,7 +2,7 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.*;
 import cutit.bean.AppointmentBeanUQ;
-import cutit.bean.ShopBeanUQ;
+import cutit.bean.ShopBean;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewControllerInterface;
@@ -72,7 +72,7 @@ public class BookAppointmentController {
         return true;
     }
 
-    public Boolean getShopDirections(GetLocationDirectionsGoogleMapsViewControllerInterface viewController, ShopBean bean){
+    public Boolean getShopDirections(GetLocationDirectionsGoogleMapsViewControllerInterface viewController, ShopBeanInterface bean){
         getLocationDirectionsController = new GetLocationDirectionsController();
         getLocationDirectionsController.getDirection(viewController, bean);
         return true;
@@ -88,21 +88,21 @@ public class BookAppointmentController {
         }
     }
 
-    public void getShop(ShopBeanUQ shopBeanUQ, String shopName) throws Exception {
+    public void getShop(ShopBean shopBean, String shopName) throws Exception {
         try {
             Shop shop = ShopDAO.getShopFromName(shopName);
-            shopBeanUQ.setShopName(shop.getShopName());
-            shopBeanUQ.setShopPIVA(shop.getpIVA());
-            shopBeanUQ.setShopAddress(shop.getAddress());
-            shopBeanUQ.setShopPhoneNumber(shop.getPhoneNumber());
-            shopBeanUQ.setShopEmployee(shop.getEmployee());
-            shopBeanUQ.setShopDescription(shop.getDescription());
-            shopBeanUQ.setShopOpenTime(shop.getOpenTime());
-            shopBeanUQ.setShopCloseTime(shop.getCloseTime());
-            shopBeanUQ.setShopOpenDays(shop.getOpenDays());
-            shopBeanUQ.setPromotions(stringListFromPromList(shop.getPromotions()));
-            shopBeanUQ.setServices(stringListFromServList(shop.getServices()));
-            shopBeanUQ.setImages(shop.getImages());
+            shopBean.setShopName(shop.getShopName());
+            shopBean.setShopPIVA(shop.getpIVA());
+            shopBean.setShopAddress(shop.getAddress());
+            shopBean.setShopPhoneNumber(shop.getPhoneNumber());
+            shopBean.setShopEmployee(shop.getEmployee());
+            shopBean.setShopDescription(shop.getDescription());
+            shopBean.setShopOpenTime(shop.getOpenTime());
+            shopBean.setShopCloseTime(shop.getCloseTime());
+            shopBean.setShopOpenDays(shop.getOpenDays());
+            shopBean.setPromotions(stringListFromPromList(shop.getPromotions()));
+            shopBean.setServices(stringListFromServList(shop.getServices()));
+            shopBean.setImages(shop.getImages());
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
@@ -215,14 +215,14 @@ public class BookAppointmentController {
         }
     }
 
-    private List<ShopBean> beanListFromShopList(List<Shop> shopList) {
-        List<ShopBean> list = new ArrayList<>();
+    private List<ShopBeanInterface> beanListFromShopList(List<Shop> shopList) {
+        List<ShopBeanInterface> list = new ArrayList<>();
         if(!shopList.isEmpty()){
             for (Shop shop : shopList) {
                 String name = shop.getShopName();
                 String address = shop.getAddress();
                 List<File> images = shop.getImages();
-                ShopBean shopBean = new ShopBeanUQ(); //si dovrebbe capire quale creare a runtime OPPURE si usa shopBEanFirstUI come shopBeanUnica per tutte e due le UI
+                ShopBeanInterface shopBean = new ShopBean(); //si dovrebbe capire quale creare a runtime OPPURE si usa shopBEanFirstUI come shopBeanUnica per tutte e due le UI
                 shopBean.setShopName(name);
                 shopBean.setShopAddress(address);
                 shopBean.setImages(images);

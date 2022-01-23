@@ -1,7 +1,7 @@
 package cutit.controller.login;
 
 import cutit.bean.*;
-import cutit.bean.ShopBeanUQ;
+import cutit.bean.ShopBean;
 import cutit.controller.leftbarviewcontrollers.LeftBarCustomerViewController;
 import cutit.controller.leftbarviewcontrollers.LeftBarHairdresserViewController;
 import cutit.decorator.ViewLayout2;
@@ -20,7 +20,7 @@ public class LoginViewController2 {
     private UserBean userBeanSecondUI;
     private CustomerBean customerBeanSecondUI;
     private HairdresserBean hairdresserBeanSecondUI;
-    private ShopBean shopBeanSecondUI;
+    private ShopBeanInterface shopBeanSecondUI;
 
     @FXML
     private TextField tfUsernameLogin, tfNameAndSurnameCustomer, tfBirthDateCustomer, tfEmailCustomer, tfNameAndSurnameHairdresser, tfEmailHairdresser,
@@ -38,7 +38,7 @@ public class LoginViewController2 {
         userBeanSecondUI = new UserBeanUQ();
         customerBeanSecondUI = new CustomerBeanUQ();
         hairdresserBeanSecondUI = new HairdresserBeanUQ();
-        shopBeanSecondUI = new ShopBeanUQ();
+        shopBeanSecondUI = new ShopBean();
         loginController = new LoginController();
     }
 

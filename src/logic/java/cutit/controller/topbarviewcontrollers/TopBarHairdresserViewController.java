@@ -31,7 +31,7 @@ public class TopBarHairdresserViewController {
     private double xOffset = 0;
     private double yOffset = 0;
     private HairdresserBean hairdresserBeanFirstUI;
-    private ShopBean shopBeanFirstUI;
+    private ShopBeanInterface shopBeanFirstUI;
 
     @FXML
     private Label  btnHApp, btnHPromotions, btnHServices, btnHShop,  btnHLogout;
@@ -157,7 +157,7 @@ public class TopBarHairdresserViewController {
         }
     }
 
-    public void startBean(HairdresserBean hairdresserBeanFirstUI, ShopBean shopBeanFirstUI){
+    public void startBean(HairdresserBean hairdresserBeanFirstUI, ShopBeanInterface shopBeanFirstUI){
         System.out.println("HairdresserBean passedBY LoginViewController");
         this.hairdresserBeanFirstUI = hairdresserBeanFirstUI;
         this.shopBeanFirstUI = shopBeanFirstUI;

@@ -1,7 +1,7 @@
 package cutit.controller.bookappointment.secondui;
 
 import cutit.bean.CustomerBean;
-import cutit.bean.ShopBean;
+import cutit.bean.ShopBeanInterface;
 import cutit.bean.ShopListBean;
 import cutit.bean.ShopListBeanUQ;
 import cutit.controller.bookappointment.BookAppointmentController;
@@ -36,7 +36,7 @@ public class CustomerFavouritesShopViewController2 {
         vbInScrollCFav.getChildren().clear();
         try {
             bookAppointmentController.getFavouritesShop(shopListBean, customerBeanSecondUI.getcEmail());
-            List<ShopBean> shopList = shopListBean.getShopBeanList();
+            List<ShopBeanInterface> shopList = shopListBean.getShopBeanList();
             for(int i=0;i<shopList.size();i++){
                 VBox shop = JavaFXNodeFactory.getInstance().createFavouritesShopCard(shopList.get(i).getShopName(),shopList.get(i).getShopAddress());
                 vbInScrollCFav.getChildren().add(shop);

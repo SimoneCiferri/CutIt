@@ -2,7 +2,7 @@ package cutit.controller.deletebookedappointments;
 
 import cutit.bean.AppointmentBean;
 import cutit.bean.DeleteAppointmentBean;
-import cutit.bean.ShopBean;
+import cutit.bean.ShopBeanInterface;
 import cutit.bean.firstui.DeleteAppointmentBeanFirstUI;
 import cutit.exception.WrongInputDataException;
 import cutit.factory.AlertFactory;
@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 
 public class HairdresserDeleteBookedAppointmentsViewController {
 
-    private ShopBean shopBean;
+    private ShopBeanInterface shopBean;
     private DeleteAppointmentBean deleteAppointmentBeanFirstUI;
     private DeleteBookedAppointmentController deleteBookedAppointmentController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
@@ -88,7 +88,7 @@ public class HairdresserDeleteBookedAppointmentsViewController {
         //piccione viaggiatore
     }
 
-    public void fillView(ShopBean shopBean){
+    public void fillView(ShopBeanInterface shopBean){
         this.shopBean = shopBean;
         System.out.println("Filling View from DeleteAppointmentBean data passedBY TopBarHairdresserViewController");
         showAppointments();

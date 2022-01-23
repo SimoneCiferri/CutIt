@@ -2,7 +2,7 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
 import cutit.bean.ShopListBean;
-import cutit.bean.ShopBeanUQ;
+import cutit.bean.ShopBean;
 import cutit.bean.ShopListBeanUQ;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.ShopInfoView1;
@@ -17,7 +17,7 @@ import java.io.File;
 public class CustomerFavouritesShopViewController {
 
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private ShopBeanUQ shopBeanUQ;
+    private ShopBean shopBean;
     private CustomerBean customerBeanFirstUI;
     private ShopListBean shopListBeanFirstUI;
     private BookAppointmentController bookAppointmentController;

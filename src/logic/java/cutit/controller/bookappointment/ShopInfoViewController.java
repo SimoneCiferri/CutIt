@@ -1,7 +1,7 @@
 package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
-import cutit.bean.ShopBeanUQ;
+import cutit.bean.ShopBean;
 import cutit.controller.getlocationdirections.GetLocationDirectionsController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController1;
 import cutit.decorator.ViewLayout1;
@@ -23,7 +23,7 @@ import java.util.Objects;
 
 public class ShopInfoViewController {
 
-    private ShopBeanUQ shopBeanUQ;
+    private ShopBean shopBean;
     private CustomerBean customerBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
     private GetLocationDirectionsController getLocationDirectionsController;
@@ -43,7 +43,7 @@ public class ShopInfoViewController {
 
 
     public boolean initialize() throws IOException {
-        shopBeanUQ = new ShopBeanUQ();
+        shopBean = new ShopBean();
         bookAppointmentController = new BookAppointmentController();
         getLocationDirectionsController = new GetLocationDirectionsController();
         ivList.add(ivShop1);
@@ -58,34 +58,34 @@ public class ShopInfoViewController {
     }
 
     public void showShopInfo(){
-        lShopName.setText(shopBeanUQ.getShopName());
-        if(Objects.equals(shopBeanUQ.getShopPhoneNumber(), "")){
+        lShopName.setText(shopBean.getShopName());
+        if(Objects.equals(shopBean.getShopPhoneNumber(), "")){
             lShopPhone.setVisible(true);
-            lShopPhone.setText(shopBeanUQ.getShopPhoneNumber());
+            lShopPhone.setText(shopBean.getShopPhoneNumber());
         }
-        if(!shopBeanUQ.getImages().isEmpty()){
+        if(!shopBean.getImages().isEmpty()){
             ivShopProfPhoto.setVisible(true);
             lblPhoto.setVisible(true);
             vboxPhoto.setVisible(true);
-            for(int i = 0; i< shopBeanUQ.getImages().size(); i++){
+            for(int i = 0; i< shopBean.getImages().size(); i++){
                 if(i==0){
-                    ivShopProfPhoto.setImage(new Image(String.valueOf(shopBeanUQ.getImages().get(i).toURI())));
+                    ivShopProfPhoto.setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
                 }
-                ivList.get(i).setImage(new Image(String.valueOf(shopBeanUQ.getImages().get(i).toURI())));
+                ivList.get(i).setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
             }
         } else {
             ivShopProfPhoto.setImage(new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/blank-profile-picture.png")).toString()));
             lblPhoto.setVisible(false);
             vboxPhoto.setVisible(false);
         }
-        if(Objects.equals(shopBeanUQ.getShopAddress(), "")){
+        if(Objects.equals(shopBean.getShopAddress(), "")){
             btnMaps.setDisable(true);
         }
-        if(!Objects.equals(shopBeanUQ.getShopDescription(), "")){
+        if(!Objects.equals(shopBean.getShopDescription(), "")){
             lShopDescription.setVisible(true);
-            lShopDescription.setText(shopBeanUQ.getShopDescription());
+            lShopDescription.setText(shopBean.getShopDescription());
         }
-        Map<Integer,Boolean> opendays = shopBeanUQ.getShopOpenDays();
+        Map<Integer,Boolean> opendays = shopBean.getShopOpenDays();
         String openTimes = "";
         for(int i=1;i<opendays.size()+1;i++){
            if(opendays.get(i)){
@@ -116,23 +116,23 @@ public class ShopInfoViewController {
            }
         }
         if(!(openTimes.equals(""))){
-            openTimes = openTimes + shopBeanUQ.getShopOpenTime() + " - " + shopBeanUQ.getShopCloseTime();
+            openTimes = openTimes + shopBean.getShopOpenTime() + " - " + shopBean.getShopCloseTime();
             lShopOpenTime.setText(openTimes);
         } else {
             lShopOpenTime.setText("Shop is closed.");
         }
-        if(!shopBeanUQ.getServices().isEmpty()){
-            List<String> allServices = shopBeanUQ.getServices();
+        if(!shopBean.getServices().isEmpty()){
+            List<String> allServices = shopBean.getServices();
             String servicesLabel = "";
             for (String allService : allServices) {
                 servicesLabel = servicesLabel +  allService + "\n";
             }
             lblServiceList.setText(servicesLabel);
         }
-        if(!Objects.equals(shopBeanUQ.getShopEmployee(), "")){
+        if(!Objects.equals(shopBean.getShopEmployee(), "")){
             lTitleEmployee.setVisible(true);
             lEmployee.setVisible(true);
-            lEmployee.setText(shopBeanUQ.getShopEmployee());
+            lEmployee.setText(shopBean.getShopEmployee());
         }
     }
 
@@ -141,7 +141,7 @@ public class ShopInfoViewController {
         Facade.getInstance().decorateView(ViewLayout1.CUSTOMERBOOKAPPOINTMENT);
         CustomerBookAppointmentView1 view = (CustomerBookAppointmentView1) Facade.getInstance().getViewMap().get(ViewLayout1.CUSTOMERBOOKAPPOINTMENT);
         CustomerBookAppointmentViewController viewController = (CustomerBookAppointmentViewController) view.getLoadedViewController1(ViewLayout1.CUSTOMERBOOKAPPOINTMENT);
-        viewController.fillView(customerBeanFirstUI, shopBeanUQ);
+        viewController.fillView(customerBeanFirstUI, shopBean);
         return true;
     }
 
@@ -156,14 +156,14 @@ public class ShopInfoViewController {
         Facade.getInstance().decorateView(ViewLayout1.GMAPS);
         GetLocationDirectionsGoogleMapsView1 view = (GetLocationDirectionsGoogleMapsView1) Facade.getInstance().getViewMap().get(ViewLayout1.GMAPS);
         GetLocationDirectionsGoogleMapsViewController1 viewController = (GetLocationDirectionsGoogleMapsViewController1) view.getLoadedViewController1(ViewLayout1.GMAPS);
-        getLocationDirectionsController.getDirection(viewController ,shopBeanUQ);
+        getLocationDirectionsController.getDirection(viewController , shopBean);
         return true;
     }
 
     public void fillView(CustomerBean customerBeanFirstUI, String shopName){
         try {
             this.customerBeanFirstUI = customerBeanFirstUI;
-            bookAppointmentController.getShop(shopBeanUQ, shopName);
+            bookAppointmentController.getShop(shopBean, shopName);
             showShopInfo();
         } catch (Exception e) {
             e.printStackTrace();

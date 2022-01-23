@@ -1,19 +1,8 @@
 package cutit.controller.leftbarviewcontrollers;
 
-import cutit.bean.CustomerBean;
 import cutit.bean.HairdresserBean;
-import cutit.bean.ShopBean;
-import cutit.controller.deletebookedappointments.HairdresserDeleteBookedAppointmentsViewController;
-import cutit.controller.managepromotions.HairdresserManagePromotionsViewController;
-import cutit.controller.manageservices.HairdresserManageServicesViewController;
-import cutit.controller.manageshoppage.HairdresserManageShopPageViewController;
-import cutit.decorator.ViewLayout1;
+import cutit.bean.ShopBeanInterface;
 import cutit.decorator.ViewLayout2;
-import cutit.decorator.concrete_decorator.HairdresserAppointmentsView1;
-import cutit.decorator.concrete_decorator.HairdresserManageShopView1;
-import cutit.decorator.concrete_decorator.HairdresserPromotionsView1;
-import cutit.decorator.concrete_decorator.HairdresserServicesView1;
-import cutit.facade.Facade;
 import cutit.facade.Facade2;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -29,7 +18,7 @@ public class LeftBarHairdresserViewController {
     private static final double normalStyle = 40;
 
     private HairdresserBean hairdresserBeanSecondUI;
-    private ShopBean shopBeanSecondUI;
+    private ShopBeanInterface shopBeanSecondUI;
 
     @FXML
     private VBox vbLeftBarHairdresser;
@@ -97,7 +86,7 @@ public class LeftBarHairdresserViewController {
         System.out.println("LeftBarHairdresser viewcontroller");
     }
 
-    public void startBean(HairdresserBean hairdresserBeanSecondUI, ShopBean shopBeanSecondUI){
+    public void startBean(HairdresserBean hairdresserBeanSecondUI, ShopBeanInterface shopBeanSecondUI){
         System.out.println("HairdresserBeanSecondUI passedBY LoginViewController2");
         this.hairdresserBeanSecondUI = hairdresserBeanSecondUI;
         this.shopBeanSecondUI = shopBeanSecondUI;

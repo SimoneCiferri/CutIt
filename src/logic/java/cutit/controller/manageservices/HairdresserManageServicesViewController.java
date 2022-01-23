@@ -2,8 +2,8 @@ package cutit.controller.manageservices;
 
 import cutit.bean.ManageServiceBeanInterface;
 import cutit.bean.ManageServiceBean;
+import cutit.bean.ShopBeanInterface;
 import cutit.bean.ShopBean;
-import cutit.bean.ShopBeanUQ;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.utils.TextFieldCheck;
@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class HairdresserManageServicesViewController {
 
-    private ShopBean shopBeanFirstUI;
+    private ShopBeanInterface shopBeanFirstUI;
     private ManageServiceBeanInterface manageServicesBean;
     private ManageServicesController manageServicesController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
@@ -36,7 +36,7 @@ public class HairdresserManageServicesViewController {
 
     @FXML
     public void initialize(){
-        shopBeanFirstUI = new ShopBeanUQ();
+        shopBeanFirstUI = new ShopBean();
         manageServicesBean = new ManageServiceBean();
         manageServicesController = new ManageServicesController();
         vbInScrollHS.setSpacing(15);
@@ -141,7 +141,7 @@ public class HairdresserManageServicesViewController {
         showHairServ();
     }
 
-    public void fillView(ShopBean shopBeanFirstUI){
+    public void fillView(ShopBeanInterface shopBeanFirstUI){
         this.shopBeanFirstUI = shopBeanFirstUI;
         System.out.println("Filling View from HairdresserBean data passedBY TopBarHairdresserViewController");
         showHairServ();

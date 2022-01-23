@@ -3,7 +3,7 @@ package cutit.controller.managepromotions;
 import cutit.bean.ManagePromotionBeanInterface;
 import cutit.bean.HairdresserBeanUQ;
 import cutit.bean.ManagePromotionBean;
-import cutit.bean.ShopBean;
+import cutit.bean.ShopBeanInterface;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
@@ -26,7 +26,7 @@ import java.util.Objects;
 public class HairdresserManagePromotionsViewController {
 
     private HairdresserBeanUQ hairdresserBeanFirstUI;
-    private ShopBean shopBeanFirstUI;
+    private ShopBeanInterface shopBeanFirstUI;
     private ManagePromotionBeanInterface managePromotionBeanFirstUI;
     private ManagePromotionController managePromotionController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
@@ -169,7 +169,7 @@ public class HairdresserManagePromotionsViewController {
         showHairProm();
     }
 
-    public void fillView(ShopBean shopBeanFirstUI){
+    public void fillView(ShopBeanInterface shopBeanFirstUI){
         this.shopBeanFirstUI = shopBeanFirstUI;
         System.out.println("Filling View from HairdresserBean data passedBY TopBarHairdresserViewController");
         showHairProm();
