@@ -9,7 +9,6 @@ import cutit.decorator.concrete_decorator2.LeftBarCustomerView;
 import cutit.decorator.concrete_decorator2.LeftBarHairdresserView;
 import cutit.facade.Facade2;
 import cutit.factory.AlertFactory;
-import cutit.log.LogWriter;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -65,7 +64,7 @@ public class LoginViewController2 {
                     }
                 }
             } catch (Exception e) {
-                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
                 alert.showAndWait();
             }
         }

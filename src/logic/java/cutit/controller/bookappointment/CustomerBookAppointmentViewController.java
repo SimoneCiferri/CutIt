@@ -106,7 +106,7 @@ public class CustomerBookAppointmentViewController {
                 //Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
                 showPayedAndBooked();
             } catch (DuplicatedRecordException | PaymentException | RecordNotFoundException exception){
-                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
                 alert.showAndWait();
             } catch (Exception e){
                 e.printStackTrace();
@@ -138,7 +138,7 @@ public class CustomerBookAppointmentViewController {
             cbTimeSlot.setDisable(availableSlots.isEmpty());
             //differenza e ho quelli liberi
         } catch (WrongInputDataException wde) {
-            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
             alert.showAndWait();
             dtPicker.setValue(LocalDate.now());
         } catch (Exception e) {
@@ -178,7 +178,7 @@ public class CustomerBookAppointmentViewController {
                 return false;
             }
         } catch (RecordNotFoundException | WrongInputDataException exception){
-            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
             alert.showAndWait();
             tfPromotionCode.setText("");
             return false;
@@ -232,12 +232,12 @@ public class CustomerBookAppointmentViewController {
                 viewController.goFav();
             }
         } catch (DuplicatedRecordException de) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+            AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
             TopBarCustomerView1 view = (TopBarCustomerView1) Facade.getInstance().getViewMap().get(ViewLayout1.TOPBARCUSTOMER);
             TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController1(ViewLayout1.TOPBARCUSTOMER);
             viewController.goFav();
         } catch(DBConnectionException dce){
-            Alert alert =  AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            Alert alert =  AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
             alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();

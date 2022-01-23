@@ -57,7 +57,7 @@ public class HairdresserManageServicesViewController {
                 vbInScrollHS.getChildren().add(l);
             }
         } catch(DBConnectionException dce){
-            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
             alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,10 +101,10 @@ public class HairdresserManageServicesViewController {
                 manageServicesController.addService(manageServicesBean);
                 showHairServ();
             } catch (DuplicatedRecordException de) {
-                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
                 alert.showAndWait();
             } catch(DBConnectionException dce){
-                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
                 alert.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -133,7 +133,7 @@ public class HairdresserManageServicesViewController {
         try {
             manageServicesController.deleteService(this.manageServicesBean);
         } catch(DBConnectionException dce){
-            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
             alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();

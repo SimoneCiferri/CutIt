@@ -67,7 +67,7 @@ public class LoginViewController {
                 }
             } catch (Exception e) {
                 LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
                 alert.showAndWait();
             }
         }
