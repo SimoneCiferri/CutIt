@@ -3,9 +3,11 @@ package cutit.decorator.concrete_decorator;
 import cutit.decorator.Decorator;
 import cutit.decorator.ViewComponent1;
 import cutit.decorator.ViewLayout1;
+import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 
 
 public class GetLocationDirectionsGoogleMapsView1 extends Decorator {
@@ -17,7 +19,10 @@ public class GetLocationDirectionsGoogleMapsView1 extends Decorator {
 
      } catch (Exception e) {
          LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-         AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "", "", "");
+         Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.ERROR, "Error", e.getMessage(), "");
+         alert.showAndWait();
+         Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout1().getScene().getWindow();
+         stage.close();
      }
  }
 }

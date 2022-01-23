@@ -23,11 +23,6 @@ public class AlertFactory {
         alert.setHeaderText(headerText);
         alert.setContentText(contentText);
         return alert;
-        /*alert.showAndWait();
-        if(type == Alert.AlertType.ERROR){
-            Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout1().getScene().getWindow();
-            stage.close();
-        }*/
     }
 
     public void generateAlert(Alert.AlertType type, String title, String headerText){
