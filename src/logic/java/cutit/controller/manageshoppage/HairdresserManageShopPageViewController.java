@@ -97,7 +97,8 @@ public class HairdresserManageShopPageViewController {
             try {
                 manageShopPageController.updateShop(shopBeanFirstUI);
             } catch (WrongInputDataException wde){
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+                alert.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
             }

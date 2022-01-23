@@ -106,7 +106,8 @@ public class CustomerBookAppointmentViewController {
                 //Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
                 showPayedAndBooked();
             } catch (DuplicatedRecordException | PaymentException | RecordNotFoundException exception){
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+                alert.showAndWait();
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -137,7 +138,8 @@ public class CustomerBookAppointmentViewController {
             cbTimeSlot.setDisable(availableSlots.isEmpty());
             //differenza e ho quelli liberi
         } catch (WrongInputDataException wde) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+            alert.showAndWait();
             dtPicker.setValue(LocalDate.now());
         } catch (Exception e) {
             e.printStackTrace();
@@ -176,7 +178,8 @@ public class CustomerBookAppointmentViewController {
                 return false;
             }
         } catch (RecordNotFoundException | WrongInputDataException exception){
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+            alert.showAndWait();
             tfPromotionCode.setText("");
             return false;
         } catch (Exception e) {
@@ -234,7 +237,8 @@ public class CustomerBookAppointmentViewController {
             TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController1(ViewLayout1.TOPBARCUSTOMER);
             viewController.goFav();
         } catch(DBConnectionException dce){
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            Alert alert =  AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
         }

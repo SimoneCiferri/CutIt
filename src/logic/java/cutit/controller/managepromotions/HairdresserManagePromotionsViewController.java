@@ -124,9 +124,11 @@ public class HairdresserManagePromotionsViewController {
                 managePromotionController.addPromotion(this.managePromotionBeanFirstUI);
                 showHairProm();
             } catch (DuplicatedRecordException | WrongInputDataException | RecordNotFoundException exception) {
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+                alert.showAndWait();
             } catch(DBConnectionException dce){
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+                alert.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
             }

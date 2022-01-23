@@ -59,7 +59,8 @@ public class GetLocationDirectionsGoogleMapsViewController1 implements Initializ
         geocodingService.geocode(address, (geocodingResults, geocoderStatus) -> {
             LatLong latLong1;
             if( geocoderStatus == GeocoderStatus.ZERO_RESULTS) {
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Warning", "No matching address found");
+                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.WARNING, "Warning", "No matching address found");
+                alert.showAndWait();
                 return;
             } else if( geocodingResults.length > 1 ) {
                 System.out.println("1 risultato");

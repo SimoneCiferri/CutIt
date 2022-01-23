@@ -25,15 +25,11 @@ public class AlertFactory {
         return alert;
     }
 
-    public void generateAlert(Alert.AlertType type, String title, String headerText){
+    public Alert generateAlert(Alert.AlertType type, String title, String headerText){
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
-        alert.showAndWait();
-        if(type == Alert.AlertType.ERROR){
-            Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout1().getScene().getWindow();
-            stage.close();
-        }
+        return alert;
     }
 
 }
