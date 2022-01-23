@@ -1,6 +1,6 @@
 package cutit.controller.manageservices;
 
-import cutit.bean.ManageServiceBean;
+import cutit.bean.ManageServiceBeanInterface;
 import cutit.bean.ShopBean;
 import cutit.database.dao.ServiceDAO;
 import cutit.exception.DuplicatedRecordException;
@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class ManageServicesController {
 
-    public Boolean addService(ManageServiceBean manageServiceBean) throws Exception {
+    public Boolean addService(ManageServiceBeanInterface manageServiceBean) throws Exception {
         try{
             Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
             ServiceDAO.insertService(service);
@@ -29,7 +29,7 @@ public class ManageServicesController {
         }
     }
 
-    public void deleteService(ManageServiceBean manageServiceBean) throws Exception {
+    public void deleteService(ManageServiceBeanInterface manageServiceBean) throws Exception {
         try{
             Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
             ServiceDAO.deleteService(service);
@@ -41,7 +41,7 @@ public class ManageServicesController {
 
     }
 
-    public void getAllServices(ManageServiceBean manageServiceBean, ShopBean shopBean) throws Exception {
+    public void getAllServices(ManageServiceBeanInterface manageServiceBean, ShopBean shopBean) throws Exception {
         try{
             Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
             List<Service> serviceList = ServiceDAO.getALlServices(shop.getShopName());

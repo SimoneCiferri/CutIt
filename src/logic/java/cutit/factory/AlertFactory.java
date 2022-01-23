@@ -17,16 +17,17 @@ public class AlertFactory {
         return AlertFactory.instance;
     }
 
-    public void generateAlert(Alert.AlertType type, String title, String headerText, String contentText){
+    public Alert generateAlert(Alert.AlertType type, String title, String headerText, String contentText){
         Alert alert = new Alert(type);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
         alert.setContentText(contentText);
-        alert.showAndWait();
+        return alert;
+        /*alert.showAndWait();
         if(type == Alert.AlertType.ERROR){
             Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout1().getScene().getWindow();
             stage.close();
-        }
+        }*/
     }
 
     public void generateAlert(Alert.AlertType type, String title, String headerText){

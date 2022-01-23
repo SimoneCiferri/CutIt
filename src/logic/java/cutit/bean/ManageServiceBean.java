@@ -1,28 +1,56 @@
 package cutit.bean;
 
+import cutit.bean.ManageServiceBeanInterface;
+
 import java.util.List;
 import java.util.Map;
 
-public interface ManageServiceBean {
+public class ManageServiceBean implements ManageServiceBeanInterface {
 
-    List<String> getAllServicesList();
+    private String serviceName;
+    private Float servicePrice;
+    private String serviceShopName;
 
-    void setAllServicesList(List<String> allServicesList);
+    private Map<String, Float> serviceList;
+    private List<String> allServicesList;
 
-    String getServiceName();
+    public String getServiceName() {
+        return serviceName;
+    }
 
-    void setServiceName(String serviceName);
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
 
-    Float getServicePrice();
+    public Float getServicePrice() {
+        return servicePrice;
+    }
 
-    void setServicePrice(Float servicePrice);
+    public void setServicePrice(Float servicePrice) {
+        this.servicePrice = servicePrice;
+    }
 
-    String getServiceShopName();
+    public String getServiceShopName() {
+        return serviceShopName;
+    }
 
-    void setServiceShopName(String serviceShopName);
+    public void setServiceShopName(String serviceShopName) {
+        this.serviceShopName = serviceShopName;
+    }
 
-    Map<String, Float> getServiceList();
+    public Map<String, Float> getServiceList() {
+        return serviceList;
+    }
 
-    void setServiceList(Map<String, Float> serviceList);
+    public void setServiceList(Map<String, Float> serviceList) {
+        this.serviceList = serviceList;
+    }
 
+    public List<String> getAllServicesList() {
+        return allServicesList;
+    }
+
+    public void setAllServicesList(List<String> allServicesList) {
+        this.allServicesList = allServicesList;
+    }
 }

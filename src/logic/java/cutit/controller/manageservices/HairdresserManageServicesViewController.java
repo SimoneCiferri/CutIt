@@ -1,7 +1,7 @@
 package cutit.controller.manageservices;
 
+import cutit.bean.ManageServiceBeanInterface;
 import cutit.bean.ManageServiceBean;
-import cutit.bean.firstui.ManageServiceBeanFirstUI;
 import cutit.bean.ShopBean;
 import cutit.bean.ShopBeanUQ;
 import cutit.exception.DBConnectionException;
@@ -25,7 +25,7 @@ import java.util.Objects;
 public class HairdresserManageServicesViewController {
 
     private ShopBean shopBeanFirstUI;
-    private ManageServiceBean manageServicesBean;
+    private ManageServiceBeanInterface manageServicesBean;
     private ManageServicesController manageServicesController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private final Double titleFontSize = 30.0;
@@ -37,7 +37,7 @@ public class HairdresserManageServicesViewController {
     @FXML
     public void initialize(){
         shopBeanFirstUI = new ShopBeanUQ();
-        manageServicesBean = new ManageServiceBeanFirstUI();
+        manageServicesBean = new ManageServiceBean();
         manageServicesController = new ManageServicesController();
         vbInScrollHS.setSpacing(15);
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESERVICESVIEWCONTROLLER");
@@ -107,19 +107,6 @@ public class HairdresserManageServicesViewController {
                 e.printStackTrace();
             }
         }
-    }
-
-    public static boolean isNumeric(String strNum) {
-        if (strNum == null) {
-            return false;
-        }
-        try {
-            double d = Double.parseDouble(strNum);
-        } catch (NumberFormatException nfe) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, "Error!", "Not Panic!", "You have to insert numbers in the price field");
-            return false;
-        }
-        return true;
     }
 
     private void deleteForm(String serviceName, Float servicePrice) {

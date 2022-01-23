@@ -24,7 +24,8 @@ public class TextFieldCheck {
         try {
             Double.parseDouble(strNum);
         } catch (NumberFormatException nfe) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, title, headerText, contentText);
+            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, title, headerText, contentText);
+            alert.showAndWait();
             return false;
         }
         return true;
@@ -37,7 +38,8 @@ public class TextFieldCheck {
         try {
             Integer.parseInt(strNum);
         } catch (NumberFormatException nfe) {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, title, headerText, contentText);
+            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, title, headerText, contentText);
+            alert.showAndWait();
             return false;
         }
         return true;
@@ -52,7 +54,8 @@ public class TextFieldCheck {
             if(m.matches()){
                 return true;
             }else{
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, title, headerText, contentText);
+                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, title, headerText, contentText);
+                alert.showAndWait();
                 return false;
             }
 
@@ -68,7 +71,8 @@ public class TextFieldCheck {
             if(m.matches()){
                 return true;
             }else{
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Invalid Email", "Please enter a valid email address.");
+                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Invalid Email", "Please enter a valid email address.");
+                alert.showAndWait();
                 return false;
             }
 
@@ -84,7 +88,8 @@ public class TextFieldCheck {
             if(m.matches()){
                 return true;
             }else{
-                AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Invalid PIVA", "Please enter a valid PIVA.");
+                Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Invalid PIVA", "Please enter a valid PIVA.");
+                alert.showAndWait();
                 return false;
             }
 
@@ -95,7 +100,8 @@ public class TextFieldCheck {
         if(!listToCheck.isEmpty()){
             for (String s : listToCheck) {
                 if (Objects.equals(s, "")) {
-                    AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Some fields are empty!", "Please fill out all fields.");
+                    Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Some fields are empty!", "Please fill out all fields.");
+                    alert.showAndWait();
                     return true;
                 }
             }
@@ -111,7 +117,8 @@ public class TextFieldCheck {
             String[] address = text.split("-");
             return isInteger(address[2], "Information", "CAP must be a number.", "Please follow the syntax Street-City-CAP");
         } else {
-            AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Address field is not correct", "Please follow the syntax Street-City-CAP.");
+            Alert alert = AlertFactory.getInstance().generateAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Address field is not correct", "Please follow the syntax Street-City-CAP.");
+            alert.showAndWait();
             return false;
         }
     }

@@ -1,7 +1,7 @@
 package cutit.controller.managepromotions;
 
+import cutit.bean.ManagePromotionBeanInterface;
 import cutit.bean.ManagePromotionBean;
-import cutit.bean.firstui.ManagePromotionBeanUQ;
 import cutit.bean.ShopBean;
 import cutit.database.dao.PromotionDAO;
 import cutit.database.dao.ServiceDAO;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ManagePromotionController {
 
-    public void removePromotion(ManagePromotionBean managePromotionBean) throws Exception {
+    public void removePromotion(ManagePromotionBeanInterface managePromotionBean) throws Exception {
         try{
             Promotion promotion = new Promotion(managePromotionBean.getPromotionCode(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate());
             PromotionDAO.deletePromotion(promotion);
@@ -29,7 +29,7 @@ public class ManagePromotionController {
         }
     }
 
-    public void addPromotion(ManagePromotionBean managePromotionBean) throws Exception {
+    public void addPromotion(ManagePromotionBeanInterface managePromotionBean) throws Exception {
         try{
             if(managePromotionBean.getPromExpireDate().isAfter(LocalDate.now())){
                 Promotion promotion = new Promotion(managePromotionBean.getPromotionCode(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate());
@@ -45,7 +45,7 @@ public class ManagePromotionController {
         }
     }
 
-    public void getAllPromotions(ManagePromotionBean managePromotionBean, ShopBean shopBean) throws Exception {
+    public void getAllPromotions(ManagePromotionBeanInterface managePromotionBean, ShopBean shopBean) throws Exception {
         try {
             Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
             List<Promotion> promotionsList = PromotionDAO.getAllPromotion(shop.getShopName());
@@ -58,13 +58,13 @@ public class ManagePromotionController {
     }
 
 
-    public ManagePromotionBeanUQ getAllServices(ShopBean shopBean) throws Exception {
+    public ManagePromotionBean getAllServices(ShopBean shopBean) throws Exception {
         try {
             Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
             List<Service> serviceList = ServiceDAO.getALlServices(shop.getShopName());
-            ManagePromotionBeanUQ managePromotionBeanUQ = new ManagePromotionBeanUQ();
-            managePromotionBeanUQ.setServiceList(stringListFromServList(serviceList));
-            return managePromotionBeanUQ;
+            ManagePromotionBean managePromotionBean = new ManagePromotionBean();
+            managePromotionBean.setServiceList(stringListFromServList(serviceList));
+            return managePromotionBean;
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
@@ -83,15 +83,15 @@ public class ManagePromotionController {
         return servList;
     }
 
-    private List<ManagePromotionBean> promBeanListFromPromList(List<Promotion> promotionsList) {
-        List<ManagePromotionBean> promList = new ArrayList<>();
+    private List<ManagePromotionBeanInterface> promBeanListFromPromList(List<Promotion> promotionsList) {
+        List<ManagePromotionBeanInterface> promList = new ArrayList<>();
         if(!promotionsList.isEmpty()){
             for(int i = 0; i<promotionsList.size(); i++){
                 String promCOde = promotionsList.get(i).getCode();
                 Integer offVal = promotionsList.get(i).getOffValue();
                 String promService = promotionsList.get(i).getService().getServiceName();
                 LocalDate expire = promotionsList.get(i).getExpireDate();
-                ManagePromotionBeanUQ promotionBean = new ManagePromotionBeanUQ();
+                ManagePromotionBean promotionBean = new ManagePromotionBean();
                 promotionBean.setPromotionCode(promCOde);
                 promotionBean.setPromOffValue(offVal);
                 promotionBean.setPromServiceName(promService);

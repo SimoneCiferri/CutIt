@@ -3,33 +3,70 @@ package cutit.bean;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface ManagePromotionBean {
+public class ManagePromotionBean implements ManagePromotionBeanInterface {
+    private String promotionCode;
+    private Integer promOffValue;
+    private String promShopName;
 
-    String getPromotionCode();
+    private LocalDate promExpireDate;
+    private String promServiceName;
 
-    void setPromotionCode(String promotionCode);
+    private List<String> serviceList;
+    private List<ManagePromotionBeanInterface> promotionsBeanList;
 
-    Integer getPromOffValue();
+    public String getPromotionCode() {
+        return promotionCode;
+    }
 
-    void setPromOffValue(Integer promOffValue);
+    public void setPromotionCode(String promotionCode) {
+        this.promotionCode = promotionCode;
+    }
 
-    String getPromShopName();
+    public Integer getPromOffValue() {
+        return promOffValue;
+    }
 
-    void setPromShopName(String promShopName);
+    public void setPromOffValue(Integer promOffValue) {
+        this.promOffValue = promOffValue;
+    }
 
-    LocalDate getPromExpireDate();
+    public String getPromShopName() {
+        return promShopName;
+    }
 
-    void setPromExpireDate(LocalDate promExpireDate);
+    public void setPromShopName(String promShopName) {
+        this.promShopName = promShopName;
+    }
 
-    String getPromServiceName();
+    public LocalDate getPromExpireDate() {
+        return promExpireDate;
+    }
 
-    void setPromServiceName(String promServiceName);
+    public void setPromExpireDate(LocalDate promExpireDate) {
+        this.promExpireDate = promExpireDate;
+    }
 
-    List<String> getServiceList();
+    public String getPromServiceName() {
+        return promServiceName;
+    }
 
-    void setServiceList(List<String> serviceList);
+    public void setPromServiceName(String promServiceName) {
+        this.promServiceName = promServiceName;
+    }
 
-    List<ManagePromotionBean> getPromotionsBeanList();
+    public List<String> getServiceList() {
+        return serviceList;
+    }
 
-    void setPromotionsBeanList(List<ManagePromotionBean> promotionsBeanList);
+    public void setServiceList(List<String> serviceList) {
+        this.serviceList = serviceList;
+    }
+
+    public List<ManagePromotionBeanInterface> getPromotionsBeanList() {
+        return promotionsBeanList;
+    }
+
+    public void setPromotionsBeanList(List<ManagePromotionBeanInterface> promotionsBeanList) {
+        this.promotionsBeanList = promotionsBeanList;
+    }
 }

@@ -1,8 +1,8 @@
 package cutit.controller.managepromotions;
 
-import cutit.bean.ManagePromotionBean;
+import cutit.bean.ManagePromotionBeanInterface;
 import cutit.bean.HairdresserBeanUQ;
-import cutit.bean.firstui.ManagePromotionBeanUQ;
+import cutit.bean.ManagePromotionBean;
 import cutit.bean.ShopBean;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
@@ -27,7 +27,7 @@ public class HairdresserManagePromotionsViewController {
 
     private HairdresserBeanUQ hairdresserBeanFirstUI;
     private ShopBean shopBeanFirstUI;
-    private ManagePromotionBean managePromotionBeanFirstUI;
+    private ManagePromotionBeanInterface managePromotionBeanFirstUI;
     private ManagePromotionController managePromotionController;
     private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private final Double titleFontSize = 30.0;
@@ -38,7 +38,7 @@ public class HairdresserManagePromotionsViewController {
 
     @FXML
     public void initialize(){
-        managePromotionBeanFirstUI = new ManagePromotionBeanUQ();
+        managePromotionBeanFirstUI = new ManagePromotionBean();
         managePromotionController = new ManagePromotionController();
         vbInScrollHProm.setSpacing(15);
         System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGEPROMOTIONSVIEWCONTROLLER");
@@ -52,7 +52,7 @@ public class HairdresserManagePromotionsViewController {
             add.setOnMouseClicked((MouseEvent) -> addForm());
             vbInScrollHProm.getChildren().add(add);
             for(int i = 0; i< managePromotionBeanFirstUI.getPromotionsBeanList().size(); i++) {
-                ManagePromotionBean promotionBean = managePromotionBeanFirstUI.getPromotionsBeanList().get(i);
+                ManagePromotionBeanInterface promotionBean = managePromotionBeanFirstUI.getPromotionsBeanList().get(i);
                 String promotionCode = promotionBean.getPromotionCode();
                 Integer promotionOffValue = promotionBean.getPromOffValue();
                 String promotionServiceName = promotionBean.getPromServiceName();
