@@ -6,11 +6,13 @@ import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.Shop;
 
+import java.time.LocalTime;
+
 public class ManageShopPageController {
 
     public void updateShop(ShopBeanInterface shopBean) throws Exception {
         try{
-            if(semanticCheck(shopBean)){
+            if(semanticCheck(shopBean.getShopOpenTime(), shopBean.getShopCloseTime())){
                 Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
                 shop.setAddress(shopBean.getShopAddress());
                 shop.setPhoneNumber(shopBean.getShopPhoneNumber());
@@ -32,7 +34,7 @@ public class ManageShopPageController {
         }
     }
 
-    private boolean semanticCheck(ShopBeanInterface shopBean) {
-        return shopBean.getShopOpenTime().isBefore(shopBean.getShopCloseTime());
+    private boolean semanticCheck(LocalTime openTime, LocalTime closeTime) {
+        return openTime.isBefore(closeTime);
     }
 }

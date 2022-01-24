@@ -5,7 +5,6 @@ import cutit.database.DBConnection;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.sql.*;
 
 public class ShopQueries {
@@ -45,7 +44,7 @@ public class ShopQueries {
         stmt.executeUpdate(insertStatement);
     }
 
-    public static void updateOpenDay(Statement stmt,String shopName, Integer day, Integer open) throws SQLException {
+    public static void updateOpenDays(Statement stmt, String shopName, Integer day, Integer open) throws SQLException {
         String insertStatement = "UPDATE opendays SET Open = '" + open + "' WHERE ODShopName = '" + shopName + "' and Day = '" + day + "'";
         stmt.executeUpdate(insertStatement);
     }

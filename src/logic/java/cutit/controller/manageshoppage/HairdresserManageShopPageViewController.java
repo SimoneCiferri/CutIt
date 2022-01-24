@@ -95,6 +95,8 @@ public class HairdresserManageShopPageViewController {
             shopBeanFirstUI.setImages(getImages());
             try {
                 manageShopPageController.updateShop(shopBeanFirstUI);
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.CONFIRMATION, "Updated", "Data successfully updated");
+                alert.show();
             } catch (WrongInputDataException wde){
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
                 alert.showAndWait();

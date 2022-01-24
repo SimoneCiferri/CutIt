@@ -208,9 +208,9 @@ public class ShopDAO {
         ShopQueries.updateShop(stm, shop.getShopName(), shop.getAddress(), shop.getPhoneNumber(), shop.getEmployee(), shop.getDescription(), stringFromTime(shop.getOpenTime()), stringFromTime(shop.getCloseTime()));
         for (int i = 0; i < shop.getOpenDays().size(); i++) {
             if (shop.getOpenDays().get(i + 1)) {
-                ShopQueries.updateOpenDay(stm, shop.getShopName(), i + 1, 1);
+                ShopQueries.updateOpenDays(stm, shop.getShopName(), i + 1, 1);
             } else {
-                ShopQueries.updateOpenDay(stm, shop.getShopName(), i + 1, 0);
+                ShopQueries.updateOpenDays(stm, shop.getShopName(), i + 1, 0);
             }
         }
         if (!shop.getImages().isEmpty()) {
