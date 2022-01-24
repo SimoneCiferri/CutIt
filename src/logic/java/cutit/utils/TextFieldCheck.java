@@ -17,35 +17,35 @@ public class TextFieldCheck {
 
     }
 
-    public static boolean isNumeric(String strNum, String title, String headerText, String contentText) {
+    public static boolean isNumeric(String strNum, String headerText) {
         if (strNum == null) {
             return false;
         }
         try {
             Double.parseDouble(strNum);
         } catch (NumberFormatException nfe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, title, headerText, contentText);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Not Panic!", headerText);
             alert.showAndWait();
             return false;
         }
         return true;
     }
 
-    public static boolean isInteger(String strNum, String title, String headerText, String contentText) {
+    public static boolean isInteger(String strNum, String message) {
         if (strNum == null) {
             return false;
         }
         try {
             Integer.parseInt(strNum);
         } catch (NumberFormatException nfe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, title, headerText, contentText);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Not Panic!", message);
             alert.showAndWait();
             return false;
         }
         return true;
     }
 
-    public static boolean isPhoneNumber(String strNum, String title, String headerText, String contentText) {
+    public static boolean isPhoneNumber(String strNum) {
         if (strNum == null) {
             return false;
         }else{
@@ -54,7 +54,7 @@ public class TextFieldCheck {
             if(m.matches()){
                 return true;
             }else{
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, title, headerText, contentText);
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Not Panic.", "Phone number field must be a number.");
                 alert.showAndWait();
                 return false;
             }
@@ -115,7 +115,7 @@ public class TextFieldCheck {
         StringTokenizer st = new StringTokenizer(text, "-");
         if(st.countTokens() == 3){
             String[] address = text.split("-");
-            return isInteger(address[2], "Information", "CAP must be a number.", "Please follow the syntax Street-City-CAP");
+            return isInteger(address[2], "CAP field must be a number. Please follow the syntax Street-City-CAP.");
         } else {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Address field is not correct", "Please follow the syntax Street-City-CAP.");
             alert.showAndWait();

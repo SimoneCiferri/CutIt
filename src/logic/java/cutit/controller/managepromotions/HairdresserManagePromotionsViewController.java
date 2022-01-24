@@ -113,7 +113,7 @@ public class HairdresserManagePromotionsViewController {
     }
 
     private void addPromotion(String promCode, String offValue,  LocalDate expireDate, String serviceName){
-        if(!Objects.equals(promCode, "") && TextFieldCheck.isInteger(offValue,"Information", "Not Panic!", "Discount field must be a number.")){
+        if(!Objects.equals(promCode, "") && TextFieldCheck.isInteger(offValue, "Off value field must be an integer number (5, 10, 25...)")){
             managePromotionBeanFirstUI.setPromotionCode(promCode);
             managePromotionBeanFirstUI.setPromOffValue(Integer.valueOf(offValue));
             managePromotionBeanFirstUI.setPromExpireDate(expireDate);

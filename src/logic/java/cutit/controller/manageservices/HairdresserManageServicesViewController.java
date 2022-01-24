@@ -91,7 +91,7 @@ public class HairdresserManageServicesViewController {
     }
     @FXML
     private void addService(TextField serviceName, TextField servicePrice){
-        if (!Objects.equals(serviceName.getText(), "") && TextFieldCheck.isNumeric(servicePrice.getText(), "Information", "Not Panic!", "Price field must be a number (correct format is 4.5 instead of 4,5).")) {
+        if (!Objects.equals(serviceName.getText(), "") && TextFieldCheck.isNumeric(servicePrice.getText(), "Price field must be a number (correct format is 4.5 instead of 4,5).")) {
             manageServicesBean.setServiceName(serviceName.getText());
             manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
             manageServicesBean.setServiceShopName(shopBeanFirstUI.getShopName());

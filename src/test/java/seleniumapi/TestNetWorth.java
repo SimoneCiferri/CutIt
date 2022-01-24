@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.StringTokenizer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestNetWorth {
 
@@ -31,7 +32,7 @@ public class TestNetWorth {
         System.out.println(value);
         double netWorthValue = Double.parseDouble(value);
         boolean test = netWorthValue > 168.0;
-        assertEquals(true, test);
+        assertTrue(test);
     }
 
 }

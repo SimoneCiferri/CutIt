@@ -83,7 +83,7 @@ public class HairdresserManageShopPageViewController {
 
     @FXML
     public void updateData(){
-        if(TextFieldCheck.isPhoneNumber(tfPhoneNumber.getText(),"Information", "Not Panic!", "Phone number field must be a number.") && TextFieldCheck.checkAddress(tfAddress.getText())) {
+        if(TextFieldCheck.isPhoneNumber(tfPhoneNumber.getText()) && TextFieldCheck.checkAddress(tfAddress.getText())) {
             shopBeanFirstUI.setShopAddress(tfAddress.getText());
             shopBeanFirstUI.setShopPhoneNumber(tfPhoneNumber.getText());
             shopBeanFirstUI.setShopDescription(taDescription.getText());

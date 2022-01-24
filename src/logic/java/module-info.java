@@ -47,4 +47,6 @@ module cutit.cutit {
     opens cutit.controller.leftbarviewcontrollers to javafx.fxml;
     exports cutit.decorator.concrete_view_component2;
     opens cutit.decorator.concrete_view_component2 to javafx.fxml;
+    exports cutit.utils;
+    exports cutit.model;
 }
