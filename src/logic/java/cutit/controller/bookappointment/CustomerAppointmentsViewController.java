@@ -24,7 +24,6 @@ public class CustomerAppointmentsViewController {
     public boolean initialize() throws IOException {
         bookAppointmentController = new BookAppointmentController();
         vbInScrollCA.setSpacing(15);
-        System.out.println("CONTROLLER GRAFICO CUSTOMERAPPOINTMENTSVIEWCONTROLLER");
         return true;
     }
 
@@ -33,7 +32,7 @@ public class CustomerAppointmentsViewController {
             vbInScrollCA.getChildren().clear();
             bookAppointmentController.getAppointments(customerBeanFirstUI);
             for(int i = 0; i< customerBeanFirstUI.getAllBookedAppointments().size(); i++){
-                Integer appN = i;
+                int appN = i;
                 String appointment = customerBeanFirstUI.getAllBookedAppointments().get(appN).getShopName() + ", " + customerBeanFirstUI.getAllBookedAppointments().get(appN).getStartTime().toLocalDate() + " at " + customerBeanFirstUI.getAllBookedAppointments().get(appN).getStartTime().toLocalTime();
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel(appointment, labelStyle);
                 l.setOnMouseClicked((MouseEvent) -> showAppInfo(customerBeanFirstUI.getAllBookedAppointments().get(appN).getStartTime(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getEndTime(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getServiceName(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getShopName()));
@@ -53,8 +52,6 @@ public class CustomerAppointmentsViewController {
 
     public void fillView(CustomerBean customerBeanFirstUI){
         this.customerBeanFirstUI = customerBeanFirstUI;
-        System.out.println("Filling View from ShopBean data passedBY TopBarCustomerViewController");
-        //quì riempirò i campi delle TextFile/TextArea/Label dell'fxml grazie ai getter della bean che mi è stata passata in ingresso
         showClientApp();
     }
 

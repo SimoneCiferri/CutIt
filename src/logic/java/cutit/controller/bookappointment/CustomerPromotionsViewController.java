@@ -66,7 +66,6 @@ public class CustomerPromotionsViewController {
 
     public void fillView(CustomerBean customerBeanFirstUI){
         this.customerBeanFirstUI = customerBeanFirstUI;
-        System.out.println("Filling View from ShopBean data passedBY TopBarCustomerViewController");
         showClientProm();
     }
 

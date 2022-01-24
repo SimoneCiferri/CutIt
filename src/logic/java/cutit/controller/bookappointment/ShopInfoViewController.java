@@ -74,7 +74,6 @@ public class ShopInfoViewController {
                 ivList.get(i).setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
             }
         } else {
-            ivShopProfPhoto.setImage(new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/blank-profile-picture.png")).toString()));
             lblPhoto.setVisible(false);
             vboxPhoto.setVisible(false);
         }

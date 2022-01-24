@@ -1,28 +1,23 @@
 package cutit.controller.topbarviewcontrollers;
 
 import cutit.bean.CustomerBean;
+import cutit.controller.bookappointment.CustomerAppointmentsViewController;
 import cutit.controller.bookappointment.CustomerFavouritesShopViewController;
 import cutit.controller.bookappointment.CustomerPromotionsViewController;
 import cutit.controller.bookappointment.HomeViewController;
-import cutit.controller.bookappointment.CustomerAppointmentsViewController;
 import cutit.decorator.ViewLayout1;
-import cutit.decorator.concrete_decorator.*;
 import cutit.decorator.concrete_decorator.CustomerAppointmentsView1;
+import cutit.decorator.concrete_decorator.CustomerFavouritesShopView1;
 import cutit.decorator.concrete_decorator.CustomerPromotionsView1;
+import cutit.decorator.concrete_decorator.Home1View;
 import cutit.facade.Facade;
-import cutit.factory.AlertFactory;
-import cutit.log.LogWriter;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class TopBarCustomerViewController {
 
@@ -38,17 +33,12 @@ public class TopBarCustomerViewController {
     @FXML
     private AnchorPane apTopBarCustomer;
 
-    @FXML
-    private ImageView ivExit, ivReduce;
-
     public boolean initialize() throws IOException {
         btnClHome.setStyle(pageFlagStyle);
         btnClPromotion.setStyle(transparentStyle);
         btnClApp.setStyle(transparentStyle);
         btnClFav.setStyle(transparentStyle);
         btnClLogout.setStyle(transparentStyle);
-        setImageView();
-        System.out.println("CONTROLLER GRAFICO TOPBARCUSTOMERVIEWCONTROLLER");
         return true;
     }
 
@@ -141,23 +131,7 @@ public class TopBarCustomerViewController {
         apTopBarCustomer.getScene().getWindow().setY(event.getScreenY() + yOffset);
     }
 
-    private void setImageView() {
-        try {
-            Image exitI = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/exit.png"), "Unable to get resource file cutit/cutit/files/exit.png.").toString());
-            Image comb = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/hair_comb.png"), "Unable to get resource file /cutit/cutit/files/hair_comb.png.").toString());
-            ivExit.setImage(exitI);
-            ivReduce.setImage(comb);
-        }catch (NullPointerException e){
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, "", "", "");
-            alert.showAndWait();
-            Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout1().getScene().getWindow();
-            stage.close();
-        }
-    }
-
     public void startBean(CustomerBean customerBeanFirstUI){
-        System.out.println("Getting CustomerBean passedBY LoginViewController");
         this.customerBeanFirstUI = customerBeanFirstUI;
         goHome();
     }

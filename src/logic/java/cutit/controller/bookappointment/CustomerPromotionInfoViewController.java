@@ -23,7 +23,6 @@ public class CustomerPromotionInfoViewController {
     private Label lblShopName, lblOffValue, lblServiceName, lblExpireDate, lblPromotionCode;
 
     public boolean initialize(){
-        System.out.println("CONTROLLER GRAFICO CUSTOMERPROMOTIONINFOVIEWCONTROLLER");
         return true;
     }
 

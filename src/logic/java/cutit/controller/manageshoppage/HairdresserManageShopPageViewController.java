@@ -79,7 +79,6 @@ public class HairdresserManageShopPageViewController {
         for (ImageView imageView : ivList) {
             imageView.setImage(im);
         }
-        System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESHOPPAGEVIEWCONTROLLER");
     }
 
     @FXML

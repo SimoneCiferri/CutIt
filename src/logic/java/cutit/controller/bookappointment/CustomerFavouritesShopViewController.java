@@ -29,7 +29,6 @@ public class CustomerFavouritesShopViewController {
         shopListBeanFirstUI =  new ShopListBeanUQ();
         bookAppointmentController = new BookAppointmentController();
         vbInScrollCFav.setSpacing(15);
-        System.out.println("CONTROLLER GRAFICO CUSTOMERFAVOURITESSHOPVIEWCONTROLLER");
         return true;
     }
 
@@ -66,7 +65,6 @@ public class CustomerFavouritesShopViewController {
     public void fillView(CustomerBean customerBeanFirstUI){
         this.customerBeanFirstUI = customerBeanFirstUI;
         showClientFav();
-        System.out.println("Filling View from ShopBean data passedBY TopBarCustomerViewController");
     }
 
 }

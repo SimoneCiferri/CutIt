@@ -18,7 +18,6 @@ public class ManageServicesController {
         try{
             Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
             ServiceDAO.insertService(service);
-            System.out.println("CONTROLLER APPLICATIVO -> Adding Service (data from ManageServiceBean passed by my viewController)");
             return true;
         } catch (DuplicatedRecordException de){
             throw de;
@@ -32,7 +31,6 @@ public class ManageServicesController {
         try{
             Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
             ServiceDAO.deleteService(service);
-            System.out.println("CONTROLLER APPLICATIVO -> Deleting Service (data from ManageServiceBean passed by my viewController)");
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;

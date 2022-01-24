@@ -41,7 +41,6 @@ public class HairdresserManagePromotionsViewController {
         managePromotionBeanFirstUI = new ManagePromotionBean();
         managePromotionController = new ManagePromotionController();
         vbInScrollHProm.setSpacing(15);
-        System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGEPROMOTIONSVIEWCONTROLLER");
     }
 
     private void showHairProm() {
@@ -171,7 +170,6 @@ public class HairdresserManagePromotionsViewController {
 
     public void fillView(ShopBeanInterface shopBeanFirstUI){
         this.shopBeanFirstUI = shopBeanFirstUI;
-        System.out.println("Filling View from HairdresserBean data passedBY TopBarHairdresserViewController");
         showHairProm();
     }
 

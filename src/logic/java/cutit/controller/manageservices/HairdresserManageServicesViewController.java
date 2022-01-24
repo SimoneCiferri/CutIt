@@ -39,7 +39,6 @@ public class HairdresserManageServicesViewController {
         manageServicesBean = new ManageServiceBean();
         manageServicesController = new ManageServicesController();
         vbInScrollHS.setSpacing(15);
-        System.out.println("CONTROLLER GRAFICO HAIRDRESSERMANAGESERVICESVIEWCONTROLLER");
     }
 
     private void showHairServices() {
@@ -142,7 +141,6 @@ public class HairdresserManageServicesViewController {
 
     public void fillView(ShopBeanInterface shopBeanFirstUI){
         this.shopBeanFirstUI = shopBeanFirstUI;
-        System.out.println("Filling View from HairdresserBean data passedBY TopBarHairdresserViewController");
         showHairServices();
     }
 

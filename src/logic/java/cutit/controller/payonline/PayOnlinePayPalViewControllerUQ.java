@@ -27,7 +27,6 @@ public class PayOnlinePayPalViewControllerUQ implements PayOnlinePayPalViewContr
 
     public void fillView(PayOnlineBean payOnlineBean){
         this.payOnlineBean = payOnlineBean;
-        System.out.println("Filling View from PayOnlineBean data passedBY ...");
         start();
     }
 

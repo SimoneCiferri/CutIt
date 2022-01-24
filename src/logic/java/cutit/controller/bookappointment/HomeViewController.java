@@ -32,7 +32,6 @@ public class HomeViewController {
         shopListBeanFirstUI = new ShopListBeanUQ();
         bookAppointmentController = new BookAppointmentController();
         vbInScroll.setSpacing(15);
-        System.out.println("CONTROLLER GRAFICO HOMEVIEWCONTROLLER");
         return true;
     }
 

@@ -33,7 +33,6 @@ public class HairdresserDeleteBookedAppointmentsViewController {
         deleteAppointmentBeanFirstUI = new DeleteAppointmentBeanFirstUI();
         deleteBookedAppointmentController = new DeleteBookedAppointmentController();
         vbInScrollHApp.setSpacing(15);
-        System.out.println("CONTROLLER GRAFICO HAIRDRESSERDELETEBOOKEDAPPOINTMENTSVIEWCONTROLLER");
     }
 
     private void showAppointments() {
@@ -90,7 +89,6 @@ public class HairdresserDeleteBookedAppointmentsViewController {
 
     public void fillView(ShopBeanInterface shopBean){
         this.shopBean = shopBean;
-        System.out.println("Filling View from DeleteAppointmentBean data passedBY TopBarHairdresserViewController");
         showAppointments();
     }
 

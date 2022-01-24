@@ -76,7 +76,6 @@ public class CustomerBookAppointmentViewController {
             tfPromotionCode.setDisable(selectedService == null);
             checkPromotion.setDisable(selectedService == null);
         });
-        System.out.println("CONTROLLER GRAFICO CUSTOMERBOOKAPPOINTMENTVIEWCONTROLLER");
     }
 
     @FXML
@@ -103,7 +102,6 @@ public class CustomerBookAppointmentViewController {
             appointmentBeanUQ.setShopName(shopBeanUQ.getShopName());
             try {
                 bookAppointmentController.bookAppointment(appointmentBeanUQ);
-                //Facade.getInstance().decorateView(ViewLayout.PAYONLINEPAYPAL);
                 showPayedAndBooked();
             } catch (DuplicatedRecordException | PaymentException | RecordNotFoundException exception){
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());

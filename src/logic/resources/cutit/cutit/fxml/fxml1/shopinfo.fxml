@@ -27,7 +27,10 @@
                      <children>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="720.0">
                            <children>
-                              <ImageView fx:id="ivShopProfPhoto" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="ivShopProfPhoto" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../files/blank-profile-picture.png" />
+                                 </image></ImageView>
                               <Label fx:id="lShopPhone" alignment="CENTER" style="-fx-border-color: grey; -fx-border-radius: 5;" text="Phone number non available" textFill="WHITE">
                                  <VBox.margin>
                                     <Insets top="15.0" />
