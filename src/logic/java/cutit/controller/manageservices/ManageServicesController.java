@@ -6,7 +6,6 @@ import cutit.database.dao.ServiceDAO;
 import cutit.exception.DuplicatedRecordException;
 import cutit.log.LogWriter;
 import cutit.model.Service;
-import cutit.model.Shop;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,10 +42,9 @@ public class ManageServicesController {
 
     public void getAllServices(ManageServiceBeanInterface manageServiceBean, ShopBeanInterface shopBean) throws Exception {
         try{
-            Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
-            List<Service> serviceList = ServiceDAO.getALlServices(shop.getShopName());
+            List<Service> serviceList = ServiceDAO.getALlServices(shopBean.getShopName());
             manageServiceBean.setAllServicesList(stringListFromServList(serviceList));
-            manageServiceBean.setServiceList(mapFromServList(serviceList));
+            manageServiceBean.setServicesList(mapFromServList(serviceList));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;

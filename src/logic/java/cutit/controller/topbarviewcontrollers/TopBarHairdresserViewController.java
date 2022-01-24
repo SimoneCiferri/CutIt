@@ -68,7 +68,7 @@ public class TopBarHairdresserViewController {
     }
 
     @FXML
-    public boolean goProm() {
+    public boolean goPromotion() {
         Facade.getInstance().decorateView(ViewLayout1.HAIRDRESSERPROMOTIONS);
         btnHApp.setStyle(transparentStyle);
         btnHPromotions.setStyle(pageFlagStyle);

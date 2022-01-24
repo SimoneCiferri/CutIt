@@ -23,6 +23,6 @@ public interface ManageServiceBeanInterface {
 
     Map<String, Float> getServiceList();
 
-    void setServiceList(Map<String, Float> serviceList);
+    void setServicesList(Map<String, Float> serviceList);
 
 }

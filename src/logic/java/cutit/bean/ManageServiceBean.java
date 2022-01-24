@@ -42,7 +42,7 @@ public class ManageServiceBean implements ManageServiceBeanInterface {
         return serviceList;
     }
 
-    public void setServiceList(Map<String, Float> serviceList) {
+    public void setServicesList(Map<String, Float> serviceList) {
         this.serviceList = serviceList;
     }
 
