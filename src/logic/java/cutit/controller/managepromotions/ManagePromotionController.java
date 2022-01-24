@@ -11,6 +11,7 @@ import cutit.log.LogWriter;
 import cutit.model.Promotion;
 import cutit.model.Service;
 import cutit.model.Shop;
+import cutit.utils.ListFromModelList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -62,24 +63,13 @@ public class ManagePromotionController {
             Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
             List<Service> serviceList = ServiceDAO.getAllServices(shop.getShopName());
             ManagePromotionBean managePromotionBean = new ManagePromotionBean();
-            managePromotionBean.setServiceList(stringListFromServList(serviceList));
+            managePromotionBean.setServiceList(ListFromModelList.getStringListFromServices(serviceList));
             return managePromotionBean;
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
 
-    }
-
-    private List<String> stringListFromServList(List<Service> services) {
-        List<String> servList = new ArrayList<>();
-        if(!services.isEmpty()){
-            for(int i = 0; i<services.size(); i++){
-                String p = services.get(i).getServiceName();
-                servList.add(p);
-            }
-        }
-        return servList;
     }
 
     private List<ManagePromotionBeanInterface> promBeanListFromPromList(List<Promotion> promotionsList) {

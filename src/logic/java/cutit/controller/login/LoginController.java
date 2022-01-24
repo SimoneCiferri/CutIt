@@ -11,6 +11,7 @@ import cutit.exception.WrongCredentialsException;
 import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.*;
+import cutit.utils.ListFromModelList;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class LoginController {
             customerBean.setcSurname(customer.getSurname());
             customerBean.setcBirthDate(customer.getBirthDate());
             customerBean.setcGender(customer.getGender());
-            customerBean.setAllPersonalPromotions(stringListFromPromList(customer.getPromotions()));
+            customerBean.setAllPersonalPromotions(ListFromModelList.getStringListFromPromotions(customer.getPromotions()));
             //customerBean.setAllBookedAppointments(stringListFromAppList(customer.getBookedAppointments()));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
@@ -113,8 +114,8 @@ public class LoginController {
             shopBean.setShopOpenTime(hairdresser.getShop().getOpenTime());
             shopBean.setShopCloseTime(hairdresser.getShop().getCloseTime());
             shopBean.setShopOpenDays(hairdresser.getShop().getOpenDays());
-            shopBean.setPromotions(stringListFromPromList(hairdresser.getShop().getPromotions()));
-            shopBean.setServices(stringListFromServList(hairdresser.getShop().getServices()));
+            shopBean.setPromotions(ListFromModelList.getStringListFromPromotions(hairdresser.getShop().getPromotions()));
+            shopBean.setServices(ListFromModelList.getStringListFromServices(hairdresser.getShop().getServices()));
             shopBean.setAllAppointments(stringListFromAppList(hairdresser.getShop().getAllAppointments()));
             shopBean.setImages(hairdresser.getShop().getImages());
 
@@ -142,26 +143,5 @@ public class LoginController {
         return appList;
     }
 
-    private List<String> stringListFromServList(List<Service> services) {
-        List<String> servList = new ArrayList<>();
-        if(!services.isEmpty()){
-            for (Service service : services) {
-                String p = service.getServiceName();
-                servList.add(p);
-            }
-        }
-        return servList;
-    }
-
-    private List<String> stringListFromPromList(List<Promotion> promotions) {
-        List<String> promList = new ArrayList<>();
-        if(!promotions.isEmpty()){
-            for (Promotion promotion : promotions) {
-                String p = promotion.getCode();
-                promList.add(p);
-            }
-        }
-        return promList;
-    }
 
 }

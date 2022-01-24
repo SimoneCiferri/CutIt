@@ -14,6 +14,7 @@ import cutit.exception.RecordNotFoundException;
 import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.*;
+import cutit.utils.ListFromModelList;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -54,7 +55,7 @@ public class BookAppointmentController {
     public void getPersonalPromotions(CustomerBean bean) throws Exception {
         try {
             List<Promotion> personalProm = PromotionDAO.getAllPersonalPromotions(bean.getcEmail());
-            bean.setAllPersonalPromotions(stringListFromPromList(personalProm));
+            bean.setAllPersonalPromotions(ListFromModelList.getStringListFromPromotions(personalProm));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
@@ -100,8 +101,8 @@ public class BookAppointmentController {
             shopBean.setShopOpenTime(shop.getOpenTime());
             shopBean.setShopCloseTime(shop.getCloseTime());
             shopBean.setShopOpenDays(shop.getOpenDays());
-            shopBean.setPromotions(stringListFromPromList(shop.getPromotions()));
-            shopBean.setServices(stringListFromServList(shop.getServices()));
+            shopBean.setPromotions(ListFromModelList.getStringListFromPromotions(shop.getPromotions()));
+            shopBean.setServices(ListFromModelList.getStringListFromServices(shop.getServices()));
             shopBean.setImages(shop.getImages());
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
@@ -169,7 +170,7 @@ public class BookAppointmentController {
         try {
             Shop shop = ShopDAO.getShopFromName(shopName);
             List<Service> servicesList = shop.getServices();
-            bean.setAvailableServices(stringListFromServList(servicesList));
+            bean.setAvailableServices(ListFromModelList.getStringListFromServices(servicesList));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
@@ -246,27 +247,5 @@ public class BookAppointmentController {
             }
         }
         return beanAppList;
-    }
-
-    private List<String> stringListFromServList(List<Service> services) {
-        List<String> servList = new ArrayList<>();
-        if(!services.isEmpty()){
-            for (Service service : services) {
-                String p = service.getServiceName();
-                servList.add(p);
-            }
-        }
-        return servList;
-    }
-
-    private List<String> stringListFromPromList(List<Promotion> promotions) {
-        List<String> promList = new ArrayList<>();
-        if(!promotions.isEmpty()){
-            for (Promotion promotion : promotions) {
-                String p = promotion.getCode();
-                promList.add(p);
-            }
-        }
-        return promList;
     }
 }

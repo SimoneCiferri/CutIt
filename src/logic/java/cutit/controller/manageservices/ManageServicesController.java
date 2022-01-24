@@ -6,8 +6,8 @@ import cutit.database.dao.ServiceDAO;
 import cutit.exception.DuplicatedRecordException;
 import cutit.log.LogWriter;
 import cutit.model.Service;
+import cutit.utils.ListFromModelList;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,23 +41,12 @@ public class ManageServicesController {
     public void getAllServices(ManageServiceBeanInterface manageServiceBean, ShopBeanInterface shopBean) throws Exception {
         try{
             List<Service> serviceList = ServiceDAO.getAllServices(shopBean.getShopName());
-            manageServiceBean.setAllServicesList(stringListFromServList(serviceList));
+            manageServiceBean.setAllServicesList(ListFromModelList.getStringListFromServices(serviceList));
             manageServiceBean.setServicesList(mapFromServList(serviceList));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
-    }
-
-    private List<String> stringListFromServList(List<Service> serviceList) {
-        List<String> servList = new ArrayList<>();
-        if(!serviceList.isEmpty()){
-            for(int i=0; i<serviceList.size();i++){
-                String service = serviceList.get(i).getServiceName();
-                servList.add(service);
-            }
-        }
-        return servList;
     }
 
     private Map<String, Float> mapFromServList(List<Service> serviceList){
