@@ -48,7 +48,7 @@ public class HairdresserManagePromotionsViewController {
             managePromotionController.getAllPromotions(managePromotionBeanFirstUI, shopBeanFirstUI);
             vbInScrollHProm.getChildren().clear();
             Button add = JavaFXNodeFactory.getInstance().createButton("Add Promotion");
-            add.setOnMouseClicked((MouseEvent) -> addForm());
+            add.setOnMouseClicked((MouseEvent) -> showAddForm());
             vbInScrollHProm.getChildren().add(add);
             for(int i = 0; i< managePromotionBeanFirstUI.getPromotionsBeanList().size(); i++) {
                 ManagePromotionBeanInterface promotionBean = managePromotionBeanFirstUI.getPromotionsBeanList().get(i);
@@ -57,7 +57,7 @@ public class HairdresserManagePromotionsViewController {
                 String promotionServiceName = promotionBean.getPromServiceName();
                 LocalDate expire = promotionBean.getPromExpireDate();
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel(promotionCode, labelStyle);
-                l.setOnMouseClicked((MouseEvent) -> deleteForm(promotionCode, promotionOffValue, promotionServiceName, expire.toString()));
+                l.setOnMouseClicked((MouseEvent) -> showDeleteForm(promotionCode, promotionOffValue, promotionServiceName, expire.toString()));
                 vbInScrollHProm.getChildren().add(l);
             }
         } catch (Exception e) {
@@ -65,7 +65,7 @@ public class HairdresserManagePromotionsViewController {
         }
     }
 
-    private void addForm() {
+    private void showAddForm() {
         vbInScrollHProm.getChildren().clear();
         Label title = JavaFXNodeFactory.getInstance().createLabel("Add Promotion", titleFontSize);
         List<Label> leftLabelList = new ArrayList<>();
@@ -134,7 +134,7 @@ public class HairdresserManagePromotionsViewController {
         }
     }
 
-    private void deleteForm(String promCode, Integer promOffValue, String promServiceName, String expireDate) {
+    private void showDeleteForm(String promCode, Integer promOffValue, String promServiceName, String expireDate) {
        vbInScrollHProm.getChildren().clear();
         Label name = JavaFXNodeFactory.getInstance().createLabel(promCode, titleFontSize);
         Label promValue = JavaFXNodeFactory.getInstance().createLabel(promOffValue.toString(), titleFontSize);
