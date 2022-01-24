@@ -60,7 +60,7 @@ public class ManagePromotionController {
     public ManagePromotionBean getAllServices(ShopBeanInterface shopBean) throws Exception {
         try {
             Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
-            List<Service> serviceList = ServiceDAO.getALlServices(shop.getShopName());
+            List<Service> serviceList = ServiceDAO.getAllServices(shop.getShopName());
             ManagePromotionBean managePromotionBean = new ManagePromotionBean();
             managePromotionBean.setServiceList(stringListFromServList(serviceList));
             return managePromotionBean;

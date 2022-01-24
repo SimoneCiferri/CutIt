@@ -40,7 +40,7 @@ public class ManageServicesController {
 
     public void getAllServices(ManageServiceBeanInterface manageServiceBean, ShopBeanInterface shopBean) throws Exception {
         try{
-            List<Service> serviceList = ServiceDAO.getALlServices(shopBean.getShopName());
+            List<Service> serviceList = ServiceDAO.getAllServices(shopBean.getShopName());
             manageServiceBean.setAllServicesList(stringListFromServList(serviceList));
             manageServiceBean.setServicesList(mapFromServList(serviceList));
         } catch (Exception e){

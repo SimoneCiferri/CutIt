@@ -76,7 +76,7 @@ public class ShopDAO {
 
             List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop.getShopName());
             shop.setPromotions(allPromotions);
-            List<Service> services = ServiceDAO.getALlServices(shop.getShopName());
+            List<Service> services = ServiceDAO.getAllServices(shop.getShopName());
             shop.setServices(services);
 
             List<Appointment> app = AppointmentDAO.getAllShopAppointments(shop);
@@ -143,7 +143,7 @@ public class ShopDAO {
 
             List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop.getShopName());
             shop.setPromotions(allPromotions);
-            List<Service> services = ServiceDAO.getALlServices(shop.getShopName());
+            List<Service> services = ServiceDAO.getAllServices(shop.getShopName());
             shop.setServices(services);
 
             List<Appointment> app = AppointmentDAO.getAllShopAppointments(shop);

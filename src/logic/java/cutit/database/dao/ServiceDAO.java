@@ -5,11 +5,9 @@ import cutit.database.query.ServiceQueries;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
 import cutit.model.Service;
-import cutit.model.Shop;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +35,7 @@ public class ServiceDAO {
         stm.close();
     }
 
-    public static List<Service> getALlServices(String shopName) throws Exception {
+    public static List<Service> getAllServices(String shopName) throws Exception {
         List<Service> servicesList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
