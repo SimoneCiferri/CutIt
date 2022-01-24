@@ -33,7 +33,9 @@ public class ManagePromotionController {
         try{
             if(managePromotionBean.getPromExpireDate().isAfter(LocalDate.now())){
                 Promotion promotion = new Promotion(managePromotionBean.getPromotionCode(), managePromotionBean.getPromOffValue(), managePromotionBean.getPromExpireDate());
-                PromotionDAO.insertPromotion(promotion, managePromotionBean.getPromServiceName(), managePromotionBean.getPromShopName());
+                Service service = ServiceDAO.getService(managePromotionBean.getPromShopName(), managePromotionBean.getPromServiceName());
+                promotion.setService(service);
+                PromotionDAO.insertPromotion(promotion);
             }else{
                 throw new WrongInputDataException("Expiry date can't be a past day.");
             }

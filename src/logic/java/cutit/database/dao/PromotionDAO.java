@@ -16,18 +16,15 @@ import java.util.Objects;
 
 public class PromotionDAO {
 
-    public static void insertPromotion(Promotion promotion, String serviceName, String shopName) throws Exception {
-        Service service = ServiceDAO.getService(shopName, serviceName);
-        promotion.setService(service);
-
+    public static void insertPromotion(Promotion promotion) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ResultSet rs = PromotionQueries.getAllPromotion(stm, shopName);
+        ResultSet rs = PromotionQueries.getAllPromotion(stm, promotion.getService().getShopName());
         while (rs.next()) {
             String code = rs.getString(1);
             if (Objects.equals(promotion.getCode(), code)) {
-                throw new DuplicatedRecordException(service.getServiceName() + " already exists!");
+                throw new DuplicatedRecordException(promotion.getService().getServiceName() + " already exists!");
             }
         }
         rs.close();
