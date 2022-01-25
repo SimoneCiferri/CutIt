@@ -2,6 +2,7 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.HairdresserQueries;
+import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
 import cutit.model.Hairdresser;
@@ -23,7 +24,6 @@ public class HairdresserDAO {
         int exists = rs.getInt(1);
         rs.close();
         stm.close();
-        //DBConnection.getInstance().closeConnection();
         if(exists == 0){
             return false;
         }else{
@@ -40,7 +40,6 @@ public class HairdresserDAO {
         stm.close();
         Shop shop = new Shop(shopName, hairdresser.getpIVA());
         ShopDAO.insertShop(shop);
-        //DBConnection.getInstance().closeConnection();
     }
 
     public static Hairdresser getHairdresser(User user) throws Exception {
@@ -62,9 +61,12 @@ public class HairdresserDAO {
             hairdresser.setShop(shop);
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
             return hairdresser;
         }
+    }
+
+    public static void logout() throws DBConnectionException {
+        DBConnection.getInstance().closeConnection();
     }
 
 }

@@ -21,7 +21,6 @@ public class UserDAO {
         int exists = rs.getInt(1);
         rs.close();
         stm.close();
-        //DBConnection.getInstance().closeConnection();
         if (exists == 0) {
             return false;
         } else {
@@ -35,7 +34,6 @@ public class UserDAO {
                 ResultSet.CONCUR_READ_ONLY);
         UserQueries.insertUser(stm, user.getUserID(), user.getPwd(), user.getRole());
         stm.close();
-        //DBConnection.getInstance().closeConnection();
     }
 
     public static void userLogin(User user) throws Exception {
@@ -44,6 +42,7 @@ public class UserDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = UserQueries.getUser(stm, user.getUserID(), user.getPwd());
         if (!rs.first()) {
+            DBConnection.getInstance().closeConnection();
             throw new WrongCredentialsException();
         } else {
             Integer role = rs.getInt("Role");
@@ -51,7 +50,6 @@ public class UserDAO {
         }
         rs.close();
         stm.close();
-        //DBConnection.getInstance().closeConnection();
     }
 
 

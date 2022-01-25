@@ -26,7 +26,6 @@ public class ShopDAO {
         int exists = rs.getInt(1);
         rs.close();
         stm.close();
-        //DBConnection.getInstance().closeConnection();
         if(exists == 0){
             return false;
         }else{
@@ -83,7 +82,6 @@ public class ShopDAO {
             shop.setAllAppointments(app);
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
             return shop;
         }
     }
@@ -105,7 +103,6 @@ public class ShopDAO {
             shop.setPhoneNumber(phoneNumber);
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
             return shop;
         }
     }
@@ -150,7 +147,6 @@ public class ShopDAO {
             shop.setAllAppointments(app);
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
             return shop;
         }
     }
@@ -170,7 +166,6 @@ public class ShopDAO {
             } while (rs.next());
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
         }
         return openDays;
     }
@@ -196,7 +191,6 @@ public class ShopDAO {
             } while (rs.next());
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
         }
         return images;
     }
@@ -243,7 +237,6 @@ public class ShopDAO {
             rs.close();
             stm.close();
         }
-        //DBConnection.getInstance().closeConnection();
         return shopList;
     }
 

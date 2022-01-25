@@ -57,7 +57,6 @@ public class PromotionDAO {
             } while (rs.next());
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
         }
         return promotionsList;
     }
@@ -84,7 +83,6 @@ public class PromotionDAO {
             } while (rs.next());
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
         }
         return promotionsList;
     }
@@ -101,7 +99,6 @@ public class PromotionDAO {
             Promotion prom = getPromotion(promCode);
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
             return prom;
         }
     }
@@ -123,7 +120,6 @@ public class PromotionDAO {
             } while (rs.next());
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
         }
         return promotionList;
     }
@@ -153,7 +149,6 @@ public class PromotionDAO {
             Promotion prom = new Promotion(promCode, offValue, dataFromString(expireDate), service);
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
             return prom;
         }
     }

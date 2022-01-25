@@ -24,6 +24,7 @@ public class ServiceDAO {
         while (rs.next()) {
             String name = rs.getString(1);
             if (Objects.equals(service.getServiceName(), name)) {
+                DBConnection.getInstance().closeConnection();
                 throw new DuplicatedRecordException(service.getServiceName() + " already exists!");
             }
         }
@@ -51,7 +52,6 @@ public class ServiceDAO {
             } while (rs.next());
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
         }
         return servicesList;
     }
@@ -80,7 +80,6 @@ public class ServiceDAO {
         Service s = new Service(servName, servPrice, servShopName);
         rs.close();
         stm.close();
-        //DBConnection.getInstance().closeConnection();
         return s;
     }
 

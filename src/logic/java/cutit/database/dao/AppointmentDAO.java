@@ -73,7 +73,6 @@ public class AppointmentDAO {
             } while (rs.next());
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
         }
         return appointmentList;
     }
@@ -104,7 +103,6 @@ public class AppointmentDAO {
             } while (rs.next());
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
         }
         return appointmentList;
     }

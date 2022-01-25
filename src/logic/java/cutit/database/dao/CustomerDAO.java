@@ -3,6 +3,7 @@ package cutit.database.dao;
 import cutit.database.DBConnection;
 import cutit.database.query.CustomerQueries;
 import cutit.database.query.UserQueries;
+import cutit.exception.DBConnectionException;
 import cutit.exception.RecordNotFoundException;
 import cutit.factory.AlertFactory;
 import cutit.model.Appointment;
@@ -26,7 +27,6 @@ public class CustomerDAO {
                 ResultSet.CONCUR_READ_ONLY);
         CustomerQueries.insertCustomer(stm, customer.getUserID(), customer.getBirthDate().toString(), customer.getGender(), customer.getName(), customer.getSurname());
         stm.close();
-        //DBConnection.getInstance().closeConnection();
     }
 
     public static Customer getCustomer(User user) throws Exception {
@@ -35,6 +35,7 @@ public class CustomerDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = CustomerQueries.getCustomer(stm, user.getUserID());
         if(!rs.first()){
+            DBConnection.getInstance().closeConnection();
             String message = "Customer not found";
             throw new RecordNotFoundException(message);
         }else{
@@ -51,7 +52,6 @@ public class CustomerDAO {
             customer.setPromotions(allProm);
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
             return customer;
         }
     }
@@ -79,9 +79,12 @@ public class CustomerDAO {
             customer.setPromotions(allProm);
             rs.close();
             stm.close();
-            //DBConnection.getInstance().closeConnection();
             return customer;
         }
+    }
+
+    public static void logout() throws DBConnectionException {
+        DBConnection.getInstance().closeConnection();
     }
 
 }
