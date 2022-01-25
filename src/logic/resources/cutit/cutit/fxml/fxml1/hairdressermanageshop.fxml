@@ -161,18 +161,42 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                      <children>
-                        <ImageView fx:id="iv1" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="iv2" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="iv3" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="iv4" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="iv1" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image></ImageView>
+                        <ImageView fx:id="iv2" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image></ImageView>
+                        <ImageView fx:id="iv3" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image></ImageView>
+                        <ImageView fx:id="iv4" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image></ImageView>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="850.0" spacing="35.0">
                      <children>
-                        <ImageView fx:id="iv5" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="iv6" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="iv7" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="iv8" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="iv5" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image></ImageView>
+                        <ImageView fx:id="iv6" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image></ImageView>
+                        <ImageView fx:id="iv7" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image></ImageView>
+                        <ImageView fx:id="iv8" fitHeight="125.0" fitWidth="125.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image></ImageView>
                      </children>
                   </HBox>
                   <Button fx:id="btnSave" mnemonicParsing="false" onMouseClicked="#updateData" text="Save">

@@ -1,6 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.manageshoppage.HairdresserManageShopPageViewController2"/>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.manageshoppage.HairdresserManageShopPageViewController2">
+   <children>
+      <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+         <items>
+            <VBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="605.0" spacing="25.0">
+               <children>
+                  <Label text="ShopName">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="320.0" spacing="10.0">
+                     <children>
+                        <Label text="Address:">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="75.0" promptText="Street">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="75.0" promptText="City">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="75.0" promptText="CAP">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="320.0" spacing="10.0">
+                     <children>
+                        <Label text="Phone Number:">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="34.0" promptText="333">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="74.0" promptText="4455674">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="206.0" prefWidth="235.0" spacing="35.0">
+                     <children>
+                        <Label text="Open Days:">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <VBox alignment="CENTER_LEFT" prefHeight="206.0" prefWidth="100.0" spacing="10.0">
+                           <children>
+                              <CheckBox mnemonicParsing="false" text="Monday" />
+                              <CheckBox mnemonicParsing="false" text="Tuesday" />
+                              <CheckBox mnemonicParsing="false" text="Wednesday" />
+                              <CheckBox mnemonicParsing="false" text="Thursday" />
+                              <CheckBox mnemonicParsing="false" text="Friday" />
+                              <CheckBox mnemonicParsing="false" text="Saturday" />
+                              <CheckBox mnemonicParsing="false" text="Sunday" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="335.0" spacing="10.0">
+                     <children>
+                        <Label text="Open Time:">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="60.0" promptText="07:00">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                        <Label text="Close Time:" />
+                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="60.0" promptText="20:00">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="510.0" spacing="10.0">
+                     <children>
+                        <Label text="Description:">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Label>
+                        <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="420.0" promptText="Description">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextArea>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="25.0" top="25.0" />
+               </padding>
+            </VBox>
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="605.0" spacing="20.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="560.0" spacing="10.0">
+                     <children>
+                        <Label text="Employee:">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding></Label>
+                        <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="430.0" promptText="Employee">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextArea>
+                     </children>
+                  </HBox>
+                  <Label text="Photo">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="595.0" spacing="15.0">
+                     <children>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="593.0" spacing="20.0">
+                     <children>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../files/file_upload.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets top="100.0" />
+               </padding>
+            </VBox>
+         </items>
+      </SplitPane>
+   </children>
+</VBox>

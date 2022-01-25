@@ -126,10 +126,6 @@ public class HairdresserManageShopPageViewController {
         ivList.add(iv6);
         ivList.add(iv7);
         ivList.add(iv8);
-        Image im = new Image(Objects.requireNonNull(getClass().getResource("/cutit/cutit/files/file_upload.png"), "Unable to get resource file /cutit/cutit/files/file_upload.png").toString());
-        for (ImageView imageView : ivList) {
-            imageView.setImage(im);
-        }
     }
 
     @FXML
