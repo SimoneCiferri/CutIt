@@ -90,8 +90,7 @@ public class ShopDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = ShopQueries.getShop(stm, hairdresser.getpIVA());
         if (!rs.first()) {
-            String message = "Service not found";
-            throw new RecordNotFoundException(message);
+            throw new RecordNotFoundException(SERVICE_NOT_FOUND);
         } else {
             rs.first();
             String shopName = rs.getString(1);

@@ -8,15 +8,14 @@ import cutit.controller.getlocationdirections.GetLocationDirectionsController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewControllerInterface;
 import cutit.controller.payonline.PayOnlineController;
 import cutit.database.dao.*;
-import cutit.exception.DuplicatedRecordException;
-import cutit.exception.PaymentException;
-import cutit.exception.RecordNotFoundException;
-import cutit.exception.WrongInputDataException;
+import cutit.exception.*;
 import cutit.log.LogWriter;
 import cutit.model.*;
 import cutit.utils.ListFromModelList;
 
 import java.io.File;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import java.util.Objects;
 
 public class BookAppointmentController {
 
-    public void bookAppointment(AppointmentBean appointmentBean) throws Exception {
+    public void bookAppointment(AppointmentBean appointmentBean) throws DBConnectionException, SQLException, RecordNotFoundException, IOException, DuplicatedRecordException, PaymentException {
         try {
             Customer customer = CustomerDAO.getCustomer(appointmentBean.getCustomer());
             Service service = ServiceDAO.getService(appointmentBean.getShopName(), appointmentBean.getServiceName());
@@ -40,9 +39,7 @@ public class BookAppointmentController {
             }else{
                 throw new PaymentException("Payment rejected.");
             }
-        } catch (DuplicatedRecordException | RecordNotFoundException | PaymentException exception){
-            throw exception;
-        } catch (Exception e){
+        } catch (DBConnectionException | SQLException | IOException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
