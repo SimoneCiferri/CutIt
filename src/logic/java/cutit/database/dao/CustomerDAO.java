@@ -19,7 +19,7 @@ public class CustomerDAO {
 
     private CustomerDAO(){}
 
-    public static void insertCustomer(Customer customer) throws Exception {
+    public static void insertCustomer(Customer customer) throws DBConnectionException, SQLException {
         UserDAO.insertNewUser(customer);
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

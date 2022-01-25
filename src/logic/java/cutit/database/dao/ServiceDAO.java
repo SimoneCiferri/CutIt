@@ -19,7 +19,7 @@ public class ServiceDAO {
 
     private ServiceDAO(){}
 
-    public static void insertService(Service service) throws Exception {
+    public static void insertService(Service service) throws DBConnectionException, SQLException, DuplicatedRecordException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -58,7 +58,7 @@ public class ServiceDAO {
         return servicesList;
     }
 
-    public static void deleteService(Service service) throws Exception {
+    public static void deleteService(Service service) throws DBConnectionException, SQLException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);

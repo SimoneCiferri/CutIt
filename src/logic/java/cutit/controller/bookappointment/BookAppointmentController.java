@@ -185,7 +185,7 @@ public class BookAppointmentController {
 
     public void getFavouritesShop(ShopListBean bean, String customerEmail) throws Exception {
         try{
-            List<Shop> shopList = FavoriteShopsDAO.getFavouritesShops(customerEmail);
+            List<Shop> shopList = ShopDAO.getFavouritesShops(customerEmail);
             bean.setShopBeanList(beanListFromShopList(shopList));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());

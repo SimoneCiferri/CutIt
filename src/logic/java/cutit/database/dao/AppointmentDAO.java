@@ -24,7 +24,7 @@ public class AppointmentDAO {
 
     private AppointmentDAO(){}
 
-    public static void insertAppointment(Appointment appointment) throws Exception {
+    public static void insertAppointment(Appointment appointment) throws DBConnectionException, DuplicatedRecordException, SQLException {
 
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -115,7 +115,7 @@ public class AppointmentDAO {
         return appointmentList;
     }
 
-    public static void deleteAppointment(String appointmentStartTime, String shopName) throws Exception {
+    public static void deleteAppointment(String appointmentStartTime, String shopName) throws DBConnectionException, SQLException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);

@@ -233,7 +233,8 @@ public class CustomerBookAppointmentViewController {
                 viewController.goFav();
             }
         } catch (DuplicatedRecordException de) {
-            AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, de.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, de.getMessage());
+            alert.showAndWait();
             TopBarCustomerView1 view = (TopBarCustomerView1) Facade.getInstance().getViewMap().get(ViewLayout1.TOPBARCUSTOMER);
             TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController1(ViewLayout1.TOPBARCUSTOMER);
             viewController.goFav();

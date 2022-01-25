@@ -20,7 +20,7 @@ public class PromotionDAO {
 
     private PromotionDAO(){}
 
-    public static void insertPromotion(Promotion promotion) throws Exception {
+    public static void insertPromotion(Promotion promotion) throws DBConnectionException, SQLException, DuplicatedRecordException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -91,7 +91,7 @@ public class PromotionDAO {
         return promotionsList;
     }
 
-    public static Promotion getPersonalPromotion(String customerEmail, String promCode) throws Exception {
+    public static Promotion getPersonalPromotion(String customerEmail, String promCode) throws DBConnectionException, SQLException, RecordNotFoundException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -107,7 +107,7 @@ public class PromotionDAO {
         }
     }
 
-    public static List<Promotion> getAllPersonalPromotions(String customerEmail) throws Exception {
+    public static List<Promotion> getAllPersonalPromotions(String customerEmail) throws DBConnectionException, SQLException, RecordNotFoundException {
         List<Promotion> promotionList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -128,7 +128,7 @@ public class PromotionDAO {
         return promotionList;
     }
 
-    public static void deletePromotion(Promotion promotion) throws Exception{
+    public static void deletePromotion(Promotion promotion) throws DBConnectionException, SQLException{
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -157,7 +157,7 @@ public class PromotionDAO {
         }
     }
 
-    public static void insertPersonalPromotion(String customerEmail, String promoCode) throws Exception{
+    public static void insertPersonalPromotion(String customerEmail, String promoCode) throws DBConnectionException, SQLException{
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = PromotionQueries.getPersonalPromotion(stm, customerEmail, promoCode);

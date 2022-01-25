@@ -6,7 +6,6 @@ import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
 import cutit.model.*;
-
 import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -21,7 +20,7 @@ public class ShopDAO {
 
     private ShopDAO(){}
 
-    public static Boolean checkShop(String shopName) throws Exception {
+    public static Boolean checkShop(String shopName) throws DBConnectionException, SQLException, DuplicatedRecordException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -37,7 +36,7 @@ public class ShopDAO {
         }
     }
 
-    public static void insertShop(Shop shop) throws Exception {
+    public static void insertShop(Shop shop) throws DBConnectionException, SQLException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -48,7 +47,7 @@ public class ShopDAO {
         stm.close();
     }
 
-    public static Shop getShopFromName(String shopName) throws Exception {
+    public static Shop getShopFromName(String shopName) throws DBConnectionException, SQLException, RecordNotFoundException, IOException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -85,7 +84,7 @@ public class ShopDAO {
         }
     }
 
-    public static Shop getShopFromHairdresser(Hairdresser hairdresser) throws Exception {
+    public static Shop getShopFromHairdresser(Hairdresser hairdresser) throws DBConnectionException, SQLException, RecordNotFoundException, IOException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -147,7 +146,7 @@ public class ShopDAO {
         return images;
     }
 
-    public static void updateShop(Shop shop) throws Exception{
+    public static void updateShop(Shop shop) throws DBConnectionException, SQLException, FileNotFoundException{
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -171,7 +170,7 @@ public class ShopDAO {
         stm.close();
     }
 
-    public static List<Shop> getDefaultShops() throws Exception {
+    public static List<Shop> getDefaultShops() throws DBConnectionException, SQLException, IOException {
         List<Shop> shopList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -221,6 +220,42 @@ public class ShopDAO {
         List<Appointment> app = AppointmentDAO.getAllShopAppointments(shop);
         shop.setAllAppointments(app);
         return shop;
+    }
+
+    public static List<Shop> getFavouritesShops(String customerEmail) throws DBConnectionException, SQLException, RecordNotFoundException, IOException {
+        List<Shop> favList = new ArrayList<>();
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = ShopQueries.getAllFavouritesShop(stm, customerEmail);
+        if (rs.first()) {
+            rs.first();
+            do {
+                String sName = rs.getString(2);
+                Shop s = getShopFromName(sName);
+                favList.add(s);
+            } while (rs.next());
+            rs.close();
+            stm.close();
+        }
+        return favList;
+    }
+
+    public static void insertFavoriteShop(String customerEmail, String shopNameF) throws DBConnectionException, SQLException, DuplicatedRecordException {
+        Connection conn = DBConnection.getInstance().getConnection();
+        Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet rs = ShopQueries.getAllFavouritesShop(stm, customerEmail);
+        while (rs.next()) {
+            String shopN = rs.getString(2);
+            if(Objects.equals(shopNameF, shopN)){
+                throw new DuplicatedRecordException(shopNameF + " already added!");
+            }
+        }
+        rs.close();
+        stm.close();
+        stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        ShopQueries.insertShopToFav(stm, customerEmail, shopNameF);
+        stm.close();
     }
 
     private static LocalTime timeFromString(String openTime) {

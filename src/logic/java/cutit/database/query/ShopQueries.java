@@ -78,4 +78,14 @@ public class ShopQueries {
         String sql = "SELECT COUNT(*) as isUsed FROM shop WHERE ShopName = '" + shopName + "'";
         return stmt.executeQuery(sql);
     }
+
+    public static ResultSet getAllFavouritesShop(Statement stmt, String customerF) throws SQLException {
+        String sql = "SELECT * FROM FavoriteShops WHERE CustomerEmail = '" + customerF + "'";
+        return stmt.executeQuery(sql);
+    }
+
+    public static void insertShopToFav(Statement stmt, String customerF, String shopF) throws SQLException {
+        String insertStatement = String.format("INSERT INTO FavoriteShops (CustomerEmail, ShopName) VALUES ('%s', '%s')", customerF, shopF);
+        stmt.executeUpdate(insertStatement);
+    }
 }

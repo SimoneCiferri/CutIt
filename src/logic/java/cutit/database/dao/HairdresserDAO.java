@@ -9,15 +9,17 @@ import cutit.model.Hairdresser;
 import cutit.model.Shop;
 import cutit.model.User;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class HairdresserDAO {
 
     private HairdresserDAO(){}
 
-    public static Boolean checkPIVA(String piva) throws Exception {
+    public static Boolean checkPIVA(String piva) throws DBConnectionException, SQLException, DuplicatedRecordException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -33,7 +35,7 @@ public class HairdresserDAO {
         }
     }
 
-    public static void insertNewHairdresser(Hairdresser hairdresser, String shopName) throws Exception {
+    public static void insertNewHairdresser(Hairdresser hairdresser, String shopName) throws DBConnectionException, SQLException {
         UserDAO.insertNewUser(hairdresser);
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -44,7 +46,7 @@ public class HairdresserDAO {
         ShopDAO.insertShop(shop);
     }
 
-    public static Hairdresser getHairdresser(User user) throws Exception {
+    public static Hairdresser getHairdresser(User user) throws DBConnectionException, SQLException, RecordNotFoundException, IOException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
