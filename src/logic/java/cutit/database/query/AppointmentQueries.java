@@ -3,18 +3,19 @@ package cutit.database.query;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class AppointmentQueries {
 
     private AppointmentQueries(){}
 
-    public static void insertAppointment(Statement stmt, String startTime, String endTime, String shopName, String customerEmail, String serviceName, Float servicePrice, String promotionCode) throws SQLException {
-        String insertStatement = String.format("INSERT INTO appointment (StartTime, EndTime, Shop_ShopName, Customer_CustomerID, Service_Name, Service_Price, Service_Shop_ShopName, Promotion_Code) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", startTime, endTime, shopName, customerEmail, serviceName, servicePrice, shopName, promotionCode);
+    public static void insertAppointment(Statement stmt, List<String> appointmentStartAndEndTime, String shopName, String customerEmail, String serviceName, Float servicePrice, String promotionCode) throws SQLException {
+        String insertStatement = String.format("INSERT INTO appointment (StartTime, EndTime, Shop_ShopName, Customer_CustomerID, Service_Name, Service_Price, Service_Shop_ShopName, Promotion_Code) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", appointmentStartAndEndTime.get(0), appointmentStartAndEndTime.get(1), shopName, customerEmail, serviceName, servicePrice, shopName, promotionCode);
         stmt.executeUpdate(insertStatement);
     }
 
-    public static void insertAppointment(Statement stmt, String startTime, String endTime, String shopName, String customerEmail, String serviceName, Float servicePrice) throws SQLException {
-        String insertStatement = String.format("INSERT INTO appointment (StartTime, EndTime, Shop_ShopName, Customer_CustomerID, Service_Name, Service_Price, Service_Shop_ShopName) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", startTime, endTime, shopName, customerEmail, serviceName, servicePrice, shopName);
+    public static void insertAppointment(Statement stmt, List<String> appointmentStartAndEndTime, String shopName, String customerEmail, String serviceName, Float servicePrice) throws SQLException {
+        String insertStatement = String.format("INSERT INTO appointment (StartTime, EndTime, Shop_ShopName, Customer_CustomerID, Service_Name, Service_Price, Service_Shop_ShopName) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')", appointmentStartAndEndTime.get(0), appointmentStartAndEndTime.get(1), shopName, customerEmail, serviceName, servicePrice, shopName);
         stmt.executeUpdate(insertStatement);
     }
 

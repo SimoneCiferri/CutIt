@@ -41,10 +41,13 @@ public class AppointmentDAO {
 
         stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
+        List<String> appointmentStartAndEndTime = new ArrayList<>();
+        appointmentStartAndEndTime.add(0, stringFromData(appointment.getStartTime()));
+        appointmentStartAndEndTime.add(1, stringFromData(appointment.getEndTime()));
         if(appointment.getPromotion() != null){
-            AppointmentQueries.insertAppointment(stm, stringFromData(appointment.getStartTime()), stringFromData(appointment.getEndTime()), appointment.getShop().getShopName(), appointment.getCustomer().getUserID(), appointment.getService().getServiceName(), appointment.getService().getPrice(), appointment.getPromotion().getCode());
+            AppointmentQueries.insertAppointment(stm, appointmentStartAndEndTime, appointment.getShop().getShopName(), appointment.getCustomer().getUserID(), appointment.getService().getServiceName(), appointment.getService().getPrice(), appointment.getPromotion().getCode());
         } else {
-            AppointmentQueries.insertAppointment(stm, stringFromData(appointment.getStartTime()), stringFromData(appointment.getEndTime()), appointment.getShop().getShopName(), appointment.getCustomer().getUserID(), appointment.getService().getServiceName(), appointment.getService().getPrice());
+            AppointmentQueries.insertAppointment(stm, appointmentStartAndEndTime, appointment.getShop().getShopName(), appointment.getCustomer().getUserID(), appointment.getService().getServiceName(), appointment.getService().getPrice());
 
         }
         stm.close();

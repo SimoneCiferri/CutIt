@@ -2,16 +2,12 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.CustomerQueries;
-import cutit.database.query.UserQueries;
 import cutit.exception.DBConnectionException;
 import cutit.exception.RecordNotFoundException;
-import cutit.factory.AlertFactory;
 import cutit.model.Appointment;
 import cutit.model.Customer;
 import cutit.model.Promotion;
 import cutit.model.User;
-import javafx.scene.control.Alert;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

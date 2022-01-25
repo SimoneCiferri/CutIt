@@ -19,8 +19,7 @@ public class TestGoleadorPrice {
         WebElement element = driver.findElement(By.xpath("//*[@id=\"corePriceDisplay_desktop_feature_div\"]/div[1]/span[1]/span[2]/span[1]"));
         driver.findElement(By.xpath("//*[@id=\"sp-cc-accept\"]")).click();
         String price = element.getText();
-        Integer priceOfGoleador = Integer.parseInt(price);
-        return priceOfGoleador;
+        return Integer.parseInt(price);
     }
 
     @Test

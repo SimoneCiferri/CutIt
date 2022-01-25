@@ -151,7 +151,10 @@ public class ShopDAO {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
-        ShopQueries.updateShop(stm, shop.getShopName(), shop.getAddress(), shop.getPhoneNumber(), shop.getEmployee(), shop.getDescription(), stringFromTime(shop.getOpenTime()), stringFromTime(shop.getCloseTime()));
+        List<String> openAndCloseTimeList = new ArrayList<>();
+        openAndCloseTimeList.add(0, stringFromTime(shop.getOpenTime()));
+        openAndCloseTimeList.add(1, stringFromTime(shop.getCloseTime()));
+        ShopQueries.updateShop(stm, shop.getShopName(), shop.getAddress(), shop.getPhoneNumber(), shop.getEmployee(), shop.getDescription(), openAndCloseTimeList);
         for (int i = 0; i < shop.getOpenDays().size(); i++) {
             if (shop.getOpenDays().get(i + 1)) {
                 ShopQueries.updateOpenDays(stm, shop.getShopName(), i + 1, 1);
@@ -162,7 +165,7 @@ public class ShopDAO {
         if (!shop.getImages().isEmpty()) {
             ShopQueries.deleteAllImages(stm, shop.getShopName());
             for (int j = 0; j < shop.getImages().size(); j++) {
-                ShopQueries.insertImage(stm, String.valueOf(j), shop.getImages().get(j), shop.getShopName());
+                ShopQueries.insertImage(String.valueOf(j), shop.getImages().get(j), shop.getShopName());
             }
         }
         stm.close();

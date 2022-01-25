@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.List;
 
 public class ShopQueries {
 
@@ -33,12 +34,12 @@ public class ShopQueries {
         return stmt.executeQuery(sql);
     }
 
-    public static void updateShop(Statement stmt,String shopName, String address, String phoneNumber, String employee, String description, String openTime, String closeTime) throws SQLException {
-        String sql = "UPDATE shop SET Employee = '" + employee + "', Address = '" + address +"', PhoneNumber = '" + phoneNumber + "', Description = '" + description + "', OpenTime = '" + openTime +"', CloseTime = '" + closeTime + "' WHERE ShopName = '" + shopName + "'";
+    public static void updateShop(Statement stmt, String shopName, String address, String phoneNumber, String employee, String description, List<String> openAndCloseTimeList) throws SQLException {
+        String sql = "UPDATE shop SET Employee = '" + employee + "', Address = '" + address +"', PhoneNumber = '" + phoneNumber + "', Description = '" + description + "', OpenTime = '" + openAndCloseTimeList.get(0) +"', CloseTime = '" + openAndCloseTimeList.get(1) + "' WHERE ShopName = '" + shopName + "'";
         stmt.executeUpdate(sql);
     }
 
-    public static void insertOpenDay(Statement stmt,String shopName, Integer day, Integer open) throws SQLException {
+    public static void insertOpenDay(Statement stmt, String shopName, Integer day, Integer open) throws SQLException {
         String insertStatement = String.format("INSERT INTO opendays(ODShopName, Day, Open) VALUES ('%s', '%d', '%d')", shopName, day, open);
         stmt.executeUpdate(insertStatement);
     }
@@ -48,7 +49,7 @@ public class ShopQueries {
         stmt.executeUpdate(insertStatement);
     }
 
-    public static void insertImage(Statement stmt, String imageID, File file, String shopName) throws SQLException, DBConnectionException, FileNotFoundException {
+    public static void insertImage(String imageID, File file, String shopName) throws SQLException, DBConnectionException, FileNotFoundException {
         PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement("INSERT INTO image (Id, Size, Image, RefShop) VALUES (?, ?, ?, ?)");
         statement.setString(1,imageID);
         statement.setInt(2,99);
