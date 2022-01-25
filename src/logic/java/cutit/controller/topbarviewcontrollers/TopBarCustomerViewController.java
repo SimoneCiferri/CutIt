@@ -21,11 +21,11 @@ import java.io.IOException;
 
 public class TopBarCustomerViewController {
 
-    private static final String transparentStyle = "-fx-background-color: transparent; ";
-    private static final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
     private double xOffset = 0;
     private double yOffset = 0;
     private CustomerBean customerBeanFirstUI;
+    private static final String TRANSPARENT_STYLE = "-fx-background-color: transparent; ";
+    private static final String PAGE_FLAG_STYLE = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
 
     @FXML
     private Label btnClHome;
@@ -46,21 +46,21 @@ public class TopBarCustomerViewController {
     private AnchorPane apTopBarCustomer;
 
     public boolean initialize() throws IOException {
-        btnClHome.setStyle(pageFlagStyle);
-        btnClPromotion.setStyle(transparentStyle);
-        btnClApp.setStyle(transparentStyle);
-        btnClFav.setStyle(transparentStyle);
-        btnClLogout.setStyle(transparentStyle);
+        btnClHome.setStyle(PAGE_FLAG_STYLE);
+        btnClPromotion.setStyle(TRANSPARENT_STYLE);
+        btnClApp.setStyle(TRANSPARENT_STYLE);
+        btnClFav.setStyle(TRANSPARENT_STYLE);
+        btnClLogout.setStyle(TRANSPARENT_STYLE);
         return true;
     }
 
     @FXML
     public boolean goHome() {
-        btnClHome.setStyle(pageFlagStyle);
-        btnClPromotion.setStyle(transparentStyle);
-        btnClApp.setStyle(transparentStyle);
-        btnClFav.setStyle(transparentStyle);
-        btnClLogout.setStyle(transparentStyle);
+        btnClHome.setStyle(PAGE_FLAG_STYLE);
+        btnClPromotion.setStyle(TRANSPARENT_STYLE);
+        btnClApp.setStyle(TRANSPARENT_STYLE);
+        btnClFav.setStyle(TRANSPARENT_STYLE);
+        btnClLogout.setStyle(TRANSPARENT_STYLE);
         Facade.getInstance().decorateView(ViewLayout1.HOME);
         Home1View view = (Home1View)Facade.getInstance().getViewMap().get(ViewLayout1.HOME);
         HomeViewController viewController = (HomeViewController) view.getLoadedViewController1(ViewLayout1.HOME);
@@ -70,11 +70,11 @@ public class TopBarCustomerViewController {
 
     @FXML
     public boolean goFav() {
-        btnClHome.setStyle(transparentStyle);
-        btnClFav.setStyle(pageFlagStyle);
-        btnClApp.setStyle(transparentStyle);
-        btnClPromotion.setStyle(transparentStyle);
-        btnClLogout.setStyle(transparentStyle);
+        btnClHome.setStyle(TRANSPARENT_STYLE);
+        btnClFav.setStyle(PAGE_FLAG_STYLE);
+        btnClApp.setStyle(TRANSPARENT_STYLE);
+        btnClPromotion.setStyle(TRANSPARENT_STYLE);
+        btnClLogout.setStyle(TRANSPARENT_STYLE);
         Facade.getInstance().decorateView(ViewLayout1.FAVSHOP);
         CustomerFavouritesShopView1 view = (CustomerFavouritesShopView1) Facade.getInstance().getViewMap().get(ViewLayout1.FAVSHOP);
         CustomerFavouritesShopViewController viewController = (CustomerFavouritesShopViewController) view.getLoadedViewController1(ViewLayout1.FAVSHOP);
@@ -84,11 +84,11 @@ public class TopBarCustomerViewController {
 
     @FXML
     public boolean goApp() {
-        btnClHome.setStyle(transparentStyle);
-        btnClFav.setStyle(transparentStyle);
-        btnClApp.setStyle(pageFlagStyle);
-        btnClPromotion.setStyle(transparentStyle);
-        btnClLogout.setStyle(transparentStyle);
+        btnClHome.setStyle(TRANSPARENT_STYLE);
+        btnClFav.setStyle(TRANSPARENT_STYLE);
+        btnClApp.setStyle(PAGE_FLAG_STYLE);
+        btnClPromotion.setStyle(TRANSPARENT_STYLE);
+        btnClLogout.setStyle(TRANSPARENT_STYLE);
         Facade.getInstance().decorateView(ViewLayout1.CUSTOMERAPPOINTMENTS);
         CustomerAppointmentsView1 view = (CustomerAppointmentsView1) Facade.getInstance().getViewMap().get(ViewLayout1.CUSTOMERAPPOINTMENTS);
         CustomerAppointmentsViewController viewController =(CustomerAppointmentsViewController) view.getLoadedViewController1(ViewLayout1.CUSTOMERAPPOINTMENTS);
@@ -98,11 +98,11 @@ public class TopBarCustomerViewController {
 
     @FXML
     public boolean goProm() {
-        btnClHome.setStyle(transparentStyle);
-        btnClFav.setStyle(transparentStyle);
-        btnClApp.setStyle(transparentStyle);
-        btnClPromotion.setStyle(pageFlagStyle);
-        btnClLogout.setStyle(transparentStyle);
+        btnClHome.setStyle(TRANSPARENT_STYLE);
+        btnClFav.setStyle(TRANSPARENT_STYLE);
+        btnClApp.setStyle(TRANSPARENT_STYLE);
+        btnClPromotion.setStyle(PAGE_FLAG_STYLE);
+        btnClLogout.setStyle(TRANSPARENT_STYLE);
         Facade.getInstance().decorateView(ViewLayout1.CUSTOMERPROMOTIONS);
         CustomerPromotionsView1 view =(CustomerPromotionsView1) Facade.getInstance().getViewMap().get(ViewLayout1.CUSTOMERPROMOTIONS);
         CustomerPromotionsViewController viewController = (CustomerPromotionsViewController) view.getLoadedViewController1(ViewLayout1.CUSTOMERPROMOTIONS);

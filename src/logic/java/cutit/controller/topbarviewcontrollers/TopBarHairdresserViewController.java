@@ -20,11 +20,11 @@ import java.io.IOException;
 
 public class TopBarHairdresserViewController {
 
-    private static final String transparentStyle = "-fx-background-color: transparent; ";
-    private static final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
     private double xOffset = 0;
     private double yOffset = 0;
     private ShopBeanInterface shopBeanFirstUI;
+    private static final String TRANSPARENT_STYLE = "-fx-background-color: transparent; ";
+    private static final String PAGE_FLAG_STYLE = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
 
     @FXML
     private Label  btnHApp;
@@ -46,22 +46,22 @@ public class TopBarHairdresserViewController {
 
 
     public boolean initialize() throws IOException {
-        btnHApp.setStyle(pageFlagStyle);
-        btnHPromotions.setStyle(transparentStyle);
-        btnHServices.setStyle(transparentStyle);
-        btnHShop.setStyle(transparentStyle);
-        btnHLogout.setStyle(transparentStyle);
+        btnHApp.setStyle(PAGE_FLAG_STYLE);
+        btnHPromotions.setStyle(TRANSPARENT_STYLE);
+        btnHServices.setStyle(TRANSPARENT_STYLE);
+        btnHShop.setStyle(TRANSPARENT_STYLE);
+        btnHLogout.setStyle(TRANSPARENT_STYLE);
         return true;
     }
 
     @FXML
     public boolean goApp() {
         Facade.getInstance().decorateView(ViewLayout1.HAIRDRESSERAPPOINTMENTS);
-        btnHApp.setStyle(pageFlagStyle);
-        btnHPromotions.setStyle(transparentStyle);
-        btnHServices.setStyle(transparentStyle);
-        btnHShop.setStyle(transparentStyle);
-        btnHLogout.setStyle(transparentStyle);
+        btnHApp.setStyle(PAGE_FLAG_STYLE);
+        btnHPromotions.setStyle(TRANSPARENT_STYLE);
+        btnHServices.setStyle(TRANSPARENT_STYLE);
+        btnHShop.setStyle(TRANSPARENT_STYLE);
+        btnHLogout.setStyle(TRANSPARENT_STYLE);
         HairdresserAppointmentsView1 view = (HairdresserAppointmentsView1) Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERAPPOINTMENTS);
         HairdresserDeleteBookedAppointmentsViewController viewController = (HairdresserDeleteBookedAppointmentsViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERAPPOINTMENTS);
         viewController.fillView(shopBeanFirstUI);
@@ -71,11 +71,11 @@ public class TopBarHairdresserViewController {
     @FXML
     public boolean goPromotion() {
         Facade.getInstance().decorateView(ViewLayout1.HAIRDRESSERPROMOTIONS);
-        btnHApp.setStyle(transparentStyle);
-        btnHPromotions.setStyle(pageFlagStyle);
-        btnHServices.setStyle(transparentStyle);
-        btnHShop.setStyle(transparentStyle);
-        btnHLogout.setStyle(transparentStyle);
+        btnHApp.setStyle(TRANSPARENT_STYLE);
+        btnHPromotions.setStyle(PAGE_FLAG_STYLE);
+        btnHServices.setStyle(TRANSPARENT_STYLE);
+        btnHShop.setStyle(TRANSPARENT_STYLE);
+        btnHLogout.setStyle(TRANSPARENT_STYLE);
         HairdresserPromotionsView1 view = (HairdresserPromotionsView1) Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERPROMOTIONS);
         HairdresserManagePromotionsViewController viewController = (HairdresserManagePromotionsViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERPROMOTIONS);
         viewController.fillView(shopBeanFirstUI);
@@ -85,11 +85,11 @@ public class TopBarHairdresserViewController {
     @FXML
     public boolean goServices() {
         Facade.getInstance().decorateView(ViewLayout1.HAIRDRESSERSERVICES);
-        btnHApp.setStyle(transparentStyle);
-        btnHPromotions.setStyle(transparentStyle);
-        btnHServices.setStyle(pageFlagStyle);
-        btnHShop.setStyle(transparentStyle);
-        btnHLogout.setStyle(transparentStyle);
+        btnHApp.setStyle(TRANSPARENT_STYLE);
+        btnHPromotions.setStyle(TRANSPARENT_STYLE);
+        btnHServices.setStyle(PAGE_FLAG_STYLE);
+        btnHShop.setStyle(TRANSPARENT_STYLE);
+        btnHLogout.setStyle(TRANSPARENT_STYLE);
         HairdresserServicesView1 view = (HairdresserServicesView1)  Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERSERVICES);
         HairdresserManageServicesViewController viewController = (HairdresserManageServicesViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERSERVICES);
         viewController.fillView(shopBeanFirstUI);
@@ -99,11 +99,11 @@ public class TopBarHairdresserViewController {
     @FXML
     public boolean goShopHair() {
         Facade.getInstance().decorateView(ViewLayout1.HAIRDRESSERMANAGESHOP);
-        btnHApp.setStyle(transparentStyle);
-        btnHPromotions.setStyle(transparentStyle);
-        btnHServices.setStyle(transparentStyle);
-        btnHShop.setStyle(pageFlagStyle);
-        btnHLogout.setStyle(transparentStyle);
+        btnHApp.setStyle(TRANSPARENT_STYLE);
+        btnHPromotions.setStyle(TRANSPARENT_STYLE);
+        btnHServices.setStyle(TRANSPARENT_STYLE);
+        btnHShop.setStyle(PAGE_FLAG_STYLE);
+        btnHLogout.setStyle(TRANSPARENT_STYLE);
         HairdresserManageShopView1 view = (HairdresserManageShopView1) Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERMANAGESHOP);
         HairdresserManageShopPageViewController viewController = (HairdresserManageShopPageViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERMANAGESHOP);
         viewController.fillView(shopBeanFirstUI);
