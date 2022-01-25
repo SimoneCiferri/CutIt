@@ -14,11 +14,14 @@ import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.List;
 
 public class CustomerDAO {
+
+    private CustomerDAO(){}
 
     public static void insertCustomer(Customer customer) throws Exception {
         UserDAO.insertNewUser(customer);
@@ -29,7 +32,7 @@ public class CustomerDAO {
         stm.close();
     }
 
-    public static Customer getCustomer(User user) throws Exception {
+    public static Customer getCustomer(User user) throws DBConnectionException, SQLException, RecordNotFoundException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -55,7 +58,7 @@ public class CustomerDAO {
         }
     }
 
-    public static Customer getCustomer(String customerEmail) throws Exception {
+    public static Customer getCustomer(String customerEmail) throws DBConnectionException, SQLException, RecordNotFoundException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);

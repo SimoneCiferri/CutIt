@@ -6,6 +6,8 @@ import java.sql.Statement;
 
 public class ServiceQueries {
 
+    private ServiceQueries(){}
+
     public static void insertService(Statement stmt, String serviceName, Float servicePrice, String shopName) throws SQLException {
         String insertStatement = String.format("INSERT INTO service (Name, Price, Shop_ShopName) VALUES ('%s', '%s', '%s')", serviceName, servicePrice , shopName);
         stmt.executeUpdate(insertStatement);

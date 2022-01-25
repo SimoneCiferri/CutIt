@@ -12,6 +12,8 @@ import java.sql.Statement;
 
 public class UserDAO {
 
+    private UserDAO(){}
+
     public static Boolean checkUser(String userID) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

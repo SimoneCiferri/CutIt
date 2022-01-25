@@ -4,11 +4,14 @@ import cutit.database.DBConnection;
 import cutit.database.query.AppointmentQueries;
 import cutit.database.query.PromotionQueries;
 import cutit.database.query.ServiceQueries;
+import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
+import cutit.exception.RecordNotFoundException;
 import cutit.model.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,6 +21,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class AppointmentDAO {
+
+    private AppointmentDAO(){}
 
     public static void insertAppointment(Appointment appointment) throws Exception {
 
@@ -47,7 +52,7 @@ public class AppointmentDAO {
 
 
 
-    public static List<Appointment> getAllCustomerAppointments(Customer customer) throws Exception {
+    public static List<Appointment> getAllCustomerAppointments(Customer customer) throws DBConnectionException, SQLException, RecordNotFoundException {
         List<Appointment> appointmentList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -77,7 +82,7 @@ public class AppointmentDAO {
         return appointmentList;
     }
 
-    public static List<Appointment> getAllShopAppointments(Shop shop) throws Exception {
+    public static List<Appointment> getAllShopAppointments(Shop shop) throws DBConnectionException, SQLException, RecordNotFoundException {
         List<Appointment> appointmentList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

@@ -1,7 +1,5 @@
 package cutit.bean;
 
-import cutit.bean.AppointmentBean;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -15,7 +13,6 @@ public class AppointmentBeanUQ implements AppointmentBean {
     private String promotionCode;
     private String serviceName;
     private String shopName;
-    private String notes;
     private LocalDate selectedDay;
     private List<LocalTime> availableSlots;
     private List<String> availableServices;

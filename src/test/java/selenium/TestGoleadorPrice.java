@@ -20,8 +20,6 @@ public class TestGoleadorPrice {
         driver.findElement(By.xpath("//*[@id=\"sp-cc-accept\"]")).click();
         String price = element.getText();
         Integer priceOfGoleador = Integer.parseInt(price);
-
-        System.out.println("Il prezzo è di: " + priceOfGoleador);
         return priceOfGoleador;
     }
 

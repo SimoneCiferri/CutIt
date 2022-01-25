@@ -2,12 +2,14 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.ServiceQueries;
+import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
 import cutit.model.Service;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.Objects;
 
 public class ServiceDAO {
 
+    private ServiceDAO(){}
 
     public static void insertService(Service service) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
@@ -35,7 +38,7 @@ public class ServiceDAO {
         stm.close();
     }
 
-    public static List<Service> getAllServices(String shopName) throws Exception {
+    public static List<Service> getAllServices(String shopName) throws DBConnectionException, SQLException {
         List<Service> servicesList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -63,7 +66,7 @@ public class ServiceDAO {
         stm.close();
     }
 
-    public static Service getService(String shopName, String serviceName) throws Exception {
+    public static Service getService(String shopName, String serviceName) throws DBConnectionException, SQLException, RecordNotFoundException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);

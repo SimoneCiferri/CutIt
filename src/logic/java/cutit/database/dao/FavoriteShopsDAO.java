@@ -17,6 +17,8 @@ import java.util.Objects;
 
 public class FavoriteShopsDAO {
 
+    private FavoriteShopsDAO(){}
+
     public static void insertFavoriteShop(String customerEmail, String shopNameF) throws Exception{
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);

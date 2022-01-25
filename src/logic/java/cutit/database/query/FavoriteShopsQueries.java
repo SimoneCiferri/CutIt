@@ -6,6 +6,8 @@ import java.sql.Statement;
 
 public class FavoriteShopsQueries {
 
+    private FavoriteShopsQueries(){}
+
     public static void insertShopToFav(Statement stmt, String customerF, String shopF) throws SQLException {
         String insertStatement = String.format("INSERT INTO FavoriteShops (CustomerEmail, ShopName) VALUES ('%s', '%s')", customerF, shopF);
         stmt.executeUpdate(insertStatement);

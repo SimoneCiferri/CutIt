@@ -2,12 +2,14 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.PromotionQueries;
+import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
 import cutit.model.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,6 +17,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class PromotionDAO {
+
+    private PromotionDAO(){}
 
     public static void insertPromotion(Promotion promotion) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
@@ -35,7 +39,7 @@ public class PromotionDAO {
         stm.close();
     }
 
-    public static List<Promotion> getAllPromotion(String shopName) throws Exception {
+    public static List<Promotion> getAllPromotion(String shopName) throws DBConnectionException, SQLException, RecordNotFoundException {
         List<Promotion> promotionsList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -61,7 +65,7 @@ public class PromotionDAO {
         return promotionsList;
     }
 
-    public static List<Promotion> getAllCustomerPromotion(String customerEmail) throws Exception {
+    public static List<Promotion> getAllCustomerPromotion(String customerEmail) throws DBConnectionException, SQLException, RecordNotFoundException {
         List<Promotion> promotionsList = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -132,7 +136,7 @@ public class PromotionDAO {
         stm.close();
     }
 
-    public static Promotion getPromotion(String promCode) throws Exception {
+    public static Promotion getPromotion(String promCode) throws DBConnectionException, SQLException, RecordNotFoundException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -160,8 +164,6 @@ public class PromotionDAO {
         if (!rs.first()){
             stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             PromotionQueries.insertPersonalPromotion(stm, customerEmail, promoCode);
-        } else {
-            System.out.println("Promotion " + promoCode + " already exists for " + customerEmail);
         }
         rs.close();
         stm.close();

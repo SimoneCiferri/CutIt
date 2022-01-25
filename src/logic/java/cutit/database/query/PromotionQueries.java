@@ -6,6 +6,8 @@ import java.sql.Statement;
 
 public class PromotionQueries {
 
+    private PromotionQueries(){}
+
     public static void insertPromotion(Statement stmt, String promotionCode, Integer promValueOff, String expireDate, String serviceName, String serviceShop) throws SQLException {
         String insertStatement = String.format("INSERT INTO promotion (Code, Off, ExpireDate, Service_Name, Service_Shop_ShopName) VALUES ('%s', '%s', '%s', '%s', '%s')", promotionCode, promValueOff, expireDate, serviceName, serviceShop);
         stmt.executeUpdate(insertStatement);

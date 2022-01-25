@@ -15,6 +15,8 @@ import java.sql.Statement;
 
 public class HairdresserDAO {
 
+    private HairdresserDAO(){}
+
     public static Boolean checkPIVA(String piva) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

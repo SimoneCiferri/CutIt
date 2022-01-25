@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class HairdresserQueries {
+
+    private HairdresserQueries(){}
+
     public static int insertHairdresser(Statement stmt, String hairdresserPIVA, String hairdresserUserID, String hName, String hSurname) throws SQLException {
         String insertStatement = String.format("INSERT INTO hairdresser (PIVA, HairdresserEmail, HName, HSurname) VALUES ('%s','%s','%s','%s')", hairdresserPIVA, hairdresserUserID, hName, hSurname);
         return stmt.executeUpdate(insertStatement);

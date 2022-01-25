@@ -1,3 +1,5 @@
+package testutils;
+
 import cutit.utils.ListFromModelList;
 import cutit.utils.TextFieldCheck;
 import org.junit.jupiter.api.Test;

@@ -8,6 +8,8 @@ import java.util.List;
 
 public class ListFromModelList {
 
+    private ListFromModelList(){}
+
     public static List<String> getStringListFromServices(List<Service> services) {
         List<String> servList = new ArrayList<>();
         if(!services.isEmpty()){

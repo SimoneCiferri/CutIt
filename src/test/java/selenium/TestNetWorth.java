@@ -29,7 +29,6 @@ public class TestNetWorth {
         StringTokenizer st = new StringTokenizer(netWorth);
         String value = st.nextToken();
         value = value.replace(",", ".");
-        System.out.println(value);
         double netWorthValue = Double.parseDouble(value);
         boolean test = netWorthValue > 168.0;
         assertTrue(test);

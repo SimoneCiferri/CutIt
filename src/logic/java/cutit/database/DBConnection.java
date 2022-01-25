@@ -14,7 +14,7 @@ public class DBConnection {
     private static final String USER = "root";
     private static final String PASS = "root";
     private static Connection conn = null;
-
+//
     private DBConnection(){
     }
 
@@ -25,7 +25,7 @@ public class DBConnection {
         return instance;
     }
 
-    public Connection getConnection() throws DBConnectionException {
+    public synchronized Connection getConnection() throws DBConnectionException {
         if(conn == null){
             try {
                 Class.forName(DRIVER_CLASS_NAME);

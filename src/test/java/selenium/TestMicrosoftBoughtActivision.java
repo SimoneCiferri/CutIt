@@ -23,7 +23,6 @@ public class TestMicrosoftBoughtActivision {
             WebElement webElement = driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div[1]/div/div[1]/div/div/div/div/div[1]/div/span[1]/span/b"));
 
             String stringPay = webElement.getText();
-            System.out.println(stringPay);
 
             assertEquals("$68.7 billion", stringPay);
 

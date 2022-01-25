@@ -1,13 +1,17 @@
 package cutit.database.query;
 
 import cutit.database.DBConnection;
+import cutit.exception.DBConnectionException;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.sql.*;
 
 public class ShopQueries {
+
+    private ShopQueries(){}
 
     public static void insertShop(Statement stmt, String shopName, String hairdresserPIVA) throws SQLException {
         String insertStatement = String.format("INSERT INTO shop (ShopName, Hairdresser_PIVA) VALUES ('%s', '%s')", shopName, hairdresserPIVA);
@@ -21,11 +25,6 @@ public class ShopQueries {
 
     public static ResultSet getShopFromName(Statement stmt, String shopName) throws SQLException {
         String sql = "SELECT * FROM shop WHERE ShopName = '" + shopName + "'";
-        return stmt.executeQuery(sql);
-    }
-
-    public static ResultSet getShopFromUser(Statement stmt, String userID) throws SQLException {
-        String sql = "SELECT Hairdresser_PIVA, ShopName FROM user join Hairdresser on UserID = HairdresserEmail join shop on PIVA = Hairdresser_PIVA WHERE UserID= '" + userID + "'";
         return stmt.executeQuery(sql);
     }
 
@@ -49,17 +48,17 @@ public class ShopQueries {
         stmt.executeUpdate(insertStatement);
     }
 
-    public static void insertImage(Statement stmt, String imageID, File file, String shopName) throws Exception {
+    public static void insertImage(Statement stmt, String imageID, File file, String shopName) throws SQLException, DBConnectionException, FileNotFoundException {
         PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement("INSERT INTO image (Id, Size, Image, RefShop) VALUES (?, ?, ?, ?)");
         statement.setString(1,imageID);
         statement.setInt(2,99);
         FileInputStream input = new FileInputStream(file);
-        statement.setBinaryStream(3, (InputStream)input, (int)file.length());
+        statement.setBinaryStream(3, input, (int)file.length());
         statement.setString(4, shopName);
         statement.executeUpdate();
     }
 
-    public static void deleteAllImages(Statement stmt, String shopName) throws Exception{
+    public static void deleteAllImages(Statement stmt, String shopName) throws SQLException{
         String insertStatement = "DELETE FROM image WHERE RefShop = '" + shopName + "'";
         stmt.executeUpdate(insertStatement);
     }

@@ -2,6 +2,7 @@ package cutit.database.dao;
 
 import cutit.database.DBConnection;
 import cutit.database.query.ShopQueries;
+import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.RecordNotFoundException;
 import cutit.model.*;
@@ -9,6 +10,7 @@ import cutit.model.*;
 import java.io.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalTime;
 import java.util.*;
@@ -16,6 +18,8 @@ import java.util.*;
 public class ShopDAO {
 
     private static final String SERVICE_NOT_FOUND = "Service not found";
+
+    private ShopDAO(){}
 
     public static Boolean checkShop(String shopName) throws Exception {
         Connection conn = DBConnection.getInstance().getConnection();
@@ -53,40 +57,14 @@ public class ShopDAO {
             throw new RecordNotFoundException(SERVICE_NOT_FOUND);
         } else {
             rs.first();
-            String employee = rs.getString(2);
-            String address = rs.getString(3);
-            String hPiva = rs.getString(4);
-            String phoneNumber = rs.getString(5);
-            String description = rs.getString(6);
-            String openTime = rs.getString(7);
-            String closeTime = rs.getString(8);
-            Shop shop = new Shop(shopName, hPiva);
-            shop.setAddress(address);
-            shop.setPhoneNumber(phoneNumber);
-            shop.setEmployee(employee);
-            shop.setDescription(description);
-            shop.setOpenTime(timeFromString(openTime));
-            shop.setCloseTime(timeFromString(closeTime));
-            Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
-            shop.setOpenDays(openDays);
-
-            List<File> images = getImages(shop.getShopName());
-            shop.setImages(images);
-
-            List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop.getShopName());
-            shop.setPromotions(allPromotions);
-            List<Service> services = ServiceDAO.getAllServices(shop.getShopName());
-            shop.setServices(services);
-
-            List<Appointment> app = AppointmentDAO.getAllShopAppointments(shop);
-            shop.setAllAppointments(app);
+            Shop shop = retrieveShopFromResultSet(rs, shopName);
             rs.close();
             stm.close();
             return shop;
         }
     }
 
-    public static Shop getShopLite(String shopName) throws Exception {
+    public static Shop getShopLite(String shopName) throws DBConnectionException, SQLException, RecordNotFoundException {
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_READ_ONLY);
@@ -118,40 +96,14 @@ public class ShopDAO {
         } else {
             rs.first();
             String shopName = rs.getString(1);
-            String employee = rs.getString(2);
-            String address = rs.getString(3);
-            String hPiva = rs.getString(4);
-            String phoneNumber = rs.getString(5);
-            String description = rs.getString(6);
-            String openTime = rs.getString(7);
-            String closeTime = rs.getString(8);
-            Shop shop = new Shop(shopName, hPiva);
-            shop.setAddress(address);
-            shop.setPhoneNumber(phoneNumber);
-            shop.setEmployee(employee);
-            shop.setDescription(description);
-            shop.setOpenTime(timeFromString(openTime));
-            shop.setCloseTime(timeFromString(closeTime));
-            Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
-            shop.setOpenDays(openDays);
-
-            List<File> images = getImages(shop.getShopName());
-            shop.setImages(images);
-
-            List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop.getShopName());
-            shop.setPromotions(allPromotions);
-            List<Service> services = ServiceDAO.getAllServices(shop.getShopName());
-            shop.setServices(services);
-
-            List<Appointment> app = AppointmentDAO.getAllShopAppointments(shop);
-            shop.setAllAppointments(app);
+            Shop shop = retrieveShopFromResultSet(rs, shopName);
             rs.close();
             stm.close();
             return shop;
         }
     }
 
-    private static Map<Integer, Boolean> getOpenDays(String shopName) throws Exception {
+    private static Map<Integer, Boolean> getOpenDays(String shopName) throws DBConnectionException,SQLException {
         Map<Integer, Boolean> openDays = new HashMap<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -171,7 +123,7 @@ public class ShopDAO {
     }
 
 
-    private static List<File> getImages(String shopName) throws Exception{
+    private static List<File> getImages(String shopName) throws DBConnectionException, SQLException, IOException{
         List<File> images = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -240,6 +192,33 @@ public class ShopDAO {
         return shopList;
     }
 
+    private static Shop retrieveShopFromResultSet(ResultSet rs, String shopName) throws SQLException, DBConnectionException, IOException, RecordNotFoundException{
+        String employee = rs.getString(2);
+        String address = rs.getString(3);
+        String hPiva = rs.getString(4);
+        String phoneNumber = rs.getString(5);
+        String description = rs.getString(6);
+        String openTime = rs.getString(7);
+        String closeTime = rs.getString(8);
+        Shop shop = new Shop(shopName, hPiva);
+        shop.setAddress(address);
+        shop.setPhoneNumber(phoneNumber);
+        shop.setEmployee(employee);
+        shop.setDescription(description);
+        shop.setOpenTime(timeFromString(openTime));
+        shop.setCloseTime(timeFromString(closeTime));
+        Map<Integer, Boolean> openDays = getOpenDays(shop.getShopName());
+        shop.setOpenDays(openDays);
+        List<File> images = getImages(shop.getShopName());
+        shop.setImages(images);
+        List<Promotion> allPromotions = PromotionDAO.getAllPromotion(shop.getShopName());
+        shop.setPromotions(allPromotions);
+        List<Service> services = ServiceDAO.getAllServices(shop.getShopName());
+        shop.setServices(services);
+        List<Appointment> app = AppointmentDAO.getAllShopAppointments(shop);
+        shop.setAllAppointments(app);
+        return shop;
+    }
 
     private static LocalTime timeFromString(String openTime) {
         return LocalTime.parse(openTime);

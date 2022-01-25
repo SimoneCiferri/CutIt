@@ -1,3 +1,5 @@
+package testutils;
+
 import cutit.model.Promotion;
 import cutit.model.Service;
 import cutit.utils.ListFromModelList;
