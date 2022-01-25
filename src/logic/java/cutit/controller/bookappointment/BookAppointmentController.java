@@ -122,20 +122,19 @@ public class BookAppointmentController {
 
     }
 
-    public void getAppointments(CustomerBean customerBean) throws Exception {
+    public void getAppointments(CustomerBean customerBean) throws DBConnectionException, SQLException, RecordNotFoundException {
         try {
             Customer customer = CustomerDAO.getCustomer(new User(customerBean.getcEmail(), customerBean.getcPassword(), customerBean.getcRole()));
             List<Appointment> appList = customer.getBookedAppointments();
             customerBean.setAllBookedAppointments(appBeanListFromAppList(appList));
-        } catch (Exception e){
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            throw e;
+        } catch ( DBConnectionException | SQLException dbe){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
+            throw dbe;
         }
     }
 
     public void getAvailableSlots(AppointmentBean bean, String shopName) throws WrongInputDataException, DBConnectionException, SQLException, RecordNotFoundException, IOException {
-        try {
-            if(bean.getSelectedDay().isBefore(LocalDate.now())){throw new WrongInputDataException("Impossible to select a past day.");}
+        try { if(bean.getSelectedDay().isBefore(LocalDate.now())){throw new WrongInputDataException("Impossible to select a past day.");}
             Shop shop = ShopDAO.getShopFromName(shopName);
             LocalTime open = shop.getOpenTime();
             LocalTime close = shop.getCloseTime();
@@ -143,14 +142,12 @@ public class BookAppointmentController {
             List<Appointment> appList = filterByDay(allAppList, bean.getSelectedDay());
             List<LocalTime> availableList = new ArrayList<>();
             LocalTime temp = open;
-            if (!appList.isEmpty()) {
-                while (!temp.equals(close)) {
+            if (!appList.isEmpty()) { while (!temp.equals(close)) {
                     boolean busy = false;
                     for (Appointment appointment : appList) {
                         if(appointment.getStartTime().toLocalTime().equals(temp)){
                             busy = true;
-                            break;
-                        }
+                            break; }
                     }
                     if(!busy){availableList.add(temp);}
                     temp = temp.plusMinutes(30);
@@ -158,14 +155,12 @@ public class BookAppointmentController {
             } else {
                 while (!temp.equals(close)) {
                     availableList.add(temp);
-                    temp = temp.plusMinutes(30);
-                }
+                    temp = temp.plusMinutes(30); }
             }
             bean.setAvailableSlots(availableList);
         } catch ( DBConnectionException | SQLException | IOException dbe){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
-            throw dbe;
-        }
+            throw dbe; }
     }
 
     public void getAvailableServices(AppointmentBean bean, String shopName) throws DBConnectionException, SQLException, RecordNotFoundException, IOException{
