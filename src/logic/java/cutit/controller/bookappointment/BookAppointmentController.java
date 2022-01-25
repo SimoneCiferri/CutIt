@@ -45,13 +45,13 @@ public class BookAppointmentController {
         }
     }
 
-    public void getPersonalPromotions(CustomerBean bean) throws Exception {
+    public void getPersonalPromotions(CustomerBean bean) throws DBConnectionException, SQLException, RecordNotFoundException {
         try {
             List<Promotion> personalProm = PromotionDAO.getAllPersonalPromotions(bean.getcEmail());
             bean.setAllPersonalPromotions(ListFromModelList.getStringListFromPromotions(personalProm));
-        } catch (Exception e){
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            throw e;
+        } catch ( DBConnectionException | SQLException | RecordNotFoundException dbe){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
+            throw dbe;
         }
     }
 
@@ -60,10 +60,15 @@ public class BookAppointmentController {
         return payOnlineController.payAppointment(appBean);
     }
 
-    public Boolean addShopToFavourites(String customerEmail, String shopName) throws Exception {
-        AddShopToFavouritesController addShopToFavouritesController = new AddShopToFavouritesController();
-        addShopToFavouritesController.addToFavourites(customerEmail, shopName);
-        return true;
+    public Boolean addShopToFavourites(String customerEmail, String shopName) throws DBConnectionException, SQLException, DuplicatedRecordException {
+        try {
+            AddShopToFavouritesController addShopToFavouritesController = new AddShopToFavouritesController();
+            addShopToFavouritesController.addToFavourites(customerEmail, shopName);
+            return true;
+        } catch( DBConnectionException | SQLException dbe) {
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
+            throw dbe;
+        }
     }
 
     public Boolean getShopDirections(GetLocationDirectionsGoogleMapsViewControllerInterface viewController, ShopBeanInterface bean){
@@ -72,17 +77,17 @@ public class BookAppointmentController {
         return true;
     }
 
-    public void getShops(ShopListBean shopListBean) throws Exception{
+    public void getShops(ShopListBean shopListBean) throws DBConnectionException, SQLException, IOException{
         try {
             List<Shop> shopList = ShopDAO.getDefaultShops();
             shopListBean.setShopBeanList(beanListFromShopList(shopList));
-        } catch (Exception e){
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            throw e;
+        } catch (DBConnectionException | SQLException | IOException dbe){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
+            throw dbe;
         }
     }
 
-    public void getShop(ShopBean shopBean, String shopName) throws Exception {
+    public void getShop(ShopBean shopBean, String shopName) throws  DBConnectionException, SQLException, RecordNotFoundException, IOException {
         try {
             Shop shop = ShopDAO.getShopFromName(shopName);
             shopBean.setShopName(shop.getShopName());
@@ -97,18 +102,24 @@ public class BookAppointmentController {
             shopBean.setPromotions(ListFromModelList.getStringListFromPromotions(shop.getPromotions()));
             shopBean.setServices(ListFromModelList.getStringListFromServices(shop.getServices()));
             shopBean.setImages(shop.getImages());
-        } catch (Exception e){
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            throw e;
+        } catch ( DBConnectionException | SQLException | IOException dbe){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
+            throw dbe;
         }
     }
 
-    public void getPromotion(PromotionBean bean) throws Exception {
-        Promotion promotion = PromotionDAO.getPromotion(bean.getPromotionCode());
-        bean.setOffValue(promotion.getOffValue());
-        bean.setExpireDate(promotion.getExpireDate());
-        bean.setServiceName(promotion.getService().getServiceName());
-        bean.setShopName(promotion.getService().getShopName());
+    public void getPromotion(PromotionBean bean) throws DBConnectionException, SQLException, RecordNotFoundException {
+        try {
+            Promotion promotion = PromotionDAO.getPromotion(bean.getPromotionCode());
+            bean.setOffValue(promotion.getOffValue());
+            bean.setExpireDate(promotion.getExpireDate());
+            bean.setServiceName(promotion.getService().getServiceName());
+            bean.setShopName(promotion.getService().getShopName());
+        } catch (DBConnectionException | SQLException dbe) {
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n" + dbe.getMessage());
+            throw  dbe;
+        }
+
     }
 
     public void getAppointments(CustomerBean customerBean) throws Exception {
@@ -122,7 +133,7 @@ public class BookAppointmentController {
         }
     }
 
-    public void getAvailableSlots(AppointmentBean bean, String shopName) throws Exception {
+    public void getAvailableSlots(AppointmentBean bean, String shopName) throws WrongInputDataException, DBConnectionException, SQLException, RecordNotFoundException, IOException {
         try {
             if(bean.getSelectedDay().isBefore(LocalDate.now())){throw new WrongInputDataException("Impossible to select a past day.");}
             Shop shop = ShopDAO.getShopFromName(shopName);
@@ -151,22 +162,20 @@ public class BookAppointmentController {
                 }
             }
             bean.setAvailableSlots(availableList);
-        } catch (WrongInputDataException wde) {
-            throw wde;
-        } catch (Exception e){
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            throw e;
+        } catch ( DBConnectionException | SQLException | IOException dbe){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
+            throw dbe;
         }
     }
 
-    public void getAvailableServices(AppointmentBean bean, String shopName) throws Exception {
+    public void getAvailableServices(AppointmentBean bean, String shopName) throws DBConnectionException, SQLException, RecordNotFoundException, IOException{
         try {
             Shop shop = ShopDAO.getShopFromName(shopName);
             List<Service> servicesList = shop.getServices();
             bean.setAvailableServices(ListFromModelList.getStringListFromServices(servicesList));
-        } catch (Exception e){
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            throw e;
+        } catch ( DBConnectionException | SQLException | IOException dbe){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
+            throw dbe;
         }
     }
 
@@ -180,17 +189,17 @@ public class BookAppointmentController {
         return list;
     }
 
-    public void getFavouritesShop(ShopListBean bean, String customerEmail) throws Exception {
+    public void getFavouritesShop(ShopListBean bean, String customerEmail) throws  DBConnectionException, SQLException, RecordNotFoundException, IOException {
         try{
             List<Shop> shopList = ShopDAO.getFavouritesShops(customerEmail);
             bean.setShopBeanList(beanListFromShopList(shopList));
-        } catch (Exception e){
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            throw e;
+        } catch ( DBConnectionException | SQLException | IOException dbe){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
+            throw dbe;
         }
     }
 
-    public void checkPromotion(AppointmentBean bean) throws Exception {
+    public void checkPromotion(AppointmentBean bean) throws  DBConnectionException, SQLException, RecordNotFoundException, WrongInputDataException {
         try {
             Promotion promotion = PromotionDAO.getPersonalPromotion(bean.getCustomer(), bean.getPromotionCode());
             if(Objects.equals(bean.getServiceName(), promotion.getService().getServiceName())){
@@ -200,11 +209,9 @@ public class BookAppointmentController {
             } else {
                 throw new WrongInputDataException("Selected promotion is not available for selected Service.");
             }
-        } catch (RecordNotFoundException | WrongInputDataException exception){
-            throw exception;
-        } catch (Exception e){
-            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            throw e;
+        } catch ( DBConnectionException | SQLException dbe){
+            LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
+            throw dbe;
         }
     }
 
@@ -215,7 +222,7 @@ public class BookAppointmentController {
                 String name = shop.getShopName();
                 String address = shop.getAddress();
                 List<File> images = shop.getImages();
-                ShopBeanInterface shopBean = new ShopBean(); //si dovrebbe capire quale creare a runtime OPPURE si usa shopBEanFirstUI come shopBeanUnica per tutte e due le UI
+                ShopBeanInterface shopBean = new ShopBean();
                 shopBean.setShopName(name);
                 shopBean.setShopAddress(address);
                 shopBean.setImages(images);
