@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 
 public class CustomerAppointmentsViewController {
 
-    private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private static final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private CustomerBean customerBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
 
@@ -35,7 +35,7 @@ public class CustomerAppointmentsViewController {
                 int appN = i;
                 String appointment = customerBeanFirstUI.getAllBookedAppointments().get(appN).getShopName() + ", " + customerBeanFirstUI.getAllBookedAppointments().get(appN).getStartTime().toLocalDate() + " at " + customerBeanFirstUI.getAllBookedAppointments().get(appN).getStartTime().toLocalTime();
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel(appointment, labelStyle);
-                l.setOnMouseClicked((MouseEvent) -> showAppInfo(customerBeanFirstUI.getAllBookedAppointments().get(appN).getStartTime(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getEndTime(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getServiceName(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getShopName()));
+                l.setOnMouseClicked(mouseEvent -> showAppInfo(customerBeanFirstUI.getAllBookedAppointments().get(appN).getStartTime(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getEndTime(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getServiceName(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getShopName()));
                 vbInScrollCA.getChildren().add(l);
             }
         } catch (Exception e) {

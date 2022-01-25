@@ -10,7 +10,16 @@ import java.time.LocalDateTime;
 public class CustomerAppointmentInfoViewController {
 
     @FXML
-    private Label lDate, lAppTimeSlot, lShopName, lService;
+    private Label lDate;
+
+    @FXML
+    private Label lAppTimeSlot;
+
+    @FXML
+    private Label lShopName;
+
+    @FXML
+    private Label lService;
 
     @FXML
     public boolean goBackToAppList(){

@@ -27,9 +27,11 @@ public class HairdresserManageServicesViewController {
     private ShopBeanInterface shopBeanFirstUI;
     private ManageServiceBeanInterface manageServicesBean;
     private ManageServicesController manageServicesController;
-    private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private final Double titleFontSize = 30.0;
-    private final Double normalLabelFontSize = 14.0;
+    private static final String CONNECTION_ERROR_TITLE = "Connection error";
+    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection.";
+    private static final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private static final Double titleFontSize = 30.0;
+    private static final Double normalLabelFontSize = 14.0;
 
     @FXML
     private VBox vbInScrollHS;
@@ -46,16 +48,16 @@ public class HairdresserManageServicesViewController {
             manageServicesController.getAllServices(manageServicesBean, shopBeanFirstUI);
             vbInScrollHS.getChildren().clear();
             Button add = JavaFXNodeFactory.getInstance().createButton("Add Service");
-            add.setOnMouseClicked((MouseEvent) -> showAddForm());
+            add.setOnMouseClicked(MouseEvent -> showAddForm());
             vbInScrollHS.getChildren().add(add);
             for(int i = 0; i< manageServicesBean.getAllServicesList().size(); i++) {
                 String serviceName = manageServicesBean.getAllServicesList().get(i);
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel(serviceName, labelStyle);
-                l.setOnMouseClicked((MouseEvent) -> showDeleteForm(serviceName, manageServicesBean.getServiceList().get(serviceName)));
+                l.setOnMouseClicked(mouseEvent -> showDeleteForm(serviceName, manageServicesBean.getServiceList().get(serviceName)));
                 vbInScrollHS.getChildren().add(l);
             }
         } catch(DBConnectionException dce){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,13 +66,13 @@ public class HairdresserManageServicesViewController {
 
     private void showAddForm() {
         vbInScrollHS.getChildren().clear();
-        List<Label> labelList = new ArrayList<Label>();
+        List<Label> labelList = new ArrayList<>();
         Label title = JavaFXNodeFactory.getInstance().createLabel("Add Service", titleFontSize);
         Label name = JavaFXNodeFactory.getInstance().createLabel("Name:", normalLabelFontSize);
         labelList.add(name);
         Label price = JavaFXNodeFactory.getInstance().createLabel("Price:", normalLabelFontSize);
         labelList.add(price);
-        List<Node> nodeList = new ArrayList<Node>();
+        List<Node> nodeList = new ArrayList<>();
         TextField serviceName = new TextField();
         serviceName.setPromptText("Service Name");
         serviceName.setMaxSize(180, 25);
@@ -82,10 +84,10 @@ public class HairdresserManageServicesViewController {
         HBox form = JavaFXNodeFactory.getInstance().createLRForm(labelList, nodeList, true);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
-        back.setOnMouseClicked((MouseEvent) -> showHairServices());
+        back.setOnMouseClicked(mouseEvent -> showHairServices());
         Button add = JavaFXNodeFactory.getInstance().createButton("Add");
         add.setPrefHeight(55);
-        add.setOnMouseClicked((MouseEvent) -> addService(serviceName,servicePrice));
+        add.setOnMouseClicked(mouseEvent -> addService(serviceName,servicePrice));
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, add);
         vbInScrollHS.getChildren().addAll(title, form, buttonsHB);
     }
@@ -102,7 +104,7 @@ public class HairdresserManageServicesViewController {
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
                 alert.showAndWait();
             } catch(DBConnectionException dce){
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
                 alert.showAndWait();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -116,10 +118,10 @@ public class HairdresserManageServicesViewController {
         Label price = JavaFXNodeFactory.getInstance().createLabel(servicePrice.toString(), normalLabelFontSize);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
-        back.setOnMouseClicked((MouseEvent) -> showHairServices());
+        back.setOnMouseClicked(mouseEvent -> showHairServices());
         Button delete = JavaFXNodeFactory.getInstance().createButton("Delete");
         delete.setPrefHeight(55);
-        delete.setOnMouseClicked((MouseEvent) -> deleteService(serviceName, servicePrice));
+        delete.setOnMouseClicked(mouseEvent -> deleteService(serviceName, servicePrice));
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, delete);
         vbInScrollHS.getChildren().addAll(name, price, buttonsHB);
     }
@@ -131,7 +133,7 @@ public class HairdresserManageServicesViewController {
         try {
             manageServicesController.deleteService(this.manageServicesBean);
         } catch(DBConnectionException dce){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();

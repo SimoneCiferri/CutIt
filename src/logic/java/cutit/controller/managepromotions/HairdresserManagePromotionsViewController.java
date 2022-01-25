@@ -1,7 +1,6 @@
 package cutit.controller.managepromotions;
 
 import cutit.bean.ManagePromotionBeanInterface;
-import cutit.bean.HairdresserBeanUQ;
 import cutit.bean.ManagePromotionBean;
 import cutit.bean.ShopBeanInterface;
 import cutit.exception.DBConnectionException;
@@ -16,7 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +23,12 @@ import java.util.Objects;
 
 public class HairdresserManagePromotionsViewController {
 
-    private HairdresserBeanUQ hairdresserBeanFirstUI;
     private ShopBeanInterface shopBeanFirstUI;
     private ManagePromotionBeanInterface managePromotionBeanFirstUI;
     private ManagePromotionController managePromotionController;
-    private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private final Double titleFontSize = 30.0;
-    private final Double normalLabelFontSize = 14.0;
+    private static final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private static final Double titleFontSize = 30.0;
+    private static final Double normalLabelFontSize = 14.0;
 
     @FXML
     private VBox vbInScrollHProm;
@@ -48,7 +45,7 @@ public class HairdresserManagePromotionsViewController {
             managePromotionController.getAllPromotions(managePromotionBeanFirstUI, shopBeanFirstUI);
             vbInScrollHProm.getChildren().clear();
             Button add = JavaFXNodeFactory.getInstance().createButton("Add Promotion");
-            add.setOnMouseClicked((MouseEvent) -> showAddForm());
+            add.setOnMouseClicked(mouseEvent -> showAddForm());
             vbInScrollHProm.getChildren().add(add);
             for(int i = 0; i< managePromotionBeanFirstUI.getPromotionsBeanList().size(); i++) {
                 ManagePromotionBeanInterface promotionBean = managePromotionBeanFirstUI.getPromotionsBeanList().get(i);
@@ -57,7 +54,7 @@ public class HairdresserManagePromotionsViewController {
                 String promotionServiceName = promotionBean.getPromServiceName();
                 LocalDate expire = promotionBean.getPromExpireDate();
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel(promotionCode, labelStyle);
-                l.setOnMouseClicked((MouseEvent) -> showDeleteForm(promotionCode, promotionOffValue, promotionServiceName, expire.toString()));
+                l.setOnMouseClicked(mouseEvent -> showDeleteForm(promotionCode, promotionOffValue, promotionServiceName, expire.toString()));
                 vbInScrollHProm.getChildren().add(l);
             }
         } catch (Exception e) {
@@ -104,10 +101,10 @@ public class HairdresserManagePromotionsViewController {
         HBox form = JavaFXNodeFactory.getInstance().createLRForm(leftLabelList, rightList, true);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
-        back.setOnMouseClicked((MouseEvent) -> showHairProm());
+        back.setOnMouseClicked(mouseEvent -> showHairProm());
         Button add = JavaFXNodeFactory.getInstance().createButton("Add");
         add.setPrefHeight(55);
-        add.setOnMouseClicked((MouseEvent) -> addPromotion(promName.getText(), promValue.getText(), dp.getValue() , promService.getValue()));
+        add.setOnMouseClicked(mouseEvent -> addPromotion(promName.getText(), promValue.getText(), dp.getValue() , promService.getValue()));
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, add);
        vbInScrollHProm.getChildren().addAll(title, form, buttonsHB);
     }
@@ -148,10 +145,10 @@ public class HairdresserManagePromotionsViewController {
         HBox form = JavaFXNodeFactory.getInstance().createLRForm(leftLabelList, rightList, false);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
-        back.setOnMouseClicked((MouseEvent) -> showHairProm());
+        back.setOnMouseClicked(mouseEvent -> showHairProm());
         Button delete = JavaFXNodeFactory.getInstance().createButton("Delete");
         delete.setPrefHeight(55);
-        delete.setOnMouseClicked((MouseEvent) -> removePromotion(promCode, promOffValue, expireDate));
+        delete.setOnMouseClicked(mouseEvent -> removePromotion(promCode, promOffValue, expireDate));
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, delete);
         vbInScrollHProm.getChildren().addAll(name, promValue, promService, form, buttonsHB);
     }

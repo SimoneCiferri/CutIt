@@ -5,7 +5,9 @@ import cutit.bean.PromotionBean;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.ShopInfoView1;
 import cutit.facade.Facade;
+import cutit.factory.AlertFactory;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 
 import java.awt.*;
@@ -20,7 +22,19 @@ public class CustomerPromotionInfoViewController {
     private CustomerBean customerBeanFirstUI;
 
     @FXML
-    private Label lblShopName, lblOffValue, lblServiceName, lblExpireDate, lblPromotionCode;
+    private Label lblShopName;
+
+    @FXML
+    private Label lblOffValue;
+
+    @FXML
+    private Label lblServiceName;
+
+    @FXML
+    private Label lblExpireDate;
+
+    @FXML
+    private Label lblPromotionCode;
 
     public boolean initialize(){
         return true;
@@ -49,7 +63,8 @@ public class CustomerPromotionInfoViewController {
         clipboard.setContents(text,text);
     }
         catch (AWTError error){
-            System.out.println("the default Toolkit cannot be initialized");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Error", "Impossible to copy promotion.");
+            alert.show();
         }
     }
 

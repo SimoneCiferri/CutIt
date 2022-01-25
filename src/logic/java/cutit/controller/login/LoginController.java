@@ -67,7 +67,6 @@ public class LoginController {
             customerBean.setcBirthDate(customer.getBirthDate());
             customerBean.setcGender(customer.getGender());
             customerBean.setAllPersonalPromotions(ListFromModelList.getStringListFromPromotions(customer.getPromotions()));
-            //customerBean.setAllBookedAppointments(stringListFromAppList(customer.getBookedAppointments()));
         } catch (Exception e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
@@ -77,13 +76,9 @@ public class LoginController {
     public Boolean signUpHair(HairdresserBean hairdresserBean) throws Exception {
         try {
             Hairdresser hairdresser = new Hairdresser(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1, hairdresserBean.gethName(), hairdresserBean.gethSurname(), hairdresserBean.getpIVA());
-            if (!UserDAO.checkUser(hairdresser.getUserID())){
-                if(!ShopDAO.checkShop(hairdresserBean.getShopName())){
-                    if(!HairdresserDAO.checkPIVA(hairdresser.getpIVA())){
-                        HairdresserDAO.insertNewHairdresser(hairdresser, hairdresserBean.getShopName());
-                        return true;
-                    }
-                }
+            if (!UserDAO.checkUser(hairdresser.getUserID()) && !ShopDAO.checkShop(hairdresserBean.getShopName()) && !HairdresserDAO.checkPIVA(hairdresser.getpIVA())){
+                HairdresserDAO.insertNewHairdresser(hairdresser, hairdresserBean.getShopName());
+                return true;
             }
             return false;
         } catch (DuplicatedRecordException de){

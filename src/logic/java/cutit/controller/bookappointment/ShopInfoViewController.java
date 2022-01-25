@@ -33,14 +33,61 @@ public class ShopInfoViewController {
     private Button btnMaps;
 
     @FXML
-    private Label lShopName, lShopPhone, lShopDescription, lShopOpenTime, lblServiceList, lTitleEmployee, lEmployee, lblPhoto;
+    private Label lShopName;
 
     @FXML
-    private VBox vboxShopInfo, vboxPhoto;
+    private Label lShopPhone;
 
     @FXML
-    private ImageView ivShopProfPhoto, ivShop1, ivShop2, ivShop3, ivShop4, ivShop5, ivShop6, ivShop7, ivShop8;
+    private Label lShopDescription;
 
+    @FXML
+    private Label lShopOpenTime;
+
+    @FXML
+    private Label lblServiceList;
+
+    @FXML
+    private Label lTitleEmployee;
+
+    @FXML
+    private Label lEmployee;
+
+    @FXML
+    private Label lblPhoto;
+
+    @FXML
+    private VBox vboxShopInfo;
+
+    @FXML
+    private VBox vboxPhoto;
+
+    @FXML
+    private ImageView ivShopProfPhoto;
+
+    @FXML
+    private ImageView ivShop1;
+
+    @FXML
+    private ImageView ivShop2;
+
+    @FXML
+    private ImageView ivShop3;
+
+    @FXML
+    private ImageView ivShop4;
+
+    @FXML
+    private ImageView ivShop5;
+
+    @FXML
+    private ImageView ivShop6;
+
+    @FXML
+    private ImageView ivShop7;
+
+    @FXML
+    private ImageView ivShop8;
 
     public boolean initialize() throws IOException {
         shopBean = new ShopBean();
@@ -85,48 +132,48 @@ public class ShopInfoViewController {
             lShopDescription.setText(shopBean.getShopDescription());
         }
         Map<Integer,Boolean> opendays = shopBean.getShopOpenDays();
-        String openTimes = "";
+        StringBuilder openTimes = new StringBuilder();
         for(int i=1;i<opendays.size()+1;i++){
            if(opendays.get(i)){
                switch (i){
                    case 1:{
-                       openTimes = openTimes + "Monday" + "\n";
+                       openTimes.append("Monday").append("\n");
                        break;
                    }case 2:{
-                       openTimes = openTimes + "Tuesday" + "\n";
+                       openTimes.append("Tuesday").append("\n");
                        break;
                    }case 3:{
-                       openTimes = openTimes + "Wednesday" + "\n";
+                       openTimes.append("Wednesday").append("\n");
                        break;
                    }case 4:{
-                       openTimes = openTimes + "Thursday" + "\n";
+                       openTimes.append("Thursday").append("\n");
                        break;
                    }case 5:{
-                       openTimes = openTimes + "Friday" + "\n";
+                       openTimes.append("Friday").append("\n");
                        break;
                    }case 6:{
-                       openTimes = openTimes + "Saturday" + "\n";
+                       openTimes.append("Saturday").append("\n");
                        break;
                    }case 7:{
-                       openTimes = openTimes + "Sunday" + "\n";
+                       openTimes.append("Sunday").append("\n");
                        break;
-                   }
+                   } default:{}
                }
            }
         }
-        if(!(openTimes.equals(""))){
-            openTimes = openTimes + shopBean.getShopOpenTime() + " - " + shopBean.getShopCloseTime();
-            lShopOpenTime.setText(openTimes);
+        if(!(openTimes.toString().equals(""))){
+            openTimes.append(shopBean.getShopOpenTime()).append(" - ").append(shopBean.getShopCloseTime());
+            lShopOpenTime.setText(openTimes.toString());
         } else {
             lShopOpenTime.setText("Shop is closed.");
         }
         if(!shopBean.getServices().isEmpty()){
             List<String> allServices = shopBean.getServices();
-            String servicesLabel = "";
+            StringBuilder servicesLabel = new StringBuilder();
             for (String allService : allServices) {
-                servicesLabel = servicesLabel +  allService + "\n";
+                servicesLabel.append(allService).append("\n");
             }
-            lblServiceList.setText(servicesLabel);
+            lblServiceList.setText(servicesLabel.toString());
         }
         if(!Objects.equals(shopBean.getShopEmployee(), "")){
             lTitleEmployee.setVisible(true);

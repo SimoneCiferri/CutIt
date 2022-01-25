@@ -16,8 +16,7 @@ import java.io.File;
 
 public class CustomerFavouritesShopViewController {
 
-    private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private ShopBean shopBean;
+    private final static String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private CustomerBean customerBeanFirstUI;
     private ShopListBean shopListBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
@@ -47,7 +46,7 @@ public class CustomerFavouritesShopViewController {
 
                 }
                 int n = i;
-                card.setOnMouseClicked((MouseEvent) -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
+                card.setOnMouseClicked(mouseEvent -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
                 vbInScrollCFav.getChildren().add(card);
             }
         } catch (Exception e) {

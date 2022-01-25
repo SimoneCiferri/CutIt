@@ -31,7 +31,7 @@ public class GetLocationDirectionsGoogleMapsViewController1 implements Initializ
 
     @Override
     public void directionsReceived(DirectionsResult results, DirectionStatus status) {
-
+        //Method not implemented
     }
 
     @Override
@@ -53,7 +53,6 @@ public class GetLocationDirectionsGoogleMapsViewController1 implements Initializ
 
         geocodingService = new GeocodingService();
         MarkerOptions markerOptions = new MarkerOptions();
-        System.out.println("Geocoding on " + address);
         geocodingService.geocode(address, (geocodingResults, geocoderStatus) -> {
             LatLong latLong1;
             if( geocoderStatus == GeocoderStatus.ZERO_RESULTS) {
@@ -61,11 +60,9 @@ public class GetLocationDirectionsGoogleMapsViewController1 implements Initializ
                 alert.showAndWait();
                 return;
             } else if( geocodingResults.length > 1 ) {
-                System.out.println("1 risultato");
                 latLong1 = new LatLong(geocodingResults[0].getGeometry().getLocation().getLatitude(), geocodingResults[0].getGeometry().getLocation().getLongitude());
             } else {
                 latLong1 = new LatLong(geocodingResults[0].getGeometry().getLocation().getLatitude(), geocodingResults[0].getGeometry().getLocation().getLongitude());
-                System.out.println("Più risultati");
             }
             map.setCenter(latLong1);
             markerOptions.position(latLong);

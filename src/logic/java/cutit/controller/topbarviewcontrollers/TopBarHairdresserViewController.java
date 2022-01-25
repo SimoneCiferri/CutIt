@@ -20,15 +20,26 @@ import java.io.IOException;
 
 public class TopBarHairdresserViewController {
 
-    private final String transparentStyle = "-fx-background-color: transparent; ";
-    private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
+    private static final String transparentStyle = "-fx-background-color: transparent; ";
+    private static final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
     private double xOffset = 0;
     private double yOffset = 0;
-    private HairdresserBean hairdresserBeanFirstUI;
     private ShopBeanInterface shopBeanFirstUI;
 
     @FXML
-    private Label  btnHApp, btnHPromotions, btnHServices, btnHShop,  btnHLogout;
+    private Label  btnHApp;
+
+    @FXML
+    private Label btnHPromotions;
+
+    @FXML
+    private Label btnHServices;
+
+    @FXML
+    private Label btnHShop;
+
+    @FXML
+    private Label btnHLogout;
 
     @FXML
     private AnchorPane apTopBarHairdr;
@@ -132,8 +143,7 @@ public class TopBarHairdresserViewController {
         apTopBarHairdr.getScene().getWindow().setY(event.getScreenY() + yOffset);
     }
 
-    public void startBean(HairdresserBean hairdresserBeanFirstUI, ShopBeanInterface shopBeanFirstUI){
-        this.hairdresserBeanFirstUI = hairdresserBeanFirstUI;
+    public void startBean(ShopBeanInterface shopBeanFirstUI){
         this.shopBeanFirstUI = shopBeanFirstUI;
         goApp();
     }

@@ -28,19 +28,70 @@ public class HairdresserManageShopPageViewController {
     private Label shopName;
 
     @FXML
-    private TextField  tfPhoneNumber, tfAddress;
+    private TextField  tfPhoneNumber;
 
     @FXML
-    private TextArea taDescription, taEmployee;
+    private TextField tfAddress;
 
     @FXML
-    private CheckBox cbMon, cbTue, cbWed, cbThu, cbFri, cbSat, cbSun;
+    private TextArea taDescription;
 
     @FXML
-    private ChoiceBox<LocalTime> cbOpenTime, cbCloseTime;
+    private TextArea taEmployee;
 
     @FXML
-    private ImageView ivProfPhoto, iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8;
+    private CheckBox cbMon;
+
+    @FXML
+    private CheckBox cbTue;
+
+    @FXML
+    private CheckBox cbWed;
+
+    @FXML
+    private CheckBox cbThu;
+
+    @FXML
+    private CheckBox cbFri;
+
+    @FXML
+    private CheckBox cbSat;
+
+    @FXML
+    private CheckBox cbSun;
+
+    @FXML
+    private ChoiceBox<LocalTime> cbOpenTime;
+
+    @FXML
+    private ChoiceBox<LocalTime> cbCloseTime;
+
+    @FXML
+    private ImageView ivProfPhoto;
+
+    @FXML
+    private ImageView iv1;
+
+    @FXML
+    private ImageView iv2;
+
+    @FXML
+    private ImageView iv3;
+
+    @FXML
+    private ImageView iv4;
+
+    @FXML
+    private ImageView iv5;
+
+    @FXML
+    private ImageView iv6;
+
+    @FXML
+    private ImageView  iv7;
+
+    @FXML
+    private ImageView iv8;
 
     @FXML
     public void initialize(){
@@ -153,7 +204,6 @@ public class HairdresserManageShopPageViewController {
                 ivList.get(i).setImage(new Image(String.valueOf(file.toURI())));
             }
         }
-        System.out.println("Filling View from ShopBean data passedBY TopBarHairdresserViewController");
     }
 
     private Map<Integer, Boolean> getOpenDays(List<CheckBox> checkBoxList) {

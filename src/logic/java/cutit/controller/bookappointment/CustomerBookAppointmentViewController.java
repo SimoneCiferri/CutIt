@@ -28,21 +28,25 @@ public class CustomerBookAppointmentViewController {
     private AppointmentBeanUQ appointmentBeanUQ;
     private BookAppointmentController bookAppointmentController;
     private ShopBeanInterface shopBeanUQ;
+    private static final String INFORMATION_TITLE = "Information";
 
     @FXML
     private BorderPane bpInBookApp;
 
     @FXML
-    private Label labelDate, labelService, lblTitleShopName, lblPromotionApplied;
+    private Label labelDate;
+
+    @FXML
+    private Label labelService;
+
+    @FXML
+    private Label lblTitleShopName;
+
+    @FXML
+    private Label lblPromotionApplied;
 
     @FXML
     private DatePicker dtPicker;
-
-    @FXML
-    private HBox hBoxTop, hBoxCentre, hBoxBottom;
-
-    @FXML
-    private VBox vbDateAndTime;
 
     @FXML
     private ChoiceBox<LocalTime> cbTimeSlot;
@@ -62,7 +66,7 @@ public class CustomerBookAppointmentViewController {
         bookAppointmentController = new BookAppointmentController();
 
         dtPicker.setValue(LocalDate.now());
-        cbTimeSlot.setOnAction((event) -> {
+        cbTimeSlot.setOnAction(event -> {
             LocalTime selectedTime = cbTimeSlot.getSelectionModel().getSelectedItem();
             if(selectedTime != null){
                 labelDate.setText(dtPicker.getValue().toString() + " " + selectedTime);
@@ -71,7 +75,7 @@ public class CustomerBookAppointmentViewController {
             }
         });
 
-        cbServices.setOnAction((event) -> {
+        cbServices.setOnAction(event -> {
             String selectedService = cbServices.getSelectionModel().getSelectedItem();
             tfPromotionCode.setDisable(selectedService == null);
             checkPromotion.setDisable(selectedService == null);
@@ -104,7 +108,7 @@ public class CustomerBookAppointmentViewController {
                 bookAppointmentController.bookAppointment(appointmentBeanUQ);
                 showPayedAndBooked();
             } catch (DuplicatedRecordException | PaymentException | RecordNotFoundException exception){
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, exception.getMessage());
                 alert.showAndWait();
             } catch (Exception e){
                 e.printStackTrace();
@@ -136,7 +140,7 @@ public class CustomerBookAppointmentViewController {
             cbTimeSlot.setDisable(availableSlots.isEmpty());
             //differenza e ho quelli liberi
         } catch (WrongInputDataException wde) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, wde.getMessage());
             alert.showAndWait();
             dtPicker.setValue(LocalDate.now());
         } catch (Exception e) {
@@ -162,7 +166,6 @@ public class CustomerBookAppointmentViewController {
     private boolean checkPromotion(){
         try {
             if(!Objects.equals(tfPromotionCode.getText(), "")){
-                System.out.println("codice non nullo = '" + tfPromotionCode.getText() + "'");
                 appointmentBeanUQ.setPromotionCode(tfPromotionCode.getText());
                 appointmentBeanUQ.setCustomer(customerBeanFirstUI.getcEmail());
                 appointmentBeanUQ.setServiceName(cbServices.getValue());
@@ -176,7 +179,7 @@ public class CustomerBookAppointmentViewController {
                 return false;
             }
         } catch (RecordNotFoundException | WrongInputDataException exception){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, exception.getMessage());
             alert.showAndWait();
             tfPromotionCode.setText("");
             return false;
@@ -205,10 +208,10 @@ public class CustomerBookAppointmentViewController {
         hCont.setSpacing(55);
         Button btnGetDir = new Button("Get Directions");
         btnGetDir.setPrefHeight(55);
-        btnGetDir.setOnMouseClicked((MouseEvent) -> getDirections());
+        btnGetDir.setOnMouseClicked(mouseEvent -> getDirections());
         Button btnAddToFav = new Button("Add Shop To Favourites");
         btnAddToFav.setPrefHeight(55);
-        btnAddToFav.setOnMouseClicked((MouseEvent) -> addToFavourites());
+        btnAddToFav.setOnMouseClicked(mouseEvent -> addToFavourites());
         hCont.getChildren().addAll(btnGetDir, btnAddToFav);
         cont.getChildren().addAll(l, l1, hCont);
         bpInBookApp.getChildren().clear();
@@ -230,7 +233,7 @@ public class CustomerBookAppointmentViewController {
                 viewController.goFav();
             }
         } catch (DuplicatedRecordException de) {
-            AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+            AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, de.getMessage());
             TopBarCustomerView1 view = (TopBarCustomerView1) Facade.getInstance().getViewMap().get(ViewLayout1.TOPBARCUSTOMER);
             TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController1(ViewLayout1.TOPBARCUSTOMER);
             viewController.goFav();

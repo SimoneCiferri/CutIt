@@ -62,7 +62,7 @@ public class LoginViewController {
                         Facade.getInstance().decorateView(ViewLayout1.TOPBARHAIRDRESSER);
                         TopBarHairdresserView1 view = (TopBarHairdresserView1) Facade.getInstance().getViewMap().get(ViewLayout1.TOPBARHAIRDRESSER);
                         TopBarHairdresserViewController viewController = (TopBarHairdresserViewController) view.getLoadedViewController1(ViewLayout1.TOPBARHAIRDRESSER);
-                        viewController.startBean(hairdresserBeanFirstUI, shopBeanFirstUI);
+                        viewController.startBean(shopBeanFirstUI);
                     }
                 }
             } catch (Exception e) {

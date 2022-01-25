@@ -25,10 +25,6 @@ import java.util.Objects;
 
 public class BookAppointmentController {
 
-    private PayOnlineController payOnlineController;
-    private AddShopToFavouritesController addShopToFavouritesController;
-    private GetLocationDirectionsController getLocationDirectionsController;
-
     public void bookAppointment(AppointmentBean appointmentBean) throws Exception {
         try {
             Customer customer = CustomerDAO.getCustomer(appointmentBean.getCustomer());
@@ -63,18 +59,18 @@ public class BookAppointmentController {
     }
 
     private Boolean payAppointment(AppointmentBean appBean){
-        payOnlineController = new PayOnlineController();
+        PayOnlineController payOnlineController = new PayOnlineController();
         return payOnlineController.payAppointment(appBean);
     }
 
     public Boolean addShopToFavourites(String customerEmail, String shopName) throws Exception {
-        addShopToFavouritesController = new AddShopToFavouritesController();
+        AddShopToFavouritesController addShopToFavouritesController = new AddShopToFavouritesController();
         addShopToFavouritesController.addToFavourites(customerEmail, shopName);
         return true;
     }
 
     public Boolean getShopDirections(GetLocationDirectionsGoogleMapsViewControllerInterface viewController, ShopBeanInterface bean){
-        getLocationDirectionsController = new GetLocationDirectionsController();
+        GetLocationDirectionsController getLocationDirectionsController = new GetLocationDirectionsController();
         getLocationDirectionsController.getDirection(viewController, bean);
         return true;
     }
@@ -201,8 +197,7 @@ public class BookAppointmentController {
         try {
             Promotion promotion = PromotionDAO.getPersonalPromotion(bean.getCustomer(), bean.getPromotionCode());
             if(Objects.equals(bean.getServiceName(), promotion.getService().getServiceName())){
-                if(LocalDate.now().isBefore(promotion.getExpireDate())){
-                } else {
+                if(!LocalDate.now().isBefore(promotion.getExpireDate())){
                     throw new WrongInputDataException("Selected promotion is expired.");
                 }
             } else {

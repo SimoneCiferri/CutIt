@@ -25,10 +25,40 @@ public class SignUpViewController {
     private LoginController loginController;
 
     @FXML
-    private TextField tfCustomerName, tfCustomerSurname, tfCustomerEmail, tfHairdresserName, tfHairdresserSurname, tfHairdresserEmail, tfHairdresserShopName, tfHairdresserPIVA;
+    private TextField tfCustomerName;
 
     @FXML
-    private PasswordField pfCustomerPassword, pfCustomerConfirmPassword, pfHairdresserPassword, pfHairdresserConfirmPassword;
+    private TextField tfCustomerSurname;
+
+    @FXML
+    private TextField tfCustomerEmail;
+
+    @FXML
+    private TextField tfHairdresserName;
+
+    @FXML
+    private TextField tfHairdresserSurname;
+
+    @FXML
+    private TextField tfHairdresserEmail;
+
+    @FXML
+    private TextField tfHairdresserShopName;
+
+    @FXML
+    private TextField tfHairdresserPIVA;
+
+    @FXML
+    private PasswordField pfCustomerPassword;
+
+    @FXML
+    private PasswordField pfCustomerConfirmPassword;
+
+    @FXML
+    private PasswordField pfHairdresserPassword;
+
+    @FXML
+    private PasswordField pfHairdresserConfirmPassword;
 
     @FXML
     private ChoiceBox<String> cbCustomerGender;

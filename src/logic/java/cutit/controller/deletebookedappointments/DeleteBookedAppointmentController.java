@@ -56,11 +56,11 @@ public class DeleteBookedAppointmentController {
     private List<AppointmentBean> appointmentBeanListFromAppList(List<Appointment> allAppointments) {
         List<AppointmentBean> appList = new ArrayList<>();
         if(!allAppointments.isEmpty()){
-            for(int i = 0; i<allAppointments.size(); i++){
+            for (Appointment allAppointment : allAppointments) {
                 AppointmentBean bean = new AppointmentBeanUQ();
-                bean.setStartTime(allAppointments.get(i).getStartTime());
-                bean.setCustomer(allAppointments.get(i).getCustomer().getUserID());
-                bean.setServiceName(allAppointments.get(i).getService().getServiceName());
+                bean.setStartTime(allAppointment.getStartTime());
+                bean.setCustomer(allAppointment.getCustomer().getUserID());
+                bean.setServiceName(allAppointment.getService().getServiceName());
                 appList.add(bean);
             }
         }

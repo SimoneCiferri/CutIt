@@ -21,9 +21,9 @@ public class HairdresserDeleteBookedAppointmentsViewController {
     private ShopBeanInterface shopBean;
     private DeleteAppointmentBean deleteAppointmentBeanFirstUI;
     private DeleteBookedAppointmentController deleteBookedAppointmentController;
-    private final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private final Double titleFontSize = 30.0;
-    private final Double normalLabelFontSize = 14.0;
+    private static final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private static final Double titleFontSize = 30.0;
+    private static final Double normalLabelFontSize = 14.0;
 
     @FXML
     private VBox vbInScrollHApp;
@@ -44,7 +44,7 @@ public class HairdresserDeleteBookedAppointmentsViewController {
                 String appointmentTitle = deleteAppointmentBeanFirstUI.getAllBookedAppointments().get(i).getStartTime().toLocalDate().toString() + " at " + deleteAppointmentBeanFirstUI.getAllBookedAppointments().get(i).getStartTime().toLocalTime().toString();
                 Label card = JavaFXNodeFactory.getInstance().createCardLabel(appointmentTitle, labelStyle);
                 int n = i;
-                card.setOnMouseClicked((MouseEvent) -> deleteForm(deleteAppointmentBeanFirstUI.getAllBookedAppointments().get(n)));
+                card.setOnMouseClicked(mouseEvent -> deleteForm(deleteAppointmentBeanFirstUI.getAllBookedAppointments().get(n)));
                 vbInScrollHApp.getChildren().add(card);
             }
         } catch (Exception e) {
@@ -60,10 +60,10 @@ public class HairdresserDeleteBookedAppointmentsViewController {
        Label serviceName = JavaFXNodeFactory.getInstance().createLabel(appointmentBeanFirstUI.getServiceName(), normalLabelFontSize);
        Button back = JavaFXNodeFactory.getInstance().createButton("Back");
        back.setPrefHeight(55);
-       back.setOnMouseClicked((MouseEvent) -> showAppointments());
+       back.setOnMouseClicked(mouseEvent -> showAppointments());
        Button delete = JavaFXNodeFactory.getInstance().createButton("Delete");
        delete.setPrefHeight(55);
-       delete.setOnMouseClicked((MouseEvent) -> deleteAppointment(appointmentBeanFirstUI.getStartTime(), appointmentBeanFirstUI.getCustomer()));
+       delete.setOnMouseClicked(mouseEvent -> deleteAppointment(appointmentBeanFirstUI.getStartTime(), appointmentBeanFirstUI.getCustomer()));
        HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, delete);
        vbInScrollHApp.getChildren().addAll(appDate, appTime, clientName, serviceName, buttonsHB);
     }
@@ -73,6 +73,8 @@ public class HairdresserDeleteBookedAppointmentsViewController {
         deleteAppointmentBeanFirstUI.setShopName(shopBean.getShopName());
         try {
             deleteBookedAppointmentController.deleteAppointment(this.deleteAppointmentBeanFirstUI);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.CONFIRMATION, "Confirmation", "Appointment successfully deleted!");
+            alert.showAndWait();
             notifyCustomer(customer);
         } catch (WrongInputDataException wde) {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());

@@ -21,14 +21,26 @@ import java.io.IOException;
 
 public class TopBarCustomerViewController {
 
-    private final String transparentStyle = "-fx-background-color: transparent; ";
-    private final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
+    private static final String transparentStyle = "-fx-background-color: transparent; ";
+    private static final String pageFlagStyle = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
     private double xOffset = 0;
     private double yOffset = 0;
     private CustomerBean customerBeanFirstUI;
 
     @FXML
-    private Label btnClHome, btnClFav, btnClApp, btnClPromotion, btnClLogout;
+    private Label btnClHome;
+
+    @FXML
+    private Label btnClFav;
+
+    @FXML
+    private Label btnClApp;
+
+    @FXML
+    private Label btnClPromotion;
+
+    @FXML
+    private Label btnClLogout;
 
     @FXML
     private AnchorPane apTopBarCustomer;
