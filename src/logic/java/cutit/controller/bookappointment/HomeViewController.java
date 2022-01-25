@@ -62,7 +62,6 @@ public class HomeViewController {
         ShopInfoView1 view = (ShopInfoView1) Facade.getInstance().getViewMap().get(ViewLayout1.SHOPINFO);
         ShopInfoViewController viewController = (ShopInfoViewController) view.getLoadedViewController1(ViewLayout1.SHOPINFO);
         viewController.fillView(customerBeanFirstUI, shopName);
-
     }
 
     @FXML
@@ -70,23 +69,18 @@ public class HomeViewController {
         if(Objects.equals(tfSearchName.getText(), "") && Objects.equals(tfSearchPlace.getText(), "")){
             showShops();
         } else {
+            vbInScroll.getChildren().clear();
             if(!Objects.equals(tfSearchName.getText(), "")){
-                vbInScroll.getChildren().clear();
                 for(int i = 0; i< shopListBeanFirstUI.getShopBeanList().size(); i++){
                     if(shopListBeanFirstUI.getShopBeanList().get(i).getShopName().contains(tfSearchName.getText())){
                         HBox card = createBox(shopListBeanFirstUI.getShopBeanList().get(i));
-                        int n = i;
-                        card.setOnMouseClicked(mouseEvent -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
                         vbInScroll.getChildren().add(card);
                     }
                 }
             } else if(!Objects.equals(tfSearchPlace.getText(), "")){
-                vbInScroll.getChildren().clear();
                 for(int i = 0; i< shopListBeanFirstUI.getShopBeanList().size(); i++){
                     if(shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress().contains(tfSearchPlace.getText())){
                         HBox card = createBox(shopListBeanFirstUI.getShopBeanList().get(i));
-                        int n = i;
-                        card.setOnMouseClicked(mouseEvent -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
                         vbInScroll.getChildren().add(card);
                     }
                 }
@@ -107,6 +101,7 @@ public class HomeViewController {
         } else {
             card = JavaFXNodeFactory.getInstance().createImageCard(shopBean.getShopName(), shopBean.getShopAddress(), LABEL_STYLE);
         }
+        card.setOnMouseClicked(mouseEvent -> goShopInfo(shopBean.getShopName()));
         return card;
 
     }

@@ -24,6 +24,9 @@
                      <VBox.margin>
                         <Insets top="15.0" />
                      </VBox.margin>
+                     <image>
+                        <Image url="@../../files/blank-profile-picture.png" />
+                     </image>
                   </ImageView>
                   <TextField fx:id="tfAddress" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="310.0" promptText="Address: Via di Passolombardo-Roma-00133">
                      <VBox.margin>

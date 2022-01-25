@@ -141,7 +141,7 @@ public class BookAppointmentController {
             LocalTime close = shop.getCloseTime();
             List<Appointment> allAppList = shop.getAllAppointments();
             List<Appointment> appList = filterByDay(allAppList, bean.getSelectedDay());
-            List<LocalTime> availableList = getSlots(appList, open, close);
+            List<LocalTime> availableList = getSlots(appList, open, close, new ArrayList<>());
             bean.setAvailableSlots(availableList);
         } catch ( DBConnectionException | SQLException | IOException dbe){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
@@ -229,8 +229,7 @@ public class BookAppointmentController {
         return beanAppList;
     }
 
-    private List<LocalTime> getSlots(List<Appointment> appList, LocalTime open, LocalTime close){
-        List<LocalTime> availableList= new ArrayList<>();
+    private List<LocalTime> getSlots(List<Appointment> appList, LocalTime open, LocalTime close, List<LocalTime> availableList){
         LocalTime temp = open;
         if (!appList.isEmpty()) {
             while (!temp.equals(close)) {
@@ -250,7 +249,6 @@ public class BookAppointmentController {
                 temp = temp.plusMinutes(30);
             }
         }
-
         return availableList;
     }
 }
