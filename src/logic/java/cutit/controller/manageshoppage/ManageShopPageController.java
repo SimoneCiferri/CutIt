@@ -2,15 +2,18 @@ package cutit.controller.manageshoppage;
 
 import cutit.bean.ShopBeanInterface;
 import cutit.database.dao.ShopDAO;
+import cutit.exception.DBConnectionException;
 import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.Shop;
 
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.time.LocalTime;
 
 public class ManageShopPageController {
 
-    public void updateShop(ShopBeanInterface shopBean) throws Exception {
+    public void updateShop(ShopBeanInterface shopBean) throws DBConnectionException, SQLException, FileNotFoundException, WrongInputDataException {
         try{
             if(semanticCheck(shopBean.getShopOpenTime(), shopBean.getShopCloseTime())){
                 Shop shop = new Shop(shopBean.getShopName(), shopBean.getShopPIVA());
@@ -26,9 +29,7 @@ public class ManageShopPageController {
             } else {
                 throw new WrongInputDataException("Open Time is before Close Time. Please check your data.");
             }
-        } catch (WrongInputDataException wde){
-            throw wde;
-        } catch (Exception e){
+        } catch (DBConnectionException | SQLException | FileNotFoundException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }

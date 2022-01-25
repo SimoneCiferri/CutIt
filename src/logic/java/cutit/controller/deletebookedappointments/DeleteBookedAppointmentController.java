@@ -5,18 +5,22 @@ import cutit.bean.DeleteAppointmentBean;
 import cutit.bean.AppointmentBeanUQ;
 import cutit.database.dao.AppointmentDAO;
 import cutit.database.dao.ShopDAO;
+import cutit.exception.DBConnectionException;
+import cutit.exception.RecordNotFoundException;
 import cutit.exception.WrongInputDataException;
 import cutit.log.LogWriter;
 import cutit.model.Appointment;
 import cutit.model.Shop;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DeleteBookedAppointmentController {
 
-    public Boolean deleteAppointment(DeleteAppointmentBean deleteAppointmentBean) throws Exception {
+    public void deleteAppointment(DeleteAppointmentBean deleteAppointmentBean) throws DBConnectionException, SQLException, WrongInputDataException {
         try {
             LocalDate appointmentDay= deleteAppointmentBean.getStartTime().toLocalDate();
             if(isMoreThanTwoDaysAway(appointmentDay)){
@@ -24,13 +28,10 @@ public class DeleteBookedAppointmentController {
             } else{
                 throw new WrongInputDataException("Impossible to delete appointment.\nSelected appointment day is less than 2 days away.");
             }
-        } catch (WrongInputDataException wde) {
-            throw wde;
-        }catch (Exception e) {
+        } catch (DBConnectionException | SQLException e) {
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
-        return true;
     }
 
     private boolean isMoreThanTwoDaysAway(LocalDate appointmentDay) {
@@ -41,16 +42,15 @@ public class DeleteBookedAppointmentController {
         return day.isAfter(LocalDate.now());
     }
 
-    public void getAllShopAppointments(DeleteAppointmentBean deleteAppointmentBean) throws Exception {
+    public void getAllShopAppointments(DeleteAppointmentBean deleteAppointmentBean) throws DBConnectionException, SQLException, IOException, RecordNotFoundException {
         try {
             Shop shop = ShopDAO.getShopFromName(deleteAppointmentBean.getShopName());
             List<Appointment> allAppointments = shop.getAllAppointments();
             deleteAppointmentBean.setAllBookedAppointments(appointmentBeanListFromAppList(allAppointments));
-        } catch (Exception e){
+        } catch (DBConnectionException | SQLException | IOException e) {
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
-
     }
 
     private List<AppointmentBean> appointmentBeanListFromAppList(List<Appointment> allAppointments) {

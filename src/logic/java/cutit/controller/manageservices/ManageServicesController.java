@@ -3,47 +3,45 @@ package cutit.controller.manageservices;
 import cutit.bean.ManageServiceBeanInterface;
 import cutit.bean.ShopBeanInterface;
 import cutit.database.dao.ServiceDAO;
+import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.log.LogWriter;
 import cutit.model.Service;
 import cutit.utils.ListFromModelList;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ManageServicesController {
 
-    public Boolean addService(ManageServiceBeanInterface manageServiceBean) throws Exception {
+    public void addService(ManageServiceBeanInterface manageServiceBean) throws DBConnectionException, SQLException, DuplicatedRecordException {
         try{
             Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
             ServiceDAO.insertService(service);
-            return true;
-        } catch (DuplicatedRecordException de){
-            throw de;
-        } catch (Exception e){
+        } catch (DBConnectionException | SQLException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
     }
 
-    public void deleteService(ManageServiceBeanInterface manageServiceBean) throws Exception {
+    public void deleteService(ManageServiceBeanInterface manageServiceBean) throws DBConnectionException, SQLException {
         try{
             Service service = new Service(manageServiceBean.getServiceName(), manageServiceBean.getServicePrice(), manageServiceBean.getServiceShopName());
             ServiceDAO.deleteService(service);
-        } catch (Exception e){
+        } catch (DBConnectionException | SQLException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
-
     }
 
-    public void getAllServices(ManageServiceBeanInterface manageServiceBean, ShopBeanInterface shopBean) throws Exception {
+    public void getAllServices(ManageServiceBeanInterface manageServiceBean, ShopBeanInterface shopBean) throws DBConnectionException, SQLException {
         try{
             List<Service> serviceList = ServiceDAO.getAllServices(shopBean.getShopName());
             manageServiceBean.setAllServicesList(ListFromModelList.getStringListFromServices(serviceList));
             manageServiceBean.setServicesList(mapFromServList(serviceList));
-        } catch (Exception e){
+        } catch (DBConnectionException | SQLException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }

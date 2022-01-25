@@ -6,34 +6,32 @@ import cutit.database.dao.CustomerDAO;
 import cutit.database.dao.HairdresserDAO;
 import cutit.database.dao.ShopDAO;
 import cutit.database.dao.UserDAO;
-import cutit.exception.DuplicatedRecordException;
-import cutit.exception.WrongCredentialsException;
-import cutit.exception.WrongInputDataException;
+import cutit.exception.*;
 import cutit.log.LogWriter;
 import cutit.model.*;
 import cutit.utils.ListFromModelList;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoginController {
 
-    public boolean login(UserBean bean) throws Exception {
+    public boolean login(UserBean bean) throws DBConnectionException, SQLException, WrongCredentialsException {
         try{
             User user = new User(bean.getUsername(), bean.getPasswd(), 3);
             UserDAO.userLogin(user);
             bean.setRole(user.getRole());
             return true;
-        } catch (WrongCredentialsException wce){
-            throw wce;
-        } catch (Exception e){
+        } catch (DBConnectionException | SQLException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
     }
 
-    public boolean signUpCustomer(CustomerBean customerBean) throws Exception {
+    public boolean signUpCustomer(CustomerBean customerBean) throws DBConnectionException, SQLException, DuplicatedRecordException, WrongInputDataException {
         try {
             if(!customerBean.getcBirthDate().isAfter(LocalDate.now())){
                 Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcBirthDate(), customerBean.getcGender());
@@ -46,16 +44,13 @@ public class LoginController {
             }else{
                 throw new WrongInputDataException("Cannot use selected day as the Birthday!");
             }
-        } catch (DuplicatedRecordException | WrongInputDataException exception){
-            throw exception;
-        } catch (Exception e){
+        }  catch (DBConnectionException | SQLException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
-
     }
 
-    public void getCustomer(UserBean userBean, CustomerBean customerBean) throws Exception {
+    public void getCustomer(UserBean userBean, CustomerBean customerBean) throws DBConnectionException, SQLException, RecordNotFoundException {
         try {
             User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
             Customer customer = CustomerDAO.getCustomer(user);
@@ -67,13 +62,13 @@ public class LoginController {
             customerBean.setcBirthDate(customer.getBirthDate());
             customerBean.setcGender(customer.getGender());
             customerBean.setAllPersonalPromotions(ListFromModelList.getStringListFromPromotions(customer.getPromotions()));
-        } catch (Exception e){
+        } catch (DBConnectionException | SQLException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
     }
 
-    public Boolean signUpHair(HairdresserBean hairdresserBean) throws Exception {
+    public Boolean signUpHair(HairdresserBean hairdresserBean) throws DBConnectionException, SQLException, DuplicatedRecordException {
         try {
             Hairdresser hairdresser = new Hairdresser(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1, hairdresserBean.gethName(), hairdresserBean.gethSurname(), hairdresserBean.getpIVA());
             if (!UserDAO.checkUser(hairdresser.getUserID()) && !ShopDAO.checkShop(hairdresserBean.getShopName()) && !HairdresserDAO.checkPIVA(hairdresser.getpIVA())){
@@ -81,15 +76,13 @@ public class LoginController {
                 return true;
             }
             return false;
-        } catch (DuplicatedRecordException de){
-            throw de;
-        } catch (Exception e){
+        } catch (DBConnectionException | SQLException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
     }
 
-    public void getHairdresserAndShop(UserBean userBean, HairdresserBean hairdresserBean, ShopBeanInterface shopBean) throws Exception {
+    public void getHairdresserAndShop(UserBean userBean, HairdresserBean hairdresserBean, ShopBeanInterface shopBean) throws DBConnectionException, SQLException, IOException, RecordNotFoundException {
         try {
             User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
             Hairdresser hairdresser = HairdresserDAO.getHairdresser(user);
@@ -116,7 +109,7 @@ public class LoginController {
 
             pepperFunction(hairdresserBean, shopBean);
 
-        } catch (Exception e){
+        } catch (DBConnectionException | SQLException | IOException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             throw e;
         }
