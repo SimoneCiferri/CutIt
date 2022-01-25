@@ -2,7 +2,6 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
 import cutit.bean.ShopListBean;
-import cutit.bean.ShopBean;
 import cutit.bean.ShopListBeanUQ;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.ShopInfoView1;
@@ -16,10 +15,10 @@ import java.io.File;
 
 public class CustomerFavouritesShopViewController {
 
-    private final static String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private CustomerBean customerBeanFirstUI;
     private ShopListBean shopListBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
+    private final static String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
 
     @FXML
     private VBox vbInScrollCFav;
@@ -40,9 +39,9 @@ public class CustomerFavouritesShopViewController {
                 File im;
                 if(!shopListBeanFirstUI.getShopBeanList().get(i).getImages().isEmpty()){
                     im = shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0);
-                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle, im);
+                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), LABEL_STYLE, im);
                 } else {
-                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle);
+                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), LABEL_STYLE);
 
                 }
                 int n = i;

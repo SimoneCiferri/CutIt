@@ -21,9 +21,9 @@ public class HairdresserDeleteBookedAppointmentsViewController {
     private ShopBeanInterface shopBean;
     private DeleteAppointmentBean deleteAppointmentBeanFirstUI;
     private DeleteBookedAppointmentController deleteBookedAppointmentController;
-    private static final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private static final Double titleFontSize = 30.0;
-    private static final Double normalLabelFontSize = 14.0;
+    private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private static final Double TITLE_FONT_SIZE = 30.0;
+    private static final Double NORMAL_LABEL_FONT_SIZE = 14.0;
 
     @FXML
     private VBox vbInScrollHApp;
@@ -42,7 +42,7 @@ public class HairdresserDeleteBookedAppointmentsViewController {
             deleteBookedAppointmentController.getAllShopAppointments(deleteAppointmentBeanFirstUI);
             for(int i = 0; i< deleteAppointmentBeanFirstUI.getAllBookedAppointments().size(); i++){
                 String appointmentTitle = deleteAppointmentBeanFirstUI.getAllBookedAppointments().get(i).getStartTime().toLocalDate().toString() + " at " + deleteAppointmentBeanFirstUI.getAllBookedAppointments().get(i).getStartTime().toLocalTime().toString();
-                Label card = JavaFXNodeFactory.getInstance().createCardLabel(appointmentTitle, labelStyle);
+                Label card = JavaFXNodeFactory.getInstance().createCardLabel(appointmentTitle, LABEL_STYLE);
                 int n = i;
                 card.setOnMouseClicked(mouseEvent -> deleteForm(deleteAppointmentBeanFirstUI.getAllBookedAppointments().get(n)));
                 vbInScrollHApp.getChildren().add(card);
@@ -54,10 +54,10 @@ public class HairdresserDeleteBookedAppointmentsViewController {
 
     private void deleteForm(AppointmentBean appointmentBeanFirstUI) {
        vbInScrollHApp.getChildren().clear();
-       Label appDate = JavaFXNodeFactory.getInstance().createLabel(appointmentBeanFirstUI.getStartTime().toLocalDate().toString(),titleFontSize);
-       Label appTime = JavaFXNodeFactory.getInstance().createLabel(appointmentBeanFirstUI.getStartTime().toLocalTime().toString(),titleFontSize);
-       Label clientName = JavaFXNodeFactory.getInstance().createLabel(appointmentBeanFirstUI.getCustomer(), normalLabelFontSize);
-       Label serviceName = JavaFXNodeFactory.getInstance().createLabel(appointmentBeanFirstUI.getServiceName(), normalLabelFontSize);
+       Label appDate = JavaFXNodeFactory.getInstance().createLabel(appointmentBeanFirstUI.getStartTime().toLocalDate().toString(), TITLE_FONT_SIZE);
+       Label appTime = JavaFXNodeFactory.getInstance().createLabel(appointmentBeanFirstUI.getStartTime().toLocalTime().toString(), TITLE_FONT_SIZE);
+       Label clientName = JavaFXNodeFactory.getInstance().createLabel(appointmentBeanFirstUI.getCustomer(), NORMAL_LABEL_FONT_SIZE);
+       Label serviceName = JavaFXNodeFactory.getInstance().createLabel(appointmentBeanFirstUI.getServiceName(), NORMAL_LABEL_FONT_SIZE);
        Button back = JavaFXNodeFactory.getInstance().createButton("Back");
        back.setPrefHeight(55);
        back.setOnMouseClicked(mouseEvent -> showAppointments());

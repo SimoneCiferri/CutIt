@@ -209,11 +209,7 @@ public class HairdresserManageShopPageViewController {
     private Map<Integer, Boolean> getOpenDays(List<CheckBox> checkBoxList) {
         Map<Integer, Boolean> map = new HashMap<>();
         for(int i = 0; i<checkBoxList.size(); i++){
-            if(checkBoxList.get(i).isSelected()){
-                map.put(i+1, true);
-            }else{
-                map.put(i+1, false);
-            }
+            map.put(i+1, checkBoxList.get(i).isSelected());
         }
         return map;
     }

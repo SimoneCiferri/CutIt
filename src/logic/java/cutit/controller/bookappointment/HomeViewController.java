@@ -1,8 +1,6 @@
 package cutit.controller.bookappointment;
 
-import cutit.bean.CustomerBean;
-import cutit.bean.ShopListBean;
-import cutit.bean.ShopListBeanUQ;
+import cutit.bean.*;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.ShopInfoView1;
 import cutit.facade.Facade;
@@ -17,10 +15,10 @@ import java.util.Objects;
 
 public class HomeViewController {
 
-    private static final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private CustomerBean customerBeanFirstUI;
     private ShopListBean shopListBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
+    private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
 
     @FXML
     private TextField tfSearchName;
@@ -46,12 +44,12 @@ public class HomeViewController {
                 HBox card;
                 if(!shopListBeanFirstUI.getShopBeanList().get(i).getImages().isEmpty()){
                     File im = shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0);
-                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle, im);
+                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), LABEL_STYLE, im);
                 } else {
-                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle);
+                    card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), LABEL_STYLE);
                 }
                 int n = i;
-                card.setOnMouseClicked(MouseEvent -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
+                card.setOnMouseClicked(mouseEvent -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
                 vbInScroll.getChildren().add(card);
             }
         } catch (Exception e) {
@@ -76,13 +74,7 @@ public class HomeViewController {
                 vbInScroll.getChildren().clear();
                 for(int i = 0; i< shopListBeanFirstUI.getShopBeanList().size(); i++){
                     if(shopListBeanFirstUI.getShopBeanList().get(i).getShopName().contains(tfSearchName.getText())){
-                        HBox card;
-                        if(!shopListBeanFirstUI.getShopBeanList().get(i).getImages().isEmpty()){
-                            File im = shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0);
-                            card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle, im);
-                        } else {
-                            card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle);
-                        }
+                        HBox card = createBox(shopListBeanFirstUI.getShopBeanList().get(i));
                         int n = i;
                         card.setOnMouseClicked(mouseEvent -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
                         vbInScroll.getChildren().add(card);
@@ -92,13 +84,7 @@ public class HomeViewController {
                 vbInScroll.getChildren().clear();
                 for(int i = 0; i< shopListBeanFirstUI.getShopBeanList().size(); i++){
                     if(shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress().contains(tfSearchPlace.getText())){
-                        HBox card;
-                        if(!shopListBeanFirstUI.getShopBeanList().get(i).getImages().isEmpty()){
-                            File im = shopListBeanFirstUI.getShopBeanList().get(i).getImages().get(0);
-                            card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle, im);
-                        } else {
-                            card = JavaFXNodeFactory.getInstance().createImageCard(shopListBeanFirstUI.getShopBeanList().get(i).getShopName(), shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress(), labelStyle);
-                        }
+                        HBox card = createBox(shopListBeanFirstUI.getShopBeanList().get(i));
                         int n = i;
                         card.setOnMouseClicked(mouseEvent -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
                         vbInScroll.getChildren().add(card);
@@ -111,6 +97,18 @@ public class HomeViewController {
     public void fillView(CustomerBean customerBeanFirstUI){
         this.customerBeanFirstUI = customerBeanFirstUI;
         showShops();
+    }
+
+    private HBox createBox(ShopBeanInterface shopBean){
+        HBox card;
+        if(!shopBean.getImages().isEmpty()){
+            File im = shopBean.getImages().get(0);
+            card = JavaFXNodeFactory.getInstance().createImageCard(shopBean.getShopName(), shopBean.getShopAddress(), LABEL_STYLE, im);
+        } else {
+            card = JavaFXNodeFactory.getInstance().createImageCard(shopBean.getShopName(), shopBean.getShopAddress(), LABEL_STYLE);
+        }
+        return card;
+
     }
 
 }

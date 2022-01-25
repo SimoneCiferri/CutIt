@@ -134,33 +134,19 @@ public class BookAppointmentController {
     }
 
     public void getAvailableSlots(AppointmentBean bean, String shopName) throws WrongInputDataException, DBConnectionException, SQLException, RecordNotFoundException, IOException {
-        try { if(bean.getSelectedDay().isBefore(LocalDate.now())){throw new WrongInputDataException("Impossible to select a past day.");}
+        try {
+            if(bean.getSelectedDay().isBefore(LocalDate.now())){throw new WrongInputDataException("Impossible to select a past day.");}
             Shop shop = ShopDAO.getShopFromName(shopName);
             LocalTime open = shop.getOpenTime();
             LocalTime close = shop.getCloseTime();
             List<Appointment> allAppList = shop.getAllAppointments();
             List<Appointment> appList = filterByDay(allAppList, bean.getSelectedDay());
-            List<LocalTime> availableList = new ArrayList<>();
-            LocalTime temp = open;
-            if (!appList.isEmpty()) { while (!temp.equals(close)) {
-                    boolean busy = false;
-                    for (Appointment appointment : appList) {
-                        if(appointment.getStartTime().toLocalTime().equals(temp)){
-                            busy = true;
-                            break; }
-                    }
-                    if(!busy){availableList.add(temp);}
-                    temp = temp.plusMinutes(30);
-                }
-            } else {
-                while (!temp.equals(close)) {
-                    availableList.add(temp);
-                    temp = temp.plusMinutes(30); }
-            }
+            List<LocalTime> availableList = getSlots(appList, open, close);
             bean.setAvailableSlots(availableList);
         } catch ( DBConnectionException | SQLException | IOException dbe){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + dbe.getMessage());
-            throw dbe; }
+            throw dbe;
+        }
     }
 
     public void getAvailableServices(AppointmentBean bean, String shopName) throws DBConnectionException, SQLException, RecordNotFoundException, IOException{
@@ -241,5 +227,30 @@ public class BookAppointmentController {
             }
         }
         return beanAppList;
+    }
+
+    private List<LocalTime> getSlots(List<Appointment> appList, LocalTime open, LocalTime close){
+        List<LocalTime> availableList= new ArrayList<>();
+        LocalTime temp = open;
+        if (!appList.isEmpty()) {
+            while (!temp.equals(close)) {
+                boolean busy = false;
+                for (Appointment appointment : appList) {
+                    if(appointment.getStartTime().toLocalTime().equals(temp)){
+                        busy = true;
+                        break;
+                    }
+                }
+                if(!busy){availableList.add(temp);}
+                temp = temp.plusMinutes(30);
+            }
+        } else {
+            while (!temp.equals(close)) {
+                availableList.add(temp);
+                temp = temp.plusMinutes(30);
+            }
+        }
+
+        return availableList;
     }
 }

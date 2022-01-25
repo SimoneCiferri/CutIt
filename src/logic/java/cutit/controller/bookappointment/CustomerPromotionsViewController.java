@@ -18,10 +18,10 @@ import java.io.IOException;
 
 public class CustomerPromotionsViewController {
 
-    private static final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private CustomerBean customerBeanFirstUI;
     private PromotionBean promotionBeanUQ;
     private BookAppointmentController bookAppointmentController;
+    private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
 
     @FXML
     private VBox vbInScrollCProm;
@@ -39,7 +39,7 @@ public class CustomerPromotionsViewController {
             bookAppointmentController.getPersonalPromotions(customerBeanFirstUI);
             for(int i=0;i<customerBeanFirstUI.getAllPersonalPromotions().size();i++){
                 String promotion = customerBeanFirstUI.getAllPersonalPromotions().get(i);
-                Label card = JavaFXNodeFactory.getInstance().createCardLabel(promotion, labelStyle);
+                Label card = JavaFXNodeFactory.getInstance().createCardLabel(promotion, LABEL_STYLE);
                 card.setOnMouseClicked(mouseEvent -> showPromotion(promotion));
                 vbInScrollCProm.getChildren().add(card);
             }

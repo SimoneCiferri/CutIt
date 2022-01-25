@@ -134,30 +134,29 @@ public class ShopInfoViewController {
         Map<Integer,Boolean> opendays = shopBean.getShopOpenDays();
         StringBuilder openTimes = new StringBuilder();
         for(int i=1;i<opendays.size()+1;i++){
-           if(opendays.get(i)){
-               switch (i){
-                   case 1:{
+           if(Boolean.TRUE.equals(opendays.get(i))){
+               switch (i) {
+                   case 1 -> {
                        openTimes.append("Monday").append("\n");
-                       break;
-                   }case 2:{
+                   }
+                   case 2 -> {
                        openTimes.append("Tuesday").append("\n");
-                       break;
-                   }case 3:{
+                   }
+                   case 3 -> {
                        openTimes.append("Wednesday").append("\n");
-                       break;
-                   }case 4:{
+                   }
+                   case 4 -> {
                        openTimes.append("Thursday").append("\n");
-                       break;
-                   }case 5:{
+                   }
+                   case 5 -> {
                        openTimes.append("Friday").append("\n");
-                       break;
-                   }case 6:{
+                   }
+                   case 6 -> {
                        openTimes.append("Saturday").append("\n");
-                       break;
-                   }case 7:{
+                   }
+                   case 7 -> {
                        openTimes.append("Sunday").append("\n");
-                       break;
-                   } default:{}
+                   }
                }
            }
         }

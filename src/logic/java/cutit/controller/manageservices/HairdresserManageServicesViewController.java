@@ -3,7 +3,6 @@ package cutit.controller.manageservices;
 import cutit.bean.ManageServiceBeanInterface;
 import cutit.bean.ManageServiceBean;
 import cutit.bean.ShopBeanInterface;
-import cutit.bean.ShopBean;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.utils.TextFieldCheck;
@@ -29,9 +28,9 @@ public class HairdresserManageServicesViewController {
     private ManageServicesController manageServicesController;
     private static final String CONNECTION_ERROR_TITLE = "Connection error";
     private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection.";
-    private static final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private static final Double titleFontSize = 30.0;
-    private static final Double normalLabelFontSize = 14.0;
+    private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private static final Double TITLE_FONT_SIZE = 30.0;
+    private static final Double NORMAL_LABEL_FONT_SIZE = 14.0;
 
     @FXML
     private VBox vbInScrollHS;
@@ -48,11 +47,11 @@ public class HairdresserManageServicesViewController {
             manageServicesController.getAllServices(manageServicesBean, shopBeanFirstUI);
             vbInScrollHS.getChildren().clear();
             Button add = JavaFXNodeFactory.getInstance().createButton("Add Service");
-            add.setOnMouseClicked(MouseEvent -> showAddForm());
+            add.setOnMouseClicked(mouseEvent -> showAddForm());
             vbInScrollHS.getChildren().add(add);
             for(int i = 0; i< manageServicesBean.getAllServicesList().size(); i++) {
                 String serviceName = manageServicesBean.getAllServicesList().get(i);
-                Label l = JavaFXNodeFactory.getInstance().createCardLabel(serviceName, labelStyle);
+                Label l = JavaFXNodeFactory.getInstance().createCardLabel(serviceName, LABEL_STYLE);
                 l.setOnMouseClicked(mouseEvent -> showDeleteForm(serviceName, manageServicesBean.getServiceList().get(serviceName)));
                 vbInScrollHS.getChildren().add(l);
             }
@@ -67,10 +66,10 @@ public class HairdresserManageServicesViewController {
     private void showAddForm() {
         vbInScrollHS.getChildren().clear();
         List<Label> labelList = new ArrayList<>();
-        Label title = JavaFXNodeFactory.getInstance().createLabel("Add Service", titleFontSize);
-        Label name = JavaFXNodeFactory.getInstance().createLabel("Name:", normalLabelFontSize);
+        Label title = JavaFXNodeFactory.getInstance().createLabel("Add Service", TITLE_FONT_SIZE);
+        Label name = JavaFXNodeFactory.getInstance().createLabel("Name:", NORMAL_LABEL_FONT_SIZE);
         labelList.add(name);
-        Label price = JavaFXNodeFactory.getInstance().createLabel("Price:", normalLabelFontSize);
+        Label price = JavaFXNodeFactory.getInstance().createLabel("Price:", NORMAL_LABEL_FONT_SIZE);
         labelList.add(price);
         List<Node> nodeList = new ArrayList<>();
         TextField serviceName = new TextField();
@@ -114,8 +113,8 @@ public class HairdresserManageServicesViewController {
 
     private void showDeleteForm(String serviceName, Float servicePrice) {
         vbInScrollHS.getChildren().clear();
-        Label name = JavaFXNodeFactory.getInstance().createLabel(serviceName, titleFontSize);
-        Label price = JavaFXNodeFactory.getInstance().createLabel(servicePrice.toString(), normalLabelFontSize);
+        Label name = JavaFXNodeFactory.getInstance().createLabel(serviceName, TITLE_FONT_SIZE);
+        Label price = JavaFXNodeFactory.getInstance().createLabel(servicePrice.toString(), NORMAL_LABEL_FONT_SIZE);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
         back.setOnMouseClicked(mouseEvent -> showHairServices());

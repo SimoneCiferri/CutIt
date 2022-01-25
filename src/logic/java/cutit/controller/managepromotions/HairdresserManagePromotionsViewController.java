@@ -26,9 +26,9 @@ public class HairdresserManagePromotionsViewController {
     private ShopBeanInterface shopBeanFirstUI;
     private ManagePromotionBeanInterface managePromotionBeanFirstUI;
     private ManagePromotionController managePromotionController;
-    private static final String labelStyle = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private static final Double titleFontSize = 30.0;
-    private static final Double normalLabelFontSize = 14.0;
+    private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private static final Double TITLE_FONT_SIZE = 30.0;
+    private static final Double NORMAL_LABEL_FONT_SIZE = 14.0;
 
     @FXML
     private VBox vbInScrollHProm;
@@ -53,7 +53,7 @@ public class HairdresserManagePromotionsViewController {
                 Integer promotionOffValue = promotionBean.getPromOffValue();
                 String promotionServiceName = promotionBean.getPromServiceName();
                 LocalDate expire = promotionBean.getPromExpireDate();
-                Label l = JavaFXNodeFactory.getInstance().createCardLabel(promotionCode, labelStyle);
+                Label l = JavaFXNodeFactory.getInstance().createCardLabel(promotionCode, LABEL_STYLE);
                 l.setOnMouseClicked(mouseEvent -> showDeleteForm(promotionCode, promotionOffValue, promotionServiceName, expire.toString()));
                 vbInScrollHProm.getChildren().add(l);
             }
@@ -64,15 +64,15 @@ public class HairdresserManagePromotionsViewController {
 
     private void showAddForm() {
         vbInScrollHProm.getChildren().clear();
-        Label title = JavaFXNodeFactory.getInstance().createLabel("Add Promotion", titleFontSize);
+        Label title = JavaFXNodeFactory.getInstance().createLabel("Add Promotion", TITLE_FONT_SIZE);
         List<Label> leftLabelList = new ArrayList<>();
-        Label name = JavaFXNodeFactory.getInstance().createLabel("Name:", normalLabelFontSize);
+        Label name = JavaFXNodeFactory.getInstance().createLabel("Name:", NORMAL_LABEL_FONT_SIZE);
         leftLabelList.add(name);
-        Label service = JavaFXNodeFactory.getInstance().createLabel("Service:", normalLabelFontSize);
+        Label service = JavaFXNodeFactory.getInstance().createLabel("Service:", NORMAL_LABEL_FONT_SIZE);
         leftLabelList.add(service);
-        Label valueOFF = JavaFXNodeFactory.getInstance().createLabel("%Off:", normalLabelFontSize);
+        Label valueOFF = JavaFXNodeFactory.getInstance().createLabel("%Off:", NORMAL_LABEL_FONT_SIZE);
         leftLabelList.add(valueOFF);
-        Label expire = JavaFXNodeFactory.getInstance().createLabel("Valid until:", normalLabelFontSize);
+        Label expire = JavaFXNodeFactory.getInstance().createLabel("Valid until:", NORMAL_LABEL_FONT_SIZE);
         leftLabelList.add(expire);
         List<Node> rightList = new ArrayList<>();
         TextField promName = new TextField();
@@ -133,14 +133,14 @@ public class HairdresserManagePromotionsViewController {
 
     private void showDeleteForm(String promCode, Integer promOffValue, String promServiceName, String expireDate) {
        vbInScrollHProm.getChildren().clear();
-        Label name = JavaFXNodeFactory.getInstance().createLabel(promCode, titleFontSize);
-        Label promValue = JavaFXNodeFactory.getInstance().createLabel(promOffValue.toString(), titleFontSize);
-        Label promService = JavaFXNodeFactory.getInstance().createLabel(promServiceName, titleFontSize);
+        Label name = JavaFXNodeFactory.getInstance().createLabel(promCode, TITLE_FONT_SIZE);
+        Label promValue = JavaFXNodeFactory.getInstance().createLabel(promOffValue.toString(), TITLE_FONT_SIZE);
+        Label promService = JavaFXNodeFactory.getInstance().createLabel(promServiceName, TITLE_FONT_SIZE);
         List<Label> leftLabelList = new ArrayList<>();
-        Label validTo = JavaFXNodeFactory.getInstance().createLabel("Valid until:", normalLabelFontSize);
+        Label validTo = JavaFXNodeFactory.getInstance().createLabel("Valid until:", NORMAL_LABEL_FONT_SIZE);
         leftLabelList.add(validTo);
         List<Node> rightList = new ArrayList<>();
-        Label validToValue = JavaFXNodeFactory.getInstance().createLabel(expireDate, normalLabelFontSize);
+        Label validToValue = JavaFXNodeFactory.getInstance().createLabel(expireDate, NORMAL_LABEL_FONT_SIZE);
         rightList.add(validToValue);
         HBox form = JavaFXNodeFactory.getInstance().createLRForm(leftLabelList, rightList, false);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
