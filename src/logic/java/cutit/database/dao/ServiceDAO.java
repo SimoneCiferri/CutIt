@@ -24,7 +24,6 @@ public class ServiceDAO {
         while (rs.next()) {
             String name = rs.getString(1);
             if (Objects.equals(service.getServiceName(), name)) {
-                DBConnection.getInstance().closeConnection();
                 throw new DuplicatedRecordException(service.getServiceName() + " already exists!");
             }
         }

@@ -35,7 +35,6 @@ public class CustomerDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = CustomerQueries.getCustomer(stm, user.getUserID());
         if(!rs.first()){
-            DBConnection.getInstance().closeConnection();
             String message = "Customer not found";
             throw new RecordNotFoundException(message);
         }else{

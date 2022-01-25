@@ -42,7 +42,6 @@ public class UserDAO {
                 ResultSet.CONCUR_READ_ONLY);
         ResultSet rs = UserQueries.getUser(stm, user.getUserID(), user.getPwd());
         if (!rs.first()) {
-            DBConnection.getInstance().closeConnection();
             throw new WrongCredentialsException();
         } else {
             Integer role = rs.getInt("Role");
