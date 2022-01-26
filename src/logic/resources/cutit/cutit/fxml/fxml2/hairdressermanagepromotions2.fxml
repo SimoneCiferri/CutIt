@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.managepromotions.HairdresserManagePromotionsViewController2"/>
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" spacing="15.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.managepromotions.HairdresserManagePromotionsViewController2">
+   <children>
+      <Label text="Promotions">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <SplitPane dividerPositions="0.5" prefHeight="640.0" prefWidth="1210.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+         <items>
+            <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="642.0" prefWidth="600.0" style="-fx-background-color: transparent;">
+               <content>
+                  <VBox fx:id="vbPromotionsInScroll" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="600.0" />
+               </content>
+            </ScrollPane>
+            <VBox fx:id="vbAddAndDelete" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="600.0" spacing="15.0" />
+         </items>
+      </SplitPane>
+   </children>
+</VBox>

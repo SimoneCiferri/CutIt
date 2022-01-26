@@ -2,8 +2,10 @@ package cutit.controller.leftbarviewcontrollers;
 
 import cutit.bean.HairdresserBean;
 import cutit.bean.ShopBeanInterface;
+import cutit.controller.managepromotions.HairdresserManagePromotionsViewController2;
 import cutit.controller.manageservices.HairdresserManageServicesViewController2;
 import cutit.decorator.ViewLayout2;
+import cutit.decorator.concrete_decorator2.HairdresserManagePromotionsView2;
 import cutit.decorator.concrete_decorator2.HairdresserManageServicesView2;
 import cutit.facade.Facade2;
 import javafx.fxml.FXML;
@@ -44,10 +46,9 @@ public class LeftBarHairdresserViewController {
     public boolean shopPromotionPage() {
         setOnPageStyle(ivShopPromotions);
         Facade2.getInstance().decorateView2(ViewLayout2.HAIRDRESSERMANAGEPROMOTIONS);
-
-        /*HairdresserPromotionsView1 view = (HairdresserPromotionsView1) Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERPROMOTIONS);
-        HairdresserManagePromotionsViewController viewController = (HairdresserManagePromotionsViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERPROMOTIONS);
-        viewController.fillView(shopBeanFirstUI);*/
+        HairdresserManagePromotionsView2 view = (HairdresserManagePromotionsView2) Facade2.getInstance().getViewMap().get(ViewLayout2.HAIRDRESSERMANAGEPROMOTIONS);
+        HairdresserManagePromotionsViewController2 viewController = (HairdresserManagePromotionsViewController2) view.getLoadedViewController2(ViewLayout2.HAIRDRESSERMANAGEPROMOTIONS);
+        viewController.fillView(shopBeanSecondUI);
         return true;
     }
 

@@ -100,6 +100,8 @@ public class HairdresserManageServicesViewController2 {
         manageServicesBean.setServiceShopName(shopBeanSecondUI.getShopName());
         try {
             manageServicesController.deleteService(this.manageServicesBean);
+            showServices();
+            vbInScrollToDo.getChildren().clear();
         } catch(DBConnectionException dce){
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
@@ -107,7 +109,6 @@ public class HairdresserManageServicesViewController2 {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Error", "Impossible to delete Service.");
             alert.showAndWait();
         }
-        showServices();
     }
 
     private void addService(TextField serviceData){

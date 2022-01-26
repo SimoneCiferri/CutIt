@@ -15,7 +15,7 @@
          <items>
             <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="641.0" prefWidth="600.0" style="-fx-background-color: transparent;">
                <content>
-                  <VBox fx:id="vbServicesInScroll" alignment="TOP_CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="600.0" spacing="25.0" />
+                  <VBox fx:id="vbServicesInScroll" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="600.0" spacing="25.0" />
                </content>
             </ScrollPane>
             <VBox fx:id="vbInScrollToDo" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="600.0" spacing="25.0" />

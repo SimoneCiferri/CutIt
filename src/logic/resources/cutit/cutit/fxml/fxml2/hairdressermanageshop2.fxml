@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.manageshoppage.HairdresserManageShopPageViewController2">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.manageshoppage.HairdresserManageShopPageViewController2">
    <children>
       <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" style="-fx-background-color: transparent;">
          <items>
             <VBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="605.0" spacing="25.0">
                <children>
-                  <Label text="ShopName">
+                  <Label fx:id="lblShopName" text="ShopName">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -26,15 +32,15 @@
                            <font>
                               <Font size="16.0" />
                            </font></Label>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="75.0" promptText="Street">
+                        <TextField fx:id="tfAddressStreet" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="75.0" promptText="Street">
                            <font>
                               <Font size="14.0" />
                            </font></TextField>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="75.0" promptText="City">
+                        <TextField fx:id="tdAddressCity" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="75.0" promptText="City">
                            <font>
                               <Font size="14.0" />
                            </font></TextField>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="75.0" promptText="CAP">
+                        <TextField fx:id="tfAddressCAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="75.0" promptText="CAP">
                            <font>
                               <Font size="14.0" />
                            </font></TextField>
@@ -46,11 +52,11 @@
                            <font>
                               <Font size="16.0" />
                            </font></Label>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="34.0" promptText="333">
+                        <TextField fx:id="tfPhoneNumberPrefix" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="41.0" promptText="333">
                            <font>
                               <Font size="14.0" />
                            </font></TextField>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="74.0" promptText="4455674">
+                        <TextField fx:id="tfPhoneNumberSuffix" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="74.0" promptText="4455674">
                            <font>
                               <Font size="14.0" />
                            </font></TextField>
@@ -64,13 +70,13 @@
                            </font></Label>
                         <VBox alignment="CENTER_LEFT" prefHeight="206.0" prefWidth="100.0" spacing="10.0">
                            <children>
-                              <CheckBox mnemonicParsing="false" text="Monday" />
-                              <CheckBox mnemonicParsing="false" text="Tuesday" />
-                              <CheckBox mnemonicParsing="false" text="Wednesday" />
-                              <CheckBox mnemonicParsing="false" text="Thursday" />
-                              <CheckBox mnemonicParsing="false" text="Friday" />
-                              <CheckBox mnemonicParsing="false" text="Saturday" />
-                              <CheckBox mnemonicParsing="false" text="Sunday" />
+                              <CheckBox fx:id="cbMon" mnemonicParsing="false" text="Monday" />
+                              <CheckBox fx:id="cbTue" mnemonicParsing="false" text="Tuesday" />
+                              <CheckBox fx:id="cbWed" mnemonicParsing="false" text="Wednesday" />
+                              <CheckBox fx:id="cbThu" mnemonicParsing="false" text="Thursday" />
+                              <CheckBox fx:id="cbFri" mnemonicParsing="false" text="Friday" />
+                              <CheckBox fx:id="cbSat" mnemonicParsing="false" text="Saturday" />
+                              <CheckBox fx:id="cbSun" mnemonicParsing="false" text="Sunday" />
                            </children>
                            <HBox.margin>
                               <Insets />
@@ -87,12 +93,12 @@
                            <font>
                               <Font size="16.0" />
                            </font></Label>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="60.0" promptText="07:00">
+                        <TextField fx:id="tfOpenTime" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="60.0" promptText="07:00">
                            <font>
                               <Font size="14.0" />
                            </font></TextField>
                         <Label text="Close Time:" />
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="60.0" promptText="20:00">
+                        <TextField fx:id="tfCloseTime" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="60.0" promptText="20:00">
                            <font>
                               <Font size="14.0" />
                            </font></TextField>
@@ -104,7 +110,7 @@
                            <font>
                               <Font size="16.0" />
                            </font></Label>
-                        <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="420.0" promptText="Description">
+                        <TextArea fx:id="taDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="420.0" promptText="Description">
                            <font>
                               <Font size="14.0" />
                            </font></TextArea>
@@ -126,7 +132,7 @@
                            <padding>
                               <Insets left="15.0" />
                            </padding></Label>
-                        <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="430.0" promptText="Employee">
+                        <TextArea fx:id="taEmployee" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="430.0" promptText="Employee">
                            <font>
                               <Font size="14.0" />
                            </font></TextArea>
@@ -141,22 +147,22 @@
                      </font></Label>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="595.0" spacing="15.0">
                      <children>
-                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv1" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv2" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv3" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv4" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
@@ -165,22 +171,22 @@
                   </HBox>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="593.0" spacing="20.0">
                      <children>
-                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv5" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv6" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv7" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv8" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>

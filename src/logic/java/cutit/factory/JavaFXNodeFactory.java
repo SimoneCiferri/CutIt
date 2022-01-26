@@ -7,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -56,6 +55,7 @@ public class JavaFXNodeFactory {
         HBox form = new HBox();
         form.setMaxSize(500,250);
         form.setMinSize(500, 100);
+        form.setSpacing(10);
 
         VBox leftVBox = new VBox();
         leftVBox.setMaxSize(250, 250);
@@ -67,9 +67,7 @@ public class JavaFXNodeFactory {
             leftVBox.setSpacing(15);
         }
         leftVBox.setPadding(new Insets(0, 10, 0,0));
-        for(int i = 0; i<leftLabelList.size();i++){
-            Label l = leftLabelList.get(i);
-            l.setTextFill(Color.WHITE);
+        for (Label l : leftLabelList) {
             leftVBox.getChildren().add(l);
         }
 
@@ -78,8 +76,7 @@ public class JavaFXNodeFactory {
         rightVBox.setMaxSize(250, 250);
         rightVBox.setAlignment(Pos.TOP_LEFT);
         rightVBox.setSpacing(15);
-        for(int i = 0; i<rightLabelList.size();i++){
-            Node n = rightLabelList.get(i);
+        for (Node n : rightLabelList) {
             rightVBox.getChildren().add(n);
         }
         form.getChildren().addAll(leftVBox, rightVBox);
@@ -129,7 +126,7 @@ public class JavaFXNodeFactory {
         return card;
     }
 
-    private HBox setHBox(String title, String address, HBox card, Image im) {
+    private void setHBox(String title, String address, HBox card, Image im) {
         ImageView iv = new ImageView();
         iv.setFitHeight(75);
         iv.setFitWidth(75);
@@ -144,7 +141,6 @@ public class JavaFXNodeFactory {
         l.setMaxSize(895, 130);
         l.setPadding(new Insets(0, 0, 10, 20));
         card.getChildren().add(l);
-        return card;
     }
 
     public VBox createFavouritesShopCard(String shopName, String shopAddress){

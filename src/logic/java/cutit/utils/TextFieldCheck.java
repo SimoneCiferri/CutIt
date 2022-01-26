@@ -3,6 +3,8 @@ package cutit.utils;
 import cutit.factory.AlertFactory;
 import javafx.scene.control.Alert;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Objects;
 import java.util.StringTokenizer;
@@ -120,6 +122,21 @@ public class TextFieldCheck {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Address field is not correct", "Please follow the syntax Street-City-CAP.");
             alert.showAndWait();
             return false;
+        }
+    }
+
+    public static boolean isDateFormat(String date, String headerText) {
+        if (!Objects.equals(date, "")) {
+            try {
+                LocalDate.parse(date);
+                return true;
+            } catch (DateTimeParseException dpe) {
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Not Panic!", headerText);
+                alert.showAndWait();
+                return false;
+            }
+        } else{
+            return  false;
         }
     }
 }
