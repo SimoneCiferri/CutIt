@@ -1,12 +1,11 @@
 package cutit.controller.deletebookedappointments;
 
 import cutit.bean.AppointmentBean;
-import cutit.bean.DeleteAppointmentBean;
+import cutit.bean.DeleteAppointmentBeanInterface;
 import cutit.bean.ShopBeanInterface;
-import cutit.bean.firstui.DeleteAppointmentBeanFirstUI;
+import cutit.bean.firstui.DeleteAppointmentBean;
 import cutit.exception.DBConnectionException;
 import cutit.exception.RecordNotFoundException;
-import cutit.exception.WrongCredentialsException;
 import cutit.exception.WrongInputDataException;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
@@ -24,7 +23,7 @@ import java.time.LocalDateTime;
 public class HairdresserDeleteBookedAppointmentsViewController {
 
     private ShopBeanInterface shopBean;
-    private DeleteAppointmentBean deleteAppointmentBeanFirstUI;
+    private DeleteAppointmentBeanInterface deleteAppointmentBeanFirstUI;
     private DeleteBookedAppointmentController deleteBookedAppointmentController;
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private static final Double TITLE_FONT_SIZE = 30.0;
@@ -41,7 +40,7 @@ public class HairdresserDeleteBookedAppointmentsViewController {
 
     @FXML
     public void initialize(){
-        deleteAppointmentBeanFirstUI = new DeleteAppointmentBeanFirstUI();
+        deleteAppointmentBeanFirstUI = new DeleteAppointmentBean();
         deleteBookedAppointmentController = new DeleteBookedAppointmentController();
         vbInScrollHApp.setSpacing(15);
     }
@@ -96,7 +95,7 @@ public class HairdresserDeleteBookedAppointmentsViewController {
             deleteBookedAppointmentController.deleteAppointment(this.deleteAppointmentBeanFirstUI);
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.CONFIRMATION, "Confirmation", "Appointment successfully deleted!");
             alert.showAndWait();
-            notifyCustomer(customer);
+            notifyCustomer();
         } catch (DBConnectionException dbe) {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
@@ -111,7 +110,7 @@ public class HairdresserDeleteBookedAppointmentsViewController {
         showAppointments();
     }
 
-    private void notifyCustomer(String customer) {
+    private void notifyCustomer() {
         //piccione viaggiatore
     }
 

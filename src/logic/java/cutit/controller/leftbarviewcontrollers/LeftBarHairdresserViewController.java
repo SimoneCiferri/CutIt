@@ -1,10 +1,12 @@
 package cutit.controller.leftbarviewcontrollers;
 
 import cutit.bean.ShopBeanInterface;
+import cutit.controller.deletebookedappointments.HairdresserDeleteBookedAppointmentsViewController2;
 import cutit.controller.managepromotions.HairdresserManagePromotionsViewController2;
 import cutit.controller.manageservices.HairdresserManageServicesViewController2;
 import cutit.controller.manageshoppage.HairdresserManageShopPageViewController2;
 import cutit.decorator.ViewLayout2;
+import cutit.decorator.concrete_decorator2.HairdresserDeleteBookedAppointmentsView2;
 import cutit.decorator.concrete_decorator2.HairdresserManagePromotionsView2;
 import cutit.decorator.concrete_decorator2.HairdresserManageServicesView2;
 import cutit.decorator.concrete_decorator2.HairdresserManageShopPageView2;
@@ -47,6 +49,9 @@ public class LeftBarHairdresserViewController {
     public boolean shopAppointmentsPage() {
         setOnPageStyle(ivShopAppointments);
         Facade2.getInstance().decorateView2(ViewLayout2.HAIRDRESSERDELETEBOOKEDAPPOINTMENTS);
+        HairdresserDeleteBookedAppointmentsView2 view = (HairdresserDeleteBookedAppointmentsView2) Facade2.getInstance().getViewMap().get(ViewLayout2.HAIRDRESSERDELETEBOOKEDAPPOINTMENTS);
+        HairdresserDeleteBookedAppointmentsViewController2 viewController = (HairdresserDeleteBookedAppointmentsViewController2) view.getLoadedViewController2(ViewLayout2.HAIRDRESSERDELETEBOOKEDAPPOINTMENTS);
+        viewController.fillView(shopBeanSecondUI);
         return true;
     }
 

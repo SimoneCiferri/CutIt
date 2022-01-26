@@ -1,7 +1,7 @@
 package cutit.controller.deletebookedappointments;
 
 import cutit.bean.AppointmentBean;
-import cutit.bean.DeleteAppointmentBean;
+import cutit.bean.DeleteAppointmentBeanInterface;
 import cutit.bean.AppointmentBeanUQ;
 import cutit.database.dao.AppointmentDAO;
 import cutit.database.dao.ShopDAO;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class DeleteBookedAppointmentController {
 
-    public void deleteAppointment(DeleteAppointmentBean deleteAppointmentBean) throws DBConnectionException, SQLException, WrongInputDataException {
+    public void deleteAppointment(DeleteAppointmentBeanInterface deleteAppointmentBean) throws DBConnectionException, SQLException, WrongInputDataException {
         try {
             LocalDate appointmentDay= deleteAppointmentBean.getStartTime().toLocalDate();
             if(isMoreThanTwoDaysAway(appointmentDay)){
@@ -42,7 +42,7 @@ public class DeleteBookedAppointmentController {
         return day.isAfter(LocalDate.now());
     }
 
-    public void getAllShopAppointments(DeleteAppointmentBean deleteAppointmentBean) throws DBConnectionException, SQLException, IOException, RecordNotFoundException {
+    public void getAllShopAppointments(DeleteAppointmentBeanInterface deleteAppointmentBean) throws DBConnectionException, SQLException, IOException, RecordNotFoundException {
         try {
             Shop shop = ShopDAO.getShopFromName(deleteAppointmentBean.getShopName());
             List<Appointment> allAppointments = shop.getAllAppointments();

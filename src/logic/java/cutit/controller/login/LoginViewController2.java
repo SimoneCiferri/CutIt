@@ -4,10 +4,12 @@ import cutit.bean.*;
 import cutit.bean.ShopBean;
 import cutit.controller.leftbarviewcontrollers.LeftBarCustomerViewController;
 import cutit.controller.leftbarviewcontrollers.LeftBarHairdresserViewController;
+import cutit.decorator.ViewLayout1;
 import cutit.decorator.ViewLayout2;
 import cutit.decorator.concrete_decorator2.LeftBarCustomerView;
 import cutit.decorator.concrete_decorator2.LeftBarHairdresserView;
 import cutit.exception.*;
+import cutit.facade.Facade;
 import cutit.facade.Facade2;
 import cutit.factory.AlertFactory;
 import cutit.utils.TextFieldCheck;
@@ -85,6 +87,7 @@ public class LoginViewController2 {
         hairdresserBeanSecondUI = new HairdresserBeanUQ();
         shopBeanSecondUI = new ShopBean();
         loginController = new LoginController();
+        cbGenderCustomer.getItems().addAll("Female", "Male", "Other");
     }
 
     @FXML
@@ -138,12 +141,12 @@ public class LoginViewController2 {
             listToCheck.add(pfPasswordCustomer.getText());
             listToCheck.add(tfBirthDateCustomer.getText());
             if(!TextFieldCheck.isSomethingNull(listToCheck)
-                    && checkNameAndSurname()
+                    && checkNameAndSurname(tfNameAndSurnameCustomer.getText())
                     && TextFieldCheck.isEmailAddress(tfEmailCustomer.getText())
                     && TextFieldCheck.isDateFormat(tfBirthDateCustomer.getText(), "Expire date is not correct. Please follow the syntax yyyy-MM-dd")
                     && TextFieldCheck.checkSamePassword(pfPasswordCustomer, pfConfirmPasswordCustomer)){
-                customerBeanSecondUI.setcName(getName());
-                customerBeanSecondUI.setcSurname(getSurname());
+                customerBeanSecondUI.setcName(getName(tfNameAndSurnameCustomer.getText()));
+                customerBeanSecondUI.setcSurname(getSurname(tfNameAndSurnameCustomer.getText()));
                 customerBeanSecondUI.setcBirthDate(LocalDate.parse(tfBirthDateCustomer.getText()));
                 customerBeanSecondUI.setcGender(cbGenderCustomer.getValue());
                 customerBeanSecondUI.setcEmail(tfEmailCustomer.getText());
@@ -178,25 +181,60 @@ public class LoginViewController2 {
         pfConfirmPasswordHairdresser.setText("");
     }
 
-    private boolean checkNameAndSurname() {
-        StringTokenizer st = new StringTokenizer(tfNameAndSurnameCustomer.getText(), "-");
+    private boolean checkNameAndSurname(String nameAndSurname) {
+        StringTokenizer st = new StringTokenizer(nameAndSurname, "-");
+        if(st.countTokens() != 2){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, "Invalid Name or Surname. Please follow the syntax ' Name-Surname '");
+            alert.showAndWait();
+        }
         return st.countTokens() == 2;
     }
 
-    private String getName(){
-        StringTokenizer st = new StringTokenizer(tfNameAndSurnameCustomer.getText(), "-");
+    private String getName(String nameAndSurname){
+        StringTokenizer st = new StringTokenizer(nameAndSurname, "-");
         return st.nextToken();
     }
 
-    private String getSurname(){
-        StringTokenizer st = new StringTokenizer(tfNameAndSurnameCustomer.getText(), "-");
+    private String getSurname(String nameAndSurname){
+        StringTokenizer st = new StringTokenizer(nameAndSurname, "-");
         st.nextToken();
         return st.nextToken();
     }
 
     @FXML
     public void signUpHairdresser() {
-        clearData();
+        try{
+            List<String> listToCheck = new ArrayList<>();
+            listToCheck.add(tfNameAndSurnameHairdresser.getText());
+            listToCheck.add(tfEmailHairdresser.getText());
+            listToCheck.add(tfPivaHairdresser.getText());
+            listToCheck.add(tfShopNameHairdresser.getText());
+            listToCheck.add(pfPasswordHairdresser.getText());
+            if(!TextFieldCheck.isSomethingNull(listToCheck)
+                    && checkNameAndSurname(tfNameAndSurnameHairdresser.getText())
+                    && TextFieldCheck.isEmailAddress(tfEmailHairdresser.getText())
+                    && TextFieldCheck.isPiva(tfPivaHairdresser.getText())
+                    && TextFieldCheck.checkSamePassword(pfPasswordHairdresser, pfConfirmPasswordHairdresser)){
+                hairdresserBeanSecondUI.sethName(getName(tfNameAndSurnameHairdresser.getText()));
+                hairdresserBeanSecondUI.sethSurname(getSurname(tfNameAndSurnameHairdresser.getText()));
+                hairdresserBeanSecondUI.sethEmail(tfEmailHairdresser.getText());
+                hairdresserBeanSecondUI.setpIVA(tfPivaHairdresser.getText());
+                hairdresserBeanSecondUI.setShopName(tfShopNameHairdresser.getText());
+                hairdresserBeanSecondUI.sethPassword(pfPasswordHairdresser.getText());
+                if(loginController.signUpHair(hairdresserBeanSecondUI)){
+                    clearData();
+                }
+            }
+        } catch (DuplicatedRecordException e) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            alert.showAndWait();
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
+        }
     }
 
 }

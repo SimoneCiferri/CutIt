@@ -3,7 +3,7 @@ package cutit.bean;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public interface DeleteAppointmentBean {
+public interface DeleteAppointmentBeanInterface {
 
     LocalDateTime getStartTime();
 

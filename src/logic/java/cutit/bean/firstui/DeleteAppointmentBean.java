@@ -1,12 +1,12 @@
 package cutit.bean.firstui;
 
 import cutit.bean.AppointmentBean;
-import cutit.bean.DeleteAppointmentBean;
+import cutit.bean.DeleteAppointmentBeanInterface;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class DeleteAppointmentBeanFirstUI implements DeleteAppointmentBean {
+public class DeleteAppointmentBean implements DeleteAppointmentBeanInterface {
 
     private LocalDateTime startTime;
     private String shopName;
