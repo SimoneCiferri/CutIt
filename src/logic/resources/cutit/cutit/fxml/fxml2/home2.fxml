@@ -6,10 +6,15 @@
 
 <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.bookappointment.secondui.HomeViewController2">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="74.0" prefWidth="950.0" style="-fx-border-color: black; -fx-border-radius: 5;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="74.0" prefWidth="498.0" style="-fx-border-color: black; -fx-border-radius: 5;">
          <VBox.margin>
-            <Insets top="35.0" />
+            <Insets top="25.0" />
          </VBox.margin>
+         <children>
+            <TextField layoutX="26.0" layoutY="25.0" prefHeight="25.0" prefWidth="174.0" promptText="Shop..." />
+            <TextField layoutX="219.0" layoutY="25.0" prefHeight="25.0" prefWidth="174.0" promptText="Where..." />
+            <Button layoutX="423.0" layoutY="25.0" mnemonicParsing="false" text="Search" />
+         </children>
       </AnchorPane>
       <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="1210.0" style="-fx-background-color: transparent; -fx-background: transparent;">
          <content>

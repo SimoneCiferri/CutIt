@@ -90,6 +90,7 @@ public class HairdresserManageServicesViewController {
         HBox buttonsHB = JavaFXNodeFactory.getInstance().createBottomButtons(back, add);
         vbInScrollHS.getChildren().addAll(title, form, buttonsHB);
     }
+
     @FXML
     private void addService(TextField serviceName, TextField servicePrice){
         if (!Objects.equals(serviceName.getText(), "") && TextFieldCheck.isNumeric(servicePrice.getText(), "Price field must be a number (correct format is 4.5 instead of 4,5).")) {

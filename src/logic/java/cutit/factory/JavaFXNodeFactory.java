@@ -168,4 +168,16 @@ public class JavaFXNodeFactory {
         return l;
     }
 
+    public Label createCardLabel2(String title, String labelStyle){
+        Label l = new Label(title);
+        l.setAlignment(Pos.CENTER);
+        l.setTextFill(Color.BLACK);
+        l.setStyle(labelStyle);
+        l.setMinSize(150, 80);
+        l.setMaxSize(300, 80);
+        l.setStyle(labelStyle);
+        l.setPadding(new Insets(0, 0, 10, 20));
+        return l;
+    }
+
 }

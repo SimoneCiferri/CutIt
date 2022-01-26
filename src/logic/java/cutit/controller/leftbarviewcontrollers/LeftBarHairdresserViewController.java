@@ -2,7 +2,9 @@ package cutit.controller.leftbarviewcontrollers;
 
 import cutit.bean.HairdresserBean;
 import cutit.bean.ShopBeanInterface;
+import cutit.controller.manageservices.HairdresserManageServicesViewController2;
 import cutit.decorator.ViewLayout2;
+import cutit.decorator.concrete_decorator2.HairdresserManageServicesView2;
 import cutit.facade.Facade2;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -53,10 +55,9 @@ public class LeftBarHairdresserViewController {
     public boolean servicesPage() {
         setOnPageStyle(ivShopServices);
         Facade2.getInstance().decorateView2(ViewLayout2.HAIRDRESSERMANAGESERVICES);
-
-        /*HairdresserServicesView1 view = (HairdresserServicesView1)  Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERSERVICES);
-        HairdresserManageServicesViewController viewController = (HairdresserManageServicesViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERSERVICES);
-        viewController.fillView(shopBeanFirstUI);*/
+        HairdresserManageServicesView2 view = (HairdresserManageServicesView2) Facade2.getInstance().getViewMap().get(ViewLayout2.HAIRDRESSERMANAGESERVICES);
+        HairdresserManageServicesViewController2 viewController = (HairdresserManageServicesViewController2) view.getLoadedViewController2(ViewLayout2.HAIRDRESSERMANAGESERVICES);
+        viewController.fillView(shopBeanSecondUI);
         return true;
     }
 
