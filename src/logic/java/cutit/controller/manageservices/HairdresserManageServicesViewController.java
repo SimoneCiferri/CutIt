@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +28,9 @@ public class HairdresserManageServicesViewController {
     private ManageServiceBeanInterface manageServicesBean;
     private ManageServicesController manageServicesController;
     private static final String CONNECTION_ERROR_TITLE = "Connection error";
-    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection.";
+    private static final String WARNING_TITLE = "Warning";
+    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
+    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private static final Double TITLE_FONT_SIZE = 30.0;
     private static final Double NORMAL_LABEL_FONT_SIZE = 14.0;
@@ -55,11 +58,12 @@ public class HairdresserManageServicesViewController {
                 l.setOnMouseClicked(mouseEvent -> showDeleteForm(serviceName, manageServicesBean.getServiceList().get(serviceName)));
                 vbInScrollHS.getChildren().add(l);
             }
-        } catch(DBConnectionException dce){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
         }
     }
 
@@ -100,14 +104,15 @@ public class HairdresserManageServicesViewController {
             try {
                 manageServicesController.addService(manageServicesBean);
                 showHairServices();
-            } catch (DuplicatedRecordException de) {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+            } catch (DuplicatedRecordException e) {
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
                 alert.showAndWait();
-            } catch(DBConnectionException dce){
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            } catch(DBConnectionException dbe){
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
                 alert.showAndWait();
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (SQLException sqle) {
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+                alert.showAndWait();
             }
         }
     }
@@ -132,11 +137,12 @@ public class HairdresserManageServicesViewController {
         manageServicesBean.setServiceShopName(shopBeanFirstUI.getShopName());
         try {
             manageServicesController.deleteService(this.manageServicesBean);
-        } catch(DBConnectionException dce){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
         }
         showHairServices();
     }

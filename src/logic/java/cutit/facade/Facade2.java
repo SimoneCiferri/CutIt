@@ -9,6 +9,7 @@ import cutit.log.LogWriter;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -17,6 +18,8 @@ public class Facade2 {
     private static Facade2 instance;
     private StartView2 startView2;
     private static final Map<ViewLayout2, ViewComponent2> viewMap = new EnumMap<>(ViewLayout2.class);
+    private static final String ERROR_TITLE = "Error";
+    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
     public static synchronized Facade2 getInstance(){
         if(instance == null){
@@ -36,9 +39,9 @@ public class Facade2 {
             this.startView2.loadXML2(ViewLayout2.START2);
             decorateView2(ViewLayout2.LEFTBAR);
             decorateView2(ViewLayout2.LOGIN2);
-        }catch (Exception e){
+        }catch (IOException | NullPointerException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, "Error",e.getMessage(), "");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ERROR_TITLE, IO_ERROR_MESSAGE);
             alert.showAndWait();
             Stage stage = (Stage) getStartView2().getPrLayout2().getScene().getWindow();
             stage.close();

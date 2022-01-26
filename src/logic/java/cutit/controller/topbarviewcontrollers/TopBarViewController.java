@@ -16,7 +16,7 @@ public class TopBarViewController {
     private AnchorPane apTopBar;
 
 
-    public boolean initialize() throws IOException {
+    public boolean initialize() {
         return true;
     }
 

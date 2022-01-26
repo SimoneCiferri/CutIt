@@ -13,13 +13,16 @@ import java.io.IOException;
 
 public class CustomerPayOnlinePayPalView1 extends Decorator {
 
+    private static final String ERROR_TITLE = "Error";
+    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
+
     public CustomerPayOnlinePayPalView1(ViewComponent1 view) {
         super(view);
         try {
             super.loadXML1(ViewLayout1.PAYONLINEPAYPAL);
-        } catch (IOException e) {
+        } catch (IOException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, "Error", e.getMessage(), "");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ERROR_TITLE, IO_ERROR_MESSAGE);
             alert.showAndWait();
             Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout1().getScene().getWindow();
             stage.close();

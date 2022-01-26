@@ -9,16 +9,21 @@ import cutit.log.LogWriter;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class TopBarCustomerView1 extends Decorator {
+
+    private static final String ERROR_TITLE = "Error";
+    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
     public TopBarCustomerView1(ViewComponent1 view){
 
         super(view);
         try {
             super.loadXML1(ViewLayout1.TOPBARCUSTOMER);
-        } catch (Exception e){
+        } catch (IOException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, "Error", e.getMessage(), "");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ERROR_TITLE, IO_ERROR_MESSAGE);
             alert.showAndWait();
             Stage stage = (Stage) Facade.getInstance().getStartView().getPrLayout1().getScene().getWindow();
             stage.close();

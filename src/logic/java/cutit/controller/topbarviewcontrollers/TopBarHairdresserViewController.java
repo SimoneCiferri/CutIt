@@ -45,7 +45,7 @@ public class TopBarHairdresserViewController {
     private AnchorPane apTopBarHairdr;
 
 
-    public boolean initialize() throws IOException {
+    public boolean initialize() {
         btnHApp.setStyle(PAGE_FLAG_STYLE);
         btnHPromotions.setStyle(TRANSPARENT_STYLE);
         btnHServices.setStyle(TRANSPARENT_STYLE);
