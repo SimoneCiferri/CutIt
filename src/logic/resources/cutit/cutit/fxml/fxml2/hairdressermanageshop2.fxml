@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.manageshoppage.HairdresserManageShopPageViewController2">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.manageshoppage.HairdresserManageShopPageViewController2">
    <children>
       <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" style="-fx-background-color: transparent;">
          <items>
@@ -36,7 +30,7 @@
                            <font>
                               <Font size="14.0" />
                            </font></TextField>
-                        <TextField fx:id="tdAddressCity" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="75.0" promptText="City">
+                        <TextField fx:id="tfAddressCity" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="75.0" promptText="City">
                            <font>
                               <Font size="14.0" />
                            </font></TextField>
@@ -147,22 +141,22 @@
                      </font></Label>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="595.0" spacing="15.0">
                      <children>
-                        <ImageView fx:id="iv1" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv1" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv2" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv2" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv3" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv3" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv4" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv4" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
@@ -171,28 +165,33 @@
                   </HBox>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="593.0" spacing="20.0">
                      <children>
-                        <ImageView fx:id="iv5" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv5" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv6" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv6" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv7" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv7" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv8" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="iv8" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
                      </children>
                   </HBox>
+                  <Button mnemonicParsing="false" onMouseClicked="#saveData" text="Save">
+                     <VBox.margin>
+                        <Insets left="300.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
                <padding>
                   <Insets top="100.0" />

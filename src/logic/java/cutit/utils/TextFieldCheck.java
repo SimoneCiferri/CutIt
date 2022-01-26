@@ -4,6 +4,7 @@ import cutit.factory.AlertFactory;
 import javafx.scene.control.Alert;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Objects;
@@ -129,6 +130,21 @@ public class TextFieldCheck {
         if (!Objects.equals(date, "")) {
             try {
                 LocalDate.parse(date);
+                return true;
+            } catch (DateTimeParseException dpe) {
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Not Panic!", headerText);
+                alert.showAndWait();
+                return false;
+            }
+        } else{
+            return  false;
+        }
+    }
+
+    public static  boolean isTimeFormat(String time, String headerText){
+        if (!Objects.equals(time, "")) {
+            try {
+                LocalTime.parse(time);
                 return true;
             } catch (DateTimeParseException dpe) {
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Not Panic!", headerText);

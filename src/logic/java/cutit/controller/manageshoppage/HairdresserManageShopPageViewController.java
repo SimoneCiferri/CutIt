@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -210,7 +211,8 @@ public class HairdresserManageShopPageViewController {
         return map;
     }
 
-    public void uploadImage(javafx.scene.input.MouseEvent mouseEvent) throws FileNotFoundException {
+    @FXML
+    public void uploadImage(MouseEvent mouseEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         Stage stage = (Stage)shopName.getScene().getWindow();
