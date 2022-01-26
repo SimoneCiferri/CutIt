@@ -10,6 +10,9 @@ import cutit.controller.topbarviewcontrollers.TopBarHairdresserViewController;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.TopBarCustomerView1;
 import cutit.decorator.concrete_decorator.TopBarHairdresserView1;
+import cutit.exception.DBConnectionException;
+import cutit.exception.RecordNotFoundException;
+import cutit.exception.WrongCredentialsException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
@@ -18,6 +21,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 
@@ -28,6 +33,13 @@ public class LoginViewController {
     private CustomerBean customerBeanFirstUI;
     private HairdresserBean hairdresserBeanFirstUI;
     private ShopBeanInterface shopBeanFirstUI;
+    private static final String CONNECTION_ERROR_TITLE = "Connection error";
+    private static final String WARNING_TITLE = "Warning";
+    private static final String IO_ERROR_TITLE = "Error";
+    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
+    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
+    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
+
 
     @FXML
     TextField tfUsername;
@@ -65,9 +77,17 @@ public class LoginViewController {
                         viewController.startBean(shopBeanFirstUI);
                     }
                 }
-            } catch (Exception e) {
-                LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Login Error!", "Please check your internet connection", "If the problem persist try again later.");
+            } catch (RecordNotFoundException | WrongCredentialsException e) {
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+                alert.showAndWait();
+            } catch(DBConnectionException dbe){
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+                alert.showAndWait();
+            } catch (SQLException sqle) {
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+                alert.showAndWait();
+            } catch (IOException ioe) {
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, IO_ERROR_TITLE, IO_ERROR_MESSAGE);
                 alert.showAndWait();
             }
         }

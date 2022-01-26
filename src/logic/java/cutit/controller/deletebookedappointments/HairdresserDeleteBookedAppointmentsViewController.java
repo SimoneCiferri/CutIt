@@ -4,6 +4,9 @@ import cutit.bean.AppointmentBean;
 import cutit.bean.DeleteAppointmentBean;
 import cutit.bean.ShopBeanInterface;
 import cutit.bean.firstui.DeleteAppointmentBeanFirstUI;
+import cutit.exception.DBConnectionException;
+import cutit.exception.RecordNotFoundException;
+import cutit.exception.WrongCredentialsException;
 import cutit.exception.WrongInputDataException;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
@@ -14,6 +17,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class HairdresserDeleteBookedAppointmentsViewController {
@@ -24,6 +29,12 @@ public class HairdresserDeleteBookedAppointmentsViewController {
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private static final Double TITLE_FONT_SIZE = 30.0;
     private static final Double NORMAL_LABEL_FONT_SIZE = 14.0;
+    private static final String CONNECTION_ERROR_TITLE = "Connection error";
+    private static final String WARNING_TITLE = "Warning";
+    private static final String IO_ERROR_TITLE = "Error";
+    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
+    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
+    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
     @FXML
     private VBox vbInScrollHApp;
@@ -47,8 +58,18 @@ public class HairdresserDeleteBookedAppointmentsViewController {
                 card.setOnMouseClicked(mouseEvent -> deleteForm(deleteAppointmentBeanFirstUI.getAllBookedAppointments().get(n)));
                 vbInScrollHApp.getChildren().add(card);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (RecordNotFoundException e) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            alert.showAndWait();
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (IOException ioe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, IO_ERROR_TITLE, IO_ERROR_MESSAGE);
+            alert.showAndWait();
         }
     }
 
@@ -76,11 +97,16 @@ public class HairdresserDeleteBookedAppointmentsViewController {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.CONFIRMATION, "Confirmation", "Appointment successfully deleted!");
             alert.showAndWait();
             notifyCustomer(customer);
-        } catch (WrongInputDataException wde) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", wde.getMessage());
+        } catch (DBConnectionException dbe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
-        }catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException sqle){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR,CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE );
+            alert.showAndWait();
+        }
+        catch (WrongInputDataException e){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            alert.showAndWait();
         }
         showAppointments();
     }

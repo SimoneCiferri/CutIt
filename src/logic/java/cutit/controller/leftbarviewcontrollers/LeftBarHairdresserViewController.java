@@ -1,6 +1,5 @@
 package cutit.controller.leftbarviewcontrollers;
 
-import cutit.bean.HairdresserBean;
 import cutit.bean.ShopBeanInterface;
 import cutit.controller.managepromotions.HairdresserManagePromotionsViewController2;
 import cutit.controller.manageservices.HairdresserManageServicesViewController2;
@@ -22,6 +21,7 @@ public class LeftBarHairdresserViewController {
     private double yOffset = 0;
     private static final double ON_PAGE_STYLE = 60;
     private static final double NORMAL_STYLE = 40;
+
 
     private ShopBeanInterface shopBeanSecondUI;
 

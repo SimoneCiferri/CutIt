@@ -16,6 +16,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+
+import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -28,7 +31,12 @@ public class CustomerBookAppointmentViewController {
     private AppointmentBeanUQ appointmentBeanUQ;
     private BookAppointmentController bookAppointmentController;
     private ShopBeanInterface shopBeanUQ;
-    private static final String INFORMATION_TITLE = "Information";
+    private static final String CONNECTION_ERROR_TITLE = "Connection error";
+    private static final String WARNING_TITLE = "Warning";
+    private static final String IO_ERROR_TITLE = "Error";
+    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
+    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
+    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
     @FXML
     private BorderPane bpInBookApp;
@@ -107,11 +115,18 @@ public class CustomerBookAppointmentViewController {
             try {
                 bookAppointmentController.bookAppointment(appointmentBeanUQ);
                 showPayedAndBooked();
-            } catch (DuplicatedRecordException | PaymentException | RecordNotFoundException exception){
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, exception.getMessage());
+            } catch (RecordNotFoundException | DuplicatedRecordException | PaymentException e) {
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
                 alert.showAndWait();
-            } catch (Exception e){
-                e.printStackTrace();
+            } catch(DBConnectionException dbe){
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+                alert.showAndWait();
+            } catch (SQLException sqle) {
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+                alert.showAndWait();
+            } catch (IOException ioe) {
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, IO_ERROR_TITLE, IO_ERROR_MESSAGE);
+                alert.showAndWait();
             }
         }
 
@@ -138,13 +153,18 @@ public class CustomerBookAppointmentViewController {
                 cbTimeSlot.getItems().add(availableSlot);
             }
             cbTimeSlot.setDisable(availableSlots.isEmpty());
-            //differenza e ho quelli liberi
-        } catch (WrongInputDataException wde) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, wde.getMessage());
+        } catch (RecordNotFoundException |WrongInputDataException e) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
             alert.showAndWait();
-            dtPicker.setValue(LocalDate.now());
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (IOException ioe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, IO_ERROR_TITLE, IO_ERROR_MESSAGE);
+            alert.showAndWait();
         }
     }
 
@@ -157,8 +177,18 @@ public class CustomerBookAppointmentViewController {
                 cbServices.getItems().add(service);
             }
             cbServices.setDisable(appointmentBeanUQ.getAvailableServices().isEmpty());
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (RecordNotFoundException e) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            alert.showAndWait();
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (IOException ioe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, IO_ERROR_TITLE, IO_ERROR_MESSAGE);
+            alert.showAndWait();
         }
     }
 
@@ -178,13 +208,17 @@ public class CustomerBookAppointmentViewController {
             } else {
                 return false;
             }
-        } catch (RecordNotFoundException | WrongInputDataException exception){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, exception.getMessage());
+        } catch (RecordNotFoundException |WrongInputDataException e) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
             alert.showAndWait();
-            tfPromotionCode.setText("");
             return false;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            alert.showAndWait();
+            return false;
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
             return false;
         }
     }
@@ -232,17 +266,15 @@ public class CustomerBookAppointmentViewController {
                 TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController1(ViewLayout1.TOPBARCUSTOMER);
                 viewController.goFav();
             }
-        } catch (DuplicatedRecordException de) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, de.getMessage());
+        } catch (DuplicatedRecordException e) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
             alert.showAndWait();
-            TopBarCustomerView1 view = (TopBarCustomerView1) Facade.getInstance().getViewMap().get(ViewLayout1.TOPBARCUSTOMER);
-            TopBarCustomerViewController viewController = (TopBarCustomerViewController) view.getLoadedViewController1(ViewLayout1.TOPBARCUSTOMER);
-            viewController.goFav();
-        } catch(DBConnectionException dce){
-            Alert alert =  AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
         }
     }
 

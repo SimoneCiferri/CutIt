@@ -20,6 +20,7 @@ public class CustomerPromotionInfoViewController {
 
     private PromotionBean promotionBean;
     private CustomerBean customerBeanFirstUI;
+    private static final String WARNING_TITLE = "Warning";
 
     @FXML
     private Label lblShopName;
@@ -63,7 +64,7 @@ public class CustomerPromotionInfoViewController {
         clipboard.setContents(text,text);
     }
         catch (AWTError error){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Error", "Impossible to copy promotion.");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, "Impossible to copy promotion, try again later or copying manually");
             alert.show();
         }
     }

@@ -3,14 +3,18 @@ package cutit.controller.bookappointment;
 import cutit.bean.*;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.ShopInfoView1;
+import cutit.exception.DBConnectionException;
 import cutit.facade.Facade;
+import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class HomeViewController {
@@ -19,6 +23,11 @@ public class HomeViewController {
     private ShopListBean shopListBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
+    private static final String CONNECTION_ERROR_TITLE = "Connection error";
+    private static final String IO_ERROR_TITLE = "Error";
+    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
+    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
+    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
     @FXML
     private TextField tfSearchName;
@@ -52,8 +61,15 @@ public class HomeViewController {
                 card.setOnMouseClicked(mouseEvent -> goShopInfo(shopListBeanFirstUI.getShopBeanList().get(n).getShopName()));
                 vbInScroll.getChildren().add(card);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (IOException ioe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, IO_ERROR_TITLE, IO_ERROR_MESSAGE);
+            alert.showAndWait();
         }
     }
 
