@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -28,7 +29,9 @@ public class HairdresserManageServicesViewController2 {
     private ManageServiceBeanInterface manageServicesBean;
     private ManageServicesController manageServicesController;
     private static final String CONNECTION_ERROR_TITLE = "Connection error";
-    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection.";
+    private static final String WARNING_TITLE = "Warning";
+    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
+    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5;";
     private static final Double TITLE_FONT_SIZE = 30.0;
     private static final Double NORMAL_LABEL_FONT_SIZE = 14.0;
@@ -60,11 +63,12 @@ public class HairdresserManageServicesViewController2 {
                 l.setOnMouseClicked(mouseEvent -> showServiceInfo(serviceName, manageServicesBean.getServiceList().get(serviceName)));
                 vbServicesInScroll.getChildren().add(l);
             }
-        } catch(DBConnectionException dce){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
         }
     }
 
@@ -102,11 +106,11 @@ public class HairdresserManageServicesViewController2 {
             manageServicesController.deleteService(this.manageServicesBean);
             showServices();
             vbInScrollToDo.getChildren().clear();
-        } catch(DBConnectionException dce){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+        }  catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
-        } catch (Exception e) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Error", "Impossible to delete Service.");
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
             alert.showAndWait();
         }
     }
@@ -125,18 +129,19 @@ public class HairdresserManageServicesViewController2 {
                         manageServicesController.addService(manageServicesBean);
                         showServices();
                         showServiceInfo(name, Float.valueOf(price));
-                    } catch (DuplicatedRecordException de) {
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+                    } catch (DuplicatedRecordException e) {
+                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
                         alert.showAndWait();
-                    } catch(DBConnectionException dce){
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+                    } catch(DBConnectionException dbe){
+                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
                         alert.showAndWait();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    } catch (SQLException sqle) {
+                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+                        alert.showAndWait();
                     }
                 }
             } else {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", "Not Panic!", "Input is not correct. Please follow the syntax ' Name-Price '");
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, "Not Panic!", "Input is not correct. Please follow the syntax ' Name-Price '");
                 alert.showAndWait();
             }
         }

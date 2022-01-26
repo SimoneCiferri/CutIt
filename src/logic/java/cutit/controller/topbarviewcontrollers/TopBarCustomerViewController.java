@@ -45,7 +45,7 @@ public class TopBarCustomerViewController {
     @FXML
     private AnchorPane apTopBarCustomer;
 
-    public boolean initialize() throws IOException {
+    public boolean initialize(){
         btnClHome.setStyle(PAGE_FLAG_STYLE);
         btnClPromotion.setStyle(TRANSPARENT_STYLE);
         btnClApp.setStyle(TRANSPARENT_STYLE);
