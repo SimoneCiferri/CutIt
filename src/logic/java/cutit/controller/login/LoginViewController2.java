@@ -10,13 +10,17 @@ import cutit.decorator.concrete_decorator2.LeftBarHairdresserView;
 import cutit.exception.*;
 import cutit.facade.Facade2;
 import cutit.factory.AlertFactory;
+import cutit.utils.TextFieldCheck;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import javax.imageio.IIOException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import java.util.StringTokenizer;
 
 public class LoginViewController2 {
 
@@ -72,7 +76,7 @@ public class LoginViewController2 {
     private PasswordField pfConfirmPasswordHairdresser;
 
     @FXML
-    private ChoiceBox<?> cbGenderCustomer;
+    private ChoiceBox<String> cbGenderCustomer;
 
     @FXML
     public void initialize(){
@@ -125,13 +129,74 @@ public class LoginViewController2 {
     }
 
     @FXML
-    public boolean signUpCustomer() {
-        return true;
+    public void signUpCustomer() {
+        try{
+            List<String> listToCheck = new ArrayList<>();
+            listToCheck.add(tfNameAndSurnameCustomer.getText());
+            listToCheck.add(tfEmailCustomer.getText());
+            listToCheck.add(cbGenderCustomer.getValue());
+            listToCheck.add(pfPasswordCustomer.getText());
+            listToCheck.add(tfBirthDateCustomer.getText());
+            if(!TextFieldCheck.isSomethingNull(listToCheck)
+                    && checkNameAndSurname()
+                    && TextFieldCheck.isEmailAddress(tfEmailCustomer.getText())
+                    && TextFieldCheck.isDateFormat(tfBirthDateCustomer.getText(), "Expire date is not correct. Please follow the syntax yyyy-MM-dd")
+                    && TextFieldCheck.checkSamePassword(pfPasswordCustomer, pfConfirmPasswordCustomer)){
+                customerBeanSecondUI.setcName(getName());
+                customerBeanSecondUI.setcSurname(getSurname());
+                customerBeanSecondUI.setcBirthDate(LocalDate.parse(tfBirthDateCustomer.getText()));
+                customerBeanSecondUI.setcGender(cbGenderCustomer.getValue());
+                customerBeanSecondUI.setcEmail(tfEmailCustomer.getText());
+                customerBeanSecondUI.setcPassword(pfPasswordCustomer.getText());
+                if(loginController.signUpCustomer(this.customerBeanSecondUI)){
+                    clearData();
+                }
+            }
+        } catch (DuplicatedRecordException | WrongInputDataException e) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            alert.showAndWait();
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
+        }
+    }
+
+    private void clearData() {
+        tfNameAndSurnameCustomer.setText("");
+        tfEmailCustomer.setText("");
+        pfPasswordCustomer.setText("");
+        pfConfirmPasswordCustomer.setText("");
+        tfBirthDateCustomer.setText("");
+        tfNameAndSurnameHairdresser.setText("");
+        tfEmailHairdresser.setText("");
+        tfPivaHairdresser.setText("");
+        tfShopNameHairdresser.setText("");
+        pfPasswordHairdresser.setText("");
+        pfConfirmPasswordHairdresser.setText("");
+    }
+
+    private boolean checkNameAndSurname() {
+        StringTokenizer st = new StringTokenizer(tfNameAndSurnameCustomer.getText(), "-");
+        return st.countTokens() == 2;
+    }
+
+    private String getName(){
+        StringTokenizer st = new StringTokenizer(tfNameAndSurnameCustomer.getText(), "-");
+        return st.nextToken();
+    }
+
+    private String getSurname(){
+        StringTokenizer st = new StringTokenizer(tfNameAndSurnameCustomer.getText(), "-");
+        st.nextToken();
+        return st.nextToken();
     }
 
     @FXML
-    public boolean signUpHairdresser() {
-        return true;
+    public void signUpHairdresser() {
+        clearData();
     }
 
 }

@@ -7,7 +7,6 @@ import cutit.bean.HairdresserBeanUQ;
 import cutit.decorator.ViewLayout1;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
-import cutit.exception.RecordNotFoundException;
 import cutit.exception.WrongInputDataException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
@@ -18,7 +17,6 @@ import javafx.scene.control.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class SignUpViewController {
 
@@ -85,7 +83,7 @@ public class SignUpViewController {
         try{
             if(!checkIfNull(tfCustomerName.getText(), tfCustomerSurname.getText(), cbCustomerGender.getValue(), tfCustomerEmail.getText(), pfCustomerPassword.getText())
                     && TextFieldCheck.isEmailAddress(tfCustomerEmail.getText())
-                    && checkSamePasswd(pfCustomerPassword, pfCustomerConfirmPassword)){
+                    && TextFieldCheck.checkSamePassword(pfCustomerPassword, pfCustomerConfirmPassword)){
                 customerBeanFirstUI.setcName(tfCustomerName.getText());
                 customerBeanFirstUI.setcSurname(tfCustomerSurname.getText());
                 customerBeanFirstUI.setcBirthDate(dpCustomerBirthdate.getValue());
@@ -114,7 +112,7 @@ public class SignUpViewController {
             if(!checkIfNull(tfHairdresserName.getText(), tfHairdresserSurname.getText(), tfHairdresserEmail.getText(), tfHairdresserPIVA.getText(), tfHairdresserShopName.getText())
                     && TextFieldCheck.isEmailAddress(tfHairdresserEmail.getText())
                     && TextFieldCheck.isPiva(tfHairdresserPIVA.getText())
-                    && checkSamePasswd(pfHairdresserPassword, pfHairdresserConfirmPassword)){
+                    && TextFieldCheck.checkSamePassword(pfHairdresserPassword, pfHairdresserConfirmPassword)){
                 hairdresserBeanFirstUI.sethName(tfHairdresserName.getText());
                 hairdresserBeanFirstUI.sethSurname(tfHairdresserSurname.getText());
                 hairdresserBeanFirstUI.sethEmail(tfHairdresserEmail.getText());
@@ -135,13 +133,6 @@ public class SignUpViewController {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
             alert.showAndWait();
         }
-    }
-
-    private boolean checkSamePasswd(PasswordField p1, PasswordField p2) {
-        if(!Objects.equals(p1.getText(), "") && !Objects.equals(p2.getText(), "")){
-            return Objects.equals(p1.getText(), p2.getText());
-        }
-        return false;
     }
 
     private Boolean checkIfNull(String s1, String s2, String s3, String s4, String s5){

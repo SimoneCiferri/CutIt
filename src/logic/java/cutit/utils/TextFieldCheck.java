@@ -2,6 +2,7 @@ package cutit.utils;
 
 import cutit.factory.AlertFactory;
 import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,19 +16,21 @@ import java.util.regex.Pattern;
 public class TextFieldCheck {
 
     private static final String INFORMATION_TITLE = "Information";
+    private static final String INFORMATION_HEADER = "Not Panic!";
+
 
     private TextFieldCheck(){
 
     }
 
-    public static boolean isNumeric(String strNum, String headerText) {
+    public static boolean isNumeric(String strNum, String contentText) {
         if (strNum == null) {
             return false;
         }
         try {
             Double.parseDouble(strNum);
         } catch (NumberFormatException nfe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Not Panic!", headerText);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, INFORMATION_HEADER, contentText);
             alert.showAndWait();
             return false;
         }
@@ -41,7 +44,7 @@ public class TextFieldCheck {
         try {
             Integer.parseInt(strNum);
         } catch (NumberFormatException nfe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Not Panic!", message);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, INFORMATION_HEADER, message);
             alert.showAndWait();
             return false;
         }
@@ -57,7 +60,7 @@ public class TextFieldCheck {
             if(m.matches()){
                 return true;
             }else{
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Not Panic.", "Phone number field must be a number.");
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, INFORMATION_HEADER, "Phone number field must be a number.");
                 alert.showAndWait();
                 return false;
             }
@@ -126,13 +129,13 @@ public class TextFieldCheck {
         }
     }
 
-    public static boolean isDateFormat(String date, String headerText) {
+    public static boolean isDateFormat(String date, String contentText) {
         if (!Objects.equals(date, "")) {
             try {
                 LocalDate.parse(date);
                 return true;
             } catch (DateTimeParseException dpe) {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Not Panic!", headerText);
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, INFORMATION_HEADER, contentText);
                 alert.showAndWait();
                 return false;
             }
@@ -141,18 +144,25 @@ public class TextFieldCheck {
         }
     }
 
-    public static  boolean isTimeFormat(String time, String headerText){
+    public static  boolean isTimeFormat(String time, String contentText){
         if (!Objects.equals(time, "")) {
             try {
                 LocalTime.parse(time);
                 return true;
             } catch (DateTimeParseException dpe) {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, "Not Panic!", headerText);
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, INFORMATION_TITLE, INFORMATION_HEADER, contentText);
                 alert.showAndWait();
                 return false;
             }
         } else{
             return  false;
         }
+    }
+
+    public static boolean checkSamePassword(PasswordField p1, PasswordField p2) {
+        if(!Objects.equals(p1.getText(), "") && !Objects.equals(p2.getText(), "")){
+            return Objects.equals(p1.getText(), p2.getText());
+        }
+        return false;
     }
 }

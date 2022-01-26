@@ -40,11 +40,11 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
-                                    <TextField fx:id="tfNameAndSurnameCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Name, Surname">
+                                    <TextField fx:id="tfNameAndSurnameCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Name-Surname">
                                        <font>
                                           <Font size="16.0" />
                                        </font></TextField>
-                                    <TextField fx:id="tfBirthDateCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Birthdate: dd/MM/yyyy">
+                                    <TextField fx:id="tfBirthDateCustomer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Birthdate: yyyy-MM-dd">
                                        <font>
                                           <Font size="16.0" />
                                        </font></TextField>
@@ -85,7 +85,7 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
                                  <children>
-                                    <TextField fx:id="tfNameAndSurnameHairdresser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Name, Surname">
+                                    <TextField fx:id="tfNameAndSurnameHairdresser" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Name-Surname">
                                        <font>
                                           <Font size="16.0" />
                                        </font>
