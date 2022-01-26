@@ -16,8 +16,8 @@ public class LeftBarCustomerViewController {
 
     private double xOffset = 0;
     private double yOffset = 0;
-    private static final double onPageStyle = 60;
-    private static final double normalStyle = 40;
+    private static final double ON_PAGE_STYLE = 60;
+    private static final double NORMAL_STYLE = 40;
 
     private CustomerBean customerBeanSecondUI;
 
@@ -25,11 +25,22 @@ public class LeftBarCustomerViewController {
     private VBox vbLeftBarCustomer;
 
     @FXML
-    private ImageView ivHome, ivFavourites, ivPromotions, ivAppointments, ivLogout;
+    private ImageView ivHome;
+
+    @FXML
+    private ImageView ivFavourites;
+
+    @FXML
+    private ImageView ivPromotions;
+
+    @FXML
+    private ImageView ivAppointments;
+
+    @FXML
+    private ImageView ivLogout;
 
     @FXML
     public void initialize(){
-        System.out.println("LeftBarCustomer viewcontroller");
     }
 
     @FXML
@@ -46,9 +57,6 @@ public class LeftBarCustomerViewController {
     public boolean favouritesPage() {
         setOnPageStyle(ivFavourites);
         Facade2.getInstance().decorateView2(ViewLayout2.CUSTOMERFAVOURITESSHOP);
-        /*CustomerFavouritesShopView1 view = (CustomerFavouritesShopView1) Facade.getInstance().getViewMap().get(ViewLayout1.FAVSHOP);
-        CustomerFavouritesShopViewController viewController = (CustomerFavouritesShopViewController) view.getLoadedViewController1(ViewLayout1.FAVSHOP);
-        viewController.fillView(customerBeanFirstUI);*/
         return true;
     }
 
@@ -56,9 +64,6 @@ public class LeftBarCustomerViewController {
     public boolean appPage() {
         setOnPageStyle(ivAppointments);
         Facade2.getInstance().decorateView2(ViewLayout2.CUSTOMERAPPOINTMENTS);
-        /*CustomerAppointmentsView1 view = (CustomerAppointmentsView1) Facade.getInstance().getViewMap().get(ViewLayout1.CUSTOMERAPPOINTMENTS);
-        CustomerAppointmentsViewController viewController =(CustomerAppointmentsViewController) view.getLoadedViewController1(ViewLayout1.CUSTOMERAPPOINTMENTS);
-        viewController.fillView(customerBeanFirstUI);*/
         return true;
     }
 
@@ -66,9 +71,6 @@ public class LeftBarCustomerViewController {
     public boolean promPage() {
         setOnPageStyle(ivPromotions);
         Facade2.getInstance().decorateView2(ViewLayout2.CUSTOMERPROMOTION);
-        /*CustomerPromotionsView1 view =(CustomerPromotionsView1) Facade.getInstance().getViewMap().get(ViewLayout1.CUSTOMERPROMOTIONS);
-        CustomerPromotionsViewController viewController = (CustomerPromotionsViewController) view.getLoadedViewController1(ViewLayout1.CUSTOMERPROMOTIONS);
-        viewController.fillView(customerBeanFirstUI);*/
         return true;
     }
 
@@ -83,24 +85,23 @@ public class LeftBarCustomerViewController {
     }
 
     private void setOnPageStyle(ImageView imageViewOnPage){
-        ivHome.setFitWidth(normalStyle);
-        ivHome.setFitHeight(normalStyle);
-        ivFavourites.setFitWidth(normalStyle);
-        ivFavourites.setFitHeight(normalStyle);
-        ivPromotions.setFitWidth(normalStyle);
-        ivPromotions.setFitHeight(normalStyle);
-        ivAppointments.setFitWidth(normalStyle);
-        ivAppointments.setFitHeight(normalStyle);
-        ivLogout.setFitWidth(normalStyle);
-        ivLogout.setFitHeight(normalStyle);
+        ivHome.setFitWidth(NORMAL_STYLE);
+        ivHome.setFitHeight(NORMAL_STYLE);
+        ivFavourites.setFitWidth(NORMAL_STYLE);
+        ivFavourites.setFitHeight(NORMAL_STYLE);
+        ivPromotions.setFitWidth(NORMAL_STYLE);
+        ivPromotions.setFitHeight(NORMAL_STYLE);
+        ivAppointments.setFitWidth(NORMAL_STYLE);
+        ivAppointments.setFitHeight(NORMAL_STYLE);
+        ivLogout.setFitWidth(NORMAL_STYLE);
+        ivLogout.setFitHeight(NORMAL_STYLE);
 
-        imageViewOnPage.setFitWidth(onPageStyle);
-        imageViewOnPage.setFitHeight(onPageStyle);
+        imageViewOnPage.setFitWidth(ON_PAGE_STYLE);
+        imageViewOnPage.setFitHeight(ON_PAGE_STYLE);
     }
 
 
     public void startBean(CustomerBean customerBeanSecondUI){
-        System.out.println("customerBeanSecondUI passedBY LoginViewController2");
         this.customerBeanSecondUI = customerBeanSecondUI;
         appPage();
     }

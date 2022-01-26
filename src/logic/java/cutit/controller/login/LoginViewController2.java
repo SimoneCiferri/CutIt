@@ -23,18 +23,49 @@ public class LoginViewController2 {
     private ShopBeanInterface shopBeanSecondUI;
 
     @FXML
-    private TextField tfUsernameLogin, tfNameAndSurnameCustomer, tfBirthDateCustomer, tfEmailCustomer, tfNameAndSurnameHairdresser, tfEmailHairdresser,
-            tfPivaHairdresser, tfShopNameHairdresser;
+    private TextField tfUsernameLogin;
 
     @FXML
-    private PasswordField pfPasswordLogin, pfConfirmPasswordCustomer, pfPasswordCustomer, pfPasswordHairdresser, pfConfirmPasswordHairdresser;
+    private TextField tfNameAndSurnameCustomer;
+
+    @FXML
+    private TextField tfBirthDateCustomer;
+
+    @FXML
+    private TextField tfEmailCustomer;
+
+    @FXML
+    private TextField tfNameAndSurnameHairdresser;
+
+    @FXML
+    private TextField tfEmailHairdresser;
+
+    @FXML
+    private TextField tfPivaHairdresser;
+
+    @FXML
+    private TextField tfShopNameHairdresser;
+
+    @FXML
+    private PasswordField pfPasswordLogin;
+
+    @FXML
+    private PasswordField pfConfirmPasswordCustomer;
+
+    @FXML
+    private PasswordField pfPasswordCustomer;
+
+    @FXML
+    private PasswordField pfPasswordHairdresser;
+
+    @FXML
+    private PasswordField pfConfirmPasswordHairdresser;
 
     @FXML
     private ChoiceBox<?> cbGenderCustomer;
 
     @FXML
     public void initialize(){
-        System.out.println(" Starting ---> LoginViewController2");
         userBeanSecondUI = new UserBeanUQ();
         customerBeanSecondUI = new CustomerBeanUQ();
         hairdresserBeanSecondUI = new HairdresserBeanUQ();
@@ -60,7 +91,7 @@ public class LoginViewController2 {
                         Facade2.getInstance().decorateView2(ViewLayout2.LEFTBARHAIRDRESSER);
                         LeftBarHairdresserView view = (LeftBarHairdresserView) Facade2.getInstance().getViewMap().get(ViewLayout2.LEFTBARHAIRDRESSER);
                         LeftBarHairdresserViewController viewController = (LeftBarHairdresserViewController) view.getLoadedViewController2(ViewLayout2.LEFTBARHAIRDRESSER);
-                        viewController.startBean(hairdresserBeanSecondUI, shopBeanSecondUI);
+                        viewController.startBean(shopBeanSecondUI);
                     }
                 }
             } catch (Exception e) {

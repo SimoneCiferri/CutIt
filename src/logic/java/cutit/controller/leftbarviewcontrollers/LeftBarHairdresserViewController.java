@@ -20,27 +20,33 @@ public class LeftBarHairdresserViewController {
 
     private double xOffset = 0;
     private double yOffset = 0;
-    private static final double onPageStyle = 60;
-    private static final double normalStyle = 40;
+    private static final double ON_PAGE_STYLE = 60;
+    private static final double NORMAL_STYLE = 40;
 
-    private HairdresserBean hairdresserBeanSecondUI;
     private ShopBeanInterface shopBeanSecondUI;
 
     @FXML
     private VBox vbLeftBarHairdresser;
 
     @FXML
-    private ImageView ivShopAppointments, ivShopPromotions, ivShopServices, ivShopPage, ivLogout;
+    private ImageView ivShopAppointments;
+
+    @FXML
+    private ImageView ivShopPromotions;
+
+    @FXML
+    private ImageView ivShopServices;
+
+    @FXML
+    private ImageView ivShopPage;
+
+    @FXML
+    private ImageView ivLogout;
 
     @FXML
     public boolean shopAppointmentsPage() {
         setOnPageStyle(ivShopAppointments);
         Facade2.getInstance().decorateView2(ViewLayout2.HAIRDRESSERDELETEBOOKEDAPPOINTMENTS);
-        /*deleteAppointmentBeanFirstUI.setShopName(shopBeanFirstUI.getShopName());
-        deleteAppointmentBeanFirstUI.setAllAppointments(shopBeanFirstUI.getAllAppointments());
-        HairdresserAppointmentsView1 view = (HairdresserAppointmentsView1) Facade.getInstance().getViewMap().get(ViewLayout1.HAIRDRESSERAPPOINTMENTS);
-        HairdresserDeleteBookedAppointmentsViewController viewController = (HairdresserDeleteBookedAppointmentsViewController) view.getLoadedViewController1(ViewLayout1.HAIRDRESSERAPPOINTMENTS);
-        viewController.fillView(shopBeanFirstUI);*/
         return true;
     }
 
@@ -86,31 +92,28 @@ public class LeftBarHairdresserViewController {
 
     @FXML
     public void initialize(){
-        System.out.println("LeftBarHairdresser viewcontroller");
     }
 
-    public void startBean(HairdresserBean hairdresserBeanSecondUI, ShopBeanInterface shopBeanSecondUI){
-        System.out.println("HairdresserBeanSecondUI passedBY LoginViewController2");
-        this.hairdresserBeanSecondUI = hairdresserBeanSecondUI;
+    public void startBean(ShopBeanInterface shopBeanSecondUI){
         this.shopBeanSecondUI = shopBeanSecondUI;
         shopAppointmentsPage();
     }
 
 
     private void setOnPageStyle(ImageView imageViewOnPage){
-        ivShopAppointments.setFitWidth(normalStyle);
-        ivShopAppointments.setFitHeight(normalStyle);
-        ivShopPromotions.setFitWidth(normalStyle);
-        ivShopPromotions.setFitHeight(normalStyle);
-        ivShopServices.setFitWidth(normalStyle);
-        ivShopServices.setFitHeight(normalStyle);
-        ivShopPage.setFitWidth(normalStyle);
-        ivShopPage.setFitHeight(normalStyle);
-        ivLogout.setFitWidth(normalStyle);
-        ivLogout.setFitHeight(normalStyle);
+        ivShopAppointments.setFitWidth(NORMAL_STYLE);
+        ivShopAppointments.setFitHeight(NORMAL_STYLE);
+        ivShopPromotions.setFitWidth(NORMAL_STYLE);
+        ivShopPromotions.setFitHeight(NORMAL_STYLE);
+        ivShopServices.setFitWidth(NORMAL_STYLE);
+        ivShopServices.setFitHeight(NORMAL_STYLE);
+        ivShopPage.setFitWidth(NORMAL_STYLE);
+        ivShopPage.setFitHeight(NORMAL_STYLE);
+        ivLogout.setFitWidth(NORMAL_STYLE);
+        ivLogout.setFitHeight(NORMAL_STYLE);
 
-        imageViewOnPage.setFitWidth(onPageStyle);
-        imageViewOnPage.setFitHeight(onPageStyle);
+        imageViewOnPage.setFitWidth(ON_PAGE_STYLE);
+        imageViewOnPage.setFitHeight(ON_PAGE_STYLE);
     }
 
     @FXML

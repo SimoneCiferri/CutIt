@@ -15,7 +15,7 @@ public class LeftBarViewController {
 
     @FXML
     public void initialize(){
-        System.out.println("LeftBar viewcontroller");
+        
     }
 
     @FXML

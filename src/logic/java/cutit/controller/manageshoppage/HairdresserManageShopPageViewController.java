@@ -11,9 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -21,9 +19,9 @@ public class HairdresserManageShopPageViewController {
 
     private ShopBeanInterface shopBeanFirstUI;
     private ManageShopPageController manageShopPageController;
-    private List<CheckBox> checkBoxList = new ArrayList<>();
-    private List<ImageView> ivList = new ArrayList<>();
-    private Map<Integer, File> imageMap = new HashMap<>();
+    private final List<CheckBox> checkBoxList = new ArrayList<>();
+    private final List<ImageView> ivList = new ArrayList<>();
+    private final Map<Integer, File> imageMap = new HashMap<>();
 
     @FXML
     private Label shopName;

@@ -20,9 +20,9 @@ public class HairdresserManageShopPageViewController2 {
 
     private ShopBeanInterface shopBeanSecondUI;
     private ManageShopPageController manageShopPageController;
-    private List<CheckBox> checkBoxList = new ArrayList<>();
-    private List<ImageView> ivList = new ArrayList<>();
-    private Map<Integer, File> imageMap = new HashMap<>();
+    private final List<CheckBox> checkBoxList = new ArrayList<>();
+    private final List<ImageView> ivList = new ArrayList<>();
+    private final Map<Integer, File> imageMap = new HashMap<>();
 
     @FXML
     private Label lblShopName;
@@ -215,7 +215,7 @@ public class HairdresserManageShopPageViewController2 {
     }
 
     private boolean checkPhoneNumber(){
-        return (!Objects.equals(tfPhoneNumberPrefix.getText(), "") && !Objects.equals(tfPhoneNumberPrefix.getText(), "") &&
+        return (!Objects.equals(tfPhoneNumberPrefix.getText(), "") && !Objects.equals(tfPhoneNumberSuffix.getText(), "") &&
                 TextFieldCheck.isPhoneNumber(tfPhoneNumberPrefix.getText()+tfPhoneNumberSuffix.getText()));
     }
 
