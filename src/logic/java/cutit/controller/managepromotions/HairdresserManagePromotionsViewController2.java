@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,10 @@ public class HairdresserManagePromotionsViewController2 {
     private ShopBeanInterface shopBeanSecondUI;
     private ManagePromotionBeanInterface managePromotionBeansecondUI;
     private ManagePromotionController managePromotionController;
+    private static final String CONNECTION_ERROR_TITLE = "Connection error";
+    private static final String WARNING_TITLE = "Warning";
+    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
+    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5;";
     private static final Double TITLE_FONT_SIZE = 30.0;
     private static final Double NORMAL_LABEL_FONT_SIZE = 14.0;
@@ -58,8 +63,16 @@ public class HairdresserManagePromotionsViewController2 {
                 l.setOnMouseClicked(mouseEvent -> showPromotionInfo(promotionCode, promotionBean.getPromOffValue(), promotionBean.getPromServiceName(), promotionBean.getPromExpireDate().toString()));
                 vbPromotionsInScroll.getChildren().add(l);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (DBConnectionException dbe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (SQLException sqle){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR,CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE );
+            alert.showAndWait();
+        }
+        catch (RecordNotFoundException e){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            alert.showAndWait();
         }
     }
 
@@ -82,8 +95,12 @@ public class HairdresserManagePromotionsViewController2 {
         promotionServices.setMaxSize(180,25);
         try {
             this.managePromotionBeansecondUI = managePromotionController.getAllServices(shopBeanSecondUI);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (DBConnectionException dbe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (SQLException sqle){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR,CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE );
+            alert.showAndWait();
         }
         for(int j = 0; j< managePromotionBeansecondUI.getServiceList().size(); j++){
             promotionServices.getItems().add(managePromotionBeansecondUI.getServiceList().get(j));
@@ -124,8 +141,12 @@ public class HairdresserManagePromotionsViewController2 {
             managePromotionController.removePromotion(this.managePromotionBeansecondUI);
             showPromotions();
             vbAddAndDelete.getChildren().clear();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (DBConnectionException dbe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            alert.showAndWait();
+        } catch (SQLException sqle){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR,CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE );
+            alert.showAndWait();
         }
     }
 
@@ -145,14 +166,15 @@ public class HairdresserManagePromotionsViewController2 {
                         managePromotionController.addPromotion(this.managePromotionBeansecondUI);
                         showPromotions();
                         showPromotionInfo(promotionCode, Integer.valueOf(offValue), serviceName, expireDate);
-                    } catch (DuplicatedRecordException | WrongInputDataException | RecordNotFoundException exception) {
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+                    } catch (DuplicatedRecordException | WrongInputDataException | RecordNotFoundException e) {
+                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
                         alert.showAndWait();
-                    } catch(DBConnectionException dce){
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+                    } catch (DBConnectionException dbe) {
+                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
                         alert.showAndWait();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    } catch (SQLException sqle){
+                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR,CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE );
+                        alert.showAndWait();
                     }
                 }
             } else {

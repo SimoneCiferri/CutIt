@@ -7,6 +7,7 @@ import cutit.bean.HairdresserBeanUQ;
 import cutit.decorator.ViewLayout1;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
+import cutit.exception.RecordNotFoundException;
 import cutit.exception.WrongInputDataException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
@@ -14,6 +15,7 @@ import cutit.utils.TextFieldCheck;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -23,6 +25,10 @@ public class SignUpViewController {
     private CustomerBean customerBeanFirstUI;
     private HairdresserBean hairdresserBeanFirstUI;
     private LoginController loginController;
+    private static final String CONNECTION_ERROR_TITLE = "Connection error";
+    private static final String WARNING_TITLE = "Warning";
+    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
+    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
 
     @FXML
     private TextField tfCustomerName;
@@ -90,14 +96,15 @@ public class SignUpViewController {
                     Facade.getInstance().decorateView(ViewLayout1.LOGIN);
                 }
             }
-        } catch (DuplicatedRecordException | WrongInputDataException exception) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", exception.getMessage());
+        } catch (DuplicatedRecordException | WrongInputDataException e) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
             alert.showAndWait();
-        } catch(DBConnectionException dce){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
         }
     }
 
@@ -118,14 +125,15 @@ public class SignUpViewController {
                     Facade.getInstance().decorateView(ViewLayout1.LOGIN);
                 }
             }
-        } catch (DuplicatedRecordException de) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", de.getMessage());
+        } catch (DuplicatedRecordException e) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
             alert.showAndWait();
-        } catch(DBConnectionException dce){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, "Connection error", "Please check your internet connection.");
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
             alert.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException sqle) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            alert.showAndWait();
         }
     }
 
@@ -148,14 +156,7 @@ public class SignUpViewController {
 
     @FXML
     private void goBack(){
-        try {
             Facade.getInstance().decorateView(ViewLayout1.LOGIN);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
     }
 
 }
