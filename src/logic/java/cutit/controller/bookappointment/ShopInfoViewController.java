@@ -115,7 +115,7 @@ public class ShopInfoViewController {
         if(!Objects.equals(shopBean.getShopPhoneNumber(), "")){
             lShopPhone.setVisible(true);
             lShopPhone.setText(shopBean.getShopPhoneNumber());
-        }setShopVisible();
+        }lShopPhone.setVisible(false);
 
         if(!shopBean.getImages().isEmpty()){
             ivShopProfPhoto.setVisible(true);
@@ -161,9 +161,6 @@ public class ShopInfoViewController {
         }
     }
 
-    private void setShopVisible(){
-        lShopPhone.setVisible(false);
-    }
 
     @FXML
     public boolean bookAppointment() {
