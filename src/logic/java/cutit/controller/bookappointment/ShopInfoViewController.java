@@ -115,9 +115,8 @@ public class ShopInfoViewController {
         if(!Objects.equals(shopBean.getShopPhoneNumber(), "")){
             lShopPhone.setVisible(true);
             lShopPhone.setText(shopBean.getShopPhoneNumber());
-        }else{
-            setShopVisible();
-        }
+        }setShopVisible();
+
         if(!shopBean.getImages().isEmpty()){
             ivShopProfPhoto.setVisible(true);
             lblPhoto.setVisible(true);
