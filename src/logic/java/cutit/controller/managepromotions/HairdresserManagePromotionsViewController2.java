@@ -143,37 +143,43 @@ public class HairdresserManagePromotionsViewController2 {
         }
     }
 
-    private void addPromotion(String promotionCodeAndOffValue, String expireDate, String serviceName){
-        if(!Objects.equals(promotionCodeAndOffValue, "")){
+    private void addPromotion(String promotionCodeAndOffValue, String expireDate, String serviceName) {
+        if (!Objects.equals(promotionCodeAndOffValue, "") && checkPromotionInput(promotionCodeAndOffValue)) {
             StringTokenizer st = new StringTokenizer(promotionCodeAndOffValue, "-");
-            if(st.countTokens() == 2){
-                String promotionCode = st.nextToken();
-                String offValue = st.nextToken();
-                if(TextFieldCheck.isInteger(offValue, "Off value field must be an integer number (5, 10, 25...).") && TextFieldCheck.isDateFormat(expireDate, "Expire date is not correct. Please follow the syntax yyyy-MM-dd")){
-                    managePromotionBeanSecondUI.setPromotionCode(promotionCode);
-                    managePromotionBeanSecondUI.setPromOffValue(Integer.valueOf(offValue));
-                    managePromotionBeanSecondUI.setPromExpireDate(LocalDate.parse(expireDate));
-                    managePromotionBeanSecondUI.setPromServiceName(serviceName);
-                    managePromotionBeanSecondUI.setPromShopName(shopBeanSecondUI.getShopName());
-                    try {
-                        managePromotionController.addPromotion(this.managePromotionBeanSecondUI);
-                        showPromotions();
-                        showPromotionInfo(promotionCode, Integer.valueOf(offValue), serviceName, expireDate);
-                    } catch (DuplicatedRecordException | WrongInputDataException | RecordNotFoundException e) {
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
-                        alert.showAndWait();
-                    } catch (DBConnectionException dbe) {
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
-                        alert.showAndWait();
-                    } catch (SQLException sqle){
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
-                        alert.showAndWait();
-                    }
+            String promotionCode = st.nextToken();
+            String offValue = st.nextToken();
+            if (TextFieldCheck.isInteger(offValue, "Off value field must be an integer number (5, 10, 25...).") && TextFieldCheck.isDateFormat(expireDate, "Expire date is not correct. Please follow the syntax yyyy-MM-dd")) {
+                managePromotionBeanSecondUI.setPromotionCode(promotionCode);
+                managePromotionBeanSecondUI.setPromOffValue(Integer.valueOf(offValue));
+                managePromotionBeanSecondUI.setPromExpireDate(LocalDate.parse(expireDate));
+                managePromotionBeanSecondUI.setPromServiceName(serviceName);
+                managePromotionBeanSecondUI.setPromShopName(shopBeanSecondUI.getShopName());
+                try {
+                    managePromotionController.addPromotion(this.managePromotionBeanSecondUI);
+                    showPromotions();
+                    showPromotionInfo(promotionCode, Integer.valueOf(offValue), serviceName, expireDate);
+                } catch (DuplicatedRecordException | WrongInputDataException | RecordNotFoundException e) {
+                    Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
+                    alert.showAndWait();
+                } catch (DBConnectionException dbe) {
+                    Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
+                    alert.showAndWait();
+                } catch (SQLException sqle) {
+                    Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
+                    alert.showAndWait();
                 }
-            } else {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, "Information", "Not Panic!", "Input is not correct. Please follow the syntax ' Promotion Code-Off Value '");
-                alert.showAndWait();
             }
+        }
+    }
+
+    private boolean checkPromotionInput(String promotionInput){
+        StringTokenizer st = new StringTokenizer(promotionInput, "-");
+        if(st.countTokens() == 2){
+            return true;
+        }else{
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.INFORMATION, ExceptionText.getInformationTitle(), "Not Panic!", "Input is not correct. Please follow the syntax ' Promotion Code-Off Value '");
+            alert.showAndWait();
+            return false;
         }
     }
 
