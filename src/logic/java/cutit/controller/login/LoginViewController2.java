@@ -31,12 +31,6 @@ public class LoginViewController2 {
     private CustomerBean customerBeanSecondUI;
     private HairdresserBean hairdresserBeanSecondUI;
     private ShopBeanInterface shopBeanSecondUI;
-    private static final String CONNECTION_ERROR_TITLE = "Connection error";
-    private static final String WARNING_TITLE = "Warning";
-    private static final String IO_ERROR_TITLE = "Error";
-    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
-    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
-    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
     @FXML
     private TextField tfUsernameLogin;
@@ -112,16 +106,16 @@ public class LoginViewController2 {
                     }
                 }
             } catch (RecordNotFoundException | WrongCredentialsException e) {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
                 alert.showAndWait();
             } catch(DBConnectionException dbe){
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
                 alert.showAndWait();
             } catch (SQLException sqle) {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
                 alert.showAndWait();
             } catch (IOException ioe) {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, IO_ERROR_TITLE, IO_ERROR_MESSAGE);
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getIoErrorTitle(), ExceptionText.getIoErrorMessage());
                 alert.showAndWait();
             }
         }
@@ -156,13 +150,13 @@ public class LoginViewController2 {
                 }
             }
         } catch (DuplicatedRecordException | WrongInputDataException e) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
             alert.showAndWait();
         } catch(DBConnectionException dbe){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
         } catch (SQLException sqle) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
     }
@@ -184,7 +178,7 @@ public class LoginViewController2 {
     private boolean checkNameAndSurname(String nameAndSurname) {
         StringTokenizer st = new StringTokenizer(nameAndSurname, "-");
         if(st.countTokens() != 2){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, "Invalid Name or Surname. Please follow the syntax ' Name-Surname '");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), "Invalid Name or Surname. Please follow the syntax ' Name-Surname '");
             alert.showAndWait();
         }
         return st.countTokens() == 2;
@@ -226,13 +220,13 @@ public class LoginViewController2 {
                 }
             }
         } catch (DuplicatedRecordException e) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
             alert.showAndWait();
         } catch(DBConnectionException dbe){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
         } catch (SQLException sqle) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
     }
