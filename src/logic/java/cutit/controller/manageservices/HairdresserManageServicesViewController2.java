@@ -115,38 +115,43 @@ public class HairdresserManageServicesViewController2 {
         }
     }
 
-    private void addService(TextField serviceData){
-        if (!Objects.equals(serviceData.getText(), "")){
+    private void addService(TextField serviceData) {
+        if (!Objects.equals(serviceData.getText(), "") && checkServiceInput(serviceData.getText())) {
             StringTokenizer st = new StringTokenizer(serviceData.getText(), "-");
-            if(st.countTokens() == 2) {
-                String name = st.nextToken();
-                String price = st.nextToken();
-                if(TextFieldCheck.isNumeric(price, "Input is not correct. Please follow the syntax ' Name-Price '")){
-                    manageServicesBean.setServiceName(name);
-                    manageServicesBean.setServicePrice(Float.valueOf(price));
-                    manageServicesBean.setServiceShopName(shopBeanSecondUI.getShopName());
-                    try {
-                        manageServicesController.addService(manageServicesBean);
-                        showServices();
-                        showServiceInfo(name, Float.valueOf(price));
-                    } catch (DuplicatedRecordException e) {
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
-                        alert.showAndWait();
-                    } catch(DBConnectionException dbe){
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
-                        alert.showAndWait();
-                    } catch (SQLException sqle) {
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
-                        alert.showAndWait();
-                    }
+            String name = st.nextToken();
+            String price = st.nextToken();
+            if (TextFieldCheck.isNumeric(price, "Input is not correct. Please follow the syntax ' Name-Price '")) {
+                manageServicesBean.setServiceName(name);
+                manageServicesBean.setServicePrice(Float.valueOf(price));
+                manageServicesBean.setServiceShopName(shopBeanSecondUI.getShopName());
+                try {
+                    manageServicesController.addService(manageServicesBean);
+                    showServices();
+                    showServiceInfo(name, Float.valueOf(price));
+                } catch (DuplicatedRecordException e) {
+                    Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+                    alert.showAndWait();
+                } catch (DBConnectionException dbe) {
+                    Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+                    alert.showAndWait();
+                } catch (SQLException sqle) {
+                    Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+                    alert.showAndWait();
                 }
-            } else {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, "Not Panic!", "Input is not correct. Please follow the syntax ' Name-Price '");
-                alert.showAndWait();
             }
         }
     }
 
+    private boolean checkServiceInput(String serviceInput){
+        StringTokenizer st = new StringTokenizer(serviceInput, "-");
+        if(st.countTokens() == 2){
+            return true;
+        }else{
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, "Not Panic!", "Input is not correct. Please follow the syntax ' Name-Price '");
+            alert.showAndWait();
+            return false;
+        }
+    }
 
     public void fillView(ShopBeanInterface shopBeanSecondUI){
         this.shopBeanSecondUI = shopBeanSecondUI;
