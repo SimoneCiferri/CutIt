@@ -109,20 +109,7 @@ public class ShopInfoViewController {
         } else {
             lShopPhone.setText("Phone number not available");
         }
-        if(!shopBean.getImages().isEmpty()){
-            ivShopProfPhoto.setVisible(true);
-            lblPhoto.setVisible(true);
-            vboxPhoto.setVisible(true);
-            for(int i = 0; i< shopBean.getImages().size(); i++){
-                if(i==0){
-                    ivShopProfPhoto.setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
-                }
-                ivList.get(i).setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
-            }
-        } else {
-            lblPhoto.setVisible(false);
-            vboxPhoto.setVisible(false);
-        }
+        setImages();
         if(Objects.equals(shopBean.getShopAddress(), "")){
             btnMaps.setDisable(true);
         }
@@ -150,6 +137,23 @@ public class ShopInfoViewController {
         }else {
             lTitleEmployee.setVisible(false);
             lEmployee.setVisible(false);
+        }
+    }
+
+    private void setImages(){
+        if(!shopBean.getImages().isEmpty()){
+            ivShopProfPhoto.setVisible(true);
+            lblPhoto.setVisible(true);
+            vboxPhoto.setVisible(true);
+            for(int i = 0; i< shopBean.getImages().size(); i++){
+                if(i==0){
+                    ivShopProfPhoto.setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
+                }
+                ivList.get(i).setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
+            }
+        } else {
+            lblPhoto.setVisible(false);
+            vboxPhoto.setVisible(false);
         }
     }
 
