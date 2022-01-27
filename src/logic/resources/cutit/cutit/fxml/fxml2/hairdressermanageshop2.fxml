@@ -64,13 +64,13 @@
                            </font></Label>
                         <VBox alignment="CENTER_LEFT" prefHeight="206.0" prefWidth="100.0" spacing="10.0">
                            <children>
-                              <CheckBox fx:id="cbMon" mnemonicParsing="false" text="Monday" />
-                              <CheckBox fx:id="cbTue" mnemonicParsing="false" text="Tuesday" />
-                              <CheckBox fx:id="cbWed" mnemonicParsing="false" text="Wednesday" />
-                              <CheckBox fx:id="cbThu" mnemonicParsing="false" text="Thursday" />
-                              <CheckBox fx:id="cbFri" mnemonicParsing="false" text="Friday" />
-                              <CheckBox fx:id="cbSat" mnemonicParsing="false" text="Saturday" />
-                              <CheckBox fx:id="cbSun" mnemonicParsing="false" text="Sunday" />
+                              <CheckBox fx:id="cbMonday" mnemonicParsing="false" text="Monday" />
+                              <CheckBox fx:id="cbTuesday" mnemonicParsing="false" text="Tuesday" />
+                              <CheckBox fx:id="cbWednesday" mnemonicParsing="false" text="Wednesday" />
+                              <CheckBox fx:id="cbThursday" mnemonicParsing="false" text="Thursday" />
+                              <CheckBox fx:id="cbFriday" mnemonicParsing="false" text="Friday" />
+                              <CheckBox fx:id="cbSaturday" mnemonicParsing="false" text="Saturday" />
+                              <CheckBox fx:id="cbSunday" mnemonicParsing="false" text="Sunday" />
                            </children>
                            <HBox.margin>
                               <Insets />
@@ -141,22 +141,22 @@
                      </font></Label>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="595.0" spacing="15.0">
                      <children>
-                        <ImageView fx:id="iv1" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView1" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv2" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView2" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv3" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView3" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv4" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView4" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
@@ -165,22 +165,22 @@
                   </HBox>
                   <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="593.0" spacing="20.0">
                      <children>
-                        <ImageView fx:id="iv5" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView5" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv6" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView6" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv7" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView7" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="iv8" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageView8" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#uploadImage" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../files/file_upload.png" />
                            </image>

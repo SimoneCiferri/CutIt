@@ -42,10 +42,6 @@ public class LeftBarCustomerViewController {
     private ImageView ivLogout;
 
     @FXML
-    public void initialize(){
-    }
-
-    @FXML
     public boolean homePage() {
         setOnPageStyle(ivHome);
         Facade2.getInstance().decorateView2(ViewLayout2.HOME2);

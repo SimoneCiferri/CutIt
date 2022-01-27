@@ -95,10 +95,6 @@ public class LeftBarHairdresserViewController {
         return true;
     }
 
-    @FXML
-    public void initialize(){
-    }
-
     public void startBean(ShopBeanInterface shopBeanSecondUI){
         this.shopBeanSecondUI = shopBeanSecondUI;
         shopAppointmentsPage();

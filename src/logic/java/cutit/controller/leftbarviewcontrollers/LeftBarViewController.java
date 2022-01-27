@@ -14,11 +14,6 @@ public class LeftBarViewController {
     private VBox vbLeftBar;
 
     @FXML
-    public void initialize(){
-        
-    }
-
-    @FXML
     public void closeIV(){
         Stage stage = (Stage)vbLeftBar.getScene().getWindow();
         stage.close();

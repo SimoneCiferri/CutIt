@@ -86,10 +86,6 @@ public class Facade2 {
                 CustomerFavouritesShopView2 customerFavouritesShopView2 = new CustomerFavouritesShopView2(startView2);
                 viewMap.put(layout, customerFavouritesShopView2);
             }
-            case CUSTOMERPROMOTIONINFO -> {
-                CustomerPromotionInfoView2 customerPromotionInfoView2 = new CustomerPromotionInfoView2(startView2);
-                viewMap.put(layout, customerPromotionInfoView2);
-            }
             case CUSTOMERPROMOTION -> {
                 CustomerPromotionView2 customerPromotionView2 = new CustomerPromotionView2(startView2);
                 viewMap.put(layout, customerPromotionView2);
@@ -109,10 +105,6 @@ public class Facade2 {
             case HAIRDRESSERMANAGESHOPPAGE -> {
                 HairdresserManageShopPageView2 hairdresserManageShopPageView2 = new HairdresserManageShopPageView2(startView2);
                 viewMap.put(layout, hairdresserManageShopPageView2);
-            }
-            case SHOPINFOVIEW2 -> {
-                ShopInfoView2 shopInfoView2 = new ShopInfoView2(startView2);
-                viewMap.put(layout, shopInfoView2);
             }
 
         }

@@ -43,25 +43,25 @@ public class HairdresserManageShopPageViewController2 {
     private TextField tfPhoneNumberSuffix;
 
     @FXML
-    private CheckBox cbMon;
+    private CheckBox cbMonday;
 
     @FXML
-    private CheckBox cbTue;
+    private CheckBox cbTuesday;
 
     @FXML
-    private CheckBox cbWed;
+    private CheckBox cbWednesday;
 
     @FXML
-    private CheckBox cbThu;
+    private CheckBox cbThursday;
 
     @FXML
-    private CheckBox cbFri;
+    private CheckBox cbFriday;
 
     @FXML
-    private CheckBox cbSat;
+    private CheckBox cbSaturday;
 
     @FXML
-    private CheckBox cbSun;
+    private CheckBox cbSunday;
 
     @FXML
     private TextField tfOpenTime;
@@ -76,37 +76,34 @@ public class HairdresserManageShopPageViewController2 {
     private TextArea taEmployee;
 
     @FXML
-    private ImageView iv1;
+    private ImageView imageView1;
 
     @FXML
-    private ImageView iv2;
+    private ImageView imageView2;
 
     @FXML
-    private ImageView iv3;
+    private ImageView imageView3;
 
     @FXML
-    private ImageView iv4;
+    private ImageView imageView4;
 
     @FXML
-    private ImageView iv5;
+    private ImageView imageView5;
 
     @FXML
-    private ImageView iv6;
+    private ImageView imageView6;
 
     @FXML
-    private ImageView iv7;
+    private ImageView imageView7;
 
     @FXML
-    private ImageView iv8;
-
-    @FXML
-    private Button btnUpdateShopData;
+    private ImageView imageView8;
 
     @FXML
     public void initialize(){
         manageShopPageController = new ManageShopPageController();
-        checkBoxList = Arrays.asList(cbMon, cbTue, cbWed, cbThu, cbFri, cbSat, cbSun);
-        ivList = Arrays.asList(iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8);
+        checkBoxList = Arrays.asList(cbMonday, cbTuesday, cbWednesday, cbThursday, cbFriday, cbSaturday, cbSunday);
+        ivList = Arrays.asList(imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8);
     }
 
     public void fillView(ShopBeanInterface shopBean){
@@ -244,30 +241,30 @@ public class HairdresserManageShopPageViewController2 {
         File file = fileChooser.showOpenDialog(stage);
         if(file != null){
             Image image = new Image(String.valueOf(file.toURI()));
-            if (mouseEvent.getSource().equals(iv1)) {
+            if (mouseEvent.getSource().equals(imageView1)) {
                 imageMap.put(1, file);
-                iv1.setImage(image);
-            }else if(mouseEvent.getSource().equals(iv2)){
+                imageView1.setImage(image);
+            }else if(mouseEvent.getSource().equals(imageView2)){
                 imageMap.put(2, file);
-                iv2.setImage(image);
-            }else if(mouseEvent.getSource().equals(iv3)){
+                imageView2.setImage(image);
+            }else if(mouseEvent.getSource().equals(imageView3)){
                 imageMap.put(3, file);
-                iv3.setImage(image);
-            }else if(mouseEvent.getSource().equals(iv4)){
+                imageView3.setImage(image);
+            }else if(mouseEvent.getSource().equals(imageView4)){
                 imageMap.put(4, file);
-                iv4.setImage(image);
-            }else if(mouseEvent.getSource().equals(iv5)){
+                imageView4.setImage(image);
+            }else if(mouseEvent.getSource().equals(imageView5)){
                 imageMap.put(5, file);
-                iv5.setImage(image);
-            }else if(mouseEvent.getSource().equals(iv6)){
+                imageView5.setImage(image);
+            }else if(mouseEvent.getSource().equals(imageView6)){
                 imageMap.put(6, file);
-                iv6.setImage(image);
-            }else if(mouseEvent.getSource().equals(iv7)){
+                imageView6.setImage(image);
+            }else if(mouseEvent.getSource().equals(imageView7)){
                 imageMap.put(7, file);
-                iv7.setImage(image);
-            }else if(mouseEvent.getSource().equals(iv8)){
+                imageView7.setImage(image);
+            }else if(mouseEvent.getSource().equals(imageView8)){
                 imageMap.put(8, file);
-                iv8.setImage(image);
+                imageView8.setImage(image);
             }
         }
     }
