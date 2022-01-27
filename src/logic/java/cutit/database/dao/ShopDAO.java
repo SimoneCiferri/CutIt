@@ -121,7 +121,7 @@ public class ShopDAO {
     }
 
 
-    private static List<File> getImages(String shopName) throws DBConnectionException, SQLException, IOException{
+    private static List<File> getImages(String shopName) throws DBConnectionException, SQLException {
         List<File> images = new ArrayList<>();
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -133,17 +133,36 @@ public class ShopDAO {
             do {
                 byte[] image = rs.getBytes(3);
                 File file = new File("src/logic/resources/cutit/cutit/tmpfiles/image" + i + shopName + ".tmp");
-                OutputStream out = new FileOutputStream(file);
-                out.write(image);
-                images.add(file);
-                out.close();
-                i++;
+                try(OutputStream out = new FileOutputStream(file)) {
+                    out.write(image);
+                    images.add(file);
+                    i++;
+                } catch (IOException e){
+                    i++;
+                }
             } while (rs.next());
             rs.close();
             stm.close();
         }
         return images;
     }
+
+    /*private void writeImage(File file, byte[] image){
+        try(OutputStream out = new FileOutputStream(file)) {
+            out.write(image);
+            images.add(file);
+        } catch (IOException e){
+
+        }
+
+        byte[] image = rs.getBytes(3);
+        File file = new File("src/logic/resources/cutit/cutit/tmpfiles/image" + i + shopName + ".tmp");
+        OutputStream out = new FileOutputStream(file);
+        out.write(image);
+        images.add(file);
+        out.close();
+        i++;
+    }*/
 
     public static void updateShop(Shop shop) throws DBConnectionException, SQLException, FileNotFoundException{
         Connection conn = DBConnection.getInstance().getConnection();
