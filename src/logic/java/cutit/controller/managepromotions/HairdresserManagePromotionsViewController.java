@@ -3,10 +3,7 @@ package cutit.controller.managepromotions;
 import cutit.bean.ManagePromotionBeanInterface;
 import cutit.bean.ManagePromotionBean;
 import cutit.bean.ShopBeanInterface;
-import cutit.exception.DBConnectionException;
-import cutit.exception.DuplicatedRecordException;
-import cutit.exception.RecordNotFoundException;
-import cutit.exception.WrongInputDataException;
+import cutit.exception.*;
 import cutit.factory.AlertFactory;
 import cutit.utils.TextFieldCheck;
 import cutit.factory.JavaFXNodeFactory;
@@ -28,10 +25,6 @@ public class HairdresserManagePromotionsViewController {
     private ShopBeanInterface shopBeanFirstUI;
     private ManagePromotionBeanInterface managePromotionBeanFirstUI;
     private ManagePromotionController managePromotionController;
-    private static final String CONNECTION_ERROR_TITLE = "Connection error";
-    private static final String WARNING_TITLE = "Warning";
-    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
-    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private static final Double TITLE_FONT_SIZE = 30.0;
     private static final Double NORMAL_LABEL_FONT_SIZE = 14.0;
@@ -64,14 +57,14 @@ public class HairdresserManagePromotionsViewController {
                 vbInScrollHProm.getChildren().add(l);
             }
         } catch (DBConnectionException dbe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
         } catch (SQLException sqle){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR,CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE );
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
         catch (RecordNotFoundException e){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
             alert.showAndWait();
         }
     }
@@ -98,10 +91,10 @@ public class HairdresserManagePromotionsViewController {
         try {
             this.managePromotionBeanFirstUI = managePromotionController.getAllServices(shopBeanFirstUI);
         } catch (DBConnectionException dbe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
         } catch (SQLException sqle){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
         for(int j = 0; j< managePromotionBeanFirstUI.getServiceList().size(); j++){
@@ -138,13 +131,13 @@ public class HairdresserManagePromotionsViewController {
                 managePromotionController.addPromotion(this.managePromotionBeanFirstUI);
                 showHairProm();
             } catch (DuplicatedRecordException | WrongInputDataException | RecordNotFoundException e) {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
                 alert.showAndWait();
             } catch(DBConnectionException dbe){
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
                 alert.showAndWait();
             } catch (SQLException sqle) {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
                 alert.showAndWait();
             }
         }
@@ -179,10 +172,10 @@ public class HairdresserManagePromotionsViewController {
         try {
             managePromotionController.removePromotion(this.managePromotionBeanFirstUI);
         } catch (DBConnectionException dbe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
         } catch (SQLException sqle){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
         showHairProm();
