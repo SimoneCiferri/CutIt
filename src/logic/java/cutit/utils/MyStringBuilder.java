@@ -8,35 +8,28 @@ public class MyStringBuilder {
     private MyStringBuilder(){}
 
     public static String getStringFromOpenDaysMap(Map<Integer,Boolean> opendays){
-        StringBuilder opentTimeString = new StringBuilder();
+        StringBuilder openTimeString = new StringBuilder();
         for(int i=1;i<opendays.size()+1;i++){
             if(Boolean.TRUE.equals(opendays.get(i))){
-                switch (i) {
-                    case 1 -> {
-                        opentTimeString.append("Monday").append("\n");
-                    }
-                    case 2 -> {
-                        opentTimeString.append("Tuesday").append("\n");
-                    }
-                    case 3 -> {
-                        opentTimeString.append("Wednesday").append("\n");
-                    }
-                    case 4 -> {
-                        opentTimeString.append("Thursday").append("\n");
-                    }
-                    case 5 -> {
-                        opentTimeString.append("Friday").append("\n");
-                    }
-                    case 6 -> {
-                        opentTimeString.append("Saturday").append("\n");
-                    }
-                    case 7 -> {
-                        opentTimeString.append("Sunday").append("\n");
-                    }
+                if(i == 1){
+                    openTimeString.append("Monday");
+                } else if(i == 2){
+                    openTimeString.append("Tuesday");
+                } else if(i == 3){
+                    openTimeString.append("Wednesday");
+                } else if(i == 4){
+                    openTimeString.append("Thursday");
+                } else if(i == 5){
+                    openTimeString.append("Friday");
+                } else if(i == 6){
+                    openTimeString.append("Saturday");
+                } else{
+                    openTimeString.append("Sunday");
                 }
+                openTimeString.append("\n");
             }
         }
-        return opentTimeString.toString();
+        return openTimeString.toString();
     }
 
     public  static String getStringFromServicesStringList(List<String> allServices){

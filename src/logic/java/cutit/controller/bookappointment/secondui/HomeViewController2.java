@@ -16,9 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
-
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
