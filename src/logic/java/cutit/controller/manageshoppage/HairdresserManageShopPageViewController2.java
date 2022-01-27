@@ -20,8 +20,8 @@ public class HairdresserManageShopPageViewController2 {
 
     private ShopBeanInterface shopBeanSecondUI;
     private ManageShopPageController manageShopPageController;
-    private final List<CheckBox> checkBoxList = new ArrayList<>();
-    private final List<ImageView> ivList = new ArrayList<>();
+    private List<CheckBox> checkBoxList;
+    private List<ImageView> ivList;
     private final Map<Integer, File> imageMap = new HashMap<>();
 
     @FXML
@@ -105,21 +105,8 @@ public class HairdresserManageShopPageViewController2 {
     @FXML
     public void initialize(){
         manageShopPageController = new ManageShopPageController();
-        checkBoxList.add(cbMon);
-        checkBoxList.add(cbTue);
-        checkBoxList.add(cbWed);
-        checkBoxList.add(cbThu);
-        checkBoxList.add(cbFri);
-        checkBoxList.add(cbSat);
-        checkBoxList.add(cbSun);
-        ivList.add(iv1);
-        ivList.add(iv2);
-        ivList.add(iv3);
-        ivList.add(iv4);
-        ivList.add(iv5);
-        ivList.add(iv6);
-        ivList.add(iv7);
-        ivList.add(iv8);
+        checkBoxList = Arrays.asList(cbMon, cbTue, cbWed, cbThu, cbFri, cbSat, cbSun);
+        ivList = Arrays.asList(iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8);
     }
 
     public void fillView(ShopBeanInterface shopBean){

@@ -11,6 +11,7 @@ import cutit.exception.DBConnectionException;
 import cutit.exception.RecordNotFoundException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
+import cutit.utils.MyStringBuilder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -22,6 +23,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -104,14 +106,7 @@ public class ShopInfoViewController {
         shopBean = new ShopBean();
         bookAppointmentController = new BookAppointmentController();
         getLocationDirectionsController = new GetLocationDirectionsController();
-        ivList.add(ivShop1);
-        ivList.add(ivShop2);
-        ivList.add(ivShop3);
-        ivList.add(ivShop4);
-        ivList.add(ivShop5);
-        ivList.add(ivShop6);
-        ivList.add(ivShop7);
-        ivList.add(ivShop8);
+        ivList = Arrays.asList(ivShop1, ivShop2, ivShop3, ivShop4, ivShop5, ivShop6, ivShop7, ivShop8);
         return true;
     }
 
@@ -145,52 +140,25 @@ public class ShopInfoViewController {
             lShopDescription.setText(shopBean.getShopDescription());
         }
         Map<Integer,Boolean> opendays = shopBean.getShopOpenDays();
-        StringBuilder openTimes = new StringBuilder();
-        for(int i=1;i<opendays.size()+1;i++){
-           if(Boolean.TRUE.equals(opendays.get(i))){
-               switch (i) {
-                   case 1 -> {
-                       openTimes.append("Monday").append("\n");
-                   }
-                   case 2 -> {
-                       openTimes.append("Tuesday").append("\n");
-                   }
-                   case 3 -> {
-                       openTimes.append("Wednesday").append("\n");
-                   }
-                   case 4 -> {
-                       openTimes.append("Thursday").append("\n");
-                   }
-                   case 5 -> {
-                       openTimes.append("Friday").append("\n");
-                   }
-                   case 6 -> {
-                       openTimes.append("Saturday").append("\n");
-                   }
-                   case 7 -> {
-                       openTimes.append("Sunday").append("\n");
-                   }
-               }
-           }
-        }
-        if(!(openTimes.toString().equals(""))){
-            openTimes.append(shopBean.getShopOpenTime()).append(" - ").append(shopBean.getShopCloseTime());
-            lShopOpenTime.setText(openTimes.toString());
+        String openTimes = MyStringBuilder.getStringFromOpenDaysMap(opendays);
+        if(!(openTimes.equals(""))){
+            openTimes =  openTimes + (shopBean.getShopOpenTime() + " - " + shopBean.getShopCloseTime());
+            lShopOpenTime.setText(openTimes);
         } else {
             lShopOpenTime.setText("Shop is closed.");
         }
         if(!shopBean.getServices().isEmpty()){
             List<String> allServices = shopBean.getServices();
-            StringBuilder servicesLabel = new StringBuilder();
-            for (String allService : allServices) {
-                servicesLabel.append(allService).append("\n");
-            }
-            lblServiceList.setText(servicesLabel.toString());
+            String servicesLabel = MyStringBuilder.getStringFromServicesStringList(allServices);
+            lblServiceList.setText(servicesLabel);
         }
         if(!Objects.equals(shopBean.getShopEmployee(), "")){
             lTitleEmployee.setVisible(true);
             lEmployee.setVisible(true);
             lEmployee.setText(shopBean.getShopEmployee());
+        }else {
+            lTitleEmployee.setVisible(false);
+            lEmployee.setVisible(false);
         }
     }
 

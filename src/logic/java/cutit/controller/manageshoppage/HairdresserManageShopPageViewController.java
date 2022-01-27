@@ -22,14 +22,14 @@ public class HairdresserManageShopPageViewController {
 
     private ShopBeanInterface shopBeanFirstUI;
     private ManageShopPageController manageShopPageController;
+    private List<CheckBox> checkBoxList = new ArrayList<>();
+    private List<ImageView> ivList = new ArrayList<>();
     private static final String CONNECTION_ERROR_TITLE = "Connection error";
     private static final String WARNING_TITLE = "Warning";
     private static final String ERROR_TITLE = "Error";
     private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
     private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
     private static final String FILE_NOT_FOUND_ERROR_MESSAGE = "An error occurred handling some files. Please try again.";
-    private final List<CheckBox> checkBoxList = new ArrayList<>();
-    private final List<ImageView> ivList = new ArrayList<>();
     private final Map<Integer, File> imageMap = new HashMap<>();
 
     @FXML
@@ -104,13 +104,7 @@ public class HairdresserManageShopPageViewController {
     @FXML
     public void initialize(){
         manageShopPageController = new ManageShopPageController();
-        checkBoxList.add(cbMon);
-        checkBoxList.add(cbTue);
-        checkBoxList.add(cbWed);
-        checkBoxList.add(cbThu);
-        checkBoxList.add(cbFri);
-        checkBoxList.add(cbSat);
-        checkBoxList.add(cbSun);
+        checkBoxList = Arrays.asList(cbMon, cbTue, cbWed, cbThu, cbFri, cbSat, cbSun);
         List<LocalTime> timeList = new ArrayList<>();
         LocalTime l;
         for(int i = 7; i<=21;i++){
@@ -126,14 +120,7 @@ public class HairdresserManageShopPageViewController {
             cbOpenTime.getItems().add(s);
             cbCloseTime.getItems().add(s);
         }
-        ivList.add(iv1);
-        ivList.add(iv2);
-        ivList.add(iv3);
-        ivList.add(iv4);
-        ivList.add(iv5);
-        ivList.add(iv6);
-        ivList.add(iv7);
-        ivList.add(iv8);
+        ivList = Arrays.asList(iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8);
     }
 
     @FXML

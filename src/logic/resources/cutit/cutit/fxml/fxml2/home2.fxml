@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -12,8 +13,8 @@
             <Insets bottom="10.0" top="10.0" />
          </VBox.margin>
          <children>
-            <TextField layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="174.0" promptText="Shop..." />
-            <TextField layoutX="205.0" layoutY="23.0" prefHeight="25.0" prefWidth="174.0" promptText="Where..." />
+            <TextField fx:id="tfSearchByName" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="174.0" promptText="Shop..." />
+            <TextField fx:id="tfSearchByPlace" layoutX="205.0" layoutY="23.0" prefHeight="25.0" prefWidth="174.0" promptText="Where..." />
             <Button layoutX="402.0" layoutY="23.0" mnemonicParsing="false" text="Search" />
          </children>
       </AnchorPane>
@@ -21,7 +22,7 @@
          <items>
             <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="450.0" style="-fx-background-color: transparent;">
                <content>
-                  <VBox fx:id="vbAllShopsInScroll" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="445.0" spacing="15.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+                  <VBox fx:id="vbAllShopsInScroll" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="445.0" spacing="15.0" style="-fx-background-color: transparent;">
                      <padding>
                         <Insets top="15.0" />
                      </padding>
@@ -37,6 +38,133 @@
                               <Font size="30.0" />
                            </font>
                         </Label>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="720.0">
+                           <children>
+                              <ImageView fx:id="ivShopPhotoInScroll" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../files/blank-profile-picture.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="601.0">
+                                 <children>
+                                    <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="230.0" spacing="15.0">
+                                       <children>
+                                          <Button fx:id="btnBookAppointment" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="180.0" text="Book Appointment" />
+                                          <Button fx:id="btnMaps" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="180.0" text="Maps" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <Label fx:id="lblShopDescriptionInScroll" style="-fx-border-color: black; -fx-border-radius: 5;" text="Description">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin></Label>
+                        <Label fx:id="lblShopAddressInScroll" style="-fx-border-color: black; -fx-border-radius: 5;" text="Address">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin></Label>
+                        <Label fx:id="lblShopPhoneNumberInScroll" style="-fx-border-color: black; -fx-border-radius: 5;" text="Phone Number">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin></Label>
+                        <Label text="Open Time">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" top="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lblOpenTimeInScroll" style="-fx-border-color: black; -fx-border-radius: 5;" text="Label">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Services">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" top="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="lblServicesInScroll" style="-fx-border-color: black; -fx-border-radius: 5;" text="Label">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="lblShopEmployeeInScroll" style="-fx-border-color: black; -fx-border-radius: 5;" text="Employee">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin></Label>
+                        <Label fx:id="lblPhoto" text="Photo" underline="true">
+                           <padding>
+                              <Insets right="10.0" top="10.0" />
+                           </padding>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin></Label>
+                        <VBox fx:id="vbPhoto" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="730.0" style="-fx-border-color: black; -fx-border-radius: 5;">
+                           <children>
+                              <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="730.0" spacing="10.0">
+                                 <children>
+                                    <ImageView fx:id="ivPhoto1" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="ivPhoto2" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="ivPhoto3" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="ivPhoto4" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="730.0" spacing="10.0">
+                                 <children>
+                                    <ImageView fx:id="ivPhoto5" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="ivPhoto6" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="ivPhoto7" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="ivPhoto8" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
                      </children>
                      <padding>
                         <Insets left="10.0" />
