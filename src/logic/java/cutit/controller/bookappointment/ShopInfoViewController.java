@@ -116,7 +116,7 @@ public class ShopInfoViewController {
             lShopPhone.setVisible(true);
             lShopPhone.setText(shopBean.getShopPhoneNumber());
         }else{
-            lShopPhone.setVisible(false);
+            setShopVisible();
         }
         if(!shopBean.getImages().isEmpty()){
             ivShopProfPhoto.setVisible(true);
@@ -160,6 +160,10 @@ public class ShopInfoViewController {
             lTitleEmployee.setVisible(false);
             lEmployee.setVisible(false);
         }
+    }
+
+    private void setShopVisible(){
+        lShopPhone.setVisible(false);
     }
 
     @FXML
