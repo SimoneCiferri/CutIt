@@ -23,48 +23,12 @@ public class LogWriter {
     }
 
     public void writeInLog(String infoLog) {
-        BufferedReader rLog = null;
-        BufferedWriter wLog = null;
-        try {
-            File f = new File(LOG);
-            if ((f.exists() || f.createNewFile())) {
-                rLog = new BufferedReader(new FileReader(LOG));
-                String s;
-                StringBuilder s1 = new StringBuilder();
-                while ((s = rLog.readLine()) != null) {
-                    s1.append(s).append("\n");
-                }
-
-                wLog = new BufferedWriter(new FileWriter(LOG));
-                wLog.write(s1 + "\n" + currentDate() + "\n" + infoLog);
-
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            //in qualche modo avviso che non posso scrivere il log dei file.
-        } finally {
-            try {
-                assert rLog != null;
-                rLog.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                assert wLog != null;
-                wLog.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-    public void writeInLogTWR(String infoLog) {
         if(logIsEnabled){
             try {
                 File f = new File(LOG);
                 if ((f.exists() || f.createNewFile())) {
-                    tryWrite(infoLog);
+                    String oldLog = copy();
+                    paste(oldLog, infoLog);
                 }
             } catch (IOException e) {
                 logIsEnabled = false;
@@ -72,15 +36,23 @@ public class LogWriter {
         }
     }
 
-    private void tryWrite(String infoLog){
-        try(BufferedReader rLog = new BufferedReader(new FileReader(LOG));
-            BufferedWriter wLog = new BufferedWriter(new FileWriter(LOG))){
+    private String copy(){
+        try(BufferedReader rLog = new BufferedReader(new FileReader(LOG))){
             String s;
             StringBuilder s1 = new StringBuilder();
             while ((s = rLog.readLine()) != null) {
                 s1.append(s).append("\n");
             }
-            wLog.write(s1 + "\n" + currentDate() + "\n" + infoLog);
+            return s1.toString();
+        } catch (IOException fnf){
+            logIsEnabled = false;
+            return "";
+        }
+    }
+
+    private void paste(String oldLog, String infoLog){
+        try(BufferedWriter wLog = new BufferedWriter(new FileWriter(LOG))){
+            wLog.write(oldLog + "\n" + currentDate() + "\n" + infoLog);
         } catch (IOException fnf){
             logIsEnabled = false;
         }
