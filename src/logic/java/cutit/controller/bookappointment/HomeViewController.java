@@ -87,19 +87,23 @@ public class HomeViewController {
         } else {
             vbInScroll.getChildren().clear();
             if(!Objects.equals(tfSearchName.getText(), "")){
-                for(int i = 0; i< shopListBeanFirstUI.getShopBeanList().size(); i++){
-                    if(shopListBeanFirstUI.getShopBeanList().get(i).getShopName().contains(tfSearchName.getText())){
-                        HBox card = createBox(shopListBeanFirstUI.getShopBeanList().get(i));
-                        vbInScroll.getChildren().add(card);
-                    }
-                }
+                filterByName();
             } else if(!Objects.equals(tfSearchPlace.getText(), "")){
-                filterShop3case();
+                filterByPlace();
             }
         }
     }
 
-    private void filterShop3case(){
+    private void filterByName(){
+        for(int i = 0; i< shopListBeanFirstUI.getShopBeanList().size(); i++){
+            if(shopListBeanFirstUI.getShopBeanList().get(i).getShopName().contains(tfSearchName.getText())){
+                HBox card = createBox(shopListBeanFirstUI.getShopBeanList().get(i));
+                vbInScroll.getChildren().add(card);
+            }
+        }
+    }
+
+    private void filterByPlace(){
         for(int i = 0; i< shopListBeanFirstUI.getShopBeanList().size(); i++){
             if(shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress().contains(tfSearchPlace.getText())){
                 HBox card = createBox(shopListBeanFirstUI.getShopBeanList().get(i));
