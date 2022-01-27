@@ -70,9 +70,6 @@ public class ShopInfoViewController {
     private Label lblPhoto;
 
     @FXML
-    private VBox vboxShopInfo;
-
-    @FXML
     private VBox vboxPhoto;
 
     @FXML
