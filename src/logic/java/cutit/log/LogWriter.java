@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 public class LogWriter {
 
-    private static boolean logIsEnabled = true;
+    private boolean logIsEnabled = true;
     private static final String LOG = "src/logic/java/cutit/log/LOG.txt";
 
     private static LogWriter instance = null;
@@ -64,21 +64,25 @@ public class LogWriter {
             try {
                 File f = new File(LOG);
                 if ((f.exists() || f.createNewFile())) {
-                    try(BufferedReader rLog = new BufferedReader(new FileReader(LOG));
-                        BufferedWriter wLog = new BufferedWriter(new FileWriter(LOG))){
-                        String s;
-                        StringBuilder s1 = new StringBuilder();
-                        while ((s = rLog.readLine()) != null) {
-                            s1.append(s).append("\n");
-                        }
-                        wLog.write(s1 + "\n" + currentDate() + "\n" + infoLog);
-                    } catch (IOException fnf){
-                        logIsEnabled = false;
-                    }
+                    tryWrite(infoLog);
                 }
             } catch (IOException e) {
                 logIsEnabled = false;
             }
+        }
+    }
+
+    private void tryWrite(String infoLog){
+        try(BufferedReader rLog = new BufferedReader(new FileReader(LOG));
+            BufferedWriter wLog = new BufferedWriter(new FileWriter(LOG))){
+            String s;
+            StringBuilder s1 = new StringBuilder();
+            while ((s = rLog.readLine()) != null) {
+                s1.append(s).append("\n");
+            }
+            wLog.write(s1 + "\n" + currentDate() + "\n" + infoLog);
+        } catch (IOException fnf){
+            logIsEnabled = false;
         }
     }
 
