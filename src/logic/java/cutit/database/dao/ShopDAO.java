@@ -147,23 +147,6 @@ public class ShopDAO {
         return images;
     }
 
-    /*private void writeImage(File file, byte[] image){
-        try(OutputStream out = new FileOutputStream(file)) {
-            out.write(image);
-            images.add(file);
-        } catch (IOException e){
-
-        }
-
-        byte[] image = rs.getBytes(3);
-        File file = new File("src/logic/resources/cutit/cutit/tmpfiles/image" + i + shopName + ".tmp");
-        OutputStream out = new FileOutputStream(file);
-        out.write(image);
-        images.add(file);
-        out.close();
-        i++;
-    }*/
-
     public static void updateShop(Shop shop) throws DBConnectionException, SQLException, FileNotFoundException{
         Connection conn = DBConnection.getInstance().getConnection();
         Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
