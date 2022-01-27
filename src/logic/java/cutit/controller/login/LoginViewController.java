@@ -77,10 +77,10 @@ public class LoginViewController {
             } catch(DBConnectionException dbe){
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
                 alert.showAndWait();
-            } catch (SQLException sqle) {
+            } catch (SQLException sql) {
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
                 alert.showAndWait();
-            } catch (IOException ioe) {
+            } catch (IOException ie) {
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getIoErrorTitle(), ExceptionText.getIoErrorMessage());
                 alert.showAndWait();
             }

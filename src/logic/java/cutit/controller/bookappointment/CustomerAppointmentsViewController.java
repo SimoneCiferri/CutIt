@@ -4,6 +4,7 @@ import cutit.bean.CustomerBean;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.CustomerAppointmentInfoView1;
 import cutit.exception.DBConnectionException;
+import cutit.exception.ExceptionText;
 import cutit.exception.RecordNotFoundException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
@@ -19,13 +20,9 @@ import java.time.LocalDateTime;
 
 public class CustomerAppointmentsViewController {
 
-    private static final String labelStyles = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private CustomerBean customerBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
-    private static final String CONNECTION_ERROR_TITLE = "Connection error";
-    private static final String WARNING_TITLE = "Warning";
-    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
-    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
+    private static final String LABEL_STYLES = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
 
     @FXML
     private VBox vbInScrollCA;
@@ -43,18 +40,18 @@ public class CustomerAppointmentsViewController {
             for(int i = 0; i< customerBeanFirstUI.getAllBookedAppointments().size(); i++){
                 int appN = i;
                 String appointment = customerBeanFirstUI.getAllBookedAppointments().get(appN).getShopName() + ", " + customerBeanFirstUI.getAllBookedAppointments().get(appN).getStartTime().toLocalDate() + " at " + customerBeanFirstUI.getAllBookedAppointments().get(appN).getStartTime().toLocalTime();
-                Label l = JavaFXNodeFactory.getInstance().createCardLabel(appointment, labelStyles);
+                Label l = JavaFXNodeFactory.getInstance().createCardLabel(appointment, LABEL_STYLES);
                 l.setOnMouseClicked(mouseEvent -> showAppInfo(customerBeanFirstUI.getAllBookedAppointments().get(appN).getStartTime(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getEndTime(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getServiceName(), customerBeanFirstUI.getAllBookedAppointments().get(appN).getShopName()));
                 vbInScrollCA.getChildren().add(l);
             }
         } catch (RecordNotFoundException e) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
             alert.showAndWait();
-        } catch(DBConnectionException dbe){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+        } catch (DBConnectionException dbe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
-        } catch (SQLException sqle) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+        } catch (SQLException sqlEx){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
     }

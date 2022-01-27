@@ -5,6 +5,7 @@ import cutit.bean.DeleteAppointmentBeanInterface;
 import cutit.bean.ShopBeanInterface;
 import cutit.bean.firstui.DeleteAppointmentBean;
 import cutit.exception.DBConnectionException;
+import cutit.exception.ExceptionText;
 import cutit.exception.RecordNotFoundException;
 import cutit.exception.WrongInputDataException;
 import cutit.factory.AlertFactory;
@@ -28,14 +29,8 @@ public class HairdresserDeleteBookedAppointmentsViewController2 {
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5;";
     private static final Double TITLE_FONT_SIZE = 30.0;
     private static final Double NORMAL_LABEL_FONT_SIZE = 14.0;
-    private static final String CONNECTION_ERROR_TITLE = "Connection error";
     private static final String WARNING_TITLE = "Warning";
-    private static final String CONFIRMATION_TITLE = "Confirmation";
-    private static final String IO_ERROR_TITLE = "Error";
     private static final String DELETED_APPOINTMENT_MESSAGE = "Appointment successfully deleted!";
-    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
-    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
-    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
     @FXML
     private VBox vbAppointmentsInScroll;
@@ -68,16 +63,16 @@ public class HairdresserDeleteBookedAppointmentsViewController2 {
                 vbAppointmentsInScroll.getChildren().add(card);
             }
         } catch (RecordNotFoundException e) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
             alert.showAndWait();
         } catch(DBConnectionException dbe){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
-        } catch (SQLException sqle) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+        } catch (SQLException sqlEx) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         } catch (IOException ioe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, IO_ERROR_TITLE, IO_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getIoErrorTitle(), ExceptionText.getIoErrorMessage());
             alert.showAndWait();
         }
     }
@@ -100,14 +95,14 @@ public class HairdresserDeleteBookedAppointmentsViewController2 {
             deleteBookedAppointmentController.deleteAppointment(deleteAppointmentBeanSecondUI);
             showAllAppointments();
             vbDeleteAppointments.getChildren().clear();
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.CONFIRMATION, CONFIRMATION_TITLE, DELETED_APPOINTMENT_MESSAGE, "Notifying customer " + customer);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.CONFIRMATION, ExceptionText.getConfirmationTitle(), DELETED_APPOINTMENT_MESSAGE, "Notifying customer " + customer);
             alert.showAndWait();
             notifyCustomer();
-        } catch (DBConnectionException dbe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+        } catch(DBConnectionException dbe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
-        } catch (SQLException sqle){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR,CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE );
+        } catch (SQLException sqlEx) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
         catch (WrongInputDataException e){
