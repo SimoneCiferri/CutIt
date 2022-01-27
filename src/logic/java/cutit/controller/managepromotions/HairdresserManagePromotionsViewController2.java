@@ -3,10 +3,7 @@ package cutit.controller.managepromotions;
 import cutit.bean.ManagePromotionBean;
 import cutit.bean.ManagePromotionBeanInterface;
 import cutit.bean.ShopBeanInterface;
-import cutit.exception.DBConnectionException;
-import cutit.exception.DuplicatedRecordException;
-import cutit.exception.RecordNotFoundException;
-import cutit.exception.WrongInputDataException;
+import cutit.exception.*;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
 import cutit.utils.TextFieldCheck;
@@ -26,12 +23,8 @@ import java.util.StringTokenizer;
 public class HairdresserManagePromotionsViewController2 {
 
     private ShopBeanInterface shopBeanSecondUI;
-    private ManagePromotionBeanInterface managePromotionBeansecondUI;
+    private ManagePromotionBeanInterface managePromotionBeanSecondUI;
     private ManagePromotionController managePromotionController;
-    private static final String CONNECTION_ERROR_TITLE = "Connection error";
-    private static final String WARNING_TITLE = "Warning";
-    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
-    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5;";
     private static final Double TITLE_FONT_SIZE = 30.0;
     private static final Double NORMAL_LABEL_FONT_SIZE = 14.0;
@@ -44,19 +37,19 @@ public class HairdresserManagePromotionsViewController2 {
 
     @FXML
     public void initialize(){
-        managePromotionBeansecondUI = new ManagePromotionBean();
+        managePromotionBeanSecondUI = new ManagePromotionBean();
         managePromotionController = new ManagePromotionController();
         vbPromotionsInScroll.setSpacing(15);
     }
 
     private void showPromotions() {
         try {
-            managePromotionController.getAllPromotions(managePromotionBeansecondUI, shopBeanSecondUI);
+            managePromotionController.getAllPromotions(managePromotionBeanSecondUI, shopBeanSecondUI);
             vbPromotionsInScroll.getChildren().clear();
             Button add = JavaFXNodeFactory.getInstance().createButton("Add Promotion");
             add.setOnMouseClicked(mouseEvent -> showAddPromotionForm());
             vbPromotionsInScroll.getChildren().add(add);
-            List<ManagePromotionBeanInterface> allPromotionBeans = managePromotionBeansecondUI.getPromotionsBeanList();
+            List<ManagePromotionBeanInterface> allPromotionBeans = managePromotionBeanSecondUI.getPromotionsBeanList();
             for (ManagePromotionBeanInterface promotionBean : allPromotionBeans) {
                 String promotionCode = promotionBean.getPromotionCode();
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel2(promotionCode, LABEL_STYLE);
@@ -64,14 +57,14 @@ public class HairdresserManagePromotionsViewController2 {
                 vbPromotionsInScroll.getChildren().add(l);
             }
         } catch (DBConnectionException dbe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
         } catch (SQLException sqle){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR,CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE );
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
         catch (RecordNotFoundException e){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
             alert.showAndWait();
         }
     }
@@ -94,16 +87,16 @@ public class HairdresserManagePromotionsViewController2 {
         ChoiceBox<String> promotionServices = new ChoiceBox<>();
         promotionServices.setMaxSize(180,25);
         try {
-            this.managePromotionBeansecondUI = managePromotionController.getAllServices(shopBeanSecondUI);
+            this.managePromotionBeanSecondUI = managePromotionController.getAllServices(shopBeanSecondUI);
         } catch (DBConnectionException dbe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
         } catch (SQLException sqle){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR,CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE );
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
-        for(int j = 0; j< managePromotionBeansecondUI.getServiceList().size(); j++){
-            promotionServices.getItems().add(managePromotionBeansecondUI.getServiceList().get(j));
+        for(int j = 0; j< managePromotionBeanSecondUI.getServiceList().size(); j++){
+            promotionServices.getItems().add(managePromotionBeanSecondUI.getServiceList().get(j));
         }
         rightList.add(promotionServices);
         TextField date = new TextField();
@@ -134,18 +127,18 @@ public class HairdresserManagePromotionsViewController2 {
     }
 
     private void removePromotion(String promCode, Integer offValue, String expireDate){
-        managePromotionBeansecondUI.setPromotionCode(promCode);
-        managePromotionBeansecondUI.setPromOffValue(offValue);
-        managePromotionBeansecondUI.setPromExpireDate(LocalDate.parse(expireDate));
+        managePromotionBeanSecondUI.setPromotionCode(promCode);
+        managePromotionBeanSecondUI.setPromOffValue(offValue);
+        managePromotionBeanSecondUI.setPromExpireDate(LocalDate.parse(expireDate));
         try {
-            managePromotionController.removePromotion(this.managePromotionBeansecondUI);
+            managePromotionController.removePromotion(this.managePromotionBeanSecondUI);
             showPromotions();
             vbAddAndDelete.getChildren().clear();
         } catch (DBConnectionException dbe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
         } catch (SQLException sqle){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR,CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE );
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
     }
@@ -157,23 +150,23 @@ public class HairdresserManagePromotionsViewController2 {
                 String promotionCode = st.nextToken();
                 String offValue = st.nextToken();
                 if(TextFieldCheck.isInteger(offValue, "Off value field must be an integer number (5, 10, 25...).") && TextFieldCheck.isDateFormat(expireDate, "Expire date is not correct. Please follow the syntax yyyy-MM-dd")){
-                    managePromotionBeansecondUI.setPromotionCode(promotionCode);
-                    managePromotionBeansecondUI.setPromOffValue(Integer.valueOf(offValue));
-                    managePromotionBeansecondUI.setPromExpireDate(LocalDate.parse(expireDate));
-                    managePromotionBeansecondUI.setPromServiceName(serviceName);
-                    managePromotionBeansecondUI.setPromShopName(shopBeanSecondUI.getShopName());
+                    managePromotionBeanSecondUI.setPromotionCode(promotionCode);
+                    managePromotionBeanSecondUI.setPromOffValue(Integer.valueOf(offValue));
+                    managePromotionBeanSecondUI.setPromExpireDate(LocalDate.parse(expireDate));
+                    managePromotionBeanSecondUI.setPromServiceName(serviceName);
+                    managePromotionBeanSecondUI.setPromShopName(shopBeanSecondUI.getShopName());
                     try {
-                        managePromotionController.addPromotion(this.managePromotionBeansecondUI);
+                        managePromotionController.addPromotion(this.managePromotionBeanSecondUI);
                         showPromotions();
                         showPromotionInfo(promotionCode, Integer.valueOf(offValue), serviceName, expireDate);
                     } catch (DuplicatedRecordException | WrongInputDataException | RecordNotFoundException e) {
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
                         alert.showAndWait();
                     } catch (DBConnectionException dbe) {
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
                         alert.showAndWait();
                     } catch (SQLException sqle){
-                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR,CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE );
+                        Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
                         alert.showAndWait();
                     }
                 }

@@ -27,7 +27,7 @@ import java.util.StringTokenizer;
 public class HairdresserManageServicesViewController2 {
 
     private ShopBeanInterface shopBeanSecondUI;
-    private ManageServiceBeanInterface manageServicesBean;
+    private ManageServiceBeanInterface manageServicesBeanSecondUI;
     private ManageServicesController manageServicesController;
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5;";
     private static final Double TITLE_FONT_SIZE = 30.0;
@@ -43,21 +43,21 @@ public class HairdresserManageServicesViewController2 {
     @FXML
     public void initialize(){
         manageServicesController = new ManageServicesController();
-        manageServicesBean = new ManageServiceBean();
+        manageServicesBeanSecondUI = new ManageServiceBean();
     }
 
 
     private void showServices() {
         try {
-            manageServicesController.getAllServices(manageServicesBean, shopBeanSecondUI);
+            manageServicesController.getAllServices(manageServicesBeanSecondUI, shopBeanSecondUI);
             vbServicesInScroll.getChildren().clear();
             Button add = JavaFXNodeFactory.getInstance().createButton("Add Service");
             add.setOnMouseClicked(mouseEvent -> showAddServiceForm());
             vbServicesInScroll.getChildren().add(add);
-            List<String> services = manageServicesBean.getAllServicesList();
+            List<String> services = manageServicesBeanSecondUI.getAllServicesList();
             for (String serviceName : services) {
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel2(serviceName, LABEL_STYLE);
-                l.setOnMouseClicked(mouseEvent -> showServiceInfo(serviceName, manageServicesBean.getServiceList().get(serviceName)));
+                l.setOnMouseClicked(mouseEvent -> showServiceInfo(serviceName, manageServicesBeanSecondUI.getServiceList().get(serviceName)));
                 vbServicesInScroll.getChildren().add(l);
             }
         } catch(DBConnectionException dbe){
@@ -96,11 +96,11 @@ public class HairdresserManageServicesViewController2 {
     }
 
     private void deleteService(String serviceName, Float servicePrice) {
-        manageServicesBean.setServiceName(serviceName);
-        manageServicesBean.setServicePrice(servicePrice);
-        manageServicesBean.setServiceShopName(shopBeanSecondUI.getShopName());
+        manageServicesBeanSecondUI.setServiceName(serviceName);
+        manageServicesBeanSecondUI.setServicePrice(servicePrice);
+        manageServicesBeanSecondUI.setServiceShopName(shopBeanSecondUI.getShopName());
         try {
-            manageServicesController.deleteService(this.manageServicesBean);
+            manageServicesController.deleteService(this.manageServicesBeanSecondUI);
             showServices();
             vbInScrollToDo.getChildren().clear();
         }  catch(DBConnectionException dbe){
@@ -118,11 +118,11 @@ public class HairdresserManageServicesViewController2 {
             String name = st.nextToken();
             String price = st.nextToken();
             if (TextFieldCheck.isNumeric(price, "Input is not correct. Please follow the syntax ' Name-Price '")) {
-                manageServicesBean.setServiceName(name);
-                manageServicesBean.setServicePrice(Float.valueOf(price));
-                manageServicesBean.setServiceShopName(shopBeanSecondUI.getShopName());
+                manageServicesBeanSecondUI.setServiceName(name);
+                manageServicesBeanSecondUI.setServicePrice(Float.valueOf(price));
+                manageServicesBeanSecondUI.setServiceShopName(shopBeanSecondUI.getShopName());
                 try {
-                    manageServicesController.addService(manageServicesBean);
+                    manageServicesController.addService(manageServicesBeanSecondUI);
                     showServices();
                     showServiceInfo(name, Float.valueOf(price));
                 } catch (DuplicatedRecordException e) {

@@ -26,7 +26,7 @@ import java.util.Objects;
 public class HairdresserManageServicesViewController {
 
     private ShopBeanInterface shopBeanFirstUI;
-    private ManageServiceBeanInterface manageServicesBean;
+    private ManageServiceBeanInterface manageServicesBeanFirstUI;
     private ManageServicesController manageServicesController;
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private static final Double TITLE_FONT_SIZE = 30.0;
@@ -37,22 +37,22 @@ public class HairdresserManageServicesViewController {
 
     @FXML
     public void initialize(){
-        manageServicesBean = new ManageServiceBean();
+        manageServicesBeanFirstUI = new ManageServiceBean();
         manageServicesController = new ManageServicesController();
         vbInScrollHS.setSpacing(15);
     }
 
     private void showHairServices() {
         try {
-            manageServicesController.getAllServices(manageServicesBean, shopBeanFirstUI);
+            manageServicesController.getAllServices(manageServicesBeanFirstUI, shopBeanFirstUI);
             vbInScrollHS.getChildren().clear();
             Button add = JavaFXNodeFactory.getInstance().createButton("Add Service");
             add.setOnMouseClicked(mouseEvent -> showAddForm());
             vbInScrollHS.getChildren().add(add);
-            for(int i = 0; i< manageServicesBean.getAllServicesList().size(); i++) {
-                String serviceName = manageServicesBean.getAllServicesList().get(i);
+            for(int i = 0; i< manageServicesBeanFirstUI.getAllServicesList().size(); i++) {
+                String serviceName = manageServicesBeanFirstUI.getAllServicesList().get(i);
                 Label l = JavaFXNodeFactory.getInstance().createCardLabel(serviceName, LABEL_STYLE);
-                l.setOnMouseClicked(mouseEvent -> showDeleteForm(serviceName, manageServicesBean.getServiceList().get(serviceName)));
+                l.setOnMouseClicked(mouseEvent -> showDeleteForm(serviceName, manageServicesBeanFirstUI.getServiceList().get(serviceName)));
                 vbInScrollHS.getChildren().add(l);
             }
         } catch(DBConnectionException dbe){
@@ -95,11 +95,11 @@ public class HairdresserManageServicesViewController {
     @FXML
     private void addService(TextField serviceName, TextField servicePrice){
         if (!Objects.equals(serviceName.getText(), "") && TextFieldCheck.isNumeric(servicePrice.getText(), "Price field must be a number (correct format is 4.5 instead of 4,5).")) {
-            manageServicesBean.setServiceName(serviceName.getText());
-            manageServicesBean.setServicePrice(Float.valueOf(servicePrice.getText()));
-            manageServicesBean.setServiceShopName(shopBeanFirstUI.getShopName());
+            manageServicesBeanFirstUI.setServiceName(serviceName.getText());
+            manageServicesBeanFirstUI.setServicePrice(Float.valueOf(servicePrice.getText()));
+            manageServicesBeanFirstUI.setServiceShopName(shopBeanFirstUI.getShopName());
             try {
-                manageServicesController.addService(manageServicesBean);
+                manageServicesController.addService(manageServicesBeanFirstUI);
                 showHairServices();
             } catch (DuplicatedRecordException e) {
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
@@ -129,11 +129,11 @@ public class HairdresserManageServicesViewController {
     }
 
     private void deleteService(String serviceName, Float servicePrice){
-        manageServicesBean.setServiceName(serviceName);
-        manageServicesBean.setServicePrice(servicePrice);
-        manageServicesBean.setServiceShopName(shopBeanFirstUI.getShopName());
+        manageServicesBeanFirstUI.setServiceName(serviceName);
+        manageServicesBeanFirstUI.setServicePrice(servicePrice);
+        manageServicesBeanFirstUI.setServiceShopName(shopBeanFirstUI.getShopName());
         try {
-            manageServicesController.deleteService(this.manageServicesBean);
+            manageServicesController.deleteService(this.manageServicesBeanFirstUI);
         } catch(DBConnectionException dbe){
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
