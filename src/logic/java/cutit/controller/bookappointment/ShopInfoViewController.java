@@ -8,6 +8,7 @@ import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.CustomerBookAppointmentView1;
 import cutit.decorator.concrete_decorator.GetLocationDirectionsGoogleMapsView1;
 import cutit.exception.DBConnectionException;
+import cutit.exception.ExceptionText;
 import cutit.exception.RecordNotFoundException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
@@ -35,12 +36,6 @@ public class ShopInfoViewController {
     private BookAppointmentController bookAppointmentController;
     private GetLocationDirectionsController getLocationDirectionsController;
     private List<ImageView> ivList = new ArrayList<>();
-    private static final String CONNECTION_ERROR_TITLE = "Connection error";
-    private static final String WARNING_TITLE = "Warning";
-    private static final String IO_ERROR_TITLE = "Error";
-    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
-    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
-    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
     @FXML
     private Button btnMaps;
@@ -189,16 +184,16 @@ public class ShopInfoViewController {
             bookAppointmentController.getShop(shopBean, shopName);
             showShopInfo();
         } catch (RecordNotFoundException e) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
             alert.showAndWait();
-        } catch(DBConnectionException dbe){
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+        } catch (DBConnectionException dbe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
-        } catch (SQLException sqle) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+        } catch (SQLException sql){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         } catch (IOException ioe) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, IO_ERROR_TITLE, IO_ERROR_MESSAGE);
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getIoErrorTitle(), ExceptionText.getIoErrorMessage());
             alert.showAndWait();
         }
     }
