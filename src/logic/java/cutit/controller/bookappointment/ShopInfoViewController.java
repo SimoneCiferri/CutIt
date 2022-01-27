@@ -105,10 +105,10 @@ public class ShopInfoViewController {
     public void showShopInfo(){
         lShopName.setText(shopBean.getShopName());
         if(!Objects.equals(shopBean.getShopPhoneNumber(), "")){
-            lShopPhone.setVisible(true);
             lShopPhone.setText(shopBean.getShopPhoneNumber());
-        }lShopPhone.setVisible(false);
-
+        } else {
+            lShopPhone.setText("Phone number not available");
+        }
         if(!shopBean.getImages().isEmpty()){
             ivShopProfPhoto.setVisible(true);
             lblPhoto.setVisible(true);
@@ -130,8 +130,8 @@ public class ShopInfoViewController {
             lShopDescription.setVisible(true);
             lShopDescription.setText(shopBean.getShopDescription());
         }
-        Map<Integer,Boolean> opendays = shopBean.getShopOpenDays();
-        String openTimes = MyStringBuilder.getStringFromOpenDaysMap(opendays);
+        Map<Integer,Boolean> openDays = shopBean.getShopOpenDays();
+        String openTimes = MyStringBuilder.getStringFromOpenDaysMap(openDays);
         if(!(openTimes.equals(""))){
             openTimes =  openTimes + (shopBean.getShopOpenTime() + " - " + shopBean.getShopCloseTime());
             lShopOpenTime.setText(openTimes);

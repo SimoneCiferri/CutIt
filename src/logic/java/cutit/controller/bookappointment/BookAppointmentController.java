@@ -232,23 +232,31 @@ public class BookAppointmentController {
     private List<LocalTime> getSlots(List<Appointment> appList, LocalTime open, LocalTime close, List<LocalTime> availableList){
         LocalTime temp = open;
         if (!appList.isEmpty()) {
-            while (!temp.equals(close)) {
-                boolean busy = false;
-                for (Appointment appointment : appList) {
-                    if(appointment.getStartTime().toLocalTime().equals(temp)){
-                        busy = true;
-                        break;
-                    }
-                }
-                if(!busy){availableList.add(temp);}
-                temp = temp.plusMinutes(30);
-            }
+            getOnlyFreeSlots(temp, close, availableList, appList);
         } else {
-            while (!temp.equals(close)) {
-                availableList.add(temp);
-                temp = temp.plusMinutes(30);
-            }
+            getAllSlots(temp, close, availableList);
         }
         return availableList;
+    }
+
+    private void getOnlyFreeSlots(LocalTime temp, LocalTime close, List<LocalTime> availableList, List<Appointment> appList){
+        while (!temp.equals(close)) {
+            boolean busy = false;
+            for (Appointment appointment : appList) {
+                if(appointment.getStartTime().toLocalTime().equals(temp)){
+                    busy = true;
+                    break;
+                }
+            }
+            if(!busy){availableList.add(temp);}
+            temp = temp.plusMinutes(30);
+        }
+    }
+
+    private void getAllSlots(LocalTime temp, LocalTime close, List<LocalTime> availableList){
+        while (!temp.equals(close)) {
+            availableList.add(temp);
+            temp = temp.plusMinutes(30);
+        }
     }
 }

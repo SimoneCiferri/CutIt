@@ -95,15 +95,7 @@ public class CustomerBookAppointmentViewController {
         if(checkInput()){
             appointmentBeanUQ.setStartTime(getAppointmentStartTime());
             appointmentBeanUQ.setCustomer(customerBeanFirstUI.getcEmail());
-            if(!Objects.equals(tfPromotionCode.getText(), "")){
-                if(checkPromotion()){
-                    appointmentBeanUQ.setPromotionCode(tfPromotionCode.getText());
-                } else{
-                    appointmentBeanUQ.setPromotionCode(null);
-                }
-            } else {
-                appointmentBeanUQ.setPromotionCode(null);
-            }
+            setPromotion();
             appointmentBeanUQ.setServiceName(cbServices.getValue());
             appointmentBeanUQ.setShopName(shopBeanUQ.getShopName());
             try {
@@ -128,6 +120,18 @@ public class CustomerBookAppointmentViewController {
 
     private boolean checkInput() {
         return cbTimeSlot.getValue() != null && cbServices.getValue()  != null;
+    }
+
+    private void setPromotion(){
+        if(!Objects.equals(tfPromotionCode.getText(), "")){
+            if(checkPromotion()){
+                appointmentBeanUQ.setPromotionCode(tfPromotionCode.getText());
+            } else{
+                appointmentBeanUQ.setPromotionCode(null);
+            }
+        } else {
+            appointmentBeanUQ.setPromotionCode(null);
+        }
     }
 
     private LocalDateTime getAppointmentStartTime() {
