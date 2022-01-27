@@ -24,11 +24,6 @@ public class HomeViewController {
     private ShopListBean shopListBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
-    private static final String CONNECTION_ERROR_TITLE = "Connection error";
-    private static final String IO_ERROR_TITLE = "Error";
-    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
-    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
-    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
     @FXML
     private TextField tfSearchName;

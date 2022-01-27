@@ -27,12 +27,6 @@ public class HomeViewController2 {
     private ShopListBean shopListBeanSecondUI;
     private BookAppointmentController bookAppointmentController;
     private List<ImageView> ivList = new ArrayList<>();
-    private static final String CONNECTION_ERROR_TITLE = "Connection error";
-    private static final String WARNING_TITLE = "Warning";
-    private static final String IO_ERROR_TITLE = "Error";
-    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
-    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
-    private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
     @FXML
     private TextField tfSearchByName;

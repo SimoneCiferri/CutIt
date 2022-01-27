@@ -68,7 +68,7 @@ public class HairdresserDeleteBookedAppointmentsViewController2 {
         } catch(DBConnectionException dbe){
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
-        } catch (SQLException sql) {
+        } catch (SQLException sqlEx) {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         } catch (IOException ioe) {
@@ -101,7 +101,7 @@ public class HairdresserDeleteBookedAppointmentsViewController2 {
         } catch(DBConnectionException dbe){
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
-        } catch (SQLException sql) {
+        } catch (SQLException sqlEx) {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
