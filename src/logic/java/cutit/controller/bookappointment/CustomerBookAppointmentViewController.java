@@ -118,7 +118,7 @@ public class CustomerBookAppointmentViewController {
             } catch (SQLException sqe){
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
                 alert.showAndWait();
-            } catch (IOException ioe) {
+            } catch (IOException ie) {
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getIoErrorTitle(), ExceptionText.getIoErrorMessage());
                 alert.showAndWait();
             }
@@ -147,8 +147,8 @@ public class CustomerBookAppointmentViewController {
                 cbTimeSlot.getItems().add(availableSlot);
             }
             cbTimeSlot.setDisable(availableSlots.isEmpty());
-        } catch (RecordNotFoundException |WrongInputDataException e) {
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
+        } catch (RecordNotFoundException |WrongInputDataException exception) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), exception.getMessage());
             alert.showAndWait();
         } catch (DBConnectionException dbe) {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
@@ -177,7 +177,7 @@ public class CustomerBookAppointmentViewController {
         } catch (DBConnectionException dbe) {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
-        } catch (SQLException sqe){
+        } catch (SQLException sqlE){
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         } catch (IOException ioe) {
