@@ -157,14 +157,7 @@ public class HomeViewController2 {
             lblShopPhoneNumberInScroll.setVisible(false);
         }
         if(!shopBean.getImages().isEmpty()){
-            lblPhoto.setVisible(true);
-            vbPhoto.setVisible(true);
-            for(int i = 0; i< shopBean.getImages().size(); i++){
-                if(i==0){
-                    ivShopPhotoInScroll.setImage(new javafx.scene.image.Image(String.valueOf(shopBean.getImages().get(i).toURI())));
-                }
-                ivList.get(i).setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
-            }
+            imageEmpty();
         } else {
             Image defaultLogo = new Image(Objects.requireNonNull(HomeViewController2.class.getResource("/cutit/cutit/files/blank-profile-picture.png"), "Resource files may be deleted or corrupted. If the problem persist try reinstalling the application.").toString());
             ivShopPhotoInScroll.setImage(defaultLogo);
@@ -203,6 +196,17 @@ public class HomeViewController2 {
             lblShopEmployeeInScroll.setText(shopBean.getShopEmployee());
         }else {
             lblShopEmployeeInScroll.setVisible(false);
+        }
+    }
+
+    private void imageEmpty(){
+        lblPhoto.setVisible(true);
+        vbPhoto.setVisible(true);
+        for(int i = 0; i< shopBean.getImages().size(); i++){
+            if(i==0){
+                ivShopPhotoInScroll.setImage(new javafx.scene.image.Image(String.valueOf(shopBean.getImages().get(i).toURI())));
+            }
+            ivList.get(i).setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
         }
     }
 
