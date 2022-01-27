@@ -22,7 +22,6 @@ public class CustomerFavouritesShopViewController2 {
 
     @FXML
     public void initialize(){
-        System.out.println(" Starting ---> CustomerFavouritesShopViewController2");
         shopListBean = new ShopListBeanUQ();
         bookAppointmentController = new BookAppointmentController();
     }
@@ -37,8 +36,9 @@ public class CustomerFavouritesShopViewController2 {
         try {
             bookAppointmentController.getFavouritesShop(shopListBean, customerBeanSecondUI.getcEmail());
             List<ShopBeanInterface> shopList = shopListBean.getShopBeanList();
-            for(int i=0;i<shopList.size();i++){
-                VBox shop = JavaFXNodeFactory.getInstance().createFavouritesShopCard(shopList.get(i).getShopName(),shopList.get(i).getShopAddress());
+            for (ShopBeanInterface shopBeanInterface : shopList) {
+                VBox shop = JavaFXNodeFactory.getInstance().createFavouritesShopCard(shopBeanInterface.getShopName(), shopBeanInterface.getShopAddress());
+
                 vbInScrollCFav.getChildren().add(shop);
             }
         } catch (Exception e) {

@@ -145,12 +145,12 @@ public class JavaFXNodeFactory {
 
     public VBox createFavouritesShopCard(String shopName, String shopAddress){
         VBox vbShop = new VBox();
-        vbShop.setMinSize(400, 200);
-        vbShop.setPrefSize(400, 200);
-        vbShop.setMaxSize(400, 200);
+        vbShop.setMinSize(300, 100);
+        vbShop.setPrefSize(300, 100);
+        vbShop.setMaxSize(300, 100);
         String style = "-fx-border-color: black; -fx-border-radius: 5;";
         vbShop.setStyle(style);
-        vbShop.setAlignment(Pos.TOP_LEFT);
+        vbShop.setAlignment(Pos.CENTER);
         Label name = createLabel2(shopName, 30.0);
         Label address = createLabel2(shopAddress, 12.0);
         vbShop.getChildren().addAll(name, address);

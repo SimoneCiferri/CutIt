@@ -87,7 +87,7 @@ public class BookAppointmentController {
         }
     }
 
-    public void getShop(ShopBean shopBean, String shopName) throws  DBConnectionException, SQLException, RecordNotFoundException, IOException {
+    public void getShop(ShopBeanInterface shopBean, String shopName) throws  DBConnectionException, SQLException, RecordNotFoundException, IOException {
         try {
             Shop shop = ShopDAO.getShopFromName(shopName);
             shopBean.setShopName(shop.getShopName());

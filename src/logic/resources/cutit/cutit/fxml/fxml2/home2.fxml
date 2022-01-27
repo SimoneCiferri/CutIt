@@ -3,26 +3,47 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.bookappointment.secondui.HomeViewController2">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.bookappointment.secondui.HomeViewController2">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="74.0" prefWidth="498.0" style="-fx-border-color: black; -fx-border-radius: 5;">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="468.0" style="-fx-border-color: black; -fx-border-radius: 5;">
          <VBox.margin>
-            <Insets top="25.0" />
+            <Insets bottom="10.0" top="10.0" />
          </VBox.margin>
          <children>
-            <TextField layoutX="26.0" layoutY="25.0" prefHeight="25.0" prefWidth="174.0" promptText="Shop..." />
-            <TextField layoutX="219.0" layoutY="25.0" prefHeight="25.0" prefWidth="174.0" promptText="Where..." />
-            <Button layoutX="423.0" layoutY="25.0" mnemonicParsing="false" text="Search" />
+            <TextField layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="174.0" promptText="Shop..." />
+            <TextField layoutX="205.0" layoutY="23.0" prefHeight="25.0" prefWidth="174.0" promptText="Where..." />
+            <Button layoutX="402.0" layoutY="23.0" mnemonicParsing="false" text="Search" />
          </children>
       </AnchorPane>
-      <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="591.0" prefWidth="1210.0" style="-fx-background-color: transparent; -fx-background: transparent;">
-         <content>
-            <VBox fx:id="vbInScroll" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1205.0" spacing="15.0" style="-fx-background-color: transparent; -fx-background: transparent;">
-               <padding>
-                  <Insets top="15.0" />
-               </padding></VBox>
-         </content>
-      </ScrollPane>
+      <SplitPane dividerPositions="0.5" prefHeight="610.0" prefWidth="1210.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+         <items>
+            <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="450.0" style="-fx-background-color: transparent;">
+               <content>
+                  <VBox fx:id="vbAllShopsInScroll" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="445.0" spacing="15.0" style="-fx-background-color: transparent; -fx-background: transparent;">
+                     <padding>
+                        <Insets top="15.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="752.0" style="-fx-background-color: transparent;">
+               <content>
+                  <VBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="751.0">
+                     <children>
+                        <Label fx:id="lblShopNameInScroll" text="ShopName">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding></VBox>
+               </content>
+            </ScrollPane>
+         </items>
+      </SplitPane>
    </children>
 </VBox>

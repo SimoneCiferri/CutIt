@@ -32,6 +32,7 @@ public class HairdresserDeleteBookedAppointmentsViewController2 {
     private static final String WARNING_TITLE = "Warning";
     private static final String CONFIRMATION_TITLE = "Confirmation";
     private static final String IO_ERROR_TITLE = "Error";
+    private static final String DELETED_APPOINTMENT_MESSAGE = "Appointment successfully deleted!";
     private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
     private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
     private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
@@ -99,7 +100,7 @@ public class HairdresserDeleteBookedAppointmentsViewController2 {
             deleteBookedAppointmentController.deleteAppointment(deleteAppointmentBeanSecondUI);
             showAllAppointments();
             vbDeleteAppointments.getChildren().clear();
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.CONFIRMATION, CONFIRMATION_TITLE, "Appointment successfully deleted!");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.CONFIRMATION, CONFIRMATION_TITLE, DELETED_APPOINTMENT_MESSAGE, "Notifying customer " + customer);
             alert.showAndWait();
             notifyCustomer();
         } catch (DBConnectionException dbe) {

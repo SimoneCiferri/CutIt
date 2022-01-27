@@ -30,7 +30,9 @@ public class HairdresserDeleteBookedAppointmentsViewController {
     private static final Double NORMAL_LABEL_FONT_SIZE = 14.0;
     private static final String CONNECTION_ERROR_TITLE = "Connection error";
     private static final String WARNING_TITLE = "Warning";
+    private static final String CONFIRMATION_TITLE = "Confirmation";
     private static final String IO_ERROR_TITLE = "Error";
+    private static final String DELETED_APPOINTMENT_MESSAGE = "Appointment successfully deleted!";
     private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
     private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
     private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
@@ -93,7 +95,7 @@ public class HairdresserDeleteBookedAppointmentsViewController {
         deleteAppointmentBeanFirstUI.setShopName(shopBean.getShopName());
         try {
             deleteBookedAppointmentController.deleteAppointment(this.deleteAppointmentBeanFirstUI);
-            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.CONFIRMATION, "Confirmation", "Appointment successfully deleted!");
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.CONFIRMATION, CONFIRMATION_TITLE, DELETED_APPOINTMENT_MESSAGE, "Notifying customer " + customer);
             alert.showAndWait();
             notifyCustomer();
         } catch (DBConnectionException dbe) {

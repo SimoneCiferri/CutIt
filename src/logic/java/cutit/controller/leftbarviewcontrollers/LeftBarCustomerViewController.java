@@ -1,8 +1,10 @@
 package cutit.controller.leftbarviewcontrollers;
 
 import cutit.bean.CustomerBean;
+import cutit.controller.bookappointment.secondui.CustomerFavouritesShopViewController2;
 import cutit.controller.bookappointment.secondui.HomeViewController2;
 import cutit.decorator.ViewLayout2;
+import cutit.decorator.concrete_decorator2.CustomerFavouritesShopView2;
 import cutit.decorator.concrete_decorator2.HomeView2;
 import cutit.facade.Facade2;
 import javafx.fxml.FXML;
@@ -49,7 +51,7 @@ public class LeftBarCustomerViewController {
         Facade2.getInstance().decorateView2(ViewLayout2.HOME2);
         HomeView2 view = (HomeView2) Facade2.getInstance().getViewMap().get(ViewLayout2.HOME2);
         HomeViewController2 viewController = (HomeViewController2) view.getLoadedViewController2(ViewLayout2.HOME2);
-        viewController.fillView(customerBeanSecondUI);
+        viewController.fillView();
         return true;
     }
 
@@ -57,6 +59,9 @@ public class LeftBarCustomerViewController {
     public boolean favouritesPage() {
         setOnPageStyle(ivFavourites);
         Facade2.getInstance().decorateView2(ViewLayout2.CUSTOMERFAVOURITESSHOP);
+        CustomerFavouritesShopView2 view = (CustomerFavouritesShopView2) Facade2.getInstance().getViewMap().get(ViewLayout2.CUSTOMERFAVOURITESSHOP);
+        CustomerFavouritesShopViewController2 viewController = (CustomerFavouritesShopViewController2) view.getLoadedViewController2(ViewLayout2.CUSTOMERFAVOURITESSHOP);
+        viewController.fillView(customerBeanSecondUI);
         return true;
     }
 
