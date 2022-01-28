@@ -37,7 +37,7 @@ public class GetLocationDirectionsGoogleMapsViewController2 implements Initializ
     @Override
     public void mapInitialized() {
         MapOptions options = new MapOptions();
-        LatLong latLong = new LatLong(41.853910, 12.624290);
+        LatLong latLong = new LatLong(41.853911, 12.624291);
         options.center(latLong)
                 .zoomControl(true)
                 .zoom(12)
