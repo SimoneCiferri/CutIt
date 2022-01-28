@@ -1,19 +1,13 @@
 package cutit.controller.getlocationdirections;
 
-
 import com.dlsc.gmapsfx.GoogleMapView;
 import com.dlsc.gmapsfx.MapComponentInitializedListener;
 import com.dlsc.gmapsfx.javascript.object.*;
 import com.dlsc.gmapsfx.service.directions.DirectionStatus;
 import com.dlsc.gmapsfx.service.directions.DirectionsResult;
-import com.dlsc.gmapsfx.service.directions.DirectionsService;
 import com.dlsc.gmapsfx.service.directions.DirectionsServiceCallback;
-import com.dlsc.gmapsfx.service.geocoding.GeocoderStatus;
-import com.dlsc.gmapsfx.service.geocoding.GeocodingService;
-import cutit.factory.AlertFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,7 +20,7 @@ public class GetLocationDirectionsGoogleMapsViewController2 implements Initializ
     protected String address;
 
     @FXML
-    protected GoogleMapView mapView;
+    protected GoogleMapView mapView2;
 
 
     @Override
@@ -49,12 +43,12 @@ public class GetLocationDirectionsGoogleMapsViewController2 implements Initializ
                 .zoom(12)
                 .overviewMapControl(false)
                 .mapType(MapTypeIdEnum.ROADMAP);
-        map = mapView.createMap(options);
+        map = mapView2.createMap(options);
     }
 
     public void setAddress(String address){
         this.address = address;
-        mapView.addMapInitializedListener(this);
+        mapView2.addMapInitializedListener(this);
     }
 
 }

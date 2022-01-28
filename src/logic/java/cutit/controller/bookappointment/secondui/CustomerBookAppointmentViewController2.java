@@ -1,25 +1,29 @@
 package cutit.controller.bookappointment.secondui;
 
-import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController1;
+import cutit.bean.CustomerBean;
+import cutit.bean.ShopBeanInterface;
+import cutit.controller.bookappointment.BookAppointmentController;
+import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController2;
 import cutit.decorator.ViewLayout1;
-import cutit.decorator.concrete_decorator.GetLocationDirectionsGoogleMapsView1;
-import cutit.facade.Facade;
+import cutit.decorator.ViewLayout2;
+import cutit.decorator.concrete_decorator2.GetLocationDirectionsGoogleMapsView2;
 import cutit.facade.Facade2;
 import javafx.fxml.FXML;
 
 public class CustomerBookAppointmentViewController2 {
 
+    private CustomerBean customerBeanSecondUI;
+    private ShopBeanInterface shopBean;
+    private BookAppointmentController bookAppointmentController;
 
     @FXML
     public void initialize(){
         //Da fare
+        bookAppointmentController = new BookAppointmentController();
     }
 
-    @FXML
-    private void getDirections(){
-        Facade2.getInstance().decorateView2(ViewLayout2.);
-        GetLocationDirectionsGoogleMapsView1 view = (GetLocationDirectionsGoogleMapsView1) Facade.getInstance().getViewMap().get(ViewLayout1.GMAPS);
-        GetLocationDirectionsGoogleMapsViewController1 viewController = (GetLocationDirectionsGoogleMapsViewController1) view.getLoadedViewController1(ViewLayout1.GMAPS);
-        bookAppointmentController.getShopDirections(viewController, shopBeanUQ);
+    public void fillView(CustomerBean customerBeanFirstUI, ShopBeanInterface shopBean){
+        this.customerBeanSecondUI = customerBeanFirstUI;
+        this.shopBean = shopBean;
     }
 }

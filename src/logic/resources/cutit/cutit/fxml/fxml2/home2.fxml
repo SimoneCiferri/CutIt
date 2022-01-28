@@ -50,7 +50,7 @@
                                     <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="130.0" prefWidth="230.0" spacing="15.0">
                                        <children>
                                           <Button fx:id="btnBookAppointment" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="180.0" text="Book Appointment" />
-                                          <Button fx:id="btnMaps" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="180.0" text="Maps" />
+                                          <Button fx:id="btnMaps" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#getDirections" prefWidth="180.0" text="Maps" />
                                        </children>
                                     </VBox>
                                  </children>

@@ -2,9 +2,13 @@ package cutit.controller.bookappointment.secondui;
 
 import cutit.bean.*;
 import cutit.controller.bookappointment.BookAppointmentController;
+import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController2;
+import cutit.decorator.ViewLayout2;
+import cutit.decorator.concrete_decorator2.GetLocationDirectionsGoogleMapsView2;
 import cutit.exception.DBConnectionException;
 import cutit.exception.ExceptionText;
 import cutit.exception.RecordNotFoundException;
+import cutit.facade.Facade2;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
 import cutit.utils.MyStringBuilder;
@@ -202,6 +206,14 @@ public class HomeViewController2 {
             }
             ivList.get(i).setImage(new Image(String.valueOf(shopBean.getImages().get(i).toURI())));
         }
+    }
+
+    @FXML
+    private void getDirections(){
+        Facade2.getInstance().decorateView2(ViewLayout2.GMAPS);
+        GetLocationDirectionsGoogleMapsView2 view = (GetLocationDirectionsGoogleMapsView2) Facade2.getInstance().getViewMap().get(ViewLayout2.GMAPS);
+        GetLocationDirectionsGoogleMapsViewController2 viewController = (GetLocationDirectionsGoogleMapsViewController2) view.getLoadedViewController2(ViewLayout2.GMAPS);
+        bookAppointmentController.getShopDirections(viewController, shopBean);
     }
 
     public void fillView(){
