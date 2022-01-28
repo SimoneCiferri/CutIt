@@ -42,7 +42,7 @@ public class GetLocationDirectionsGoogleMapsViewController2 implements Initializ
                 .zoomControl(true)
                 .zoom(12)
                 .overviewMapControl(false)
-                .mapType(MapTypeIdEnum.ROADMAP);
+                .mapType(MapTypeIdEnum.HYBRID);
         map = mapView2.createMap(options);
     }
 
