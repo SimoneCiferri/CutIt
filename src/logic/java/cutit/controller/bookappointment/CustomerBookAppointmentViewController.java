@@ -2,7 +2,7 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.CustomerBean;
 import cutit.bean.ShopBeanInterface;
-import cutit.bean.AppointmentBeanUQ;
+import cutit.bean.AppointmentBean;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController1;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.decorator.ViewLayout1;
@@ -28,7 +28,7 @@ import java.util.Objects;
 public class CustomerBookAppointmentViewController {
 
     private CustomerBean customerBeanFirstUI;
-    private AppointmentBeanUQ appointmentBeanUQ;
+    private AppointmentBean appointmentBean;
     private BookAppointmentController bookAppointmentController;
     private ShopBeanInterface shopBeanUQ;
 
@@ -64,7 +64,7 @@ public class CustomerBookAppointmentViewController {
 
     @FXML
     public void initialize(){
-        appointmentBeanUQ = new AppointmentBeanUQ();
+        appointmentBean = new AppointmentBean();
         bookAppointmentController = new BookAppointmentController();
 
         dtPicker.setValue(LocalDate.now());
@@ -93,13 +93,13 @@ public class CustomerBookAppointmentViewController {
     @FXML
     public void bookAppointment() {
         if(checkInput()){
-            appointmentBeanUQ.setStartTime(getAppointmentStartTime());
-            appointmentBeanUQ.setCustomer(customerBeanFirstUI.getcEmail());
+            appointmentBean.setStartTime(getAppointmentStartTime());
+            appointmentBean.setCustomer(customerBeanFirstUI.getcEmail());
             setPromotion();
-            appointmentBeanUQ.setServiceName(cbServices.getValue());
-            appointmentBeanUQ.setShopName(shopBeanUQ.getShopName());
+            appointmentBean.setServiceName(cbServices.getValue());
+            appointmentBean.setShopName(shopBeanUQ.getShopName());
             try {
-                bookAppointmentController.bookAppointment(appointmentBeanUQ);
+                bookAppointmentController.bookAppointment(appointmentBean);
                 showPayedAndBooked();
             } catch (RecordNotFoundException | DuplicatedRecordException | PaymentException e) {
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
@@ -125,12 +125,12 @@ public class CustomerBookAppointmentViewController {
     private void setPromotion(){
         if(!Objects.equals(tfPromotionCode.getText(), "")){
             if(checkPromotion()){
-                appointmentBeanUQ.setPromotionCode(tfPromotionCode.getText());
+                appointmentBean.setPromotionCode(tfPromotionCode.getText());
             } else{
-                appointmentBeanUQ.setPromotionCode(null);
+                appointmentBean.setPromotionCode(null);
             }
         } else {
-            appointmentBeanUQ.setPromotionCode(null);
+            appointmentBean.setPromotionCode(null);
         }
     }
 
@@ -143,9 +143,9 @@ public class CustomerBookAppointmentViewController {
     private void showAvailableTimeSlots(){
         try {
             LocalDate day = dtPicker.getValue();
-            appointmentBeanUQ.setSelectedDay(day);
-            bookAppointmentController.getAvailableSlots(appointmentBeanUQ, shopBeanUQ.getShopName());
-            List<LocalTime> availableSlots = appointmentBeanUQ.getAvailableSlots();
+            appointmentBean.setSelectedDay(day);
+            bookAppointmentController.getAvailableSlots(appointmentBean, shopBeanUQ.getShopName());
+            List<LocalTime> availableSlots = appointmentBean.getAvailableSlots();
             cbTimeSlot.getItems().clear();
             for (LocalTime availableSlot : availableSlots) {
                 cbTimeSlot.getItems().add(availableSlot);
@@ -169,12 +169,12 @@ public class CustomerBookAppointmentViewController {
     @FXML
     private void showAvailableServices() {
         try {
-            bookAppointmentController.getAvailableServices(appointmentBeanUQ, shopBeanUQ.getShopName());
-            for(int i = 0; i< appointmentBeanUQ.getAvailableServices().size(); i++){
-                String service = appointmentBeanUQ.getAvailableServices().get(i);
+            bookAppointmentController.getAvailableServices(appointmentBean, shopBeanUQ.getShopName());
+            for(int i = 0; i< appointmentBean.getAvailableServices().size(); i++){
+                String service = appointmentBean.getAvailableServices().get(i);
                 cbServices.getItems().add(service);
             }
-            cbServices.setDisable(appointmentBeanUQ.getAvailableServices().isEmpty());
+            cbServices.setDisable(appointmentBean.getAvailableServices().isEmpty());
         } catch (RecordNotFoundException e) {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
             alert.showAndWait();
@@ -194,11 +194,11 @@ public class CustomerBookAppointmentViewController {
     private boolean checkPromotion(){
         try {
             if(!Objects.equals(tfPromotionCode.getText(), "")){
-                appointmentBeanUQ.setPromotionCode(tfPromotionCode.getText());
-                appointmentBeanUQ.setCustomer(customerBeanFirstUI.getcEmail());
-                appointmentBeanUQ.setServiceName(cbServices.getValue());
-                appointmentBeanUQ.setShopName(shopBeanUQ.getShopName());
-                bookAppointmentController.checkPromotion(appointmentBeanUQ);
+                appointmentBean.setPromotionCode(tfPromotionCode.getText());
+                appointmentBean.setCustomer(customerBeanFirstUI.getcEmail());
+                appointmentBean.setServiceName(cbServices.getValue());
+                appointmentBean.setShopName(shopBeanUQ.getShopName());
+                bookAppointmentController.checkPromotion(appointmentBean);
                 tfPromotionCode.setDisable(true);
                 checkPromotion.setDisable(true);
                 lblPromotionApplied.setVisible(true);

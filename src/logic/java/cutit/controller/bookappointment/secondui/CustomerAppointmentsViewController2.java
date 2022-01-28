@@ -1,6 +1,6 @@
 package cutit.controller.bookappointment.secondui;
 
-import cutit.bean.AppointmentBean;
+import cutit.bean.AppointmentBeanInterface;
 import cutit.bean.CustomerBean;
 import cutit.controller.bookappointment.BookAppointmentController;
 import cutit.exception.DBConnectionException;
@@ -40,7 +40,7 @@ public class CustomerAppointmentsViewController2 {
         try {
             vbAppointmentsInScroll.getChildren().clear();
             bookAppointmentController.getAppointments(customerBeanSecondUI);
-            List<AppointmentBean> allAppointments = customerBeanSecondUI.getAllBookedAppointments();
+            List<AppointmentBeanInterface> allAppointments = customerBeanSecondUI.getAllBookedAppointments();
             for(int i = 0; i< allAppointments.size(); i++){
                 int appN = i;
                 String appointment = allAppointments.get(appN).getShopName() + ", " + allAppointments.get(appN).getStartTime().toLocalDate() + " at " + allAppointments.get(appN).getStartTime().toLocalTime();

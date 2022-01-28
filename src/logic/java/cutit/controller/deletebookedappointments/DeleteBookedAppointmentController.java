@@ -1,8 +1,8 @@
 package cutit.controller.deletebookedappointments;
 
-import cutit.bean.AppointmentBean;
+import cutit.bean.AppointmentBeanInterface;
 import cutit.bean.DeleteAppointmentBeanInterface;
-import cutit.bean.AppointmentBeanUQ;
+import cutit.bean.AppointmentBean;
 import cutit.database.dao.AppointmentDAO;
 import cutit.database.dao.ShopDAO;
 import cutit.exception.DBConnectionException;
@@ -53,11 +53,11 @@ public class DeleteBookedAppointmentController {
         }
     }
 
-    private List<AppointmentBean> appointmentBeanListFromAppList(List<Appointment> allAppointments) {
-        List<AppointmentBean> appList = new ArrayList<>();
+    private List<AppointmentBeanInterface> appointmentBeanListFromAppList(List<Appointment> allAppointments) {
+        List<AppointmentBeanInterface> appList = new ArrayList<>();
         if(!allAppointments.isEmpty()){
             for (Appointment allAppointment : allAppointments) {
-                AppointmentBean bean = new AppointmentBeanUQ();
+                AppointmentBeanInterface bean = new AppointmentBean();
                 bean.setStartTime(allAppointment.getStartTime());
                 bean.setCustomer(allAppointment.getCustomer().getUserID());
                 bean.setServiceName(allAppointment.getService().getServiceName());

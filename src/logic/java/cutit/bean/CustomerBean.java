@@ -37,9 +37,9 @@ public interface CustomerBean {
 
     void setAllPersonalPromotions(List<String> allPromotions);
 
-    List<AppointmentBean> getAllBookedAppointments();
+    List<AppointmentBeanInterface> getAllBookedAppointments();
 
-    void setAllBookedAppointments(List<AppointmentBean> allBookedAppointments);
+    void setAllBookedAppointments(List<AppointmentBeanInterface> allBookedAppointments);
 
 
 

@@ -4,6 +4,7 @@ import cutit.bean.*;
 import cutit.controller.bookappointment.BookAppointmentController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController2;
 import cutit.decorator.ViewLayout2;
+import cutit.decorator.concrete_decorator2.CustomerBookAppointmentView2;
 import cutit.decorator.concrete_decorator2.GetLocationDirectionsGoogleMapsView2;
 import cutit.exception.DBConnectionException;
 import cutit.exception.ExceptionText;
@@ -27,6 +28,7 @@ import java.util.List;
 
 public class HomeViewController2 {
 
+    private CustomerBean customerBeanSecondUI;
     private ShopBeanInterface shopBean;
     private ShopListBean shopListBeanSecondUI;
     private BookAppointmentController bookAppointmentController;
@@ -121,6 +123,9 @@ public class HomeViewController2 {
                 shop.setOnMouseClicked(mouseEvent -> showShopInfo(shopListBeanSecondUI.getShopBeanList().get(n).getShopName()));
                 vbAllShopsInScroll.getChildren().add(shop);
             }
+            if(!shopListBeanSecondUI.getShopBeanList().isEmpty()){
+                showShopInfo(shopListBeanSecondUI.getShopBeanList().get(0).getShopName());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -209,6 +214,14 @@ public class HomeViewController2 {
     }
 
     @FXML
+    public void bookAppointment(){
+        Facade2.getInstance().decorateView2(ViewLayout2.CUSTOMERBOOKAPPOINTMENT);
+        CustomerBookAppointmentView2 view = (CustomerBookAppointmentView2) Facade2.getInstance().getViewMap().get(ViewLayout2.CUSTOMERBOOKAPPOINTMENT);
+        CustomerBookAppointmentViewController2 viewController = (CustomerBookAppointmentViewController2) view.getLoadedViewController2(ViewLayout2.CUSTOMERBOOKAPPOINTMENT);
+        viewController.fillView(customerBeanSecondUI, shopBean);
+    }
+
+    @FXML
     private void getDirections(){
         Facade2.getInstance().decorateView2(ViewLayout2.GMAPS);
         GetLocationDirectionsGoogleMapsView2 view = (GetLocationDirectionsGoogleMapsView2) Facade2.getInstance().getViewMap().get(ViewLayout2.GMAPS);
@@ -216,7 +229,8 @@ public class HomeViewController2 {
         bookAppointmentController.getShopDirections(viewController, shopBean);
     }
 
-    public void fillView(){
+    public void fillView(CustomerBean customerBeanSecondUI){
+        this.customerBeanSecondUI = customerBeanSecondUI;
         showAllShops();
     }
 }

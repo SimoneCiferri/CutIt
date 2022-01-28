@@ -1,7 +1,7 @@
 package cutit.controller.bookappointment;
 
 import cutit.bean.*;
-import cutit.bean.AppointmentBeanUQ;
+import cutit.bean.AppointmentBean;
 import cutit.bean.ShopBean;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsController;
@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class BookAppointmentController {
 
-    public void bookAppointment(AppointmentBean appointmentBean) throws DBConnectionException, SQLException, RecordNotFoundException, IOException, DuplicatedRecordException, PaymentException {
+    public void bookAppointment(AppointmentBeanInterface appointmentBean) throws DBConnectionException, SQLException, RecordNotFoundException, IOException, DuplicatedRecordException, PaymentException {
         try {
             Customer customer = CustomerDAO.getCustomer(appointmentBean.getCustomer());
             Service service = ServiceDAO.getService(appointmentBean.getShopName(), appointmentBean.getServiceName());
@@ -55,7 +55,7 @@ public class BookAppointmentController {
         }
     }
 
-    private Boolean payAppointment(AppointmentBean appBean){
+    private Boolean payAppointment(AppointmentBeanInterface appBean){
         PayOnlineController payOnlineController = new PayOnlineController();
         return payOnlineController.payAppointment(appBean);
     }
@@ -133,7 +133,7 @@ public class BookAppointmentController {
         }
     }
 
-    public void getAvailableSlots(AppointmentBean bean, String shopName) throws WrongInputDataException, DBConnectionException, SQLException, RecordNotFoundException, IOException {
+    public void getAvailableSlots(AppointmentBeanInterface bean, String shopName) throws WrongInputDataException, DBConnectionException, SQLException, RecordNotFoundException, IOException {
         try {
             if(bean.getSelectedDay().isBefore(LocalDate.now())){throw new WrongInputDataException("Impossible to select a past day.");}
             Shop shop = ShopDAO.getShopFromName(shopName);
@@ -149,7 +149,7 @@ public class BookAppointmentController {
         }
     }
 
-    public void getAvailableServices(AppointmentBean bean, String shopName) throws DBConnectionException, SQLException, RecordNotFoundException, IOException{
+    public void getAvailableServices(AppointmentBeanInterface bean, String shopName) throws DBConnectionException, SQLException, RecordNotFoundException, IOException{
         try {
             Shop shop = ShopDAO.getShopFromName(shopName);
             List<Service> servicesList = shop.getServices();
@@ -180,7 +180,7 @@ public class BookAppointmentController {
         }
     }
 
-    public void checkPromotion(AppointmentBean bean) throws  DBConnectionException, SQLException, RecordNotFoundException, WrongInputDataException {
+    public void checkPromotion(AppointmentBeanInterface bean) throws  DBConnectionException, SQLException, RecordNotFoundException, WrongInputDataException {
         try {
             Promotion promotion = PromotionDAO.getPersonalPromotion(bean.getCustomer(), bean.getPromotionCode());
             if(Objects.equals(bean.getServiceName(), promotion.getService().getServiceName())){
@@ -213,11 +213,11 @@ public class BookAppointmentController {
         return list;
     }
 
-    private List<AppointmentBean> appBeanListFromAppList(List<Appointment> allAppointments) {
-        List<AppointmentBean> beanAppList = new ArrayList<>();
+    private List<AppointmentBeanInterface> appBeanListFromAppList(List<Appointment> allAppointments) {
+        List<AppointmentBeanInterface> beanAppList = new ArrayList<>();
         if(!allAppointments.isEmpty()){
             for (Appointment allAppointment : allAppointments) {
-                AppointmentBean bean = new AppointmentBeanUQ();
+                AppointmentBeanInterface bean = new AppointmentBean();
                 bean.setStartTime(allAppointment.getStartTime());
                 bean.setEndTime(allAppointment.getStartTime().plusMinutes(30));
                 bean.setShopName(allAppointment.getShop().getShopName());

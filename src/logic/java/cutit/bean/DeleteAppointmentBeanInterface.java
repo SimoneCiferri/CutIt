@@ -13,8 +13,8 @@ public interface DeleteAppointmentBeanInterface {
 
     void setShopName(String shopName);
 
-    List<AppointmentBean> getAllBookedAppointments();
+    List<AppointmentBeanInterface> getAllBookedAppointments();
 
-    void setAllBookedAppointments(List<AppointmentBean> allBookedAppointments);
+    void setAllBookedAppointments(List<AppointmentBeanInterface> allBookedAppointments);
 
 }

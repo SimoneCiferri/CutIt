@@ -13,7 +13,7 @@ public class CustomerBeanUQ implements CustomerBean {
     private LocalDate cBirthDate;
     private String cGender;
     private List<String> allPersonalPromotions;
-    private List<AppointmentBean> allBookedAppointmentBeanFirstUIS;
+    private List<AppointmentBeanInterface> allBookedAppointmentBeanFirstUIS;
 
     public Integer getcRole() {
         return cRole;
@@ -79,11 +79,11 @@ public class CustomerBeanUQ implements CustomerBean {
         this.allPersonalPromotions = allPromotions;
     }
 
-    public List<AppointmentBean> getAllBookedAppointments() {
+    public List<AppointmentBeanInterface> getAllBookedAppointments() {
         return allBookedAppointmentBeanFirstUIS;
     }
 
-    public void setAllBookedAppointments(List<AppointmentBean> allBookedAppointments) {
+    public void setAllBookedAppointments(List<AppointmentBeanInterface> allBookedAppointments) {
         allBookedAppointmentBeanFirstUIS = allBookedAppointments;
     }
 

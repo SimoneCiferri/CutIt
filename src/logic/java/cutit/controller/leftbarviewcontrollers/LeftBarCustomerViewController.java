@@ -51,7 +51,7 @@ public class LeftBarCustomerViewController {
         Facade2.getInstance().decorateView2(ViewLayout2.HOME2);
         HomeView2 view = (HomeView2) Facade2.getInstance().getViewMap().get(ViewLayout2.HOME2);
         HomeViewController2 viewController = (HomeViewController2) view.getLoadedViewController2(ViewLayout2.HOME2);
-        viewController.fillView();
+        viewController.fillView(customerBeanSecondUI);
         return true;
     }
 

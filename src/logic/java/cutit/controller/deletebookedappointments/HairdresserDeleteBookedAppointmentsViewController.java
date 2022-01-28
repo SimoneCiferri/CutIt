@@ -1,6 +1,6 @@
 package cutit.controller.deletebookedappointments;
 
-import cutit.bean.AppointmentBean;
+import cutit.bean.AppointmentBeanInterface;
 import cutit.bean.DeleteAppointmentBeanInterface;
 import cutit.bean.ShopBeanInterface;
 import cutit.bean.firstui.DeleteAppointmentBean;
@@ -68,7 +68,7 @@ public class HairdresserDeleteBookedAppointmentsViewController {
         }
     }
 
-    private void deleteForm(AppointmentBean appointmentBeanFirstUI) {
+    private void deleteForm(AppointmentBeanInterface appointmentBeanFirstUI) {
        vbInScrollHApp.getChildren().clear();
        Label appDate = JavaFXNodeFactory.getInstance().createLabel(appointmentBeanFirstUI.getStartTime().toLocalDate().toString(), TITLE_FONT_SIZE);
        Label appTime = JavaFXNodeFactory.getInstance().createLabel(appointmentBeanFirstUI.getStartTime().toLocalTime().toString(), TITLE_FONT_SIZE);

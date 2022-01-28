@@ -1,6 +1,6 @@
 package cutit.controller.deletebookedappointments;
 
-import cutit.bean.AppointmentBean;
+import cutit.bean.AppointmentBeanInterface;
 import cutit.bean.DeleteAppointmentBeanInterface;
 import cutit.bean.ShopBeanInterface;
 import cutit.bean.firstui.DeleteAppointmentBean;
@@ -54,7 +54,7 @@ public class HairdresserDeleteBookedAppointmentsViewController2 {
         deleteAppointmentBeanSecondUI.setShopName(shopBean.getShopName());
         try {
             deleteBookedAppointmentController.getAllShopAppointments(deleteAppointmentBeanSecondUI);
-            List<AppointmentBean> allAppointments = deleteAppointmentBeanSecondUI.getAllBookedAppointments();
+            List<AppointmentBeanInterface> allAppointments = deleteAppointmentBeanSecondUI.getAllBookedAppointments();
             for(int i = 0; i< allAppointments.size(); i++){
                 String appointmentTitle = allAppointments.get(i).getStartTime().toLocalDate().toString() + " at " + allAppointments.get(i).getStartTime().toLocalTime().toString();
                 Label card = JavaFXNodeFactory.getInstance().createCardLabel2(appointmentTitle, LABEL_STYLE);
@@ -77,7 +77,7 @@ public class HairdresserDeleteBookedAppointmentsViewController2 {
         }
     }
 
-    private void showDeleteForm(AppointmentBean appointmentBean) {
+    private void showDeleteForm(AppointmentBeanInterface appointmentBean) {
         vbDeleteAppointments.getChildren().clear();
         Label appDate = JavaFXNodeFactory.getInstance().createLabel2(appointmentBean.getStartTime().toLocalDate().toString(), TITLE_FONT_SIZE);
         Label appTime = JavaFXNodeFactory.getInstance().createLabel2(appointmentBean.getStartTime().toLocalTime().toString(), TITLE_FONT_SIZE);

@@ -1,6 +1,6 @@
 package cutit.bean.firstui;
 
-import cutit.bean.AppointmentBean;
+import cutit.bean.AppointmentBeanInterface;
 import cutit.bean.DeleteAppointmentBeanInterface;
 
 import java.time.LocalDateTime;
@@ -10,7 +10,7 @@ public class DeleteAppointmentBean implements DeleteAppointmentBeanInterface {
 
     private LocalDateTime startTime;
     private String shopName;
-    private List<AppointmentBean> allBookedAppointments;
+    private List<AppointmentBeanInterface> allBookedAppointments;
 
     public LocalDateTime getStartTime() {
         return startTime;
@@ -28,11 +28,11 @@ public class DeleteAppointmentBean implements DeleteAppointmentBeanInterface {
         this.shopName = shopName;
     }
 
-    public List<AppointmentBean> getAllBookedAppointments() {
+    public List<AppointmentBeanInterface> getAllBookedAppointments() {
         return allBookedAppointments;
     }
 
-    public void setAllBookedAppointments(List<AppointmentBean> allBookedAppointments) {
+    public void setAllBookedAppointments(List<AppointmentBeanInterface> allBookedAppointments) {
         this.allBookedAppointments = allBookedAppointments;
     }
 }

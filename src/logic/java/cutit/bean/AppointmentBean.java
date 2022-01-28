@@ -5,42 +5,95 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
-public interface AppointmentBean {
+public class AppointmentBean implements AppointmentBeanInterface {
 
-    LocalDateTime getStartTime();
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+    private String customer;
+    private String promotionCode;
+    private String serviceName;
+    private String shopName;
+    private LocalDate selectedDay;
+    private List<LocalTime> availableSlots;
+    private List<String> availableServices;
 
-    void setStartTime(LocalDateTime startTime);
 
-    LocalDateTime getEndTime();
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
 
-    void setEndTime(LocalDateTime endTime);
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
 
-    String getCustomer();
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
 
-    void setCustomer(String customer);
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
 
-    String getPromotionCode();
+    public String getCustomer() {
+        return customer;
+    }
 
-    void setPromotionCode(String promotionCode);
+    public void setCustomer(String customer) {
+        this.customer = customer;
+    }
 
-    String getServiceName();
+    public String getPromotionCode() {
+        return promotionCode;
+    }
 
-    void setServiceName(String serviceName);
+    public void setPromotionCode(String promotionCode) {
+        this.promotionCode = promotionCode;
+    }
 
-    String getShopName();
+    public String getServiceName() {
+        return serviceName;
+    }
 
-    void setShopName(String shopName);
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
 
-    List<LocalTime> getAvailableSlots();
+    public String getShopName() {
+        return shopName;
+    }
 
-    void setAvailableSlots(List<LocalTime> availableSlots);
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
 
-    LocalDate getSelectedDay();
+    @Override
+    public List<LocalTime> getAvailableSlots() {
+        return availableSlots;
+    }
 
-    void setSelectedDay(LocalDate selectedDay);
+    @Override
+    public void setAvailableSlots(List<LocalTime> availableSlots) {
+        this.availableSlots = availableSlots;
+    }
 
-    List<String> getAvailableServices();
+    @Override
+    public LocalDate getSelectedDay() {
+        return selectedDay;
+    }
 
-    void setAvailableServices(List<String> servicesList);
+    @Override
+    public void setSelectedDay(LocalDate selectedDay) {
+        this.selectedDay = selectedDay;
+    }
+
+    @Override
+    public List<String> getAvailableServices() {
+        return availableServices;
+    }
+
+    @Override
+    public void setAvailableServices(List<String> servicesList) {
+        this.availableServices = servicesList;
+    }
 
 }

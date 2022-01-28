@@ -1,16 +1,14 @@
 package cutit.controller.payonline;
 
-import cutit.bean.AppointmentBean;
-import cutit.bean.PayOnlineBean;
+import cutit.bean.AppointmentBeanInterface;
 
-import java.security.SecureRandom;
 import java.util.Random;
 
 public class PayOnlineController {
 
     private static final Random random = new Random();
 
-    public Boolean payAppointment(AppointmentBean appBean){
+    public Boolean payAppointment(AppointmentBeanInterface appBean){
         return pay(appBean.getCustomer());
     }
 

@@ -25,7 +25,7 @@ public class GetLocationDirectionsGoogleMapsViewController2 implements Initializ
 
     @Override
     public void directionsReceived(DirectionsResult results, DirectionStatus status) {
-        //Method not implemented
+        //Not implemented
     }
 
     @Override
