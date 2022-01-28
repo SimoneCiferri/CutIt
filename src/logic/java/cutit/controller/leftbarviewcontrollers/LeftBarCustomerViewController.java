@@ -1,10 +1,14 @@
 package cutit.controller.leftbarviewcontrollers;
 
 import cutit.bean.CustomerBean;
+import cutit.controller.bookappointment.secondui.CustomerAppointmentsViewController2;
 import cutit.controller.bookappointment.secondui.CustomerFavouritesShopViewController2;
+import cutit.controller.bookappointment.secondui.CustomerPromotionViewController2;
 import cutit.controller.bookappointment.secondui.HomeViewController2;
 import cutit.decorator.ViewLayout2;
+import cutit.decorator.concrete_decorator2.CustomerAppointmentsView2;
 import cutit.decorator.concrete_decorator2.CustomerFavouritesShopView2;
+import cutit.decorator.concrete_decorator2.CustomerPromotionView2;
 import cutit.decorator.concrete_decorator2.HomeView2;
 import cutit.facade.Facade2;
 import javafx.fxml.FXML;
@@ -65,6 +69,9 @@ public class LeftBarCustomerViewController {
     public boolean appPage() {
         setOnPageStyle(ivAppointments);
         Facade2.getInstance().decorateView2(ViewLayout2.CUSTOMERAPPOINTMENTS);
+        CustomerAppointmentsView2 view = (CustomerAppointmentsView2) Facade2.getInstance().getViewMap().get(ViewLayout2.CUSTOMERAPPOINTMENTS);
+        CustomerAppointmentsViewController2 viewController = (CustomerAppointmentsViewController2) view.getLoadedViewController2(ViewLayout2.CUSTOMERAPPOINTMENTS);
+        viewController.fillView(customerBeanSecondUI);
         return true;
     }
 
@@ -72,6 +79,9 @@ public class LeftBarCustomerViewController {
     public boolean promPage() {
         setOnPageStyle(ivPromotions);
         Facade2.getInstance().decorateView2(ViewLayout2.CUSTOMERPROMOTION);
+        CustomerPromotionView2 view = (CustomerPromotionView2) Facade2.getInstance().getViewMap().get(ViewLayout2.CUSTOMERPROMOTION);
+        CustomerPromotionViewController2 viewController = (CustomerPromotionViewController2) view.getLoadedViewController2(ViewLayout2.CUSTOMERPROMOTION);
+        viewController.fillView(customerBeanSecondUI);
         return true;
     }
 
