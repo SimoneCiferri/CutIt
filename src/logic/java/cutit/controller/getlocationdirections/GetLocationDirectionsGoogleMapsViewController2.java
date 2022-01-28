@@ -12,7 +12,7 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GetLocationDirectionsGoogleMapsViewController2 implements Initializable, MapComponentInitializedListener, DirectionsServiceCallback, GetLocationDirectionsGoogleMapsViewControllerInterface {
+public class GetLocationDirectionsGoogleMapsViewController2 implements Initializable, MapComponentInitializedListener, GetLocationDirectionsGoogleMapsViewControllerInterface {
 
     protected GoogleMap map;
     protected URL url;
@@ -21,12 +21,6 @@ public class GetLocationDirectionsGoogleMapsViewController2 implements Initializ
 
     @FXML
     protected GoogleMapView mapView2;
-
-
-    @Override
-    public void directionsReceived(DirectionsResult results, DirectionStatus status) {
-        //Not implemented
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -50,5 +44,4 @@ public class GetLocationDirectionsGoogleMapsViewController2 implements Initializ
         this.address = address;
         mapView2.addMapInitializedListener(this);
     }
-
 }

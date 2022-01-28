@@ -107,10 +107,10 @@ public class CustomerBookAppointmentViewController2 {
         } catch (RecordNotFoundException rnfException) {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), rnfException.getMessage());
             alert.showAndWait();
-        } catch (DBConnectionException dbExc) {
+        } catch (DBConnectionException dExc) {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
             alert.showAndWait();
-        } catch (SQLException sqe){
+        } catch (SQLException se){
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         } catch (IOException ioe) {

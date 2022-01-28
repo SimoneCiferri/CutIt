@@ -28,7 +28,6 @@ public class GetLocationDirectionsGoogleMapsViewController1 implements Initializ
     @FXML
     protected GoogleMapView mapView;
 
-
     @Override
     public void directionsReceived(DirectionsResult results, DirectionStatus status) {
         //Method not implemented
