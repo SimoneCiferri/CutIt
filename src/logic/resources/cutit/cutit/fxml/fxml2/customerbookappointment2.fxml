@@ -5,17 +5,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.bookappointment.secondui.CustomerBookAppointmentViewController2">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1210.0" spacing="15.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cutit.controller.bookappointment.secondui.CustomerBookAppointmentViewController2">
    <children>
       <Label text="ShopName">
          <font>
             <Font size="30.0" />
          </font></Label>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="550.0" spacing="15.0">
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="550.0" spacing="15.0">
          <children>
             <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="550.0">
                <children>
-                  <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="225.0" spacing="26.0">
+                  <VBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="275.0" spacing="26.0">
                      <children>
                         <Label text="Appointment day:">
                            <font>
@@ -32,20 +32,32 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
+                        <Label text="Promotion:">
+                           <font>
+                              <Font size="13.0" />
+                           </font></Label>
                      </children>
                      <padding>
                         <Insets right="5.0" />
                      </padding>
                   </VBox>
-                  <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="225.0" spacing="20.0">
+                  <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="275.0" spacing="20.0">
                      <children>
                         <TextField fx:id="tfDate" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="150.0" promptText="yyyy-MM-dd">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </TextField>
-                        <Spinner fx:id="timeSpinner" />
-                        <Spinner fx:id="serviceSpinner" />
+                        <Spinner fx:id="timeSpinner" disable="true" />
+                        <Spinner fx:id="serviceSpinner" disable="true" />
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <TextField fx:id="tfPromotionCode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="Promotion Code">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></TextField>
+                           </children>
+                        </HBox>
                      </children>
                      <padding>
                         <Insets left="5.0" />
@@ -55,5 +67,19 @@
             </HBox>
          </children>
       </VBox>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="440.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="220.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#backHome" text="Back" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="220.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#payAndBook" text="Pay and Book" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
    </children>
 </VBox>

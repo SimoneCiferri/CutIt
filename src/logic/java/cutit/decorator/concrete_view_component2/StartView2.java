@@ -29,7 +29,7 @@ public class StartView2 implements ViewComponent2 {
 
     @Override
     public void loadXML2(ViewLayout2 layout) throws IOException, NullPointerException {
-        if(!loadedView.containsKey(layout)){
+        if(!loadedView.containsKey(layout) || layout == ViewLayout2.CUSTOMERBOOKAPPOINTMENT || layout == ViewLayout2.LOGIN2){
             FXMLLoader loader = new FXMLLoader(ViewLayout2.getPath(layout));
             Pane primaryLayout = loader.load();
             Object controller = loader.getController();

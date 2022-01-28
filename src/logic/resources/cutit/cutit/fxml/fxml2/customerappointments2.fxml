@@ -15,7 +15,14 @@
         <items>
             <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="595.0" style="-fx-background-color: transparent;">
                <content>
-                  <VBox fx:id="vbAppointmentsInScroll" alignment="TOP_CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="595.0" spacing="15.0" />
+                  <VBox fx:id="vbAppointmentsInScroll" alignment="TOP_CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="595.0" spacing="15.0">
+                     <children>
+                        <Label text="No Booked Appointments">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children></VBox>
                </content>
             </ScrollPane>
             <VBox fx:id="vbAppointmentInfo" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="595.0" spacing="15.0" />
