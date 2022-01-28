@@ -12,7 +12,8 @@ public enum ViewLayout2 {
     HAIRDRESSERDELETEBOOKEDAPPOINTMENTS("/cutit/cutit/fxml/fxml2/hairdresserdeletebookedappointments2.fxml"),
     HAIRDRESSERMANAGEPROMOTIONS("/cutit/cutit/fxml/fxml2/hairdressermanagepromotions2.fxml"),
     HAIRDRESSERMANAGESERVICES("/cutit/cutit/fxml/fxml2/hairdressermanageservices2.fxml"),
-    HAIRDRESSERMANAGESHOPPAGE("/cutit/cutit/fxml/fxml2/hairdressermanageshop2.fxml");
+    HAIRDRESSERMANAGESHOPPAGE("/cutit/cutit/fxml/fxml2/hairdressermanageshop2.fxml"),
+    GMAPS("/cutit/cutit/fxml/fxml2/gmaps2.fxml");
 
     private String res;
 

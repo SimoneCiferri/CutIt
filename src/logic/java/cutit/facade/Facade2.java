@@ -106,6 +106,10 @@ public class Facade2 {
                 HairdresserManageShopPageView2 hairdresserManageShopPageView2 = new HairdresserManageShopPageView2(startView2);
                 viewMap.put(layout, hairdresserManageShopPageView2);
             }
+            case GMAPS -> {
+                GetLocationDirectionsGoogleMapsView2 getLocationDirectionsGoogleMapsView2 = new GetLocationDirectionsGoogleMapsView2(startView2);
+                viewMap.put(layout, getLocationDirectionsGoogleMapsView2);
+            }
 
         }
     }
