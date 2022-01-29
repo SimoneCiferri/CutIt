@@ -4,11 +4,17 @@ import cutit.bean.interfaces.CustomerBeanInterface;
 import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.bean.interfaces.ShopListBeanInterface;
 import cutit.bean.ShopListBean;
-import cutit.controller.bookappointment.BookAppointmentController;
+import cutit.exception.DBConnectionException;
+import cutit.exception.ExceptionText;
+import cutit.exception.RecordNotFoundException;
+import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class CustomerFavouritesShopViewController2 {
@@ -41,8 +47,18 @@ public class CustomerFavouritesShopViewController2 {
 
                 vbInScrollCFav.getChildren().add(shop);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (RecordNotFoundException nfE) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), nfE.getMessage());
+            alert.showAndWait();
+        } catch (DBConnectionException db) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
+            alert.showAndWait();
+        } catch (SQLException sExc){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
+            alert.showAndWait();
+        } catch (IOException ioe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getIoErrorTitle(), ExceptionText.getIoErrorMessage());
+            alert.showAndWait();
         }
     }
 }

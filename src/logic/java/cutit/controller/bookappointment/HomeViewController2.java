@@ -128,8 +128,15 @@ public class HomeViewController2 {
             if(!shopListBeanSecondUI.getShopBeanList().isEmpty()){
                 showShopInfo(shopListBeanSecondUI.getShopBeanList().get(0).getShopName());
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (DBConnectionException de) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
+            alert.showAndWait();
+        } catch (SQLException s){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
+            alert.showAndWait();
+        } catch (IOException ioe) {
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getIoErrorTitle(), ExceptionText.getIoErrorMessage());
+            alert.showAndWait();
         }
     }
 
