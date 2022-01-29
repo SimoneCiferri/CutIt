@@ -1,8 +1,8 @@
-package cutit.decorator.decorator.concrete_decorator;
+package cutit.decorator.decorator1.concrete_decorator;
 
-import cutit.decorator.decorator.Decorator;
-import cutit.decorator.decorator.ViewComponent1;
-import cutit.decorator.decorator.ViewLayout1;
+import cutit.decorator.decorator1.Decorator;
+import cutit.decorator.decorator1.ViewComponent1;
+import cutit.decorator.decorator1.ViewLayout1;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
@@ -11,16 +11,16 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HairdresserManageShopView1 extends Decorator {
+public class CustomerPromotionsView1 extends Decorator {
 
     private static final String ERROR_TITLE = "Error";
     private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
-    public HairdresserManageShopView1(ViewComponent1 view){
+    public CustomerPromotionsView1(ViewComponent1 view){
 
         super(view);
         try {
-            super.loadXML1(ViewLayout1.HAIRDRESSERMANAGESHOP);
+            super.loadXML1(ViewLayout1.CUSTOMERPROMOTIONS);
         } catch (IOException e){
             LogWriter.getInstance().writeInLog(this.getClass().toString() + "\n " + e.getMessage());
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ERROR_TITLE, IO_ERROR_MESSAGE);
@@ -30,4 +30,5 @@ public class HairdresserManageShopView1 extends Decorator {
         }
 
     }
+
 }

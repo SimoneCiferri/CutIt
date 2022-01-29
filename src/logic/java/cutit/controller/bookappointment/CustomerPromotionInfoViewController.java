@@ -2,8 +2,8 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.interfaces.CustomerBeanInterface;
 import cutit.bean.interfaces.PromotionBeanInterface;
-import cutit.decorator.decorator.ViewLayout1;
-import cutit.decorator.decorator.concrete_decorator.ShopInfoView1;
+import cutit.decorator.decorator1.ViewLayout1;
+import cutit.decorator.decorator1.concrete_decorator.ShopInfoView1;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import javafx.fxml.FXML;

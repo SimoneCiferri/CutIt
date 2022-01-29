@@ -1,8 +1,8 @@
-package cutit.decorator.decorator.concrete_decorator;
+package cutit.decorator.decorator1.concrete_decorator;
 
-import cutit.decorator.decorator.Decorator;
-import cutit.decorator.decorator.ViewComponent1;
-import cutit.decorator.decorator.ViewLayout1;
+import cutit.decorator.decorator1.Decorator;
+import cutit.decorator.decorator1.ViewComponent1;
+import cutit.decorator.decorator1.ViewLayout1;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;

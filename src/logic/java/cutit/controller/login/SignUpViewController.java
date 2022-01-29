@@ -4,7 +4,7 @@ import cutit.bean.interfaces.CustomerBeanInterface;
 import cutit.bean.interfaces.HairdresserBeanInterface;
 import cutit.bean.CustomerBean;
 import cutit.bean.HairdresserBean;
-import cutit.decorator.decorator.ViewLayout1;
+import cutit.decorator.decorator1.ViewLayout1;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.WrongInputDataException;

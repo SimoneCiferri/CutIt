@@ -15,8 +15,8 @@ module cutit.cutit {
     opens cutit.facade to javafx.fxml;
     exports cutit.controller.topbarviewcontrollers;
     opens cutit.controller.topbarviewcontrollers to javafx.fxml;
-    exports cutit.decorator.decorator.concrete_view_component;
-    opens cutit.decorator.decorator.concrete_view_component to javafx.fxml;
+    exports cutit.decorator.decorator1.concrete_view_component;
+    opens cutit.decorator.decorator1.concrete_view_component to javafx.fxml;
     exports cutit.bean;
     opens cutit.bean to javafx.fxml;
     exports cutit.controller.bookappointment;
@@ -45,8 +45,8 @@ module cutit.cutit {
     opens cutit.decorator.decorator2.concrete_view_component2 to javafx.fxml;
     exports cutit.utils;
     exports cutit.model;
-    exports cutit.decorator.decorator;
-    opens cutit.decorator.decorator to javafx.fxml;
+    exports cutit.decorator.decorator1;
+    opens cutit.decorator.decorator1 to javafx.fxml;
     exports cutit.decorator.decorator2;
     opens cutit.decorator.decorator2 to javafx.fxml;
 }

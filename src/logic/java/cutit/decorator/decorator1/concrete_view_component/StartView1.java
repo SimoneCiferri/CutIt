@@ -1,7 +1,7 @@
-package cutit.decorator.decorator.concrete_view_component;
+package cutit.decorator.decorator1.concrete_view_component;
 
-import cutit.decorator.decorator.ViewComponent1;
-import cutit.decorator.decorator.ViewLayout1;
+import cutit.decorator.decorator1.ViewComponent1;
+import cutit.decorator.decorator1.ViewLayout1;
 import cutit.facade.Client;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;

@@ -1,4 +1,4 @@
-package cutit.decorator.decorator;
+package cutit.decorator.decorator1;
 
 import javafx.scene.layout.Pane;
 import java.io.IOException;
