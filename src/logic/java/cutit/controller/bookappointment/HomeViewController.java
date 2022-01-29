@@ -102,11 +102,14 @@ public class HomeViewController {
         }
     }
 
-    private void filterByPlace(){
-        for(int i = 0; i< shopListBeanFirstUI.getShopBeanList().size(); i++){
-            if(shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress().contains(tfSearchPlace.getText())){
-                HBox card = createBox(shopListBeanFirstUI.getShopBeanList().get(i));
-                vbInScroll.getChildren().add(card);
+    private void filterByPlace() {
+        for (int i = 0; i < shopListBeanFirstUI.getShopBeanList().size(); i++) {
+            try {
+                if (shopListBeanFirstUI.getShopBeanList().get(i).getShopAddress().contains(tfSearchPlace.getText())) {
+                    HBox card = createBox(shopListBeanFirstUI.getShopBeanList().get(i));
+                    vbInScroll.getChildren().add(card);
+                }
+            } catch (NullPointerException ignored) {
             }
         }
     }

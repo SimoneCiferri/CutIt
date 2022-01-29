@@ -22,7 +22,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.*;
@@ -217,12 +220,30 @@ public class HomeViewController2 {
         } else {
             vbAllShopsInScroll.getChildren().clear();
             if(!Objects.equals(tfSearchByName.getText(), "")){
-                //filterByName();
-                System.out.println("filtro pe nome");
+                filterByName();
             }else if(!Objects.equals(tfSearchByPlace.getText(), "")){
-                //filterByPlace();
-                System.out.println("filtro pe posto");
+                filterByPlace();
             }
+        }
+    }
+
+    private void filterByName() {
+        for (int i = 0; i < shopListBeanSecondUI.getShopBeanList().size(); i++) {
+            if (shopListBeanSecondUI.getShopBeanList().get(i).getShopName().contains(tfSearchByName.getText())) {
+                VBox card = JavaFXNodeFactory.getInstance().createFavouritesShopCard(shopListBeanSecondUI.getShopBeanList().get(i).getShopName(), shopListBeanSecondUI.getShopBeanList().get(i).getShopAddress());
+                vbAllShopsInScroll.getChildren().add(card);
+            }
+        }
+    }
+
+    private void filterByPlace(){
+        for(int i = 0; i< shopListBeanSecondUI.getShopBeanList().size(); i++){
+            try{
+                if(shopListBeanSecondUI.getShopBeanList().get(i).getShopAddress().contains(tfSearchByPlace.getText())){
+                    VBox card = JavaFXNodeFactory.getInstance().createFavouritesShopCard(shopListBeanSecondUI.getShopBeanList().get(i).getShopName(), shopListBeanSecondUI.getShopBeanList().get(i).getShopAddress());
+                    vbAllShopsInScroll.getChildren().add(card);
+                }
+            } catch (NullPointerException ignored){}
         }
     }
 
