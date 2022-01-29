@@ -5,11 +5,11 @@ import cutit.controller.deletebookedappointments.HairdresserDeleteBookedAppointm
 import cutit.controller.managepromotions.HairdresserManagePromotionsViewController2;
 import cutit.controller.manageservices.HairdresserManageServicesViewController2;
 import cutit.controller.manageshoppage.HairdresserManageShopPageViewController2;
-import cutit.decorator.ViewLayout2;
-import cutit.decorator.concrete_decorator2.HairdresserDeleteBookedAppointmentsView2;
-import cutit.decorator.concrete_decorator2.HairdresserManagePromotionsView2;
-import cutit.decorator.concrete_decorator2.HairdresserManageServicesView2;
-import cutit.decorator.concrete_decorator2.HairdresserManageShopPageView2;
+import cutit.decorator.decorator2.ViewLayout2;
+import cutit.decorator.decorator2.concrete_decorator2.HairdresserDeleteBookedAppointmentsView2;
+import cutit.decorator.decorator2.concrete_decorator2.HairdresserManagePromotionsView2;
+import cutit.decorator.decorator2.concrete_decorator2.HairdresserManageServicesView2;
+import cutit.decorator.decorator2.concrete_decorator2.HairdresserManageShopPageView2;
 import cutit.facade.Facade2;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;

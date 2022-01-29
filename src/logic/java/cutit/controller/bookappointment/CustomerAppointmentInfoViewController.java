@@ -1,6 +1,6 @@
 package cutit.controller.bookappointment;
 
-import cutit.decorator.ViewLayout1;
+import cutit.decorator.decorator.ViewLayout1;
 import cutit.facade.Facade;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

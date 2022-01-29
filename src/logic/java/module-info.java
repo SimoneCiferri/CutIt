@@ -15,16 +15,12 @@ module cutit.cutit {
     opens cutit.facade to javafx.fxml;
     exports cutit.controller.topbarviewcontrollers;
     opens cutit.controller.topbarviewcontrollers to javafx.fxml;
-    exports cutit.decorator;
-    opens cutit.decorator to javafx.fxml;
-    exports cutit.decorator.concrete_view_component;
-    opens cutit.decorator.concrete_view_component to javafx.fxml;
+    exports cutit.decorator.decorator.concrete_view_component;
+    opens cutit.decorator.decorator.concrete_view_component to javafx.fxml;
     exports cutit.bean;
     opens cutit.bean to javafx.fxml;
     exports cutit.controller.bookappointment;
     opens cutit.controller.bookappointment to javafx.fxml;
-    exports cutit.controller.bookappointment.secondui;
-    opens cutit.controller.bookappointment.secondui to javafx.fxml;
     exports cutit.controller.getlocationdirections;
     opens cutit.controller.getlocationdirections to javafx.fxml;
     exports cutit.controller.managepromotions;
@@ -45,8 +41,12 @@ module cutit.cutit {
     opens cutit.pepper to javafx.fxml;
     exports cutit.controller.leftbarviewcontrollers;
     opens cutit.controller.leftbarviewcontrollers to javafx.fxml;
-    exports cutit.decorator.concrete_view_component2;
-    opens cutit.decorator.concrete_view_component2 to javafx.fxml;
+    exports cutit.decorator.decorator2.concrete_view_component2;
+    opens cutit.decorator.decorator2.concrete_view_component2 to javafx.fxml;
     exports cutit.utils;
     exports cutit.model;
+    exports cutit.decorator.decorator;
+    opens cutit.decorator.decorator to javafx.fxml;
+    exports cutit.decorator.decorator2;
+    opens cutit.decorator.decorator2 to javafx.fxml;
 }

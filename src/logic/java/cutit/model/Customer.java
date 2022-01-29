@@ -9,8 +9,8 @@ public class Customer extends User{
     private String surname;
     private LocalDate birthDate;
     private String gender;
-    private List<Appointment> bookedAppointments; //lista di appuntamenti prenotati passati e futuri
-    private List<Promotion> promotions; //Lista di promotion disponibili e usate per l'utente customer
+    private List<Appointment> bookedAppointments;
+    private List<Promotion> promotions;
 
 
     public Customer(){}

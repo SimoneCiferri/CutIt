@@ -4,7 +4,7 @@ public class Service {
 
     private String serviceName;
     private Float price;
-    private String shopName; //non so se ci va nel model(ok nel db, ma forse non nel model)
+    private String shopName;
 
     public Service(String serviceName, Float price, String shopName){
          setServiceName(serviceName);

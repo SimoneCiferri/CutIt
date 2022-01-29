@@ -2,7 +2,7 @@ package cutit.model;
 
 import java.time.LocalDate;
 
-public class Promotion { //commit a caso
+public class Promotion {
 
     private String code;
     private Integer offValue;

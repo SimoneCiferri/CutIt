@@ -1,9 +1,9 @@
 package cutit.facade;
 
-import cutit.decorator.ViewComponent2;
-import cutit.decorator.ViewLayout2;
-import cutit.decorator.concrete_decorator2.*;
-import cutit.decorator.concrete_view_component2.StartView2;
+import cutit.decorator.decorator2.ViewComponent2;
+import cutit.decorator.decorator2.ViewLayout2;
+import cutit.decorator.decorator2.concrete_decorator2.*;
+import cutit.decorator.decorator2.concrete_view_component2.StartView2;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;
 import javafx.scene.control.Alert;
@@ -33,7 +33,6 @@ public class Facade2 {
     }
 
     private void initStartView2() {
-        System.out.println("Singleton Facade2 created!");
         this.startView2 = new StartView2();
         try{
             this.startView2.loadXML2(ViewLayout2.START2);

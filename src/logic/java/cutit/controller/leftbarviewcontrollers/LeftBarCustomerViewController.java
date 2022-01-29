@@ -1,15 +1,15 @@
 package cutit.controller.leftbarviewcontrollers;
 
 import cutit.bean.interfaces.CustomerBeanInterface;
-import cutit.controller.bookappointment.secondui.CustomerAppointmentsViewController2;
-import cutit.controller.bookappointment.secondui.CustomerFavouritesShopViewController2;
-import cutit.controller.bookappointment.secondui.CustomerPromotionViewController2;
-import cutit.controller.bookappointment.secondui.HomeViewController2;
-import cutit.decorator.ViewLayout2;
-import cutit.decorator.concrete_decorator2.CustomerAppointmentsView2;
-import cutit.decorator.concrete_decorator2.CustomerFavouritesShopView2;
-import cutit.decorator.concrete_decorator2.CustomerPromotionView2;
-import cutit.decorator.concrete_decorator2.HomeView2;
+import cutit.controller.bookappointment.CustomerAppointmentsViewController2;
+import cutit.controller.bookappointment.CustomerFavouritesShopViewController2;
+import cutit.controller.bookappointment.CustomerPromotionViewController2;
+import cutit.controller.bookappointment.HomeViewController2;
+import cutit.decorator.decorator2.ViewLayout2;
+import cutit.decorator.decorator2.concrete_decorator2.CustomerAppointmentsView2;
+import cutit.decorator.decorator2.concrete_decorator2.CustomerFavouritesShopView2;
+import cutit.decorator.decorator2.concrete_decorator2.CustomerPromotionView2;
+import cutit.decorator.decorator2.concrete_decorator2.HomeView2;
 import cutit.facade.Facade2;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
