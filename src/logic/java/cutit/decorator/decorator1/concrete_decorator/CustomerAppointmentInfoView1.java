@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class CustomerAppointmentInfoView1 extends Decorator {
 
-    private static final String ERROR_TITLE = "Error";
+    private static final String ERROR_TITLE = "Error!";
     private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
 
     public CustomerAppointmentInfoView1(ViewComponent1 view){
