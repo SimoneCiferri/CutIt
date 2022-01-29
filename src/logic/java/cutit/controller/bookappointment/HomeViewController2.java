@@ -142,7 +142,7 @@ public class HomeViewController2 {
         }
     }
 
-    private void showShopInfo(String shopName) {
+    public void showShopInfo(String shopName) {
         try {
             bookAppointmentController.getShop(shopBean, shopName);
             showShop();

@@ -4,9 +4,12 @@ import cutit.bean.interfaces.CustomerBeanInterface;
 import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.bean.interfaces.ShopListBeanInterface;
 import cutit.bean.ShopListBean;
+import cutit.decorator.decorator2.ViewLayout2;
+import cutit.decorator.decorator2.concrete_decorator2.HomeView2;
 import cutit.exception.DBConnectionException;
 import cutit.exception.ExceptionText;
 import cutit.exception.RecordNotFoundException;
+import cutit.facade.Facade2;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
@@ -44,7 +47,7 @@ public class CustomerFavouritesShopViewController2 {
             List<ShopBeanInterface> shopList = shopListBean.getShopBeanList();
             for (ShopBeanInterface shopBeanInterface : shopList) {
                 VBox shop = JavaFXNodeFactory.getInstance().createFavouritesShopCard(shopBeanInterface.getShopName(), shopBeanInterface.getShopAddress());
-
+                shop.setOnMouseClicked(mouseEvent -> goShop(shopBeanInterface.getShopName()));
                 vbInScrollCFav.getChildren().add(shop);
             }
         } catch (RecordNotFoundException nfE) {
@@ -60,5 +63,13 @@ public class CustomerFavouritesShopViewController2 {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getIoErrorTitle(), ExceptionText.getIoErrorMessage());
             alert.showAndWait();
         }
+    }
+
+    private void goShop(String shopName){
+        Facade2.getInstance().decorateView2(ViewLayout2.HOME2);
+        HomeView2 view = (HomeView2) Facade2.getInstance().getViewMap().get(ViewLayout2.HOME2);
+        HomeViewController2 viewController = (HomeViewController2) view.getLoadedViewController2(ViewLayout2.HOME2);
+        viewController.fillView(customerBeanSecondUI);
+        viewController.showShopInfo(shopName);
     }
 }
