@@ -8,6 +8,7 @@ public class LogWriter {
 
     private boolean logIsEnabled = true;
     private static final String LOG = "src/logic/java/cutit/log/LOG.txt";
+    private static final String PEPPER = "src/logic/java/cutit/pepper/PEPPER.txt";
 
     private static LogWriter instance = null;
 
@@ -34,6 +35,18 @@ public class LogWriter {
                 logIsEnabled = false;
             }
         }
+    }
+
+    public void pepperAction(String action){
+            try {
+                File f = new File(PEPPER);
+                if ((f.exists() || f.createNewFile())) {
+                    String oldLog = copy();
+                    paste(oldLog, action);
+                }
+            } catch (IOException e) {
+                logIsEnabled = false;
+            }
     }
 
     private String copy(){
