@@ -1,0 +1,155 @@
+
+2022/01/29 19:37:03
+------------------------------------------------------------Thread attivo per a@a proprietario dello shop shopA------------------------------------------------------------
+Shop shopA has 2 promotion/s
+Shop has 13 appointment/s
+Shop has 4 customer/s
+Customer c@c ha 8 appointments.
+Customer dige@gmail.com ha 2 appointments.
+Customer i@i ha 1 appointments.
+Customer z@z ha 2 appointments.
+Promo services are: [Barba, Taglio]
+Customer c@c has 0 appointment with service Barba
+Try assigning promotion at c@c on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at c@c
+Customer c@c has 3 appointment with service Taglio
+Try assigning promotion at c@c on Taglio with 3 appointments booked
+Penultimate is 2022-01-03T10:00, last is 2022-01-29T17:30
+Try to calculate avg days between 2022-01-03T10:00 and 2022-01-29T17:30
+Days between 2022-01-03T10:00 and 2022-01-29T17:30 are 26
+Trying to add UCONN at c@c (only if i'm between 2022-02-21 and 2022-02-27, perfect day is 2022-02-24)
+Promotion UCONN not added, i'm not between 2022-02-21 and 2022-02-27 or promotion is expired
+Customer dige@gmail.com has 0 appointment with service Barba
+Try assigning promotion at dige@gmail.com on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at dige@gmail.com
+Customer dige@gmail.com has 2 appointment with service Taglio
+Try assigning promotion at dige@gmail.com on Taglio with 2 appointments booked
+Penultimate is 2022-01-14T17:30, last is 2022-01-16T14:00
+Try to calculate avg days between 2022-01-14T17:30 and 2022-01-16T14:00
+Days between 2022-01-14T17:30 and 2022-01-16T14:00 are 1
+Trying to add UCONN at dige@gmail.com (only if i'm between 2022-01-14 and 2022-01-20, perfect day is 2022-01-17)
+Promotion UCONN not added, i'm not between 2022-01-14 and 2022-01-20 or promotion is expired
+Customer i@i has 0 appointment with service Barba
+Try assigning promotion at i@i on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at i@i
+Customer i@i has 0 appointment with service Taglio
+Try assigning promotion at i@i on Taglio with zero appointments booked
+Min promotion on Taglio is UCONN
+Trying to addUCONN at i@i
+Customer z@z has 0 appointment with service Barba
+Try assigning promotion at z@z on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at z@z
+Customer z@z has 1 appointment with service Taglio
+Try assigning promotion at z@z on Taglio with one appointment booked
+Min promotion on Taglio is UCONN
+Last appointment day is 2024-01-01
+Trying to add UCONN at z@z (only if i'm between 2024-01-29 and 2024-02-04, perfect day is 2024-02-01)
+Promotion UCONN not added, i'm not between 2024-01-29 and 2024-02-04 or promotion is expired
+
+2022/01/29 19:38:00
+------------------------------------------------------------Thread attivo per a@a proprietario dello shop shopA------------------------------------------------------------
+Shop shopA has 2 promotion/s
+Shop has 13 appointment/s
+Shop has 4 customer/s
+Customer c@c ha 8 appointments.
+Customer dige@gmail.com ha 2 appointments.
+Customer i@i ha 1 appointments.
+Customer z@z ha 2 appointments.
+Promo services are: [Barba, Taglio]
+Customer c@c has 0 appointment with service Barba
+Try assigning promotion at c@c on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at c@c
+Customer c@c has 3 appointment with service Taglio
+Try assigning promotion at c@c on Taglio with 3 appointments booked
+Penultimate is 2022-01-03T10:00, last is 2022-01-29T17:30
+Try to calculate avg days between 2022-01-03T10:00 and 2022-01-29T17:30
+Days between 2022-01-03T10:00 and 2022-01-29T17:30 are 26
+Trying to add UCONN at c@c (only if i'm between 2022-02-21 and 2022-02-27, perfect day is 2022-02-24)
+Promotion UCONN not added, i'm not between 2022-02-21 and 2022-02-27 or promotion is expired
+Customer dige@gmail.com has 0 appointment with service Barba
+Try assigning promotion at dige@gmail.com on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at dige@gmail.com
+Customer dige@gmail.com has 2 appointment with service Taglio
+Try assigning promotion at dige@gmail.com on Taglio with 2 appointments booked
+Penultimate is 2022-01-14T17:30, last is 2022-01-16T14:00
+Try to calculate avg days between 2022-01-14T17:30 and 2022-01-16T14:00
+Days between 2022-01-14T17:30 and 2022-01-16T14:00 are 1
+Trying to add UCONN at dige@gmail.com (only if i'm between 2022-01-14 and 2022-01-20, perfect day is 2022-01-17)
+Promotion UCONN not added, i'm not between 2022-01-14 and 2022-01-20 or promotion is expired
+Customer i@i has 0 appointment with service Barba
+Try assigning promotion at i@i on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at i@i
+Customer i@i has 0 appointment with service Taglio
+Try assigning promotion at i@i on Taglio with zero appointments booked
+Min promotion on Taglio is UCONN
+Trying to addUCONN at i@i
+Customer z@z has 0 appointment with service Barba
+Try assigning promotion at z@z on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at z@z
+Customer z@z has 1 appointment with service Taglio
+Try assigning promotion at z@z on Taglio with one appointment booked
+Min promotion on Taglio is UCONN
+Last appointment day is 2024-01-01
+Trying to add UCONN at z@z (only if i'm between 2024-01-29 and 2024-02-04, perfect day is 2024-02-01)
+Promotion UCONN not added, i'm not between 2024-01-29 and 2024-02-04 or promotion is expired
+------------------------------------------------------------Thread finito per a@a proprietario dello shop shopA------------------------------------------------------------
+
+2022/01/29 19:41:11
+------------------------------------------------------------Thread attivo per a@a proprietario dello shop shopA------------------------------------------------------------
+Shop shopA has 2 promotion/s
+Shop has 13 appointment/s
+Shop has 4 customer/s
+Customer c@c ha 8 appointments.
+Customer dige@gmail.com ha 2 appointments.
+Customer i@i ha 1 appointments.
+Customer z@z ha 2 appointments.
+Promo services are: [Barba, Taglio]
+Customer c@c has 0 appointment with service Barba
+Try assigning promotion at c@c on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at c@c
+Customer c@c has 3 appointment with service Taglio
+Try assigning promotion at c@c on Taglio with 3 appointments booked
+Penultimate is 2022-01-03T10:00, last is 2022-01-29T17:30
+Try to calculate avg days between 2022-01-03T10:00 and 2022-01-29T17:30
+Days between 2022-01-03T10:00 and 2022-01-29T17:30 are 26
+Trying to add UCONN at c@c (only if i'm between 2022-02-21 and 2022-02-27, perfect day is 2022-02-24)
+Promotion UCONN not added, i'm not between 2022-02-21 and 2022-02-27 or promotion is expired
+Customer dige@gmail.com has 0 appointment with service Barba
+Try assigning promotion at dige@gmail.com on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at dige@gmail.com
+Customer dige@gmail.com has 2 appointment with service Taglio
+Try assigning promotion at dige@gmail.com on Taglio with 2 appointments booked
+Penultimate is 2022-01-14T17:30, last is 2022-01-16T14:00
+Try to calculate avg days between 2022-01-14T17:30 and 2022-01-16T14:00
+Days between 2022-01-14T17:30 and 2022-01-16T14:00 are 1
+Trying to add UCONN at dige@gmail.com (only if i'm between 2022-01-14 and 2022-01-20, perfect day is 2022-01-17)
+Promotion UCONN not added, i'm not between 2022-01-14 and 2022-01-20 or promotion is expired
+Customer i@i has 0 appointment with service Barba
+Try assigning promotion at i@i on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at i@i
+Customer i@i has 0 appointment with service Taglio
+Try assigning promotion at i@i on Taglio with zero appointments booked
+Min promotion on Taglio is UCONN
+Trying to addUCONN at i@i
+Customer z@z has 0 appointment with service Barba
+Try assigning promotion at z@z on Barba with zero appointments booked
+Min promotion on Barba is BARBARIO10
+Trying to addBARBARIO10 at z@z
+Customer z@z has 1 appointment with service Taglio
+Try assigning promotion at z@z on Taglio with one appointment booked
+Min promotion on Taglio is UCONN
+Last appointment day is 2024-01-01
+Trying to add UCONN at z@z (only if i'm between 2024-01-29 and 2024-02-04, perfect day is 2024-02-01)
+Promotion UCONN not added, i'm not between 2024-01-29 and 2024-02-04 or promotion is expired
+------------------------------------------------------------Thread finito per a@a proprietario dello shop shopA------------------------------------------------------------

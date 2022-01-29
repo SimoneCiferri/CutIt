@@ -28,8 +28,8 @@ public class LogWriter {
             try {
                 File f = new File(LOG);
                 if ((f.exists() || f.createNewFile())) {
-                    String oldLog = copy();
-                    paste(oldLog, infoLog);
+                    String oldLog = copy(LOG);
+                    paste(oldLog, infoLog, LOG);
                 }
             } catch (IOException e) {
                 logIsEnabled = false;
@@ -41,16 +41,16 @@ public class LogWriter {
             try {
                 File f = new File(PEPPER);
                 if ((f.exists() || f.createNewFile())) {
-                    String oldLog = copy();
-                    paste(oldLog, action);
+                    String oldLog = copy(PEPPER);
+                    paste(oldLog, action, PEPPER);
                 }
             } catch (IOException e) {
                 logIsEnabled = false;
             }
     }
 
-    private String copy(){
-        try(BufferedReader rLog = new BufferedReader(new FileReader(LOG))){
+    private String copy(String path){
+        try(BufferedReader rLog = new BufferedReader(new FileReader(path))){
             String s;
             StringBuilder s1 = new StringBuilder();
             while ((s = rLog.readLine()) != null) {
@@ -63,8 +63,8 @@ public class LogWriter {
         }
     }
 
-    private void paste(String oldLog, String infoLog){
-        try(BufferedWriter wLog = new BufferedWriter(new FileWriter(LOG))){
+    private void paste(String oldLog, String infoLog, String path){
+        try(BufferedWriter wLog = new BufferedWriter(new FileWriter(path))){
             wLog.write(oldLog + "\n" + currentDate() + "\n" + infoLog);
         } catch (IOException fnf){
             logIsEnabled = false;
