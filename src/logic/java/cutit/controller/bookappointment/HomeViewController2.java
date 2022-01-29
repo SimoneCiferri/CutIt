@@ -112,7 +112,6 @@ public class HomeViewController2 {
         shopListBeanSecondUI = new ShopListBean();
         bookAppointmentController = new BookAppointmentController();
         ivList = Arrays.asList(ivPhoto1, ivPhoto2, ivPhoto3, ivPhoto4, ivPhoto5, ivPhoto6, ivPhoto7, ivPhoto8);
-
     }
 
     private void showAllShops(){
@@ -208,6 +207,22 @@ public class HomeViewController2 {
             lblShopEmployeeInScroll.setText(shopBean.getShopEmployee());
         }else {
             lblShopEmployeeInScroll.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void filterShops(){
+        if(Objects.equals(tfSearchByName.getText(), "") && Objects.equals(tfSearchByPlace.getText(), "")){
+            showAllShops();
+        } else {
+            vbAllShopsInScroll.getChildren().clear();
+            if(!Objects.equals(tfSearchByName.getText(), "")){
+                //filterByName();
+                System.out.println("filtro pe nome");
+            }else if(!Objects.equals(tfSearchByPlace.getText(), "")){
+                //filterByPlace();
+                System.out.println("filtro pe posto");
+            }
         }
     }
 
