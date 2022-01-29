@@ -1,9 +1,9 @@
 package cutit.controller.payonline;
 
-import cutit.bean.PayOnlineBean;
+import cutit.bean.interfaces.PayOnlineBeanInterface;
 
 public interface PayOnlinePayPalViewControllerInterface {
 
-    void setData(PayOnlineBean payOnlineBean);
+    void setData(PayOnlineBeanInterface payOnlineBean);
 
 }

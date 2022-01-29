@@ -1,7 +1,7 @@
 package cutit.controller.bookappointment;
 
-import cutit.bean.CustomerBean;
-import cutit.bean.ShopBeanInterface;
+import cutit.bean.interfaces.CustomerBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.bean.AppointmentBean;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController1;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
@@ -27,7 +27,7 @@ import java.util.Objects;
 
 public class CustomerBookAppointmentViewController {
 
-    private CustomerBean customerBeanFirstUI;
+    private CustomerBeanInterface customerBeanFirstUI;
     private AppointmentBean appointmentBean;
     private BookAppointmentController bookAppointmentController;
     private ShopBeanInterface shopBeanUQ;
@@ -276,7 +276,7 @@ public class CustomerBookAppointmentViewController {
         }
     }
 
-    public void fillView(CustomerBean customerBeanFirstUI, ShopBeanInterface shopBeanUQ){
+    public void fillView(CustomerBeanInterface customerBeanFirstUI, ShopBeanInterface shopBeanUQ){
         this.customerBeanFirstUI = customerBeanFirstUI;
         this.shopBeanUQ = shopBeanUQ;
         lblTitleShopName.setText(shopBeanUQ.getShopName());

@@ -1,5 +1,7 @@
 package cutit.bean;
 
+import cutit.bean.interfaces.AppointmentBeanInterface;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;

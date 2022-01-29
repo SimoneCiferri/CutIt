@@ -1,8 +1,8 @@
 package cutit.controller.managepromotions;
 
-import cutit.bean.ManagePromotionBeanInterface;
+import cutit.bean.interfaces.ManagePromotionBeanInterface;
 import cutit.bean.ManagePromotionBean;
-import cutit.bean.ShopBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.database.dao.PromotionDAO;
 import cutit.database.dao.ServiceDAO;
 import cutit.exception.DBConnectionException;

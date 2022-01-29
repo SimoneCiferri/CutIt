@@ -1,6 +1,6 @@
 package cutit.controller.getlocationdirections;
 
-import cutit.bean.ShopBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
 
 public class GetLocationDirectionsController {
 

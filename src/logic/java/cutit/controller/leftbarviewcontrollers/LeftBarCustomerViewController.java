@@ -1,6 +1,6 @@
 package cutit.controller.leftbarviewcontrollers;
 
-import cutit.bean.CustomerBean;
+import cutit.bean.interfaces.CustomerBeanInterface;
 import cutit.controller.bookappointment.secondui.CustomerAppointmentsViewController2;
 import cutit.controller.bookappointment.secondui.CustomerFavouritesShopViewController2;
 import cutit.controller.bookappointment.secondui.CustomerPromotionViewController2;
@@ -25,7 +25,7 @@ public class LeftBarCustomerViewController {
     private static final double ON_PAGE_STYLE = 60;
     private static final double NORMAL_STYLE = 40;
 
-    private CustomerBean customerBeanSecondUI;
+    private CustomerBeanInterface customerBeanSecondUI;
 
     @FXML
     private VBox vbLeftBarCustomer;
@@ -112,7 +112,7 @@ public class LeftBarCustomerViewController {
     }
 
 
-    public void startBean(CustomerBean customerBeanSecondUI){
+    public void startBean(CustomerBeanInterface customerBeanSecondUI){
         this.customerBeanSecondUI = customerBeanSecondUI;
         appPage();
     }

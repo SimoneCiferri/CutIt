@@ -1,8 +1,8 @@
 package cutit.controller.managepromotions;
 
 import cutit.bean.ManagePromotionBean;
-import cutit.bean.ManagePromotionBeanInterface;
-import cutit.bean.ShopBeanInterface;
+import cutit.bean.interfaces.ManagePromotionBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.exception.*;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;

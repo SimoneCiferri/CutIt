@@ -1,33 +1,71 @@
 package cutit.bean;
 
-public interface HairdresserBean {
+import cutit.bean.interfaces.HairdresserBeanInterface;
 
-    Integer gethRole();
+public class HairdresserBean implements HairdresserBeanInterface {
 
-    void sethRole(Integer hRole);
+    private String hEmail;
+    private String hPassword;
+    private Integer hRole;
+    private String hName;
+    private String hSurname;
+    private String pIVA;
+    private String shopName;
 
-    String gethName();
+    public Integer gethRole() {
+        return hRole;
+    }
 
-    void sethName(String hName);
+    public void sethRole(Integer hRole) {
+        this.hRole = hRole;
+    }
 
-    String gethSurname();
+    public String gethName() {
+        return hName;
+    }
 
-    void sethSurname(String hSurname);
+    public void sethName(String hName) {
+        this.hName = hName;
+    }
 
-    String gethEmail();
+    public String gethSurname() {
+        return hSurname;
+    }
 
-    void sethEmail(String hEmail);
+    public void sethSurname(String hSurname) {
+        this.hSurname = hSurname;
+    }
 
-    String getShopName();
+    public String gethEmail() {
+        return hEmail;
+    }
 
-    void setShopName(String shopName);
+    public void sethEmail(String hEmail) {
+        this.hEmail = hEmail;
+    }
 
-    String getpIVA();
+    public String getShopName() {
+        return shopName;
+    }
 
-    void setpIVA(String pIVA);
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
 
-    String gethPassword();
+    public String getpIVA() {
+        return pIVA;
+    }
 
-    void sethPassword(String hPassword);
+    public void setpIVA(String pIVA) {
+        this.pIVA = pIVA;
+    }
+
+    public String gethPassword() {
+        return hPassword;
+    }
+
+    public void sethPassword(String hPassword) {
+        this.hPassword = hPassword;
+    }
 
 }

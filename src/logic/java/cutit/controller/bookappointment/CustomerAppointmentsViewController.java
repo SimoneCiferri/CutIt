@@ -1,6 +1,6 @@
 package cutit.controller.bookappointment;
 
-import cutit.bean.CustomerBean;
+import cutit.bean.interfaces.CustomerBeanInterface;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.CustomerAppointmentInfoView1;
 import cutit.exception.DBConnectionException;
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 
 public class CustomerAppointmentsViewController {
 
-    private CustomerBean customerBeanFirstUI;
+    private CustomerBeanInterface customerBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
     private static final String LABEL_STYLES = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
 
@@ -63,7 +63,7 @@ public class CustomerAppointmentsViewController {
         viewController.fillView(appStartTime, appEndTime, appService, appShop);
     }
 
-    public void fillView(CustomerBean customerBeanFirstUI){
+    public void fillView(CustomerBeanInterface customerBeanFirstUI){
         this.customerBeanFirstUI = customerBeanFirstUI;
         showClientApp();
     }

@@ -1,9 +1,9 @@
 package cutit.controller.bookappointment.secondui;
 
-import cutit.bean.CustomerBean;
-import cutit.bean.ShopBeanInterface;
+import cutit.bean.interfaces.CustomerBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
+import cutit.bean.interfaces.ShopListBeanInterface;
 import cutit.bean.ShopListBean;
-import cutit.bean.ShopListBeanUQ;
 import cutit.controller.bookappointment.BookAppointmentController;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
@@ -13,8 +13,8 @@ import java.util.List;
 
 public class CustomerFavouritesShopViewController2 {
 
-    private CustomerBean customerBeanSecondUI;
-    private ShopListBean shopListBean;
+    private CustomerBeanInterface customerBeanSecondUI;
+    private ShopListBeanInterface shopListBean;
     private BookAppointmentController bookAppointmentController;
 
     @FXML
@@ -22,11 +22,11 @@ public class CustomerFavouritesShopViewController2 {
 
     @FXML
     public void initialize(){
-        shopListBean = new ShopListBeanUQ();
+        shopListBean = new ShopListBean();
         bookAppointmentController = new BookAppointmentController();
     }
 
-    public void fillView(CustomerBean customerBeanSecondUI){
+    public void fillView(CustomerBeanInterface customerBeanSecondUI){
         this.customerBeanSecondUI = customerBeanSecondUI;
         showFavouritesShops();
     }

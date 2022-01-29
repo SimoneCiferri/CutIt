@@ -1,6 +1,6 @@
 package cutit.controller.payonline;
 
-import cutit.bean.AppointmentBeanInterface;
+import cutit.bean.interfaces.AppointmentBeanInterface;
 
 import java.util.Random;
 

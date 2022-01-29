@@ -1,7 +1,7 @@
 package cutit.controller.bookappointment;
 
-import cutit.bean.CustomerBean;
-import cutit.bean.PromotionBean;
+import cutit.bean.interfaces.CustomerBeanInterface;
+import cutit.bean.interfaces.PromotionBeanInterface;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.ShopInfoView1;
 import cutit.facade.Facade;
@@ -18,8 +18,8 @@ import java.awt.datatransfer.StringSelection;
 
 public class CustomerPromotionInfoViewController {
 
-    private PromotionBean promotionBean;
-    private CustomerBean customerBeanFirstUI;
+    private PromotionBeanInterface promotionBean;
+    private CustomerBeanInterface customerBeanFirstUI;
     private static final String WARNING_TITLE = "Warning";
 
     @FXML
@@ -69,7 +69,7 @@ public class CustomerPromotionInfoViewController {
         }
     }
 
-    public void fillView(CustomerBean customerBean, PromotionBean promotionBean){
+    public void fillView(CustomerBeanInterface customerBean, PromotionBeanInterface promotionBean){
         this.promotionBean = promotionBean;
         this.customerBeanFirstUI = customerBean;
         lblShopName.setText(promotionBean.getShopName());

@@ -1,7 +1,7 @@
 package cutit.controller.deletebookedappointments;
 
-import cutit.bean.AppointmentBeanInterface;
-import cutit.bean.DeleteAppointmentBeanInterface;
+import cutit.bean.interfaces.AppointmentBeanInterface;
+import cutit.bean.interfaces.DeleteAppointmentBeanInterface;
 import cutit.bean.AppointmentBean;
 import cutit.database.dao.AppointmentDAO;
 import cutit.database.dao.ShopDAO;

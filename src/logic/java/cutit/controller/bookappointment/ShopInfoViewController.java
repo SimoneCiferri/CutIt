@@ -1,6 +1,6 @@
 package cutit.controller.bookappointment;
 
-import cutit.bean.CustomerBean;
+import cutit.bean.interfaces.CustomerBeanInterface;
 import cutit.bean.ShopBean;
 import cutit.controller.getlocationdirections.GetLocationDirectionsController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController1;
@@ -32,7 +32,7 @@ import java.util.Objects;
 public class ShopInfoViewController {
 
     private ShopBean shopBean;
-    private CustomerBean customerBeanFirstUI;
+    private CustomerBeanInterface customerBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
     private GetLocationDirectionsController getLocationDirectionsController;
     private List<ImageView> ivList = new ArrayList<>();
@@ -182,7 +182,7 @@ public class ShopInfoViewController {
         return true;
     }
 
-    public void fillView(CustomerBean customerBeanFirstUI, String shopName){
+    public void fillView(CustomerBeanInterface customerBeanFirstUI, String shopName){
         try {
             this.customerBeanFirstUI = customerBeanFirstUI;
             bookAppointmentController.getShop(shopBean, shopName);

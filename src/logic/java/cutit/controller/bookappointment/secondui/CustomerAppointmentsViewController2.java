@@ -1,7 +1,7 @@
 package cutit.controller.bookappointment.secondui;
 
-import cutit.bean.AppointmentBeanInterface;
-import cutit.bean.CustomerBean;
+import cutit.bean.interfaces.AppointmentBeanInterface;
+import cutit.bean.interfaces.CustomerBeanInterface;
 import cutit.controller.bookappointment.BookAppointmentController;
 import cutit.exception.DBConnectionException;
 import cutit.exception.ExceptionText;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class CustomerAppointmentsViewController2 {
 
-    private CustomerBean customerBeanSecondUI;
+    private CustomerBeanInterface customerBeanSecondUI;
     private BookAppointmentController bookAppointmentController;
     private static final String LABEL_STYLES = "-fx-border-color: grey; -fx-border-radius: 5;";
     private static final Double TITLE_FONT_SIZE = 30.0;
@@ -72,7 +72,7 @@ public class CustomerAppointmentsViewController2 {
     }
 
 
-    public void fillView(CustomerBean customerBeanSecondUI){
+    public void fillView(CustomerBeanInterface customerBeanSecondUI){
         this.customerBeanSecondUI = customerBeanSecondUI;
         showMyAppointments();
     }

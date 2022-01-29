@@ -1,27 +1,56 @@
 package cutit.bean;
 
+import cutit.bean.interfaces.PromotionBeanInterface;
+
 import java.time.LocalDate;
 
-public interface PromotionBean {
+public class PromotionBean implements PromotionBeanInterface {
 
-    String getPromotionCode();
+    private String promotionCode;
+    private Integer offValue;
+    private LocalDate expireDate;
+    private String serviceName;
+    private String shopName;
 
-    void setPromotionCode(String promotionCode);
 
-    Integer getOffValue();
+    public String getPromotionCode() {
+        return promotionCode;
+    }
 
-    void setOffValue(Integer offValue);
+    public void setPromotionCode(String promotionCode) {
+        this.promotionCode = promotionCode;
+    }
 
-    LocalDate getExpireDate();
+    public Integer getOffValue() {
+        return offValue;
+    }
 
-    void setExpireDate(LocalDate expireDate);
+    public void setOffValue(Integer offValue) {
+        this.offValue = offValue;
+    }
 
-    String getServiceName();
+    public LocalDate getExpireDate() {
+        return expireDate;
+    }
 
-    void setServiceName(String serviceName);
+    public void setExpireDate(LocalDate expireDate) {
+        this.expireDate = expireDate;
+    }
 
-    String getShopName();
+    public String getServiceName() {
+        return serviceName;
+    }
 
-    void setShopName(String shopName);
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
 
 }

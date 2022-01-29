@@ -1,10 +1,13 @@
 package cutit.controller.login;
 
-import cutit.bean.*;
-import cutit.bean.CustomerBeanUQ;
-import cutit.bean.HairdresserBeanUQ;
+import cutit.bean.CustomerBean;
+import cutit.bean.HairdresserBean;
 import cutit.bean.ShopBean;
-import cutit.bean.UserBeanUQ;
+import cutit.bean.UserBean;
+import cutit.bean.interfaces.CustomerBeanInterface;
+import cutit.bean.interfaces.HairdresserBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
+import cutit.bean.interfaces.UserBeanInterface;
 import cutit.controller.topbarviewcontrollers.TopBarCustomerViewController;
 import cutit.controller.topbarviewcontrollers.TopBarHairdresserViewController;
 import cutit.decorator.ViewLayout1;
@@ -29,9 +32,9 @@ import java.util.Objects;
 public class LoginViewController {
 
     private LoginController loginController;
-    private UserBean userBeanFirstUI;
-    private CustomerBean customerBeanFirstUI;
-    private HairdresserBean hairdresserBeanFirstUI;
+    private UserBeanInterface userBeanFirstUI;
+    private CustomerBeanInterface customerBeanFirstUI;
+    private HairdresserBeanInterface hairdresserBeanFirstUI;
     private ShopBeanInterface shopBeanFirstUI;
 
 
@@ -43,9 +46,9 @@ public class LoginViewController {
 
     @FXML
     public void initialize(){
-        userBeanFirstUI = new UserBeanUQ();
-        customerBeanFirstUI = new CustomerBeanUQ();
-        hairdresserBeanFirstUI = new HairdresserBeanUQ();
+        userBeanFirstUI = new UserBean();
+        customerBeanFirstUI = new CustomerBean();
+        hairdresserBeanFirstUI = new HairdresserBean();
         shopBeanFirstUI = new ShopBean();
         loginController = new LoginController();
     }

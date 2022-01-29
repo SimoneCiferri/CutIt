@@ -1,8 +1,8 @@
 package cutit.controller.bookappointment;
 
-import cutit.bean.CustomerBean;
+import cutit.bean.interfaces.CustomerBeanInterface;
+import cutit.bean.interfaces.PromotionBeanInterface;
 import cutit.bean.PromotionBean;
-import cutit.bean.firstui.PromotionBeanUQ;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.CustomerPromotionInfoView1;
 import cutit.exception.DBConnectionException;
@@ -20,8 +20,8 @@ import java.sql.SQLException;
 
 public class CustomerPromotionsViewController {
 
-    private CustomerBean customerBeanFirstUI;
-    private PromotionBean promotionBeanUQ;
+    private CustomerBeanInterface customerBeanFirstUI;
+    private PromotionBeanInterface promotionBeanUQ;
     private BookAppointmentController bookAppointmentController;
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
     private static final String CONNECTION_ERROR_TITLE = "Connection error";
@@ -33,7 +33,7 @@ public class CustomerPromotionsViewController {
     private VBox vbInScrollCProm;
 
     public boolean initialize() throws IOException {
-        promotionBeanUQ = new PromotionBeanUQ();
+        promotionBeanUQ = new PromotionBean();
         bookAppointmentController = new BookAppointmentController();
         vbInScrollCProm.setSpacing(15);
         return true;
@@ -81,7 +81,7 @@ public class CustomerPromotionsViewController {
         }
     }
 
-    public void fillView(CustomerBean customerBeanFirstUI){
+    public void fillView(CustomerBeanInterface customerBeanFirstUI){
         this.customerBeanFirstUI = customerBeanFirstUI;
         showClientProm();
     }

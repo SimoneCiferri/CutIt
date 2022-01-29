@@ -1,9 +1,9 @@
 package cutit.controller.deletebookedappointments;
 
-import cutit.bean.AppointmentBeanInterface;
-import cutit.bean.DeleteAppointmentBeanInterface;
-import cutit.bean.ShopBeanInterface;
-import cutit.bean.firstui.DeleteAppointmentBean;
+import cutit.bean.interfaces.AppointmentBeanInterface;
+import cutit.bean.interfaces.DeleteAppointmentBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
+import cutit.bean.DeleteAppointmentBean;
 import cutit.exception.DBConnectionException;
 import cutit.exception.ExceptionText;
 import cutit.exception.RecordNotFoundException;

@@ -1,6 +1,6 @@
 package cutit.controller.topbarviewcontrollers;
 
-import cutit.bean.CustomerBean;
+import cutit.bean.interfaces.CustomerBeanInterface;
 import cutit.controller.bookappointment.CustomerAppointmentsViewController;
 import cutit.controller.bookappointment.CustomerFavouritesShopViewController;
 import cutit.controller.bookappointment.CustomerPromotionsViewController;
@@ -17,13 +17,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class TopBarCustomerViewController {
 
     private double xOffset = 0;
     private double yOffset = 0;
-    private CustomerBean customerBeanFirstUI;
+    private CustomerBeanInterface customerBeanFirstUI;
     private static final String TRANSPARENT_STYLE = "-fx-background-color: transparent; ";
     private static final String PAGE_FLAG_STYLE = "-fx-border-radius: 5; -fx-background-color: #A9A9A9; -fx-text-fill: #FFFFFF;";
 
@@ -143,7 +141,7 @@ public class TopBarCustomerViewController {
         apTopBarCustomer.getScene().getWindow().setY(event.getScreenY() + yOffset);
     }
 
-    public void startBean(CustomerBean customerBeanFirstUI){
+    public void startBean(CustomerBeanInterface customerBeanFirstUI){
         this.customerBeanFirstUI = customerBeanFirstUI;
         goHome();
     }

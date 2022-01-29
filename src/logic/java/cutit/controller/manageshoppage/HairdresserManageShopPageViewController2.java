@@ -1,6 +1,6 @@
 package cutit.controller.manageshoppage;
 
-import cutit.bean.ShopBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.exception.WrongInputDataException;
 import cutit.factory.AlertFactory;
 import cutit.utils.TextFieldCheck;

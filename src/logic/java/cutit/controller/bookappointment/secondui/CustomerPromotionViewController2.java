@@ -1,8 +1,8 @@
 package cutit.controller.bookappointment.secondui;
 
-import cutit.bean.CustomerBean;
+import cutit.bean.interfaces.CustomerBeanInterface;
+import cutit.bean.interfaces.PromotionBeanInterface;
 import cutit.bean.PromotionBean;
-import cutit.bean.firstui.PromotionBeanUQ;
 import cutit.controller.bookappointment.BookAppointmentController;
 import cutit.exception.DBConnectionException;
 import cutit.exception.ExceptionText;
@@ -19,8 +19,8 @@ import java.util.List;
 
 public class CustomerPromotionViewController2 {
 
-    private CustomerBean customerBeanSecondUI;
-    private PromotionBean promotionBean;
+    private CustomerBeanInterface customerBeanSecondUI;
+    private PromotionBeanInterface promotionBean;
     private BookAppointmentController bookAppointmentController;
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5;";
     private static final Double TITLE_FONT_SIZE = 30.0;
@@ -35,10 +35,10 @@ public class CustomerPromotionViewController2 {
     @FXML
     public void initialize(){
         bookAppointmentController = new BookAppointmentController();
-        promotionBean = new PromotionBeanUQ();
+        promotionBean = new PromotionBean();
     }
 
-    public void fillView(CustomerBean customerBeanSecondUI){
+    public void fillView(CustomerBeanInterface customerBeanSecondUI){
         this.customerBeanSecondUI = customerBeanSecondUI;
         showMyPromotions();
     }

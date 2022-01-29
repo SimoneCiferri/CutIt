@@ -1,8 +1,8 @@
 package cutit.controller.bookappointment;
 
-import cutit.bean.*;
 import cutit.bean.AppointmentBean;
 import cutit.bean.ShopBean;
+import cutit.bean.interfaces.*;
 import cutit.controller.addshoptofavourites.AddShopToFavouritesController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewControllerInterface;
@@ -45,7 +45,7 @@ public class BookAppointmentController {
         }
     }
 
-    public void getPersonalPromotions(CustomerBean bean) throws DBConnectionException, SQLException, RecordNotFoundException {
+    public void getPersonalPromotions(CustomerBeanInterface bean) throws DBConnectionException, SQLException, RecordNotFoundException {
         try {
             List<Promotion> personalProm = PromotionDAO.getAllPersonalPromotions(bean.getcEmail());
             bean.setAllPersonalPromotions(ListFromModelList.getStringListFromPromotions(personalProm));
@@ -77,7 +77,7 @@ public class BookAppointmentController {
         return true;
     }
 
-    public void getShops(ShopListBean shopListBean) throws DBConnectionException, SQLException, IOException{
+    public void getShops(ShopListBeanInterface shopListBean) throws DBConnectionException, SQLException, IOException{
         try {
             List<Shop> shopList = ShopDAO.getDefaultShops();
             shopListBean.setShopBeanList(beanListFromShopList(shopList));
@@ -108,7 +108,7 @@ public class BookAppointmentController {
         }
     }
 
-    public void getPromotion(PromotionBean bean) throws DBConnectionException, SQLException, RecordNotFoundException {
+    public void getPromotion(PromotionBeanInterface bean) throws DBConnectionException, SQLException, RecordNotFoundException {
         try {
             Promotion promotion = PromotionDAO.getPromotion(bean.getPromotionCode());
             bean.setOffValue(promotion.getOffValue());
@@ -122,7 +122,7 @@ public class BookAppointmentController {
 
     }
 
-    public void getAppointments(CustomerBean customerBean) throws DBConnectionException, SQLException, RecordNotFoundException {
+    public void getAppointments(CustomerBeanInterface customerBean) throws DBConnectionException, SQLException, RecordNotFoundException {
         try {
             Customer customer = CustomerDAO.getCustomer(new User(customerBean.getcEmail(), customerBean.getcPassword(), customerBean.getcRole()));
             List<Appointment> appList = customer.getBookedAppointments();
@@ -170,7 +170,7 @@ public class BookAppointmentController {
         return list;
     }
 
-    public void getFavouritesShop(ShopListBean bean, String customerEmail) throws  DBConnectionException, SQLException, RecordNotFoundException, IOException {
+    public void getFavouritesShop(ShopListBeanInterface bean, String customerEmail) throws  DBConnectionException, SQLException, RecordNotFoundException, IOException {
         try{
             List<Shop> shopList = ShopDAO.getFavouritesShops(customerEmail);
             bean.setShopBeanList(beanListFromShopList(shopList));

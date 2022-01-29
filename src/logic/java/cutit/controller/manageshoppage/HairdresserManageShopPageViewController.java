@@ -1,6 +1,6 @@
 package cutit.controller.manageshoppage;
 
-import cutit.bean.ShopBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.exception.DBConnectionException;
 import cutit.exception.WrongInputDataException;
 import cutit.factory.AlertFactory;

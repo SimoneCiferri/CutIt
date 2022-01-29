@@ -1,13 +1,12 @@
 package cutit.controller.bookappointment.secondui;
 
 import cutit.bean.AppointmentBean;
-import cutit.bean.AppointmentBeanInterface;
-import cutit.bean.CustomerBean;
-import cutit.bean.ShopBeanInterface;
+import cutit.bean.interfaces.AppointmentBeanInterface;
+import cutit.bean.interfaces.CustomerBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.controller.bookappointment.BookAppointmentController;
 import cutit.decorator.ViewLayout2;
 import cutit.decorator.concrete_decorator2.CustomerAppointmentsView2;
-import cutit.decorator.concrete_decorator2.CustomerBookAppointmentView2;
 import cutit.decorator.concrete_decorator2.HomeView2;
 import cutit.exception.*;
 import cutit.facade.Facade2;
@@ -21,7 +20,6 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 
-import javax.swing.text.View;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -33,7 +31,7 @@ import java.util.Objects;
 
 public class CustomerBookAppointmentViewController2 {
 
-    private CustomerBean customerBeanSecondUI;
+    private CustomerBeanInterface customerBeanSecondUI;
     private ShopBeanInterface shopBean;
     private AppointmentBeanInterface appointmentBeanSecondUI;
     private BookAppointmentController bookAppointmentController;
@@ -202,7 +200,7 @@ public class CustomerBookAppointmentViewController2 {
     }
 
 
-    public void fillView(CustomerBean customerBeanFirstUI, ShopBeanInterface shopBean){
+    public void fillView(CustomerBeanInterface customerBeanFirstUI, ShopBeanInterface shopBean){
         this.customerBeanSecondUI = customerBeanFirstUI;
         this.shopBean = shopBean;
         getServices();

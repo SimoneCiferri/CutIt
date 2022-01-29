@@ -1,14 +1,27 @@
 package cutit.bean;
 
-public interface PayOnlineBean {
+import cutit.bean.interfaces.PayOnlineBeanInterface;
 
-    String getPaymentShopName();
+public class PayOnlineBean implements PayOnlineBeanInterface {
 
-    String getServicePrice();
+    private String paymentShopName;
+    private String servicePrice;
 
-    void setPaymentShopName(String paymentShopName);
+    @Override
+    public String getPaymentShopName() {
+        return paymentShopName;
+    }
 
-    void setServicePrice(String servicePrice);
+    @Override
+    public String getServicePrice() {
+        return servicePrice;
+    }
 
+    public void setPaymentShopName(String paymentShopName) {
+        this.paymentShopName = paymentShopName;
+    }
+
+    public void setServicePrice(String servicePrice) {
+        this.servicePrice = servicePrice;
+    }
 }
-

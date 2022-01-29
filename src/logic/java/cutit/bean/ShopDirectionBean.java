@@ -1,14 +1,25 @@
 package cutit.bean;
 
-public interface ShopDirectionBean {
+import cutit.bean.interfaces.ShopDirectionBeanInterface;
 
-    String getShopName();
+public class ShopDirectionBean implements ShopDirectionBeanInterface {
 
-    void setShopName(String shopName);
+    private String shopName;
+    private String address;
 
-    String getAddress();
+    public String getShopName() {
+        return shopName;
+    }
 
-    void setAddress(String address);
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
 
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }

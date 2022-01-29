@@ -39,10 +39,10 @@ module cutit.cutit {
     opens cutit.controller.payonline to javafx.fxml;
     exports cutit.controller.login;
     opens cutit.controller.login to javafx.fxml;
-    exports cutit.bean.firstui;
-    opens cutit.bean.firstui to javafx.fxml;
-    exports cutit.controller.pepper;
-    opens cutit.controller.pepper to javafx.fxml;
+    exports cutit.bean.interfaces;
+    opens cutit.bean.interfaces to javafx.fxml;
+    exports cutit.pepper;
+    opens cutit.pepper to javafx.fxml;
     exports cutit.controller.leftbarviewcontrollers;
     opens cutit.controller.leftbarviewcontrollers to javafx.fxml;
     exports cutit.decorator.concrete_view_component2;

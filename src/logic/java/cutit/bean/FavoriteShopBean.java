@@ -1,10 +1,20 @@
 package cutit.bean;
 
+import cutit.bean.interfaces.FavoriteShopBeanInterface;
+
 import java.util.List;
 
-public interface FavoriteShopBean {
+public class FavoriteShopBean implements FavoriteShopBeanInterface {
 
-    List<String> getFavShopList();
+    private List<String> favShopList;
 
-    void setFavShopList(List<String> favShopList);
+    @Override
+    public List<String> getFavShopList() {
+        return favShopList;
+    }
+
+    @Override
+    public void setFavShopList(List<String> favShopList) {
+        this.favShopList = favShopList;
+    }
 }

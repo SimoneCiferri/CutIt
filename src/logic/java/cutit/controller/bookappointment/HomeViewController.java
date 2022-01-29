@@ -1,6 +1,9 @@
 package cutit.controller.bookappointment;
 
 import cutit.bean.*;
+import cutit.bean.interfaces.CustomerBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
+import cutit.bean.interfaces.ShopListBeanInterface;
 import cutit.decorator.ViewLayout1;
 import cutit.decorator.concrete_decorator.ShopInfoView1;
 import cutit.exception.DBConnectionException;
@@ -20,8 +23,8 @@ import java.util.Objects;
 
 public class HomeViewController {
 
-    private CustomerBean customerBeanFirstUI;
-    private ShopListBean shopListBeanFirstUI;
+    private CustomerBeanInterface customerBeanFirstUI;
+    private ShopListBeanInterface shopListBeanFirstUI;
     private BookAppointmentController bookAppointmentController;
     private static final String LABEL_STYLE = "-fx-border-color: grey; -fx-border-radius: 5; -fx-text-fill: #FFFFFF;";
 
@@ -35,7 +38,7 @@ public class HomeViewController {
     private VBox vbInScroll;
 
     public boolean initialize() throws IOException {
-        shopListBeanFirstUI = new ShopListBeanUQ();
+        shopListBeanFirstUI = new ShopListBean();
         bookAppointmentController = new BookAppointmentController();
         vbInScroll.setSpacing(15);
         return true;
@@ -108,7 +111,7 @@ public class HomeViewController {
         }
     }
 
-    public void fillView(CustomerBean customerBeanFirstUI){
+    public void fillView(CustomerBeanInterface customerBeanFirstUI){
         this.customerBeanFirstUI = customerBeanFirstUI;
         showShops();
     }

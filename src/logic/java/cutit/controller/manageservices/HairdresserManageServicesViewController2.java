@@ -1,8 +1,8 @@
 package cutit.controller.manageservices;
 
 import cutit.bean.ManageServiceBean;
-import cutit.bean.ManageServiceBeanInterface;
-import cutit.bean.ShopBeanInterface;
+import cutit.bean.interfaces.ManageServiceBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
 import cutit.exception.ExceptionText;

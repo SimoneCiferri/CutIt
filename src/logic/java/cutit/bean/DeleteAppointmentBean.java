@@ -1,7 +1,7 @@
-package cutit.bean.firstui;
+package cutit.bean;
 
-import cutit.bean.AppointmentBeanInterface;
-import cutit.bean.DeleteAppointmentBeanInterface;
+import cutit.bean.interfaces.AppointmentBeanInterface;
+import cutit.bean.interfaces.DeleteAppointmentBeanInterface;
 
 import java.time.LocalDateTime;
 import java.util.List;

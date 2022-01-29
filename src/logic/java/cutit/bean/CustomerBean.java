@@ -1,46 +1,94 @@
 package cutit.bean;
 
+import cutit.bean.interfaces.AppointmentBeanInterface;
+import cutit.bean.interfaces.CustomerBeanInterface;
+
 import java.time.LocalDate;
 import java.util.List;
 
-public interface CustomerBean {
+public class CustomerBean implements CustomerBeanInterface {
 
-    String getcEmail();
+    private String cEmail;
+    private String cPassword;
+    private Integer cRole;
+    private String cName;
+    private String cSurname;
+    private LocalDate cBirthDate;
+    private String cGender;
+    private List<String> allPersonalPromotions;
+    private List<AppointmentBeanInterface> allBookedAppointmentBeanFirstUIS;
 
-    void setcEmail(String cEmail);
+    public Integer getcRole() {
+        return cRole;
+    }
 
-    String getcPassword();
+    public void setcRole(Integer cRole) {
+        this.cRole = cRole;
+    }
 
-    void setcPassword(String cPassword);
+    public String getcName() {
+        return cName;
+    }
 
-    Integer getcRole();
+    public void setcName(String cName) {
+        this.cName = cName;
+    }
 
-    void setcRole(Integer cRole);
+    public String getcSurname() {
+        return cSurname;
+    }
 
-    String getcName();
+    public void setcSurname(String cSurname) {
+        this.cSurname = cSurname;
+    }
 
-    void setcName(String cName);
+    public LocalDate getcBirthDate() {
+        return cBirthDate;
+    }
 
-    String getcSurname();
+    public void setcBirthDate(LocalDate cBirthDate) {
+        this.cBirthDate = cBirthDate;
+    }
 
-    void setcSurname(String cSurname);
+    public String getcGender() {
+        return cGender;
+    }
 
-    LocalDate getcBirthDate();
+    public void setcGender(String cGender) {
+        this.cGender = cGender;
+    }
 
-    void setcBirthDate(LocalDate cBirthDate);
+    public String getcEmail() {
+        return cEmail;
+    }
 
-    String getcGender();
+    public void setcEmail(String cEmail) {
+        this.cEmail = cEmail;
+    }
 
-    void setcGender(String cGender);
+    public String getcPassword() {
+        return cPassword;
+    }
 
-    List<String> getAllPersonalPromotions();
+    public void setcPassword(String cPassword) {
+        this.cPassword = cPassword;
+    }
 
-    void setAllPersonalPromotions(List<String> allPromotions);
+    public List<String> getAllPersonalPromotions() {
+        return allPersonalPromotions;
+    }
 
-    List<AppointmentBeanInterface> getAllBookedAppointments();
+    public void setAllPersonalPromotions(List<String> allPromotions) {
+        this.allPersonalPromotions = allPromotions;
+    }
 
-    void setAllBookedAppointments(List<AppointmentBeanInterface> allBookedAppointments);
+    public List<AppointmentBeanInterface> getAllBookedAppointments() {
+        return allBookedAppointmentBeanFirstUIS;
+    }
 
+    public void setAllBookedAppointments(List<AppointmentBeanInterface> allBookedAppointments) {
+        allBookedAppointmentBeanFirstUIS = allBookedAppointments;
+    }
 
 
 }

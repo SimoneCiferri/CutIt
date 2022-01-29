@@ -1,6 +1,9 @@
 package cutit.controller.bookappointment.secondui;
 
 import cutit.bean.*;
+import cutit.bean.interfaces.CustomerBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
+import cutit.bean.interfaces.ShopListBeanInterface;
 import cutit.controller.bookappointment.BookAppointmentController;
 import cutit.controller.getlocationdirections.GetLocationDirectionsGoogleMapsViewController2;
 import cutit.decorator.ViewLayout2;
@@ -28,9 +31,9 @@ import java.util.List;
 
 public class HomeViewController2 {
 
-    private CustomerBean customerBeanSecondUI;
+    private CustomerBeanInterface customerBeanSecondUI;
     private ShopBeanInterface shopBean;
-    private ShopListBean shopListBeanSecondUI;
+    private ShopListBeanInterface shopListBeanSecondUI;
     private BookAppointmentController bookAppointmentController;
     private List<ImageView> ivList = new ArrayList<>();
 
@@ -107,7 +110,7 @@ public class HomeViewController2 {
     @FXML
     public void initialize(){
         shopBean = new ShopBean();
-        shopListBeanSecondUI = new ShopListBeanUQ();
+        shopListBeanSecondUI = new ShopListBean();
         bookAppointmentController = new BookAppointmentController();
         ivList = Arrays.asList(ivPhoto1, ivPhoto2, ivPhoto3, ivPhoto4, ivPhoto5, ivPhoto6, ivPhoto7, ivPhoto8);
 
@@ -229,7 +232,7 @@ public class HomeViewController2 {
         bookAppointmentController.getShopDirections(viewController, shopBean);
     }
 
-    public void fillView(CustomerBean customerBeanSecondUI){
+    public void fillView(CustomerBeanInterface customerBeanSecondUI){
         this.customerBeanSecondUI = customerBeanSecondUI;
         showAllShops();
     }

@@ -1,6 +1,6 @@
 package cutit.bean;
 
-import cutit.bean.ManageServiceBeanInterface;
+import cutit.bean.interfaces.ManageServiceBeanInterface;
 
 import java.util.List;
 import java.util.Map;

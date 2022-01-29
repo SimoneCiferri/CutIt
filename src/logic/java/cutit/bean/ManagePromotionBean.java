@@ -1,5 +1,7 @@
 package cutit.bean;
 
+import cutit.bean.interfaces.ManagePromotionBeanInterface;
+
 import java.time.LocalDate;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package cutit.bean;
+package cutit.bean.interfaces;
 
 import java.io.File;
 import java.time.LocalTime;

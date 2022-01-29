@@ -1,7 +1,7 @@
-package cutit.controller.pepper;
+package cutit.pepper;
 
-import cutit.bean.HairdresserBean;
-import cutit.bean.ShopBeanInterface;
+import cutit.bean.interfaces.HairdresserBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.database.dao.AppointmentDAO;
 import cutit.database.dao.PromotionDAO;
 import cutit.database.dao.ShopDAO;
@@ -19,10 +19,10 @@ import java.util.Objects;
 public class PepperClass extends Thread{
 
     private static final String BRING_A_FRIEND_PHYSICALLY = "bringAFriendPhysically";
-    private HairdresserBean hairdresserBean;
+    private HairdresserBeanInterface hairdresserBean;
     private ShopBeanInterface shopBean;
 
-    public PepperClass(HairdresserBean hairdresserBean, ShopBeanInterface shopBean){
+    public PepperClass(HairdresserBeanInterface hairdresserBean, ShopBeanInterface shopBean){
         this.hairdresserBean = hairdresserBean;
         this.shopBean = shopBean;
     }

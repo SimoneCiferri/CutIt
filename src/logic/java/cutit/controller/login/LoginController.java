@@ -1,7 +1,10 @@
 package cutit.controller.login;
 
-import cutit.bean.*;
-import cutit.controller.pepper.PepperClass;
+import cutit.bean.interfaces.CustomerBeanInterface;
+import cutit.bean.interfaces.HairdresserBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
+import cutit.bean.interfaces.UserBeanInterface;
+import cutit.pepper.PepperClass;
 import cutit.database.dao.CustomerDAO;
 import cutit.database.dao.HairdresserDAO;
 import cutit.database.dao.ShopDAO;
@@ -19,7 +22,7 @@ import java.util.List;
 
 public class LoginController {
 
-    public boolean login(UserBean bean) throws DBConnectionException, SQLException, WrongCredentialsException {
+    public boolean login(UserBeanInterface bean) throws DBConnectionException, SQLException, WrongCredentialsException {
         try{
             User user = new User(bean.getUsername(), bean.getPasswd(), 3);
             UserDAO.userLogin(user);
@@ -31,7 +34,7 @@ public class LoginController {
         }
     }
 
-    public boolean signUpCustomer(CustomerBean customerBean) throws DBConnectionException, SQLException, DuplicatedRecordException, WrongInputDataException {
+    public boolean signUpCustomer(CustomerBeanInterface customerBean) throws DBConnectionException, SQLException, DuplicatedRecordException, WrongInputDataException {
         try {
             if(!customerBean.getcBirthDate().isAfter(LocalDate.now())){
                 Customer customer = new Customer(customerBean.getcEmail(), customerBean.getcPassword(), 0, customerBean.getcName(), customerBean.getcSurname(), customerBean.getcBirthDate(), customerBean.getcGender());
@@ -50,7 +53,7 @@ public class LoginController {
         }
     }
 
-    public void getCustomer(UserBean userBean, CustomerBean customerBean) throws DBConnectionException, SQLException, RecordNotFoundException {
+    public void getCustomer(UserBeanInterface userBean, CustomerBeanInterface customerBean) throws DBConnectionException, SQLException, RecordNotFoundException {
         try {
             User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
             Customer customer = CustomerDAO.getCustomer(user);
@@ -68,7 +71,7 @@ public class LoginController {
         }
     }
 
-    public Boolean signUpHair(HairdresserBean hairdresserBean) throws DBConnectionException, SQLException, DuplicatedRecordException {
+    public Boolean signUpHair(HairdresserBeanInterface hairdresserBean) throws DBConnectionException, SQLException, DuplicatedRecordException {
         try {
             Hairdresser hairdresser = new Hairdresser(hairdresserBean.gethEmail(), hairdresserBean.gethPassword(), 1, hairdresserBean.gethName(), hairdresserBean.gethSurname(), hairdresserBean.getpIVA());
             if (!UserDAO.checkUser(hairdresser.getUserID()) && !ShopDAO.checkShop(hairdresserBean.getShopName()) && !HairdresserDAO.checkPIVA(hairdresser.getpIVA())){
@@ -82,7 +85,7 @@ public class LoginController {
         }
     }
 
-    public void getHairdresserAndShop(UserBean userBean, HairdresserBean hairdresserBean, ShopBeanInterface shopBean) throws DBConnectionException, SQLException, IOException, RecordNotFoundException {
+    public void getHairdresserAndShop(UserBeanInterface userBean, HairdresserBeanInterface hairdresserBean, ShopBeanInterface shopBean) throws DBConnectionException, SQLException, IOException, RecordNotFoundException {
         try {
             User user = new User(userBean.getUsername(), userBean.getPasswd(), userBean.getRole());
             Hairdresser hairdresser = HairdresserDAO.getHairdresser(user);
@@ -115,7 +118,7 @@ public class LoginController {
         }
     }
 
-    private void pepperFunction(HairdresserBean hairdresserBean, ShopBeanInterface shopBean)  {
+    private void pepperFunction(HairdresserBeanInterface hairdresserBean, ShopBeanInterface shopBean)  {
         PepperClass p = new PepperClass(hairdresserBean, shopBean);
         p.start();
     }

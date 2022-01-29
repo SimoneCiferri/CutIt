@@ -2,14 +2,16 @@ package cutit.controller.login;
 
 import cutit.bean.*;
 import cutit.bean.ShopBean;
+import cutit.bean.interfaces.CustomerBeanInterface;
+import cutit.bean.interfaces.HairdresserBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
+import cutit.bean.interfaces.UserBeanInterface;
 import cutit.controller.leftbarviewcontrollers.LeftBarCustomerViewController;
 import cutit.controller.leftbarviewcontrollers.LeftBarHairdresserViewController;
-import cutit.decorator.ViewLayout1;
 import cutit.decorator.ViewLayout2;
 import cutit.decorator.concrete_decorator2.LeftBarCustomerView;
 import cutit.decorator.concrete_decorator2.LeftBarHairdresserView;
 import cutit.exception.*;
-import cutit.facade.Facade;
 import cutit.facade.Facade2;
 import cutit.factory.AlertFactory;
 import cutit.utils.TextFieldCheck;
@@ -27,9 +29,9 @@ import java.util.StringTokenizer;
 public class LoginViewController2 {
 
     private LoginController loginController;
-    private UserBean userBeanSecondUI;
-    private CustomerBean customerBeanSecondUI;
-    private HairdresserBean hairdresserBeanSecondUI;
+    private UserBeanInterface userBeanSecondUI;
+    private CustomerBeanInterface customerBeanSecondUI;
+    private HairdresserBeanInterface hairdresserBeanSecondUI;
     private ShopBeanInterface shopBeanSecondUI;
 
     @FXML
@@ -76,9 +78,9 @@ public class LoginViewController2 {
 
     @FXML
     public void initialize(){
-        userBeanSecondUI = new UserBeanUQ();
-        customerBeanSecondUI = new CustomerBeanUQ();
-        hairdresserBeanSecondUI = new HairdresserBeanUQ();
+        userBeanSecondUI = new UserBean();
+        customerBeanSecondUI = new CustomerBean();
+        hairdresserBeanSecondUI = new HairdresserBean();
         shopBeanSecondUI = new ShopBean();
         loginController = new LoginController();
         cbGenderCustomer.getItems().addAll("Female", "Male", "Other");

@@ -1,6 +1,6 @@
 package cutit.controller.topbarviewcontrollers;
 
-import cutit.bean.*;
+import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.controller.deletebookedappointments.HairdresserDeleteBookedAppointmentsViewController;
 import cutit.controller.managepromotions.HairdresserManagePromotionsViewController;
 import cutit.controller.manageservices.HairdresserManageServicesViewController;
@@ -15,8 +15,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class TopBarHairdresserViewController {
 

@@ -1,6 +1,6 @@
 package cutit.controller.leftbarviewcontrollers;
 
-import cutit.bean.ShopBeanInterface;
+import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.controller.deletebookedappointments.HairdresserDeleteBookedAppointmentsViewController2;
 import cutit.controller.managepromotions.HairdresserManagePromotionsViewController2;
 import cutit.controller.manageservices.HairdresserManageServicesViewController2;

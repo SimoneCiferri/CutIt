@@ -1,5 +1,7 @@
 package cutit.bean;
 
+import cutit.bean.interfaces.ShopBeanInterface;
+
 import java.io.File;
 import java.time.LocalTime;
 import java.util.ArrayList;
