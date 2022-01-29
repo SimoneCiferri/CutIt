@@ -109,7 +109,8 @@ public class HomeViewController {
                     HBox card = createBox(shopListBeanFirstUI.getShopBeanList().get(i));
                     vbInScroll.getChildren().add(card);
                 }
-            } catch (NullPointerException ignored) {
+            } catch (NullPointerException ignored){
+                //Next step
             }
         }
     }

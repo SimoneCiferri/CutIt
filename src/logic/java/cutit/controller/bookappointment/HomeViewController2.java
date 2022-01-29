@@ -243,7 +243,9 @@ public class HomeViewController2 {
                     VBox card = JavaFXNodeFactory.getInstance().createFavouritesShopCard(shopListBeanSecondUI.getShopBeanList().get(i).getShopName(), shopListBeanSecondUI.getShopBeanList().get(i).getShopAddress());
                     vbAllShopsInScroll.getChildren().add(card);
                 }
-            } catch (NullPointerException ignored){}
+            } catch (NullPointerException ignored){
+                //Next step
+            }
         }
     }
 
