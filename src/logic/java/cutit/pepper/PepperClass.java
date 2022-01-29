@@ -32,7 +32,7 @@ public class PepperClass extends Thread{
     public void run(){
         try {
             sleep(3000);
-            pepperActions = pepperActions + "------------------------------------------------------------Thread attivo per " + hairdresserBean.gethEmail() + " proprietario dello shop " + shopBean.getShopName() + "------------------------------------------------------------" + "\n";
+            pepperActions = pepperActions + "------------------------------------------------------------Starting Thread for user " + hairdresserBean.gethEmail() + " owner of the shop " + shopBean.getShopName() + "------------------------------------------------------------" + "\n";
             List<Promotion> allShopPromotions = PromotionDAO.getAllPromotion(hairdresserBean.getShopName());
             if(!allShopPromotions.isEmpty()){
                 pepperActions = pepperActions + "Shop " + hairdresserBean.getShopName() + " has " + allShopPromotions.size() + " promotion/s" + "\n";
@@ -76,7 +76,7 @@ public class PepperClass extends Thread{
             } else{
                 pepperActions = pepperActions + "Shop has no promotion/s" + "\n";
             }
-            pepperActions = pepperActions + "------------------------------------------------------------Thread finito per " + hairdresserBean.gethEmail() + " proprietario dello shop " + shopBean.getShopName() + "------------------------------------------------------------" + "\n";
+            pepperActions = pepperActions + "------------------------------------------------------------Thread ended for user " + hairdresserBean.gethEmail() + " owner of the shop " + shopBean.getShopName() + "------------------------------------------------------------" + "\n";
             LogWriter.getInstance().pepperAction(pepperActions);
         } catch (Exception e) {
             e.printStackTrace();
