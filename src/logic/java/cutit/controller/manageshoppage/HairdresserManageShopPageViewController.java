@@ -4,6 +4,7 @@ import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.exception.DBConnectionException;
 import cutit.exception.WrongInputDataException;
 import cutit.factory.AlertFactory;
+import cutit.utils.ExceptionText;
 import cutit.utils.TextFieldCheck;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -24,12 +25,6 @@ public class HairdresserManageShopPageViewController {
     private ManageShopPageController manageShopPageController;
     private List<CheckBox> checkBoxList = new ArrayList<>();
     private List<ImageView> ivList = new ArrayList<>();
-    private static final String CONNECTION_ERROR_TITLE = "Connection error";
-    private static final String WARNING_TITLE = "Warning";
-    private static final String ERROR_TITLE = "Error";
-    private static final String CONNECTION_ERROR_MESSAGE = "Please check your internet connection. If problem persists try to restart the application.";
-    private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
-    private static final String FILE_NOT_FOUND_ERROR_MESSAGE = "An error occurred handling some files. Please try again.";
     private final Map<Integer, File> imageMap = new HashMap<>();
 
     @FXML
@@ -139,17 +134,17 @@ public class HairdresserManageShopPageViewController {
                 manageShopPageController.updateShop(shopBeanFirstUI);
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.CONFIRMATION, "Updated", "Data successfully updated");
                 alert.show();
-            } catch (WrongInputDataException e){
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, WARNING_TITLE, e.getMessage());
+            } catch (WrongInputDataException we){
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), we.getMessage());
                 alert.showAndWait();
-            } catch(DBConnectionException dbe){
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, CONNECTION_ERROR_MESSAGE);
+            } catch(DBConnectionException de){
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getConnectionErrorMessage());
                 alert.showAndWait();
             } catch (SQLException sqle) {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, CONNECTION_ERROR_TITLE, SQL_ERROR_MESSAGE);
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
                 alert.showAndWait();
-            }catch (FileNotFoundException fnf) {
-                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ERROR_TITLE, FILE_NOT_FOUND_ERROR_MESSAGE);
+            }catch (FileNotFoundException fe) {
+                Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getErrorTitle(), ExceptionText.getFileNotFoundErrorMessage());
                 alert.showAndWait();
             }
         }
