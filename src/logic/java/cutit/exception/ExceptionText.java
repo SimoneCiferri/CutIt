@@ -14,6 +14,7 @@ public class ExceptionText {
     private static final String SQL_ERROR_MESSAGE = "Please check your internet connection. If problem persists contact us at cutitapp@support.com.";
     private static final String FILE_NOT_FOUND_ERROR_MESSAGE = "An error occurred handling some files. Please try again.";
     private static final String IO_ERROR_MESSAGE = "Impossible to load some files. If problem persists try again later or contact us at cutitapp@support.com";
+    private static final String NP_ERROR_MESSAGE = "Please fill out all fields";
 
     public static String getConnectionErrorTitle() {
         return CONNECTION_ERROR_TITLE;
@@ -55,4 +56,7 @@ public class ExceptionText {
         return CONFIRMATION_TITLE;
     }
 
+    public static String getNullPointerMessage() {
+        return NP_ERROR_MESSAGE;
+    }
 }

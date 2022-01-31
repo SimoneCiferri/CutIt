@@ -138,7 +138,11 @@ public class CustomerBookAppointmentViewController2 {
         } catch (RecordNotFoundException | PaymentException | DuplicatedRecordException exception) {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), exception.getMessage());
             alert.showAndWait();
-        } catch (IOException e) {
+        } catch (NullPointerException npe){
+            Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), ExceptionText.getNullPointerMessage());
+            alert.showAndWait();
+        }
+        catch (IOException e) {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getIoErrorTitle(), ExceptionText.getIoErrorMessage());
             alert.showAndWait();
         }
