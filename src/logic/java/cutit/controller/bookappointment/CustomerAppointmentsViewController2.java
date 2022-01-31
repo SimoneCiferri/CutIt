@@ -2,9 +2,8 @@ package cutit.controller.bookappointment;
 
 import cutit.bean.interfaces.AppointmentBeanInterface;
 import cutit.bean.interfaces.CustomerBeanInterface;
-import cutit.controller.bookappointment.BookAppointmentController;
 import cutit.exception.DBConnectionException;
-import cutit.exception.ExceptionText;
+import cutit.utils.ExceptionText;
 import cutit.exception.RecordNotFoundException;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;

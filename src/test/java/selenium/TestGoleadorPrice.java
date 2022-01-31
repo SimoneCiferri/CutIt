@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestGoleadorPrice {
 
+    //Test Selenium API Di Filippo
     @Test
     public Integer testPriceGoleador() {
         System.setProperty("webdriver.chrome.driver", "lib/chromedriver.exe");

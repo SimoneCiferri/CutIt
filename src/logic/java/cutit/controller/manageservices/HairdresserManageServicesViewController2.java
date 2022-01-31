@@ -5,7 +5,7 @@ import cutit.bean.interfaces.ManageServiceBeanInterface;
 import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
-import cutit.exception.ExceptionText;
+import cutit.utils.ExceptionText;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
 import cutit.utils.TextFieldCheck;
@@ -45,7 +45,6 @@ public class HairdresserManageServicesViewController2 {
         manageServicesController = new ManageServicesController();
         manageServicesBeanSecondUI = new ManageServiceBean();
     }
-
 
     private void showServices() {
         try {

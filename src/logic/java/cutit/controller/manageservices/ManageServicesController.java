@@ -47,6 +47,7 @@ public class ManageServicesController {
         }
     }
 
+    //This function create a Map from a Service list.
     private Map<String, Float> mapFromServList(List<Service> serviceList){
         Map<String, Float> services = new HashMap<>();
         if(!serviceList.isEmpty()){

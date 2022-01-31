@@ -10,6 +10,7 @@ import cutit.decorator.decorator2.concrete_decorator2.HomeView2;
 import cutit.exception.*;
 import cutit.facade.Facade2;
 import cutit.factory.AlertFactory;
+import cutit.utils.ExceptionText;
 import cutit.utils.TextFieldCheck;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

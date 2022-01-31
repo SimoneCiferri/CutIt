@@ -11,6 +11,7 @@ import cutit.decorator.decorator1.concrete_decorator.TopBarCustomerView1;
 import cutit.exception.*;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
+import cutit.utils.ExceptionText;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;

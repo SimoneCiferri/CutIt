@@ -1,4 +1,4 @@
-package cutit.exception;
+package cutit.utils;
 
 public class ExceptionText {
 

@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestMicrosoftBoughtActivision {
 
-
+    //Test Selenium API Caporro
     @Test
     public void testHowMuchDidItPay(){
 

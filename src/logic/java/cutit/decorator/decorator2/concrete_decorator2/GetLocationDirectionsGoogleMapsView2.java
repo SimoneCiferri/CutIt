@@ -3,7 +3,7 @@ package cutit.decorator.decorator2.concrete_decorator2;
 import cutit.decorator.decorator2.Decorator2;
 import cutit.decorator.decorator2.ViewComponent2;
 import cutit.decorator.decorator2.ViewLayout2;
-import cutit.exception.ExceptionText;
+import cutit.utils.ExceptionText;
 import cutit.facade.Facade2;
 import cutit.factory.AlertFactory;
 import cutit.log.LogWriter;

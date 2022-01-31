@@ -4,7 +4,7 @@ import cutit.bean.interfaces.CustomerBeanInterface;
 import cutit.decorator.decorator1.ViewLayout1;
 import cutit.decorator.decorator1.concrete_decorator.CustomerAppointmentInfoView1;
 import cutit.exception.DBConnectionException;
-import cutit.exception.ExceptionText;
+import cutit.utils.ExceptionText;
 import cutit.exception.RecordNotFoundException;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;

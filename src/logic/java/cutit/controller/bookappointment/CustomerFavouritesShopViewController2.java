@@ -7,7 +7,7 @@ import cutit.bean.ShopListBean;
 import cutit.decorator.decorator2.ViewLayout2;
 import cutit.decorator.decorator2.concrete_decorator2.HomeView2;
 import cutit.exception.DBConnectionException;
-import cutit.exception.ExceptionText;
+import cutit.utils.ExceptionText;
 import cutit.exception.RecordNotFoundException;
 import cutit.facade.Facade2;
 import cutit.factory.AlertFactory;

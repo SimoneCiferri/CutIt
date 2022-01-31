@@ -35,6 +35,7 @@ public class ManageShopPageController {
         }
     }
 
+    //This function implements a semantic check for date and time inserted
     private boolean semanticCheck(LocalTime openTime, LocalTime closeTime) {
         return openTime.isBefore(closeTime);
     }

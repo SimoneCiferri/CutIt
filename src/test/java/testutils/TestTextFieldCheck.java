@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TestTextFieldCheck {
 
+    //Test case Ciferri
     @Test
     public void testIsEmailAddress(){
         String email = "thisIsValidEmail@email.com";
@@ -18,6 +19,7 @@ public class TestTextFieldCheck {
         assertTrue(output);
     }
 
+    //Test case Ciferri
     @Test
     public void testIsPiva(){
         String validPIVA = "11332245876";
@@ -25,6 +27,7 @@ public class TestTextFieldCheck {
         assertTrue(output);
     }
 
+    //Test case Ciferri
     @Test
     public void testCheckAddress(){
         String validAddress = "Via Roma-Roma-00133";
@@ -32,6 +35,7 @@ public class TestTextFieldCheck {
         assertTrue(output);
     }
 
+    //Test case Di Filippo
     @Test
     public void testIsSomethingNull(){
         List<String> stringList = new ArrayList<>();
@@ -45,6 +49,7 @@ public class TestTextFieldCheck {
         assertFalse(output);
     }
 
+    //Test case Di Filippo
     @Test
     public void testIsPhoneNumber(){
         String validPhoneNumber = "3345544698";
@@ -52,6 +57,7 @@ public class TestTextFieldCheck {
         assertTrue(output);
     }
 
+    //Test case Di Filippo
     @Test
     public void testIsInteger(){
         String validInteger = "15";
@@ -59,6 +65,7 @@ public class TestTextFieldCheck {
         assertTrue(output);
     }
 
+    //Test case Caporro
     @Test
     public void testIsNumeric(){
         String validNumericInput = "13.5";

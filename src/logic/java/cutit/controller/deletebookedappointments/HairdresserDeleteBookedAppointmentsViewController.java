@@ -5,7 +5,7 @@ import cutit.bean.interfaces.DeleteAppointmentBeanInterface;
 import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.bean.DeleteAppointmentBean;
 import cutit.exception.DBConnectionException;
-import cutit.exception.ExceptionText;
+import cutit.utils.ExceptionText;
 import cutit.exception.RecordNotFoundException;
 import cutit.exception.WrongInputDataException;
 import cutit.factory.AlertFactory;

@@ -7,7 +7,7 @@ import cutit.bean.interfaces.ShopListBeanInterface;
 import cutit.decorator.decorator1.ViewLayout1;
 import cutit.decorator.decorator1.concrete_decorator.ShopInfoView1;
 import cutit.exception.DBConnectionException;
-import cutit.exception.ExceptionText;
+import cutit.utils.ExceptionText;
 import cutit.facade.Facade;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;

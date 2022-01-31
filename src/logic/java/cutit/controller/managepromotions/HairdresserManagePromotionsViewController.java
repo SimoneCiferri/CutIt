@@ -5,6 +5,7 @@ import cutit.bean.ManagePromotionBean;
 import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.exception.*;
 import cutit.factory.AlertFactory;
+import cutit.utils.ExceptionText;
 import cutit.utils.TextFieldCheck;
 import cutit.factory.JavaFXNodeFactory;
 import javafx.fxml.FXML;
@@ -39,7 +40,7 @@ public class HairdresserManagePromotionsViewController {
         vbInScrollHProm.setSpacing(15);
     }
 
-    private void showHairProm() {
+    private void showHairdresserPromotions() {
         try {
             managePromotionController.getAllPromotions(managePromotionBeanFirstUI, shopBeanFirstUI);
             vbInScrollHProm.getChildren().clear();
@@ -112,7 +113,7 @@ public class HairdresserManagePromotionsViewController {
         HBox form = JavaFXNodeFactory.getInstance().createLRForm(leftLabelList, rightList, true);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
-        back.setOnMouseClicked(mouseEvent -> showHairProm());
+        back.setOnMouseClicked(mouseEvent -> showHairdresserPromotions());
         Button add = JavaFXNodeFactory.getInstance().createButton("Add");
         add.setPrefHeight(55);
         add.setOnMouseClicked(mouseEvent -> addPromotion(promName.getText(), promValue.getText(), dp.getValue() , promService.getValue()));
@@ -129,7 +130,7 @@ public class HairdresserManagePromotionsViewController {
             managePromotionBeanFirstUI.setPromShopName(shopBeanFirstUI.getShopName());
             try {
                 managePromotionController.addPromotion(this.managePromotionBeanFirstUI);
-                showHairProm();
+                showHairdresserPromotions();
             } catch (DuplicatedRecordException | WrongInputDataException | RecordNotFoundException e) {
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
                 alert.showAndWait();
@@ -157,7 +158,7 @@ public class HairdresserManagePromotionsViewController {
         HBox form = JavaFXNodeFactory.getInstance().createLRForm(leftLabelList, rightList, false);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
-        back.setOnMouseClicked(mouseEvent -> showHairProm());
+        back.setOnMouseClicked(mouseEvent -> showHairdresserPromotions());
         Button delete = JavaFXNodeFactory.getInstance().createButton("Delete");
         delete.setPrefHeight(55);
         delete.setOnMouseClicked(mouseEvent -> removePromotion(promCode, promOffValue, expireDate));
@@ -178,12 +179,12 @@ public class HairdresserManagePromotionsViewController {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
-        showHairProm();
+        showHairdresserPromotions();
     }
 
     public void fillView(ShopBeanInterface shopBeanFirstUI){
         this.shopBeanFirstUI = shopBeanFirstUI;
-        showHairProm();
+        showHairdresserPromotions();
     }
 
 }

@@ -6,6 +6,7 @@ import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.exception.*;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
+import cutit.utils.ExceptionText;
 import cutit.utils.TextFieldCheck;
 import javafx.fxml.FXML;
 import javafx.scene.Node;

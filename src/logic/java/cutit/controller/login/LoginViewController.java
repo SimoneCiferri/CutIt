@@ -14,7 +14,7 @@ import cutit.decorator.decorator1.ViewLayout1;
 import cutit.decorator.decorator1.concrete_decorator.TopBarCustomerView1;
 import cutit.decorator.decorator1.concrete_decorator.TopBarHairdresserView1;
 import cutit.exception.DBConnectionException;
-import cutit.exception.ExceptionText;
+import cutit.utils.ExceptionText;
 import cutit.exception.RecordNotFoundException;
 import cutit.exception.WrongCredentialsException;
 import cutit.facade.Facade;

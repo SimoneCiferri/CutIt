@@ -5,7 +5,7 @@ import cutit.bean.ManageServiceBean;
 import cutit.bean.interfaces.ShopBeanInterface;
 import cutit.exception.DBConnectionException;
 import cutit.exception.DuplicatedRecordException;
-import cutit.exception.ExceptionText;
+import cutit.utils.ExceptionText;
 import cutit.utils.TextFieldCheck;
 import cutit.factory.AlertFactory;
 import cutit.factory.JavaFXNodeFactory;
@@ -42,7 +42,7 @@ public class HairdresserManageServicesViewController {
         vbInScrollHS.setSpacing(15);
     }
 
-    private void showHairServices() {
+    private void showHairdresserServices() {
         try {
             manageServicesController.getAllServices(manageServicesBeanFirstUI, shopBeanFirstUI);
             vbInScrollHS.getChildren().clear();
@@ -84,7 +84,7 @@ public class HairdresserManageServicesViewController {
         HBox form = JavaFXNodeFactory.getInstance().createLRForm(labelList, nodeList, true);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
-        back.setOnMouseClicked(mouseEvent -> showHairServices());
+        back.setOnMouseClicked(mouseEvent -> showHairdresserServices());
         Button add = JavaFXNodeFactory.getInstance().createButton("Add");
         add.setPrefHeight(55);
         add.setOnMouseClicked(mouseEvent -> addService(serviceName,servicePrice));
@@ -100,7 +100,7 @@ public class HairdresserManageServicesViewController {
             manageServicesBeanFirstUI.setServiceShopName(shopBeanFirstUI.getShopName());
             try {
                 manageServicesController.addService(manageServicesBeanFirstUI);
-                showHairServices();
+                showHairdresserServices();
             } catch (DuplicatedRecordException e) {
                 Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.WARNING, ExceptionText.getWarningTitle(), e.getMessage());
                 alert.showAndWait();
@@ -120,7 +120,7 @@ public class HairdresserManageServicesViewController {
         Label price = JavaFXNodeFactory.getInstance().createLabel(servicePrice.toString(), NORMAL_LABEL_FONT_SIZE);
         Button back = JavaFXNodeFactory.getInstance().createButton("Back");
         back.setPrefHeight(55);
-        back.setOnMouseClicked(mouseEvent -> showHairServices());
+        back.setOnMouseClicked(mouseEvent -> showHairdresserServices());
         Button delete = JavaFXNodeFactory.getInstance().createButton("Delete");
         delete.setPrefHeight(55);
         delete.setOnMouseClicked(mouseEvent -> deleteService(serviceName, servicePrice));
@@ -141,12 +141,12 @@ public class HairdresserManageServicesViewController {
             Alert alert = AlertFactory.getInstance().createAlert(Alert.AlertType.ERROR, ExceptionText.getConnectionErrorTitle(), ExceptionText.getSqlErrorMessage());
             alert.showAndWait();
         }
-        showHairServices();
+        showHairdresserServices();
     }
 
     public void fillView(ShopBeanInterface shopBeanFirstUI){
         this.shopBeanFirstUI = shopBeanFirstUI;
-        showHairServices();
+        showHairdresserServices();
     }
 
 }

@@ -74,6 +74,7 @@ public class ManagePromotionController {
 
     }
 
+    //This function create a ManagePromotionBeanInterface list from a Promotion list.
     private List<ManagePromotionBeanInterface> promBeanListFromPromList(List<Promotion> promotionsList) {
         List<ManagePromotionBeanInterface> promList = new ArrayList<>();
         if(!promotionsList.isEmpty()){

@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestNetWorth {
 
+    //Test Selenium API Ciferri
     @Test
     public void testNetWorth(){
         System.setProperty("webdriver.chrome.driver", "lib/chromedriver.exe");

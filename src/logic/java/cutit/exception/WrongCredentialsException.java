@@ -11,9 +11,4 @@ public class WrongCredentialsException extends Exception{
         this.initCause(cause);
     }
 
-    public WrongCredentialsException(Throwable cause){
-        super(MESSAGE);
-        this.initCause(cause);
-    }
-
 }

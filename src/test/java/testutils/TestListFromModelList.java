@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestListFromModelList {
 
+    //Test case Caporro
     @Test
     public void testGetStringListFromServices(){
         List<Service> serviceList = new ArrayList<>();
@@ -30,6 +31,7 @@ public class TestListFromModelList {
         assertTrue(test);
     }
 
+    //Test case Caporro
     @Test
     public void testGetStringListFromPromotions(){
         List<Promotion> promotionsList = new ArrayList<>();
