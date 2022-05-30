@@ -23,7 +23,7 @@ public class TestNetWorth {
         WebElement cookies = driver.findElement(By.xpath("//*[@id=\"L2AGLb\"]/div"));
         cookies.click();
 
-        WebElement webElement = driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/div/div[1]/div/div[1]/div[1]/div/div[1]/div/div[1]/div[2]/div/div[1]"));
+        WebElement webElement = driver.findElement(By.xpath("//*[@id=\"rso\"]/div[1]/block-component/div/div[1]/div[1]/div/div/div[1]/div/div/div[1]/div/div[1]/div[2]/div/div[1]"));
 
         String netWorth = webElement.getText();
         driver.close();
@@ -31,7 +31,7 @@ public class TestNetWorth {
         String value = st.nextToken();
         value = value.replace(",", ".");
         double netWorthValue = Double.parseDouble(value);
-        boolean test = netWorthValue > 168.0;
+        boolean test = netWorthValue > 100;
         assertTrue(test);
     }
 

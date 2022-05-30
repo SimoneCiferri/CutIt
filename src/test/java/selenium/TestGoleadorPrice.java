@@ -18,7 +18,7 @@ public class TestGoleadorPrice {
         driver.get("https://www.amazon.it/Goleador-Cola-doppia-caramella-gusto/dp/B00AA2G3OA/ref=sr_1_1_sspa?__mk_it_IT=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2A6I99AN9Y3BS&keywords=goleador+cola&qid=1643024396&rdc=1&sprefix=goleador+cola%2Caps%2C71&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyRDZIVUVDM0xJWTdXJmVuY3J5cHRlZElkPUEwNDI4Nzg1Mzc1NDhUTTNMWFY4NiZlbmNyeXB0ZWRBZElkPUEwNDMyNDIyM1RJQ0M5NkNCMjlRNCZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=");
 
         driver.findElement(By.xpath("//*[@id=\"sp-cc-accept\"]")).click();
-        WebElement element = driver.findElement(By.xpath("//*[@id=\"corePrice_desktop\"]/div/table/tbody/tr[1]/td[2]/span[1]/span[2]"));
+        WebElement element = driver.findElement(By.xpath("//*[@id=\"corePrice_feature_div\"]/div/span[1]/span[2]/span[1]"));
 
         String price = element.getText().substring(0, 2);
         driver.close();
@@ -29,7 +29,7 @@ public class TestGoleadorPrice {
     public void priceChecker(){
         TestGoleadorPrice goleadorPrice = new TestGoleadorPrice ();
         Integer output = goleadorPrice.testPriceGoleador();
-        assertTrue(output<= 20.00);
+        assertTrue(output<= 30.00);
 
     }
 }
