@@ -23,7 +23,7 @@ public class Customer extends User{
         setGender(gender);
     }
 
-    public Customer(String userID, String pwd, Integer role, String name, String surname, LocalDate birthDate, String gender, List<Appointment> bookedAppointments, List<Promotion> promotions){
+   /* public Customer(String userID, String pwd, Integer role, String name, String surname, LocalDate birthDate, String gender, List<Appointment> bookedAppointments, List<Promotion> promotions){
         super(userID, pwd, role);
         setName(name);
         setSurname(surname);
@@ -32,6 +32,7 @@ public class Customer extends User{
         setBookedAppointments(bookedAppointments);
         setPromotions(promotions);
     }
+    */
 
     public String getName() {
         return name;
