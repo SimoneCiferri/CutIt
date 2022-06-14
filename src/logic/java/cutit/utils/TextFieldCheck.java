@@ -89,7 +89,7 @@ public class TextFieldCheck {
         if (piva == null) {
             return false;
         }else{
-            Pattern p = Pattern.compile("^[0-9]{11}$");
+            Pattern p = Pattern.compile("^\\d{11}$");
             Matcher m = p.matcher(piva);
             if(m.matches()){
                 return true;
