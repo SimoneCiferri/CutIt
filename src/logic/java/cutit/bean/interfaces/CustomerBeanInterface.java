@@ -1,6 +1,6 @@
 package cutit.bean.interfaces;
 
-import cutit.bean.interfaces.AppointmentBeanInterface;
+
 
 import java.time.LocalDate;
 import java.util.List;
